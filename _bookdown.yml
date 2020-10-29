@@ -1,6 +1,8 @@
-book_filename: "STAT545"
+book_filename: "R4ews"
 delete_merged_file: true
 new_session: true
 language:
   ui:
-    chapter_name: "Chapter "
+    chapter_name: "Kapitel "
+output_dir: "docs"
+
