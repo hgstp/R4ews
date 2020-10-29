@@ -1,0 +1,90 @@
+# (PART) R, wie fange ich an {-} 
+
+# Installieren von R und RStudio {#install}
+
+```{r include = FALSE}
+source("common.R")
+```
+
+<!--Original content: https://stat545.com/block000_r-rstudio-install.html-->
+
+
+## R und RStudio
+
+* Installieren Sie [R, eine freie Softwareumgebung für statistische Berechnungen und Grafiken](https://www.r-project.org) von [CRAN](https://cloud.r-project.org), dem Comprehensive R Archive Network. Wir empfehle Ihnen dringend, eine vorkompilierte Binärdistribution für Ihr Betriebssystem zu installieren - benutzen Sie die Links oben auf der CRAN Seite!
+
+* Installieren Sie die IDE von RStudio (steht für _integrated development environment_), eine leistungsfähige Benutzeroberfläche für R. Holen Sie sich die Open-Source-Edition von RStudio Desktop.
+
+  - Es ist vorteilhaft die  [Preview version](https://www.rstudio.com/products/rstudio/download/preview/) zu installieren. In der Regel ist sie bereits sehr stabil und man hat so Zugriff auf die neusten Features. 
+  - Natürlich gibt es auch offizielle Veröffentlichungen [here](https://www.rstudio.com/products/rstudio/#Desktop).
+  - RStudio wird mit einem __Text Editor__ geliefert, so dass es nicht unmittelbar erforderlich ist, einen separaten, eigenständigen Editor zu installieren.
+  - RStudio kann eine __Schnittstelle zu Git(Hub)__ bilden. Sie müssen jedoch alle Git(Hub)-Installationen selbst vornehmen. Wir kommen später auf diesen Punkt zurück.
+    
+Wenn Sie eine bereits vorhandene R und/oder RStudio Installation haben, empfehlen wir Ihnen dringend, beide neu zu installieren und so aktuell wie möglich zu halten. 
+
+* Wenn Sie R aktualisieren, müssen Sie alle Pakete, die Sie installiert haben, aktualisieren. Der unten stehende Befehl sollte Ihnen den Anfang machen, obwohl Sie möglicherweise weitere Argumente angeben müssen, wenn Sie z.B. eine nicht standardmäßige Bibliothek für Ihre Pakete verwendet haben.
+
+    ``` r
+    update.packages(ask = FALSE, checkBuilt = TRUE)
+    ```
+
+  __Bemerkung:__ hier wird nur nach Updates auf CRAN gesucht. Wenn Sie also ein Paket verwenden, das z.B. *nur* auf GitHub lebt, müssen Sie manuell aktualisieren, z.B. über `devtools::install_github()`.
+
+## Funktioniert? Ausprobieren
+
+* Starten Sie RStudio auf Ihrem Computer. Sie sollten ein Fenster ähnlich zu diesem [Screenshot](https://www.rstudio.com/wp-content/uploads/2014/04/rstudio-workbench.png), erhalten. 
+
+* Setzen Sie den Cursor in den Bereich mit der Bezeichnung Konsole, wo Sie mit R interagieren können. Erstellen Sie ein einfaches Objekt mit einem Code wie 
+```{r}
+x <- 2 * 4
+```
+
+(gefolgt von Enter oder Return). Inspizieren Sie dann das `x`-Objekt durch Eingabe von `x` gefolgt von Enter oder Return. Sie sollten den Wert 8 auf dem Bildschirm sehen. Wenn ja, haben Sie R und RStudio erfolgreich installiert.
+
+## Add-on packages
+
+R ist ein erweiterbares System und viele Menschen teilen nützlichen Code, den sie als _Paket_ entwickelt haben, über CRAN und GitHub. Um ein Paket von CRAN zu installieren, z.B. das Paket [tidyverse] (ist genauer gesagt eine Kollektion von Paketen), kann man folgenden Befehl verwenden
+
+```r
+install.packages("tidyverse", dependencies = TRUE)
+```
+
+Mit der Option `dependencies = TRUE` achten wir darauf, dass alle für `tidyverse` notwendigen Pakete, ebenfalls installiert werden.
+
+
+
+
+
+## RStudio Primers
+
+
+Ein guter Startpunkt für verschiedene R Themen sind die [RStudio primers](https://rstudio.cloud/learn/primers).
+
+
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("assets/rstudio_primers.png")
+```
+
+
+Im Laufe des Kurses werden sie die Primers
+
+- [The Basics](https://rstudio.cloud/learn/primers/1)
+- [Work with Data](https://rstudio.cloud/learn/primers/2)
+- [Visualize Data](https://rstudio.cloud/learn/primers/3)
+
+durcharbeiten.
+
+
+## Aufgabe
+
+Wir beginnen mit [The Basics](https://rstudio.cloud/learn/primers/1). Hier wird unterschieden in Programming and Visualization Basics. 
+
+Programming Basics beinhaltet Grundlagen zu Objekttypen, Funktionen und deren Argumente, Listen (eigentlich sind alle Objekte Listen, nur unterschiedlich speziell) und Paketen.
+
+Visualization Basics erklärt erste Schritte in der Verwendung des `ggplot2` Pakets, mit dem wir uns später noch eingehend beschäftigen werden.
+
+Bearbeiten sie eigenständig den Basics Primer.
+
+
+```{r links, child="links.md"}
+```
