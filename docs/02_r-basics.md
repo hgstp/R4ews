@@ -1,8 +1,6 @@
 # R Basics und Arbeitsabläufe {#r-basics}
 
-```{r include = FALSE}
-source("common.R")
-```
+
 
 <!--Original content: https://stat545.com/block002_hello-r-workspace-wd-project.html-->
 
@@ -22,14 +20,17 @@ Es geht los indem sie RStudio starten. Beachten Sie die Standardfensterbereiche:
 
 Gehen sie in die Konsole, wo wir mit dem R interagieren können. Nehmen Sie eine Zuordnung vor und inspizieren Sie dann das gerade erstellte Objekt:
 
-```{r start_rbasics}
+
+```r
 x <- 3 * 4
 x
+#> [1] 12
 ```
 
 Alle R Befehle, in denen Sie Objekte erstellen ("Zuweisungen"), haben diese Form:
 
-```{r eval = FALSE}
+
+```r
 objectName <- value
 
 ```
@@ -53,7 +54,8 @@ Wir werden stets die erste Variante verwenden.
 
 Führen sie nachfolgenden Befehl aus
 
-```{r}
+
+```r
 this_is_a_really_long_name <- 2.5
 ```
 
@@ -61,14 +63,18 @@ Ihr Workspace enthält nun das Objekt `this_is_a_really_long_name`. Probieren si
 
 
 Führen sie nun den Befehl 
-```{r}
+
+```r
 jenny_rocks <- 2 ^ 3
 ```
 
 aus, um anschließend den Inhalt des Objekts anzuzeigen.
-```{r error=TRUE}
+
+```r
 jennyrocks
+#> Error in eval(expr, envir, enclos): object 'jennyrocks' not found
 jeny_rocks
+#> Error in eval(expr, envir, enclos): object 'jeny_rocks' not found
 ```
 
 Das Objekt `jennyrocks` ist natürlich nicht vorhanden und führt somit auch zu einer Fehlermeldung. Man muss also absolut exakt sein mit seinen Befehlen.
@@ -76,7 +82,8 @@ Das Objekt `jennyrocks` ist natürlich nicht vorhanden und führt somit auch zu 
 
 R hat eine überwältigende Sammlung eingebauter Funktionen, auf die auf diese Weise zugegriffen wird:
 
-```{r eval = FALSE, tidy = FALSE}
+
+```r
 functionName(arg1 = val1, arg2 = val2, and so on)
 ```
 
@@ -84,8 +91,10 @@ Als nächstes wollen wir die Funktion `seq()` verwenden, die reguläre Zahlenseq
 
 Tippen sie `se` und drücken sie dann die TAB Taste. In einem Pop-Up Fenster sehen sie mögliche Vervollständigungen. Specify `seq()` by typing more to disambiguate or using the up/down arrows to select. Notice the floating tool-tip-type help that pops up, reminding you of a function's arguments. If you want even more help, press F1 as directed to get the full documentation in the help tab of the lower right pane. Now open the parentheses and notice the automatic addition of the closing parenthesis and the placement of cursor in the middle.  Type the arguments `1, 10` and hit return. RStudio also exits the parenthetical expression for you.  IDEs are great.
 
-```{r}
+
+```r
 seq(1, 10)
+#>  [1]  1  2  3  4  5  6  7  8  9 10
 ```
 
 The above also demonstrates something about how R resolves function arguments. You can always specify in `name = value` form. But if you do not, R attempts to resolve by position. So above, it is assumed that we want a sequence `from = 1` that goes `to = 10`. Since we didn't specify step size, the default value of `by` in the function definition is used, which ends up being 1 in this case. For functions I call often, I might use this resolve by position for the first
@@ -93,44 +102,64 @@ argument or maybe the first two. After that, I always use `name = value`.
 
 
 Make this assignment and notice similar help with quotation marks.
-```{r}
+
+```r
 yo <- "hello world"
 ```
 
 If you just make an assignment, you don't get to see the value, so then you're tempted to immediately inspect.
 
-```{r}
+
+```r
 y <- seq(1, 10)
 y
+#>  [1]  1  2  3  4  5  6  7  8  9 10
 ```
 
 This common action can be shortened by surrounding the assignment with parentheses, which causes assignment and "print to screen" to happen.
 
-```{r}
+
+```r
 (y <- seq(1, 10))
+#>  [1]  1  2  3  4  5  6  7  8  9 10
 ```
 
 Not all functions have (or require) arguments:
-```{r}
+
+```r
 date()
+#> [1] "Thu Oct 29 14:06:52 2020"
 ```
 
 Now look at your workspace -- in the upper right pane. The workspace is where user-defined objects accumulate. You can also get a listing of these objects with commands:
 
-```{r}
+
+```r
 objects()
+#> [1] "check_quietly"              "install_quietly"           
+#> [3] "jenny_rocks"                "pretty_install"            
+#> [5] "shhh_check"                 "this_is_a_really_long_name"
+#> [7] "x"                          "y"                         
+#> [9] "yo"
 ls()
+#> [1] "check_quietly"              "install_quietly"           
+#> [3] "jenny_rocks"                "pretty_install"            
+#> [5] "shhh_check"                 "this_is_a_really_long_name"
+#> [7] "x"                          "y"                         
+#> [9] "yo"
 ```
 
 If you want to remove the object named `y`, you can do this:
 
-```{r}
+
+```r
 rm(y)
 ```
 
 To remove everything:
 
-```{r}
+
+```r
 rm(list = ls())
 ```
 
@@ -184,7 +213,8 @@ Any process running on your computer has a notion of its "working directory". In
 
 You can explicitly check your working directory with:
 
-```{r eval = FALSE}
+
+```r
 getwd()
 ```
 
@@ -194,7 +224,8 @@ As a beginning R user, it's OK let your home directory or any other weird direct
 
 __Although I do not recommend it__, in case you're curious, you can set R's working directory at the command line like so:
 
-```{r eval = FALSE}
+
+```r
 setwd("~/myCoolProject")
 ```
 
@@ -225,17 +256,26 @@ _I can't print my output here because this document itself does not reside in th
 
 Let's enter a few commands in the Console, as if we are just beginning a project:
 
-```{r toy-line}
+
+```r
 a <- 2
 b <- -3
 sig_sq <- 0.5
 x <- runif(40)
 y <- a + b * x + rnorm(40, sd = sqrt(sig_sq))
 (avg_x <- mean(x))
+#> [1] 0.497
 write(avg_x, "avg_x.txt")
 plot(x, y)
 abline(a, b, col = "purple")
+```
+
+<img src="02_r-basics_files/figure-html/toy-line-1.png" width="672" />
+
+```r
 dev.print(pdf, "toy_line_plot.pdf")
+#> quartz_off_screen 
+#>                 2
 ```
 
 Let's say this is a good start of an analysis and your ready to start preserving the logic and code. Visit the History tab of the upper right pane. Select these commands. Click "To Source". Now you have a new pane containing a nascent R script. Click on the floppy disk to save. Give it a name ending in `.R` or `.r`, I used `toy-line.r` and note that, by default, it will go in the directory associated with your project.
@@ -277,9 +317,110 @@ Many long-time users never save the workspace, never save `.RData` files (I'm on
 
 For the record, when loading data into R and/or writing outputs to file, you can always specify the absolute path and thereby insulate yourself from the current working directory. This is rarely necessary when using RStudio projects properly.
 
-```{r end_rbasics, include = FALSE}
-file.remove(c("avg_x.txt", "toy_line_plot.pdf"))
-```
 
-```{r links, child="links.md"}
-```
+
+
+<!--STAT 545 external resources/content-->
+[useR-2014-dropbox]: https://www.dropbox.com/sh/i8qnluwmuieicxc/AAAgt9tIKoIm7WZKIyK25lh6a
+[Tidy data using Lord of the Rings]: https://github.com/jennybc/lotr-tidy#readme
+[ggplot2 tutorial]: https://github.com/jennybc/ggplot2-tutorial
+[R Graph Catalog]: https://github.com/jennybc/r-graph-catalog
+
+<!--Packages: main link-->
+[dplyr]: https://dplyr.tidyverse.org
+[tidyr]: https://tidyr.tidyverse.org
+[ggplot2]: https://ggplot2.tidyverse.org
+[tidyverse]: https://tidyverse.tidyverse.org
+[stringr]: https://stringr.tidyverse.org
+[forcats]: https://forcats.tidyverse.org
+[purrr]: https://purrr.tidyverse.org
+[readr]: https://readr.tidyverse.org
+[fs]: https://fs.r-lib.org/index.html
+[glue]: https://glue.tidyverse.org
+[testthat]: https://testthat.r-lib.org
+[ellipsis]: https://ellipsis.r-lib.org
+[lubridate]: https://lubridate.tidyverse.org
+[devtools]: https://devtools.r-lib.org
+[roxygen2]: https://roxygen2.r-lib.org
+[knitr]: https://github.com/yihui/knitr
+[usethis]: https://usethis.r-lib.org
+[xml2]: https://xml2.r-lib.org
+[httr]: https://httr.r-lib.org
+[rvest]: https://rvest.tidyverse.org
+[Shiny]: https://shiny.rstudio.com
+[gh]: https://github.com/r-lib/gh
+[plyr]: http://plyr.had.co.nz
+[magrittr]: https://magrittr.tidyverse.org
+[googlesheets]: https://github.com/jennybc/googlesheets
+[gapminder]: https://github.com/jennybc/gapminder
+[stringi]: http://www.gagolewski.com/software/stringi/
+[rex]: https://github.com/kevinushey/rex
+[lattice]: http://lattice.r-forge.r-project.org
+[RColorBrewer]: https://cloud.r-project.org/package=RColorBrewer
+[gridExtra]: https://cloud.r-project.org/package=gridExtra
+[rebird]: https://docs.ropensci.org/rebird/
+[geonames]: https://docs.ropensci.org/geonames/
+[rplos]: https://docs.ropensci.org/rplos/
+[gender]: https://docs.ropensci.org/gender/
+[genderdata]: https://docs.ropensci.org/genderdata/
+[curl]: https://jeroen.cran.dev/curl
+[jsonlite]: https://github.com/jeroen/jsonlite
+[shinythemes]: https://rstudio.github.io/shinythemes/
+[shinyjs]: https://deanattali.com/shinyjs/
+[leaflet]: https://rstudio.github.io/leaflet/
+[ggvis]: https://ggvis.rstudio.com
+[shinydashboard]: https://rstudio.github.io/shinydashboard/
+
+<!--Packages: vignettes & CRAN/GitHub links-->
+[Introduction to dplyr]: https://dplyr.tidyverse.org/articles/dplyr.html
+[Window functions]: https://dplyr.tidyverse.org/articles/window-functions.html
+[Two-table verbs]: https://dplyr.tidyverse.org/articles/two-table.html
+[Do more with dates and times in R]: https://lubridate.tidyverse.org/articles/lubridate.html
+[dplyr-cran]: https://cloud.r-project.org/package=dplyr
+[dplyr-github]: https://github.com/hadley/dplyr
+
+<!--Bookdowns: main link-->
+[Happy Git and GitHub for the useR]: https://happygitwithr.com
+[R for Data Science]: https://r4ds.had.co.nz
+[The tidyverse style guide]: https://style.tidyverse.org
+[Advanced R]: http://adv-r.had.co.nz
+[Tidyverse design principles]: https://principles.tidyverse.org
+[R Packages]: https://r-pkgs.org/index.html
+[R Graphics Cookbook]: http://shop.oreilly.com/product/0636920023135.do
+[Cookbook for R]: http://www.cookbook-r.com 
+[ggplot2: Elegant Graphics for Data Analysis]: https://ggplot2-book.org/index.html
+
+<!--Bookdowns: specific chapters-->
+[adv-r-fxn-args]: http://adv-r.had.co.nz/Functions.html#function-arguments
+[r4ds-transform]: https://r4ds.had.co.nz/transform.html
+[r4ds-readr-strings]: https://r4ds.had.co.nz/data-import.html#readr-strings
+
+<!--RStudio Cheat Sheets--> 
+[RStudio Data Transformation Cheat Sheet]: https://github.com/rstudio/cheatsheets/raw/master/data-transformation.pdf
+[Regular Expressions in R Cheat Sheet]: https://github.com/rstudio/cheatsheets/raw/master/regex.pdf
+[Shiny Cheat Sheet]: https://shiny.rstudio.com/articles/cheatsheet.html
+
+<!--Blog posts, slides, & papers-->
+["minimal make: a minimal tutorial on make"]: https://kbroman.org/minimal_make/
+["Let the Data Flow: Pipelines in R with dplyr and magrittr"]: https://github.com/tjmahr/MadR_Pipelines
+["Hands-on dplyr tutorial for faster data manipulation in R"]: https://www.dataschool.io/dplyr-tutorial-for-faster-data-manipulation-in-r/
+["Writing R Extensions"]: https://cloud.r-project.org/doc/manuals/r-release/R-exts.html
+["The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!)"]: https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/
+["What Every Programmer Absolutely, Positively Needs To Know About Encodings And Character Sets To Work With Text"]: http://kunststube.net/encoding/
+["3 Steps to Fix Encoding Problems in Ruby"]: https://www.justinweiss.com/articles/3-steps-to-fix-encoding-problems-in-ruby/
+["My favorite RGB color"]: https://manyworldstheory.com/2013/01/15/my-favorite-rgb-color/
+
+<!--Papers/Books Cited-->
+["Dates and Times Made Easy with lubridate"]: https://www.jstatsoft.org/article/view/v040i03
+["testthat: Get Started with Testing"]: https://journal.r-project.org/archive/2011-1/RJournal_2011-1_Wickham.pdf
+["Let's Practice What We Preach"]: https://www.jstor.org/stable/3087382?seq=1#page_scan_tab_contents
+[Creating More Effective Graphs]: https://www.amazon.com/Creating-Effective-Graphs-Naomi-Robbins/dp/0985911123
+["Escaping RGBland: Selecting Colors for Statistical Graphs"]: https://eeecon.uibk.ac.at/~zeileis/papers/Zeileis+Hornik+Murrell-2009.pdf
+["A layered grammar of graphics"]: https://vita.had.co.nz/papers/layered-grammar.html
+[Managing Projects with GNU Make, 3rd Edition]: http://shop.oreilly.com/product/9780596006105.do
+["Why Should Engineers and Scientists Be Worried About Color?"]: https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&cad=rja&uact=8&ved=2ahUKEwi0xYqJ8JbjAhWNvp4KHViYDxsQFjABegQIABAC&url=https%3A%2F%2Fwww.researchgate.net%2Fprofile%2FAhmed_Elhattab2%2Fpost%2FPlease_suggest_some_good_3D_plot_tool_Software_for_surface_plot%2Fattachment%2F5c05ba35cfe4a7645506948e%2FAS%253A699894335557644%25401543879221725%2Fdownload%2FWhy%2BShould%2BEngineers%2Band%2BScientists%2BBe%2BWorried%2BAbout%2BColor_.pdf&usg=AOvVaw1qwjjGMd7h_z6TLUjzu7Nb
+
+<!--Misc.-->
+[rOpenSci]: https://ropensci.org
+[wiki-snake-case]: https://en.wikipedia.org/wiki/Snake_case
+[Janus]: https://en.wikipedia.org/wiki/Janus

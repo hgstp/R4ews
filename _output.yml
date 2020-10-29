@@ -7,8 +7,8 @@ bookdown::gitbook:
   config:
     toc:
       collapse: section
-      before: |
-        <li class="toc-logo"><a href="./"><img src="assets/stat545-logo.png" style="border-radius: 50%;" ></a></li>
+#      before: |
+#        <li class="toc-logo"><a href="./"><img src="assets/stat545-logo.png" style="border-radius: 50%;" ></a></li>
       after: |
         <li><center>
           <a rel="license" href="./index.html#license">
@@ -19,7 +19,7 @@ bookdown::gitbook:
           </a>
         </li></center>
     download: ["rmd", "epub"]
-    edit: https://github.com/rstudio-education/stat545/edit/master/%s
+#    edit: https://github.com/rstudio-education/stat545/edit/master/%s
     sharing:
       github: yes
       facebook: no
