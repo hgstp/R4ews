@@ -1,36 +1,39 @@
-# (PART) Version control and R Markdown  {-} 
+# (PART) Versionskontrolle und R Markdown  {-} 
 
 
 
-# Overview {-}
-
-Although this part now links out to external resources, if you're working through this material on your own, let this be a nudge to pause around here and think about your workflow. I give you permission to spend some time and energy sorting this out! It can be as or more important than learning a new R function or package. The experts don't talk about this much, because they've already got a workflow and it's something they do almost without thinking.
-
-Working through subsequent material in R Markdown documents, possibly using Git and GitHub to track and share your progress, is a great idea and will leave you more prepared for your future data analysis projects. Typing individual lines of R code is but a small part of data analysis and it pays off to think holistically about your workflow.
 
 # Git, GitHub, and RStudio {#version-control}
 
 <!--Original content: https://stat545.com/git08_claim-stat545-repo.html-->
 
-At this point in STAT 545, all students receive their own STAT 545 GitHub repository that they will use to develop their course work throughout the rest of the course.
+Wir wissen nicht ob Versionskontrolle bereits ein Thema war mit dem du dich beschäftigt hast. Wenn nicht, solltest du mit ein [paar Worten zu Git und GitHub](https://happygitwithr.com/big-picture.html) von *Jenny Byran* (Autorin von STAT 545) starten.
 
-This has two purposes:
+Ziel dieses Abschnitts wird es sein, dass du
 
-  * It is helpful for course mechanics, e.g. homework submission and grading,
-    peer review.
-  * Learning to use Git and GitHub, with R and RStudio, is a legitimate
-    pedagogical goal.
-    
-Our instructions around installation, setup, and early Git usage eventually grew so extensive that we created a dedicated website. This content can now be found here:
+1. einen [GitHub Account](https://happygitwithr.com/github-acct.html) anlegst (falls nicht schon vorhanden)
 
-<https://happygitwithr.com>
+2. [Git auf deinem Computer installierst](https://happygitwithr.com/install-git.html)
+
+3. dich bei [Git vorstellst](https://happygitwithr.com/hello-git.html)
+
+4. alles zusammenfügst und deine [Verbindung zu GitHub testest](https://happygitwithr.com/push-pull-github.html)
+
+5. abschließend noch RStudio ins Spiel bringst und [RStudio mit Git und GitHub verbindest](https://happygitwithr.com/rstudio-git-github.html)
+
+
+**Bemerkung:** Unter 5. wirst du ermutigt deine GitHub Zugangsdaten auf deinem Computer zu speichern. Wir können diesen Schritt nur empfehlen.
+
+Das Buch [*Happy Git and GitHub for the useR*](https://happygitwithr.com/) enthält noch viele weitere hilfreiche Git/GitHub Informationen. Auf manche kommen wir vielleicht im Laufe des Kurses noch zu sprechen. Andere sind vielelicht zu einem späteren Zeitpunkt interessant, wenn du an anspruchsvolleren Git Projekten arbeitest.
+
+
 
 # R Markdown {#r-markdown}
 
 <!--Original content: https://stat545.com/block007_first-use-rmarkdown.html-->
 
-STAT 545 course work is generally submitted in the form of R Markdown documents. Students submit an `.Rmd` file, which they have executed or rendered to a `.md` markdown file. R Markdown is a very accessible way to create computational documents that combine prose and tables and figures produced by R code.
+Ausgewählte Hausaufgaben wirst du als R Markdown Dokument abgeben. R Markdown ist eine sehr zugängliche Methode zur Erstellung von Dokumenten, die Prosa Text mit durch R-Code erzeugten Tabellen und Abbildungen kombinieren.
 
-An introductory R Markdown workflow, including how it intersects with Git, GitHub, and RStudio, is now maintained within the Happy Git site:
+Ein möglicher R Markdown Workflow, der eine Interaktion mit Git, GitHub, und RStudio beinhaltet, wird vorgestellt auf der Seite:
 
 [Test drive R Markdown](https://happygitwithr.com/rmd-test-drive.html)

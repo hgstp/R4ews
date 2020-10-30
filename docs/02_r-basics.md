@@ -7,18 +7,18 @@
 ## Ein paar Grundlagen für das Arbeiten mit R
 
 
-Sie haben bereits den Programming Basics Primer besucht. Nun wollen sie selbst mit ihrer RStudio/R Installation arbeiten. 
+> **Aktueller Stand:** Du hast bereits den Programming Basics Primer absolviert und nun willst du anfangen mit deiner RStudio/R Installation zu arbeiten arbeiten. 
 
 
-Es geht los indem sie RStudio starten. Beachten Sie die Standardfensterbereiche:
+Es geht los indem du RStudio startest. Beachte dabei die Standardfensterbereiche:
 
 * Console (*links*)
 * Environment / History (*oben rechts*)
 * Files / Plots / Packages / Help (*unten rechtes*)
 
-**Bemerkung:** Die Standardanordnung der Fenster können sie neben vielen anderen Dingen aber auch ändern/anpassen: [Customizing RStudio](https://support.rstudio.com/hc/en-us/articles/200549016-Customizing-RStudio).
+**Bemerkung:** Die Standardanordnung der Fenster kannst du neben vielen anderen Dingen nach deinen Vorstellungen ändern/anpassen: [Customizing RStudio](https://support.rstudio.com/hc/en-us/articles/200549016-Customizing-RStudio).
 
-Gehen sie in die Konsole, wo wir mit dem R interagieren können. Nehmen Sie eine Zuordnung vor und inspizieren Sie dann das gerade erstellte Objekt:
+Gehen nun in die Konsole um mit R zu interagieren. Erstelle die nachfolgende Zuordnung  und schau dir das erstellte Objekt genauer an:
 
 
 ```r
@@ -27,20 +27,19 @@ x
 #> [1] 12
 ```
 
-Alle R Befehle, in denen Sie Objekte erstellen ("Zuweisungen"), haben diese Form:
+Alle R Befehle, die ein Objekte erstellen ("Zuweisungen"), haben die Form:
 
 
 ```r
 objectName <- value
-
 ```
 
+Du wirst im weiteren Verlauf noch viele Zuweisungen vornehmen, und es ist tatsächlich etwas mühsam den Operator `<-` zu tippen. Sei aber trotzdem nicht faul und benutze  `=` stattdessen - auch wenn es theoretisch funktionieren würde. Aber später kann die Verwendung von `=` für Zuweisungen zu Verwirrung führen. Verwende  stattdessen in RStudio die Tastenkombination: `Alt` + `-` (Minuszeichen).
 
-Sie werden viele Zuweisungen vornehmen, und es ist mühsam, den Operator `<-` zu tippen. Seien sie aber trotzdem nicht faul und benutzen  `=` stattdessen, obwohl es theoretisch funktionieren würde. Aber später kann das für Verwirrung sorgen. Verwenden Sie stattdessen in RStudio die Tastenkombination: `Alt` + `-` (Minuszeichen).
-
-Beachten Sie, dass RStudio automatisch `<-` mit Leerzeichen umgibt, was eine nützliche Codeformatierung demonstriert. Code ist selbst an einem guten Tag eher schlecht zu lesen. Gönnen Sie Ihren Augen eine Pause und verwenden Sie Leerzeichen.
+Beachte, dass RStudio automatisch `<-` mit Leerzeichen umgibt, was eine nützliche Codeformatierung demonstriert. Code ist selbst an einem guten Tag eher schlecht zu lesen. Gönne daher deinen Augen eine Pause und verwende (ausreichend) Leerzeichen.
 
 RStudio bietet viele praktische [Tastaturkürzel](https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts) an. Eine Übersicht erhält man auch mit `Alt`+`Shift`+`K`.
+
 
 Objektnamen dürfen nicht mit einer Ziffer beginnen und bestimmte andere Zeichen wie ein Komma oder ein Leerzeichen nicht enthalten. Es ist daher ratsam, sich eine [Konvention zur Abgrenzung von Wörtern][wiki-snake-case] in Objektnamen zu überlegen.
 
@@ -52,17 +51,17 @@ evenOthersUseCamelCase
 
 Wir werden stets die erste Variante verwenden.
 
-Führen sie nachfolgenden Befehl aus
+Führe nun nachfolgenden Befehl aus
 
 
 ```r
 this_is_a_really_long_name <- 2.5
 ```
 
-Ihr Workspace enthält nun das Objekt `this_is_a_really_long_name`. Probieren sie mithilfe dieses Objekts die Vervollständigungsfunktion von RStudio aus: Geben sie die ersten paar Zeichen ein, drücken sie dann die TAB Taste, fügen Sie Zeichen hinzu, bis sie die Eindeutigkeit herstellen (wenn sonst wenig in ihrem Workspace ist, dann ist das schnell erreicht), und drücken sie dann die Eingabetaste.
+In deinem Workspace ist nun das Objekt `this_is_a_really_long_name` vorhanden. Probiere mithilfe dieses Objekts die Vervollständigungsfunktion von RStudio aus: *Gib die ersten paar Zeichen ein, drück anschließend die TAB Taste, fügen weitere Zeichen hinzu, bis Eindeutigkeit hergestellt ist(wenn sonst wenig in deinem Workspace ist, dann ist das schnell erreicht), und drücke dann die Eingabetaste*.
 
 
-Führen sie nun den Befehl 
+Führe nun den Befehl 
 
 ```r
 jenny_rocks <- 2 ^ 3
@@ -77,10 +76,10 @@ jeny_rocks
 #> Error in eval(expr, envir, enclos): object 'jeny_rocks' not found
 ```
 
-Das Objekt `jennyrocks` ist natürlich nicht vorhanden und führt somit auch zu einer Fehlermeldung. Man muss also absolut exakt sein mit seinen Befehlen.
+Die Objekte `jennyrocks` und `jeny_rocks` sind natürlich nicht vorhanden und somit führen beide Befehle zu einer Fehlermeldung. Man muss also absolut exakt sein mit seinen Befehlen.
 
 
-R hat eine überwältigende Sammlung eingebauter Funktionen, auf die auf diese Weise zugegriffen wird:
+R verfügt über eine überwältigende Sammlung eingebauter Funktionen, die nach folgendem Schema aufgerufen werden:
 
 
 ```r
@@ -89,7 +88,7 @@ functionName(arg1 = val1, arg2 = val2, and so on)
 
 Als nächstes wollen wir die Funktion `seq()` verwenden, die reguläre Zahlensequenzen erzeugt. Dabei wollen wir noch ein weiteres hilfreiches Feature von RStudio demonstrieren.
 
-Tippen sie `se` und drücken sie dann die TAB Taste. In einem Pop-Up Fenster sehen sie mögliche Vervollständigungen. Specify `seq()` by typing more to disambiguate or using the up/down arrows to select. Notice the floating tool-tip-type help that pops up, reminding you of a function's arguments. If you want even more help, press F1 as directed to get the full documentation in the help tab of the lower right pane. Now open the parentheses and notice the automatic addition of the closing parenthesis and the placement of cursor in the middle.  Type the arguments `1, 10` and hit return. RStudio also exits the parenthetical expression for you.  IDEs are great.
+Tippe `se` und drücke dann die TAB Taste. In einem Pop-Up Fenster werden dir mögliche Vervollständigungen angezeigt. Der Befehl `seq()` kann dann durch weiteres Tippen oder über die Auswahlmöglichkeit (Pfeiltasten nach oben/unten) festgelegt werden. Zu jeder Auswahlmöglichkeit wird auch noch eine Kurzform der entsprechenden Hilfeseite angezeigt. Fügt man jetzt die öffnende runde Klammer hinzu, so wird die zugehörige schließende runde Klammer automatisch hinzugefügt. Tippe anschließend `1, 10` (das geschieht automatisch innerhalb der runden Klammern) und Return. RStudio beendet auch den Klammerausdruck für dich.  IDEs sind großartig.
 
 
 ```r
@@ -97,17 +96,19 @@ seq(1, 10)
 #>  [1]  1  2  3  4  5  6  7  8  9 10
 ```
 
-The above also demonstrates something about how R resolves function arguments. You can always specify in `name = value` form. But if you do not, R attempts to resolve by position. So above, it is assumed that we want a sequence `from = 1` that goes `to = 10`. Since we didn't specify step size, the default value of `by` in the function definition is used, which ends up being 1 in this case. For functions I call often, I might use this resolve by position for the first
-argument or maybe the first two. After that, I always use `name = value`.
+Der letzte Befehl zeigt auch ganz gut, wie R Funktionsargumente auflöst. Sie können immer in der Form `Name = Wert` angeben werden. Aber der Name muss nicht angegeben werden, wie man sieht. In solchen Fällen versucht R, nach der Position aufzulösen. So wird oben angenommen, dass wir eine Sequenz  bei 1 starten wollen, also `from = 1`,  und diese bis 10 laufen soll, daher `to = 10`. Da wir keine Schrittweite angegeben haben, wird der Standardwert für `by` verwendet, der in diesem Fall gleich 1 ist.
+
+Bei Funktionen, die man oft aufruft, kann man gut diese Auflösung nach Position für das erste und vielleicht auch das zweite Argument verwenden. Danach ist es aber ratsam immer mit `Name = Wert` zu arbeiten um falsche Zuweisungen (verschiedene Argumente können vom gleichen Typ sein, sodass eine falsche Zuweisung nicht automatisch zu einer Fehlermeldung führt) zu vermeiden.
 
 
-Make this assignment and notice similar help with quotation marks.
+Analog zur Unterstützung mit den runden Klammern, werden auch schließende  Anführungszeichen automatisch ergänzt, wie man in folgendem Beispiel sieht. 
+
 
 ```r
 yo <- "hello world"
 ```
 
-If you just make an assignment, you don't get to see the value, so then you're tempted to immediately inspect.
+Nach einer Zuweisung wird der entsprechende Wert des Objekts nicht angezeigt. Daher ist man vielleicht dazu geneigt das Objekt gleich erneut aufzurufen
 
 
 ```r
@@ -116,7 +117,7 @@ y
 #>  [1]  1  2  3  4  5  6  7  8  9 10
 ```
 
-This common action can be shortened by surrounding the assignment with parentheses, which causes assignment and "print to screen" to happen.
+Diese typische Aktion kann verkürzt werden, indem die Zuweisung in Klammern gesetzt wird, wodurch die Zuweisung und ein Befehl "Drucke auf den Bildschirm" erfolgen.
 
 
 ```r
@@ -124,14 +125,15 @@ This common action can be shortened by surrounding the assignment with parenthes
 #>  [1]  1  2  3  4  5  6  7  8  9 10
 ```
 
-Not all functions have (or require) arguments:
+Nicht alle Funktionen haben (oder erfordern) Argumente:
+
 
 ```r
 date()
-#> [1] "Thu Oct 29 14:06:52 2020"
+#> [1] "Fri Oct 30 14:38:37 2020"
 ```
 
-Now look at your workspace -- in the upper right pane. The workspace is where user-defined objects accumulate. You can also get a listing of these objects with commands:
+Schau dir nun deinen Workspace an - im oberen rechten Fensterbereich (bei Standardeinstellung) siehst du unter Environment den Inhalt deines Workspaces. Der Workspace ist der Ort, an dem sich benutzerdefinierte Objekte ansammeln. Eine Liste dieser Objekte kannst du auch mit diesen Befehlen erhalten:
 
 
 ```r
@@ -149,112 +151,105 @@ ls()
 #> [9] "yo"
 ```
 
-If you want to remove the object named `y`, you can do this:
+Wenn du nun das Objekt mit dem Namen `y` entfernen möchtest, kannst du dies wie folgt machen:
 
 
 ```r
 rm(y)
 ```
 
-To remove everything:
+Alles löschen kannst du mit dem Befehl
 
 
 ```r
 rm(list = ls())
 ```
 
-or click the broom in RStudio's Environment pane.
+oder du klickst auf den Besen im Environment Fenster von RStudio.
 
-## Workspace and working directory
+## Workspace und working directory
 
-One day you will need to quit R, go do something else and return to your analysis later.
+Ziemlich schnell wird der Fall eintreten, dass du mit deiner R Arbeit (z.B. Bearbeitung eines Hausaufgaben Projekts) noch nicht fertig bist obwohl es Zeit wird R zu beenden. Natürlich willst du aber zu einem spätern Zeitpunkt mit der Analyse weitermachen wo du aufgehört hast.
 
-One day you will have multiple analyses going that use R and you want to keep them separate.
+Etwas später wird es so ein, dass du Daten in R einlesen  und anschließend numerische Ergebnisse erzeugen willst, die du dann schließlich auch wieder exportieren willst.
 
-One day you will need to bring data from the outside world into R and send numerical results and figures from R back out into the world.
 
-To handle these real life situations, you need to make two decisions:
+Un nochmal später wird es (vielleicht) so sein, dass du in R gleichzeitig an mehreren Analysen arbeitest, die du aber unbedingt getrennt halten willst/sollst.
 
-* What about your analysis is "real", i.e. will you save it as your lasting record of what happened?
-* Where does your analysis "live"?
+
+Um diese Situationen zu bewältigen, musst du zwei Entscheidungen treffen:
+
+* Was betrachtest du an deiner Analyse als "*Ergebnis*", d.h. was wirst du dauerhaft speichern?
+
+* Wo "*lebt*" deine Analyse?
 
 ### Workspace, `.RData`
 
-As a beginning R user, it's OK to consider your workspace "real". _Very soon_, I urge you to evolve to the next level, where you consider your saved R scripts as "real". (In either case, of course the input data is very much real and requires preservation!) With the input data and the R code you used, you can reproduce
-_everything_. You can make your analysis fancier. You can get to the bottom of puzzling results and discover and fix bugs in your code. You can reuse the code to conduct similar analyses in new projects. You can remake a figure with different aspect ratio or save is as TIFF instead of PDF. You are ready to take questions. You are ready for the future.
+Du startest gerade deine R Reise. Daher wäre es Okay, wenn du deinen Workspace als die "*Ergebnis*" deiner Analyse betrachtest. *Ziemlich bald*, solltest du aber davon (vielleicht durch uns) überzeugt sein, dass deine R Skripte das Ergebnis deiner Analyse sind (in beiden Fällen hängt das Ergebnis möglicherweise natürlich auch von Input Daten ab).     
+Die Daten zusammen mit deinem R Code erlauben es dir jederzeit *alle* Ergebnisse zu reproduzieren und das ist die entscheidende Eigenschaft.
 
-If you regard your workspace as "real" (saving and reloading all the time), if you need to redo analysis ... you're going to either redo a lot of typing (making mistakes all the way) or will have to mine your R history for the commands you used. Rather than [becoming an expert on managing the R history](https://support.rstudio.com/hc/en-us/articles/200526217-Command-History), a better use of your time and psychic energy is to keep your "good" R code in a script for future reuse.
 
-Because it can be useful sometimes, note the commands you've recently run appear in the History pane.
+Betrachtest du deinen Workspace als das Ergebnis deiner Analyse, dann musst du bei einem erneuten Analysedurchlauf (leicht veränderte Aufgabenstellung, ...) entweder erneut eine Menge Tippen (was natürlich fehleranfällig ist) oder deine R History nach den nötigen Befehlen durchwühlen. Anstatt ["becoming an expert on managing the R history"](https://support.rstudio.com/hc/en-us/articles/200526217-Command-History), solltest du deinen R Code sauber in ein Skript speichern, sodass er dir für weitere Analysen zur Verfügung steht.
 
-But you don't have to choose right now and the two strategies are not incompatible. Let's demo the save / reload the workspace approach.
 
-Upon quitting R, you have to decide if you want to save your workspace, for potential restoration the next time you launch R. Depending on your set up, R or your IDE, e.g. RStudio, will probably prompt you to make this decision.
+Der Workspace Ansatz wird "begünstigt" durch die Tatsache, dass RStudio beim Beenden der Session automatisch frägt ob der Workspace gespeichert werden soll. Das wollen wir mal ausprobieren.
 
-Quit R/RStudio, either from the menu, using a keyboard shortcut, or by typing `q()` in the Console. You'll get a prompt like this:
+
+Beende R/RStudio, entweder über das Menü oder du tippst `q()` in die Konsole. Dann erhälst du eine Eingabeaufforderung wie diese:
 
 > Save workspace image to ~/.Rdata?
 
-_Note where the workspace image is to be saved_ and then click "Save".
+_Merke dir in welchem Verzeichnis die Datei gespeichert wird_ und dann klick auf `Save`.
 
-Using your favorite method, visit the directory where image was saved and verify there is a file named `.RData`. You will also see a file `.Rhistory`, holding the commands submitted in your recent session.
+Gehe in das Verzeichnis mit dem gespeicherten Workspace Image und kontrolliere ob die Datei `.RData` vorhanden ist. Du wirst dort auch die Datei `.Rhistory` finden, die alle Befehle deiner letzten Sitzung enthält.
 
-Restart RStudio. In the Console you will see a line like this:
+Nun starte erneut RStudio. In der Konsole siehst du einen Befehl, der ungefähr so aussieht
 
 ```
 [Workspace loaded from ~/.RData]
 ```
 
-indicating that your workspace has been restored. Look in the Workspace pane and you'll see the same objects as before. In the History tab of the same pane, you should also see your command history. You're back in business. This way of starting and stopping analytical work will not serve you well for long but it's a start.
+und angibt, dass dein gespeicherter Workspace wiederhergestellt wurde. Unter Environment solltest du die gleichen Objekte wie zuvor sehen. History enthält die gespeicherten Befehle aus der letzten Sitzung. Aber diese Art, analytische Arbeit zu beginnen und zu beenden, würde so nicht lange gut gehen. Daher fangen wir gleich mal damit an die automatische Nachfrage nach dem Speichern des Workspaces abzuwählen. Öffne dazu die Global Options (unter Tools)
+
+<img src="assets/global_options.png" width="324" />
+
+und setze `Save workspace to .RData on exit` auf `Never`. Nun wirst du *nie mehr* gefragt ob du deinen Workspace speichern willst. Sehr wohl wirst du aber weiterhin gefragt ob du ungesicherte Änderungen in deinem R Skript speichern willst, sobald do RStudio beenden willst.
+
+
+
 
 ### Working directory
 
-Any process running on your computer has a notion of its "working directory". In R, this is where R will look, by default, for files you ask it to load. It also where, by default, any files you write to disk will go. Chances are your current working directory is the directory we inspected above, i.e. the one where RStudio wanted to save the workspace.
+Jeder Prozess, der auf deinem Computer läuft, hat einen Bezug zu seinem "Arbeitsverzeichnis". In R ist dies der Ort, an dem R standardmäßig nach Dateien suchen würde oder der Ort wo alle Dateien, die du auf die Festplatte schreiben willst, abgelegt werden. Möglicherweise ist dein aktuelles Arbeitsverzeichnis das Verzeichnis, das du oben gerade untersucht hast um die `.RData` Datei zu finden.
 
-You can explicitly check your working directory with:
+Du kannst dir dein aktuelles Arbeitsverzeichnis anzeigen lassen mit dem Befehl
 
 
 ```r
 getwd()
 ```
 
-It is also displayed at the top of the RStudio console.
+Aber es wird auch oben an der RStudio Konsole direkt angezeigt.
 
-As a beginning R user, it's OK let your home directory or any other weird directory on your computer be R's working directory. _Very soon_, I urge you to evolve to the next level, where you organize your analytical projects into directories and, when working on project A, set R's working directory to the associated directory.
-
-__Although I do not recommend it__, in case you're curious, you can set R's working directory at the command line like so:
+Es wäre schon, wenn das Arbeitsverzeichnis in Abhängigkeit vom jeweils zu bearbeitenden Projekt leicht sinnvoll gesetzt werden könnte. Im nächsten Abschnitt sehen wir, dass genau das möglich ist.
 
 
-```r
-setwd("~/myCoolProject")
-```
+## RStudio Projects {#rprojs}
 
-__Although I do not recommend it__, you can also use RStudio's Files pane to navigate to a directory and then set it as working directory from the menu: *Session > Set Working Directory > To Files Pane Location*. (You'll see even more options there). Or within the Files pane, choose "More" and "Set As Working Directory".
+Alle zu einem Projekt gehörenden Dateien - Eingabedaten, R Skripte, Analyseergebnisse, Grafiken - an einem Ort zu bündeln, ist eine so weise und gängige Praxis, dass RStudio über seine [_Projects_](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects) genau da ermöglicht.
 
-But there's a better way. A way that also puts you on the path to managing your R work like an expert.
+Lass uns ein Projekt für den Kurs anlegen. Dazu wählen wir oben rechts im RStudio Fenster *Project: (None) -> New Project*
 
-## RStudio projects {#rprojs}
+<img src="assets/project_1.png" width="400" />
 
-Keeping all the files associated with a project organized together -- input data, R scripts, analytical results, figures -- is such a wise and common practice that RStudio has built-in support for this via its [_projects_](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects).
 
-Let's make one to use for the rest of this workshop/class. Do this: *File > New Project...*. The directory name you choose here will be the project name. Call it whatever you want (or follow me for convenience).
+Danach wählen wir *New Directory -> New Project* und geben abschließend einen passenden Verzeichnisnamen ein (dabei beachten wir den Speicherort des neuen Verzeichnisses)
 
-I created a directory and, therefore RStudio project, called `swc` in my `tmp` directory, FYI.
+<img src="assets/project_2.png" width="33%" /><img src="assets/project_3.png" width="33%" /><img src="assets/project_4.png" width="33%" />
 
-<!--JB: https://github.com/yihui/knitr/issues/277 -->
 
-```r
-setwd("~/tmp/swc")
-```
+Wir nehmen nun an, dass du ein RStudio Projekt angelegt und dieses auch geöffnet hast. Dann benötigen wir ein weing R Code. Dazu tippen wir den untenstehenden Code (ausnahmsweise) in die Konsole
 
-Now check that the "home" directory for your project is the working directory of our current R process:
-
-```r
-getwd()
-```
-_I can't print my output here because this document itself does not reside in the RStudio Project we just created._
-
-Let's enter a few commands in the Console, as if we are just beginning a project:
 
 
 ```r
@@ -263,9 +258,9 @@ b <- -3
 sig_sq <- 0.5
 x <- runif(40)
 y <- a + b * x + rnorm(40, sd = sqrt(sig_sq))
-(avg_x <- mean(x))
-#> [1] 0.497
-write(avg_x, "avg_x.txt")
+(x_n <- mean(x))
+#> [1] 0.469
+write(x_n, "mittelwert_x.txt")
 plot(x, y)
 abline(a, b, col = "purple")
 ```
@@ -273,49 +268,44 @@ abline(a, b, col = "purple")
 <img src="02_r-basics_files/figure-html/toy-line-1.png" width="672" />
 
 ```r
-dev.print(pdf, "toy_line_plot.pdf")
+dev.print(pdf, "scatterplot.pdf")
 #> quartz_off_screen 
 #>                 2
 ```
 
-Let's say this is a good start of an analysis and your ready to start preserving the logic and code. Visit the History tab of the upper right pane. Select these commands. Click "To Source". Now you have a new pane containing a nascent R script. Click on the floppy disk to save. Give it a name ending in `.R` or `.r`, I used `toy-line.r` and note that, by default, it will go in the directory associated with your project.
+Jetzt nehmen wir mal an das wäre ein guter Start einer Analyse, die wir durchführen wollen. Daher würdest du das Ergebnis gerne abspeichern.  Unter History kannst du alle obigen Befehle markieren und anschließend "To Source" klicken. Daraufhin wird sich ein neues Fenster mit einem R Skript - das natürlich die Befehle enthält - öffnen. Das Skript kannst du abspeichern und standardmäßig wird es in deinen Projektordner gespeichert werden (aber natürlich könntest man den Speicherort an dieser Stelle auch ändern/frei wählen).
 
-Quit RStudio. Inspect the folder associated with your project if you wish. Maybe view the PDF in an external viewer.
+Nun beende das Projekt (*Close Project* in der rechten oberen Ecke). Wenn du willst, kannst du dir auch den Inhalt deines Projektordners anschauen, z.B. das PDF öffnen. 
 
-Restart RStudio. Notice that things, by default, restore to where we were earlier, e.g. objects in the workspace, the command history, which files are open for editing, where we are in the file system browser, the working directory for the R process, etc. These are all Good Things.
+Danach öffnest du das Projekt wieder. Dir wird auffallen, dass alles in dem Zustand ist, wie du das Projekt verlassen hast, z.B. Objekte im Arbeitsbereich, die Befehlshistorie, welche Dateien zur Bearbeitung geöffnet sind, wo wir uns im Dateisystembrowser befinden, das Arbeitsverzeichnis für den R-Prozess usw. All dies sind gute Dinge.
 
-Change some things about your code. Top priority would be to set a sample size `n` at the top, e.g. `n <- 40`, and then replace all the hard-wired 40's with `n`. Change some other minor-but-detectable stuff, e.g. alter the sample size `n`, the slope of the line `b`,the color of the line ... whatever. Practice the different ways to re-run the code:
+Nun ändern ein paar Dinge an deinem Code. Sinnvoll wäre z.B. am Anfang die Stichprobenlänge `n`  zu definieren und z.B. auf `n <- 40` setzen. Dann 
+sollten alle festen 40er Werte durch `n` ersetzt werden. Anschließend kannst
+du noch ein paar andere Dinge ändern, z.B. die Steigung `b`, die Farbe der Linie ... was auch immer. Übe nun die verschiedenen Möglichkeiten, den Code erneut auszuführen:
 
-* Walk through line by line by keyboard shortcut (Command+Enter) or mouse (click "Run" in the upper right corner of editor pane).
+* Führe Zeile für Zeile aus indem du entweder das Tastaturkürzel *Command + Enter*  oder die Maus (auf "Run" klicken in der oberen rechten Ecke des Editor-Fensters) verwendest.
   
-* Source the entire document -- equivalent to entering `source('toy-line.r')` in the Console -- by keyboard shortcut (Shift+Command+S) or mouse (click "Source" in the upper right corner of editor pane or select from the mini-menu accessible from the associated down triangle).
+* Das gesamte Dokument durchlaufen lassen per Tastaturkürzel *Shift + Command +S* oder Maus (klicken auf "Source" in der oberen rechten Ecke des Editor-Fensters)
   
-* Source with echo from the Source mini-menu.
-  
-Visit your figure in an external viewer to verify that the PDF is changing as you expect.
+Anschließend kannst du dir das PDF anschauen und die Änderungen bewundern.
 
-In your favorite OS-specific way, search your files for `toy_line_plot.pdf` and presumably you will find the PDF itself (no surprise) but _also the script that created it (`toy-line.r`)_. This latter phenomenon is a huge win. One day you will want to remake a figure or just simply understand where it came from. If you rigorously save figures to file __with R code and not ever ever ever the mouse or the clipboard__, you will sing my praises one day. Trust me.
+Eines Tages wirst du vor der Aufgabe stehen eine Grafik neu zu gestalten oder einfach nur verstehen wollen, woher sie stammt. Wenn du (relevante) Grafiken in einer Datei (**mit R Code und niemals über die Maus oder die Zwischenablage**) speicherst und dabei sinnvolle Dateinamen/Speicherorte (innerhalb des zugehörigen Projekts) benutzt, werden dich solche Aufgaben nie vor große Probleme stellen.
 
-## Stuff
+## Zuletzt noch 
 
-It is traditional to save R scripts with a `.R` or `.r` suffix. Follow this convention unless you have some extraordinary reason not to. 
+Es ist üblich, R-Skripte mit einem `.R` oder `.r` Suffix zu speichern. Befolge diese Konvention, außer du hast einen sehr außergewöhnlichen Grund, es nicht zu tun. 
 
-Comments start with one or more `#` symbols. Use them. RStudio helps you (de)comment selected lines with Ctrl+Shift+C (Windows and Linux) or Command+Shift+C (Mac).
+Kommentare beginnen mit einem oder mehreren `#`-Symbolen. Verwende Kommentare.. RStudio hilft dir dabei ausgewählte Zeilen mit Ctrl+Shift+C (Windows und Linux) oder Command+Shif+C (Mac) zu kommentieren oder vorhandene Kommentare wieder zu entfernen.
 
-Clean out the workspace, i.e. pretend like you've just revisited this project after a long absence.  The broom icon or `rm(list = ls())`. Good idea to do this, restart R (available from the Session menu), re-run your analysis to truly check that the code you're saving is complete and correct (or at least rule out obvious problems!).
+Dieser Workflow wird dir in Zukunft gute Dienste leisten:
 
-This workflow will serve you well in the future:
+* Erstelle eines RStudio Projekt für ein analytisches Projekt
+* Speichere alle Input Dateien innerhalb des Projekts (wir werden bald über den Import sprechen)
+* Bewahre deine Skripte dort auf; bearbeite sie und führen sie dort aus
+* Speichere den Ouptput innerhalb des Projekts (wie z.B. das PDF im letzten Beispiel)
 
-* Create an RStudio project for an analytical project
-* Keep inputs there (we'll soon talk about importing)
-* Keep scripts there; edit them, run them in bits or as a whole from there
-* Keep outputs there (like the PDF written above)
+Du solltest es vermeiden die Maus für Teile deines Workflows zu verwenden, wie z.B. das Laden eines Datensatzes oder das Speichern einer Grafik. Das ist sehr wichtig für die Reproduzierbarkeit und um im Nachhinein feststellen zu können, wie eine numerische Tabelle oder eine PDF-Datei tatsächlich erzeugt wurde (eine Suche auf der lokalen Festplatte nach dem entsprechenden Dateinamen unter den `.R`-Dateien führt zum entsprechenden Skript).
 
-Avoid using the mouse for pieces of your analytical workflow, such as loading a dataset or saving a figure. Terribly important for reproducibility and for making it possible to retrospectively determine how a numerical table or PDF was actually produced (searching on local disk on filename, among `.R` files, will lead to the relevant script).
-
-Many long-time users never save the workspace, never save `.RData` files (I'm one of them), never save or consult the history. Once/if you get to that point, there are options available in RStudio to disable the loading of `.RData` and permanently suppress the prompt on exit to save the workspace (go to *Tools > Options > General*).
-
-For the record, when loading data into R and/or writing outputs to file, you can always specify the absolute path and thereby insulate yourself from the current working directory. This is rarely necessary when using RStudio projects properly.
 
 
 

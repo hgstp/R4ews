@@ -9,7 +9,7 @@ documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
-description: "STAT 545: Data wrangling, exploration, and analysis with R."
+description: "R4ews: R Ergänzung zum Modul MA009."
 #favicon: assets/favicon.ico
 always_allow_html: true
 
@@ -36,6 +36,15 @@ Auf dieser Website geht es um alles, was bei der Datenanalyse auftaucht **außer
 
 Das Design von R4ews wurde durch die Notwendigkeit motiviert, mehr Ausgewogenheit in der angewandten statistischen Ausbildung zu schaffen. Datenanalysten verbringen viel Zeit mit der Projektorganisation, der Datenbereinigung und -aufbereitung sowie der Kommunikation. Diese Tätigkeiten können einen tiefgreifenden Einfluss auf die Qualität und Glaubwürdigkeit einer Analyse haben. Dennoch werden diese Fähigkeiten selten vermittelt, obwohl sie so wichtig und notwendig sind. R4ews zielt darauf ab, diese Lücke zu schließen.
 
+> Das Material wird kontinuierlich über das Semester hinweg ergänzt/erweitert/verbessert.
+
+**Letzte Änderung:**
+
+```{r}
+date()
+```
+
+
 
 ## Beteiligte Personen {-}
 
@@ -60,10 +69,12 @@ session <- devtools::session_info(pkgs = all_pkgs)
 session$platform
 ```
 
-erstellt, wobei die folgenden Pakete verwendet
+erstellt
+
+<!-- , wobei die folgenden Pakete verwendet -->
 
 
-```{r message = FALSE, warning = FALSE, echo = FALSE}
+```{r message = FALSE, warning = FALSE, echo = FALSE, eval=FALSE}
 session$packages %>% 
   select(package, loadedversion, date, source) %>% 
   DT::datatable(rownames = FALSE,
@@ -75,7 +86,7 @@ session$packages %>%
                            paging = FALSE))
 ```
 
-werden.
+<!-- werden. -->
 
 ## Lizenz {-}
 
