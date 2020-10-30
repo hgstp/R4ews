@@ -234,7 +234,7 @@ evenOthersUseCamelCase</code></pre>
 <p>Wir werden stets die erste Variante verwenden.</p>
 <p>Führe nun nachfolgenden Befehl aus</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="r-basics.html#cb9-1"></a>this_is_a_really_long_name &lt;-<span class="st"> </span><span class="fl">2.5</span></span></code></pre></div>
-<p>In deinem Workspace ist nun das Objekt <code>this_is_a_really_long_name</code> vorhanden. Probiere mithilfe dieses Objekts die Vervollständigungsfunktion von RStudio aus: <em>Gib die ersten paar Zeichen ein, drück anschließend die TAB Taste, fügen weitere Zeichen hinzu, bis Eindeutigkeit hergestellt ist(wenn sonst wenig in deinem Workspace ist, dann ist das schnell erreicht), und drücke dann die Eingabetaste</em>.</p>
+<p>In deinem Workspace ist nun das Objekt <code>this_is_a_really_long_name</code> vorhanden. Probiere mithilfe dieses Objekts die Vervollständigungsfunktion von RStudio aus: <em>Gib die ersten paar Zeichen ein, drücke anschließend die TAB Taste, fügen weitere Zeichen hinzu, bis Eindeutigkeit hergestellt ist(wenn sonst wenig in deinem Workspace ist, dann ist das schnell erreicht), und drücke dann die Eingabetaste</em>.</p>
 <p>Führe nun den Befehl</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="r-basics.html#cb10-1"></a>jenny_rocks &lt;-<span class="st"> </span><span class="dv">2</span> <span class="op">^</span><span class="st"> </span><span class="dv">3</span></span></code></pre></div>
 <p>aus, um anschließend den Inhalt des Objekts anzuzeigen.</p>
@@ -262,7 +262,7 @@ evenOthersUseCamelCase</code></pre>
 <span id="cb16-2"><a href="r-basics.html#cb16-2"></a><span class="co">#&gt;  [1]  1  2  3  4  5  6  7  8  9 10</span></span></code></pre></div>
 <p>Nicht alle Funktionen haben (oder erfordern) Argumente:</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="r-basics.html#cb17-1"></a><span class="kw">date</span>()</span>
-<span id="cb17-2"><a href="r-basics.html#cb17-2"></a><span class="co">#&gt; [1] &quot;Fri Oct 30 14:38:37 2020&quot;</span></span></code></pre></div>
+<span id="cb17-2"><a href="r-basics.html#cb17-2"></a><span class="co">#&gt; [1] &quot;Fri Oct 30 14:52:59 2020&quot;</span></span></code></pre></div>
 <p>Schau dir nun deinen Workspace an - im oberen rechten Fensterbereich (bei Standardeinstellung) siehst du unter Environment den Inhalt deines Workspaces. Der Workspace ist der Ort, an dem sich benutzerdefinierte Objekte ansammeln. Eine Liste dieser Objekte kannst du auch mit diesen Befehlen erhalten:</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="r-basics.html#cb18-1"></a><span class="kw">objects</span>()</span>
 <span id="cb18-2"><a href="r-basics.html#cb18-2"></a><span class="co">#&gt; [1] &quot;check_quietly&quot;              &quot;install_quietly&quot;           </span></span>
@@ -284,9 +284,9 @@ evenOthersUseCamelCase</code></pre>
 </div>
 <div id="workspace-und-working-directory" class="section level2">
 <h2><span class="header-section-number">2.2</span> Workspace und working directory</h2>
-<p>Ziemlich schnell wird der Fall eintreten, dass du mit deiner R Arbeit (z.B. Bearbeitung eines Hausaufgaben Projekts) noch nicht fertig bist obwohl es Zeit wird R zu beenden. Natürlich willst du aber zu einem spätern Zeitpunkt mit der Analyse weitermachen wo du aufgehört hast.</p>
+<p>Ziemlich schnell wird der Fall eintreten, dass du mit deiner R Arbeit (z.B. Bearbeitung eines Hausaufgaben Projekts) noch nicht fertig bist obwohl es Zeit wird R zu beenden. Natürlich willst du aber zu einem späteren Zeitpunkt mit der Analyse weitermachen wo du aufgehört hast.</p>
 <p>Etwas später wird es so ein, dass du Daten in R einlesen und anschließend numerische Ergebnisse erzeugen willst, die du dann schließlich auch wieder exportieren willst.</p>
-<p>Un nochmal später wird es (vielleicht) so sein, dass du in R gleichzeitig an mehreren Analysen arbeitest, die du aber unbedingt getrennt halten willst/sollst.</p>
+<p>Und nochmal später wird es (vielleicht) so sein, dass du in R gleichzeitig an mehreren Analysen arbeitest, die du aber unbedingt getrennt halten willst/sollst.</p>
 <p>Um diese Situationen zu bewältigen, musst du zwei Entscheidungen treffen:</p>
 <ul>
 <li><p>Was betrachtest du an deiner Analyse als “<em>Ergebnis</em>”, d.h. was wirst du dauerhaft speichern?</p></li>
@@ -297,8 +297,8 @@ evenOthersUseCamelCase</code></pre>
 <p>Du startest gerade deine R Reise. Daher wäre es Okay, wenn du deinen Workspace als die “<em>Ergebnis</em>” deiner Analyse betrachtest. <em>Ziemlich bald</em>, solltest du aber davon (vielleicht durch uns) überzeugt sein, dass deine R Skripte das Ergebnis deiner Analyse sind (in beiden Fällen hängt das Ergebnis möglicherweise natürlich auch von Input Daten ab).<br />
 Die Daten zusammen mit deinem R Code erlauben es dir jederzeit <em>alle</em> Ergebnisse zu reproduzieren und das ist die entscheidende Eigenschaft.</p>
 <p>Betrachtest du deinen Workspace als das Ergebnis deiner Analyse, dann musst du bei einem erneuten Analysedurchlauf (leicht veränderte Aufgabenstellung, …) entweder erneut eine Menge Tippen (was natürlich fehleranfällig ist) oder deine R History nach den nötigen Befehlen durchwühlen. Anstatt <a href="https://support.rstudio.com/hc/en-us/articles/200526217-Command-History">“becoming an expert on managing the R history”</a>, solltest du deinen R Code sauber in ein Skript speichern, sodass er dir für weitere Analysen zur Verfügung steht.</p>
-<p>Der Workspace Ansatz wird “begünstigt” durch die Tatsache, dass RStudio beim Beenden der Session automatisch frägt ob der Workspace gespeichert werden soll. Das wollen wir mal ausprobieren.</p>
-<p>Beende R/RStudio, entweder über das Menü oder du tippst <code>q()</code> in die Konsole. Dann erhälst du eine Eingabeaufforderung wie diese:</p>
+<p>Der Workspace Ansatz wird “begünstigt” durch die Tatsache, dass RStudio beim Beenden der Session automatisch wissen will ob der Workspace gespeichert werden soll. Das wollen wir mal ausprobieren.</p>
+<p>Beende R/RStudio, entweder über das Menü oder du tippst <code>q()</code> in die Konsole. Dann erhältst du eine Eingabeaufforderung wie diese:</p>
 <blockquote>
 <p>Save workspace image to ~/.Rdata?</p>
 </blockquote>
@@ -308,7 +308,7 @@ Die Daten zusammen mit deinem R Code erlauben es dir jederzeit <em>alle</em> Erg
 <pre><code>[Workspace loaded from ~/.RData]</code></pre>
 <p>und angibt, dass dein gespeicherter Workspace wiederhergestellt wurde. Unter Environment solltest du die gleichen Objekte wie zuvor sehen. History enthält die gespeicherten Befehle aus der letzten Sitzung. Aber diese Art, analytische Arbeit zu beginnen und zu beenden, würde so nicht lange gut gehen. Daher fangen wir gleich mal damit an die automatische Nachfrage nach dem Speichern des Workspaces abzuwählen. Öffne dazu die Global Options (unter Tools)</p>
 <p><img src="assets/global_options.png" width="324" /></p>
-<p>und setze <code>Save workspace to .RData on exit</code> auf <code>Never</code>. Nun wirst du <em>nie mehr</em> gefragt ob du deinen Workspace speichern willst. Sehr wohl wirst du aber weiterhin gefragt ob du ungesicherte Änderungen in deinem R Skript speichern willst, sobald do RStudio beenden willst.</p>
+<p>und setze <code>Save workspace to .RData on exit</code> auf <code>Never</code>. Nun wirst du <em>nie mehr</em> gefragt ob du deinen Workspace speichern willst. Sehr wohl wirst du aber weiterhin gefragt ob du ungesicherte Änderungen in deinem R Skript speichern willst, sobald du RStudio beenden willst.</p>
 </div>
 <div id="working-directory" class="section level3">
 <h3><span class="header-section-number">2.2.2</span> Working directory</h3>
@@ -326,14 +326,14 @@ Die Daten zusammen mit deinem R Code erlauben es dir jederzeit <em>alle</em> Erg
 <p><img src="assets/project_1.png" width="400" /></p>
 <p>Danach wählen wir <em>New Directory -&gt; New Project</em> und geben abschließend einen passenden Verzeichnisnamen ein (dabei beachten wir den Speicherort des neuen Verzeichnisses)</p>
 <p><img src="assets/project_2.png" width="33%" /><img src="assets/project_3.png" width="33%" /><img src="assets/project_4.png" width="33%" /></p>
-<p>Wir nehmen nun an, dass du ein RStudio Projekt angelegt und dieses auch geöffnet hast. Dann benötigen wir ein weing R Code. Dazu tippen wir den untenstehenden Code (ausnahmsweise) in die Konsole</p>
+<p>Wir nehmen nun an, dass du ein RStudio Projekt angelegt und dieses auch geöffnet hast. Dann benötigen wir als Nächstes ein wenig R Code. Dazu tippen wir den unten stehenden Code (ausnahmsweise) in die Konsole</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="r-basics.html#cb23-1"></a>a &lt;-<span class="st"> </span><span class="dv">2</span></span>
 <span id="cb23-2"><a href="r-basics.html#cb23-2"></a>b &lt;-<span class="st"> </span><span class="dv">-3</span></span>
 <span id="cb23-3"><a href="r-basics.html#cb23-3"></a>sig_sq &lt;-<span class="st"> </span><span class="fl">0.5</span></span>
 <span id="cb23-4"><a href="r-basics.html#cb23-4"></a>x &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">40</span>)</span>
 <span id="cb23-5"><a href="r-basics.html#cb23-5"></a>y &lt;-<span class="st"> </span>a <span class="op">+</span><span class="st"> </span>b <span class="op">*</span><span class="st"> </span>x <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">40</span>, <span class="dt">sd =</span> <span class="kw">sqrt</span>(sig_sq))</span>
 <span id="cb23-6"><a href="r-basics.html#cb23-6"></a>(x_n &lt;-<span class="st"> </span><span class="kw">mean</span>(x))</span>
-<span id="cb23-7"><a href="r-basics.html#cb23-7"></a><span class="co">#&gt; [1] 0.469</span></span>
+<span id="cb23-7"><a href="r-basics.html#cb23-7"></a><span class="co">#&gt; [1] 0.525</span></span>
 <span id="cb23-8"><a href="r-basics.html#cb23-8"></a><span class="kw">write</span>(x_n, <span class="st">&quot;mittelwert_x.txt&quot;</span>)</span>
 <span id="cb23-9"><a href="r-basics.html#cb23-9"></a><span class="kw">plot</span>(x, y)</span>
 <span id="cb23-10"><a href="r-basics.html#cb23-10"></a><span class="kw">abline</span>(a, b, <span class="dt">col =</span> <span class="st">&quot;purple&quot;</span>)</span></code></pre></div>
@@ -348,8 +348,8 @@ Die Daten zusammen mit deinem R Code erlauben es dir jederzeit <em>alle</em> Erg
 sollten alle festen 40er Werte durch <code>n</code> ersetzt werden. Anschließend kannst
 du noch ein paar andere Dinge ändern, z.B. die Steigung <code>b</code>, die Farbe der Linie … was auch immer. Übe nun die verschiedenen Möglichkeiten, den Code erneut auszuführen:</p>
 <ul>
-<li><p>Führe Zeile für Zeile aus indem du entweder das Tastaturkürzel <em>Command + Enter</em> oder die Maus (auf “Run” klicken in der oberen rechten Ecke des Editor-Fensters) verwendest.</p></li>
-<li><p>Das gesamte Dokument durchlaufen lassen per Tastaturkürzel <em>Shift + Command +S</em> oder Maus (klicken auf “Source” in der oberen rechten Ecke des Editor-Fensters)</p></li>
+<li><p>Führe Zeile für Zeile aus indem du entweder das Tastenkürzel <em>Command + Enter</em> oder die Maus (auf “Run” klicken in der oberen rechten Ecke des Editor-Fensters) verwendest.</p></li>
+<li><p>Das gesamte Dokument durchlaufen lassen per Tastenkürzel <em>Shift + Command +S</em> oder Maus (klicken auf “Source” in der oberen rechten Ecke des Editor-Fensters)</p></li>
 </ul>
 <p>Anschließend kannst du dir das PDF anschauen und die Änderungen bewundern.</p>
 <p>Eines Tages wirst du vor der Aufgabe stehen eine Grafik neu zu gestalten oder einfach nur verstehen wollen, woher sie stammt. Wenn du (relevante) Grafiken in einer Datei (<strong>mit R Code und niemals über die Maus oder die Zwischenablage</strong>) speicherst und dabei sinnvolle Dateinamen/Speicherorte (innerhalb des zugehörigen Projekts) benutzt, werden dich solche Aufgaben nie vor große Probleme stellen.</p>
@@ -360,10 +360,10 @@ du noch ein paar andere Dinge ändern, z.B. die Steigung <code>b</code>, die Far
 <p>Kommentare beginnen mit einem oder mehreren <code>#</code>-Symbolen. Verwende Kommentare.. RStudio hilft dir dabei ausgewählte Zeilen mit Ctrl+Shift+C (Windows und Linux) oder Command+Shif+C (Mac) zu kommentieren oder vorhandene Kommentare wieder zu entfernen.</p>
 <p>Dieser Workflow wird dir in Zukunft gute Dienste leisten:</p>
 <ul>
-<li>Erstelle eines RStudio Projekt für ein analytisches Projekt</li>
+<li>Erstelle ein RStudio Projekt für ein analytisches Projekt</li>
 <li>Speichere alle Input Dateien innerhalb des Projekts (wir werden bald über den Import sprechen)</li>
 <li>Bewahre deine Skripte dort auf; bearbeite sie und führen sie dort aus</li>
-<li>Speichere den Ouptput innerhalb des Projekts (wie z.B. das PDF im letzten Beispiel)</li>
+<li>Speichere den Output innerhalb des Projekts (wie z.B. das PDF im letzten Beispiel)</li>
 </ul>
 <p>Du solltest es vermeiden die Maus für Teile deines Workflows zu verwenden, wie z.B. das Laden eines Datensatzes oder das Speichern einer Grafik. Das ist sehr wichtig für die Reproduzierbarkeit und um im Nachhinein feststellen zu können, wie eine numerische Tabelle oder eine PDF-Datei tatsächlich erzeugt wurde (eine Suche auf der lokalen Festplatte nach dem entsprechenden Dateinamen unter den <code>.R</code>-Dateien führt zum entsprechenden Skript).</p>
 <!--STAT 545 external resources/content-->

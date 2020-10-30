@@ -26,7 +26,7 @@ Ziel dieses Abschnitts wird es sein, dass du
 
 **Bemerkung:** Unter 5. wirst du ermutigt deine GitHub Zugangsdaten auf deinem Computer zu speichern. Wir können diesen Schritt nur empfehlen.
 
-Das Buch [*Happy Git and GitHub for the useR*](https://happygitwithr.com/) enthält noch viele weitere hilfreiche Git/GitHub Informationen. Auf manche kommen wir vielleicht im Laufe des Kurses noch zu sprechen. Andere sind vielelicht zu einem späteren Zeitpunkt interessant, wenn du an anspruchsvolleren Git Projekten arbeitest.
+Das Buch [*Happy Git and GitHub for the useR*](https://happygitwithr.com/) enthält noch viele weitere hilfreiche Git/GitHub Informationen. Auf manche kommen wir vielleicht im Laufe des Kurses noch zu sprechen. Andere sind vielleicht zu einem späteren Zeitpunkt interessant, wenn du an anspruchsvolleren Git Projekten arbeitest.
 
 
 

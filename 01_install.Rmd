@@ -77,7 +77,7 @@ durcharbeiten.
 
 ## Aufgabe
 
-Wir beginnen mit [The Basics](https://rstudio.cloud/learn/primers/1). Hier wird unterschieden in Programming and Visualization Basics. 
+Wir beginnen mit [The Basics](https://rstudio.cloud/learn/primers/1). Hier wird unterschieden in *Programming* und *Visualization* Basics. 
 
 Programming Basics beinhaltet Grundlagen zu Objekttypen, Funktionen und deren Argumente, Listen (eigentlich sind alle Objekte Listen, nur unterschiedlich speziell) und Paketen.
 

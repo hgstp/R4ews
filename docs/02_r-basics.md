@@ -58,7 +58,7 @@ Führe nun nachfolgenden Befehl aus
 this_is_a_really_long_name <- 2.5
 ```
 
-In deinem Workspace ist nun das Objekt `this_is_a_really_long_name` vorhanden. Probiere mithilfe dieses Objekts die Vervollständigungsfunktion von RStudio aus: *Gib die ersten paar Zeichen ein, drück anschließend die TAB Taste, fügen weitere Zeichen hinzu, bis Eindeutigkeit hergestellt ist(wenn sonst wenig in deinem Workspace ist, dann ist das schnell erreicht), und drücke dann die Eingabetaste*.
+In deinem Workspace ist nun das Objekt `this_is_a_really_long_name` vorhanden. Probiere mithilfe dieses Objekts die Vervollständigungsfunktion von RStudio aus: *Gib die ersten paar Zeichen ein, drücke anschließend die TAB Taste, fügen weitere Zeichen hinzu, bis Eindeutigkeit hergestellt ist(wenn sonst wenig in deinem Workspace ist, dann ist das schnell erreicht), und drücke dann die Eingabetaste*.
 
 
 Führe nun den Befehl 
@@ -130,7 +130,7 @@ Nicht alle Funktionen haben (oder erfordern) Argumente:
 
 ```r
 date()
-#> [1] "Fri Oct 30 14:38:37 2020"
+#> [1] "Fri Oct 30 14:52:59 2020"
 ```
 
 Schau dir nun deinen Workspace an - im oberen rechten Fensterbereich (bei Standardeinstellung) siehst du unter Environment den Inhalt deines Workspaces. Der Workspace ist der Ort, an dem sich benutzerdefinierte Objekte ansammeln. Eine Liste dieser Objekte kannst du auch mit diesen Befehlen erhalten:
@@ -169,12 +169,12 @@ oder du klickst auf den Besen im Environment Fenster von RStudio.
 
 ## Workspace und working directory
 
-Ziemlich schnell wird der Fall eintreten, dass du mit deiner R Arbeit (z.B. Bearbeitung eines Hausaufgaben Projekts) noch nicht fertig bist obwohl es Zeit wird R zu beenden. Natürlich willst du aber zu einem spätern Zeitpunkt mit der Analyse weitermachen wo du aufgehört hast.
+Ziemlich schnell wird der Fall eintreten, dass du mit deiner R Arbeit (z.B. Bearbeitung eines Hausaufgaben Projekts) noch nicht fertig bist obwohl es Zeit wird R zu beenden. Natürlich willst du aber zu einem späteren Zeitpunkt mit der Analyse weitermachen wo du aufgehört hast.
 
 Etwas später wird es so ein, dass du Daten in R einlesen  und anschließend numerische Ergebnisse erzeugen willst, die du dann schließlich auch wieder exportieren willst.
 
 
-Un nochmal später wird es (vielleicht) so sein, dass du in R gleichzeitig an mehreren Analysen arbeitest, die du aber unbedingt getrennt halten willst/sollst.
+Und nochmal später wird es (vielleicht) so sein, dass du in R gleichzeitig an mehreren Analysen arbeitest, die du aber unbedingt getrennt halten willst/sollst.
 
 
 Um diese Situationen zu bewältigen, musst du zwei Entscheidungen treffen:
@@ -192,10 +192,10 @@ Die Daten zusammen mit deinem R Code erlauben es dir jederzeit *alle* Ergebnisse
 Betrachtest du deinen Workspace als das Ergebnis deiner Analyse, dann musst du bei einem erneuten Analysedurchlauf (leicht veränderte Aufgabenstellung, ...) entweder erneut eine Menge Tippen (was natürlich fehleranfällig ist) oder deine R History nach den nötigen Befehlen durchwühlen. Anstatt ["becoming an expert on managing the R history"](https://support.rstudio.com/hc/en-us/articles/200526217-Command-History), solltest du deinen R Code sauber in ein Skript speichern, sodass er dir für weitere Analysen zur Verfügung steht.
 
 
-Der Workspace Ansatz wird "begünstigt" durch die Tatsache, dass RStudio beim Beenden der Session automatisch frägt ob der Workspace gespeichert werden soll. Das wollen wir mal ausprobieren.
+Der Workspace Ansatz wird "begünstigt" durch die Tatsache, dass RStudio beim Beenden der Session automatisch wissen will ob der Workspace gespeichert werden soll. Das wollen wir mal ausprobieren.
 
 
-Beende R/RStudio, entweder über das Menü oder du tippst `q()` in die Konsole. Dann erhälst du eine Eingabeaufforderung wie diese:
+Beende R/RStudio, entweder über das Menü oder du tippst `q()` in die Konsole. Dann erhältst du eine Eingabeaufforderung wie diese:
 
 > Save workspace image to ~/.Rdata?
 
@@ -213,7 +213,7 @@ und angibt, dass dein gespeicherter Workspace wiederhergestellt wurde. Unter Env
 
 <img src="assets/global_options.png" width="324" />
 
-und setze `Save workspace to .RData on exit` auf `Never`. Nun wirst du *nie mehr* gefragt ob du deinen Workspace speichern willst. Sehr wohl wirst du aber weiterhin gefragt ob du ungesicherte Änderungen in deinem R Skript speichern willst, sobald do RStudio beenden willst.
+und setze `Save workspace to .RData on exit` auf `Never`. Nun wirst du *nie mehr* gefragt ob du deinen Workspace speichern willst. Sehr wohl wirst du aber weiterhin gefragt ob du ungesicherte Änderungen in deinem R Skript speichern willst, sobald du RStudio beenden willst.
 
 
 
@@ -248,7 +248,7 @@ Danach wählen wir *New Directory -> New Project* und geben abschließend einen 
 <img src="assets/project_2.png" width="33%" /><img src="assets/project_3.png" width="33%" /><img src="assets/project_4.png" width="33%" />
 
 
-Wir nehmen nun an, dass du ein RStudio Projekt angelegt und dieses auch geöffnet hast. Dann benötigen wir ein weing R Code. Dazu tippen wir den untenstehenden Code (ausnahmsweise) in die Konsole
+Wir nehmen nun an, dass du ein RStudio Projekt angelegt und dieses auch geöffnet hast. Dann benötigen wir als Nächstes ein wenig R Code. Dazu tippen wir den unten stehenden Code (ausnahmsweise) in die Konsole
 
 
 
@@ -259,7 +259,7 @@ sig_sq <- 0.5
 x <- runif(40)
 y <- a + b * x + rnorm(40, sd = sqrt(sig_sq))
 (x_n <- mean(x))
-#> [1] 0.469
+#> [1] 0.525
 write(x_n, "mittelwert_x.txt")
 plot(x, y)
 abline(a, b, col = "purple")
@@ -283,9 +283,9 @@ Nun ändern ein paar Dinge an deinem Code. Sinnvoll wäre z.B. am Anfang die Sti
 sollten alle festen 40er Werte durch `n` ersetzt werden. Anschließend kannst
 du noch ein paar andere Dinge ändern, z.B. die Steigung `b`, die Farbe der Linie ... was auch immer. Übe nun die verschiedenen Möglichkeiten, den Code erneut auszuführen:
 
-* Führe Zeile für Zeile aus indem du entweder das Tastaturkürzel *Command + Enter*  oder die Maus (auf "Run" klicken in der oberen rechten Ecke des Editor-Fensters) verwendest.
+* Führe Zeile für Zeile aus indem du entweder das Tastenkürzel *Command + Enter*  oder die Maus (auf "Run" klicken in der oberen rechten Ecke des Editor-Fensters) verwendest.
   
-* Das gesamte Dokument durchlaufen lassen per Tastaturkürzel *Shift + Command +S* oder Maus (klicken auf "Source" in der oberen rechten Ecke des Editor-Fensters)
+* Das gesamte Dokument durchlaufen lassen per Tastenkürzel *Shift + Command +S* oder Maus (klicken auf "Source" in der oberen rechten Ecke des Editor-Fensters)
   
 Anschließend kannst du dir das PDF anschauen und die Änderungen bewundern.
 
@@ -299,10 +299,10 @@ Kommentare beginnen mit einem oder mehreren `#`-Symbolen. Verwende Kommentare.. 
 
 Dieser Workflow wird dir in Zukunft gute Dienste leisten:
 
-* Erstelle eines RStudio Projekt für ein analytisches Projekt
+* Erstelle ein RStudio Projekt für ein analytisches Projekt
 * Speichere alle Input Dateien innerhalb des Projekts (wir werden bald über den Import sprechen)
 * Bewahre deine Skripte dort auf; bearbeite sie und führen sie dort aus
-* Speichere den Ouptput innerhalb des Projekts (wie z.B. das PDF im letzten Beispiel)
+* Speichere den Output innerhalb des Projekts (wie z.B. das PDF im letzten Beispiel)
 
 Du solltest es vermeiden die Maus für Teile deines Workflows zu verwenden, wie z.B. das Laden eines Datensatzes oder das Speichern einer Grafik. Das ist sehr wichtig für die Reproduzierbarkeit und um im Nachhinein feststellen zu können, wie eine numerische Tabelle oder eine PDF-Datei tatsächlich erzeugt wurde (eine Suche auf der lokalen Festplatte nach dem entsprechenden Dateinamen unter den `.R`-Dateien führt zum entsprechenden Skript).
 

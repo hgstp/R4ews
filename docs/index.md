@@ -28,7 +28,7 @@ Wir wollen all das reproduzierbar, wiederverwendbar und gemeinsam nutzbar machen
 Auf dieser Website geht es um alles, was bei der Datenanalyse auftaucht **außer um statistische Modellierung und Schlussfolgerungen**. Dieser Teil der statistischen Analyse erfolgt in der Vorlesung *Einführung in die Wahrscheinlichkeitstheorie und Statistik*. 
 
 
-Das Design von R4ews wurde durch die Notwendigkeit motiviert, mehr Ausgewogenheit in der angewandten statistischen Ausbildung zu schaffen. Datenanalysten verbringen viel Zeit mit der Projektorganisation, der Datenbereinigung und -aufbereitung sowie der Kommunikation. Diese Tätigkeiten können einen tiefgreifenden Einfluss auf die Qualität und Glaubwürdigkeit einer Analyse haben. Dennoch werden diese Fähigkeiten selten vermittelt, obwohl sie so wichtig und notwendig sind. R4ews zielt darauf ab, diese Lücke zu schließen.
+Das Design von R4ews wurde durch die Notwendigkeit motiviert, mehr Ausgewogenheit in der angewandten statistischen Ausbildung zu schaffen. Datenanalysten verbringen viel Zeit mit der Projekt-Organisation, der Datenbereinigung und -aufbereitung sowie der Kommunikation. Diese Tätigkeiten können einen tiefgreifenden Einfluss auf die Qualität und Glaubwürdigkeit einer Analyse haben. Dennoch werden diese Fähigkeiten selten vermittelt, obwohl sie so wichtig und notwendig sind. R4ews zielt darauf ab, diese Lücke zu schließen.
 
 > Das Material wird kontinuierlich über das Semester hinweg ergänzt/erweitert/verbessert.
 
@@ -37,7 +37,7 @@ Das Design von R4ews wurde durch die Notwendigkeit motiviert, mehr Ausgewogenhei
 
 ```r
 date()
-#> [1] "Fri Oct 30 14:38:33 2020"
+#> [1] "Fri Oct 30 14:52:55 2020"
 ```
 
 
@@ -81,7 +81,7 @@ erstellt
 
 ## Lizenz {-}
 
-Diese Arbeit ist lizensiert unter [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/).
+Diese Arbeit ist lizenziert unter [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/).
 
 <center>
 <i class="fab fa-creative-commons fa-2x"></i><i class="fab fa-creative-commons-by fa-2x"></i><i class="fab fa-creative-commons-sa fa-2x"></i>
