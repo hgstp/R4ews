@@ -7,7 +7,7 @@
 
 [dplyr] ist ein Paket zur Datenmanipulation, entwickelt von Hadley Wickham und Romain Francois. In erster Linie will es schnell und  ausdrucksstark sein. Es wird als Teil des "Metapakets" [tidyverse] installiert und gehört als Kernpaket zu den Paketen, die über `library(tidyverse)` geladen werden.
 
-Die Wurzeln von `dplyr` liegen in einem früheren Paket mit dem Namen [plyr], das zum Ziel hat die ["split-apply-combine"-Strategie der Datenanalyse] (https://www.jstatsoft.org/article/view/v040i01) [@wickham2011a] umzusetzen. Wo `plyr` noch einen vielfältigen Satz von Ein- und Ausgaben abdeckt (z.B. Arrays, data frames, Listen), hat `dplyr` einen klaren Fokus auf data frames oder, im Tidyverse, __tibbles__. 
+Die Wurzeln von `dplyr` liegen in einem früheren Paket mit dem Namen [plyr], das zum Ziel hat die ["split-apply-combine"-Strategie der Datenanalyse](https://www.jstatsoft.org/article/view/v040i01) [@wickham2011a] umzusetzen. Wo `plyr` noch einen vielfältigen Satz von Ein- und Ausgaben abdeckt (z.B. Arrays, data frames, Listen), hat `dplyr` einen klaren Fokus auf data frames oder, im Tidyverse, __tibbles__. 
 
 `dplyr` bietet schnelle Alternativen zu den R Standardfunktionen: `subset()`, `apply()`, `[sl]apply()`, `tapply()`, `aggregate()`, `split()`, `do.call()`, `with()`, `within()`, und mehr. Ferner kann man `dplyr` nutzen um über Zeilen oder Gruppen von Zeilen zu iterieren, was eine schnelle Alternative zur Nutzung von `for` Schleifen darstellt.
 
@@ -82,7 +82,7 @@ Zum Vergleich kann man sich einen R Standardbefehl anschauen, der zum gleichen E
 
 ```r
 gapminder[gapminder$lifeExp < 29, ] 
-subset(gapminder, country == "Rwanda") ## subset funktioniert ähnlich wir filter
+subset(gapminder, country == "Rwanda" & year > 1979) ## subset funktioniert ähnlich wir filter
 ```
 
 Unter keinen Umständen solltest du allerdings deine Daten so unterteilen, wie hier:

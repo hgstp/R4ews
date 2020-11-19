@@ -44,7 +44,7 @@ Zum Vergleich kann man sich einen R Standardbefehl anschauen, der zum gleichen E
 
 ```{r eval = FALSE}
 gapminder[gapminder$lifeExp < 29, ] 
-subset(gapminder, country == "Rwanda") ## subset funktioniert ähnlich wir filter
+subset(gapminder, country == "Rwanda" & year > 1979) ## subset funktioniert ähnlich wir filter
 ```
 
 Unter keinen Umständen solltest du allerdings deine Daten so unterteilen, wie hier:

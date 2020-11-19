@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Kapitel 6 Einführung in dplyr | R4ews MA009</title>
+  <title>Kapitel 6 Einführung in dplyr | R4ews MA0009</title>
   <meta name="description" content="R4ews: R Ergänzung zum Modul MA009." />
   <meta name="generator" content="bookdown 0.20 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Kapitel 6 Einführung in dplyr | R4ews MA009" />
+  <meta property="og:title" content="Kapitel 6 Einführung in dplyr | R4ews MA0009" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Kapitel 6 Einführung in dplyr | R4ews MA009" />
+  <meta name="twitter:title" content="Kapitel 6 Einführung in dplyr | R4ews MA0009" />
   
   <meta name="twitter:description" content="R4ews: R Ergänzung zum Modul MA009." />
   
@@ -217,7 +217,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R4ews MA009</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R4ews MA0009</a>
           </h1>
         </div>
 
@@ -230,7 +230,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="einstieg" class="section level2">
 <h2><span class="header-section-number">6.1</span> Einstieg</h2>
 <p><a href="https://dplyr.tidyverse.org">dplyr</a> ist ein Paket zur Datenmanipulation, entwickelt von Hadley Wickham und Romain Francois. In erster Linie will es schnell und ausdrucksstark sein. Es wird als Teil des “Metapakets” <a href="https://tidyverse.tidyverse.org">tidyverse</a> installiert und gehört als Kernpaket zu den Paketen, die über <code>library(tidyverse)</code> geladen werden.</p>
-<p>Die Wurzeln von <code>dplyr</code> liegen in einem früheren Paket mit dem Namen <a href="http://plyr.had.co.nz">plyr</a>, das zum Ziel hat die [“split-apply-combine”-Strategie der Datenanalyse] (<a href="https://www.jstatsoft.org/article/view/v040i01" class="uri">https://www.jstatsoft.org/article/view/v040i01</a>) <span class="citation">(Wickham <a href="literatur.html#ref-wickham2011a" role="doc-biblioref">2011</a>)</span> umzusetzen. Wo <code>plyr</code> noch einen vielfältigen Satz von Ein- und Ausgaben abdeckt (z.B. Arrays, data frames, Listen), hat <code>dplyr</code> einen klaren Fokus auf data frames oder, im Tidyverse, <strong>tibbles</strong>.</p>
+<p>Die Wurzeln von <code>dplyr</code> liegen in einem früheren Paket mit dem Namen <a href="http://plyr.had.co.nz">plyr</a>, das zum Ziel hat die <a href="https://www.jstatsoft.org/article/view/v040i01">“split-apply-combine”-Strategie der Datenanalyse</a> <span class="citation">(Wickham <a href="literatur.html#ref-wickham2011a" role="doc-biblioref">2011</a>)</span> umzusetzen. Wo <code>plyr</code> noch einen vielfältigen Satz von Ein- und Ausgaben abdeckt (z.B. Arrays, data frames, Listen), hat <code>dplyr</code> einen klaren Fokus auf data frames oder, im Tidyverse, <strong>tibbles</strong>.</p>
 <p><code>dplyr</code> bietet schnelle Alternativen zu den R Standardfunktionen: <code>subset()</code>, <code>apply()</code>, <code>[sl]apply()</code>, <code>tapply()</code>, <code>aggregate()</code>, <code>split()</code>, <code>do.call()</code>, <code>with()</code>, <code>within()</code>, und mehr. Ferner kann man <code>dplyr</code> nutzen um über Zeilen oder Gruppen von Zeilen zu iterieren, was eine schnelle Alternative zur Nutzung von <code>for</code> Schleifen darstellt.</p>
 <div id="wie-immer-laden-wir-zu-beginn-tidyverse" class="section level3">
 <h3><span class="header-section-number">6.1.1</span> Wie immer, laden wir zu Beginn <code>tidyverse</code></h3>
@@ -284,7 +284,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb51-31"><a href="dplyr-intro.html#cb51-31"></a><span class="co">#&gt; # … with 14 more rows</span></span></code></pre></div>
 <p>Zum Vergleich kann man sich einen R Standardbefehl anschauen, der zum gleichen Ergebnis führt:</p>
 <div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="dplyr-intro.html#cb52-1"></a>gapminder[gapminder<span class="op">$</span>lifeExp <span class="op">&lt;</span><span class="st"> </span><span class="dv">29</span>, ] </span>
-<span id="cb52-2"><a href="dplyr-intro.html#cb52-2"></a><span class="kw">subset</span>(gapminder, country <span class="op">==</span><span class="st"> &quot;Rwanda&quot;</span>) <span class="co">## subset funktioniert ähnlich wir filter</span></span></code></pre></div>
+<span id="cb52-2"><a href="dplyr-intro.html#cb52-2"></a><span class="kw">subset</span>(gapminder, country <span class="op">==</span><span class="st"> &quot;Rwanda&quot;</span> <span class="op">&amp;</span><span class="st"> </span>year <span class="op">&gt;</span><span class="st"> </span><span class="dv">1979</span>) <span class="co">## subset funktioniert ähnlich wir filter</span></span></code></pre></div>
 <p>Unter keinen Umständen solltest du allerdings deine Daten so unterteilen, wie hier:</p>
 <div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="dplyr-intro.html#cb53-1"></a>auswahl &lt;-<span class="st"> </span>gapminder[<span class="dv">241</span><span class="op">:</span><span class="dv">252</span>, ]</span></code></pre></div>
 <p>Warum ist das eine blöde Idee?</p>
