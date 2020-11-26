@@ -151,7 +151,7 @@ zusammen mit den Daten abspeichern wollen. Dazu könnten wir ein tibble
 
 ```{r}
 (desc <- tibble(variables = names(gapminder),
-               desc = c("actor with 142 levels", "factor with 5 levels",
+               desc = c("factor with 142 levels", "factor with 5 levels",
                         "ranges from 1952 to 2007 in increments of 5 years",
                         "life expectancy at birth, in years",
                         "population","GDP per capita (US$, inflation-adjusted)")))

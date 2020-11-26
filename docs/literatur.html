@@ -196,6 +196,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7" data-path="dplyr-single.html"><a href="dplyr-single.html"><i class="fa fa-check"></i><b>7</b> Mehr zu <code>dplyr</code></a><ul>
 <li class="chapter" data-level="7.1" data-path="dplyr-single.html"><a href="dplyr-single.html#wo-stehen-wir"><i class="fa fa-check"></i><b>7.1</b> Wo stehen wir?</a></li>
 <li class="chapter" data-level="7.2" data-path="dplyr-single.html"><a href="dplyr-single.html#falls-noch-nicht-geschehen-lade-dplyr-und-gapminder"><i class="fa fa-check"></i><b>7.2</b> Falls noch nicht geschehen: lade <code>dplyr</code> und <code>gapminder</code></a></li>
+<li class="chapter" data-level="7.3" data-path="dplyr-single.html"><a href="dplyr-single.html#mitmutate-neue-variablen-erstellen"><i class="fa fa-check"></i><b>7.3</b> Mit<code>mutate()</code> neue Variablen erstellen</a></li>
+<li class="chapter" data-level="7.4" data-path="dplyr-single.html"><a href="dplyr-single.html#mit-arrange-die-zeilenreihenfolge-ändern"><i class="fa fa-check"></i><b>7.4</b> Mit <code>arrange()</code> die Zeilenreihenfolge ändern</a></li>
+<li class="chapter" data-level="7.5" data-path="dplyr-single.html"><a href="dplyr-single.html#mit-rename-schöne-namen-vergeben"><i class="fa fa-check"></i><b>7.5</b> Mit <code>rename()</code> “schöne” Namen vergeben</a></li>
+<li class="chapter" data-level="7.6" data-path="dplyr-single.html"><a href="dplyr-single.html#group_by-macht-das-r-leben-einfacher"><i class="fa fa-check"></i><b>7.6</b> <code>group_by()</code> macht das R Leben einfacher</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="dplyr-single.html"><a href="dplyr-single.html#die-dinge-aufzählen"><i class="fa fa-check"></i><b>7.6.1</b> Die Dinge aufzählen</a></li>
+<li class="chapter" data-level="7.6.2" data-path="dplyr-single.html"><a href="dplyr-single.html#deskriptive-statistiken-mit-summarise"><i class="fa fa-check"></i><b>7.6.2</b> Deskriptive Statistiken mit <code>summarise()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="dplyr-single.html"><a href="dplyr-single.html#gruppierte-veränderungen"><i class="fa fa-check"></i><b>7.7</b> Gruppierte Veränderungen</a><ul>
+<li class="chapter" data-level="7.7.1" data-path="dplyr-single.html"><a href="dplyr-single.html#berechnungen-innerhalb-der-gruppen"><i class="fa fa-check"></i><b>7.7.1</b> Berechnungen innerhalb der Gruppen</a></li>
+<li class="chapter" data-level="7.7.2" data-path="dplyr-single.html"><a href="dplyr-single.html#window-functions"><i class="fa fa-check"></i><b>7.7.2</b> Window Funktionen</a></li>
+</ul></li>
+<li class="chapter" data-level="7.8" data-path="dplyr-single.html"><a href="dplyr-single.html#großes-finale"><i class="fa fa-check"></i><b>7.8</b> Großes Finale</a></li>
+<li class="chapter" data-level="7.9" data-path="dplyr-single.html"><a href="dplyr-single.html#weiteres-material"><i class="fa fa-check"></i><b>7.9</b> Weiteres Material</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="literatur.html"><a href="literatur.html"><i class="fa fa-check"></i>Literatur</a></li>
 <li class="divider"></li>
@@ -234,6 +247,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="ref-wickham2011a">
 <p>Wickham, Hadley. 2011. “The Split-Apply-Combine Strategy for Data Analysis.” <em>Journal of Statistical Software, Articles</em> 40 (1): 1–29. <a href="https://doi.org/10.18637/jss.v040.i01">https://doi.org/10.18637/jss.v040.i01</a>.</p>
+</div>
+<div id="ref-wickham2016">
+<p>Wickham, Hadley, and Garrett Grolemund. 2016. <em>R for Data Science: Import, Tidy, Transform, Visualize, and Model Data</em>. O’Reilly Media. <a href="https://books.google.com/books?id=vfi3DQAAQBAJ">https://books.google.com/books?id=vfi3DQAAQBAJ</a>.</p>
 </div>
 </div>
 </div>
@@ -293,6 +309,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

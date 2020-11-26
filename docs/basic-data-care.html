@@ -196,6 +196,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7" data-path="dplyr-single.html"><a href="dplyr-single.html"><i class="fa fa-check"></i><b>7</b> Mehr zu <code>dplyr</code></a><ul>
 <li class="chapter" data-level="7.1" data-path="dplyr-single.html"><a href="dplyr-single.html#wo-stehen-wir"><i class="fa fa-check"></i><b>7.1</b> Wo stehen wir?</a></li>
 <li class="chapter" data-level="7.2" data-path="dplyr-single.html"><a href="dplyr-single.html#falls-noch-nicht-geschehen-lade-dplyr-und-gapminder"><i class="fa fa-check"></i><b>7.2</b> Falls noch nicht geschehen: lade <code>dplyr</code> und <code>gapminder</code></a></li>
+<li class="chapter" data-level="7.3" data-path="dplyr-single.html"><a href="dplyr-single.html#mitmutate-neue-variablen-erstellen"><i class="fa fa-check"></i><b>7.3</b> Mit<code>mutate()</code> neue Variablen erstellen</a></li>
+<li class="chapter" data-level="7.4" data-path="dplyr-single.html"><a href="dplyr-single.html#mit-arrange-die-zeilenreihenfolge-ändern"><i class="fa fa-check"></i><b>7.4</b> Mit <code>arrange()</code> die Zeilenreihenfolge ändern</a></li>
+<li class="chapter" data-level="7.5" data-path="dplyr-single.html"><a href="dplyr-single.html#mit-rename-schöne-namen-vergeben"><i class="fa fa-check"></i><b>7.5</b> Mit <code>rename()</code> “schöne” Namen vergeben</a></li>
+<li class="chapter" data-level="7.6" data-path="dplyr-single.html"><a href="dplyr-single.html#group_by-macht-das-r-leben-einfacher"><i class="fa fa-check"></i><b>7.6</b> <code>group_by()</code> macht das R Leben einfacher</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="dplyr-single.html"><a href="dplyr-single.html#die-dinge-aufzählen"><i class="fa fa-check"></i><b>7.6.1</b> Die Dinge aufzählen</a></li>
+<li class="chapter" data-level="7.6.2" data-path="dplyr-single.html"><a href="dplyr-single.html#deskriptive-statistiken-mit-summarise"><i class="fa fa-check"></i><b>7.6.2</b> Deskriptive Statistiken mit <code>summarise()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="dplyr-single.html"><a href="dplyr-single.html#gruppierte-veränderungen"><i class="fa fa-check"></i><b>7.7</b> Gruppierte Veränderungen</a><ul>
+<li class="chapter" data-level="7.7.1" data-path="dplyr-single.html"><a href="dplyr-single.html#berechnungen-innerhalb-der-gruppen"><i class="fa fa-check"></i><b>7.7.1</b> Berechnungen innerhalb der Gruppen</a></li>
+<li class="chapter" data-level="7.7.2" data-path="dplyr-single.html"><a href="dplyr-single.html#window-functions"><i class="fa fa-check"></i><b>7.7.2</b> Window Funktionen</a></li>
+</ul></li>
+<li class="chapter" data-level="7.8" data-path="dplyr-single.html"><a href="dplyr-single.html#großes-finale"><i class="fa fa-check"></i><b>7.8</b> Großes Finale</a></li>
+<li class="chapter" data-level="7.9" data-path="dplyr-single.html"><a href="dplyr-single.html#weiteres-material"><i class="fa fa-check"></i><b>7.9</b> Weiteres Material</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="literatur.html"><a href="literatur.html"><i class="fa fa-check"></i>Literatur</a></li>
 <li class="divider"></li>
@@ -381,14 +394,14 @@ Alternativ können wir alle Befehle natürlich auch in eine R Markdown Datei sch
 <span id="cb38-2"><a href="basic-data-care.html#cb38-2"></a><span class="co">#&gt; [1] &quot;country&quot;   &quot;continent&quot; &quot;year&quot;      &quot;lifeExp&quot;   &quot;pop&quot;       &quot;gdpPercap&quot;</span></span></code></pre></div>
 <p>zusammen mit den Daten abspeichern wollen. Dazu könnten wir ein tibble</p>
 <div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="basic-data-care.html#cb39-1"></a>(desc &lt;-<span class="st"> </span><span class="kw">tibble</span>(<span class="dt">variables =</span> <span class="kw">names</span>(gapminder),</span>
-<span id="cb39-2"><a href="basic-data-care.html#cb39-2"></a>               <span class="dt">desc =</span> <span class="kw">c</span>(<span class="st">&quot;actor with 142 levels&quot;</span>, <span class="st">&quot;factor with 5 levels&quot;</span>,</span>
+<span id="cb39-2"><a href="basic-data-care.html#cb39-2"></a>               <span class="dt">desc =</span> <span class="kw">c</span>(<span class="st">&quot;factor with 142 levels&quot;</span>, <span class="st">&quot;factor with 5 levels&quot;</span>,</span>
 <span id="cb39-3"><a href="basic-data-care.html#cb39-3"></a>                        <span class="st">&quot;ranges from 1952 to 2007 in increments of 5 years&quot;</span>,</span>
 <span id="cb39-4"><a href="basic-data-care.html#cb39-4"></a>                        <span class="st">&quot;life expectancy at birth, in years&quot;</span>,</span>
 <span id="cb39-5"><a href="basic-data-care.html#cb39-5"></a>                        <span class="st">&quot;population&quot;</span>,<span class="st">&quot;GDP per capita (US$, inflation-adjusted)&quot;</span>)))</span>
 <span id="cb39-6"><a href="basic-data-care.html#cb39-6"></a><span class="co">#&gt; # A tibble: 6 x 2</span></span>
 <span id="cb39-7"><a href="basic-data-care.html#cb39-7"></a><span class="co">#&gt;   variables desc                                             </span></span>
 <span id="cb39-8"><a href="basic-data-care.html#cb39-8"></a><span class="co">#&gt;   &lt;chr&gt;     &lt;chr&gt;                                            </span></span>
-<span id="cb39-9"><a href="basic-data-care.html#cb39-9"></a><span class="co">#&gt; 1 country   actor with 142 levels                            </span></span>
+<span id="cb39-9"><a href="basic-data-care.html#cb39-9"></a><span class="co">#&gt; 1 country   factor with 142 levels                           </span></span>
 <span id="cb39-10"><a href="basic-data-care.html#cb39-10"></a><span class="co">#&gt; 2 continent factor with 5 levels                             </span></span>
 <span id="cb39-11"><a href="basic-data-care.html#cb39-11"></a><span class="co">#&gt; 3 year      ranges from 1952 to 2007 in increments of 5 years</span></span>
 <span id="cb39-12"><a href="basic-data-care.html#cb39-12"></a><span class="co">#&gt; 4 lifeExp   life expectancy at birth, in years               </span></span>
@@ -407,7 +420,7 @@ Alternativ können wir alle Befehle natürlich auch in eine R Markdown Datei sch
 <span id="cb40-10"><a href="basic-data-care.html#cb40-10"></a><span class="co">#&gt;   ..$ gdpPercap: num [1:1704] 779 821 853 836 740 ...</span></span>
 <span id="cb40-11"><a href="basic-data-care.html#cb40-11"></a><span class="co">#&gt;  $ : tibble [6 × 2] (S3: tbl_df/tbl/data.frame)</span></span>
 <span id="cb40-12"><a href="basic-data-care.html#cb40-12"></a><span class="co">#&gt;   ..$ variables: chr [1:6] &quot;country&quot; &quot;continent&quot; &quot;year&quot; &quot;lifeExp&quot; ...</span></span>
-<span id="cb40-13"><a href="basic-data-care.html#cb40-13"></a><span class="co">#&gt;   ..$ desc     : chr [1:6] &quot;actor with 142 levels&quot; &quot;factor with 5 levels&quot; &quot;ra&quot;..</span></span></code></pre></div>
+<span id="cb40-13"><a href="basic-data-care.html#cb40-13"></a><span class="co">#&gt;   ..$ desc     : chr [1:6] &quot;factor with 142 levels&quot; &quot;factor with 5 levels&quot; &quot;r&quot;..</span></span></code></pre></div>
 </div>
 <div id="variablen-in-einem-data-frame" class="section level2">
 <h2><span class="header-section-number">5.4</span> Variablen in einem Data Frame</h2>
@@ -559,6 +572,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

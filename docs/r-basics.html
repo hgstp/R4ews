@@ -196,6 +196,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="7" data-path="dplyr-single.html"><a href="dplyr-single.html"><i class="fa fa-check"></i><b>7</b> Mehr zu <code>dplyr</code></a><ul>
 <li class="chapter" data-level="7.1" data-path="dplyr-single.html"><a href="dplyr-single.html#wo-stehen-wir"><i class="fa fa-check"></i><b>7.1</b> Wo stehen wir?</a></li>
 <li class="chapter" data-level="7.2" data-path="dplyr-single.html"><a href="dplyr-single.html#falls-noch-nicht-geschehen-lade-dplyr-und-gapminder"><i class="fa fa-check"></i><b>7.2</b> Falls noch nicht geschehen: lade <code>dplyr</code> und <code>gapminder</code></a></li>
+<li class="chapter" data-level="7.3" data-path="dplyr-single.html"><a href="dplyr-single.html#mitmutate-neue-variablen-erstellen"><i class="fa fa-check"></i><b>7.3</b> Mit<code>mutate()</code> neue Variablen erstellen</a></li>
+<li class="chapter" data-level="7.4" data-path="dplyr-single.html"><a href="dplyr-single.html#mit-arrange-die-zeilenreihenfolge-ändern"><i class="fa fa-check"></i><b>7.4</b> Mit <code>arrange()</code> die Zeilenreihenfolge ändern</a></li>
+<li class="chapter" data-level="7.5" data-path="dplyr-single.html"><a href="dplyr-single.html#mit-rename-schöne-namen-vergeben"><i class="fa fa-check"></i><b>7.5</b> Mit <code>rename()</code> “schöne” Namen vergeben</a></li>
+<li class="chapter" data-level="7.6" data-path="dplyr-single.html"><a href="dplyr-single.html#group_by-macht-das-r-leben-einfacher"><i class="fa fa-check"></i><b>7.6</b> <code>group_by()</code> macht das R Leben einfacher</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="dplyr-single.html"><a href="dplyr-single.html#die-dinge-aufzählen"><i class="fa fa-check"></i><b>7.6.1</b> Die Dinge aufzählen</a></li>
+<li class="chapter" data-level="7.6.2" data-path="dplyr-single.html"><a href="dplyr-single.html#deskriptive-statistiken-mit-summarise"><i class="fa fa-check"></i><b>7.6.2</b> Deskriptive Statistiken mit <code>summarise()</code></a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="dplyr-single.html"><a href="dplyr-single.html#gruppierte-veränderungen"><i class="fa fa-check"></i><b>7.7</b> Gruppierte Veränderungen</a><ul>
+<li class="chapter" data-level="7.7.1" data-path="dplyr-single.html"><a href="dplyr-single.html#berechnungen-innerhalb-der-gruppen"><i class="fa fa-check"></i><b>7.7.1</b> Berechnungen innerhalb der Gruppen</a></li>
+<li class="chapter" data-level="7.7.2" data-path="dplyr-single.html"><a href="dplyr-single.html#window-functions"><i class="fa fa-check"></i><b>7.7.2</b> Window Funktionen</a></li>
+</ul></li>
+<li class="chapter" data-level="7.8" data-path="dplyr-single.html"><a href="dplyr-single.html#großes-finale"><i class="fa fa-check"></i><b>7.8</b> Großes Finale</a></li>
+<li class="chapter" data-level="7.9" data-path="dplyr-single.html"><a href="dplyr-single.html#weiteres-material"><i class="fa fa-check"></i><b>7.9</b> Weiteres Material</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="literatur.html"><a href="literatur.html"><i class="fa fa-check"></i>Literatur</a></li>
 <li class="divider"></li>
@@ -284,7 +297,7 @@ evenOthersUseCamelCase</code></pre>
 <span id="cb16-2"><a href="r-basics.html#cb16-2"></a><span class="co">#&gt;  [1]  1  2  3  4  5  6  7  8  9 10</span></span></code></pre></div>
 <p>Nicht alle Funktionen haben (oder erfordern) Argumente:</p>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="r-basics.html#cb17-1"></a><span class="kw">date</span>()</span>
-<span id="cb17-2"><a href="r-basics.html#cb17-2"></a><span class="co">#&gt; [1] &quot;Thu Nov 19 10:11:23 2020&quot;</span></span></code></pre></div>
+<span id="cb17-2"><a href="r-basics.html#cb17-2"></a><span class="co">#&gt; [1] &quot;Thu Nov 26 09:17:33 2020&quot;</span></span></code></pre></div>
 <p>Schau dir nun deinen Workspace an - im oberen rechten Fensterbereich (bei Standardeinstellung) siehst du unter Environment den Inhalt deines Workspaces. Der Workspace ist der Ort, an dem sich benutzerdefinierte Objekte ansammeln. Eine Liste dieser Objekte kannst du auch mit diesen Befehlen erhalten:</p>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="r-basics.html#cb18-1"></a><span class="kw">objects</span>()</span>
 <span id="cb18-2"><a href="r-basics.html#cb18-2"></a><span class="co">#&gt; [1] &quot;check_quietly&quot;              &quot;install_quietly&quot;           </span></span>
@@ -355,7 +368,7 @@ Die Daten zusammen mit deinem R Code erlauben es dir jederzeit <em>alle</em> Erg
 <span id="cb23-4"><a href="r-basics.html#cb23-4"></a>x &lt;-<span class="st"> </span><span class="kw">runif</span>(<span class="dv">40</span>)</span>
 <span id="cb23-5"><a href="r-basics.html#cb23-5"></a>y &lt;-<span class="st"> </span>a <span class="op">+</span><span class="st"> </span>b <span class="op">*</span><span class="st"> </span>x <span class="op">+</span><span class="st"> </span><span class="kw">rnorm</span>(<span class="dv">40</span>, <span class="dt">sd =</span> <span class="kw">sqrt</span>(sig_sq))</span>
 <span id="cb23-6"><a href="r-basics.html#cb23-6"></a>(x_n &lt;-<span class="st"> </span><span class="kw">mean</span>(x))</span>
-<span id="cb23-7"><a href="r-basics.html#cb23-7"></a><span class="co">#&gt; [1] 0.443</span></span>
+<span id="cb23-7"><a href="r-basics.html#cb23-7"></a><span class="co">#&gt; [1] 0.474</span></span>
 <span id="cb23-8"><a href="r-basics.html#cb23-8"></a><span class="kw">write</span>(x_n, <span class="st">&quot;mittelwert_x.txt&quot;</span>)</span>
 <span id="cb23-9"><a href="r-basics.html#cb23-9"></a><span class="kw">plot</span>(x, y)</span>
 <span id="cb23-10"><a href="r-basics.html#cb23-10"></a><span class="kw">abline</span>(a, b, <span class="dt">col =</span> <span class="st">&quot;purple&quot;</span>)</span></code></pre></div>
@@ -459,6 +472,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

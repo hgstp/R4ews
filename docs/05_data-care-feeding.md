@@ -256,14 +256,14 @@ zusammen mit den Daten abspeichern wollen. Dazu könnten wir ein tibble
 
 ```r
 (desc <- tibble(variables = names(gapminder),
-               desc = c("actor with 142 levels", "factor with 5 levels",
+               desc = c("factor with 142 levels", "factor with 5 levels",
                         "ranges from 1952 to 2007 in increments of 5 years",
                         "life expectancy at birth, in years",
                         "population","GDP per capita (US$, inflation-adjusted)")))
 #> # A tibble: 6 x 2
 #>   variables desc                                             
 #>   <chr>     <chr>                                            
-#> 1 country   actor with 142 levels                            
+#> 1 country   factor with 142 levels                           
 #> 2 continent factor with 5 levels                             
 #> 3 year      ranges from 1952 to 2007 in increments of 5 years
 #> 4 lifeExp   life expectancy at birth, in years               
@@ -287,7 +287,7 @@ str(gapminder_desc)
 #>   ..$ gdpPercap: num [1:1704] 779 821 853 836 740 ...
 #>  $ : tibble [6 × 2] (S3: tbl_df/tbl/data.frame)
 #>   ..$ variables: chr [1:6] "country" "continent" "year" "lifeExp" ...
-#>   ..$ desc     : chr [1:6] "actor with 142 levels" "factor with 5 levels" "ra"..
+#>   ..$ desc     : chr [1:6] "factor with 142 levels" "factor with 5 levels" "r"..
 ```
 
 
