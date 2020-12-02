@@ -130,7 +130,7 @@ Nicht alle Funktionen haben (oder erfordern) Argumente:
 
 ```r
 date()
-#> [1] "Thu Nov 26 09:17:33 2020"
+#> [1] "Wed Dec  2 23:00:33 2020"
 ```
 
 Schau dir nun deinen Workspace an - im oberen rechten Fensterbereich (bei Standardeinstellung) siehst du unter Environment den Inhalt deines Workspaces. Der Workspace ist der Ort, an dem sich benutzerdefinierte Objekte ansammeln. Eine Liste dieser Objekte kannst du auch mit diesen Befehlen erhalten:
@@ -259,7 +259,7 @@ sig_sq <- 0.5
 x <- runif(40)
 y <- a + b * x + rnorm(40, sd = sqrt(sig_sq))
 (x_n <- mean(x))
-#> [1] 0.474
+#> [1] 0.524
 write(x_n, "mittelwert_x.txt")
 plot(x, y)
 abline(a, b, col = "purple")
@@ -333,6 +333,7 @@ Du solltest es vermeiden die Maus für Teile deines Workflows zu verwenden, wie 
 [devtools]: https://devtools.r-lib.org
 [roxygen2]: https://roxygen2.r-lib.org
 [knitr]: https://github.com/yihui/knitr
+[rmarkdown]: https://rmarkdown.rstudio.com/
 [usethis]: https://usethis.r-lib.org
 [xml2]: https://xml2.r-lib.org
 [httr]: https://httr.r-lib.org

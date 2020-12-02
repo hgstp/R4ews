@@ -457,6 +457,7 @@ p + geom_point(alpha = (1/3), size = 3) +
 [devtools]: https://devtools.r-lib.org
 [roxygen2]: https://roxygen2.r-lib.org
 [knitr]: https://github.com/yihui/knitr
+[rmarkdown]: https://rmarkdown.rstudio.com/
 [usethis]: https://usethis.r-lib.org
 [xml2]: https://xml2.r-lib.org
 [httr]: https://httr.r-lib.org
