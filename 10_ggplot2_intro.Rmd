@@ -1,0 +1,300 @@
+# (PART) ggplot2 Intro {-} 
+
+# Einführung {#graphics-overview}
+
+```{r include = FALSE}
+source("common.R")
+```
+
+Das Paket `ggplot2` verwendet eine Grammatik beim Erzeugen von Grafiken. Diese basiert auf 
+
+> [Wilkinson (2005): *The Grammar of Graphics*, Springer.](http://link.springer.com/book/10.1007%2F0-387-28695-0)
+
+Dadurch
+
+- ist eine starke Abstraktion bei der Definition einer Grafik möglich
+- steht ein sehr flexibles Grafiksystem zur Verfügung.
+
+
+## `ggplot2` laden
+
+Wie zuvor auch, laden wir stets das komplette `tidyverse`. Man weiß ja vorher nie so genau was man alles so braucht.
+
+```{r}
+library(tidyverse)
+```
+
+
+## Idee
+
+Die grundlegende Idee des ggplot2 Ansatzes zum Erstellen von Grafiken, besteht darin die Bausteine eines Plots unabhängig voneinander zu definieren. Ein Plot besteht immer aus:
+
+- Daten (als `data.frame` oder `tibble`)
+- Koordinatensystem
+- Skala
+- geometrisches Objekt zur Darstellung (`geom`)
+
+Zusätzlich kann er aber auch noch
+
+
+- statistische Transformationen (`stat`)
+- verschiedene Facetten
+- ...
+
+enthalten.
+
+Die einzelnen Teile eines Plots werden dann mit dem `+` Operator zusammengefügt.Initialisiert wird ein Plot mit `ggplot()`. Ohne weitere Bestandteile wird aber nur eine leere Grafik erzeugt
+
+```{r}
+library(gapminder)
+ggplot(gapminder) 
+```
+
+In den folgenden Abschnitten lernen wir daher wie weitere Bestandteile zum Plot hinzugefügt werden.
+
+
+## Ein einfacher Scatterplot
+
+Wir schauen uns zum Start einfach mal für Deutschland den Verlauf des `gdpPercap` über die Zeit an.
+
+```{r}
+gapminder %>%
+  filter(country == "Germany") %>% # auswählen der Daten 
+  ggplot(aes(x = year, y = gdpPercap)) +  # plot initialisieren
+  geom_point() # punkte zum Darstellen der Daten verwenden
+
+```
+
+In diesem einfachen Beispiel haben wir bereits gesehen, dass `ggplot()` über den Pipe-Operator verknüpft werden kann.
+
+
+
+
+#  Aesthetics {#aes}
+
+Mit der Funktion `aes()` lässt sich das **Aussehen** der Grafik regeln (nicht der Inhalt). Wir können z.B.
+
+- die Position: `x` und `y`
+- die Farbe: `color` und `fill`
+- die Form: `shape`
+- den Linientyp: `linetype`
+- die Größe der Symbol: `size`
+
+festlegen. Nicht jedes aesthetic kann allerdings mit allen verfügbaren geoms kombiniert werden. So macht z.B. der `linetype` ja wenig Sinn in `geom_point()`. Ein Übersicht der möglichen aesthetics findet man in der Hilfe jeder geom-Funktion
+
+```
+geom_point {ggplot2}	R Documentation
+Points
+Description
+The point geom is used to create scatterplots. The scatterplot is most useful for displaying the relationship between two continuous variables. It can be used to compare one continuous and one categorical variable, or two categorical variables, but a variation like geom_jitter(), geom_count(), or geom_bin2d() is usually more appropriate. A bubblechart is a scatterplot with a third variable mapped to the size of points.
+
+Usage
+geom_point(
+  mapping = NULL,
+  data = NULL,
+  stat = "identity",
+  position = "identity",
+  ...,
+  na.rm = FALSE,
+  show.legend = NA,
+  inherit.aes = TRUE
+)
+
+...
+
+Aesthetics
+geom_point() understands the following aesthetics (required aesthetics are in bold):
+
+x
+
+y
+
+alpha
+
+colour
+
+fill
+
+group
+
+shape
+
+size
+
+stroke
+
+Learn more about setting these aesthetics in vignette("ggplot2-specs").
+
+```
+
+In der `aes()` Funktion sollten die Daten den Wert der Argumente bestimmen. Werden Argumente auf fixe Werte gesetzt, so sind sie außerhalb der `aes()` Funktion zu setzen. 
+
+
+In einem Plot der `gdpPercap` Daten für Deutschland und Frankreich wollen wir anhand von unterschiedlichen Farben die Daten der beiden Länder unterscheiden. Dazu müssen wir nur `colour` innerhalb von `aes()` den Wert `country` zuweisen. 
+
+
+```{r}
+gapminder %>%
+  filter(country %in% c("Germany","France")) %>% # auswählen der Daten 
+  ggplot(aes(x = year, y = gdpPercap, colour = country)) +  
+  geom_point(size = 3) # size wird auf einen fixen Wert gesetzt (außerhalb von aes())
+```
+
+
+
+# Geoms {#geoms}
+
+Mit den `geom_xx()` Funktionen stellen wir die Daten als geometrische Formen in einer Grafik dar. Jede `ggplot2` Grafik benötigt daher mindestens ein `geom`. Beispiele sind
+
+- `geom_point()`
+- `geom_line()`
+- `geom_histogramm()`
+
+Da wir nicht alle verfügbaren `geoms` auflisten können, sei an dieser Stelle auf die [ggplot2] Seite verwiesen.
+
+
+
+
+```{r, fig.align='default', fig.show='hold', out.width="50%"}
+gapminder %>%
+  ggplot(aes(x = year, y = gdpPercap)) +  
+  geom_point() 
+
+
+gapminder %>%
+  ggplot(aes(x = year, y = gdpPercap)) +  
+  geom_smooth() 
+```
+
+
+Wir haben hier die gleichen Daten visualisiert. Allerdings ist das Ergebnis doch recht unterschiedlich. Der Scatterplot zeigt alle (abgesehen von überzeichnen) Daten, wohingegen mit `geom_smooth()` eine geglätteter Zusammenhang dargestellt wird.
+
+
+Interessant sind hier natürlich die wenigen großen `gdpPercap` Werte
+
+```{r}
+gapminder %>%
+  filter(gdpPercap > 50000)
+```
+
+Kuwait hat über den gesamten Zeitraum hohe GDP Werte. Aber zu Beginn der Aufzeichnungen waren die Werte in Bezug auf die damals noch recht kleine Populationsgröße außergewöhnlich hoch.
+
+
+
+Einem `ggplot` Objekt können wir nicht nur ein `geom` zuordnen. Prinzipiell können wir beliebig viele weitere `geoms` hinzufügen. Wir können also die gerade durchgeführte Glättung der Daten auch
+direkt zum Scatterplot hinzufügen
+
+
+```{r, fig12}
+gapminder %>%
+  ggplot(aes(x = year, y = gdpPercap)) +  
+  geom_point() +
+  geom_smooth() 
+```
+
+
+
+Wählen wir die Farbe der geometrischen Objekte anhand einer Faktorvariable, so erhalten wir automatisch eine entsprechende Legende
+
+```{r, fig13}
+gapminder %>%
+  ggplot(aes(x = year, y = gdpPercap)) +  
+  geom_point(aes(colour = continent)) +
+  geom_smooth() 
+```
+Beachte auch, dass wir `colour` nur für `geom_point()` gewählt haben. Die Glättung erfolgt weiterhin über alle Daten und nicht separat für jeden Kontinent. Aber das wäre natürlich auch möglich. Dazu können wir `colour` wieder global in `ggplot()` definieren.
+
+```{r}
+gapminder %>%
+  ggplot(aes(x = year, y = gdpPercap, colour = continent)) +  
+  geom_point() +
+  geom_smooth() 
+```
+
+Die Punkte sind mir etwas zu groß und der Linientyp gefällt mir auch nicht in diesem Plot. Aber das lässt sich schnell ändern.
+
+```{r}
+gapminder %>%
+  ggplot(aes(x = year, y = gdpPercap, colour = continent)) +  
+  geom_point(size = 0.9) +
+  geom_smooth(linetype = 2) 
+```
+
+
+# Statistische Transformationen {#stat-trans}
+
+Jede `geom_xx()` Funktion besitzt eine Default Statistik, die berechnet wird.
+
+```{r, echo=-1}
+options(width=50)
+args(geom_point)
+```
+
+Bei einem Scatterplot ist dies nur die Identität. 
+
+Ein Balkendiagramm verwendet anderseits
+
+
+```{r}
+args(geom_bar)
+```
+
+die Transformation `count`, was Sinn macht, da ja gezählt werden muss/soll wie viele Beobachtungen in die jeweilige Kategorie fallen.
+
+Der Aufruf der `stat_xx()` Funktion ist oftmals einfacher über die entsprechende `geom_xx()` Funktion, aber natürlich kann die `stat_xx()` Funktion auch direkt aufgerufen werden.
+
+```{r, message=FALSE}
+ggplot(gapminder, aes(x = continent)) + 
+  geom_bar()
+
+ggplot(gapminder, aes(x = continent)) + 
+  stat_count()
+```
+
+
+Jedes `geom` hat zwar ein Default-Transformation, aber natürlich können oftmals noch weitere Transformationen berechnet/genutzt werden. Im Abschnitt __Computed variables__  der Hilfe zu einem `geom` sieht man alle verfügbaren Transformationen
+
+Für `geom_bar()` sind dies
+
+```
+Computed variables
+
+count
+number of points in bin
+
+prop
+groupwise proportion
+
+
+```
+
+Die relativen Häufigkeiten berechnet man also über `prop`. Dazu muss die y-Variable auf `prop` gesetzt werden. Da der Aufruf
+
+```{r, eval=FALSE}
+ggplot(gapminder, aes(x = continent, y = prop))
+```
+
+aber nach einer Variable `prop` suchen würde, muss eine alternative Notation in diesem Fall verwendet werden
+
+```{r}
+ggplot(gapminder, aes(x = continent, y = ..prop..)) + 
+  geom_bar()
+```
+
+Das sieht jetzt noch nicht so wie wir das erwartet haben. Die 
+relativen Häufigkeiten wurden innerhalb der fünf Gruppen berechnet und nicht über alle Beobachtungen. D.h. wir müssen der Funktion noch sagen, dass es nur eine Gruppe geben soll.
+
+
+
+```{r}
+ggplot(gapminder, aes(x = continent, y = ..prop..)) + 
+  geom_bar(aes(group = 1))
+```
+
+
+
+to be continued
+
+
+```{r links, child="links.md"}
+```

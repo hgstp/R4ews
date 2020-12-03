@@ -22,12 +22,12 @@ Wir starten wieder mit dem Laden von `dplyr` (über `tidyverse`)
 
 ```r
 library(tidyverse)
-#> ── Attaching packages ─────────────────────────────────────────── tidyverse 1.3.0 ──
+#> ── Attaching packages ───────────────────────────────────────────────────── tidyverse 1.3.0 ──
 #> ✓ ggplot2 3.3.2     ✓ purrr   0.3.4
 #> ✓ tibble  3.0.3     ✓ dplyr   1.0.2
 #> ✓ tidyr   1.1.2     ✓ stringr 1.4.0
 #> ✓ readr   1.3.1     ✓ forcats 0.5.0
-#> ── Conflicts ────────────────────────────────────────────── tidyverse_conflicts() ──
+#> ── Conflicts ──────────────────────────────────────────────────────── tidyverse_conflicts() ──
 #> x dplyr::filter() masks stats::filter()
 #> x dplyr::lag()    masks stats::lag()
 ```
@@ -700,7 +700,7 @@ Denk ruhig eine Weile über das Ergebnis nach. Meistens sieht man hier in trocke
 Unterteile den Code, beginnend von oben, in Stücke und überprüfe die einzelnen Zwischenergebnisse. So wurde der Code auch geschrieben/entwickelt, mit vielen Fehlern und Verfeinerungen auf dem Weg. 
 
 
-## Weiteres Material
+## Literatur
 
 An dieser Stelle sei noch auf die [dplyr Webseite](https://dplyr.tidyverse.org/) und das Kapitel
 [Data transformation][r4ds-transform] in [R for Data Science] [@wickham2016] verwiesen.

@@ -394,7 +394,7 @@ Denk ruhig eine Weile über das Ergebnis nach. Meistens sieht man hier in trocke
 Unterteile den Code, beginnend von oben, in Stücke und überprüfe die einzelnen Zwischenergebnisse. So wurde der Code auch geschrieben/entwickelt, mit vielen Fehlern und Verfeinerungen auf dem Weg. 
 
 
-## Weiteres Material
+## Literatur
 
 An dieser Stelle sei noch auf die [dplyr Webseite](https://dplyr.tidyverse.org/) und das Kapitel
 [Data transformation][r4ds-transform] in [R for Data Science] [@wickham2016] verwiesen.

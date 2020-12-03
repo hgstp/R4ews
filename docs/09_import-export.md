@@ -40,12 +40,12 @@ Das Hauptpaket, das wir verwenden werden, ist [readr], welches Alternativen zu d
 
 ```r
 library(tidyverse)
-#> ── Attaching packages ─────────────────────────────────────────── tidyverse 1.3.0 ──
+#> ── Attaching packages ───────────────────────────────────────────────────── tidyverse 1.3.0 ──
 #> ✓ ggplot2 3.3.2     ✓ purrr   0.3.4
 #> ✓ tibble  3.0.3     ✓ dplyr   1.0.2
 #> ✓ tidyr   1.1.2     ✓ stringr 1.4.0
 #> ✓ readr   1.3.1     ✓ forcats 0.5.0
-#> ── Conflicts ────────────────────────────────────────────── tidyverse_conflicts() ──
+#> ── Conflicts ──────────────────────────────────────────────────────── tidyverse_conflicts() ──
 #> x dplyr::filter() masks stats::filter()
 #> x dplyr::lag()    masks stats::lag()
 ```
@@ -234,7 +234,7 @@ Schauen wir uns einmal an, wie die Variable jdata in der R-Konsole aussieht:
 ```r
 jdata
 #> Response [http://api.open-notify.org/astros.json]
-#>   Date: 2020-12-02 22:00
+#>   Date: 2020-12-03 16:29
 #>   Status: 200
 #>   Content-Type: application/json
 #>   Size: 356 B
@@ -308,7 +308,7 @@ data$people
 ```
 
 
-Also, da haben wir unsere Antwort: Zum Zeitpunkt des letzten Updates Wed Dec  2 23:00:59 2020 von R4ews befanden sich 7 Personen im Weltraum. Aber wenn du alles selbst ausprobierst, könnten es auch schon wieder andere Namen und eine andere Anzahl sein. Das ist einer der Vorteile von APIs - im Gegensatz zu herunterladbaren Datensätzen werden sie im Allgemeinen in Echtzeit oder nahezu in Echtzeit aktualisiert, so dass sie eine großartige Möglichkeit darstellen, Zugang zu sehr aktuellen Daten zu erhalten.
+Also, da haben wir unsere Antwort: Zum Zeitpunkt des letzten Updates Thu Dec  3 17:29:01 2020 von R4ews befanden sich 7 Personen im Weltraum. Aber wenn du alles selbst ausprobierst, könnten es auch schon wieder andere Namen und eine andere Anzahl sein. Das ist einer der Vorteile von APIs - im Gegensatz zu herunterladbaren Datensätzen werden sie im Allgemeinen in Echtzeit oder nahezu in Echtzeit aktualisiert, so dass sie eine großartige Möglichkeit darstellen, Zugang zu sehr aktuellen Daten zu erhalten.
 
 
 In diesem Beispiel haben wir einen sehr unkomplizierten API-Workflow durchlaufen. Die meisten APIs erfordern, dass Sie demselben allgemeinen Muster folgen, aber dabei können sie durchaus komplexer sein.
@@ -340,11 +340,11 @@ Wie auch immer, jetzt, da wir unsere Anfrage einschließlich der Standortparamet
 data <- fromJSON(rawToChar(jdata$content))
 data$response
 #>   duration   risetime
-#> 1      529 1606995479
-#> 2      650 1607001192
-#> 3      651 1607007003
-#> 4      651 1607012831
-#> 5      647 1607018643
+#> 1      651 1607012831
+#> 2      647 1607018643
+#> 3      514 1607024481
+#> 4      446 1607079082
+#> 5      638 1607084747
 ```
 
 
@@ -354,9 +354,9 @@ Diese API gibt uns Zeiten in Form von [Unixzeit](https://de.wikipedia.org/wiki/U
 
 ```r
 lubridate::as_datetime(data$response$risetime)
-#> [1] "2020-12-03 11:37:59 UTC" "2020-12-03 13:13:12 UTC"
-#> [3] "2020-12-03 14:50:03 UTC" "2020-12-03 16:27:11 UTC"
-#> [5] "2020-12-03 18:04:03 UTC"
+#> [1] "2020-12-03 16:27:11 UTC" "2020-12-03 18:04:03 UTC"
+#> [3] "2020-12-03 19:41:21 UTC" "2020-12-04 10:51:22 UTC"
+#> [5] "2020-12-04 12:25:47 UTC"
 ```
 
 
@@ -478,3 +478,4 @@ Hier sein noch auf das Kapitel [Data import](http://r4ds.had.co.nz/data-import.h
 [rOpenSci]: https://ropensci.org
 [wiki-snake-case]: https://en.wikipedia.org/wiki/Snake_case
 [Janus]: https://en.wikipedia.org/wiki/Janus
+
