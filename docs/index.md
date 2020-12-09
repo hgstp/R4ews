@@ -37,7 +37,7 @@ Das Design von R4ews wurde durch die Notwendigkeit motiviert, mehr Ausgewogenhei
 
 ```r
 date()
-#> [1] "Thu Dec  3 17:28:23 2020"
+#> [1] "Wed Dec  9 17:29:14 2020"
 ```
 
 
@@ -59,15 +59,15 @@ Die aktuelle Version dieses Buchs wurde mit
 ```
 #> Finding R package dependencies ... Done!
 #>  setting  value                       
-#>  version  R version 4.0.2 (2020-06-22)
-#>  os       macOS  10.16                
+#>  version  R version 4.0.3 (2020-10-10)
+#>  os       macOS Big Sur 10.16         
 #>  system   x86_64, darwin17.0          
 #>  ui       X11                         
 #>  language (EN)                        
 #>  collate  en_US.UTF-8                 
 #>  ctype    en_US.UTF-8                 
 #>  tz       Europe/Berlin               
-#>  date     2020-12-03
+#>  date     2020-12-09
 ```
 
 erstellt

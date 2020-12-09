@@ -28,7 +28,8 @@ Imports:
     usethis,
     viridis,
     xfun,
-    xml2
+    xml2,
+    Rcpp
 Remotes: 
     ropensci/genderdata,
     rstudio/gt
