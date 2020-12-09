@@ -15,11 +15,11 @@ always_allow_html: true
 
 ---
 
-# Willkommen zur R Ergänzung zur Einführung in die Wahrscheinlichkeitstheorie und Statistik {-}
+# Willkommen zu R4ews {-}
 
 
 
-Im Rahmen dieser Ergänzung lernen wir
+Willkommen zur  R Ergänzung zur Einführung in die Wahrscheinlichkeitstheorie und Statistik. Im Rahmen dieser Ergänzung lernen wir
 
 > Daten untersuchen, aufbereiten, visualisieren und analysieren,
 
@@ -37,7 +37,7 @@ Das Design von R4ews wurde durch die Notwendigkeit motiviert, mehr Ausgewogenhei
 
 ```r
 date()
-#> [1] "Wed Dec  9 20:09:11 2020"
+#> [1] "Wed Dec  9 22:08:43 2020"
 ```
 
 

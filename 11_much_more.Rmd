@@ -46,13 +46,16 @@ Bei der Erzeugung der Struktur (wie auch weiteren Schritten bei der Entwicklung)
 Falls noch nicht geschehen, sollte man
 
 ```{r, eval=FALSE}
-install.packages(c("devtools", "roxygen2", "testthat","usethis"))
+install.packages(c("devtools", "roxygen2", "testthat"))
 ```
 ausführen. Diese Pakete erleichtern in Kombination mit RStudio das Erstellen von Paketen. 
 
 ## C Compiler
 
-Außerdem benötigt man noch einen C Compiler.  Mit `has_devel()` kann überprüft werden ob alles korrekt installiert ist
+Um alle Möglichkeiten bei der Erstellung von R-Paketen ausnützen zu können, brauchst du außerdem einen Compiler und noch ein paar andere Werkzeuge. Dies ist aber vermutlich erst dann wirklich nötig, wenn du Pakete bauen willst, die C- oder C++-Code enthalten (nicht Teil des Kurses). RStudio sollte dich auch warnen und dir Unterstützung anbieten, sobald du versuchen solltest, etwas zu tun, das die Einrichtung einer Entwicklungsumgebung erfordert. 
+
+
+Mit `has_devel()` kannst du aber bereits auch jetzt mal überprüfen ob dein System vielleicht schon bereit ist
 
 ```{r, warning=FALSE, message=FALSE}
 library(devtools)
@@ -63,7 +66,7 @@ library(devtools)
 has_devel()
 ```
 
-Dies scheint der Fall zu sein.
+Dies scheint bei mir der Fall zu sein.
 
 ## R Code
 

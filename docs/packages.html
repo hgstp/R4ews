@@ -39,7 +39,7 @@
 
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html">Willkommen zur R Ergänzung zur Einführung in die Wahrscheinlichkeitstheorie und Statistik</a></li>
+<li><a class="" href="index.html">Willkommen zu R4ews</a></li>
 <li class="book-part">R, wie fange ich an</li>
 <li><a class="" href="install.html"><span class="header-section-number">1</span> Installieren von R und RStudio</a></li>
 <li><a class="" href="r-basics.html"><span class="header-section-number">2</span> R Basics und Arbeitsabläufe</a></li>
@@ -115,20 +115,21 @@ Lizenz, Titel, Abhängigkeiten, …)</li>
 <p>Bei der Erzeugung der Struktur (wie auch weiteren Schritten bei der Entwicklung) sollte man so viel wie möglich automatisieren. Wir verwenden dazu die von Hadley Wickham bereitgestellten Werkzeuge.</p>
 <p>Falls noch nicht geschehen, sollte man</p>
 <div class="sourceCode" id="cb138"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"devtools"</span>, <span class="st">"roxygen2"</span>, <span class="st">"testthat"</span>,<span class="st">"usethis"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"devtools"</span>, <span class="st">"roxygen2"</span>, <span class="st">"testthat"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>ausführen. Diese Pakete erleichtern in Kombination mit RStudio das Erstellen von Paketen.</p>
 </div>
 <div id="c-compiler" class="section level2">
 <h2>
 <span class="header-section-number">16.2</span> C Compiler<a class="anchor" aria-label="anchor" href="#c-compiler"><i class="fas fa-link"></i></a>
 </h2>
-<p>Außerdem benötigt man noch einen C Compiler. Mit <code><a href="https://rdrr.io/pkg/pkgbuild/man/has_compiler.html">has_devel()</a></code> kann überprüft werden ob alles korrekt installiert ist</p>
+<p>Um alle Möglichkeiten bei der Erstellung von R-Paketen ausnützen zu können, brauchst du außerdem einen Compiler und noch ein paar andere Werkzeuge. Dies ist aber vermutlich erst dann wirklich nötig, wenn du Pakete bauen willst, die C- oder C++-Code enthalten (nicht Teil des Kurses). RStudio sollte dich auch warnen und dir Unterstützung anbieten, sobald du versuchen solltest, etwas zu tun, das die Einrichtung einer Entwicklungsumgebung erfordert.</p>
+<p>Mit <code><a href="https://rdrr.io/pkg/pkgbuild/man/has_compiler.html">has_devel()</a></code> kannst du aber bereits auch jetzt mal überprüfen ob dein System vielleicht schon bereit ist</p>
 <div class="sourceCode" id="cb139"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/">devtools</a></span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb140"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/pkgbuild/man/has_compiler.html">has_devel</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; Your system is ready to build packages!</span></code></pre></div>
-<p>Dies scheint der Fall zu sein.</p>
+<p>Dies scheint bei mir der Fall zu sein.</p>
 </div>
 <div id="r-code" class="section level2">
 <h2>
@@ -283,8 +284,8 @@ in der DESCRIPTION Datei R Code verwendet werden um die nötigen Informationen</
 <span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/load_all.html">load_all</a></span><span class="op">(</span><span class="st">"../../Documents/meinR4EWSpckg"</span><span class="op">)</span>
 <span class="co">#&gt; Loading meinR4EWSpckg</span>
 <span class="fu">gruppenmitglieder</span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; Die Gruppe AU enthaelt die Mitglieder: Silke Rolles </span>
-<span class="co">#&gt;                                        Stephan Haug</span></code></pre></div>
+<span class="co">#&gt; Die Gruppe AU enthaelt die Mitglieder: Silke </span>
+<span class="co">#&gt;                                        Stephan</span></code></pre></div>
 </div>
 <div id="pakete-dokumentation" class="section level2">
 <h2>
@@ -374,7 +375,7 @@ Weitere Tags sind auf der Seite <a href="http://r-pkgs.had.co.nz/man.html#man-fu
 <code class="sourceCode R"><span class="va">nrow</span>
 <span class="co">#&gt; function (x) </span>
 <span class="co">#&gt; dim(x)[1L]</span>
-<span class="co">#&gt; &lt;bytecode: 0x7fd5781918c8&gt;</span>
+<span class="co">#&gt; &lt;bytecode: 0x7fa5670752e8&gt;</span>
 <span class="co">#&gt; &lt;environment: namespace:base&gt;</span></code></pre></div>
 <p>Diese Funktion ist definiert in Abhängigkeit von <code><a href="https://rdrr.io/r/base/dim.html">dim()</a></code> aus dem <code>base</code> Paket.</p>
 <p>Auch wenn wir die Funktion</p>

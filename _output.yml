@@ -1,6 +1,6 @@
 bookdown::bs4_book:
   theme:
-    primary: "#637238"
+    primary: "#0065BD"
   includes:
     in_header: header.html
 

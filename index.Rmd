@@ -15,7 +15,7 @@ always_allow_html: true
 
 ---
 
-# Willkommen zur R Ergänzung zur Einführung in die Wahrscheinlichkeitstheorie und Statistik {-}
+# Willkommen zu R4ews {-}
 
 ```{r include = FALSE}
 source("common.R")
@@ -25,7 +25,7 @@ library(devtools)
 library(DT)
 ```
 
-Im Rahmen dieser Ergänzung lernen wir
+Willkommen zur  R Ergänzung zur Einführung in die Wahrscheinlichkeitstheorie und Statistik. Im Rahmen dieser Ergänzung lernen wir
 
 > Daten untersuchen, aufbereiten, visualisieren und analysieren,
 

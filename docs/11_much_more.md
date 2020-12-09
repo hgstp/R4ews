@@ -45,13 +45,16 @@ Falls noch nicht geschehen, sollte man
 
 
 ```r
-install.packages(c("devtools", "roxygen2", "testthat","usethis"))
+install.packages(c("devtools", "roxygen2", "testthat"))
 ```
 ausführen. Diese Pakete erleichtern in Kombination mit RStudio das Erstellen von Paketen. 
 
 ## C Compiler
 
-Außerdem benötigt man noch einen C Compiler.  Mit `has_devel()` kann überprüft werden ob alles korrekt installiert ist
+Um alle Möglichkeiten bei der Erstellung von R-Paketen ausnützen zu können, brauchst du außerdem einen Compiler und noch ein paar andere Werkzeuge. Dies ist aber vermutlich erst dann wirklich nötig, wenn du Pakete bauen willst, die C- oder C++-Code enthalten (nicht Teil des Kurses). RStudio sollte dich auch warnen und dir Unterstützung anbieten, sobald du versuchen solltest, etwas zu tun, das die Einrichtung einer Entwicklungsumgebung erfordert. 
+
+
+Mit `has_devel()` kannst du aber bereits auch jetzt mal überprüfen ob dein System vielleicht schon bereit ist
 
 
 ```r
@@ -65,7 +68,7 @@ has_devel()
 #> Your system is ready to build packages!
 ```
 
-Dies scheint der Fall zu sein.
+Dies scheint bei mir der Fall zu sein.
 
 ## R Code
 
@@ -242,8 +245,8 @@ ls()
 devtools::load_all("../../Documents/meinR4EWSpckg")
 #> Loading meinR4EWSpckg
 gruppenmitglieder()
-#> Die Gruppe AU enthaelt die Mitglieder: Silke Rolles 
-#>                                        Stephan Haug
+#> Die Gruppe AU enthaelt die Mitglieder: Silke 
+#>                                        Stephan
 ```
 
 
@@ -350,7 +353,7 @@ Es ist nicht nur für das Erstellen von Paketen hilfreich das Konzept eines `NAM
 nrow
 #> function (x) 
 #> dim(x)[1L]
-#> <bytecode: 0x7fd5781918c8>
+#> <bytecode: 0x7fa5670752e8>
 #> <environment: namespace:base>
 ```
 Diese Funktion ist definiert in Abhängigkeit von `dim()` aus dem `base` Paket.
