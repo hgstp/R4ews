@@ -216,8 +216,8 @@ Bevor es weitergeht wollen wir noch
 
 ```{}
 gruppenmitglieder <- function(){
-  cat("Die Gruppe AU enthaelt die Mitglieder: Silke Rolles \n")
-  cat("                                       Stephan Haug")
+  cat("Die Gruppe AU enthaelt die Mitglieder: Silke\n")
+  cat("                                       Stephan")
 }
 ```
 

@@ -272,8 +272,8 @@ in der DESCRIPTION Datei R Code verwendet werden um die nötigen Informationen</
 <p>R verwendet die Versionsnummern zur Überprüfung von Abhängigkeiten zwischen Paketen.</p>
 <p>Bevor es weitergeht wollen wir noch</p>
 <pre><code>gruppenmitglieder &lt;- function(){
-  cat("Die Gruppe AU enthaelt die Mitglieder: Silke Rolles \n")
-  cat("                                       Stephan Haug")
+  cat("Die Gruppe AU enthaelt die Mitglieder: Silke\n")
+  cat("                                       Stephan")
 }</code></pre>
 <p>in der Datei <code>meinR4EWSpckg.R</code> im Verzeichnis <code>../meinR4EWSpckg/R</code> speichern.</p>
 <p>Anschließend laden wir das source Paket <code>meinR4EWSpckg</code> mit <code><a href="https://devtools.r-lib.org//reference/load_all.html">devtools::load_all()</a></code>.</p>
@@ -374,7 +374,7 @@ Weitere Tags sind auf der Seite <a href="http://r-pkgs.had.co.nz/man.html#man-fu
 <code class="sourceCode R"><span class="va">nrow</span>
 <span class="co">#&gt; function (x) </span>
 <span class="co">#&gt; dim(x)[1L]</span>
-<span class="co">#&gt; &lt;bytecode: 0x7ff8d99a66c8&gt;</span>
+<span class="co">#&gt; &lt;bytecode: 0x7fd5781918c8&gt;</span>
 <span class="co">#&gt; &lt;environment: namespace:base&gt;</span></code></pre></div>
 <p>Diese Funktion ist definiert in Abhängigkeit von <code><a href="https://rdrr.io/r/base/dim.html">dim()</a></code> aus dem <code>base</code> Paket.</p>
 <p>Auch wenn wir die Funktion</p>
@@ -473,7 +473,7 @@ int malZwei(int x) {
 <h2>
 <span class="header-section-number">16.13</span> Literatur<a class="anchor" aria-label="anchor" href="#literatur-1"><i class="fas fa-link"></i></a>
 </h2>
-<p>Diese Folien haben einen kleinen Einblick in das Erstellen eigener Pakete gegeben. Allerdings wurden viele weitere Aspekte nicht angesprochen. Weitere Informationen zu R Paketen findet man z.B. im Buch <a href="http://r-pkgs.had.co.nz/">R packages</a> von Hadley Wickham <span class="citation">(<a href="literatur-2.html#ref-wickham2015b" role="doc-biblioref">2015</a>)</span>.</p>
+<p>Diese Folien haben einen kleinen Einblick in das Erstellen eigener Pakete gegeben. Allerdings wurden viele weitere Aspekte nicht angesprochen. Weitere Informationen zu R Paketen findet man z.B. im Buch <a href="http://r-pkgs.had.co.nz/">R packages</a> von Hadley Wickham <span class="citation">(<a href="literatur-2.html#ref-wickham2015b" role="doc-biblioref">2015</a><a href="literatur-2.html#ref-wickham2015b" role="doc-biblioref">b</a>)</span>.</p>
 
 </div>
 </div>

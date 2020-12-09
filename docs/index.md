@@ -37,7 +37,7 @@ Das Design von R4ews wurde durch die Notwendigkeit motiviert, mehr Ausgewogenhei
 
 ```r
 date()
-#> [1] "Wed Dec  9 17:29:14 2020"
+#> [1] "Wed Dec  9 20:09:11 2020"
 ```
 
 

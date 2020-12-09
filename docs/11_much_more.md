@@ -223,8 +223,8 @@ Bevor es weitergeht wollen wir noch
 
 ```{}
 gruppenmitglieder <- function(){
-  cat("Die Gruppe AU enthaelt die Mitglieder: Silke Rolles \n")
-  cat("                                       Stephan Haug")
+  cat("Die Gruppe AU enthaelt die Mitglieder: Silke\n")
+  cat("                                       Stephan")
 }
 ```
 
@@ -350,7 +350,7 @@ Es ist nicht nur für das Erstellen von Paketen hilfreich das Konzept eines `NAM
 nrow
 #> function (x) 
 #> dim(x)[1L]
-#> <bytecode: 0x7ff8d99a66c8>
+#> <bytecode: 0x7fd5781918c8>
 #> <environment: namespace:base>
 ```
 Diese Funktion ist definiert in Abhängigkeit von `dim()` aus dem `base` Paket.
