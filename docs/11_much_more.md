@@ -353,7 +353,7 @@ Es ist nicht nur für das Erstellen von Paketen hilfreich das Konzept eines `NAM
 nrow
 #> function (x) 
 #> dim(x)[1L]
-#> <bytecode: 0x7fa5670752e8>
+#> <bytecode: 0x7fe5a0da4ac8>
 #> <environment: namespace:base>
 ```
 Diese Funktion ist definiert in Abhängigkeit von `dim()` aus dem `base` Paket.

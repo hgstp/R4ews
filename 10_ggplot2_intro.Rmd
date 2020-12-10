@@ -342,7 +342,7 @@ Da es sich bei `gdpPercap` um eine stetige Variable handelt, haben wir `scale_y_
 
 ```{r}
 (p <- p + labs(x = "Jahr", y = "GDP pro Kopf",
-         title = "Monoton steigendes GPD pro Kopf",
+         title = "Monoton steigendes GDP pro Kopf",
          subtitle = "Gestrichelte Linie zeigt Durchschnittswerte über alle Länder pro Kontinent"))
 ```
 
