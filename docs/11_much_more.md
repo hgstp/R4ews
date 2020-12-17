@@ -13,7 +13,7 @@ Wie man ein Paket installiert und lädt, ist uns mittlerweile bekannt. Jetzt wol
 
 Gute Gründe für die Verwendung von Paketen:
 
-- dynamisches Laden und Entladen des Packages (Speicherplatz
+- dynamisches Laden und Entladen des Pakets (Speicherplatz
 sparend)
 - einfache Installation und Update von lokalen Datenträgern oder über
 das Web, innerhalb von R oder über die Kommandozeile des
@@ -161,11 +161,11 @@ Pakete in `Imports` werden beim Installieren des eigenen Pakets ebenfalls instal
 
 
 ```r
-usethis::use_package("Rcpp")
+usethis::use_package("dplyr")
 ```
-kann z.B. das Paket `Rcpp` dem Punkt `Imports` hinzugefügt werden. `devtools::use_package(type = "Suggests")` fügt `Suggests` weitere Pakete hinzu.
+kann z.B. das Paket `dplyr` dem Punkt `Imports` hinzugefügt werden. `devtools::use_package(type = "Suggests")` fügt `Suggests` weitere Pakete hinzu.
 
-## Name, Titel, Beschreibung
+### Name, Titel, Beschreibung
 
 Der Name (`Package`) eines Pakets darf Buchstaben, Zahlen und `.` enthalten und sollte mit dem Verzeichnisname übereinstimmen.
 
@@ -185,7 +185,7 @@ Description: An implementation of the grammar of graphics in R.
 ```
 
 
-## Autoren
+### Autoren
 
 Über das Feld `Authors@R` können die Autoren des Pakets angegeben werden. An dieser Stelle kann
 in der DESCRIPTION Datei R Code verwendet werden um die nötigen Informationen
@@ -204,55 +204,58 @@ Authors@R: person(given = "Stephan", family = "Haug",
                   role = c("cre", "aut"))
 ```
 
-## Version
+Der Output von `person()` sieht dann folgendermaßen aus
 
-`devtools::create()` legt die Default-Version auf `0.1` fest. Generell sollte die Versionsnummer aber aus drei Teilen bestehen und die Form `x.y.z` haben, wobei `x` die Nummer für größere Updates, `y` die Nummer für kleinere Updates und `z` die Nummer für Korrekturen ist. 
+
+```r
+person(given = "Stephan", family = "Haug", 
+                  email = "haug@tum.de", 
+                  role = c("cre", "aut"))
+#> [1] "Stephan Haug <haug@tum.de> [cre, aut]"
+```
+
+
+### Version
+
+`devtools::create()` legt die Default-Version auf `0.1.0` fest. Generell sollte die Versionsnummer aber aus drei Teilen bestehen und die Form `x.y.z` haben, wobei `x` die Nummer für größere Updates, `y` die Nummer für kleinere Updates und `z` die Nummer für Korrekturen ist. 
 
 Die aktuelle Version von `ggplot2` ist z.B.
 
 
 ```r
-packageDescription("ggplot2")$Version
-#> [1] "3.3.2"
+packageVersion("ggplot2")
+#> [1] '3.3.2'
 ```
 
 Für Pakete, die sich in der Entwicklung befinden, bietet es sich an noch einen vierten Teil anzufügen und mit der Versionsnummer `0.0.0.9000` zu starten.
 
-R verwendet die Versionsnummern zur Überprüfung von Abhängigkeiten zwischen Paketen.
-
-
-Bevor es weitergeht wollen wir noch 
-
+Nach diesen Anpassung könnte die DESCRIPTION Datei also so aussehen
 
 ```{}
-gruppenmitglieder <- function(){
-  cat("Die Gruppe AU enthaelt die Mitglieder: Silke\n")
-  cat("                                       Stephan")
-}
+Package: meinR4EWSpckg
+Type: Package
+Title: Paket zu R4ews, das ...
+Version: 0.0.0.9000
+Authors@R: person(given = "Stephan", family = "Haug", 
+                  email = "haug@tum.de", 
+                  role = c("cre", "aut"))
+Description: Paket, das im Rahmen des R Projekts R4ews entstanden ist.
+    Das Paket bietet ...
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    dplyr
 ```
 
-in der Datei `meinR4EWSpckg.R` im Verzeichnis `../meinR4EWSpckg/R` speichern.
 
-Anschließend laden wir das source Paket `meinR4EWSpckg` mit `devtools::load_all()`.
+> Der Punkt Lizenz ist für erstmal nachgeordnet. Wer aber mehr über die Wahl einer passenden Lizenz erfahren möchte, den verweisen wir gerene auf das Kapitel [Licensing](https://r-pkgs.org/license.html) in [R packages](https://r-pkgs.org).
 
-
-
-
-
-```r
-ls()
-#> character(0)
-devtools::load_all("../../Documents/meinR4EWSpckg")
-#> Loading meinR4EWSpckg
-gruppenmitglieder()
-#> Die Gruppe AU enthaelt die Mitglieder: Silke 
-#>                                        Stephan
-```
 
 
 ## Pakete: Dokumentation  
 
-Ein wichtiger Teil eines Pakets ist die ausreichende Dokumentation (wichtiger) Funktionen. Dokumentationen werden als `.Rd` (LaTeX ähnliches Format) Dateien im Verzeichnis `man/` abgelegt. Das Paket `roxygen2` bietet eine komfortable Möglichkeit aus Funktionskommentare (in einem speziellen Format) `.Rd` Datei zu erzeugen.
+Ein wichtiger Teil eines Pakets ist die ausreichende Dokumentation (wichtiger) Funktionen. Dokumentationen werden als `.Rd` (LaTeX ähnliches Format) Dateien im Verzeichnis `man/` abgelegt. Das Paket `roxygen2` bietet eine komfortable Möglichkeit aus Funktionskommentaren (in einem speziellen Format) eine `.Rd` Datei zu erzeugen.
 
 *Ablauf:*
 
@@ -319,10 +322,10 @@ Alle roxygen Kommentare beginnen mit `#'` und sind unterteilt in verschiedene Ta
 * Beschreibung der Funktion: zweiter Abschnitt des Kommentars (länger als Titel)
 * Details zur Funktion: dritter Abschnitt des Kommentars (länger als die Beschreibung) - optional
 
-In unserem vorherigen Beispiel wurde der Titel auch gleich als Beschreibung (da nicht explizit angegeben) verwendet.
+In unserem Beispiel wurde der Titel auch gleich als Beschreibung (da nicht explizit angegeben) verwendet.
 
 Die drei wichtigsten Tags zum Kommentieren einer Funktion sind: `@param, @examples` und `@return`. 
-Weitere Tags sind auf der Seite [Documenting functions](http://r-pkgs.had.co.nz/man.html#man-functions) beschrieben.
+Weitere Tags sind im Abschnitt [Documenting functions](http://r-pkgs.had.co.nz/man.html#man-functions) des Buchs [R packages](https://r-pkgs.org) beschrieben.
 
 
 Mit den Befehlen `\emph{}, \strong{}`, `\code{}` und `\pkg{}` (Paketname) kann der Text formatiert werden. 
@@ -339,7 +342,7 @@ oder dem Netz
 * `\email{haug@@tum.de}` (`@@` ist nötig, da `@` für die Tags reserviert ist)
 
 
-Für weitere Formatierungen siehe, http://r-pkgs.had.co.nz/man.html#text-formatting
+Weitere Möglichkeiten der Formatierung findest du im Abschnitt [Text formatting](http://r-pkgs.had.co.nz/man.html#text-formatting) des Buch [R packages](https://r-pkgs.org).
 
 
 ## NAMESPACE
@@ -353,7 +356,7 @@ Es ist nicht nur für das Erstellen von Paketen hilfreich das Konzept eines `NAM
 nrow
 #> function (x) 
 #> dim(x)[1L]
-#> <bytecode: 0x7fe5a0da4ac8>
+#> <bytecode: 0x7fa4ad7262c8>
 #> <environment: namespace:base>
 ```
 Diese Funktion ist definiert in Abhängigkeit von `dim()` aus dem `base` Paket.
@@ -366,6 +369,7 @@ dim <- function(x) c(1,1)
 dim(mtcars)
 #> [1] 1 1
 ```
+
 definieren, findet `nrow()` trotzdem die "richtige" Funktion
 
 ```r
@@ -383,11 +387,10 @@ da sie den `NAMESPACE` des `base` Pakets verwendet.
 
 ```r
 search()
-#>  [1] ".GlobalEnv"            "devtools_shims"        "package:meinR4EWSpckg"
-#>  [4] "package:devtools"      "package:usethis"       "package:stats"        
-#>  [7] "package:graphics"      "package:grDevices"     "package:utils"        
-#> [10] "package:datasets"      "package:methods"       "Autoloads"            
-#> [13] "package:base"
+#>  [1] ".GlobalEnv"        "package:devtools"  "package:usethis"  
+#>  [4] "package:stats"     "package:graphics"  "package:grDevices"
+#>  [7] "package:utils"     "package:datasets"  "package:methods"  
+#> [10] "Autoloads"         "package:base"
 ```
 
 
@@ -429,12 +432,12 @@ Muss eine Funktion häufig verwendet werden - und man will nicht dauernd `::` ve
 
 ## Daten einbinden
 
-Daten, die das Paket enthalten sollte, legt man im Verzeichnis `/data` ab. Als Format sollte man `.rda` wählen (ist aber kein Muss). Der einfachste Weg dies zu berücksichtigen ist die Funktion `devtools::use_data()` zu verwenden.
+Daten, die das Paket enthalten sollte, legt man im Verzeichnis `/data` ab. Als Format sollte man `.rda` wählen (ist aber kein Muss). Der einfachste Weg dies zu berücksichtigen ist die Funktion `usethis::use_data()` zu verwenden.
 
 
 ```r
 x <- sample(1:100, 50, replace = TRUE)
-devtools::use_data(x, mtcars)
+usethis::use_data(x, mtcars)
 ```
 
 Dieser Befehl speichert die Objekte `x` und `mtcars` in den Dateien `data/x.rda` und `data/mtcars.rda` ab. Der Dateiname stimmt also mit dem Objektnamen überein.
@@ -460,7 +463,7 @@ Will man in seinem Paket R Funktionen verwenden, die mithilfe von `Rcpp` aus kom
 
 
 ```r
-devtools::use_rcpp()
+usethis::use_rcpp()
 ```
 ausführen. Danach ist das das Verzeichnis `/src` angelegt und `Rcpp` zu den Feldern `LinkingTo` und `Imports` in der `DESCRIPTION` Datei hinzugefügt. Außerdem wird man aufgefordert die roxygen Tags
 
@@ -487,6 +490,52 @@ int malZwei(int x) {
    return x * 2;
 }
 ```
+
+## Git und GitHub/GitLab
+
+Benutze für jedes deiner Pakete (mag es auch noch so klein sein) Git. Beim Anlegen des Projekts (zur Erstellung des Pakets) über RStudio, kann leicht ein lokales Git repository initialisiert werden
+
+<img src="img/package_git.png" width="589" />
+
+Soll zusätzlich ein remote repository verwendet werden, so kann man (im Standardfall) ein neues repository auf GitLab (oder GitHub) anlegen. Es sollte den gleichen Namen bekommen wie das Paket (lokales Git repository). Danach kannst du im Terminal Befehle der Form
+
+```{}
+git remote add origin https://gitlab.lrz.de/vw99xyz/paketName.git
+git push -u origin master
+```
+
+ausführen. 
+
+
+Angenommen es existiert bereits ein remote repository und das Paket soll dort "verwaltet" werden. Dann kannst du einfach dieses repository klonen
+
+```{}
+git clone https://gitlab.lrz.de/vw99xyz/paketName.git
+```
+
+Danach existiert im Verzeichnis, in dem der Befehl ausgeführt wurde, das Unterverzeichnis `paketName`. In R kannst du anschließend den Befehl
+
+
+```r
+devtools::create("paketName")
+```
+
+ausführen (im Verzeichnis, welches das Git repository `paketName` enthält). Danach kannst du die Änderungen speichern über einen commit Befehl
+
+```{}
+git add -A
+git commit -m "paket struktur angelegt"
+```
+
+und pushen
+
+```{}
+git push
+```
+
+
+
+
 
 
 ## Literatur

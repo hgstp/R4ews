@@ -37,7 +37,7 @@ Das Design von R4ews wurde durch die Notwendigkeit motiviert, mehr Ausgewogenhei
 
 ```r
 date()
-#> [1] "Thu Dec 10 12:45:03 2020"
+#> [1] "Thu Dec 17 09:21:06 2020"
 ```
 
 
@@ -67,7 +67,7 @@ Die aktuelle Version dieses Buchs wurde mit
 #>  collate  en_US.UTF-8                 
 #>  ctype    en_US.UTF-8                 
 #>  tz       Europe/Berlin               
-#>  date     2020-12-10
+#>  date     2020-12-17
 ```
 
 erstellt

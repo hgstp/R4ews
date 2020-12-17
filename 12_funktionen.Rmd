@@ -1,0 +1,295 @@
+# Funktionen {#funktionen}
+
+Wie in jeder anderen Programmierumgebung, besteht auch in R die Möglichkeit eigene Funktionen zu definieren. 
+
+Eine der wichtigsten Erkenntnisse dabei ist die Tatsache, dass auch Funktionen Objekte sind. Generell ist in R alles ein Objekt.
+
+Neue Funktionen werden mit der Funktion `function()` erzeugt. 
+
+
+
+## Bestandteile von Funktionen
+
+Alle R Funktionen bestehen aus den drei Teilen:
+
+* `formals()`, Argumente, die den Funktionsaufruf "regeln"
+* `body()`, der eigentliche Code
+* `environment()`, Verweis auf die Funktionseingabe
+
+```{r}
+f <- function(x) x + sin(x)
+formals(f)
+body(f)
+environment(f)
+```
+
+## `body()`
+
+Wie alle Objekte in R, besitzen auch Funktionen Attribute. Ein data frame besitzt z.B. die Attribute `names`, `class` und `row.names`
+
+```{r}
+attributes(iris)
+```
+
+Eine Funktion besitzt hingegen die Attribute
+
+
+```{r,}
+attributes(f)
+```
+
+Den Unterschied zu `body()` sehen wir im folgenden Beispiel.
+
+
+```{r}
+f <- function(x){
+  # Summe von x und sin(x)#
+  x + sin(x)
+}
+body(f)
+attr(f, "srcref")
+```
+
+## "Einfache" Funktionen
+
+Es gibt eine Ausnahme von der obigen Regel, dass Funktionen aus drei Teilen bestehen. Die primitive functions wie `sum(), sin()` oder `exp()` rufen direkt über die Funktion `.Primitive()` C Code auf, enthalten somit keinen R Code und daher sind alle drei Teile gleich `NULL`.
+
+```{r}
+formals(sin)
+body(sin)
+environment(sin)
+```
+
+
+## Jede Operation ist ein Funktionsaufruf
+
+
+
+>    “To understand computations in R, two slogans are helpful:
+>       Everything that exists is an object.
+>       Everything that happens is a function call."
+>    — John Chambers
+
+
+
+Alle Operationen bestehen aus Funktionsaufrufen. Somit auch `+, -, /,:, for, if, while` oder `[]`und `$`. Dies sieht man z.B. an diesem Beispiel
+
+```{r}
+x <- 10 
+y <- 5
+x + y
+`+`(x, y)
+
+```
+
+
+oder auch an diesem Beispielen
+
+```{r}
+for (i in 1:2) print(i)
+`for`(i, 1:2, print(i))
+
+x[3]
+`[`(x, 3)
+
+```
+
+
+Die Verwendung von `  erlaubt den Zugriff auf reservierte Ausdrücke.
+
+
+
+Eine sinnvolle Anwendung dieser Zugriffsmethode liegt in der Kombination mit den apply Funktionen (`apply(), lapply(), sapply, mapply(), tapply()`). Diese wenden eine zu übergebende Funktion auf weitere Inputgrößen wie Listen oder Data Frames an.
+
+```{r, error=TRUE}
+x <- list(1:3, 4:9, 10:12)
+sapply(x, `[`, 2)
+sapply(x, function(x) x[2])
+```
+
+
+## lapply, sapply
+
+`sapply()` ist eine Version von `lapply()`, die - wenn möglich - eine "vereinfachte" Ausgabe liefert.
+
+```{r}
+x <- list(1:3, 4:6, 7:9)
+lapply(x, `+`, 3)
+is.matrix(sapply(x, `+`, 3))
+```
+
+
+## Funktionsargumente
+
+Funktionen besitzen formelle Argumente, denen beim Funktionsaufruf (oder per Default) Werte zugewiesen werden. Beim Aufruf können die Argumente durch ihre Position, den vollen oder teilweisen Namen ausgewählt werden.
+
+```{r, error=TRUE}
+f <- function(abc, bcd, bdc) c(abc, bcd, bdc)
+f(3, 2, 1)
+f(2, 1, abc=3)
+f(2, 1, a=3)
+```
+
+
+Der folgende Aufruf kann aber nicht funktionieren.
+
+```{r, error=TRUE}
+f(3, b=2, 1)
+```
+
+Generell sollte man die zwei, drei wichtigsten Inputgrößen an den Beginn stellen. Alle anderen sollten eher nicht durch die Position ausgewählt werden. Dabei ist der vollständige Namen sicherlich zu bevorzugen.
+
+
+
+Funktionsargumenten können Default-Werte zugeordnet werden. Dabei können Default-Werte auch in Abhängigkeit anderer Argumente definiert werden.
+
+```{r}
+f <- function(a = 1, b = 2) {
+  c(a, b)
+}
+f()
+g <- function(a = 1, b = a * 2) {
+  c(a, b)
+}
+g(a=10)
+```
+
+## Funktionsargumente: Lazy Evaluation
+
+R wertet Funktionsargumente nur aus, wenn diese tatsächlich benützt werden. Dies entspricht der Idee der *Lazy Evaluation*.
+
+```{r}
+f <- function(x) {
+  10
+}
+f(stop("x ist nicht 10"))
+```
+Mit `force()` kann man die Auswertung eines Arguments *erzwingen*.
+```{r, error=TRUE}
+f <- function(x) {
+  force(x)
+  10
+}
+f(stop("x ist nicht 10"))
+
+```
+
+
+
+Benutzt man eine verschachtelte Funktion in Kombination mit `lapply()` oder einer Schleife, so kann die Lazy Evaluation entscheidend sein.
+
+```{r}
+addiere_x <- function(x){
+  function(y) x+y
+}
+addiere_zu_1bis10 <- lapply(1:10, addiere_x)
+addiere_zu_1bis10[[1]](10)
+addiere_zu_1bis10[[5]](10)
+```
+`x` wird beim ersten Aufruf von `addiere_zu_1bis10()` ausgewertet. Bis dahin ist `x` aber bereits von 1 bis 10 "gelaufen" und hat damit den Wert 10. Somit wird stets 10 zum Input addiert.
+
+
+```{r}
+addiere_x <- function(x){
+  force(x)
+  function(y) x+y
+}
+addiere_zu_1bis10 <- lapply(1:10, addiere_x)
+addiere_zu_1bis10[[1]](10)
+addiere_zu_1bis10[[5]](10)
+```
+
+Erzwingt man die Auswertung, so erhält man das gewünschte Ergebnis.
+
+
+Bisher schien die Lazy Evaluation eher nachteilig. Sie kann aber auch Vorteile haben. Die Befehle
+
+```{r}
+x <- NULL
+if (!is.null(x) && x > 0) {
+
+}
+```
+
+erzeugen keinen Fehler, obwohl `NULL>0` keinen zulässigen Input für `if` darstellt. Da `!is.null(x)` bereits `FALSE` liefert, wird die zweite Abfrage nicht mehr ausgewertet.
+
+> Hauptvorteil ist aber die Effizienz. Nur notwendige Ausdrücke werden ausgewertet.
+
+## Funktionsargumente: `...`
+
+Für eine Funktion kann das formale `...` Drei-Punkte Argument verwendet werden. Alle nicht über Position und/oder Name zugeordneten Argumente werden durch `...` aufgenommen. In der Regel werden über `...` Argumente übergeben, die innerhalb der Funktion an andere Funktionen weitergegeben werden.
+
+```{r}
+summe_plus2 <- function(x, ...){
+  x <- x+2
+  sum(x, ...)
+}
+summe_plus2(c(1, 3, 5))
+summe_plus2(c(1, 3, NA), na.rm = TRUE)
+```
+
+
+
+`...` erhöht also offensichtlich die Flexibilität. Ein Nachteil ist, dass falsch geschriebene Argumente keinen Fehler erzeugen und alle Argumente nach `...` voll ausgeschrieben werden müssen.
+
+```{r,error=TRUE}
+sum(1, 2, NA, rm.na = TRUE)
+sum(1, 2, NA, na.rm = TRUE)
+```
+
+
+## Funktionsrückgabe
+
+Wir haben in den Beispielen bereits gesehen wie die Rückgabe funktioniert. Der letzte Ausdruck, der ausgewertet wird, bildet die Rückgabe. 
+
+```{r}
+f <- function(x) {
+  if (x < 10) {
+    0
+  } else {
+    10
+  }
+}
+f(5)
+f(15)
+```
+
+
+Falls bereits zu einem früheren Zeitpunkte eine Rückgabe erfolgen soll (z.B. STOP Kriterium erfüllt) und diese speziell gekennzeichnet werden soll, kann die Funktion `return()` verwendet werden.
+
+
+Funktionen können nur ein Objekt zurückgeben. Soll die Ausgabe einer Funktion aus mehreren Objekten bestehen, so schreibt man diese einfach in eine Liste und gibt die Liste zurück.
+
+
+```{r}
+f <- function(x) {
+  if (x < 10) {
+    n_output <- 0
+    t_output <- "eingabe war kleiner 10"
+  } else {
+    n_output <- 10
+    t_output <- "eingabe war größer oder gleich 10"
+
+  }
+  
+  output <- list(n_output, t_output)
+  return(output) 
+  
+  n_output + 1 # wird berechnet, aber nicht ausgegeben.
+}
+f(5)
+f(15)
+```
+
+
+## mehr zu ...
+
+Wenn ihr mehr zu 
+
+- functions
+- environments
+- functional programming
+- object-oriented programming
+- ...
+
+wissen wollt, dann findet ihr __(fast) alle__ Antworten auf eure Fragen im Buch [Advanced R](https://adv-r.hadley.nz) von Hadley Wickham [-@wickham2015a].

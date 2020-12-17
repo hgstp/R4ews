@@ -61,6 +61,7 @@ graphics-overview
 ggplot2-laden
 idee
 ein-einfacher-scatterplot
+bausteine
 aes
 geoms
 stat-trans
@@ -81,4 +82,16 @@ pakete-dokumentation
 namespace
 daten-einbinden
 c-special-topic
+git-und-githubgitlab
 literatur-1
+funktionen
+bestandteile-von-funktionen
+body
+einfache-funktionen
+jede-operation-ist-ein-funktionsaufruf
+lapply-sapply
+funktionsargumente
+funktionsargumente-lazy-evaluation
+funktionsargumente-...
+funktionsrückgabe
+mehr-zu

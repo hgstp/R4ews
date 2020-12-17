@@ -21,12 +21,12 @@ Wie zuvor auch, laden wir stets das komplette `tidyverse`. Man weiß ja vorher n
 
 ```r
 library(tidyverse)
-#> ── Attaching packages ──────────────────── tidyverse 1.3.0 ──
+#> ── Attaching packages ────────
 #> ✓ ggplot2 3.3.2     ✓ purrr   0.3.4
 #> ✓ tibble  3.0.4     ✓ dplyr   1.0.2
 #> ✓ tidyr   1.1.2     ✓ stringr 1.4.0
 #> ✓ readr   1.4.0     ✓ forcats 0.5.0
-#> ── Conflicts ─────────────────────── tidyverse_conflicts() ──
+#> ── Conflicts ─────────────────
 #> x dplyr::filter() masks stats::filter()
 #> x dplyr::lag()    masks stats::lag()
 ```
@@ -80,9 +80,9 @@ gapminder %>%
 In diesem einfachen Beispiel haben wir bereits gesehen, dass `ggplot()` über den Pipe-Operator verknüpft werden kann.
 
 
+# Bausteine
 
-
-#  Aesthetics {#aes}
+##  Aesthetics {#aes}
 
 Mit der Funktion `aes()` lässt sich das **Aussehen** der Grafik regeln (nicht der Inhalt). Wir können z.B.
 
@@ -157,7 +157,7 @@ gapminder %>%
 
 
 
-# Geoms {#geoms}
+## Geoms {#geoms}
 
 Mit den `geom_xx()` Funktionen stellen wir die Daten als geometrische Formen in einer Grafik dar. Jede `ggplot2` Grafik benötigt daher mindestens ein `geom`. Beispiele sind
 
@@ -266,7 +266,7 @@ gapminder %>%
 <img src="10_ggplot2_intro_files/figure-html/unnamed-chunk-9-1.png" width="672" />
 
 
-# Statistische Transformationen {#stat-trans}
+## Statistische Transformationen {#stat-trans}
 
 Jede `geom_xx()` Funktion besitzt eine Default Statistik, die berechnet wird.
 
@@ -362,7 +362,7 @@ ggplot(gapminder, aes(x = continent, y = ..prop..)) +
 
 
 
-# scales
+## scales
 
 
 Scales steuern die Zuordnung von Daten zu aesthetics. Sie nehmen deine Daten und bestimmen damit Größe, Farbe, Position oder Form von Objekten. Sie erlauben dir auch die Achsen und die Legend nach deinen Vorstellungen anzupassen. Du kannst sicher mit `ggplot2` Grafiken erstellen, ohne zu wissen, wie `scales` funktionieren, aber wenn du `scales` verstehst und lernst, wie du sie einstellen kannst, wirst du viel mehr Kontrolle über deine Grafiken bekommen.
@@ -463,7 +463,7 @@ Für weitere Optionen sei hier auf die [online Version](https://ggplot2-book.org
 
 
 
-# facets
+## facets
 
 Datensätze lassen sich oftmals bzgl. vorhandener Variablen gruppieren. Dann will man Zusammenhänge weiterer Variablen innerhalb dieser Gruppen darstellen. Entsteht die Gruppierung aufgrund einer Variable, so kannst du mit `facet_wrap()` arbeiten
 
@@ -511,7 +511,7 @@ gapminder %>%
 
 Für Ozeanien erhalten wir so z.B. eine Unterteilung in Australien (`TRUE`) und Neuseeland (`FALSE`).
 
-# themes
+## themes
 
 Abschließend wollen wir noch über verschiedene `themes` sprechen. Über `themes` kann man das Aussehen der nicht datenbezogenen Elemente einer Grafik verändern, wie z.B.
 
