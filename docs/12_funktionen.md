@@ -530,8 +530,6 @@ f <- function(x) {
   
   output <- list(n_output, t_output)
   return(output) 
-  
-  n_output + 1 # wird berechnet, aber nicht ausgegeben.
 }
 f(5)
 ```
