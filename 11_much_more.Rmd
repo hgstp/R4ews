@@ -158,7 +158,7 @@ Pakete in `Imports` werden beim Installieren des eigenen Pakets ebenfalls instal
 ```{r, eval=FALSE}
 usethis::use_package("dplyr")
 ```
-kann z.B. das Paket `dplyr` dem Punkt `Imports` hinzugefügt werden. `devtools::use_package(type = "Suggests")` fügt `Suggests` weitere Pakete hinzu.
+kann z.B. das Paket `dplyr` dem Punkt `Imports` hinzugefügt werden. `usethis::use_package(type = "Suggests")` fügt `Suggests` weitere Pakete hinzu.
 
 ### Name, Titel, Beschreibung
 

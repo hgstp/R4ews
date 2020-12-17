@@ -163,7 +163,7 @@ Pakete in `Imports` werden beim Installieren des eigenen Pakets ebenfalls instal
 ```r
 usethis::use_package("dplyr")
 ```
-kann z.B. das Paket `dplyr` dem Punkt `Imports` hinzugefügt werden. `devtools::use_package(type = "Suggests")` fügt `Suggests` weitere Pakete hinzu.
+kann z.B. das Paket `dplyr` dem Punkt `Imports` hinzugefügt werden. `usethis::use_package(type = "Suggests")` fügt `Suggests` weitere Pakete hinzu.
 
 ### Name, Titel, Beschreibung
 
@@ -356,7 +356,7 @@ Es ist nicht nur für das Erstellen von Paketen hilfreich das Konzept eines `NAM
 nrow
 #> function (x) 
 #> dim(x)[1L]
-#> <bytecode: 0x7fa4ad7262c8>
+#> <bytecode: 0x7f93639778c8>
 #> <environment: namespace:base>
 ```
 Diese Funktion ist definiert in Abhängigkeit von `dim()` aus dem `base` Paket.
