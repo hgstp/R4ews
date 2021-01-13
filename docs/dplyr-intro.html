@@ -11,6 +11,7 @@
 <script src="libs/bootstrap-4.5.3/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.3.9000/tabs.js"></script><script src="libs/bs3compat-0.2.3.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="libs/font-awesome-5.1.0/css/all.css" rel="stylesheet">
 <link href="libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet">
+<script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <script src="anchor-links.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-68219208-1"></script><script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -51,13 +52,14 @@
 <li><a class="active" href="dplyr-intro.html"><span class="header-section-number">6</span> Einführung in dplyr</a></li>
 <li><a class="" href="dplyr-single.html"><span class="header-section-number">7</span> Mehr zu dplyr</a></li>
 <li><a class="" href="import-export.html"><span class="header-section-number">8</span> Daten I/O</a></li>
+<li><a class="" href="tidy.html"><span class="header-section-number">9</span> tidy ?</a></li>
 <li class="book-part">ggplot2 Intro</li>
-<li><a class="" href="graphics-overview.html"><span class="header-section-number">9</span> Einführung</a></li>
-<li><a class="" href="bausteine.html"><span class="header-section-number">10</span> Bausteine</a></li>
+<li><a class="" href="graphics-overview.html"><span class="header-section-number">10</span> Einführung</a></li>
+<li><a class="" href="bausteine.html"><span class="header-section-number">11</span> Bausteine</a></li>
 <li class="book-part">Noch viel mehr möglich</li>
-<li><a class="" href="packages.html"><span class="header-section-number">11</span> Pakete</a></li>
-<li><a class="" href="funktionen.html"><span class="header-section-number">12</span> Funktionen</a></li>
-<li><a class="" href="literatur-2.html">Literatur</a></li>
+<li><a class="" href="packages.html"><span class="header-section-number">12</span> Pakete</a></li>
+<li><a class="" href="funktionen.html"><span class="header-section-number">13</span> Funktionen</a></li>
+<li><a class="" href="literatur-3.html">Literatur</a></li>
 </ul>
 
         <div class="book-extra">
@@ -74,7 +76,7 @@
 <span class="header-section-number">6.1</span> Einstieg<a class="anchor" aria-label="anchor" href="#einstieg"><i class="fas fa-link"></i></a>
 </h2>
 <p><a href="https://dplyr.tidyverse.org">dplyr</a> ist ein Paket zur Datenmanipulation, entwickelt von Hadley Wickham und Romain Francois. In erster Linie will es schnell und ausdrucksstark sein. Es wird als Teil des “Metapakets” <a href="https://tidyverse.tidyverse.org">tidyverse</a> installiert und gehört als Kernpaket zu den Paketen, die über <code><a href="http://tidyverse.tidyverse.org">library(tidyverse)</a></code> geladen werden.</p>
-<p>Die Wurzeln von <code>dplyr</code> liegen in einem früheren Paket mit dem Namen <a href="http://plyr.had.co.nz">plyr</a>, das zum Ziel hat die <a href="https://www.jstatsoft.org/article/view/v040i01">“split-apply-combine”-Strategie der Datenanalyse</a> <span class="citation">(Wickham <a href="literatur-2.html#ref-wickham2011a" role="doc-biblioref">2011</a>)</span> umzusetzen. Wo <code>plyr</code> noch einen vielfältigen Satz von Ein- und Ausgaben abdeckt (z.B. Arrays, data frames, Listen), hat <code>dplyr</code> einen klaren Fokus auf data frames oder, im Tidyverse, <strong>tibbles</strong>.</p>
+<p>Die Wurzeln von <code>dplyr</code> liegen in einem früheren Paket mit dem Namen <a href="http://plyr.had.co.nz">plyr</a>, das zum Ziel hat die <a href="https://www.jstatsoft.org/article/view/v040i01">“split-apply-combine”-Strategie der Datenanalyse</a> <span class="citation">(Wickham <a href="literatur-3.html#ref-wickham2011a" role="doc-biblioref">2011</a>)</span> umzusetzen. Wo <code>plyr</code> noch einen vielfältigen Satz von Ein- und Ausgaben abdeckt (z.B. Arrays, data frames, Listen), hat <code>dplyr</code> einen klaren Fokus auf data frames oder, im Tidyverse, <strong>tibbles</strong>.</p>
 <p><code>dplyr</code> bietet schnelle Alternativen zu den R Standardfunktionen: <code><a href="https://rdrr.io/r/base/subset.html">subset()</a></code>, <code><a href="https://rdrr.io/r/base/apply.html">apply()</a></code>, <code>[sl]apply()</code>, <code><a href="https://rdrr.io/r/base/tapply.html">tapply()</a></code>, <code><a href="https://rdrr.io/r/stats/aggregate.html">aggregate()</a></code>, <code><a href="https://rdrr.io/r/base/split.html">split()</a></code>, <code><a href="https://rdrr.io/r/base/do.call.html">do.call()</a></code>, <code><a href="https://rdrr.io/r/base/with.html">with()</a></code>, <code><a href="https://rdrr.io/r/base/with.html">within()</a></code>, und mehr. Ferner kann man <code>dplyr</code> nutzen um über Zeilen oder Gruppen von Zeilen zu iterieren, was eine schnelle Alternative zur Nutzung von <code>for</code> Schleifen darstellt.</p>
 <div id="wie-immer-laden-wir-zu-beginn-tidyverse" class="section level3">
 <h3>
@@ -83,12 +85,12 @@
 <p>Der Fokus liegt in diesem Abschnitt auf <code>dplyr</code>. Aber da wir immer wieder auch Funktionen aus anderen “tidyverse-Paketen” nutzen, laden wir stets <code>tidyverse</code>.</p>
 <div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
-<span class="co">#&gt; ── Attaching packages ─────────────── tidyverse 1.3.0 ──</span>
-<span class="co">#&gt; ✓ ggplot2 3.3.2     ✓ purrr   0.3.4</span>
+<span class="co">#&gt; ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──</span>
+<span class="co">#&gt; ✓ ggplot2 3.3.3     ✓ purrr   0.3.4</span>
 <span class="co">#&gt; ✓ tibble  3.0.4     ✓ dplyr   1.0.2</span>
 <span class="co">#&gt; ✓ tidyr   1.1.2     ✓ stringr 1.4.0</span>
 <span class="co">#&gt; ✓ readr   1.4.0     ✓ forcats 0.5.0</span>
-<span class="co">#&gt; ── Conflicts ────────────────── tidyverse_conflicts() ──</span>
+<span class="co">#&gt; ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──</span>
 <span class="co">#&gt; x dplyr::filter() masks stats::filter()</span>
 <span class="co">#&gt; x dplyr::lag()    masks stats::lag()</span></code></pre></div>
 <p>Zusätzlich wollen wir auch noch <a href="https://github.com/jennybc/gapminder">gapminder</a> laden.</p>
@@ -264,7 +266,7 @@
 <span class="header-section-number">6.6</span> Pure, predictable, pipeable<a class="anchor" aria-label="anchor" href="#pure-predictable-pipeable"><i class="fas fa-link"></i></a>
 </h2>
 <p>Bisher haben wir nur etwas an der Oberfläche von <code>dplyr</code> gekratzt, trotzdem möchten wir auf ein Schlüsselprinzipien hinweisen, die du vielleicht langsam zu schätzen lernen wirst.</p>
-<p>Die Verben (Hauptfunktionen) von dplyr, wie z.B. <code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code> und <code>select()</code>, sind <a href="https://en.wikipedia.org/wiki/Pure_function">pure functions</a>. Dazu schreibt Hadley Wickham <a href="http://adv-r.had.co.nz/Functions.html">Functions chapter</a> in seinem <a href="http://adv-r.had.co.nz">Advanced R</a> Buch <span class="citation">(<a href="literatur-2.html#ref-wickham2015a" role="doc-biblioref">2015</a><a href="literatur-2.html#ref-wickham2015a" role="doc-biblioref">a</a>)</span>:</p>
+<p>Die Verben (Hauptfunktionen) von dplyr, wie z.B. <code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code> und <code>select()</code>, sind <a href="https://en.wikipedia.org/wiki/Pure_function">pure functions</a>. Dazu schreibt Hadley Wickham <a href="http://adv-r.had.co.nz/Functions.html">Functions chapter</a> in seinem <a href="http://adv-r.had.co.nz">Advanced R</a> Buch <span class="citation">(<a href="literatur-3.html#ref-wickham2015a" role="doc-biblioref">2015</a><a href="literatur-3.html#ref-wickham2015a" role="doc-biblioref">a</a>)</span>:</p>
 <blockquote>
 <p>The functions that are the easiest to understand and reason about are pure functions: functions that always map the same input to the same output and have no other impact on the workspace. In other words, pure functions have no side effects: they don’t affect the state of the world in any way apart from the value they return.</p>
 </blockquote>

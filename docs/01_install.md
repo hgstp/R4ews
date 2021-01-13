@@ -60,7 +60,7 @@ Mit der Option `dependencies = TRUE` achten wir darauf, dass alle für `tidyvers
 Ein guter Startpunkt für verschiedene R Themen sind die [RStudio primers](https://rstudio.cloud/learn/primers).
 
 
-<img src="assets/rstudio_primers.png" width="100%" />
+<img src="img/rstudio_primers.png" width="100%" />
 
 
 Im Laufe des Kurses werden sie die Primers

@@ -10,7 +10,6 @@ bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
 description: "R4ews: R Ergänzung zum Modul MA009."
-#favicon: assets/favicon.ico
 always_allow_html: true
 
 ---
@@ -37,7 +36,7 @@ Das Design von R4ews wurde durch die Notwendigkeit motiviert, mehr Ausgewogenhei
 
 ```r
 date()
-#> [1] "Thu Dec 17 11:56:39 2020"
+#> [1] "Wed Jan 13 22:06:52 2021"
 ```
 
 
@@ -67,7 +66,7 @@ Die aktuelle Version dieses Buchs wurde mit
 #>  collate  en_US.UTF-8                 
 #>  ctype    en_US.UTF-8                 
 #>  tz       Europe/Berlin               
-#>  date     2020-12-17
+#>  date     2021-01-13
 ```
 
 erstellt

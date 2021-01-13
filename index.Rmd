@@ -10,7 +10,6 @@ bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
 description: "R4ews: R Ergänzung zum Modul MA009."
-#favicon: assets/favicon.ico
 always_allow_html: true
 
 ---

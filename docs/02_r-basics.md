@@ -130,7 +130,7 @@ Nicht alle Funktionen haben (oder erfordern) Argumente:
 
 ```r
 date()
-#> [1] "Thu Dec 17 11:56:47 2020"
+#> [1] "Wed Jan 13 22:06:57 2021"
 ```
 
 Schau dir nun deinen Workspace an - im oberen rechten Fensterbereich (bei Standardeinstellung) siehst du unter Environment den Inhalt deines Workspaces. Der Workspace ist der Ort, an dem sich benutzerdefinierte Objekte ansammeln. Eine Liste dieser Objekte kannst du auch mit diesen Befehlen erhalten:
@@ -211,7 +211,7 @@ Nun starte erneut RStudio. In der Konsole siehst du einen Befehl, der ungefähr 
 
 und angibt, dass dein gespeicherter Workspace wiederhergestellt wurde. Unter Environment solltest du die gleichen Objekte wie zuvor sehen. History enthält die gespeicherten Befehle aus der letzten Sitzung. Aber diese Art, analytische Arbeit zu beginnen und zu beenden, würde so nicht lange gut gehen. Daher fangen wir gleich mal damit an die automatische Nachfrage nach dem Speichern des Workspaces abzuwählen. Öffne dazu die Global Options (unter Tools)
 
-<img src="assets/global_options.png" width="324" />
+<img src="img/global_options.png" width="324" />
 
 und setze `Save workspace to .RData on exit` auf `Never`. Nun wirst du *nie mehr* gefragt ob du deinen Workspace speichern willst. Sehr wohl wirst du aber weiterhin gefragt ob du ungesicherte Änderungen in deinem R Skript speichern willst, sobald du RStudio beenden willst.
 
@@ -240,12 +240,12 @@ Alle zu einem Projekt gehörenden Dateien - Eingabedaten, R Skripte, Analyseerge
 
 Lass uns ein Projekt für den Kurs anlegen. Dazu wählen wir oben rechts im RStudio Fenster *Project: (None) -> New Project*
 
-<img src="assets/project_1.png" width="400" />
+<img src="img/project_1.png" width="400" />
 
 
 Danach wählen wir *New Directory -> New Project* und geben abschließend einen passenden Verzeichnisnamen ein (dabei beachten wir den Speicherort des neuen Verzeichnisses)
 
-<img src="assets/project_2.png" width="33%" /><img src="assets/project_3.png" width="33%" /><img src="assets/project_4.png" width="33%" />
+<img src="img/project_2.png" width="33%" /><img src="img/project_3.png" width="33%" /><img src="img/project_4.png" width="33%" />
 
 
 Wir nehmen nun an, dass du ein RStudio Projekt angelegt und dieses auch geöffnet hast. Dann benötigen wir als Nächstes ein wenig R Code. Dazu tippen wir den unten stehenden Code (ausnahmsweise) in die Konsole
@@ -259,7 +259,7 @@ sig_sq <- 0.5
 x <- runif(40)
 y <- a + b * x + rnorm(40, sd = sqrt(sig_sq))
 (x_n <- mean(x))
-#> [1] 0.492
+#> [1] 0.406
 write(x_n, "mittelwert_x.txt")
 plot(x, y)
 abline(a, b, col = "purple")

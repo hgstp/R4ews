@@ -57,6 +57,17 @@ get-ausgabe
 handling-json-data
 apis-und-abfrageparameter
 weiteres-material
+tidy
+lord-of-the-rings
+tidy-lord-of-the-rings-data
+vorteile-von-tidy-data
+wie-viele-wörter-haben-die-männlichen-hobbits-insgesamt-gesprochen
+dominiert-eine-bestimmte-kategorie-einen-film-unterscheidet-sich-die-dominierende-kategorie-in-den-filmen
+untidy-lord-of-the-rings-data
+und-nun-alles-zusammen
+nun-können-wir-aufräumen
+und-jetzt-noch-ein-bisschen-schmutzig-machen
+literatur-1
 graphics-overview
 ggplot2-laden
 idee
@@ -83,7 +94,7 @@ namespace
 daten-einbinden
 c-special-topic
 git-und-githubgitlab
-literatur-1
+literatur-2
 funktionen
 bestandteile-von-funktionen
 body

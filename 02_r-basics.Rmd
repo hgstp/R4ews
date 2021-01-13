@@ -183,7 +183,7 @@ Nun starte erneut RStudio. In der Konsole siehst du einen Befehl, der ungefähr 
 und angibt, dass dein gespeicherter Workspace wiederhergestellt wurde. Unter Environment solltest du die gleichen Objekte wie zuvor sehen. History enthält die gespeicherten Befehle aus der letzten Sitzung. Aber diese Art, analytische Arbeit zu beginnen und zu beenden, würde so nicht lange gut gehen. Daher fangen wir gleich mal damit an die automatische Nachfrage nach dem Speichern des Workspaces abzuwählen. Öffne dazu die Global Options (unter Tools)
 
 ```{r, echo=FALSE}
-knitr::include_graphics("assets/global_options.png")
+knitr::include_graphics("img/global_options.png")
 ```
 
 und setze `Save workspace to .RData on exit` auf `Never`. Nun wirst du *nie mehr* gefragt ob du deinen Workspace speichern willst. Sehr wohl wirst du aber weiterhin gefragt ob du ungesicherte Änderungen in deinem R Skript speichern willst, sobald du RStudio beenden willst.
@@ -213,16 +213,16 @@ Alle zu einem Projekt gehörenden Dateien - Eingabedaten, R Skripte, Analyseerge
 Lass uns ein Projekt für den Kurs anlegen. Dazu wählen wir oben rechts im RStudio Fenster *Project: (None) -> New Project*
 
 ```{r, echo=FALSE}
-knitr::include_graphics("assets/project_1.png")
+knitr::include_graphics("img/project_1.png")
 ```
 
 
 Danach wählen wir *New Directory -> New Project* und geben abschließend einen passenden Verzeichnisnamen ein (dabei beachten wir den Speicherort des neuen Verzeichnisses)
 
 ```{r, echo=FALSE, fig.show='hold', fig.align='default', out.width="33%"}
-knitr::include_graphics("assets/project_2.png")
-knitr::include_graphics("assets/project_3.png")
-knitr::include_graphics("assets/project_4.png")
+knitr::include_graphics("img/project_2.png")
+knitr::include_graphics("img/project_3.png")
+knitr::include_graphics("img/project_4.png")
 ```
 
 

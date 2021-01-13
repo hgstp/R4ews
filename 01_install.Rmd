@@ -62,7 +62,7 @@ Ein guter Startpunkt für verschiedene R Themen sind die [RStudio primers](https
 
 
 ```{r, echo=FALSE, out.width="100%"}
-knitr::include_graphics("assets/rstudio_primers.png")
+knitr::include_graphics("img/rstudio_primers.png")
 ```
 
 
