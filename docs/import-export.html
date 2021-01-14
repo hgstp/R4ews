@@ -59,6 +59,7 @@
 <li class="book-part">Noch viel mehr möglich</li>
 <li><a class="" href="packages.html"><span class="header-section-number">12</span> Pakete</a></li>
 <li><a class="" href="funktionen.html"><span class="header-section-number">13</span> Funktionen</a></li>
+<li><a class="" href="envscop.html"><span class="header-section-number">14</span> Environments und Scoping</a></li>
 <li><a class="" href="literatur-3.html">Literatur</a></li>
 </ul>
 
@@ -262,7 +263,7 @@ Argentina,Americas,75.32</code></pre>
 <div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">jdata</span>
 <span class="co">#&gt; Response [http://api.open-notify.org/astros.json]</span>
-<span class="co">#&gt;   Date: 2021-01-13 21:07</span>
+<span class="co">#&gt;   Date: 2021-01-14 08:31</span>
 <span class="co">#&gt;   Status: 200</span>
 <span class="co">#&gt;   Content-Type: application/json</span>
 <span class="co">#&gt;   Size: 356 B</span></code></pre></div>
@@ -309,7 +310,7 @@ Argentina,Americas,75.32</code></pre>
 <span class="co">#&gt; 5   ISS        Victor Glover</span>
 <span class="co">#&gt; 6   ISS       Shannon Walker</span>
 <span class="co">#&gt; 7   ISS       Soichi Noguchi</span></code></pre></div>
-<p>Also, da haben wir unsere Antwort: Zum Zeitpunkt des letzten Updates Wed Jan 13 22:07:23 2021 von R4ews befanden sich 7 Personen im Weltraum. Aber wenn du alles selbst ausprobierst, könnten es auch schon wieder andere Namen und eine andere Anzahl sein. Das ist einer der Vorteile von APIs - im Gegensatz zu herunterladbaren Datensätzen werden sie im Allgemeinen in Echtzeit oder nahezu in Echtzeit aktualisiert, so dass sie eine großartige Möglichkeit darstellen, Zugang zu sehr aktuellen Daten zu erhalten.</p>
+<p>Also, da haben wir unsere Antwort: Zum Zeitpunkt des letzten Updates Thu Jan 14 09:31:40 2021 von R4ews befanden sich 7 Personen im Weltraum. Aber wenn du alles selbst ausprobierst, könnten es auch schon wieder andere Namen und eine andere Anzahl sein. Das ist einer der Vorteile von APIs - im Gegensatz zu herunterladbaren Datensätzen werden sie im Allgemeinen in Echtzeit oder nahezu in Echtzeit aktualisiert, so dass sie eine großartige Möglichkeit darstellen, Zugang zu sehr aktuellen Daten zu erhalten.</p>
 <p>In diesem Beispiel haben wir einen sehr unkomplizierten API-Workflow durchlaufen. Die meisten APIs erfordern, dass Sie demselben allgemeinen Muster folgen, aber dabei können sie durchaus komplexer sein.</p>
 <p>In unserem Beispiel war es ausreichen nur die URL anzugeben. Aber einige APIs verlangen durchaus mehr Informationen vom Benutzer. Im letzten Teil dieser Einführung gehen wir darauf ein, wie du der API mit deiner Anfrage zusätzliche Informationen zur Verfügung stellen kannst.</p>
 </div>
@@ -329,17 +330,17 @@ Argentina,Americas,75.32</code></pre>
 <code class="sourceCode R"><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html">fromJSON</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rawConversion.html">rawToChar</a></span><span class="op">(</span><span class="va">jdata</span><span class="op">$</span><span class="va">content</span><span class="op">)</span><span class="op">)</span>
 <span class="va">data</span><span class="op">$</span><span class="va">response</span>
 <span class="co">#&gt;   duration   risetime</span>
-<span class="co">#&gt; 1      656 1610573799</span>
-<span class="co">#&gt; 2      649 1610579626</span>
-<span class="co">#&gt; 3      656 1610585445</span>
-<span class="co">#&gt; 4      616 1610591259</span>
-<span class="co">#&gt; 5      299 1610597166</span></code></pre></div>
+<span class="co">#&gt; 1      575 1610651596</span>
+<span class="co">#&gt; 2      655 1610657337</span>
+<span class="co">#&gt; 3      650 1610663157</span>
+<span class="co">#&gt; 4      654 1610668981</span>
+<span class="co">#&gt; 5      638 1610674792</span></code></pre></div>
 <p>Diese API gibt uns Zeiten in Form von <a href="https://de.wikipedia.org/wiki/Unixzeit">Unixzeit</a> zurück. Unixzeit ist die Zeitspanne, die seit dem 1. Januar 1970 vergangen ist. Mithilfe der Funktion <code>as_datetime()</code> aus dem <a href="https://lubridate.tidyverse.org">lubridate</a> Paket können wir die Unixzeit aber leicht umrechnen</p>
 <div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">lubridate</span><span class="fu">::</span><span class="fu"><a href="http://lubridate.tidyverse.org/reference/as_date.html">as_datetime</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">response</span><span class="op">$</span><span class="va">risetime</span><span class="op">)</span>
-<span class="co">#&gt; [1] "2021-01-13 21:36:39 UTC" "2021-01-13 23:13:46 UTC"</span>
-<span class="co">#&gt; [3] "2021-01-14 00:50:45 UTC" "2021-01-14 02:27:39 UTC"</span>
-<span class="co">#&gt; [5] "2021-01-14 04:06:06 UTC"</span></code></pre></div>
+<span class="co">#&gt; [1] "2021-01-14 19:13:16 UTC" "2021-01-14 20:48:57 UTC"</span>
+<span class="co">#&gt; [3] "2021-01-14 22:25:57 UTC" "2021-01-15 00:03:01 UTC"</span>
+<span class="co">#&gt; [5] "2021-01-15 01:39:52 UTC"</span></code></pre></div>
 <p>Wir haben hier wirklich nur die Basics in Bezug auf APIs eingeführt. Aber hoffentlich hat dir diese Einführung trotzdem das Vertrauen gegeben, sich mit einigen komplexeren und leistungsfähigeren APIs auseinanderzusetzen, und trägt dadurch dazu bei, eine ganz neue Welt von Daten zu erschließen, die du erforschen kannst!</p>
 </div>
 </div>

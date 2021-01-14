@@ -106,3 +106,9 @@ funktionsargumente-lazy-evaluation
 funktionsargumente-...
 funktionsrückgabe
 mehr-zu
+envscop
+zuordnungen
+environments
+scoping-rules
+static-scoping
+anwendungsbeispiel

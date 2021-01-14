@@ -6,35 +6,38 @@
 library(tidyverse)
 
 
-lotr_dat <- read_tsv("https://raw.githubusercontent.com/jennybc/lotr/master/lotr_clean.tsv", col_types = cols(
-  Film = col_character(),
-  Chapter = col_character(),
-  Character = col_character(),
-  Race = col_character(),
-  Words = col_integer()
-))
+#lotr_dat <- read_tsv("https://raw.githubusercontent.com/jennybc/lotr/master/lotr_clean.tsv", col_types = cols(
+ # Film = col_character(),
+#  Chapter = col_character(),
+#  Character = col_character(),
+#  Race = col_character(),
+#  Words = col_integer()
+#))
 
-females <- c("Galadriel", "Arwen", "Lobelia Sackville-Baggins", "Rosie",
-             "Mrs. Bracegirdle", "Eowyn", "Freda", "Rohan Maiden")
-lotr_dat <-
-  mutate(lotr_dat,
-         Gender = ifelse(Character %in% females, "Female", "Male"))
+#females <- c("Galadriel", "Arwen", "Lobelia Sackville-Baggins", "Rosie",
+ #            "Mrs. Bracegirdle", "Eowyn", "Freda", "Rohan Maiden")
+#lotr_dat <-
+#  mutate(lotr_dat,
+#         Gender = ifelse(Character %in% females, "Female", "Male"))
 
-(lotr_tidy <- lotr_dat %>%
-    dplyr::filter(Race %in% c("Elf", "Hobbit", "Man")) %>%
-    group_by(Film, Gender, Race) %>%
-    summarize(Words = sum(Words)))
-(all_combns <- lotr_tidy %>% 
-    select(-Words) %>% 
-    map(unique) %>% 
-    lift_dl(crossing)())
-lotr_tidy <- left_join(all_combns, lotr_tidy) %>% 
-  replace_na(list(Words = 0)) %>% 
-  mutate(Film = factor(Film, levels = c("The Fellowship Of The Ring",
-                                        "The Two Towers",
-                                        "The Return Of The King")),
-         Words = as.integer(Words)) %>% 
-  arrange(Film, Race, Gender)
+#(lotr_tidy <- lotr_dat %>%
+#    dplyr::filter(Race %in% c("Elf", "Hobbit", "Man")) %>%
+#    group_by(Film, Gender, Race) %>%
+#    summarize(Words = sum(Words)))
+#(all_combns <- lotr_tidy %>% 
+#    select(-Words) %>% 
+#    map(unique) %>% 
+#    lift_dl(crossing)())
+#lotr_tidy <- left_join(all_combns, lotr_tidy) %>% 
+#  replace_na(list(Words = 0)) %>% 
+#  mutate(Film = factor(Film, levels = c("The Fellowship Of The Ring",
+ #                                       "The Two Towers",
+#                                        "The Return Of The King")),
+#         Words = as.integer(Words)) %>% 
+#  arrange(Film, Race, Gender)
+
+lotr_tidy <- readr::read_csv("data/lotr_tidy.csv")
+
 ```
 
 ```{r make-and-write-untidy-films, echo = FALSE}

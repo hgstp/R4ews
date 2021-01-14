@@ -59,6 +59,7 @@
 <li class="book-part">Noch viel mehr möglich</li>
 <li><a class="" href="packages.html"><span class="header-section-number">12</span> Pakete</a></li>
 <li><a class="" href="funktionen.html"><span class="header-section-number">13</span> Funktionen</a></li>
+<li><a class="" href="envscop.html"><span class="header-section-number">14</span> Environments und Scoping</a></li>
 <li><a class="" href="literatur-3.html">Literatur</a></li>
 </ul>
 
@@ -279,10 +280,10 @@ Man
 Film
 </th>
 <th style="text-align:left;">
-Gender
+Race
 </th>
 <th style="text-align:left;">
-Race
+Gender
 </th>
 <th style="text-align:right;">
 Words
@@ -294,10 +295,10 @@ Words
 The Fellowship Of The Ring
 </td>
 <td style="text-align:left;">
-Female
+Elf
 </td>
 <td style="text-align:left;">
-Elf
+Female
 </td>
 <td style="text-align:right;">
 1229
@@ -308,10 +309,10 @@ Elf
 The Fellowship Of The Ring
 </td>
 <td style="text-align:left;">
-Male
+Elf
 </td>
 <td style="text-align:left;">
-Elf
+Male
 </td>
 <td style="text-align:right;">
 971
@@ -322,10 +323,10 @@ Elf
 The Fellowship Of The Ring
 </td>
 <td style="text-align:left;">
-Female
+Hobbit
 </td>
 <td style="text-align:left;">
-Hobbit
+Female
 </td>
 <td style="text-align:right;">
 14
@@ -336,10 +337,10 @@ Hobbit
 The Fellowship Of The Ring
 </td>
 <td style="text-align:left;">
-Male
+Hobbit
 </td>
 <td style="text-align:left;">
-Hobbit
+Male
 </td>
 <td style="text-align:right;">
 3644
@@ -350,10 +351,10 @@ Hobbit
 The Fellowship Of The Ring
 </td>
 <td style="text-align:left;">
-Female
+Man
 </td>
 <td style="text-align:left;">
-Man
+Female
 </td>
 <td style="text-align:right;">
 0
@@ -364,10 +365,10 @@ Man
 The Fellowship Of The Ring
 </td>
 <td style="text-align:left;">
-Male
+Man
 </td>
 <td style="text-align:left;">
-Man
+Male
 </td>
 <td style="text-align:right;">
 1995
@@ -378,10 +379,10 @@ Man
 The Two Towers
 </td>
 <td style="text-align:left;">
-Female
+Elf
 </td>
 <td style="text-align:left;">
-Elf
+Female
 </td>
 <td style="text-align:right;">
 331
@@ -392,10 +393,10 @@ Elf
 The Two Towers
 </td>
 <td style="text-align:left;">
-Male
+Elf
 </td>
 <td style="text-align:left;">
-Elf
+Male
 </td>
 <td style="text-align:right;">
 513
@@ -406,10 +407,10 @@ Elf
 The Two Towers
 </td>
 <td style="text-align:left;">
-Female
+Hobbit
 </td>
 <td style="text-align:left;">
-Hobbit
+Female
 </td>
 <td style="text-align:right;">
 0
@@ -420,10 +421,10 @@ Hobbit
 The Two Towers
 </td>
 <td style="text-align:left;">
-Male
+Hobbit
 </td>
 <td style="text-align:left;">
-Hobbit
+Male
 </td>
 <td style="text-align:right;">
 2463
@@ -434,10 +435,10 @@ Hobbit
 The Two Towers
 </td>
 <td style="text-align:left;">
-Female
+Man
 </td>
 <td style="text-align:left;">
-Man
+Female
 </td>
 <td style="text-align:right;">
 401
@@ -448,10 +449,10 @@ Man
 The Two Towers
 </td>
 <td style="text-align:left;">
-Male
+Man
 </td>
 <td style="text-align:left;">
-Man
+Male
 </td>
 <td style="text-align:right;">
 3589
@@ -462,10 +463,10 @@ Man
 The Return Of The King
 </td>
 <td style="text-align:left;">
-Female
+Elf
 </td>
 <td style="text-align:left;">
-Elf
+Female
 </td>
 <td style="text-align:right;">
 183
@@ -476,10 +477,10 @@ Elf
 The Return Of The King
 </td>
 <td style="text-align:left;">
-Male
+Elf
 </td>
 <td style="text-align:left;">
-Elf
+Male
 </td>
 <td style="text-align:right;">
 510
@@ -490,10 +491,10 @@ Elf
 The Return Of The King
 </td>
 <td style="text-align:left;">
-Female
+Hobbit
 </td>
 <td style="text-align:left;">
-Hobbit
+Female
 </td>
 <td style="text-align:right;">
 2
@@ -504,10 +505,10 @@ Hobbit
 The Return Of The King
 </td>
 <td style="text-align:left;">
-Male
+Hobbit
 </td>
 <td style="text-align:left;">
-Hobbit
+Male
 </td>
 <td style="text-align:right;">
 2673
@@ -518,10 +519,10 @@ Hobbit
 The Return Of The King
 </td>
 <td style="text-align:left;">
-Female
+Man
 </td>
 <td style="text-align:left;">
-Man
+Female
 </td>
 <td style="text-align:right;">
 268
@@ -532,10 +533,10 @@ Man
 The Return Of The King
 </td>
 <td style="text-align:left;">
-Male
+Man
 </td>
 <td style="text-align:left;">
-Man
+Male
 </td>
 <td style="text-align:right;">
 2459
@@ -565,7 +566,7 @@ Man
   <span class="fu">count</span><span class="op">(</span><span class="va">Gender</span>, <span class="va">Race</span>, wt <span class="op">=</span> <span class="va">Words</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 6 x 3
 ##   Gender Race       n
-##   &lt;chr&gt;  &lt;chr&gt;  &lt;int&gt;
+##   &lt;chr&gt;  &lt;chr&gt;  &lt;dbl&gt;
 ## 1 Female Elf     1743
 ## 2 Female Hobbit    16
 ## 3 Female Man      669
@@ -587,16 +588,16 @@ Man
 <pre><code>## # A tibble: 9 x 3
 ## # Groups:   Film [3]
 ##   Film                       Race   Words
-##   &lt;fct&gt;                      &lt;chr&gt;  &lt;int&gt;
+##   &lt;chr&gt;                      &lt;chr&gt;  &lt;dbl&gt;
 ## 1 The Fellowship Of The Ring Elf     2200
 ## 2 The Fellowship Of The Ring Hobbit  3658
 ## 3 The Fellowship Of The Ring Man     1995
-## 4 The Two Towers             Elf      844
-## 5 The Two Towers             Hobbit  2463
-## 6 The Two Towers             Man     3990
-## 7 The Return Of The King     Elf      693
-## 8 The Return Of The King     Hobbit  2675
-## 9 The Return Of The King     Man     2727</code></pre>
+## 4 The Return Of The King     Elf      693
+## 5 The Return Of The King     Hobbit  2675
+## 6 The Return Of The King     Man     2727
+## 7 The Two Towers             Elf      844
+## 8 The Two Towers             Hobbit  2463
+## 9 The Two Towers             Man     3990</code></pre>
 <p>Wir können ganz genau auf diese Zahlen starren, um die Frage zu beantworten. Aber noch schöner ist es, die gerade berechneten Wortzahlen in einem Balkendiagramm darzustellen.</p>
 <div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">by_race_film</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">Film</span>, y <span class="op">=</span> <span class="va">Words</span>, fill <span class="op">=</span> <span class="va">Race</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 

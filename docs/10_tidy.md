@@ -134,118 +134,118 @@ In sauberer Form sehen die Daten folgendermaßen aus:
  <thead>
   <tr>
    <th style="text-align:left;"> Film </th>
-   <th style="text-align:left;"> Gender </th>
    <th style="text-align:left;"> Race </th>
+   <th style="text-align:left;"> Gender </th>
    <th style="text-align:right;"> Words </th>
   </tr>
  </thead>
 <tbody>
   <tr>
    <td style="text-align:left;"> The Fellowship Of The Ring </td>
-   <td style="text-align:left;"> Female </td>
    <td style="text-align:left;"> Elf </td>
+   <td style="text-align:left;"> Female </td>
    <td style="text-align:right;"> 1229 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> The Fellowship Of The Ring </td>
-   <td style="text-align:left;"> Male </td>
    <td style="text-align:left;"> Elf </td>
+   <td style="text-align:left;"> Male </td>
    <td style="text-align:right;"> 971 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> The Fellowship Of The Ring </td>
-   <td style="text-align:left;"> Female </td>
    <td style="text-align:left;"> Hobbit </td>
+   <td style="text-align:left;"> Female </td>
    <td style="text-align:right;"> 14 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> The Fellowship Of The Ring </td>
-   <td style="text-align:left;"> Male </td>
    <td style="text-align:left;"> Hobbit </td>
+   <td style="text-align:left;"> Male </td>
    <td style="text-align:right;"> 3644 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> The Fellowship Of The Ring </td>
-   <td style="text-align:left;"> Female </td>
    <td style="text-align:left;"> Man </td>
+   <td style="text-align:left;"> Female </td>
    <td style="text-align:right;"> 0 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> The Fellowship Of The Ring </td>
-   <td style="text-align:left;"> Male </td>
    <td style="text-align:left;"> Man </td>
+   <td style="text-align:left;"> Male </td>
    <td style="text-align:right;"> 1995 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> The Two Towers </td>
-   <td style="text-align:left;"> Female </td>
    <td style="text-align:left;"> Elf </td>
+   <td style="text-align:left;"> Female </td>
    <td style="text-align:right;"> 331 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> The Two Towers </td>
-   <td style="text-align:left;"> Male </td>
    <td style="text-align:left;"> Elf </td>
+   <td style="text-align:left;"> Male </td>
    <td style="text-align:right;"> 513 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> The Two Towers </td>
-   <td style="text-align:left;"> Female </td>
    <td style="text-align:left;"> Hobbit </td>
+   <td style="text-align:left;"> Female </td>
    <td style="text-align:right;"> 0 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> The Two Towers </td>
-   <td style="text-align:left;"> Male </td>
    <td style="text-align:left;"> Hobbit </td>
+   <td style="text-align:left;"> Male </td>
    <td style="text-align:right;"> 2463 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> The Two Towers </td>
-   <td style="text-align:left;"> Female </td>
    <td style="text-align:left;"> Man </td>
+   <td style="text-align:left;"> Female </td>
    <td style="text-align:right;"> 401 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> The Two Towers </td>
-   <td style="text-align:left;"> Male </td>
    <td style="text-align:left;"> Man </td>
+   <td style="text-align:left;"> Male </td>
    <td style="text-align:right;"> 3589 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> The Return Of The King </td>
-   <td style="text-align:left;"> Female </td>
    <td style="text-align:left;"> Elf </td>
+   <td style="text-align:left;"> Female </td>
    <td style="text-align:right;"> 183 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> The Return Of The King </td>
-   <td style="text-align:left;"> Male </td>
    <td style="text-align:left;"> Elf </td>
+   <td style="text-align:left;"> Male </td>
    <td style="text-align:right;"> 510 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> The Return Of The King </td>
-   <td style="text-align:left;"> Female </td>
    <td style="text-align:left;"> Hobbit </td>
+   <td style="text-align:left;"> Female </td>
    <td style="text-align:right;"> 2 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> The Return Of The King </td>
-   <td style="text-align:left;"> Male </td>
    <td style="text-align:left;"> Hobbit </td>
+   <td style="text-align:left;"> Male </td>
    <td style="text-align:right;"> 2673 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> The Return Of The King </td>
-   <td style="text-align:left;"> Female </td>
    <td style="text-align:left;"> Man </td>
+   <td style="text-align:left;"> Female </td>
    <td style="text-align:right;"> 268 </td>
   </tr>
   <tr>
    <td style="text-align:left;"> The Return Of The King </td>
-   <td style="text-align:left;"> Male </td>
    <td style="text-align:left;"> Man </td>
+   <td style="text-align:left;"> Male </td>
    <td style="text-align:right;"> 2459 </td>
   </tr>
 </tbody>
@@ -279,7 +279,7 @@ lotr_tidy %>%
 ```
 ## # A tibble: 6 x 3
 ##   Gender Race       n
-##   <chr>  <chr>  <int>
+##   <chr>  <chr>  <dbl>
 ## 1 Female Elf     1743
 ## 2 Female Hobbit    16
 ## 3 Female Man      669
@@ -309,16 +309,16 @@ Zunächst summieren wir über die Geschlechter hinweg, um die Wortzahlen für di
 ## # A tibble: 9 x 3
 ## # Groups:   Film [3]
 ##   Film                       Race   Words
-##   <fct>                      <chr>  <int>
+##   <chr>                      <chr>  <dbl>
 ## 1 The Fellowship Of The Ring Elf     2200
 ## 2 The Fellowship Of The Ring Hobbit  3658
 ## 3 The Fellowship Of The Ring Man     1995
-## 4 The Two Towers             Elf      844
-## 5 The Two Towers             Hobbit  2463
-## 6 The Two Towers             Man     3990
-## 7 The Return Of The King     Elf      693
-## 8 The Return Of The King     Hobbit  2675
-## 9 The Return Of The King     Man     2727
+## 4 The Return Of The King     Elf      693
+## 5 The Return Of The King     Hobbit  2675
+## 6 The Return Of The King     Man     2727
+## 7 The Two Towers             Elf      844
+## 8 The Two Towers             Hobbit  2463
+## 9 The Two Towers             Man     3990
 ```
 
 Wir können ganz genau auf diese Zahlen starren, um die Frage zu beantworten. Aber noch schöner ist es, die gerade berechneten Wortzahlen in einem Balkendiagramm darzustellen. 
