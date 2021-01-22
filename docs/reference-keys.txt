@@ -112,3 +112,6 @@ environments
 scoping-rules
 static-scoping
 anwendungsbeispiel
+fragen
+quantilsfunktion
+qq-plot
