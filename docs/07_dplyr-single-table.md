@@ -22,11 +22,11 @@ Wir starten wieder mit dem Laden von `dplyr` (über `tidyverse`)
 
 ```r
 library(tidyverse)
-#> ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──
+#> ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
 #> ✓ ggplot2 3.3.3     ✓ purrr   0.3.4
-#> ✓ tibble  3.0.4     ✓ dplyr   1.0.2
-#> ✓ tidyr   1.1.2     ✓ stringr 1.4.0
-#> ✓ readr   1.4.0     ✓ forcats 0.5.0
+#> ✓ tibble  3.1.2     ✓ dplyr   1.0.6
+#> ✓ tidyr   1.1.3     ✓ stringr 1.4.0
+#> ✓ readr   1.4.0     ✓ forcats 0.5.1
 #> ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 #> x dplyr::filter() masks stats::filter()
 #> x dplyr::lag()    masks stats::lag()
@@ -288,7 +288,6 @@ Beginnen wir mit dem einfachen Zählen.  Wie viele Beobachtungen haben wir pro K
 my_gap %>%
   group_by(continent) %>%
   summarise(n = n())
-#> `summarise()` ungrouping output (override with `.groups` argument)
 #> # A tibble: 5 x 2
 #>   continent     n
 #>   <fct>     <int>
@@ -356,7 +355,6 @@ my_gap %>%
   group_by(continent) %>%
   summarise(n = n(),
             n_countries = n_distinct(country))
-#> `summarise()` ungrouping output (override with `.groups` argument)
 #> # A tibble: 5 x 3
 #>   continent     n n_countries
 #>   <fct>     <int>       <int>
@@ -406,7 +404,6 @@ Auch wenn dies statistisch gesehen unklug sein mag, lass uns die durchschnittlic
 my_gap %>%
   group_by(continent) %>%
   summarise(avg_lifeExp = mean(lifeExp))
-#> `summarise()` ungrouping output (override with `.groups` argument)
 #> # A tibble: 5 x 2
 #>   continent avg_lifeExp
 #>   <fct>           <dbl>
@@ -450,7 +447,6 @@ my_gap %>%
   filter(continent == "Asia") %>%
   group_by(year) %>%
   summarise(min_lifeExp = min(lifeExp), max_lifeExp = max(lifeExp))
-#> `summarise()` ungrouping output (override with `.groups` argument)
 #> # A tibble: 12 x 3
 #>     year min_lifeExp max_lifeExp
 #>    <int>       <dbl>       <dbl>
@@ -683,7 +679,7 @@ my_gap %>%
   ## nun wird noch pro Kontinent, die Zeile mit dem kleinsten Wert ausgegeben
   top_n(-1, wt = worst_le_delta) %>% 
   arrange(worst_le_delta)
-#> `summarise()` regrouping output by 'continent' (override with `.groups` argument)
+#> `summarise()` has grouped output by 'continent'. You can override using the `.groups` argument.
 #> # A tibble: 5 x 3
 #> # Groups:   continent [5]
 #>   continent country     worst_le_delta

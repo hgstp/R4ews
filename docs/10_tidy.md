@@ -302,7 +302,7 @@ Zunächst summieren wir über die Geschlechter hinweg, um die Wortzahlen für di
 ```
 
 ```
-## `summarise()` regrouping output by 'Film' (override with `.groups` argument)
+## `summarise()` has grouped output by 'Film'. You can override using the `.groups` argument.
 ```
 
 ```
@@ -511,8 +511,6 @@ write_csv(lotr_tidy, path = file.path("data", "lotr_tidy.csv"))
 ```
 ## Warning: The `path` argument of `write_csv()` is deprecated as of readr 1.4.0.
 ## Please use the `file` argument instead.
-## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_warnings()` to see where this warning was generated.
 ```
 
 

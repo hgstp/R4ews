@@ -33,7 +33,7 @@ Wir wollen all das reproduzierbar, wiederverwendbar und gemeinsam nutzbar machen
 Auf dieser Website geht es um alles, was bei der Datenanalyse auftaucht **außer um statistische Modellierung und Schlussfolgerungen**. Dieser Teil der statistischen Analyse erfolgt in der Vorlesung *Einführung in die Wahrscheinlichkeitstheorie und Statistik*. 
 
 
-Das Design von R4ews wurde durch die Notwendigkeit motiviert, mehr Ausgewogenheit in der angewandten statistischen Ausbildung zu schaffen. Datenanalysten verbringen viel Zeit mit der Projekt-Organisation, der Datenbereinigung und -aufbereitung sowie der Kommunikation. Diese Tätigkeiten können einen tiefgreifenden Einfluss auf die Qualität und Glaubwürdigkeit einer Analyse haben. Dennoch werden diese Fähigkeiten selten vermittelt, obwohl sie so wichtig und notwendig sind. R4ews zielt darauf ab, diese Lücke zu schließen.
+Das Design von R4ews wurde durch die Notwendigkeit motiviert, mehr Ausgewogenheit in der angewandten statistischen Ausbildung zu schaffen. Datenanalysten verbringen viel Zeit mit der Projekt-Organisation, der Datenbereinigung und -aufbereitung sowie der Kommunikation. Diese Tätigkeiten können einen tiefgreifenden Einfluss auf die Qualität und Glaubwürdigkeit einer Analyse haben. Dennoch werden diese Fähigkeiten selten vermittelt, obwohl sie so wichtig und notwendig sind. R4ews versucht diese Lücke etwas zu verkleinern.
 
 > Das Material wird kontinuierlich über das Semester hinweg ergänzt/erweitert/verbessert.
 

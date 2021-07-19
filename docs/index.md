@@ -27,7 +27,7 @@ Wir wollen all das reproduzierbar, wiederverwendbar und gemeinsam nutzbar machen
 Auf dieser Website geht es um alles, was bei der Datenanalyse auftaucht **außer um statistische Modellierung und Schlussfolgerungen**. Dieser Teil der statistischen Analyse erfolgt in der Vorlesung *Einführung in die Wahrscheinlichkeitstheorie und Statistik*. 
 
 
-Das Design von R4ews wurde durch die Notwendigkeit motiviert, mehr Ausgewogenheit in der angewandten statistischen Ausbildung zu schaffen. Datenanalysten verbringen viel Zeit mit der Projekt-Organisation, der Datenbereinigung und -aufbereitung sowie der Kommunikation. Diese Tätigkeiten können einen tiefgreifenden Einfluss auf die Qualität und Glaubwürdigkeit einer Analyse haben. Dennoch werden diese Fähigkeiten selten vermittelt, obwohl sie so wichtig und notwendig sind. R4ews zielt darauf ab, diese Lücke zu schließen.
+Das Design von R4ews wurde durch die Notwendigkeit motiviert, mehr Ausgewogenheit in der angewandten statistischen Ausbildung zu schaffen. Datenanalysten verbringen viel Zeit mit der Projekt-Organisation, der Datenbereinigung und -aufbereitung sowie der Kommunikation. Diese Tätigkeiten können einen tiefgreifenden Einfluss auf die Qualität und Glaubwürdigkeit einer Analyse haben. Dennoch werden diese Fähigkeiten selten vermittelt, obwohl sie so wichtig und notwendig sind. R4ews versucht diese Lücke etwas zu verkleinern.
 
 > Das Material wird kontinuierlich über das Semester hinweg ergänzt/erweitert/verbessert.
 
@@ -36,7 +36,7 @@ Das Design von R4ews wurde durch die Notwendigkeit motiviert, mehr Ausgewogenhei
 
 ```r
 date()
-#> [1] "Fri Jan 22 21:29:53 2021"
+#> [1] "Mon Jul 19 17:42:59 2021"
 ```
 
 
@@ -59,14 +59,14 @@ Die aktuelle Version dieses Buchs wurde mit
 #> Finding R package dependencies ... Done!
 #>  setting  value                       
 #>  version  R version 4.0.3 (2020-10-10)
-#>  os       macOS Big Sur 10.16         
+#>  os       macOS Catalina 10.15.7      
 #>  system   x86_64, darwin17.0          
 #>  ui       X11                         
 #>  language (EN)                        
 #>  collate  en_US.UTF-8                 
 #>  ctype    en_US.UTF-8                 
 #>  tz       Europe/Berlin               
-#>  date     2021-01-22
+#>  date     2021-07-19
 ```
 
 erstellt

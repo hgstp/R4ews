@@ -19,11 +19,11 @@ Der Fokus liegt in diesem Abschnitt auf `dplyr`. Aber da wir immer wieder auch F
 
 ```r
 library(tidyverse)
-#> ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──
+#> ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
 #> ✓ ggplot2 3.3.3     ✓ purrr   0.3.4
-#> ✓ tibble  3.0.4     ✓ dplyr   1.0.2
-#> ✓ tidyr   1.1.2     ✓ stringr 1.4.0
-#> ✓ readr   1.4.0     ✓ forcats 0.5.0
+#> ✓ tibble  3.1.2     ✓ dplyr   1.0.6
+#> ✓ tidyr   1.1.3     ✓ stringr 1.4.0
+#> ✓ readr   1.4.0     ✓ forcats 0.5.1
 #> ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 #> x dplyr::filter() masks stats::filter()
 #> x dplyr::lag()    masks stats::lag()
@@ -257,11 +257,6 @@ Die `dplyr` Einführung geht weiter im Kapitel [Mehr zu `dplyr`](#dplyr-single).
 
 
 
-<!--STAT 545 external resources/content-->
-[useR-2014-dropbox]: https://www.dropbox.com/sh/i8qnluwmuieicxc/AAAgt9tIKoIm7WZKIyK25lh6a
-[Tidy data using Lord of the Rings]: https://github.com/jennybc/lotr-tidy#readme
-[ggplot2 tutorial]: https://github.com/jennybc/ggplot2-tutorial
-[R Graph Catalog]: https://github.com/jennybc/r-graph-catalog
 
 <!--Packages: main link-->
 [dplyr]: https://dplyr.tidyverse.org
@@ -361,4 +356,3 @@ Die `dplyr` Einführung geht weiter im Kapitel [Mehr zu `dplyr`](#dplyr-single).
 <!--Misc.-->
 [rOpenSci]: https://ropensci.org
 [wiki-snake-case]: https://en.wikipedia.org/wiki/Snake_case
-[Janus]: https://en.wikipedia.org/wiki/Janus

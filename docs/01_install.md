@@ -84,11 +84,6 @@ Bearbeiten sie eigenständig den Basics Primer.
 
 
 
-<!--STAT 545 external resources/content-->
-[useR-2014-dropbox]: https://www.dropbox.com/sh/i8qnluwmuieicxc/AAAgt9tIKoIm7WZKIyK25lh6a
-[Tidy data using Lord of the Rings]: https://github.com/jennybc/lotr-tidy#readme
-[ggplot2 tutorial]: https://github.com/jennybc/ggplot2-tutorial
-[R Graph Catalog]: https://github.com/jennybc/r-graph-catalog
 
 <!--Packages: main link-->
 [dplyr]: https://dplyr.tidyverse.org
@@ -188,4 +183,3 @@ Bearbeiten sie eigenständig den Basics Primer.
 <!--Misc.-->
 [rOpenSci]: https://ropensci.org
 [wiki-snake-case]: https://en.wikipedia.org/wiki/Snake_case
-[Janus]: https://en.wikipedia.org/wiki/Janus

@@ -130,7 +130,7 @@ Nicht alle Funktionen haben (oder erfordern) Argumente:
 
 ```r
 date()
-#> [1] "Fri Jan 22 21:29:58 2021"
+#> [1] "Mon Jul 19 17:43:02 2021"
 ```
 
 Schau dir nun deinen Workspace an - im oberen rechten Fensterbereich (bei Standardeinstellung) siehst du unter Environment den Inhalt deines Workspaces. Der Workspace ist der Ort, an dem sich benutzerdefinierte Objekte ansammeln. Eine Liste dieser Objekte kannst du auch mit diesen Befehlen erhalten:
@@ -259,8 +259,8 @@ sig_sq <- 0.5
 x <- runif(40)
 y <- a + b * x + rnorm(40, sd = sqrt(sig_sq))
 (x_n <- mean(x))
-#> [1] 0.515
-write(x_n, "mittelwert_x.txt")
+#> [1] 0.503
+write(x_n, "data/mittelwert_x.txt")
 plot(x, y)
 abline(a, b, col = "purple")
 ```
@@ -268,7 +268,7 @@ abline(a, b, col = "purple")
 <img src="02_r-basics_files/figure-html/toy-line-1.png" width="672" />
 
 ```r
-dev.print(pdf, "scatterplot.pdf")
+dev.print(pdf, "img/scatterplot.pdf")
 #> quartz_off_screen 
 #>                 2
 ```
@@ -310,11 +310,6 @@ Du solltest es vermeiden die Maus für Teile deines Workflows zu verwenden, wie 
 
 
 
-<!--STAT 545 external resources/content-->
-[useR-2014-dropbox]: https://www.dropbox.com/sh/i8qnluwmuieicxc/AAAgt9tIKoIm7WZKIyK25lh6a
-[Tidy data using Lord of the Rings]: https://github.com/jennybc/lotr-tidy#readme
-[ggplot2 tutorial]: https://github.com/jennybc/ggplot2-tutorial
-[R Graph Catalog]: https://github.com/jennybc/r-graph-catalog
 
 <!--Packages: main link-->
 [dplyr]: https://dplyr.tidyverse.org
@@ -414,4 +409,3 @@ Du solltest es vermeiden die Maus für Teile deines Workflows zu verwenden, wie 
 <!--Misc.-->
 [rOpenSci]: https://ropensci.org
 [wiki-snake-case]: https://en.wikipedia.org/wiki/Snake_case
-[Janus]: https://en.wikipedia.org/wiki/Janus

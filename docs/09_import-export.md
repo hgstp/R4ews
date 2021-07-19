@@ -40,11 +40,11 @@ Das Hauptpaket, das wir verwenden werden, ist [readr], welches Alternativen zu d
 
 ```r
 library(tidyverse)
-#> ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.0 ──
+#> ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
 #> ✓ ggplot2 3.3.3     ✓ purrr   0.3.4
-#> ✓ tibble  3.0.4     ✓ dplyr   1.0.2
-#> ✓ tidyr   1.1.2     ✓ stringr 1.4.0
-#> ✓ readr   1.4.0     ✓ forcats 0.5.0
+#> ✓ tibble  3.1.2     ✓ dplyr   1.0.6
+#> ✓ tidyr   1.1.3     ✓ stringr 1.4.0
+#> ✓ readr   1.4.0     ✓ forcats 0.5.1
 #> ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 #> x dplyr::filter() masks stats::filter()
 #> x dplyr::lag()    masks stats::lag()
@@ -58,7 +58,7 @@ Die Gapminder Daten könnten wir natürlich wie zuvor über das Laden des `gapmi
 ```r
 library(fs)
 (gap_tsv <- path_package("gapminder", "extdata", "gapminder.tsv"))
-#> /Users/hgstp/Library/R/4.0/library/gapminder/extdata/gapminder.tsv
+#> /Library/Frameworks/R.framework/Versions/4.0/Resources/library/gapminder/extdata/gapminder.tsv
 ```
 
 Nachdem wir jetzt den Speicherort der Datei kennen, können wir versuchen sie einzulesen.
@@ -84,12 +84,12 @@ gapminder <- read_tsv(gap_tsv)
 glimpse(gapminder)
 #> Rows: 1,704
 #> Columns: 6
-#> $ country   <chr> "Afghanistan", "Afghanistan", "Afghanistan", "Afghanistan",…
-#> $ continent <chr> "Asia", "Asia", "Asia", "Asia", "Asia", "Asia", "Asia", "As…
-#> $ year      <dbl> 1952, 1957, 1962, 1967, 1972, 1977, 1982, 1987, 1992, 1997,…
-#> $ lifeExp   <dbl> 28.8, 30.3, 32.0, 34.0, 36.1, 38.4, 39.9, 40.8, 41.7, 41.8,…
-#> $ pop       <dbl> 8425333, 9240934, 10267083, 11537966, 13079460, 14880372, 1…
-#> $ gdpPercap <dbl> 779, 821, 853, 836, 740, 786, 978, 852, 649, 635, 727, 975,…
+#> $ country   <chr> "Afghanistan", "Afghanistan", "Afghanistan", "Afghanistan", …
+#> $ continent <chr> "Asia", "Asia", "Asia", "Asia", "Asia", "Asia", "Asia", "Asi…
+#> $ year      <dbl> 1952, 1957, 1962, 1967, 1972, 1977, 1982, 1987, 1992, 1997, …
+#> $ lifeExp   <dbl> 28.8, 30.3, 32.0, 34.0, 36.1, 38.4, 39.9, 40.8, 41.7, 41.8, …
+#> $ pop       <dbl> 8425333, 9240934, 10267083, 11537966, 13079460, 14880372, 12…
+#> $ gdpPercap <dbl> 779, 821, 853, 836, 740, 786, 978, 852, 649, 635, 727, 975, …
 ```
 
 
@@ -116,7 +116,7 @@ gap_life_exp <- gapminder %>%
   group_by(country, continent) %>% 
   summarise(life_exp = max(lifeExp)) %>% 
   ungroup()
-#> `summarise()` regrouping output by 'country' (override with `.groups` argument)
+#> `summarise()` has grouped output by 'country'. You can override using the `.groups` argument.
 gap_life_exp
 #> # A tibble: 142 x 3
 #>    country     continent life_exp
@@ -140,7 +140,7 @@ Die Haupt-Exportfunktion in readr ist `write_delim()`. Für verschiedene Dateifo
 
 
 ```r
-write_csv(gap_life_exp, "gap_life_exp.csv")
+write_csv(gap_life_exp, "data/gap_life_exp.csv")
 ```
 
 Schauen wir uns die ersten paar Zeilen von `gap_life_exp.csv` an. Dazu kannst du entweder die Datei öffnen oder, im Terminal, `head` darauf anwenden.
@@ -235,10 +235,10 @@ Schauen wir uns einmal an, wie die Variable jdata in der R-Konsole aussieht:
 ```r
 jdata
 #> Response [http://api.open-notify.org/astros.json]
-#>   Date: 2021-01-22 20:30
+#>   Date: 2021-07-19 15:43
 #>   Status: 200
 #>   Content-Type: application/json
-#>   Size: 356 B
+#>   Size: 494 B
 ```
 
 Als erstes fällt auf, dass die URL enthalten ist, an die die GET-Anfrage gesendet wurde. Außerdem sehen wir das Datum und die Uhrzeit, zu der die Anfrage gestellt wurde, sowie die Größe der Antwort.
@@ -271,7 +271,7 @@ Dazu müssen wir zunächst den rohen Unicode in Character Daten konvertieren, di
 
 ```r
 rawToChar(jdata$content)
-#> [1] "{\"message\": \"success\", \"number\": 7, \"people\": [{\"craft\": \"ISS\", \"name\": \"Sergey Ryzhikov\"}, {\"craft\": \"ISS\", \"name\": \"Kate Rubins\"}, {\"craft\": \"ISS\", \"name\": \"Sergey Kud-Sverchkov\"}, {\"craft\": \"ISS\", \"name\": \"Mike Hopkins\"}, {\"craft\": \"ISS\", \"name\": \"Victor Glover\"}, {\"craft\": \"ISS\", \"name\": \"Shannon Walker\"}, {\"craft\": \"ISS\", \"name\": \"Soichi Noguchi\"}]}"
+#> [1] "{\"people\": [{\"name\": \"Mark Vande Hei\", \"craft\": \"ISS\"}, {\"name\": \"Oleg Novitskiy\", \"craft\": \"ISS\"}, {\"name\": \"Pyotr Dubrov\", \"craft\": \"ISS\"}, {\"name\": \"Thomas Pesquet\", \"craft\": \"ISS\"}, {\"name\": \"Megan McArthur\", \"craft\": \"ISS\"}, {\"name\": \"Shane Kimbrough\", \"craft\": \"ISS\"}, {\"name\": \"Akihiko Hoshide\", \"craft\": \"ISS\"}, {\"name\": \"Nie Haisheng\", \"craft\": \"Tiangong\"}, {\"name\": \"Liu Boming\", \"craft\": \"Tiangong\"}, {\"name\": \"Tang Hongbo\", \"craft\": \"Tiangong\"}], \"number\": 10, \"message\": \"success\"}"
 ```
 
 
@@ -286,11 +286,11 @@ Die `fromJSON()` Funktion benötigt einen Character Vektor, der die JSON-Struktu
 data <-  fromJSON(rawToChar(jdata$content))
 glimpse(data)
 #> List of 3
+#>  $ people :'data.frame':	10 obs. of  2 variables:
+#>   ..$ name : chr [1:10] "Mark Vande Hei" "Oleg Novitskiy" "Pyotr Dubrov" "Tho"..
+#>   ..$ craft: chr [1:10] "ISS" "ISS" "ISS" "ISS" ...
+#>  $ number : int 10
 #>  $ message: chr "success"
-#>  $ number : int 7
-#>  $ people :'data.frame':	7 obs. of  2 variables:
-#>   ..$ craft: chr [1:7] "ISS" "ISS" "ISS" "ISS" ...
-#>   ..$ name : chr [1:7] "Sergey Ryzhikov" "Kate Rubins" "Sergey Kud-Sverchkov""..
 ```
 
 Die Liste `data` hat drei Elemente. Uns interessiert in erster Linie das Data Frame `people`.
@@ -298,18 +298,21 @@ Die Liste `data` hat drei Elemente. Uns interessiert in erster Linie das Data Fr
 
 ```r
 data$people
-#>   craft                 name
-#> 1   ISS      Sergey Ryzhikov
-#> 2   ISS          Kate Rubins
-#> 3   ISS Sergey Kud-Sverchkov
-#> 4   ISS         Mike Hopkins
-#> 5   ISS        Victor Glover
-#> 6   ISS       Shannon Walker
-#> 7   ISS       Soichi Noguchi
+#>               name    craft
+#> 1   Mark Vande Hei      ISS
+#> 2   Oleg Novitskiy      ISS
+#> 3     Pyotr Dubrov      ISS
+#> 4   Thomas Pesquet      ISS
+#> 5   Megan McArthur      ISS
+#> 6  Shane Kimbrough      ISS
+#> 7  Akihiko Hoshide      ISS
+#> 8     Nie Haisheng Tiangong
+#> 9       Liu Boming Tiangong
+#> 10     Tang Hongbo Tiangong
 ```
 
 
-Also, da haben wir unsere Antwort: Zum Zeitpunkt des letzten Updates Fri Jan 22 21:30:25 2021 von R4ews befanden sich 7 Personen im Weltraum. Aber wenn du alles selbst ausprobierst, könnten es auch schon wieder andere Namen und eine andere Anzahl sein. Das ist einer der Vorteile von APIs - im Gegensatz zu herunterladbaren Datensätzen werden sie im Allgemeinen in Echtzeit oder nahezu in Echtzeit aktualisiert, so dass sie eine großartige Möglichkeit darstellen, Zugang zu sehr aktuellen Daten zu erhalten.
+Also, da haben wir unsere Antwort: Zum Zeitpunkt des letzten Updates Mon Jul 19 17:43:20 2021 von R4ews befanden sich 10 Personen im Weltraum. Aber wenn du alles selbst ausprobierst, könnten es auch schon wieder andere Namen und eine andere Anzahl sein. Das ist einer der Vorteile von APIs - im Gegensatz zu herunterladbaren Datensätzen werden sie im Allgemeinen in Echtzeit oder nahezu in Echtzeit aktualisiert, so dass sie eine großartige Möglichkeit darstellen, Zugang zu sehr aktuellen Daten zu erhalten.
 
 
 In diesem Beispiel haben wir einen sehr unkomplizierten API-Workflow durchlaufen. Die meisten APIs erfordern, dass Sie demselben allgemeinen Muster folgen, aber dabei können sie durchaus komplexer sein.
@@ -341,11 +344,11 @@ Wie auch immer, jetzt, da wir unsere Anfrage einschließlich der Standortparamet
 data <- fromJSON(rawToChar(jdata$content))
 data$response
 #>   duration   risetime
-#> 1      656 1611348916
-#> 2      641 1611354729
-#> 3      450 1611360587
-#> 4      517 1611415131
-#> 5      650 1611420836
+#> 1      586 1626716804
+#> 2      657 1626722554
+#> 3      651 1626728378
+#> 4      655 1626734203
+#> 5      634 1626740016
 ```
 
 
@@ -355,9 +358,9 @@ Diese API gibt uns Zeiten in Form von [Unixzeit](https://de.wikipedia.org/wiki/U
 
 ```r
 lubridate::as_datetime(data$response$risetime)
-#> [1] "2021-01-22 20:55:16 UTC" "2021-01-22 22:32:09 UTC"
-#> [3] "2021-01-23 00:09:47 UTC" "2021-01-23 15:18:51 UTC"
-#> [5] "2021-01-23 16:53:56 UTC"
+#> [1] "2021-07-19 17:46:44 UTC" "2021-07-19 19:22:34 UTC"
+#> [3] "2021-07-19 20:59:38 UTC" "2021-07-19 22:36:43 UTC"
+#> [5] "2021-07-20 00:13:36 UTC"
 ```
 
 
@@ -374,11 +377,6 @@ Hier sein noch auf das Kapitel [Data import](http://r4ds.had.co.nz/data-import.h
 
 
 
-<!--STAT 545 external resources/content-->
-[useR-2014-dropbox]: https://www.dropbox.com/sh/i8qnluwmuieicxc/AAAgt9tIKoIm7WZKIyK25lh6a
-[Tidy data using Lord of the Rings]: https://github.com/jennybc/lotr-tidy#readme
-[ggplot2 tutorial]: https://github.com/jennybc/ggplot2-tutorial
-[R Graph Catalog]: https://github.com/jennybc/r-graph-catalog
 
 <!--Packages: main link-->
 [dplyr]: https://dplyr.tidyverse.org
@@ -478,7 +476,6 @@ Hier sein noch auf das Kapitel [Data import](http://r4ds.had.co.nz/data-import.h
 <!--Misc.-->
 [rOpenSci]: https://ropensci.org
 [wiki-snake-case]: https://en.wikipedia.org/wiki/Snake_case
-[Janus]: https://en.wikipedia.org/wiki/Janus
 
 
 

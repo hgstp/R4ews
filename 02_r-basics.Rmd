@@ -236,10 +236,10 @@ sig_sq <- 0.5
 x <- runif(40)
 y <- a + b * x + rnorm(40, sd = sqrt(sig_sq))
 (x_n <- mean(x))
-write(x_n, "mittelwert_x.txt")
+write(x_n, "data/mittelwert_x.txt")
 plot(x, y)
 abline(a, b, col = "purple")
-dev.print(pdf, "scatterplot.pdf")
+dev.print(pdf, "img/scatterplot.pdf")
 ```
 
 Jetzt nehmen wir mal an das wäre ein guter Start einer Analyse, die wir durchführen wollen. Daher würdest du das Ergebnis gerne abspeichern.  Unter History kannst du alle obigen Befehle markieren und anschließend "To Source" klicken. Daraufhin wird sich ein neues Fenster mit einem R Skript - das natürlich die Befehle enthält - öffnen. Das Skript kannst du abspeichern und standardmäßig wird es in deinen Projektordner gespeichert werden (aber natürlich könntest man den Speicherort an dieser Stelle auch ändern/frei wählen).

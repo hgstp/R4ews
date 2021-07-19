@@ -95,13 +95,13 @@ Das `gap_life_exp` data frame ist ein Beispiel für ein Zwischenergebnis, das wi
 Die Haupt-Exportfunktion in readr ist `write_delim()`. Für verschiedene Dateiformate gibt es auch hier wieder verschiedene Komfortfunktionen. Lass uns `write_csv()` benutzen, um eine kommagetrennte Datei zu erhalten.
 
 ```{r}
-write_csv(gap_life_exp, "gap_life_exp.csv")
+write_csv(gap_life_exp, "data/gap_life_exp.csv")
 ```
 
 Schauen wir uns die ersten paar Zeilen von `gap_life_exp.csv` an. Dazu kannst du entweder die Datei öffnen oder, im Terminal, `head` darauf anwenden.
 
 ```{r echo = FALSE, comment = NA}
-"gap_life_exp.csv" %>%
+"data/gap_life_exp.csv" %>%
   readLines(n = 6) %>% 
   cat(sep = "\n")
 ```

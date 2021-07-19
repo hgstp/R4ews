@@ -148,7 +148,7 @@ Mit den `geom_xx()` Funktionen stellen wir die Daten als geometrische Formen in 
 
 - `geom_point()`
 - `geom_line()`
-- `geom_histogramm()`
+- `geom_histogram()`
 
 Da wir nicht alle verfügbaren `geoms` auflisten können, sei an dieser Stelle auf die [ggplot2] Seite verwiesen.
 

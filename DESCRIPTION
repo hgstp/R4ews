@@ -1,6 +1,6 @@
 Type: Book
-Package: Stat545
-Title: Stat545
+Package: R4ews
+Title: R4ews
 Version: 0.0.1
 Imports:
     bookdown,
@@ -26,11 +26,5 @@ Imports:
     testthat,
     tidyverse,
     usethis,
-    viridis,
-    xfun,
-    xml2,
-    Rcpp
-Remotes: 
-    ropensci/genderdata,
-    rstudio/gt
+    viridis
 Encoding: UTF-8
