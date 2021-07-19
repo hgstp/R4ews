@@ -1,1 +1,5 @@
-This bookdown book is a *work in progress*. We'll update this `README` and the repo status when ready! :rocket:
+Diese Buch wurde mithilfe des [bookdown](https://github.com/rstudio/bookdown) Pakets erstellt. 
+
+__Aktuelle Version:__ Wintersemester 2020
+
+
