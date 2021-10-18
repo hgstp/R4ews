@@ -6,9 +6,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Kapitel 10 Einführung | R4ews MA0009</title>
 <meta name="author" content="Stephan Haug">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.8/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="Das Paket ggplot2 verwendet eine Grammatik beim Erzeugen von Grafiken. Diese basiert auf Wilkinson (2005): The Grammar of Graphics, Springer. Dadurch ist eine starke Abstraktion bei der Definition...">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="Kapitel 10 Einführung | R4ews MA0009">
+<meta property="og:type" content="book">
+<meta property="og:description" content="Das Paket ggplot2 verwendet eine Grammatik beim Erzeugen von Grafiken. Diese basiert auf Wilkinson (2005): The Grammar of Graphics, Springer. Dadurch ist eine starke Abstraktion bei der Definition...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kapitel 10 Einführung | R4ews MA0009">
+<meta name="twitter:description" content="Das Paket ggplot2 verwendet eine Grammatik beim Erzeugen von Grafiken. Diese basiert auf Wilkinson (2005): The Grammar of Graphics, Springer. Dadurch ist eine starke Abstraktion bei der Definition...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/_Lato-0.4.0/font.css" rel="stylesheet">
+<script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link href="libs/font-awesome-5.1.0/css/all.css" rel="stylesheet">
 <link href="libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet">
 <script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
@@ -18,7 +27,7 @@
       gtag('js', new Date());
 
       gtag('config', 'UA-68219208-1');
-      </script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
+      </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="r4ews.css">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -40,7 +49,7 @@
 
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html">Willkommen zu R4ews</a></li>
+<li><a class="" href="index.html">R4ews</a></li>
 <li class="book-part">R, wie fange ich an</li>
 <li><a class="" href="install.html"><span class="header-section-number">1</span> Installieren von R und RStudio</a></li>
 <li><a class="" href="r-basics.html"><span class="header-section-number">2</span> R Basics und Arbeitsabläufe</a></li>
@@ -88,16 +97,15 @@
 <span class="header-section-number">10.1</span> <code>ggplot2</code> laden<a class="anchor" aria-label="anchor" href="#ggplot2-laden"><i class="fas fa-link"></i></a>
 </h2>
 <p>Wie zuvor auch, laden wir stets das komplette <code>tidyverse</code>. Man weiß ja vorher nie so genau was man alles so braucht.</p>
-<div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
-<span class="co">#&gt; ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</span>
-<span class="co">#&gt; ✓ ggplot2 3.3.3     ✓ purrr   0.3.4</span>
-<span class="co">#&gt; ✓ tibble  3.1.2     ✓ dplyr   1.0.6</span>
-<span class="co">#&gt; ✓ tidyr   1.1.3     ✓ stringr 1.4.0</span>
-<span class="co">#&gt; ✓ readr   1.4.0     ✓ forcats 0.5.1</span>
-<span class="co">#&gt; ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──</span>
-<span class="co">#&gt; x dplyr::filter() masks stats::filter()</span>
-<span class="co">#&gt; x dplyr::lag()    masks stats::lag()</span></code></pre></div>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="graphics-overview.html#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(tidyverse)</span>
+<span id="cb147-2"><a href="graphics-overview.html#cb147-2" aria-hidden="true" tabindex="-1"></a><span class="do">## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</span></span>
+<span id="cb147-3"><a href="graphics-overview.html#cb147-3" aria-hidden="true" tabindex="-1"></a><span class="do">## ✓ ggplot2 3.3.5     ✓ purrr   0.3.4</span></span>
+<span id="cb147-4"><a href="graphics-overview.html#cb147-4" aria-hidden="true" tabindex="-1"></a><span class="do">## ✓ tibble  3.1.2     ✓ dplyr   1.0.7</span></span>
+<span id="cb147-5"><a href="graphics-overview.html#cb147-5" aria-hidden="true" tabindex="-1"></a><span class="do">## ✓ tidyr   1.1.3     ✓ stringr 1.4.0</span></span>
+<span id="cb147-6"><a href="graphics-overview.html#cb147-6" aria-hidden="true" tabindex="-1"></a><span class="do">## ✓ readr   2.0.1     ✓ forcats 0.5.1</span></span>
+<span id="cb147-7"><a href="graphics-overview.html#cb147-7" aria-hidden="true" tabindex="-1"></a><span class="do">## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──</span></span>
+<span id="cb147-8"><a href="graphics-overview.html#cb147-8" aria-hidden="true" tabindex="-1"></a><span class="do">## x dplyr::filter() masks stats::filter()</span></span>
+<span id="cb147-9"><a href="graphics-overview.html#cb147-9" aria-hidden="true" tabindex="-1"></a><span class="do">## x dplyr::lag()    masks stats::lag()</span></span></code></pre></div>
 </div>
 <div id="idee" class="section level2" number="10.2">
 <h2>
@@ -118,10 +126,9 @@
 </ul>
 <p>enthalten.</p>
 <p>Die einzelnen Teile eines Plots werden dann mit dem <code><a href="https://rdrr.io/r/base/Arithmetic.html">+</a></code> Operator zusammengefügt.Initialisiert wird ein Plot mit <code>ggplot()</code>. Ohne weitere Bestandteile wird aber nur eine leere Grafik erzeugt</p>
-<div class="sourceCode" id="cb142"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jennybc/gapminder">gapminder</a></span><span class="op">)</span>
-<span class="fu">ggplot</span><span class="op">(</span><span class="va">gapminder</span><span class="op">)</span> </code></pre></div>
-<div class="inline-figure"><img src="11_ggplot2_intro_files/figure-html/unnamed-chunk-3-1.png" width="672"></div>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="graphics-overview.html#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(gapminder)</span>
+<span id="cb148-2"><a href="graphics-overview.html#cb148-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ggplot</span>(gapminder) </span></code></pre></div>
+<div class="inline-figure"><img src="11_ggplot2_intro_files/figure-html/unnamed-chunk-3-1.png" width="80%" style="display: block; margin: auto;"></div>
 <p>In den folgenden Abschnitten lernen wir daher wie weitere Bestandteile zum Plot hinzugefügt werden.</p>
 </div>
 <div id="ein-einfacher-scatterplot" class="section level2" number="10.3">
@@ -129,12 +136,11 @@
 <span class="header-section-number">10.3</span> Ein einfacher Scatterplot<a class="anchor" aria-label="anchor" href="#ein-einfacher-scatterplot"><i class="fas fa-link"></i></a>
 </h2>
 <p>Wir schauen uns zum Start einfach mal für Deutschland den Verlauf des <code>gdpPercap</code> über die Zeit an.</p>
-<div class="sourceCode" id="cb143"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">gapminder</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op">==</span> <span class="st">"Germany"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># auswählen der Daten </span>
-  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">gdpPercap</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>  <span class="co"># plot initialisieren</span>
-  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="co"># punkte zum Darstellen der Daten verwenden</span></code></pre></div>
-<div class="inline-figure"><img src="11_ggplot2_intro_files/figure-html/unnamed-chunk-4-1.png" width="672"></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="graphics-overview.html#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb149-2"><a href="graphics-overview.html#cb149-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">"Germany"</span>) <span class="sc">%&gt;%</span> <span class="co"># auswählen der Daten </span></span>
+<span id="cb149-3"><a href="graphics-overview.html#cb149-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> gdpPercap)) <span class="sc">+</span>  <span class="co"># plot initialisieren</span></span>
+<span id="cb149-4"><a href="graphics-overview.html#cb149-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">geom_point</span>() <span class="co"># punkte zum Darstellen der Daten verwenden</span></span></code></pre></div>
+<div class="inline-figure"><img src="11_ggplot2_intro_files/figure-html/unnamed-chunk-4-1.png" width="80%" style="display: block; margin: auto;"></div>
 <p>In diesem einfachen Beispiel haben wir bereits gesehen, dass <code>ggplot()</code> über den Pipe-Operator verknüpft werden kann.</p>
 </div>
 </div>
@@ -184,6 +190,22 @@
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
 </script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 install
 r-und-rstudio
-funktioniert-ausprobieren
+funktioniert-alles-am-besten-ausprobieren
 add-on-packages
 rstudio-primers
 aufgabe
@@ -10,7 +10,7 @@ workspace-und-working-directory
 workspace-.rdata
 working-directory
 rprojs
-zuletzt-noch
+zu-guter-letzt
 version-control
 r-markdown
 basic-data-care

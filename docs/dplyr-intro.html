@@ -6,9 +6,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Kapitel 6 Einführung in dplyr | R4ews MA0009</title>
 <meta name="author" content="Stephan Haug">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.8/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="6.1 Einstieg dplyr ist ein Paket zur Datenmanipulation, entwickelt von Hadley Wickham und Romain Francois. In erster Linie will es schnell und ausdrucksstark sein. Es wird als Teil des...">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="Kapitel 6 Einführung in dplyr | R4ews MA0009">
+<meta property="og:type" content="book">
+<meta property="og:description" content="6.1 Einstieg dplyr ist ein Paket zur Datenmanipulation, entwickelt von Hadley Wickham und Romain Francois. In erster Linie will es schnell und ausdrucksstark sein. Es wird als Teil des...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kapitel 6 Einführung in dplyr | R4ews MA0009">
+<meta name="twitter:description" content="6.1 Einstieg dplyr ist ein Paket zur Datenmanipulation, entwickelt von Hadley Wickham und Romain Francois. In erster Linie will es schnell und ausdrucksstark sein. Es wird als Teil des...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/_Lato-0.4.0/font.css" rel="stylesheet">
+<script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link href="libs/font-awesome-5.1.0/css/all.css" rel="stylesheet">
 <link href="libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet">
 <script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
@@ -18,7 +27,7 @@
       gtag('js', new Date());
 
       gtag('config', 'UA-68219208-1');
-      </script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
+      </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="r4ews.css">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -40,7 +49,7 @@
 
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html">Willkommen zu R4ews</a></li>
+<li><a class="" href="index.html">R4ews</a></li>
 <li class="book-part">R, wie fange ich an</li>
 <li><a class="" href="install.html"><span class="header-section-number">1</span> Installieren von R und RStudio</a></li>
 <li><a class="" href="r-basics.html"><span class="header-section-number">2</span> R Basics und Arbeitsabläufe</a></li>
@@ -86,19 +95,17 @@
 <span class="header-section-number">6.1.1</span> Wie immer, laden wir zu Beginn <code>tidyverse</code><a class="anchor" aria-label="anchor" href="#wie-immer-laden-wir-zu-beginn-tidyverse"><i class="fas fa-link"></i></a>
 </h3>
 <p>Der Fokus liegt in diesem Abschnitt auf <code>dplyr</code>. Aber da wir immer wieder auch Funktionen aus anderen “tidyverse-Paketen” nutzen, laden wir stets <code>tidyverse</code>.</p>
-<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
-<span class="co">#&gt; ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</span>
-<span class="co">#&gt; ✓ ggplot2 3.3.3     ✓ purrr   0.3.4</span>
-<span class="co">#&gt; ✓ tibble  3.1.2     ✓ dplyr   1.0.6</span>
-<span class="co">#&gt; ✓ tidyr   1.1.3     ✓ stringr 1.4.0</span>
-<span class="co">#&gt; ✓ readr   1.4.0     ✓ forcats 0.5.1</span>
-<span class="co">#&gt; ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──</span>
-<span class="co">#&gt; x dplyr::filter() masks stats::filter()</span>
-<span class="co">#&gt; x dplyr::lag()    masks stats::lag()</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="dplyr-intro.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(tidyverse)</span>
+<span id="cb49-2"><a href="dplyr-intro.html#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="do">## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</span></span>
+<span id="cb49-3"><a href="dplyr-intro.html#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="do">## ✓ ggplot2 3.3.5     ✓ purrr   0.3.4</span></span>
+<span id="cb49-4"><a href="dplyr-intro.html#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="do">## ✓ tibble  3.1.2     ✓ dplyr   1.0.7</span></span>
+<span id="cb49-5"><a href="dplyr-intro.html#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="do">## ✓ tidyr   1.1.3     ✓ stringr 1.4.0</span></span>
+<span id="cb49-6"><a href="dplyr-intro.html#cb49-6" aria-hidden="true" tabindex="-1"></a><span class="do">## ✓ readr   2.0.1     ✓ forcats 0.5.1</span></span>
+<span id="cb49-7"><a href="dplyr-intro.html#cb49-7" aria-hidden="true" tabindex="-1"></a><span class="do">## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──</span></span>
+<span id="cb49-8"><a href="dplyr-intro.html#cb49-8" aria-hidden="true" tabindex="-1"></a><span class="do">## x dplyr::filter() masks stats::filter()</span></span>
+<span id="cb49-9"><a href="dplyr-intro.html#cb49-9" aria-hidden="true" tabindex="-1"></a><span class="do">## x dplyr::lag()    masks stats::lag()</span></span></code></pre></div>
 <p>Zusätzlich wollen wir auch noch <a href="https://github.com/jennybc/gapminder">gapminder</a> laden.</p>
-<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jennybc/gapminder">gapminder</a></span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="dplyr-intro.html#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(gapminder)</span></code></pre></div>
 </div>
 </div>
 <div id="filter-indizieren-von-zeilen" class="section level2" number="6.2">
@@ -106,52 +113,48 @@
 <span class="header-section-number">6.2</span> <code>filter()</code>: Indizieren von Zeilen<a class="anchor" aria-label="anchor" href="#filter-indizieren-von-zeilen"><i class="fas fa-link"></i></a>
 </h2>
 <p><code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code> nimmt logische Ausdrücke und gibt die Zeilen zurück, für die der logische Ausdruck ein <code>TRUE</code> ergibt.</p>
-<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">gapminder</span>, <span class="va">lifeExp</span> <span class="op">&lt;</span> <span class="fl">29</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 2 x 6</span>
-<span class="co">#&gt;   country     continent  year lifeExp     pop gdpPercap</span>
-<span class="co">#&gt;   &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;   &lt;int&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Afghanistan Asia       1952    28.8 8425333      779.</span>
-<span class="co">#&gt; 2 Rwanda      Africa     1992    23.6 7290203      737.</span>
-<span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">gapminder</span>, <span class="va">country</span> <span class="op">==</span> <span class="st">"Rwanda"</span>, <span class="va">year</span> <span class="op">&gt;</span> <span class="fl">1979</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 6 x 6</span>
-<span class="co">#&gt;   country continent  year lifeExp     pop gdpPercap</span>
-<span class="co">#&gt;   &lt;fct&gt;   &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;   &lt;int&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Rwanda  Africa     1982    46.2 5507565      882.</span>
-<span class="co">#&gt; 2 Rwanda  Africa     1987    44.0 6349365      848.</span>
-<span class="co">#&gt; 3 Rwanda  Africa     1992    23.6 7290203      737.</span>
-<span class="co">#&gt; 4 Rwanda  Africa     1997    36.1 7212583      590.</span>
-<span class="co">#&gt; 5 Rwanda  Africa     2002    43.4 7852401      786.</span>
-<span class="co">#&gt; 6 Rwanda  Africa     2007    46.2 8860588      863.</span>
-<span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">gapminder</span>, <span class="va">country</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Rwanda"</span>, <span class="st">"Afghanistan"</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 24 x 6</span>
-<span class="co">#&gt;    country     continent  year lifeExp      pop gdpPercap</span>
-<span class="co">#&gt;    &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 Afghanistan Asia       1952    28.8  8425333      779.</span>
-<span class="co">#&gt;  2 Afghanistan Asia       1957    30.3  9240934      821.</span>
-<span class="co">#&gt;  3 Afghanistan Asia       1962    32.0 10267083      853.</span>
-<span class="co">#&gt;  4 Afghanistan Asia       1967    34.0 11537966      836.</span>
-<span class="co">#&gt;  5 Afghanistan Asia       1972    36.1 13079460      740.</span>
-<span class="co">#&gt;  6 Afghanistan Asia       1977    38.4 14880372      786.</span>
-<span class="co">#&gt;  7 Afghanistan Asia       1982    39.9 12881816      978.</span>
-<span class="co">#&gt;  8 Afghanistan Asia       1987    40.8 13867957      852.</span>
-<span class="co">#&gt;  9 Afghanistan Asia       1992    41.7 16317921      649.</span>
-<span class="co">#&gt; 10 Afghanistan Asia       1997    41.8 22227415      635.</span>
-<span class="co">#&gt; # … with 14 more rows</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="dplyr-intro.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">filter</span>(gapminder, lifeExp <span class="sc">&lt;</span> <span class="dv">29</span>)</span>
+<span id="cb51-2"><a href="dplyr-intro.html#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 2 x 6</span></span>
+<span id="cb51-3"><a href="dplyr-intro.html#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="do">##   country     continent  year lifeExp     pop gdpPercap</span></span>
+<span id="cb51-4"><a href="dplyr-intro.html#cb51-4" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;   &lt;int&gt;     &lt;dbl&gt;</span></span>
+<span id="cb51-5"><a href="dplyr-intro.html#cb51-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 Afghanistan Asia       1952    28.8 8425333      779.</span></span>
+<span id="cb51-6"><a href="dplyr-intro.html#cb51-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 Rwanda      Africa     1992    23.6 7290203      737.</span></span>
+<span id="cb51-7"><a href="dplyr-intro.html#cb51-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">filter</span>(gapminder, country <span class="sc">==</span> <span class="st">"Rwanda"</span>, year <span class="sc">&gt;</span> <span class="dv">1979</span>)</span>
+<span id="cb51-8"><a href="dplyr-intro.html#cb51-8" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 6 x 6</span></span>
+<span id="cb51-9"><a href="dplyr-intro.html#cb51-9" aria-hidden="true" tabindex="-1"></a><span class="do">##   country continent  year lifeExp     pop gdpPercap</span></span>
+<span id="cb51-10"><a href="dplyr-intro.html#cb51-10" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;fct&gt;   &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;   &lt;int&gt;     &lt;dbl&gt;</span></span>
+<span id="cb51-11"><a href="dplyr-intro.html#cb51-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 Rwanda  Africa     1982    46.2 5507565      882.</span></span>
+<span id="cb51-12"><a href="dplyr-intro.html#cb51-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 Rwanda  Africa     1987    44.0 6349365      848.</span></span>
+<span id="cb51-13"><a href="dplyr-intro.html#cb51-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 Rwanda  Africa     1992    23.6 7290203      737.</span></span>
+<span id="cb51-14"><a href="dplyr-intro.html#cb51-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 Rwanda  Africa     1997    36.1 7212583      590.</span></span>
+<span id="cb51-15"><a href="dplyr-intro.html#cb51-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 Rwanda  Africa     2002    43.4 7852401      786.</span></span>
+<span id="cb51-16"><a href="dplyr-intro.html#cb51-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 6 Rwanda  Africa     2007    46.2 8860588      863.</span></span>
+<span id="cb51-17"><a href="dplyr-intro.html#cb51-17" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">filter</span>(gapminder, country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Rwanda"</span>, <span class="st">"Afghanistan"</span>))</span>
+<span id="cb51-18"><a href="dplyr-intro.html#cb51-18" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 24 x 6</span></span>
+<span id="cb51-19"><a href="dplyr-intro.html#cb51-19" aria-hidden="true" tabindex="-1"></a><span class="do">##    country     continent  year lifeExp      pop gdpPercap</span></span>
+<span id="cb51-20"><a href="dplyr-intro.html#cb51-20" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;</span></span>
+<span id="cb51-21"><a href="dplyr-intro.html#cb51-21" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 Afghanistan Asia       1952    28.8  8425333      779.</span></span>
+<span id="cb51-22"><a href="dplyr-intro.html#cb51-22" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 Afghanistan Asia       1957    30.3  9240934      821.</span></span>
+<span id="cb51-23"><a href="dplyr-intro.html#cb51-23" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 Afghanistan Asia       1962    32.0 10267083      853.</span></span>
+<span id="cb51-24"><a href="dplyr-intro.html#cb51-24" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 Afghanistan Asia       1967    34.0 11537966      836.</span></span>
+<span id="cb51-25"><a href="dplyr-intro.html#cb51-25" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 Afghanistan Asia       1972    36.1 13079460      740.</span></span>
+<span id="cb51-26"><a href="dplyr-intro.html#cb51-26" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 Afghanistan Asia       1977    38.4 14880372      786.</span></span>
+<span id="cb51-27"><a href="dplyr-intro.html#cb51-27" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 Afghanistan Asia       1982    39.9 12881816      978.</span></span>
+<span id="cb51-28"><a href="dplyr-intro.html#cb51-28" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 Afghanistan Asia       1987    40.8 13867957      852.</span></span>
+<span id="cb51-29"><a href="dplyr-intro.html#cb51-29" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 Afghanistan Asia       1992    41.7 16317921      649.</span></span>
+<span id="cb51-30"><a href="dplyr-intro.html#cb51-30" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 Afghanistan Asia       1997    41.8 22227415      635.</span></span>
+<span id="cb51-31"><a href="dplyr-intro.html#cb51-31" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 14 more rows</span></span></code></pre></div>
 <p>Zum Vergleich kann man sich einen R Standardbefehl anschauen, der zum gleichen Ergebnis führt:</p>
-<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">gapminder</span><span class="op">[</span><span class="va">gapminder</span><span class="op">$</span><span class="va">lifeExp</span> <span class="op">&lt;</span> <span class="fl">29</span>, <span class="op">]</span> 
-<span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">gapminder</span>, <span class="va">country</span> <span class="op">==</span> <span class="st">"Rwanda"</span> <span class="op">&amp;</span> <span class="va">year</span> <span class="op">&gt;</span> <span class="fl">1979</span><span class="op">)</span> <span class="co">## subset funktioniert ähnlich wir filter</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="dplyr-intro.html#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> gapminder[gapminder<span class="sc">$</span>lifeExp <span class="sc">&lt;</span> <span class="dv">29</span>, ] </span>
+<span id="cb52-2"><a href="dplyr-intro.html#cb52-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">subset</span>(gapminder, country <span class="sc">==</span> <span class="st">"Rwanda"</span> <span class="sc">&amp;</span> year <span class="sc">&gt;</span> <span class="dv">1979</span>) <span class="do">## subset funktioniert ähnlich wir filter</span></span></code></pre></div>
 <p>Unter keinen Umständen solltest du allerdings deine Daten so unterteilen, wie hier:</p>
-<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">auswahl</span> <span class="op">&lt;-</span> <span class="va">gapminder</span><span class="op">[</span><span class="fl">241</span><span class="op">:</span><span class="fl">252</span>, <span class="op">]</span></code></pre></div>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="dplyr-intro.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> auswahl <span class="ot">&lt;-</span> gapminder[<span class="dv">241</span><span class="sc">:</span><span class="dv">252</span>, ]</span></code></pre></div>
 <p>Warum ist das eine blöde Idee?</p>
 <ul>
 <li>Es ist nicht selbstdokumentierend. Was ist das Besondere an den Zeilen 241 bis 252?</li>
 <li>Es ist fehleranfällig. Diese Codezeile wird zu anderen Ergebnissen führen, wenn jemand die Zeilenreihenfolge von <code>gapminder</code> ändert, z.B. die Daten früher im Skript sortiert.</li>
 </ul>
-<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">gapminder</span>, <span class="va">country</span> <span class="op">==</span> <span class="st">"Canada"</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="dplyr-intro.html#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">filter</span>(gapminder, country <span class="sc">==</span> <span class="st">"Canada"</span>)</span></code></pre></div>
 <p>Dieser Aufruf erklärt sich von selbst und ist ziemlich robust.</p>
 </div>
 <div id="der-pipe-operator" class="section level2" number="6.3">
@@ -161,27 +164,25 @@
 <p>Bevor es weitergeht, wollen wir aber den Pipe-Operator, den das Tidyverse aus dem <a href="https://magrittr.tidyverse.org">magrittr</a>-Paket von Stefan Bache importiert, vorstellen. Mithilfe des Pipe-Operators ist man in der Lage Befehle für mehrere Operationen auszuführen, ohne sie ineinander zu verschachteln. Diese neue Syntax führt zu Code, der viel einfacher zu schreiben und zu lesen ist.</p>
 <p>Und so sieht er aus: <code>%&gt;%</code>. Das entsprechende RStudio Tastenkürzel lautet: Ctrl+Shift+M (Windows), Cmd+Shift+M (Mac).</p>
 <p>Erstmal ein Beispiel</p>
-<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">gapminder</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 6 x 6</span>
-<span class="co">#&gt;   country     continent  year lifeExp      pop gdpPercap</span>
-<span class="co">#&gt;   &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Afghanistan Asia       1952    28.8  8425333      779.</span>
-<span class="co">#&gt; 2 Afghanistan Asia       1957    30.3  9240934      821.</span>
-<span class="co">#&gt; 3 Afghanistan Asia       1962    32.0 10267083      853.</span>
-<span class="co">#&gt; 4 Afghanistan Asia       1967    34.0 11537966      836.</span>
-<span class="co">#&gt; 5 Afghanistan Asia       1972    36.1 13079460      740.</span>
-<span class="co">#&gt; 6 Afghanistan Asia       1977    38.4 14880372      786.</span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="dplyr-intro.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> gapminder <span class="sc">%&gt;%</span> <span class="fu">head</span>()</span>
+<span id="cb55-2"><a href="dplyr-intro.html#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 6 x 6</span></span>
+<span id="cb55-3"><a href="dplyr-intro.html#cb55-3" aria-hidden="true" tabindex="-1"></a><span class="do">##   country     continent  year lifeExp      pop gdpPercap</span></span>
+<span id="cb55-4"><a href="dplyr-intro.html#cb55-4" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;</span></span>
+<span id="cb55-5"><a href="dplyr-intro.html#cb55-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 Afghanistan Asia       1952    28.8  8425333      779.</span></span>
+<span id="cb55-6"><a href="dplyr-intro.html#cb55-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 Afghanistan Asia       1957    30.3  9240934      821.</span></span>
+<span id="cb55-7"><a href="dplyr-intro.html#cb55-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 Afghanistan Asia       1962    32.0 10267083      853.</span></span>
+<span id="cb55-8"><a href="dplyr-intro.html#cb55-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 Afghanistan Asia       1967    34.0 11537966      836.</span></span>
+<span id="cb55-9"><a href="dplyr-intro.html#cb55-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 Afghanistan Asia       1972    36.1 13079460      740.</span></span>
+<span id="cb55-10"><a href="dplyr-intro.html#cb55-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 6 Afghanistan Asia       1977    38.4 14880372      786.</span></span></code></pre></div>
 <p>Du siehst, der Befehl ist äquivalent zu <code><a href="https://rdrr.io/r/utils/head.html">head(gapminder)</a></code>. Der Pipe-Operator nimmt das Objekt auf der linken Seite und leitet es in den Funktionsaufruf auf der rechten Seite weiter - er gibt es buchstäblich als erstes Argument ein.</p>
 <p>Keine Angst, du kannst immer noch weitere Argumente für die Funktion auf der rechten Seite angeben! Um die ersten 3 Reihen von <code>gapminder</code> zu sehen, könnte man sagen: <code><a href="https://rdrr.io/r/utils/head.html">head(gapminder, 3)</a></code> oder:</p>
-<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">gapminder</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 3 x 6</span>
-<span class="co">#&gt;   country     continent  year lifeExp      pop gdpPercap</span>
-<span class="co">#&gt;   &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;</span>
-<span class="co">#&gt; 1 Afghanistan Asia       1952    28.8  8425333      779.</span>
-<span class="co">#&gt; 2 Afghanistan Asia       1957    30.3  9240934      821.</span>
-<span class="co">#&gt; 3 Afghanistan Asia       1962    32.0 10267083      853.</span></code></pre></div>
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="dplyr-intro.html#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> gapminder <span class="sc">%&gt;%</span> <span class="fu">head</span>(<span class="dv">3</span>)</span>
+<span id="cb56-2"><a href="dplyr-intro.html#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 3 x 6</span></span>
+<span id="cb56-3"><a href="dplyr-intro.html#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="do">##   country     continent  year lifeExp      pop gdpPercap</span></span>
+<span id="cb56-4"><a href="dplyr-intro.html#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;</span></span>
+<span id="cb56-5"><a href="dplyr-intro.html#cb56-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 Afghanistan Asia       1952    28.8  8425333      779.</span></span>
+<span id="cb56-6"><a href="dplyr-intro.html#cb56-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 Afghanistan Asia       1957    30.3  9240934      821.</span></span>
+<span id="cb56-7"><a href="dplyr-intro.html#cb56-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 Afghanistan Asia       1962    32.0 10267083      853.</span></span></code></pre></div>
 <p>Du bist wahrscheinlich noch nicht sehr beeindruckt, aber das sollte sich noch ändern.</p>
 </div>
 <div id="mit-select-variablen-auswählen" class="section level2" number="6.4">
@@ -190,34 +191,32 @@
 </h2>
 <p>Nun zurück zu <code>dplyr</code>….</p>
 <p>Verwende <code>select()</code>, um aus den Daten verschiedene Variablen (Spalten) auszuwählen. Hier kommt eine typische Verwendung von <code>select()</code>:</p>
-<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">select</span><span class="op">(</span><span class="va">gapminder</span>, <span class="va">year</span>, <span class="va">lifeExp</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 1,704 x 2</span>
-<span class="co">#&gt;     year lifeExp</span>
-<span class="co">#&gt;    &lt;int&gt;   &lt;dbl&gt;</span>
-<span class="co">#&gt;  1  1952    28.8</span>
-<span class="co">#&gt;  2  1957    30.3</span>
-<span class="co">#&gt;  3  1962    32.0</span>
-<span class="co">#&gt;  4  1967    34.0</span>
-<span class="co">#&gt;  5  1972    36.1</span>
-<span class="co">#&gt;  6  1977    38.4</span>
-<span class="co">#&gt;  7  1982    39.9</span>
-<span class="co">#&gt;  8  1987    40.8</span>
-<span class="co">#&gt;  9  1992    41.7</span>
-<span class="co">#&gt; 10  1997    41.8</span>
-<span class="co">#&gt; # … with 1,694 more rows</span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="dplyr-intro.html#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">select</span>(gapminder, year, lifeExp)</span>
+<span id="cb57-2"><a href="dplyr-intro.html#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 1,704 x 2</span></span>
+<span id="cb57-3"><a href="dplyr-intro.html#cb57-3" aria-hidden="true" tabindex="-1"></a><span class="do">##     year lifeExp</span></span>
+<span id="cb57-4"><a href="dplyr-intro.html#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;int&gt;   &lt;dbl&gt;</span></span>
+<span id="cb57-5"><a href="dplyr-intro.html#cb57-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  1  1952    28.8</span></span>
+<span id="cb57-6"><a href="dplyr-intro.html#cb57-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  2  1957    30.3</span></span>
+<span id="cb57-7"><a href="dplyr-intro.html#cb57-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  3  1962    32.0</span></span>
+<span id="cb57-8"><a href="dplyr-intro.html#cb57-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  4  1967    34.0</span></span>
+<span id="cb57-9"><a href="dplyr-intro.html#cb57-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  5  1972    36.1</span></span>
+<span id="cb57-10"><a href="dplyr-intro.html#cb57-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  6  1977    38.4</span></span>
+<span id="cb57-11"><a href="dplyr-intro.html#cb57-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  7  1982    39.9</span></span>
+<span id="cb57-12"><a href="dplyr-intro.html#cb57-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  8  1987    40.8</span></span>
+<span id="cb57-13"><a href="dplyr-intro.html#cb57-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  9  1992    41.7</span></span>
+<span id="cb57-14"><a href="dplyr-intro.html#cb57-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 10  1997    41.8</span></span>
+<span id="cb57-15"><a href="dplyr-intro.html#cb57-15" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 1,694 more rows</span></span></code></pre></div>
 <p>Und nun noch kombiniert mit <code><a href="https://rdrr.io/r/utils/head.html">head()</a></code> über den Pipe-Operator:</p>
-<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">gapminder</span> <span class="op">%&gt;%</span>
-  <span class="fu">select</span><span class="op">(</span><span class="va">year</span>, <span class="va">lifeExp</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 4 x 2</span>
-<span class="co">#&gt;    year lifeExp</span>
-<span class="co">#&gt;   &lt;int&gt;   &lt;dbl&gt;</span>
-<span class="co">#&gt; 1  1952    28.8</span>
-<span class="co">#&gt; 2  1957    30.3</span>
-<span class="co">#&gt; 3  1962    32.0</span>
-<span class="co">#&gt; 4  1967    34.0</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="dplyr-intro.html#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb58-2"><a href="dplyr-intro.html#cb58-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">select</span>(year, lifeExp) <span class="sc">%&gt;%</span></span>
+<span id="cb58-3"><a href="dplyr-intro.html#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">head</span>(<span class="dv">4</span>)</span>
+<span id="cb58-4"><a href="dplyr-intro.html#cb58-4" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 4 x 2</span></span>
+<span id="cb58-5"><a href="dplyr-intro.html#cb58-5" aria-hidden="true" tabindex="-1"></a><span class="do">##    year lifeExp</span></span>
+<span id="cb58-6"><a href="dplyr-intro.html#cb58-6" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;int&gt;   &lt;dbl&gt;</span></span>
+<span id="cb58-7"><a href="dplyr-intro.html#cb58-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 1  1952    28.8</span></span>
+<span id="cb58-8"><a href="dplyr-intro.html#cb58-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 2  1957    30.3</span></span>
+<span id="cb58-9"><a href="dplyr-intro.html#cb58-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 3  1962    32.0</span></span>
+<span id="cb58-10"><a href="dplyr-intro.html#cb58-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 4  1967    34.0</span></span></code></pre></div>
 <p>In Worten: “Nimm <code>gapminder</code>, wähle die Variablen <code>year</code> und <code>lifeExp</code> und zeige dann die ersten 4 Zeilen an.”</p>
 </div>
 <div id="jetzt-nochmal-ein-vergleich-zu-r-standardbefehlen" class="section level2" number="6.5">
@@ -225,43 +224,41 @@
 <span class="header-section-number">6.5</span> Jetzt nochmal ein Vergleich zu R Standardbefehlen<a class="anchor" aria-label="anchor" href="#jetzt-nochmal-ein-vergleich-zu-r-standardbefehlen"><i class="fas fa-link"></i></a>
 </h2>
 <p>Hier sind die Daten für Kambodscha, aber nur bestimmte Variablen:</p>
-<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">gapminder</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op">==</span> <span class="st">"Cambodia"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">select</span><span class="op">(</span><span class="va">year</span>, <span class="va">lifeExp</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 12 x 2</span>
-<span class="co">#&gt;     year lifeExp</span>
-<span class="co">#&gt;    &lt;int&gt;   &lt;dbl&gt;</span>
-<span class="co">#&gt;  1  1952    39.4</span>
-<span class="co">#&gt;  2  1957    41.4</span>
-<span class="co">#&gt;  3  1962    43.4</span>
-<span class="co">#&gt;  4  1967    45.4</span>
-<span class="co">#&gt;  5  1972    40.3</span>
-<span class="co">#&gt;  6  1977    31.2</span>
-<span class="co">#&gt;  7  1982    51.0</span>
-<span class="co">#&gt;  8  1987    53.9</span>
-<span class="co">#&gt;  9  1992    55.8</span>
-<span class="co">#&gt; 10  1997    56.5</span>
-<span class="co">#&gt; 11  2002    56.8</span>
-<span class="co">#&gt; 12  2007    59.7</span></code></pre></div>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="dplyr-intro.html#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb59-2"><a href="dplyr-intro.html#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">"Cambodia"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb59-3"><a href="dplyr-intro.html#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">select</span>(year, lifeExp)</span>
+<span id="cb59-4"><a href="dplyr-intro.html#cb59-4" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 12 x 2</span></span>
+<span id="cb59-5"><a href="dplyr-intro.html#cb59-5" aria-hidden="true" tabindex="-1"></a><span class="do">##     year lifeExp</span></span>
+<span id="cb59-6"><a href="dplyr-intro.html#cb59-6" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;int&gt;   &lt;dbl&gt;</span></span>
+<span id="cb59-7"><a href="dplyr-intro.html#cb59-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  1  1952    39.4</span></span>
+<span id="cb59-8"><a href="dplyr-intro.html#cb59-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  2  1957    41.4</span></span>
+<span id="cb59-9"><a href="dplyr-intro.html#cb59-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  3  1962    43.4</span></span>
+<span id="cb59-10"><a href="dplyr-intro.html#cb59-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  4  1967    45.4</span></span>
+<span id="cb59-11"><a href="dplyr-intro.html#cb59-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  5  1972    40.3</span></span>
+<span id="cb59-12"><a href="dplyr-intro.html#cb59-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  6  1977    31.2</span></span>
+<span id="cb59-13"><a href="dplyr-intro.html#cb59-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  7  1982    51.0</span></span>
+<span id="cb59-14"><a href="dplyr-intro.html#cb59-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  8  1987    53.9</span></span>
+<span id="cb59-15"><a href="dplyr-intro.html#cb59-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  9  1992    55.8</span></span>
+<span id="cb59-16"><a href="dplyr-intro.html#cb59-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 10  1997    56.5</span></span>
+<span id="cb59-17"><a href="dplyr-intro.html#cb59-17" aria-hidden="true" tabindex="-1"></a><span class="do">## 11  2002    56.8</span></span>
+<span id="cb59-18"><a href="dplyr-intro.html#cb59-18" aria-hidden="true" tabindex="-1"></a><span class="do">## 12  2007    59.7</span></span></code></pre></div>
 <p>und so würde ein typischer R Standardbefehl aussehen:</p>
-<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">gapminder</span><span class="op">[</span><span class="va">gapminder</span><span class="op">$</span><span class="va">country</span> <span class="op">==</span> <span class="st">"Cambodia"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"year"</span>, <span class="st">"lifeExp"</span><span class="op">)</span><span class="op">]</span>
-<span class="co">#&gt; # A tibble: 12 x 2</span>
-<span class="co">#&gt;     year lifeExp</span>
-<span class="co">#&gt;    &lt;int&gt;   &lt;dbl&gt;</span>
-<span class="co">#&gt;  1  1952    39.4</span>
-<span class="co">#&gt;  2  1957    41.4</span>
-<span class="co">#&gt;  3  1962    43.4</span>
-<span class="co">#&gt;  4  1967    45.4</span>
-<span class="co">#&gt;  5  1972    40.3</span>
-<span class="co">#&gt;  6  1977    31.2</span>
-<span class="co">#&gt;  7  1982    51.0</span>
-<span class="co">#&gt;  8  1987    53.9</span>
-<span class="co">#&gt;  9  1992    55.8</span>
-<span class="co">#&gt; 10  1997    56.5</span>
-<span class="co">#&gt; 11  2002    56.8</span>
-<span class="co">#&gt; 12  2007    59.7</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="dplyr-intro.html#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> gapminder[gapminder<span class="sc">$</span>country <span class="sc">==</span> <span class="st">"Cambodia"</span>, <span class="fu">c</span>(<span class="st">"year"</span>, <span class="st">"lifeExp"</span>)]</span>
+<span id="cb60-2"><a href="dplyr-intro.html#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 12 x 2</span></span>
+<span id="cb60-3"><a href="dplyr-intro.html#cb60-3" aria-hidden="true" tabindex="-1"></a><span class="do">##     year lifeExp</span></span>
+<span id="cb60-4"><a href="dplyr-intro.html#cb60-4" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;int&gt;   &lt;dbl&gt;</span></span>
+<span id="cb60-5"><a href="dplyr-intro.html#cb60-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  1  1952    39.4</span></span>
+<span id="cb60-6"><a href="dplyr-intro.html#cb60-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  2  1957    41.4</span></span>
+<span id="cb60-7"><a href="dplyr-intro.html#cb60-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  3  1962    43.4</span></span>
+<span id="cb60-8"><a href="dplyr-intro.html#cb60-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  4  1967    45.4</span></span>
+<span id="cb60-9"><a href="dplyr-intro.html#cb60-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  5  1972    40.3</span></span>
+<span id="cb60-10"><a href="dplyr-intro.html#cb60-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  6  1977    31.2</span></span>
+<span id="cb60-11"><a href="dplyr-intro.html#cb60-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  7  1982    51.0</span></span>
+<span id="cb60-12"><a href="dplyr-intro.html#cb60-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  8  1987    53.9</span></span>
+<span id="cb60-13"><a href="dplyr-intro.html#cb60-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  9  1992    55.8</span></span>
+<span id="cb60-14"><a href="dplyr-intro.html#cb60-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 10  1997    56.5</span></span>
+<span id="cb60-15"><a href="dplyr-intro.html#cb60-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 11  2002    56.8</span></span>
+<span id="cb60-16"><a href="dplyr-intro.html#cb60-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 12  2007    59.7</span></span></code></pre></div>
 <p>der zum gleichen Ergebnis führt. Wir würden sagen, dass der <code>dplyr</code> Befehl deutlich leichter zu lesen ist.</p>
 </div>
 <div id="pure-predictable-pipeable" class="section level2" number="6.6">
@@ -338,6 +335,22 @@
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
 </script>
 </body>
 </html>

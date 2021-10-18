@@ -6,9 +6,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Kapitel 14 Environments und Scoping | R4ews MA0009</title>
 <meta name="author" content="Stephan Haug">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.8/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="14.1 Zuordnungen Wie weiß R welchen Wert es welchem Symbol zuordnen soll? sqrt(2) ## [1] 1.414214 sqrt &lt;- function(x) x^2 sqrt(2) ## [1] 4 Warum wählt R nicht die Standardfunktion sqrt() aus dem...">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="Kapitel 14 Environments und Scoping | R4ews MA0009">
+<meta property="og:type" content="book">
+<meta property="og:description" content="14.1 Zuordnungen Wie weiß R welchen Wert es welchem Symbol zuordnen soll? sqrt(2) ## [1] 1.414214 sqrt &lt;- function(x) x^2 sqrt(2) ## [1] 4 Warum wählt R nicht die Standardfunktion sqrt() aus dem...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kapitel 14 Environments und Scoping | R4ews MA0009">
+<meta name="twitter:description" content="14.1 Zuordnungen Wie weiß R welchen Wert es welchem Symbol zuordnen soll? sqrt(2) ## [1] 1.414214 sqrt &lt;- function(x) x^2 sqrt(2) ## [1] 4 Warum wählt R nicht die Standardfunktion sqrt() aus dem...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/_Lato-0.4.0/font.css" rel="stylesheet">
+<script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link href="libs/font-awesome-5.1.0/css/all.css" rel="stylesheet">
 <link href="libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet">
 <script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
@@ -18,7 +27,7 @@
       gtag('js', new Date());
 
       gtag('config', 'UA-68219208-1');
-      </script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
+      </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="r4ews.css">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -40,7 +49,7 @@
 
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html">Willkommen zu R4ews</a></li>
+<li><a class="" href="index.html">R4ews</a></li>
 <li class="book-part">R, wie fange ich an</li>
 <li><a class="" href="install.html"><span class="header-section-number">1</span> Installieren von R und RStudio</a></li>
 <li><a class="" href="r-basics.html"><span class="header-section-number">2</span> R Basics und Arbeitsabläufe</a></li>
@@ -79,10 +88,10 @@
 <span class="header-section-number">14.1</span> Zuordnungen<a class="anchor" aria-label="anchor" href="#zuordnungen"><i class="fas fa-link"></i></a>
 </h2>
 <p>Wie weiß R welchen Wert es welchem Symbol zuordnen soll?</p>
-<div class="sourceCode" id="cb282"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb288"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 1.414214</code></pre>
-<div class="sourceCode" id="cb284"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb290"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sqrt</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span><span class="op">^</span><span class="fl">2</span>
 <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 4</code></pre>
@@ -92,14 +101,14 @@
 <li>Das <code>Global Environment</code> wird durchsucht.</li>
 <li>Die <code>namespaces</code> (dazu später mehr) der Pakete auf der <code>search</code> Liste werden durchsucht.</li>
 </ol>
-<div class="sourceCode" id="cb286"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb292"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/search.html">search</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] ".GlobalEnv"        "package:stats"     "package:graphics" 
 ## [4] "package:grDevices" "package:utils"     "package:datasets" 
 ## [7] "package:methods"   "Autoloads"         "package:base"</code></pre>
 <p>Das <code>global environment</code> (der Workspace) wird immer zuerst und <code>base</code> immer zuletzt durchsucht.</p>
 <p>Die <code>search</code> Liste wird also beeinflusst durch die von uns geladenen Pakete.</p>
-<div class="sourceCode" id="cb288"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb294"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/search.html">search</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <pre><code>##  [1] ".GlobalEnv"        "package:ggplot2"   "package:stats"    
@@ -107,10 +116,10 @@
 ##  [7] "package:datasets"  "package:methods"   "Autoloads"        
 ## [10] "package:base"</code></pre>
 <p>Man beachte, dass R die Namen von Daten- und Funktionsobjekten unterscheiden kann.</p>
-<div class="sourceCode" id="cb290"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb296"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="op">(</span><span class="va">sqrt</span> <span class="op">&lt;-</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
-<div class="sourceCode" id="cb292"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb298"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 1.414214</code></pre>
 </div>
@@ -126,13 +135,13 @@
 </li>
 </ul>
 <p>Die Einträge von <code><a href="https://rdrr.io/r/base/search.html">search()</a></code> sind die Eltern des <code>Global Environment</code>. Mit <code><a href="https://rdrr.io/r/base/environment.html">new.env()</a></code> kann auch ein neues Environment erzeugt werden.</p>
-<div class="sourceCode" id="cb294"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb300"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">neues_env</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/environment.html">new.env</a></span><span class="op">(</span><span class="op">)</span>
 <span class="va">neues_env</span><span class="op">$</span><span class="va">eins</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>
 <span class="va">neues_env</span><span class="op">$</span><span class="va">zwei</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span><span class="va">neues_env</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "eins" "zwei"</code></pre>
-<div class="sourceCode" id="cb296"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb302"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/environment.html">parent.env</a></span><span class="op">(</span><span class="va">neues_env</span><span class="op">)</span></code></pre></div>
 <pre><code>## &lt;environment: R_GlobalEnv&gt;</code></pre>
 <p><em>Bemerkung:</em> Die meisten Environments erzeugt man durch die Verwendung von Funktionen.</p>
@@ -142,7 +151,7 @@
 <span class="header-section-number">14.3</span> Scoping Rules<a class="anchor" aria-label="anchor" href="#scoping-rules"><i class="fas fa-link"></i></a>
 </h2>
 <p>Der Sichtbarkeitsbereich von Variablen (Scope) wird über <em>Scoping Rules</em> festgelegt. R verwendet <em>static scoping</em> oder auch <em>lexical scoping</em> genannt (eine Alternative ist das <em>dynamic scoping</em>).</p>
-<div class="sourceCode" id="cb298"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb304"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">f</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span><span class="op">{</span>
   <span class="va">x</span> <span class="op">+</span> <span class="va">y</span><span class="op">/</span><span class="va">z</span>
 <span class="op">}</span></code></pre></div>
@@ -157,37 +166,37 @@
 </h2>
 <p>Oftmals werden Funktionen im Globalen Environment definiert. Die Werte freier Variablen sollten dann im Workspace zu finden sein. Dieses “Verhalten” wird von den meisten “Nutzern” erwartet und als sinnvoll angesehen.</p>
 <p>Allerdings können Funktionen auch innerhalb von Funktionen definiert werden. In diesem Fall ist das Environment der <code>body</code> einer anderen Funktion.</p>
-<div class="sourceCode" id="cb299"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb305"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">bilde_potenz</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">{</span>
   <span class="va">potenz</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
     <span class="va">x</span><span class="op">^</span><span class="va">n</span>
 <span class="op">}</span></code></pre></div>
 <p><code>bilde_potenz()</code> liefert somit eine Funktion als Ausgabe.</p>
-<div class="sourceCode" id="cb300"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb306"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">zweite_potenz</span> <span class="op">&lt;-</span> <span class="fu">bilde_potenz</span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>
 <span class="va">dritte_potenz</span> <span class="op">&lt;-</span> <span class="fu">bilde_potenz</span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></code></pre></div>
 <p>Sucht man nach einer Variable und/oder möchte man ihren Wert ausgeben, so kann man mit den Funktionen <code><a href="https://rdrr.io/r/base/exists.html">exists()</a></code> und <code><a href="https://rdrr.io/r/base/get.html">get()</a></code> arbeiten. Beide verwenden static scoping.</p>
-<div class="sourceCode" id="cb301"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb307"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span><span class="op">(</span><span class="st">"eins"</span>, envir <span class="op">=</span> <span class="va">neues_env</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 1 2</code></pre>
-<div class="sourceCode" id="cb303"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb309"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span>
 <span class="fu"><a href="https://rdrr.io/r/base/exists.html">exists</a></span><span class="op">(</span><span class="st">"x"</span>, envir <span class="op">=</span> <span class="va">neues_env</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb305"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb311"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/exists.html">exists</a></span><span class="op">(</span><span class="st">"x"</span>, envir <span class="op">=</span> <span class="va">neues_env</span>, inherits <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <p>Schauen wir uns nun den <code>closure</code> (Funktion + zugehöriges Environment) von <code>zweite_potenz()</code> und <code>dritte_potenz()</code> genauer an.</p>
-<div class="sourceCode" id="cb307"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb313"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/environment.html">environment</a></span><span class="op">(</span><span class="va">zweite_potenz</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "n"      "potenz"</code></pre>
-<div class="sourceCode" id="cb309"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb315"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span><span class="op">(</span><span class="st">"n"</span>, envir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/environment.html">environment</a></span><span class="op">(</span><span class="va">zweite_potenz</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
-<div class="sourceCode" id="cb311"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb317"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/environment.html">environment</a></span><span class="op">(</span><span class="va">dritte_potenz</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "n"      "potenz"</code></pre>
-<div class="sourceCode" id="cb313"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb319"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span><span class="op">(</span><span class="st">"n"</span>, envir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/environment.html">environment</a></span><span class="op">(</span><span class="va">dritte_potenz</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 </div>
@@ -202,7 +211,7 @@
 wobei <span class="math inline">\(x_i, i=1,\dots,n,\)</span> bekannte Größen sind. Die obigen Funktion ist der negative log-Likelihood einer Normalverteilung mit Parametern <span class="math inline">\(\mu\)</span> und <span class="math inline">\(\sigma^2\)</span>, aber das spielt hier keine Rolle.</p>
 <p>Optimierungsroutinen wie <code>optim(), nlm()</code> oder <code><a href="https://rdrr.io/r/stats/optimize.html">optimize()</a></code> erwarten als Eingabe eine
 Funktion, deren Argumente die zu optimierenden Parameterwerte sind. Oftmals (wie im obigen Beispiel) hängen Funktionen aber von weiteren Werten ab.</p>
-<div class="sourceCode" id="cb315"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb321"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">negLogLik</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span>, <span class="va">fix</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">FALSE</span>, <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span><span class="op">{</span>
   <span class="va">param</span> <span class="op">&lt;-</span> <span class="va">fix</span>
   <span class="kw">function</span><span class="op">(</span><span class="va">theta</span><span class="op">)</span><span class="op">{</span>
@@ -215,7 +224,7 @@ Funktion, deren Argumente die zu optimierenden Parameterwerte sind. Oftmals (wie
   <span class="op">}</span>
 <span class="op">}</span></code></pre></div>
 <p>Die Funktion ist so geschrieben, dass einer der beiden Parameter fixiert werden kann.</p>
-<div class="sourceCode" id="cb316"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb322"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1234</span><span class="op">)</span>
 <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">1000</span>, mean <span class="op">=</span> <span class="fl">1</span>, sd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
 <span class="va">l_x</span> <span class="op">&lt;-</span> <span class="fu">negLogLik</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
@@ -228,27 +237,27 @@ Funktion, deren Argumente die zu optimierenden Parameterwerte sind. Oftmals (wie
 ##               - sum((data-mu)^2) / (2*sigma_2))
 ##     l_x
 ##   }
-## &lt;bytecode: 0x7f9f72048cc0&gt;
-## &lt;environment: 0x7f9f70b9d2d0&gt;</code></pre>
-<div class="sourceCode" id="cb318"><pre class="downlit sourceCode r">
+## &lt;bytecode: 0x7fe182fc2de8&gt;
+## &lt;environment: 0x7fe182829158&gt;</code></pre>
+<div class="sourceCode" id="cb324"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/environment.html">environment</a></span><span class="op">(</span><span class="va">l_x</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "data"  "fix"   "param"</code></pre>
-<div class="sourceCode" id="cb320"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb326"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/optim.html">optim</a></span><span class="op">(</span>par <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>, fn <span class="op">=</span> <span class="va">l_x</span><span class="op">)</span><span class="op">$</span><span class="va">par</span></code></pre></div>
 <pre><code>## [1] 0.9465684 3.9744817</code></pre>
 <p>Fixieren wir nun <span class="math inline">\(\mu\)</span> gleich 1, so erhält man</p>
-<div class="sourceCode" id="cb322"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb328"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">l_x</span> <span class="op">&lt;-</span> <span class="fu">negLogLik</span><span class="op">(</span><span class="va">x</span>, fix <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/stats/optimize.html">optimize</a></span><span class="op">(</span>f <span class="op">=</span> <span class="va">l_x</span>, interval <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1e-6</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span><span class="op">$</span><span class="va">minimum</span></code></pre></div>
 <pre><code>## [1] 3.97759</code></pre>
 <p><em>Bemerkung:</em> Wir verwenden <code><a href="https://rdrr.io/r/stats/optimize.html">optimize()</a></code> anstatt <code><a href="https://rdrr.io/r/stats/optim.html">optim()</a></code>, da letztere nicht für eindimensionale Optimierung geeignet ist.</p>
 <p>Durch Übergabe aller weiteren Größen im Environment</p>
-<div class="sourceCode" id="cb324"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb330"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/environment.html">environment</a></span><span class="op">(</span><span class="va">l_x</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "data"  "fix"   "param"</code></pre>
 <p>konnte die Funktion <code>l_x()</code> nur als Funktion der unbekannten Parameter im
 <code>.GlobalEnv</code> definiert werden.</p>
-<div class="sourceCode" id="cb326"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb332"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/environment.html">parent.env</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/environment.html">environment</a></span><span class="op">(</span><span class="va">l_x</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## &lt;environment: R_GlobalEnv&gt;</code></pre>
 <p>Es muss also keine Liste weiterer Argumente der Optimierungs- funktion übergeben werden.</p>
@@ -306,6 +315,22 @@ Funktion, deren Argumente die zu optimierenden Parameterwerte sind. Oftmals (wie
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
 </script>
 </body>
 </html>

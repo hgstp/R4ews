@@ -45,7 +45,7 @@ Falls noch nicht geschehen, sollte man
 
 
 ```r
-install.packages(c("devtools", "roxygen2", "testthat"))
+> install.packages(c("devtools", "roxygen2", "testthat"))
 ```
 ausführen. Diese Pakete erleichtern in Kombination mit RStudio das Erstellen von Paketen. 
 
@@ -58,14 +58,14 @@ Mit `has_devel()` kannst du aber bereits auch jetzt mal überprüfen ob dein Sys
 
 
 ```r
-library(devtools)
+> library(devtools)
 ```
 
 
 
 ```r
-has_devel()
-#> Your system is ready to build packages!
+> has_devel()
+## Your system is ready to build packages!
 ```
 
 Dies scheint bei mir der Fall zu sein.
@@ -77,7 +77,7 @@ Dieses Verzeichnis (wie auch andere Teile) erzeugt man mit der Funktion `devtool
 
 
 ```r
-create("Pfad_zum_Paket/Paketname")
+> create("Pfad_zum_Paket/Paketname")
 ```
 
 Dieser Befehl erzeugt das Verzeichnis `Pfad_zum_Paket/Paketname`, welches 
@@ -131,7 +131,7 @@ Die DESCRIPTION Datei enthält Informationen über das Paket und ist ein essenti
 
 
 ```r
-usethis::create_package("meinR4EWSpckg")
+> usethis::create_package("meinR4EWSpckg")
 ```
 erzeugt die DESCRIPTION Datei
 
@@ -161,7 +161,7 @@ Pakete in `Imports` werden beim Installieren des eigenen Pakets ebenfalls instal
 
 
 ```r
-usethis::use_package("dplyr")
+> usethis::use_package("dplyr")
 ```
 kann z.B. das Paket `dplyr` dem Punkt `Imports` hinzugefügt werden. `usethis::use_package(type = "Suggests")` fügt `Suggests` weitere Pakete hinzu.
 
@@ -208,10 +208,10 @@ Der Output von `person()` sieht dann folgendermaßen aus
 
 
 ```r
-person(given = "Stephan", family = "Haug", 
-                  email = "haug@tum.de", 
-                  role = c("cre", "aut"))
-#> [1] "Stephan Haug <haug@tum.de> [cre, aut]"
+> person(given = "Stephan", family = "Haug", 
++                   email = "haug@tum.de", 
++                   role = c("cre", "aut"))
+## [1] "Stephan Haug <haug@tum.de> [cre, aut]"
 ```
 
 
@@ -223,8 +223,8 @@ Die aktuelle Version von `ggplot2` ist z.B.
 
 
 ```r
-packageVersion("ggplot2")
-#> [1] '3.3.3'
+> packageVersion("ggplot2")
+## [1] '3.3.5'
 ```
 
 Für Pakete, die sich in der Entwicklung befinden, bietet es sich an noch einen vierten Teil anzufügen und mit der Versionsnummer `0.0.0.9000` zu starten.
@@ -353,11 +353,11 @@ Es ist nicht nur für das Erstellen von Paketen hilfreich das Konzept eines `NAM
 
 
 ```r
-nrow
-#> function (x) 
-#> dim(x)[1L]
-#> <bytecode: 0x7fe918d86db8>
-#> <environment: namespace:base>
+> nrow
+## function (x) 
+## dim(x)[1L]
+## <bytecode: 0x7f90f2534e00>
+## <environment: namespace:base>
 ```
 Diese Funktion ist definiert in Abhängigkeit von `dim()` aus dem `base` Paket.
 
@@ -365,16 +365,16 @@ Diese Funktion ist definiert in Abhängigkeit von `dim()` aus dem `base` Paket.
 Auch wenn wir die Funktion
 
 ```r
-dim <- function(x) c(1,1)
-dim(mtcars)
-#> [1] 1 1
+> dim <- function(x) c(1,1)
+> dim(mtcars)
+## [1] 1 1
 ```
 
 definieren, findet `nrow()` trotzdem die "richtige" Funktion
 
 ```r
-nrow(mtcars)
-#> [1] 32
+> nrow(mtcars)
+## [1] 32
 ```
 da sie den `NAMESPACE` des `base` Pakets verwendet.
 
@@ -386,11 +386,11 @@ da sie den `NAMESPACE` des `base` Pakets verwendet.
 
 
 ```r
-search()
-#>  [1] ".GlobalEnv"        "package:devtools"  "package:usethis"  
-#>  [4] "package:stats"     "package:graphics"  "package:grDevices"
-#>  [7] "package:utils"     "package:datasets"  "package:methods"  
-#> [10] "Autoloads"         "package:base"
+> search()
+##  [1] ".GlobalEnv"        "package:devtools"  "package:usethis"  
+##  [4] "package:stats"     "package:graphics"  "package:grDevices"
+##  [7] "package:utils"     "package:datasets"  "package:methods"  
+## [10] "Autoloads"         "package:base"
 ```
 
 
@@ -436,8 +436,8 @@ Daten, die das Paket enthalten sollte, legt man im Verzeichnis `/data` ab. Als F
 
 
 ```r
-x <- sample(1:100, 50, replace = TRUE)
-usethis::use_data(x, mtcars)
+> x <- sample(1:100, 50, replace = TRUE)
+> usethis::use_data(x, mtcars)
 ```
 
 Dieser Befehl speichert die Objekte `x` und `mtcars` in den Dateien `data/x.rda` und `data/mtcars.rda` ab. Der Dateiname stimmt also mit dem Objektnamen überein.
@@ -463,7 +463,7 @@ Will man in seinem Paket R Funktionen verwenden, die mithilfe von `Rcpp` aus kom
 
 
 ```r
-usethis::use_rcpp()
+> usethis::use_rcpp()
 ```
 ausführen. Danach ist das das Verzeichnis `/src` angelegt und `Rcpp` zu den Feldern `LinkingTo` und `Imports` in der `DESCRIPTION` Datei hinzugefügt. Außerdem wird man aufgefordert die roxygen Tags
 
@@ -495,7 +495,7 @@ int malZwei(int x) {
 
 Benutze für jedes deiner Pakete (mag es auch noch so klein sein) Git. Beim Anlegen des Projekts (zur Erstellung des Pakets) über RStudio, kann leicht ein lokales Git repository initialisiert werden
 
-<img src="img/package_git.png" width="589" />
+<img src="img/package_git.png" width="80%" style="display: block; margin: auto;" />
 
 Soll zusätzlich ein remote repository verwendet werden, so kann man (im Standardfall) ein neues repository auf GitLab (oder GitHub) anlegen. Es sollte den gleichen Namen bekommen wie das Paket (lokales Git repository). Danach kannst du im Terminal Befehle der Form
 
@@ -517,7 +517,7 @@ Danach existiert im Verzeichnis, in dem der Befehl ausgeführt wurde, das Unterv
 
 
 ```r
-devtools::create("paketName")
+> devtools::create("paketName")
 ```
 
 ausführen (im Verzeichnis, welches das Git repository `paketName` enthält). Danach kannst du die Änderungen speichern über einen commit Befehl

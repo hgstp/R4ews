@@ -6,9 +6,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Kapitel 2 R Basics und Arbeitsabläufe | R4ews MA0009</title>
 <meta name="author" content="Stephan Haug">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.8/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="2.1 Ein paar Grundlagen für das Arbeiten mit R  Aktueller Stand: Ihr habt bereits den Basics Primer absolviert und nun wollt ihr anfangen mit eurer RStudio/R Installation zu arbeiten. Es geht los...">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="Kapitel 2 R Basics und Arbeitsabläufe | R4ews MA0009">
+<meta property="og:type" content="book">
+<meta property="og:description" content="2.1 Ein paar Grundlagen für das Arbeiten mit R  Aktueller Stand: Ihr habt bereits den Basics Primer absolviert und nun wollt ihr anfangen mit eurer RStudio/R Installation zu arbeiten. Es geht los...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kapitel 2 R Basics und Arbeitsabläufe | R4ews MA0009">
+<meta name="twitter:description" content="2.1 Ein paar Grundlagen für das Arbeiten mit R  Aktueller Stand: Ihr habt bereits den Basics Primer absolviert und nun wollt ihr anfangen mit eurer RStudio/R Installation zu arbeiten. Es geht los...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/_Lato-0.4.0/font.css" rel="stylesheet">
+<script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link href="libs/font-awesome-5.1.0/css/all.css" rel="stylesheet">
 <link href="libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet">
 <script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
@@ -18,7 +27,7 @@
       gtag('js', new Date());
 
       gtag('config', 'UA-68219208-1');
-      </script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
+      </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="r4ews.css">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -40,7 +49,7 @@
 
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html">Willkommen zu R4ews</a></li>
+<li><a class="" href="index.html">R4ews</a></li>
 <li class="book-part">R, wie fange ich an</li>
 <li><a class="" href="install.html"><span class="header-section-number">1</span> Installieren von R und RStudio</a></li>
 <li><a class="active" href="r-basics.html"><span class="header-section-number">2</span> R Basics und Arbeitsabläufe</a></li>
@@ -74,138 +83,127 @@
 <h1>
 <span class="header-section-number">Kapitel 2</span> R Basics und Arbeitsabläufe<a class="anchor" aria-label="anchor" href="#r-basics"><i class="fas fa-link"></i></a>
 </h1>
-<!--Original content: https://stat545.com/block002_hello-r-workspace-wd-project.html-->
 <div id="ein-paar-grundlagen-für-das-arbeiten-mit-r" class="section level2" number="2.1">
 <h2>
 <span class="header-section-number">2.1</span> Ein paar Grundlagen für das Arbeiten mit R<a class="anchor" aria-label="anchor" href="#ein-paar-grundlagen-f%C3%BCr-das-arbeiten-mit-r"><i class="fas fa-link"></i></a>
 </h2>
-<blockquote>
-<p><strong>Aktueller Stand:</strong> Du hast bereits den Programming Basics Primer absolviert und nun willst du anfangen mit deiner RStudio/R Installation zu arbeiten arbeiten.</p>
-</blockquote>
-<p>Es geht los indem du RStudio startest. Beachte dabei die Standardfensterbereiche:</p>
+<div class="rmdnote">
+<p><strong>Aktueller Stand:</strong> Ihr habt bereits den Basics Primer absolviert und nun wollt ihr anfangen mit eurer RStudio/R Installation zu arbeiten.</p>
+</div>
+<p>Es geht los indem ihr RStudio startet. Beachtet dabei die Standardfensterbereiche:</p>
 <ul>
 <li>Console (<em>links</em>)</li>
 <li>Environment / History (<em>oben rechts</em>)</li>
 <li>Files / Plots / Packages / Help (<em>unten rechtes</em>)</li>
 </ul>
-<p><strong>Bemerkung:</strong> Die Standardanordnung der Fenster kannst du neben vielen anderen Dingen nach deinen Vorstellungen ändern/anpassen: <a href="https://support.rstudio.com/hc/en-us/articles/200549016-Customizing-RStudio">Customizing RStudio</a>.</p>
-<p>Gehen nun in die Konsole um mit R zu interagieren. Erstelle die nachfolgende Zuordnung und schau dir das erstellte Objekt genauer an:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">3</span> <span class="op">*</span> <span class="fl">4</span>
-<span class="va">x</span>
-<span class="co">#&gt; [1] 12</span></code></pre></div>
+<p><strong>Bemerkung:</strong> Die Standardanordnung der Fenster könnt ihr neben vielen anderen Dingen nach deinen Vorstellungen ändern/anpassen: <a href="https://support.rstudio.com/hc/en-us/articles/200549016-Customizing-RStudio">Customizing RStudio</a>.</p>
+<p>Geht nun in die Konsole um mit R zu interagieren. Erstellt die nachfolgende Zuordnung und schau euch das erstellte Objekt genauer an:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="r-basics.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> x <span class="ot">&lt;-</span> <span class="dv">3</span> <span class="sc">*</span> <span class="dv">4</span></span>
+<span id="cb6-2"><a href="r-basics.html#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> x</span>
+<span id="cb6-3"><a href="r-basics.html#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 12</span></span></code></pre></div>
 <p>Alle R Befehle, die ein Objekte erstellen (“Zuweisungen”), haben die Form:</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">objectName</span> <span class="op">&lt;-</span> <span class="va">value</span></code></pre></div>
-<p>Du wirst im weiteren Verlauf noch viele Zuweisungen vornehmen, und es ist tatsächlich etwas mühsam den Operator <code><a href="https://rdrr.io/r/base/assignOps.html">&lt;-</a></code> zu tippen. Sei aber trotzdem nicht faul und benutze <code><a href="https://rdrr.io/r/base/assignOps.html">=</a></code> stattdessen - auch wenn es theoretisch funktionieren würde. Aber später kann die Verwendung von <code><a href="https://rdrr.io/r/base/assignOps.html">=</a></code> für Zuweisungen zu Verwirrung führen. Verwende stattdessen in RStudio die Tastenkombination: <code>Alt</code> + <code><a href="https://rdrr.io/r/base/Arithmetic.html">-</a></code> (Minuszeichen).</p>
-<p>Beachte, dass RStudio automatisch <code><a href="https://rdrr.io/r/base/assignOps.html">&lt;-</a></code> mit Leerzeichen umgibt, was eine nützliche Codeformatierung demonstriert. Code ist selbst an einem guten Tag eher schlecht zu lesen. Gönne daher deinen Augen eine Pause und verwende (ausreichend) Leerzeichen.</p>
-<p>RStudio bietet viele praktische <a href="https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts">Tastaturkürzel</a> an. Eine Übersicht erhält man auch mit <code>Alt</code>+<code>Shift</code>+<code>K</code>.</p>
-<p>Objektnamen dürfen nicht mit einer Ziffer beginnen und bestimmte andere Zeichen wie ein Komma oder ein Leerzeichen nicht enthalten. Es ist daher ratsam, sich eine <a href="https://en.wikipedia.org/wiki/Snake_case">Konvention zur Abgrenzung von Wörtern</a> in Objektnamen zu überlegen.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="r-basics.html#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> objectName <span class="ot">&lt;-</span> value</span></code></pre></div>
+<p>Ihr werdet im weiteren Verlauf noch viele Zuweisungen vornehmen. Tatsächlich ist es etwas mühsam den Operator <code><a href="https://rdrr.io/r/base/assignOps.html">&lt;-</a></code> zu tippen. Seid aber trotzdem nicht faul und benutzt stattdessen einfach <code><a href="https://rdrr.io/r/base/assignOps.html">=</a></code> - auch wenn das theoretisch funktionieren würde. Aber später kann die Verwendung von <code><a href="https://rdrr.io/r/base/assignOps.html">=</a></code> für Zuweisungen zu Verwirrung führen. Verwendet stattdessen in RStudio die Tastenkombination: <code>Alt</code> + <code><a href="https://rdrr.io/r/base/Arithmetic.html">-</a></code> (Minuszeichen) bzw. <code>option</code> + <code><a href="https://rdrr.io/r/base/Arithmetic.html">-</a></code>.</p>
+<p>Beachtet, dass RStudio automatisch <code><a href="https://rdrr.io/r/base/assignOps.html">&lt;-</a></code> mit Leerzeichen umgibt, was eine nützliche Codeformatierung darstellt. Code ist selbst an einem guten Tag eher schlecht zu lesen. Gönnt daher euren Augen eine Pause und verwende (ausreichend) Leerzeichen.</p>
+<p>RStudio bietet viele praktische <a href="https://support.rstudio.com/hc/en-us/articles/200711853-Keyboard-Shortcuts">Tastaturkürzel</a> an. Eine Übersicht erhält man auch mit <code>Alt</code>+<code>Shift</code>+<code>K</code> bzw. <code>option</code>+<code>Shift</code>+<code>K</code>.</p>
+<p>Objektnamen dürfen nicht mit einer Ziffer beginnen und bestimmte andere Zeichen wie ein Komma oder ein Leerzeichen nicht enthalten. Es ist daher ratsam, sich eine [Konvention zur Abgrenzung von Wörtern][wiki-snake-case] in Objektnamen zu überlegen.</p>
 <pre><code>i_use_snake_case
 other.people.use.periods
 evenOthersUseCamelCase</code></pre>
 <p>Wir werden stets die erste Variante verwenden.</p>
-<p>Führe nun nachfolgenden Befehl aus</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">this_is_a_really_long_name</span> <span class="op">&lt;-</span> <span class="fl">2.5</span></code></pre></div>
-<p>In deinem Workspace ist nun das Objekt <code>this_is_a_really_long_name</code> vorhanden. Probiere mithilfe dieses Objekts die Vervollständigungsfunktion von RStudio aus: <em>Gib die ersten paar Zeichen ein, drücke anschließend die TAB Taste, fügen weitere Zeichen hinzu, bis Eindeutigkeit hergestellt ist(wenn sonst wenig in deinem Workspace ist, dann ist das schnell erreicht), und drücke dann die Eingabetaste</em>.</p>
-<p>Führe nun den Befehl</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">jenny_rocks</span> <span class="op">&lt;-</span> <span class="fl">2</span> <span class="op">^</span> <span class="fl">3</span></code></pre></div>
+<p>Führt nun nachfolgenden Befehl aus</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="r-basics.html#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> this_is_a_really_long_name <span class="ot">&lt;-</span> <span class="fl">2.5</span></span></code></pre></div>
+<p>In eurem Workspace ist nun das Objekt <code>this_is_a_really_long_name</code> vorhanden. Probiert mithilfe dieses Objekts die Vervollständigungsfunktion von RStudio aus:</p>
+<div class="content-box-grey">
+<p>Gib die ersten paar Zeichen ein, drücke anschließend die TAB Taste, fügen weitere Zeichen hinzu, bis Eindeutigkeit hergestellt ist(wenn sonst wenig in deinem Workspace ist, dann ist das schnell erreicht), und drücke dann die Eingabetaste.</p>
+</div>
+<p>Führt nun den Befehl</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="r-basics.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> zwei_hoch_drei <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">^</span> <span class="dv">3</span></span></code></pre></div>
 <p>aus, um anschließend den Inhalt des Objekts anzuzeigen.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">jennyrocks</span>
-<span class="co">#&gt; Error in eval(expr, envir, enclos): object 'jennyrocks' not found</span>
-<span class="va">jeny_rocks</span>
-<span class="co">#&gt; Error in eval(expr, envir, enclos): object 'jeny_rocks' not found</span></code></pre></div>
-<p>Die Objekte <code>jennyrocks</code> und <code>jeny_rocks</code> sind natürlich nicht vorhanden und somit führen beide Befehle zu einer Fehlermeldung. Man muss also absolut exakt sein mit seinen Befehlen.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="r-basics.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> zwei.hoch.drei</span>
+<span id="cb11-2"><a href="r-basics.html#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Error in eval(expr, envir, enclos): object 'zwei.hoch.drei' not found</span></span>
+<span id="cb11-3"><a href="r-basics.html#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> zwei_Hoch_drei</span>
+<span id="cb11-4"><a href="r-basics.html#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Error in eval(expr, envir, enclos): object 'zwei_Hoch_drei' not found</span></span></code></pre></div>
+<p>Die Objekte <code>zwei.hoch.drei</code> und <code>zwei_Hoch_drei</code> sind natürlich nicht vorhanden und somit führen beide Befehle zu einer Fehlermeldung. Man muss also absolut exakt sein mit seinen Befehlen.</p>
 <p>R verfügt über eine überwältigende Sammlung eingebauter Funktionen, die nach folgendem Schema aufgerufen werden:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="r-basics.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">functionName</span>(<span class="at">arg1 =</span> val1, <span class="at">arg2 =</span> val2, and so on)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="r-basics.html#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">functionName</span>(<span class="at">arg1 =</span> val1, <span class="at">arg2 =</span> val2, ...)</span></code></pre></div>
 <p>Als nächstes wollen wir die Funktion <code><a href="https://rdrr.io/r/base/seq.html">seq()</a></code> verwenden, die reguläre Zahlensequenzen erzeugt. Dabei wollen wir noch ein weiteres hilfreiches Feature von RStudio demonstrieren.</p>
-<p>Tippe <code>se</code> und drücke dann die TAB Taste. In einem Pop-Up Fenster werden dir mögliche Vervollständigungen angezeigt. Der Befehl <code><a href="https://rdrr.io/r/base/seq.html">seq()</a></code> kann dann durch weiteres Tippen oder über die Auswahlmöglichkeit (Pfeiltasten nach oben/unten) festgelegt werden. Zu jeder Auswahlmöglichkeit wird auch noch eine Kurzform der entsprechenden Hilfeseite angezeigt. Fügt man jetzt die öffnende runde Klammer hinzu, so wird die zugehörige schließende runde Klammer automatisch hinzugefügt. Tippe anschließend <code>1, 10</code> (das geschieht automatisch innerhalb der runden Klammern) und Return. RStudio beendet auch den Klammerausdruck für dich. IDEs sind großartig.</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">10</span><span class="op">)</span>
-<span class="co">#&gt;  [1]  1  2  3  4  5  6  7  8  9 10</span></code></pre></div>
+<div class="content-box-grey">
+<p>Tippt <code>se</code> und drücke dann die TAB Taste. In einem Pop-Up Fenster werden dir mögliche Vervollständigungen angezeigt. Der Befehl <code><a href="https://rdrr.io/r/base/seq.html">seq()</a></code> kann dann durch weiteres Tippen oder über die Auswahlmöglichkeit (Pfeiltasten nach oben/unten) festgelegt werden. Zu jeder Auswahlmöglichkeit wird auch noch eine Kurzform der entsprechenden Hilfeseite angezeigt.</p>
+</div>
+<p>Fügt man jetzt die öffnende runde Klammer hinzu, so wird die zugehörige schließende runde Klammer automatisch hinzugefügt. Tippe anschließend <code>1, 10</code> (das geschieht automatisch innerhalb der runden Klammern) und Return. RStudio beendet auch den Klammerausdruck für dich. RStudio 🚀</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="r-basics.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>)</span>
+<span id="cb13-2"><a href="r-basics.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1]  1  2  3  4  5  6  7  8  9 10</span></span></code></pre></div>
 <p>Der letzte Befehl zeigt auch ganz gut, wie R Funktionsargumente auflöst. Sie können immer in der Form <code>Name = Wert</code> angeben werden. Aber der Name muss nicht angegeben werden, wie man sieht. In solchen Fällen versucht R, nach der Position aufzulösen. So wird oben angenommen, dass wir eine Sequenz bei 1 starten wollen, also <code>from = 1</code>, und diese bis 10 laufen soll, daher <code>to = 10</code>. Da wir keine Schrittweite angegeben haben, wird der Standardwert für <code>by</code> verwendet, der in diesem Fall gleich 1 ist.</p>
 <p>Bei Funktionen, die man oft aufruft, kann man gut diese Auflösung nach Position für das erste und vielleicht auch das zweite Argument verwenden. Danach ist es aber ratsam immer mit <code>Name = Wert</code> zu arbeiten um falsche Zuweisungen (verschiedene Argumente können vom gleichen Typ sein, sodass eine falsche Zuweisung nicht automatisch zu einer Fehlermeldung führt) zu vermeiden.</p>
 <p>Analog zur Unterstützung mit den runden Klammern, werden auch schließende Anführungszeichen automatisch ergänzt, wie man in folgendem Beispiel sieht.</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">yo</span> <span class="op">&lt;-</span> <span class="st">"hello world"</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="r-basics.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> yo <span class="ot">&lt;-</span> <span class="st">"hello world"</span></span></code></pre></div>
 <p>Nach einer Zuweisung wird der entsprechende Wert des Objekts nicht angezeigt. Daher ist man vielleicht dazu geneigt das Objekt gleich erneut aufzurufen</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">10</span><span class="op">)</span>
-<span class="va">y</span>
-<span class="co">#&gt;  [1]  1  2  3  4  5  6  7  8  9 10</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="r-basics.html#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> y <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>)</span>
+<span id="cb15-2"><a href="r-basics.html#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> y</span>
+<span id="cb15-3"><a href="r-basics.html#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1]  1  2  3  4  5  6  7  8  9 10</span></span></code></pre></div>
 <p>Diese typische Aktion kann verkürzt werden, indem die Zuweisung in Klammern gesetzt wird, wodurch die Zuweisung und ein Befehl “Drucke auf den Bildschirm” erfolgen.</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="op">(</span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt;  [1]  1  2  3  4  5  6  7  8  9 10</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="r-basics.html#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> (y <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">10</span>))</span>
+<span id="cb16-2"><a href="r-basics.html#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1]  1  2  3  4  5  6  7  8  9 10</span></span></code></pre></div>
 <p>Nicht alle Funktionen haben (oder erfordern) Argumente:</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/date.html">date</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; [1] "Mon Jul 19 17:43:02 2021"</span></code></pre></div>
-<p>Schau dir nun deinen Workspace an - im oberen rechten Fensterbereich (bei Standardeinstellung) siehst du unter Environment den Inhalt deines Workspaces. Der Workspace ist der Ort, an dem sich benutzerdefinierte Objekte ansammeln. Eine Liste dieser Objekte kannst du auch mit diesen Befehlen erhalten:</p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/ls.html">objects</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; [1] "check_quietly"              "install_quietly"           </span>
-<span class="co">#&gt; [3] "jenny_rocks"                "pretty_install"            </span>
-<span class="co">#&gt; [5] "shhh_check"                 "this_is_a_really_long_name"</span>
-<span class="co">#&gt; [7] "x"                          "y"                         </span>
-<span class="co">#&gt; [9] "yo"</span>
-<span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">#&gt; [1] "check_quietly"              "install_quietly"           </span>
-<span class="co">#&gt; [3] "jenny_rocks"                "pretty_install"            </span>
-<span class="co">#&gt; [5] "shhh_check"                 "this_is_a_really_long_name"</span>
-<span class="co">#&gt; [7] "x"                          "y"                         </span>
-<span class="co">#&gt; [9] "yo"</span></code></pre></div>
-<p>Wenn du nun das Objekt mit dem Namen <code>y</code> entfernen möchtest, kannst du dies wie folgt machen:</p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span><span class="va">y</span><span class="op">)</span></code></pre></div>
-<p>Alles löschen kannst du mit dem Befehl</p>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/rm.html">rm</a></span><span class="op">(</span>list <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<p>oder du klickst auf den Besen im Environment Fenster von RStudio.</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="r-basics.html#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">date</span>()</span>
+<span id="cb17-2"><a href="r-basics.html#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "Sun Oct 17 23:13:01 2021"</span></span></code></pre></div>
+<p>Schaut euch nun euren Workspace an - unter Environment (vermutlich im Fenster rechts oben) seht ihr den Inhalt eures Workspace. Der Workspace ist der Ort, an dem sich benutzerdefinierte Objekte ansammeln. Eine Liste dieser Objekte könnt ihr auch mit diesen Befehlen erhalten:</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="r-basics.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">objects</span>()</span>
+<span id="cb18-2"><a href="r-basics.html#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "this_is_a_really_long_name" "x"                         </span></span>
+<span id="cb18-3"><a href="r-basics.html#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [3] "y"                          "yo"                        </span></span>
+<span id="cb18-4"><a href="r-basics.html#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [5] "zwei_hoch_drei"</span></span>
+<span id="cb18-5"><a href="r-basics.html#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ls</span>()</span>
+<span id="cb18-6"><a href="r-basics.html#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "this_is_a_really_long_name" "x"                         </span></span>
+<span id="cb18-7"><a href="r-basics.html#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [3] "y"                          "yo"                        </span></span>
+<span id="cb18-8"><a href="r-basics.html#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [5] "zwei_hoch_drei"</span></span></code></pre></div>
+<p>Wenn ihr nun das Objekt mit dem Namen <code>y</code> entfernen möchtet, könnt ihr das wie folgt machen:</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="r-basics.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">rm</span>(y)</span></code></pre></div>
+<p>Alles löschen kann man mit dem Befehl</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="r-basics.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">rm</span>(<span class="at">list =</span> <span class="fu">ls</span>())</span></code></pre></div>
+<p>oder man klickt auf den Besen im Environment Fenster von RStudio.</p>
 </div>
 <div id="workspace-und-working-directory" class="section level2" number="2.2">
 <h2>
 <span class="header-section-number">2.2</span> Workspace und working directory<a class="anchor" aria-label="anchor" href="#workspace-und-working-directory"><i class="fas fa-link"></i></a>
 </h2>
-<p>Ziemlich schnell wird der Fall eintreten, dass du mit deiner R Arbeit (z.B. Bearbeitung eines Hausaufgaben Projekts) noch nicht fertig bist obwohl es Zeit wird R zu beenden. Natürlich willst du aber zu einem späteren Zeitpunkt mit der Analyse weitermachen wo du aufgehört hast.</p>
-<p>Etwas später wird es so ein, dass du Daten in R einlesen und anschließend numerische Ergebnisse erzeugen willst, die du dann schließlich auch wieder exportieren willst.</p>
-<p>Und nochmal später wird es (vielleicht) so sein, dass du in R gleichzeitig an mehreren Analysen arbeitest, die du aber unbedingt getrennt halten willst/sollst.</p>
-<p>Um diese Situationen zu bewältigen, musst du zwei Entscheidungen treffen:</p>
+<p>Ziemlich schnell wird der Fall eintreten, dass ihr mit eurer R Arbeit (z.B. Bearbeitung eines Hausaufgaben Projekts) noch nicht fertig seid obwohl es Zeit die Arbeit für heute zu beenden. Natürlich will man aber zu einem späteren Zeitpunkt mit der Analyse weitermachen, wo man gerade aufgehört hat.</p>
+<p>Etwas später wird es so ein, dass ihr zudem auch noch Daten in R einlest und damit anschließend numerische Ergebnisse erzeugt, die ihr dann auch wieder exportieren wollt.</p>
+<p>Und nochmal später wird es (vielleicht) so sein, dass ihr in R gleichzeitig an mehreren Analysen arbeitest, die ihr aber unbedingt getrennt halten wollt/sollt.</p>
+<p>Um diese Situationen zu bewältigen, müsst ihr zwei Entscheidungen treffen:</p>
 <ul>
-<li><p>Was betrachtest du an deiner Analyse als “<em>Ergebnis</em>,” d.h. was wirst du dauerhaft speichern?</p></li>
-<li><p>Wo “<em>lebt</em>” deine Analyse?</p></li>
+<li><p>Was betrachtest du an deiner Analyse als <strong>“Ergebnis”</strong>, d.h. was wirst du dauerhaft speichern?</p></li>
+<li><p>Wo <strong>“lebt”</strong> deine Analyse?</p></li>
 </ul>
 <div id="workspace-.rdata" class="section level3" number="2.2.1">
 <h3>
 <span class="header-section-number">2.2.1</span> Workspace, <code>.RData</code><a class="anchor" aria-label="anchor" href="#workspace-.rdata"><i class="fas fa-link"></i></a>
 </h3>
-<p>Du startest gerade deine R Reise. Daher wäre es Okay, wenn du deinen Workspace als die “<em>Ergebnis</em>” deiner Analyse betrachtest. <em>Ziemlich bald</em>, solltest du aber davon (vielleicht durch uns) überzeugt sein, dass deine R Skripte das Ergebnis deiner Analyse sind (in beiden Fällen hängt das Ergebnis möglicherweise natürlich auch von Input Daten ab).<br>
-Die Daten zusammen mit deinem R Code erlauben es dir jederzeit <em>alle</em> Ergebnisse zu reproduzieren und das ist die entscheidende Eigenschaft.</p>
-<p>Betrachtest du deinen Workspace als das Ergebnis deiner Analyse, dann musst du bei einem erneuten Analysedurchlauf (leicht veränderte Aufgabenstellung, …) entweder erneut eine Menge Tippen (was natürlich fehleranfällig ist) oder deine R History nach den nötigen Befehlen durchwühlen. Anstatt <a href="https://support.rstudio.com/hc/en-us/articles/200526217-Command-History">“becoming an expert on managing the R history”</a>, solltest du deinen R Code sauber in ein Skript speichern, sodass er dir für weitere Analysen zur Verfügung steht.</p>
-<p>Der Workspace Ansatz wird “begünstigt” durch die Tatsache, dass RStudio beim Beenden der Session automatisch wissen will ob der Workspace gespeichert werden soll. Das wollen wir mal ausprobieren.</p>
-<p>Beende R/RStudio, entweder über das Menü oder du tippst <code><a href="https://rdrr.io/r/base/quit.html">q()</a></code> in die Konsole. Dann erhältst du eine Eingabeaufforderung wie diese:</p>
+<p>Ihr startet gerade eure R Reise ✈️. Daher wäre es okay, wenn ihr euren Workspace als das <strong>“Ergebnis”</strong> eurer Analyse betrachtet. <em>Ziemlich bald</em>, solltet ihr aber davon (vielleicht durch uns) überzeugt sein, dass eure R Skripte das Ergebnis eurer Analyse sind (in beiden Fällen hängt das Ergebnis vermutlich auch von Input Daten ab).</p>
+<p>Die Daten zusammen mit eurem R Code erlauben es euch jederzeit <em>alle</em> Ergebnisse zu <strong>reproduzieren</strong> und das ist die entscheidende Eigenschaft.</p>
+<p>Betrachtest man seinen Workspace als das Ergebnis der Analyse, dann muss man bei einem erneuten Analysedurchlauf (leicht veränderte Aufgabenstellung, …) entweder erneut eine Menge Tippen (was natürlich fehleranfällig ist) oder die R <em>History</em> nach den nötigen Befehlen durchwühlen.
+Statt <a href="https://support.rstudio.com/hc/en-us/articles/200526217-Command-History">“becoming an expert on managing the R history”</a> als Ziel zu haben, solltet ihr euren R Code sauber in ein Skript speichern, sodass er für weitere Analysen zur Verfügung steht.</p>
+<p>Der Workspace Ansatz wird allerdings “begünstigt/gefördert” durch die Tatsache, dass RStudio beim Beenden der Session automatisch wissen will ob der Workspace gespeichert werden soll. Das wollen wir mal ausprobieren.</p>
+<p>Beendet R/RStudio, entweder über das Menü oder tippt <code><a href="https://rdrr.io/r/base/quit.html">q()</a></code> in die Konsole. Dann erhaltet ihr eine Eingabeaufforderung wie diese:</p>
 <blockquote>
 <p>Save workspace image to ~/.Rdata?</p>
 </blockquote>
-<p><em>Merke dir in welchem Verzeichnis die Datei gespeichert wird</em> und dann klick auf <code>Save</code>.</p>
-<p>Gehe in das Verzeichnis mit dem gespeicherten Workspace Image und kontrolliere ob die Datei <code>.RData</code> vorhanden ist. Du wirst dort auch die Datei <code>.Rhistory</code> finden, die alle Befehle deiner letzten Sitzung enthält.</p>
-<p>Nun starte erneut RStudio. In der Konsole siehst du einen Befehl, der ungefähr so aussieht</p>
+<p><em>Merkt euch in welchem Verzeichnis die Datei gespeichert wird</em> und dann klickt auf <code>Save</code>.</p>
+<p>Geht in das Verzeichnis mit dem gespeicherten Workspace Image und kontrolliert ob die Datei <code>.RData</code> vorhanden ist. Ihr werdet dort auch die Datei <code>.Rhistory</code> finden, die alle Befehle eurer letzten Sitzung enthält.</p>
+<p>Nun starte erneut RStudio. In der Konsole seht ihr einen Befehl, der ungefähr so aussieht</p>
 <pre><code>[Workspace loaded from ~/.RData]</code></pre>
-<p>und angibt, dass dein gespeicherter Workspace wiederhergestellt wurde. Unter Environment solltest du die gleichen Objekte wie zuvor sehen. History enthält die gespeicherten Befehle aus der letzten Sitzung. Aber diese Art, analytische Arbeit zu beginnen und zu beenden, würde so nicht lange gut gehen. Daher fangen wir gleich mal damit an die automatische Nachfrage nach dem Speichern des Workspaces abzuwählen. Öffne dazu die Global Options (unter Tools)</p>
-<div class="inline-figure"><img src="img/global_options.png" width="324"></div>
-<p>und setze <code>Save workspace to .RData on exit</code> auf <code>Never</code>. Nun wirst du <em>nie mehr</em> gefragt ob du deinen Workspace speichern willst. Sehr wohl wirst du aber weiterhin gefragt ob du ungesicherte Änderungen in deinem R Skript speichern willst, sobald du RStudio beenden willst.</p>
+<p>und angibt, dass euer gespeicherter Workspace wiederhergestellt wurde. Unter Environment solltet ihr die gleichen Objekte wie zuvor sehen. Im Fenster History findet ihr die gespeicherten Befehle aus der letzten Sitzung.</p>
+<p>Aber diese Art, analytische Arbeit zu beginnen und zu beenden, würde so nicht lange gut gehen. Daher fangen wir gleich mal damit an die automatische Nachfrage nach dem Speichern des Workspaces abzuwählen. Öffnet dazu die Global Options (unter Tools)</p>
+<div class="inline-figure"><img src="img/global_options.png" width="80%" style="display: block; margin: auto;"></div>
+<p>und setzt <code>Save workspace to .RData on exit</code> auf <code>Never</code>. Nun werdet ihr <strong>nie mehr</strong> gefragt ob der Workspace gespeichert werden soll. Sehr wohl werdet ihr aber weiterhin gefragt ob ungesicherte Änderungen in euren R Skript gespeichert werden sollen, sobald ihr RStudio beenden wollt.</p>
 </div>
 <div id="working-directory" class="section level3" number="2.2.2">
 <h3>
 <span class="header-section-number">2.2.2</span> Working directory<a class="anchor" aria-label="anchor" href="#working-directory"><i class="fas fa-link"></i></a>
 </h3>
-<p>Jeder Prozess, der auf deinem Computer läuft, hat einen Bezug zu seinem “Arbeitsverzeichnis.” In R ist dies der Ort, an dem R standardmäßig nach Dateien suchen würde oder der Ort wo alle Dateien, die du auf die Festplatte schreiben willst, abgelegt werden. Möglicherweise ist dein aktuelles Arbeitsverzeichnis das Verzeichnis, das du oben gerade untersucht hast um die <code>.RData</code> Datei zu finden.</p>
-<p>Du kannst dir dein aktuelles Arbeitsverzeichnis anzeigen lassen mit dem Befehl</p>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/getwd.html">getwd</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<p>Jeder Prozess, der auf einem Computer läuft, hat einen Bezug zu seinem “Arbeitsverzeichnis”. In R ist dies der Ort, an dem R standardmäßig nach Dateien suchen würde oder der Ort wo alle Dateien, die ihr auf die Festplatte schreiben wollt, abgelegt werden. Möglicherweise ist euer aktuelles Arbeitsverzeichnis das Verzeichnis, das ihr gerade untersucht habt um die <code>.RData</code> Datei zu finden.</p>
+<p>Das aktuelle Arbeitsverzeichnis könnt ihr euch anzeigen lassen mit dem Befehl</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="r-basics.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">getwd</span>()</span></code></pre></div>
 <p>Aber es wird auch oben an der RStudio Konsole direkt angezeigt.</p>
 <p>Es wäre schon, wenn das Arbeitsverzeichnis in Abhängigkeit vom jeweils zu bearbeitenden Projekt leicht sinnvoll gesetzt werden könnte. Im nächsten Abschnitt sehen wir, dass genau das möglich ist.</p>
 </div>
@@ -214,55 +212,54 @@ Die Daten zusammen mit deinem R Code erlauben es dir jederzeit <em>alle</em> Erg
 <h2>
 <span class="header-section-number">2.3</span> RStudio Projects<a class="anchor" aria-label="anchor" href="#rprojs"><i class="fas fa-link"></i></a>
 </h2>
-<p>Alle zu einem Projekt gehörenden Dateien - Eingabedaten, R Skripte, Analyseergebnisse, Grafiken - an einem Ort zu bündeln, ist eine so weise und gängige Praxis, dass RStudio über seine <a href="https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects"><em>Projects</em></a> genau da ermöglicht.</p>
-<p>Lass uns ein Projekt für den Kurs anlegen. Dazu wählen wir oben rechts im RStudio Fenster <em>Project: (None) -&gt; New Project</em></p>
-<div class="inline-figure"><img src="img/project_1.png" width="400"></div>
-<p>Danach wählen wir <em>New Directory -&gt; New Project</em> und geben abschließend einen passenden Verzeichnisnamen ein (dabei beachten wir den Speicherort des neuen Verzeichnisses)</p>
+<p>Alle zu einem Projekt gehörenden Dateien - Eingabedaten, R Skripte, Analyseergebnisse, Grafiken - an einem Ort zu bündeln, ist eine so sinnvolle Praxis, dass RStudio über seine <a href="https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects"><strong>Projects</strong></a> genau da ermöglicht.</p>
+<p>Lasst uns ein Projekt für den Kurs anlegen. Dazu wählen wir oben rechts im RStudio Fenster <code>Project: (None) -&gt; New Project</code></p>
+<div class="inline-figure"><img src="img/project_1.png" width="80%" style="display: block; margin: auto;"></div>
+<p>Danach wählen wir <code>New Directory -&gt; New Project</code> und geben abschließend einen passenden Verzeichnisnamen ein (dabei beachten wir den Speicherort des neuen Verzeichnisses)</p>
 <p><img src="img/project_2.png" width="33%"><img src="img/project_3.png" width="33%"><img src="img/project_4.png" width="33%"></p>
-<p>Wir nehmen nun an, dass du ein RStudio Projekt angelegt und dieses auch geöffnet hast. Dann benötigen wir als Nächstes ein wenig R Code. Dazu tippen wir den unten stehenden Code (ausnahmsweise) in die Konsole</p>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">a</span> <span class="op">&lt;-</span> <span class="fl">2</span>
-<span class="va">b</span> <span class="op">&lt;-</span> <span class="op">-</span><span class="fl">3</span>
-<span class="va">sig_sq</span> <span class="op">&lt;-</span> <span class="fl">0.5</span>
-<span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">40</span><span class="op">)</span>
-<span class="va">y</span> <span class="op">&lt;-</span> <span class="va">a</span> <span class="op">+</span> <span class="va">b</span> <span class="op">*</span> <span class="va">x</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">40</span>, sd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">sig_sq</span><span class="op">)</span><span class="op">)</span>
-<span class="op">(</span><span class="va">x_n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; [1] 0.503</span>
-<span class="fu"><a href="https://rdrr.io/r/base/write.html">write</a></span><span class="op">(</span><span class="va">x_n</span>, <span class="st">"data/mittelwert_x.txt"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span><span class="va">a</span>, <span class="va">b</span>, col <span class="op">=</span> <span class="st">"purple"</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="02_r-basics_files/figure-html/toy-line-1.png" width="672"></div>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/grDevices/dev2.html">dev.print</a></span><span class="op">(</span><span class="va">pdf</span>, <span class="st">"img/scatterplot.pdf"</span><span class="op">)</span>
-<span class="co">#&gt; quartz_off_screen </span>
-<span class="co">#&gt;                 2</span></code></pre></div>
-<p>Jetzt nehmen wir mal an das wäre ein guter Start einer Analyse, die wir durchführen wollen. Daher würdest du das Ergebnis gerne abspeichern. Unter History kannst du alle obigen Befehle markieren und anschließend “To Source” klicken. Daraufhin wird sich ein neues Fenster mit einem R Skript - das natürlich die Befehle enthält - öffnen. Das Skript kannst du abspeichern und standardmäßig wird es in deinen Projektordner gespeichert werden (aber natürlich könntest man den Speicherort an dieser Stelle auch ändern/frei wählen).</p>
-<p>Nun beende das Projekt (<em>Close Project</em> in der rechten oberen Ecke). Wenn du willst, kannst du dir auch den Inhalt deines Projektordners anschauen, z.B. das PDF öffnen.</p>
-<p>Danach öffnest du das Projekt wieder. Dir wird auffallen, dass alles in dem Zustand ist, wie du das Projekt verlassen hast, z.B. Objekte im Arbeitsbereich, die Befehlshistorie, welche Dateien zur Bearbeitung geöffnet sind, wo wir uns im Dateisystembrowser befinden, das Arbeitsverzeichnis für den R-Prozess usw. All dies sind gute Dinge.</p>
-<p>Nun ändern ein paar Dinge an deinem Code. Sinnvoll wäre z.B. am Anfang die Stichprobenlänge <code>n</code> zu definieren und z.B. auf <code>n &lt;- 40</code> setzen. Dann
-sollten alle festen 40er Werte durch <code>n</code> ersetzt werden. Anschließend kannst
-du noch ein paar andere Dinge ändern, z.B. die Steigung <code>b</code>, die Farbe der Linie … was auch immer. Übe nun die verschiedenen Möglichkeiten, den Code erneut auszuführen:</p>
+<p>Wir nehmen nun an, dass ihr ein RStudio Projekt angelegt und auch geöffnet habt. Als Nächstes benötigen wir nun ein wenig R Code. Dazu tippen wir den unten stehenden Code (ausnahmsweise) in die Konsole</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="r-basics.html#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> a <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb23-2"><a href="r-basics.html#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> b <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">3</span></span>
+<span id="cb23-3"><a href="r-basics.html#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> sig_sq <span class="ot">&lt;-</span> <span class="fl">0.5</span></span>
+<span id="cb23-4"><a href="r-basics.html#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> x <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">40</span>)</span>
+<span id="cb23-5"><a href="r-basics.html#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> y <span class="ot">&lt;-</span> a <span class="sc">+</span> b <span class="sc">*</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">40</span>, <span class="at">sd =</span> <span class="fu">sqrt</span>(sig_sq))</span>
+<span id="cb23-6"><a href="r-basics.html#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> (x_n <span class="ot">&lt;-</span> <span class="fu">mean</span>(x))</span>
+<span id="cb23-7"><a href="r-basics.html#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 0.497</span></span>
+<span id="cb23-8"><a href="r-basics.html#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">write</span>(x_n, <span class="st">"mittelwert_x.txt"</span>)</span>
+<span id="cb23-9"><a href="r-basics.html#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">plot</span>(x, y)</span>
+<span id="cb23-10"><a href="r-basics.html#cb23-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">abline</span>(a, b, <span class="at">col =</span> <span class="st">"purple"</span>)</span></code></pre></div>
+<div class="inline-figure"><img src="02_r-basics_files/figure-html/toy-line-1.png" width="80%" style="display: block; margin: auto;"></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="r-basics.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">dev.print</span>(pdf, <span class="st">"scatterplot.pdf"</span>)</span>
+<span id="cb24-2"><a href="r-basics.html#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="do">## quartz_off_screen </span></span>
+<span id="cb24-3"><a href="r-basics.html#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="do">##                 2</span></span></code></pre></div>
+<p>Jetzt nehmen wir mal an, das wäre ein guter Start einer Analyse, die wir durchführen wollen. Daher würdest ihr das Ergebnis gerne abspeichern. Unter History könnt ihr alle obigen Befehle markieren und anschließend <code>To Source</code> klicken. Daraufhin wird sich ein neues Fenster mit einem R Skript - das natürlich die Befehle enthält - öffnen. Das Skript könnt ihn anschließend abspeichern, und standardmäßig wird es in den Projektordner gespeichert werden (aber natürlich könntest man den Speicherort an dieser Stelle auch ändern/frei wählen).</p>
+<p>Nun beendet das Projekt (<em>Close Project</em> in der rechten oberen Ecke). Wer will, kann sich noch den Inhalt dess Projektordners anschauen, z.B. das PDF öffnen.</p>
+<p>Danach öffnet ihr das Projekt wieder. Euch sollte auffallen, dass alles in dem Zustand ist, wie ihr das Projekt verlassen habt, z.B. Objekte im Arbeitsbereich, die Befehlshistorie, welche Dateien zur Bearbeitung geöffnet sind, wo wir uns im Dateisystembrowser befinden, das Arbeitsverzeichnis für den R-Prozess usw. All dies sind gute Dinge 😁.</p>
+<p>Nun ändert ein paar Dinge an eurem Code. Sinnvoll wäre z.B. am Anfang die Stichprobenlänge <code>n</code> zu definieren und z.B. auf <code>n &lt;- 40</code> setzen. Dann
+sollten alle festen 40er Werte durch <code>n</code> ersetzt werden. Anschließend kann man noch ein paar andere Dinge ändern, z.B. die Steigung <code>b</code>, die Farbe der Linie … was auch immer. Danach könnt ihr die verschiedenen Möglichkeiten ausprobieren, wie ihr den Code erneut ausführen könnt:</p>
 <ul>
-<li><p>Führe Zeile für Zeile aus indem du entweder das Tastenkürzel <em>Command + Enter</em> oder die Maus (auf “Run” klicken in der oberen rechten Ecke des Editor-Fensters) verwendest.</p></li>
-<li><p>Das gesamte Dokument durchlaufen lassen per Tastenkürzel <em>Shift + Command +S</em> oder Maus (klicken auf “Source” in der oberen rechten Ecke des Editor-Fensters)</p></li>
+<li><p>Zeile für Zeile ausführen, indem ihr entweder das Tastenkürzel <code>Command + Enter</code> oder die Maus (auf “Run” klicken in der oberen rechten Ecke des Editor-Fensters) verwendet.</p></li>
+<li><p>Das gesamte Dokument durchlaufen lassen, entweder per Tastenkürzel <code>Shift + Command +S</code> oder Maus (klicken auf “Source” in der oberen rechten Ecke des Editor-Fensters).</p></li>
 </ul>
-<p>Anschließend kannst du dir das PDF anschauen und die Änderungen bewundern.</p>
-<p>Eines Tages wirst du vor der Aufgabe stehen eine Grafik neu zu gestalten oder einfach nur verstehen wollen, woher sie stammt. Wenn du (relevante) Grafiken in einer Datei (<strong>mit R Code und niemals über die Maus oder die Zwischenablage</strong>) speicherst und dabei sinnvolle Dateinamen/Speicherorte (innerhalb des zugehörigen Projekts) benutzt, werden dich solche Aufgaben nie vor große Probleme stellen.</p>
+<p>Anschließend könnt ihr euch das PDF anschauen und die Änderungen bewundern.</p>
+<p>Irgendwann werdet ihr (vielleicht) vor der Aufgabe stehen, eine Grafik neu zu gestalten oder einfach nur verstehen zu wollen, woher sie stammt. Wenn ihr (relevante) Grafiken in einer Datei speichert (<em>über R Code und niemals über die Maus oder die Zwischenablage</em>) und dabei sinnvolle Dateinamen/Speicherorte (innerhalb des zugehörigen Projekts) benutzt, werden euch solche Aufgaben nie vor große Probleme stellen ✅.</p>
 </div>
-<div id="zuletzt-noch" class="section level2" number="2.4">
+<div id="zu-guter-letzt" class="section level2" number="2.4">
 <h2>
-<span class="header-section-number">2.4</span> Zuletzt noch<a class="anchor" aria-label="anchor" href="#zuletzt-noch"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.4</span> zu guter Letzt<a class="anchor" aria-label="anchor" href="#zu-guter-letzt"><i class="fas fa-link"></i></a>
 </h2>
-<p>Es ist üblich, R-Skripte mit einem <code>.R</code> oder <code>.r</code> Suffix zu speichern. Befolge diese Konvention, außer du hast einen sehr außergewöhnlichen Grund, es nicht zu tun.</p>
-<p>Kommentare beginnen mit einem oder mehreren <code>#</code>-Symbolen. Verwende Kommentare.. RStudio hilft dir dabei ausgewählte Zeilen mit Ctrl+Shift+C (Windows und Linux) oder Command+Shif+C (Mac) zu kommentieren oder vorhandene Kommentare wieder zu entfernen.</p>
-<p>Dieser Workflow wird dir in Zukunft gute Dienste leisten:</p>
+<p>Es ist üblich, R-Skripte mit einem <code>.R</code> oder <code>.r</code> Suffix zu speichern. Befolgt diese Konvention, außer ihr habt einen sehr außergewöhnlichen Grund, es nicht zu tun.</p>
+<p>Kommentare beginnen mit einem oder mehreren <code>#</code>-Symbolen. Verwendet Kommentare. RStudio hilft dir dabei ausgewählte Zeilen mit <code>Ctrl+Shift+C</code> (Windows und Linux) oder <code>command+Shif+C</code> (Mac) zu kommentieren oder vorhandene Kommentare wieder zu entfernen.</p>
+<p>Dieser <strong>Workflow</strong> wird dir in Zukunft gute Dienste leisten:</p>
+<div class="content-box-green">
 <ul>
 <li>Erstelle ein RStudio Projekt für ein analytisches Projekt</li>
 <li>Speichere alle Input Dateien innerhalb des Projekts (wir werden bald über den Import sprechen)</li>
-<li>Bewahre deine Skripte dort auf; bearbeite sie und führen sie dort aus</li>
+<li>Bewahre alle Skripte zu diesem Projekt dort auf; bearbeite sie und führen sie dort aus</li>
 <li>Speichere den Output innerhalb des Projekts (wie z.B. das PDF im letzten Beispiel)</li>
 </ul>
-<p>Du solltest es vermeiden die Maus für Teile deines Workflows zu verwenden, wie z.B. das Laden eines Datensatzes oder das Speichern einer Grafik. Das ist sehr wichtig für die Reproduzierbarkeit und um im Nachhinein feststellen zu können, wie eine numerische Tabelle oder eine PDF-Datei tatsächlich erzeugt wurde (eine Suche auf der lokalen Festplatte nach dem entsprechenden Dateinamen unter den <code>.R</code>-Dateien führt zum entsprechenden Skript).</p>
+</div>
+<p>Ihr solltet vermeiden die Maus für Teile des Workflows zu verwenden, wie z.B. das Laden eines Datensatzes oder das Speichern einer Grafik. Das ist sehr wichtig für die Reproduzierbarkeit und um im Nachhinein feststellen zu können, wie eine numerische Tabelle oder eine PDF-Datei tatsächlich erzeugt wurde (eine Suche auf der lokalen Festplatte nach dem entsprechenden Dateinamen unter den <code>.R</code>-Dateien führt zum entsprechenden Skript).</p>
 <!--Packages: main link-->
 <!--Packages: vignettes & CRAN/GitHub links-->
 <!--Bookdowns: main link-->
@@ -292,7 +289,7 @@ du noch ein paar andere Dinge ändern, z.B. die Steigung <code>b</code>, die Far
 </ul>
 </li>
 <li><a class="nav-link" href="#rprojs"><span class="header-section-number">2.3</span> RStudio Projects</a></li>
-<li><a class="nav-link" href="#zuletzt-noch"><span class="header-section-number">2.4</span> Zuletzt noch</a></li>
+<li><a class="nav-link" href="#zu-guter-letzt"><span class="header-section-number">2.4</span> zu guter Letzt</a></li>
 </ul>
 
       <div class="book-extra">
@@ -329,6 +326,22 @@ du noch ein paar andere Dinge ändern, z.B. die Steigung <code>b</code>, die Far
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
 </script>
 </body>
 </html>

@@ -18,22 +18,22 @@ Der Fokus liegt in diesem Abschnitt auf `dplyr`. Aber da wir immer wieder auch F
 
 
 ```r
-library(tidyverse)
-#> ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
-#> ✓ ggplot2 3.3.3     ✓ purrr   0.3.4
-#> ✓ tibble  3.1.2     ✓ dplyr   1.0.6
-#> ✓ tidyr   1.1.3     ✓ stringr 1.4.0
-#> ✓ readr   1.4.0     ✓ forcats 0.5.1
-#> ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-#> x dplyr::filter() masks stats::filter()
-#> x dplyr::lag()    masks stats::lag()
+> library(tidyverse)
+## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
+## ✓ ggplot2 3.3.5     ✓ purrr   0.3.4
+## ✓ tibble  3.1.2     ✓ dplyr   1.0.7
+## ✓ tidyr   1.1.3     ✓ stringr 1.4.0
+## ✓ readr   2.0.1     ✓ forcats 0.5.1
+## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
 ```
 
 Zusätzlich wollen wir auch noch [gapminder] laden.
 
 
 ```r
-library(gapminder)
+> library(gapminder)
 ```
 
 
@@ -44,52 +44,52 @@ library(gapminder)
 
 
 ```r
-filter(gapminder, lifeExp < 29)
-#> # A tibble: 2 x 6
-#>   country     continent  year lifeExp     pop gdpPercap
-#>   <fct>       <fct>     <int>   <dbl>   <int>     <dbl>
-#> 1 Afghanistan Asia       1952    28.8 8425333      779.
-#> 2 Rwanda      Africa     1992    23.6 7290203      737.
-filter(gapminder, country == "Rwanda", year > 1979)
-#> # A tibble: 6 x 6
-#>   country continent  year lifeExp     pop gdpPercap
-#>   <fct>   <fct>     <int>   <dbl>   <int>     <dbl>
-#> 1 Rwanda  Africa     1982    46.2 5507565      882.
-#> 2 Rwanda  Africa     1987    44.0 6349365      848.
-#> 3 Rwanda  Africa     1992    23.6 7290203      737.
-#> 4 Rwanda  Africa     1997    36.1 7212583      590.
-#> 5 Rwanda  Africa     2002    43.4 7852401      786.
-#> 6 Rwanda  Africa     2007    46.2 8860588      863.
-filter(gapminder, country %in% c("Rwanda", "Afghanistan"))
-#> # A tibble: 24 x 6
-#>    country     continent  year lifeExp      pop gdpPercap
-#>    <fct>       <fct>     <int>   <dbl>    <int>     <dbl>
-#>  1 Afghanistan Asia       1952    28.8  8425333      779.
-#>  2 Afghanistan Asia       1957    30.3  9240934      821.
-#>  3 Afghanistan Asia       1962    32.0 10267083      853.
-#>  4 Afghanistan Asia       1967    34.0 11537966      836.
-#>  5 Afghanistan Asia       1972    36.1 13079460      740.
-#>  6 Afghanistan Asia       1977    38.4 14880372      786.
-#>  7 Afghanistan Asia       1982    39.9 12881816      978.
-#>  8 Afghanistan Asia       1987    40.8 13867957      852.
-#>  9 Afghanistan Asia       1992    41.7 16317921      649.
-#> 10 Afghanistan Asia       1997    41.8 22227415      635.
-#> # … with 14 more rows
+> filter(gapminder, lifeExp < 29)
+## # A tibble: 2 x 6
+##   country     continent  year lifeExp     pop gdpPercap
+##   <fct>       <fct>     <int>   <dbl>   <int>     <dbl>
+## 1 Afghanistan Asia       1952    28.8 8425333      779.
+## 2 Rwanda      Africa     1992    23.6 7290203      737.
+> filter(gapminder, country == "Rwanda", year > 1979)
+## # A tibble: 6 x 6
+##   country continent  year lifeExp     pop gdpPercap
+##   <fct>   <fct>     <int>   <dbl>   <int>     <dbl>
+## 1 Rwanda  Africa     1982    46.2 5507565      882.
+## 2 Rwanda  Africa     1987    44.0 6349365      848.
+## 3 Rwanda  Africa     1992    23.6 7290203      737.
+## 4 Rwanda  Africa     1997    36.1 7212583      590.
+## 5 Rwanda  Africa     2002    43.4 7852401      786.
+## 6 Rwanda  Africa     2007    46.2 8860588      863.
+> filter(gapminder, country %in% c("Rwanda", "Afghanistan"))
+## # A tibble: 24 x 6
+##    country     continent  year lifeExp      pop gdpPercap
+##    <fct>       <fct>     <int>   <dbl>    <int>     <dbl>
+##  1 Afghanistan Asia       1952    28.8  8425333      779.
+##  2 Afghanistan Asia       1957    30.3  9240934      821.
+##  3 Afghanistan Asia       1962    32.0 10267083      853.
+##  4 Afghanistan Asia       1967    34.0 11537966      836.
+##  5 Afghanistan Asia       1972    36.1 13079460      740.
+##  6 Afghanistan Asia       1977    38.4 14880372      786.
+##  7 Afghanistan Asia       1982    39.9 12881816      978.
+##  8 Afghanistan Asia       1987    40.8 13867957      852.
+##  9 Afghanistan Asia       1992    41.7 16317921      649.
+## 10 Afghanistan Asia       1997    41.8 22227415      635.
+## # … with 14 more rows
 ```
 
 Zum Vergleich kann man sich einen R Standardbefehl anschauen, der zum gleichen Ergebnis führt:
 
 
 ```r
-gapminder[gapminder$lifeExp < 29, ] 
-subset(gapminder, country == "Rwanda" & year > 1979) ## subset funktioniert ähnlich wir filter
+> gapminder[gapminder$lifeExp < 29, ] 
+> subset(gapminder, country == "Rwanda" & year > 1979) ## subset funktioniert ähnlich wir filter
 ```
 
 Unter keinen Umständen solltest du allerdings deine Daten so unterteilen, wie hier:
 
 
 ```r
-auswahl <- gapminder[241:252, ]
+> auswahl <- gapminder[241:252, ]
 ```
 
 Warum ist das eine blöde Idee?
@@ -99,7 +99,7 @@ Warum ist das eine blöde Idee?
   
 
 ```r
-filter(gapminder, country == "Canada")
+> filter(gapminder, country == "Canada")
 ```
 
 Dieser Aufruf erklärt sich von selbst und ist ziemlich robust.
@@ -114,16 +114,16 @@ Erstmal ein Beispiel
 
 
 ```r
-gapminder %>% head()
-#> # A tibble: 6 x 6
-#>   country     continent  year lifeExp      pop gdpPercap
-#>   <fct>       <fct>     <int>   <dbl>    <int>     <dbl>
-#> 1 Afghanistan Asia       1952    28.8  8425333      779.
-#> 2 Afghanistan Asia       1957    30.3  9240934      821.
-#> 3 Afghanistan Asia       1962    32.0 10267083      853.
-#> 4 Afghanistan Asia       1967    34.0 11537966      836.
-#> 5 Afghanistan Asia       1972    36.1 13079460      740.
-#> 6 Afghanistan Asia       1977    38.4 14880372      786.
+> gapminder %>% head()
+## # A tibble: 6 x 6
+##   country     continent  year lifeExp      pop gdpPercap
+##   <fct>       <fct>     <int>   <dbl>    <int>     <dbl>
+## 1 Afghanistan Asia       1952    28.8  8425333      779.
+## 2 Afghanistan Asia       1957    30.3  9240934      821.
+## 3 Afghanistan Asia       1962    32.0 10267083      853.
+## 4 Afghanistan Asia       1967    34.0 11537966      836.
+## 5 Afghanistan Asia       1972    36.1 13079460      740.
+## 6 Afghanistan Asia       1977    38.4 14880372      786.
 ```
 
 Du siehst, der Befehl ist äquivalent zu `head(gapminder)`. Der Pipe-Operator nimmt das Objekt auf der linken Seite und leitet es in den Funktionsaufruf auf der rechten Seite weiter - er gibt es buchstäblich als erstes Argument ein.
@@ -132,13 +132,13 @@ Keine Angst, du kannst immer noch weitere Argumente für die Funktion auf der re
 
 
 ```r
-gapminder %>% head(3)
-#> # A tibble: 3 x 6
-#>   country     continent  year lifeExp      pop gdpPercap
-#>   <fct>       <fct>     <int>   <dbl>    <int>     <dbl>
-#> 1 Afghanistan Asia       1952    28.8  8425333      779.
-#> 2 Afghanistan Asia       1957    30.3  9240934      821.
-#> 3 Afghanistan Asia       1962    32.0 10267083      853.
+> gapminder %>% head(3)
+## # A tibble: 3 x 6
+##   country     continent  year lifeExp      pop gdpPercap
+##   <fct>       <fct>     <int>   <dbl>    <int>     <dbl>
+## 1 Afghanistan Asia       1952    28.8  8425333      779.
+## 2 Afghanistan Asia       1957    30.3  9240934      821.
+## 3 Afghanistan Asia       1962    32.0 10267083      853.
 ```
 
 
@@ -152,21 +152,21 @@ Verwende  `select()`, um aus den Daten verschiedene Variablen (Spalten) auszuwä
 
 
 ```r
-select(gapminder, year, lifeExp)
-#> # A tibble: 1,704 x 2
-#>     year lifeExp
-#>    <int>   <dbl>
-#>  1  1952    28.8
-#>  2  1957    30.3
-#>  3  1962    32.0
-#>  4  1967    34.0
-#>  5  1972    36.1
-#>  6  1977    38.4
-#>  7  1982    39.9
-#>  8  1987    40.8
-#>  9  1992    41.7
-#> 10  1997    41.8
-#> # … with 1,694 more rows
+> select(gapminder, year, lifeExp)
+## # A tibble: 1,704 x 2
+##     year lifeExp
+##    <int>   <dbl>
+##  1  1952    28.8
+##  2  1957    30.3
+##  3  1962    32.0
+##  4  1967    34.0
+##  5  1972    36.1
+##  6  1977    38.4
+##  7  1982    39.9
+##  8  1987    40.8
+##  9  1992    41.7
+## 10  1997    41.8
+## # … with 1,694 more rows
 ```
 
 Und nun noch kombiniert mit `head()` über den Pipe-Operator:
@@ -174,16 +174,16 @@ Und nun noch kombiniert mit `head()` über den Pipe-Operator:
 
 
 ```r
-gapminder %>%
-  select(year, lifeExp) %>%
-  head(4)
-#> # A tibble: 4 x 2
-#>    year lifeExp
-#>   <int>   <dbl>
-#> 1  1952    28.8
-#> 2  1957    30.3
-#> 3  1962    32.0
-#> 4  1967    34.0
+> gapminder %>%
++   select(year, lifeExp) %>%
++   head(4)
+## # A tibble: 4 x 2
+##    year lifeExp
+##   <int>   <dbl>
+## 1  1952    28.8
+## 2  1957    30.3
+## 3  1962    32.0
+## 4  1967    34.0
 ```
 
 In Worten: "Nimm `gapminder`, wähle die Variablen `year` und `lifeExp` und zeige dann die ersten 4 Zeilen an."
@@ -194,46 +194,46 @@ Hier sind die Daten für Kambodscha, aber nur bestimmte Variablen:
 
 
 ```r
-gapminder %>%
-  filter(country == "Cambodia") %>%
-  select(year, lifeExp)
-#> # A tibble: 12 x 2
-#>     year lifeExp
-#>    <int>   <dbl>
-#>  1  1952    39.4
-#>  2  1957    41.4
-#>  3  1962    43.4
-#>  4  1967    45.4
-#>  5  1972    40.3
-#>  6  1977    31.2
-#>  7  1982    51.0
-#>  8  1987    53.9
-#>  9  1992    55.8
-#> 10  1997    56.5
-#> 11  2002    56.8
-#> 12  2007    59.7
+> gapminder %>%
++   filter(country == "Cambodia") %>%
++   select(year, lifeExp)
+## # A tibble: 12 x 2
+##     year lifeExp
+##    <int>   <dbl>
+##  1  1952    39.4
+##  2  1957    41.4
+##  3  1962    43.4
+##  4  1967    45.4
+##  5  1972    40.3
+##  6  1977    31.2
+##  7  1982    51.0
+##  8  1987    53.9
+##  9  1992    55.8
+## 10  1997    56.5
+## 11  2002    56.8
+## 12  2007    59.7
 ```
 
 und so würde ein typischer R Standardbefehl aussehen:
 
 
 ```r
-gapminder[gapminder$country == "Cambodia", c("year", "lifeExp")]
-#> # A tibble: 12 x 2
-#>     year lifeExp
-#>    <int>   <dbl>
-#>  1  1952    39.4
-#>  2  1957    41.4
-#>  3  1962    43.4
-#>  4  1967    45.4
-#>  5  1972    40.3
-#>  6  1977    31.2
-#>  7  1982    51.0
-#>  8  1987    53.9
-#>  9  1992    55.8
-#> 10  1997    56.5
-#> 11  2002    56.8
-#> 12  2007    59.7
+> gapminder[gapminder$country == "Cambodia", c("year", "lifeExp")]
+## # A tibble: 12 x 2
+##     year lifeExp
+##    <int>   <dbl>
+##  1  1952    39.4
+##  2  1957    41.4
+##  3  1962    43.4
+##  4  1967    45.4
+##  5  1972    40.3
+##  6  1977    31.2
+##  7  1982    51.0
+##  8  1987    53.9
+##  9  1992    55.8
+## 10  1997    56.5
+## 11  2002    56.8
+## 12  2007    59.7
 ```
 
 der zum gleichen Ergebnis führt. Wir würden sagen, dass der `dplyr` Befehl deutlich leichter zu lesen ist.
@@ -355,4 +355,3 @@ Die `dplyr` Einführung geht weiter im Kapitel [Mehr zu `dplyr`](#dplyr-single).
 
 <!--Misc.-->
 [rOpenSci]: https://ropensci.org
-[wiki-snake-case]: https://en.wikipedia.org/wiki/Snake_case

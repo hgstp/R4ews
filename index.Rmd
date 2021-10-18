@@ -1,6 +1,5 @@
 --- 
 title: "R4ews MA0009"
-#subtitle: "Data wrangling, exploration, and analysis with R"
 author: 
 - Stephan Haug
 knit: "bookdown::render_book"
@@ -14,7 +13,7 @@ always_allow_html: true
 
 ---
 
-# Willkommen zu R4ews {-}
+# R4ews {-}
 
 ```{r include = FALSE}
 source("common.R")
@@ -24,18 +23,26 @@ library(devtools)
 library(DT)
 ```
 
-Willkommen zur  R Ergänzung zur Einführung in die Wahrscheinlichkeitstheorie und Statistik. Im Rahmen dieser Ergänzung lernen wir
+Willkommen zur __R Ergänzung zur Einführung in die Wahrscheinlichkeitstheorie und Statistik__. Im Rahmen dieser Ergänzung lernen wir
 
-> Daten untersuchen, aufbereiten, visualisieren und analysieren,
+:::: {.content-box-green}
+Daten untersuchen, aufbereiten, visualisieren und analysieren,
+::::
 
-Wir wollen all das reproduzierbar, wiederverwendbar und gemeinsam nutzbar machen, und vor allem wollen wir alles mit R machen.
 
-Auf dieser Website geht es um alles, was bei der Datenanalyse auftaucht **außer um statistische Modellierung und Schlussfolgerungen**. Dieser Teil der statistischen Analyse erfolgt in der Vorlesung *Einführung in die Wahrscheinlichkeitstheorie und Statistik*. 
+Wir wollen all das reproduzierbar, wiederverwendbar und gemeinsam nutzbar machen, und vor allem wollen wir alles mit __R__ machen.
+
+Auf dieser Website geht es um alles, was bei der Datenanalyse 
+auftaucht **außer um statistische Modellierung und Schlussfolgerungen**. Dieser Teil der statistischen Analyse erfolgt in der Vorlesung *Einführung in die Wahrscheinlichkeitstheorie und Statistik*. 
 
 
 Das Design von R4ews wurde durch die Notwendigkeit motiviert, mehr Ausgewogenheit in der angewandten statistischen Ausbildung zu schaffen. Datenanalysten verbringen viel Zeit mit der Projekt-Organisation, der Datenbereinigung und -aufbereitung sowie der Kommunikation. Diese Tätigkeiten können einen tiefgreifenden Einfluss auf die Qualität und Glaubwürdigkeit einer Analyse haben. Dennoch werden diese Fähigkeiten selten vermittelt, obwohl sie so wichtig und notwendig sind. R4ews versucht diese Lücke etwas zu verkleinern.
 
-> Das Material wird kontinuierlich über das Semester hinweg ergänzt/erweitert/verbessert.
+
+::: {content-box-red}
+Das Material wird kontinuierlich über das Semester hinweg ergänzt/erweitert/verbessert.
+:::
+
 
 **Letzte Änderung:**
 

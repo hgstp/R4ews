@@ -1,136 +1,46 @@
-# Introduction to dplyr {#dplyr-intro}
+# Einführung in dplyr  {#dplyr-intro}
 
 
 
-<!--Original content: https://stat545.com/block009_dplyr-intro.html-->
 
-## Intro
+## Einstieg
 
-[dplyr] is a package for data manipulation, developed by Hadley Wickham and Romain Francois. It is built to be fast, highly expressive, and open-minded about how your data is stored. It is installed as part of the [tidyverse] meta-package and, as a core package, it is among those loaded via `library(tidyverse)`.
+[dplyr] ist ein Paket zur Datenmanipulation, entwickelt von Hadley Wickham und Romain Francois. In erster Linie will es schnell und  ausdrucksstark sein. Es wird als Teil des "Metapakets" [tidyverse] installiert und gehört als Kernpaket zu den Paketen, die über `library(tidyverse)` geladen werden.
 
-dplyr's roots are in an earlier package called [plyr], which implements the ["split-apply-combine" strategy for data analysis](https://www.jstatsoft.org/article/view/v040i01) [@wickham2011a]. Where plyr covers a diverse set of inputs and outputs (e.g., arrays, data frames, lists), dplyr has a laser-like focus on data frames or, in the tidyverse, "tibbles". dplyr is a package-level treatment of the `ddply()` function from plyr, because "data frame in, data frame out" proved to be so incredibly important.
+Die Wurzeln von `dplyr` liegen in einem früheren Paket mit dem Namen [plyr], das zum Ziel hat die ["split-apply-combine"-Strategie der Datenanalyse](https://www.jstatsoft.org/article/view/v040i01) [@wickham2011a] umzusetzen. Wo `plyr` noch einen vielfältigen Satz von Ein- und Ausgaben abdeckt (z.B. Arrays, data frames, Listen), hat `dplyr` einen klaren Fokus auf data frames oder, im Tidyverse, __tibbles__. 
 
-Have no idea what I'm talking about? Not sure if you care? If you use these base R functions: `subset()`, `apply()`, `[sl]apply()`, `tapply()`, `aggregate()`, `split()`, `do.call()`, `with()`, `within()`, then you should keep reading. Also, if you use `for()` loops a lot, you might enjoy learning other ways to iterate over rows or groups of rows or variables in a data frame.
+`dplyr` bietet schnelle Alternativen zu den R Standardfunktionen: `subset()`, `apply()`, `[sl]apply()`, `tapply()`, `aggregate()`, `split()`, `do.call()`, `with()`, `within()`, und mehr. Ferner kann man `dplyr` nutzen um über Zeilen oder Gruppen von Zeilen zu iterieren, was eine schnelle Alternative zur Nutzung von `for` Schleifen darstellt.
 
-### Load dplyr and gapminder
+### Wie immer, laden wir zu Beginn `tidyverse`
 
-I choose to load the tidyverse, which will load dplyr, among other packages we use incidentally below. 
+
+Der Fokus liegt in diesem Abschnitt auf `dplyr`. Aber da wir immer wieder auch Funktionen aus anderen "tidyverse-Paketen" nutzen, laden wir stets `tidyverse`.
 
 
 ```r
 library(tidyverse)
-#> ── Attaching packages ──────────────────────────────────────── tidyverse 1.3.0 ──
-#> ✓ ggplot2 3.3.2     ✓ purrr   0.3.4
-#> ✓ tibble  3.0.3     ✓ dplyr   1.0.2
-#> ✓ tidyr   1.1.2     ✓ stringr 1.4.0
-#> ✓ readr   1.3.1     ✓ forcats 0.5.0
-#> ── Conflicts ─────────────────────────────────────────── tidyverse_conflicts() ──
+#> ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
+#> ✓ ggplot2 3.3.5     ✓ purrr   0.3.4
+#> ✓ tibble  3.1.2     ✓ dplyr   1.0.7
+#> ✓ tidyr   1.1.3     ✓ stringr 1.4.0
+#> ✓ readr   2.0.1     ✓ forcats 0.5.1
+#> ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 #> x dplyr::filter() masks stats::filter()
 #> x dplyr::lag()    masks stats::lag()
 ```
 
-Also load [gapminder].
+Zusätzlich wollen wir auch noch [gapminder] laden.
 
 
 ```r
 library(gapminder)
 ```
 
-### Say hello to the `gapminder` tibble
-
-The `gapminder` data frame is a special kind of data frame: a tibble.
 
 
-```r
-gapminder
-#> # A tibble: 1,704 x 6
-#>    country     continent  year lifeExp      pop gdpPercap
-#>    <fct>       <fct>     <int>   <dbl>    <int>     <dbl>
-#>  1 Afghanistan Asia       1952    28.8  8425333      779.
-#>  2 Afghanistan Asia       1957    30.3  9240934      821.
-#>  3 Afghanistan Asia       1962    32.0 10267083      853.
-#>  4 Afghanistan Asia       1967    34.0 11537966      836.
-#>  5 Afghanistan Asia       1972    36.1 13079460      740.
-#>  6 Afghanistan Asia       1977    38.4 14880372      786.
-#>  7 Afghanistan Asia       1982    39.9 12881816      978.
-#>  8 Afghanistan Asia       1987    40.8 13867957      852.
-#>  9 Afghanistan Asia       1992    41.7 16317921      649.
-#> 10 Afghanistan Asia       1997    41.8 22227415      635.
-#> # … with 1,694 more rows
-```
+## `filter()`: Indizieren von Zeilen
 
-It's tibble-ness is why we get nice compact printing. For a reminder of the problems with base data frame printing, go type `iris` in the R Console or, better yet, print a data frame to screen that has lots of columns.
-
-Note how `gapminder`'s `class()` includes `tbl_df`; the "tibble" terminology is a nod to this.
-
-
-```r
-class(gapminder)
-#> [1] "tbl_df"     "tbl"        "data.frame"
-```
-
-There will be some functions, like `print()`, that know about tibbles and do something special. There will others that do not, like `summary()`. In which case the regular data frame treatment will happen, because every tibble is also a regular data frame.
-
-To turn any data frame into a tibble use `as_tibble()`:
-
-
-```r
-as_tibble(iris)
-#> # A tibble: 150 x 5
-#>    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-#>           <dbl>       <dbl>        <dbl>       <dbl> <fct>  
-#>  1          5.1         3.5          1.4         0.2 setosa 
-#>  2          4.9         3            1.4         0.2 setosa 
-#>  3          4.7         3.2          1.3         0.2 setosa 
-#>  4          4.6         3.1          1.5         0.2 setosa 
-#>  5          5           3.6          1.4         0.2 setosa 
-#>  6          5.4         3.9          1.7         0.4 setosa 
-#>  7          4.6         3.4          1.4         0.3 setosa 
-#>  8          5           3.4          1.5         0.2 setosa 
-#>  9          4.4         2.9          1.4         0.2 setosa 
-#> 10          4.9         3.1          1.5         0.1 setosa 
-#> # … with 140 more rows
-```
-
-## Think before you create excerpts of your data ...
-
-If you feel the urge to store a little snippet of your data:
-
-
-```r
-(canada <- gapminder[241:252, ])
-#> # A tibble: 12 x 6
-#>    country continent  year lifeExp      pop gdpPercap
-#>    <fct>   <fct>     <int>   <dbl>    <int>     <dbl>
-#>  1 Canada  Americas   1952    68.8 14785584    11367.
-#>  2 Canada  Americas   1957    70.0 17010154    12490.
-#>  3 Canada  Americas   1962    71.3 18985849    13462.
-#>  4 Canada  Americas   1967    72.1 20819767    16077.
-#>  5 Canada  Americas   1972    72.9 22284500    18971.
-#>  6 Canada  Americas   1977    74.2 23796400    22091.
-#>  7 Canada  Americas   1982    75.8 25201900    22899.
-#>  8 Canada  Americas   1987    76.9 26549700    26627.
-#>  9 Canada  Americas   1992    78.0 28523502    26343.
-#> 10 Canada  Americas   1997    78.6 30305843    28955.
-#> 11 Canada  Americas   2002    79.8 31902268    33329.
-#> 12 Canada  Americas   2007    80.7 33390141    36319.
-```
-
-Stop and ask yourself ...
-
-> Do I want to create mini datasets for each level of some factor (or unique combination of several factors) ... in order to compute or graph something?  
-
-If YES, __use proper data aggregation techniques__ or faceting in [ggplot2] -- __don’t subset the data__. Or, more realistic, only subset the data as a temporary measure while you develop your elegant code for computing on or visualizing these data subsets.
-
-If NO, then maybe you really do need to store a copy of a subset of the data. But seriously consider whether you can achieve your goals by simply using the `subset =` argument of, e.g., the `lm()` function, to limit computation to your excerpt of choice. Lots of functions offer a `subset =` argument!
-
-Copies and excerpts of your data clutter your workspace, invite mistakes, and sow general confusion. Avoid whenever possible.
-
-Reality can also lie somewhere in between. You will find the workflows presented below can help you accomplish your goals with minimal creation of temporary, intermediate objects.
-
-## Use `filter()` to subset data row-wise
-
-`filter()` takes logical expressions and returns the rows for which all are `TRUE`.
+`filter()` nimmt logische Ausdrücke und gibt die Zeilen zurück, für die der logische Ausdruck ein `TRUE` ergibt.
 
 
 ```r
@@ -167,39 +77,40 @@ filter(gapminder, country %in% c("Rwanda", "Afghanistan"))
 #> # … with 14 more rows
 ```
 
-Compare with some base R code to accomplish the same things:
-
-```r
-gapminder[gapminder$lifeExp < 29, ] ## repeat `gapminder`, [i, j] indexing is distracting
-subset(gapminder, country == "Rwanda") ## almost same as filter; quite nice actually
-```
-
-Under no circumstances should you subset your data the way I did at first:
+Zum Vergleich kann man sich einen R Standardbefehl anschauen, der zum gleichen Ergebnis führt:
 
 
 ```r
-excerpt <- gapminder[241:252, ]
+gapminder[gapminder$lifeExp < 29, ] 
+subset(gapminder, country == "Rwanda" & year > 1979) ## subset funktioniert ähnlich wir filter
 ```
 
-Why is this a terrible idea?
+Unter keinen Umständen solltest du allerdings deine Daten so unterteilen, wie hier:
 
-* It is not self-documenting. What is so special about rows 241 through 252?
-* It is fragile. This line of code will produce different results if someone changes the row order of `gapminder`, e.g. sorts the data earlier in the script.
+
+```r
+auswahl <- gapminder[241:252, ]
+```
+
+Warum ist das eine blöde Idee?
+
+* Es ist nicht selbstdokumentierend. Was ist das Besondere an den Zeilen 241 bis 252?
+* Es ist fehleranfällig. Diese Codezeile wird zu anderen Ergebnissen führen, wenn jemand die Zeilenreihenfolge von `gapminder` ändert, z.B. die Daten früher im Skript sortiert.
   
 
 ```r
 filter(gapminder, country == "Canada")
 ```
 
-This call explains itself and is fairly robust.
+Dieser Aufruf erklärt sich von selbst und ist ziemlich robust.
 
-## Meet the new pipe operator
+## Der Pipe-Operator
 
-Before we go any further, we should exploit the new pipe operator that the tidyverse imports from the [magrittr] package by Stefan Bache. This is going to change your data analytical life. You no longer need to enact multi-operation commands by nesting them inside each other, like so many [Russian nesting dolls](https://en.wikipedia.org/wiki/Matryoshka_doll). This new syntax leads to code that is much easier to write and to read.
+Bevor es weitergeht, wollen wir aber den Pipe-Operator, den das Tidyverse aus dem [magrittr]-Paket von Stefan Bache importiert, vorstellen. Mithilfe des Pipe-Operators ist man in der Lage Befehle für mehrere Operationen auszuführen, ohne sie ineinander zu verschachteln. Diese neue Syntax führt zu Code, der viel einfacher zu schreiben und zu lesen ist.
 
-Here's what it looks like: `%>%`. The RStudio keyboard shortcut: Ctrl+Shift+M (Windows), Cmd+Shift+M (Mac).
+Und so sieht er aus: `%>%`. Das entsprechende RStudio Tastenkürzel lautet: Ctrl+Shift+M (Windows), Cmd+Shift+M (Mac).
 
-Let's demo then I'll explain.
+Erstmal ein Beispiel
 
 
 ```r
@@ -215,9 +126,9 @@ gapminder %>% head()
 #> 6 Afghanistan Asia       1977    38.4 14880372      786.
 ```
 
-This is equivalent to `head(gapminder)`. The pipe operator takes the thing on the left-hand-side and __pipes__ it into the function call on the right-hand-side -- literally, drops it in as the first argument.
+Du siehst, der Befehl ist äquivalent zu `head(gapminder)`. Der Pipe-Operator nimmt das Objekt auf der linken Seite und leitet es in den Funktionsaufruf auf der rechten Seite weiter - er gibt es buchstäblich als erstes Argument ein.
 
-Never fear, you can still specify other arguments to this function! To see the first 3 rows of `gapminder`, we could say `head(gapminder, 3)` or this:
+Keine Angst, du kannst immer noch weitere Argumente für die Funktion auf der rechten Seite angeben! Um die ersten 3 Reihen von `gapminder` zu sehen, könnte man sagen: `head(gapminder, 3)` oder:
 
 
 ```r
@@ -230,15 +141,14 @@ gapminder %>% head(3)
 #> 3 Afghanistan Asia       1962    32.0 10267083      853.
 ```
 
-I've advised you to think "gets" whenever you see the assignment operator, `<-`. Similarly, you should think "then" whenever you see the pipe operator, `%>%`.
 
-You are probably not impressed yet, but the magic will soon happen.
+Du bist wahrscheinlich noch nicht sehr beeindruckt, aber das sollte sich noch ändern.
 
-## Use `select()` to subset the data on variables or columns.
+## Mit `select()` Variablen auswählen
 
-Back to dplyr....
+Nun zurück zu `dplyr`....
 
-Use `select()` to subset the data on variables or columns. Here's a conventional call:
+Verwende  `select()`, um aus den Daten verschiedene Variablen (Spalten) auszuwählen. Hier kommt eine typische Verwendung von `select()`:
 
 
 ```r
@@ -259,7 +169,9 @@ select(gapminder, year, lifeExp)
 #> # … with 1,694 more rows
 ```
 
-And here's the same operation, but written with the pipe operator and piped through `head()`:
+Und nun noch kombiniert mit `head()` über den Pipe-Operator:
+
+
 
 ```r
 gapminder %>%
@@ -274,11 +186,11 @@ gapminder %>%
 #> 4  1967    34.0
 ```
 
-Think: "Take `gapminder`, then select the variables `year` and `lifeExp`, then show the first 4 rows."
+In Worten: "Nimm `gapminder`, wähle die Variablen `year` und `lifeExp` und zeige dann die ersten 4 Zeilen an."
 
-## Revel in the convenience
+## Jetzt nochmal ein Vergleich zu R Standardbefehlen
 
-Here's the data for Cambodia, but only certain variables:
+Hier sind die Daten für Kambodscha, aber nur bestimmte Variablen:
 
 
 ```r
@@ -302,7 +214,7 @@ gapminder %>%
 #> 12  2007    59.7
 ```
 
-and what a typical base R call would look like:
+und so würde ein typischer R Standardbefehl aussehen:
 
 
 ```r
@@ -324,51 +236,27 @@ gapminder[gapminder$country == "Cambodia", c("year", "lifeExp")]
 #> 12  2007    59.7
 ```
 
+der zum gleichen Ergebnis führt. Wir würden sagen, dass der `dplyr` Befehl deutlich leichter zu lesen ist.
+
 ## Pure, predictable, pipeable
 
-We've barely scratched the surface of dplyr but I want to point out key principles you may start to appreciate. If you're new to R or "programming with data", feel free skip this section and [move on](#dplyr-single).
+Bisher haben wir nur etwas an der Oberfläche von `dplyr` gekratzt, trotzdem möchten wir auf ein Schlüsselprinzipien hinweisen, die du vielleicht langsam zu schätzen lernen wirst. 
 
-dplyr's verbs, such as `filter()` and `select()`, are what's called [pure functions](https://en.wikipedia.org/wiki/Pure_function). To quote from the [Functions chapter](http://adv-r.had.co.nz/Functions.html) of Wickham's [Advanced R] book [-@wickham2015a]:
+Die Verben (Hauptfunktionen) von dplyr, wie z.B. `filter()` und `select()`, sind [pure functions](https://en.wikipedia.org/wiki/Pure_function). Dazu schreibt Hadley Wickham [Functions chapter](http://adv-r.had.co.nz/Functions.html) in seinem [Advanced R] Buch [-@wickham2015a]:
 
 > The functions that are the easiest to understand and reason about are pure functions: functions that always map the same input to the same output and have no other impact on the workspace. In other words, pure functions have no side effects: they don’t affect the state of the world in any way apart from the value they return.
 
-In fact, these verbs are a special case of pure functions: they take the same flavor of object as input and output. Namely, a data frame or one of the other data receptacles dplyr supports.
+Tatsächlich sind diese Verben ein Spezialfall reiner Funktionen: sie nehmen als Input und Output denselben Objekttyp an, i.d.R. ein data frame.
 
-And finally, the data is __always__ the very first argument of the verb functions.
+Die Daten sind für all diese Funktionen aus __stets__ das erste Inputargument.
 
-This set of deliberate design choices, together with the new pipe operator, produces a highly effective, low friction [domain-specific language](http://adv-r.had.co.nz/dsl.html) for data analysis.
 
-Go to the next Chapter, [dplyr functions for a single dataset](#dplyr-single), for more dplyr!
-
-## Resources
-
-[dplyr] official stuff:
-
-* Package home [on CRAN][dplyr-cran].
-  - Note there are several vignettes, with the [Introduction to dplyr] being the most relevant right now.
-  - The [Window functions] one will also be interesting to you now.
-* Development home [on GitHub][dplyr-github].
-* [Tutorial HW delivered][useR-2014-dropbox] (note this links to a DropBox folder) at useR! 2014 conference.     
-    
-[RStudio Data Transformation Cheat Sheet], covering dplyr. Remember you can get to these via *Help > Cheatsheets.* 
-
-[Data transformation][r4ds-transform] chapter of [R for Data Science] [@wickham2016].
-
-<!--TODO: This should probably be updated with something more recent-->
-["Let the Data Flow: Pipelines in R with dplyr and magrittr"] - Excellent slides on pipelines and dplyr by TJ Mahr, talk given to the Madison R Users Group.
-
-<!--TODO: This should probably be updated with something more recent-->
-Blog post ["Hands-on dplyr tutorial for faster data manipulation in R"] by Data School, that includes a link to an R Markdown document and links to videos.
-
-Chapter \@ref(join-cheatsheet) - cheatsheet I made for dplyr join functions (not relevant yet but soon).
+Die `dplyr` Einführung geht weiter im Kapitel [Mehr zu `dplyr`](#dplyr-single).
 
 
 
-<!--STAT 545 external resources/content-->
-[useR-2014-dropbox]: https://www.dropbox.com/sh/i8qnluwmuieicxc/AAAgt9tIKoIm7WZKIyK25lh6a
-[Tidy data using Lord of the Rings]: https://github.com/jennybc/lotr-tidy#readme
-[ggplot2 tutorial]: https://github.com/jennybc/ggplot2-tutorial
-[R Graph Catalog]: https://github.com/jennybc/r-graph-catalog
+
+
 
 <!--Packages: main link-->
 [dplyr]: https://dplyr.tidyverse.org
@@ -387,6 +275,7 @@ Chapter \@ref(join-cheatsheet) - cheatsheet I made for dplyr join functions (not
 [devtools]: https://devtools.r-lib.org
 [roxygen2]: https://roxygen2.r-lib.org
 [knitr]: https://github.com/yihui/knitr
+[rmarkdown]: https://rmarkdown.rstudio.com/
 [usethis]: https://usethis.r-lib.org
 [xml2]: https://xml2.r-lib.org
 [httr]: https://httr.r-lib.org
@@ -466,5 +355,3 @@ Chapter \@ref(join-cheatsheet) - cheatsheet I made for dplyr join functions (not
 
 <!--Misc.-->
 [rOpenSci]: https://ropensci.org
-[wiki-snake-case]: https://en.wikipedia.org/wiki/Snake_case
-[Janus]: https://en.wikipedia.org/wiki/Janus

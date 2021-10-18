@@ -60,7 +60,7 @@ Mit der Option `dependencies = TRUE` achten wir darauf, dass alle für `tidyvers
 Ein guter Startpunkt für verschiedene R Themen sind die [RStudio primers](https://rstudio.cloud/learn/primers).
 
 
-<img src="assets/rstudio_primers.png" width="100%" />
+<img src="img/rstudio_primers.png" width="100%" />
 
 
 Im Laufe des Kurses werden sie die Primers
@@ -72,9 +72,9 @@ Im Laufe des Kurses werden sie die Primers
 durcharbeiten.
 
 
-## ToDo
+## Aufgabe
 
-Wir beginnen mit [The Basics](https://rstudio.cloud/learn/primers/1). Hier wird unterschieden in Programming and Visualization Basics. 
+Wir beginnen mit [The Basics](https://rstudio.cloud/learn/primers/1). Hier wird unterschieden in *Programming* und *Visualization* Basics. 
 
 Programming Basics beinhaltet Grundlagen zu Objekttypen, Funktionen und deren Argumente, Listen (eigentlich sind alle Objekte Listen, nur unterschiedlich speziell) und Paketen.
 
@@ -84,11 +84,6 @@ Bearbeiten sie eigenständig den Basics Primer.
 
 
 
-<!--STAT 545 external resources/content-->
-[useR-2014-dropbox]: https://www.dropbox.com/sh/i8qnluwmuieicxc/AAAgt9tIKoIm7WZKIyK25lh6a
-[Tidy data using Lord of the Rings]: https://github.com/jennybc/lotr-tidy#readme
-[ggplot2 tutorial]: https://github.com/jennybc/ggplot2-tutorial
-[R Graph Catalog]: https://github.com/jennybc/r-graph-catalog
 
 <!--Packages: main link-->
 [dplyr]: https://dplyr.tidyverse.org
@@ -107,6 +102,7 @@ Bearbeiten sie eigenständig den Basics Primer.
 [devtools]: https://devtools.r-lib.org
 [roxygen2]: https://roxygen2.r-lib.org
 [knitr]: https://github.com/yihui/knitr
+[rmarkdown]: https://rmarkdown.rstudio.com/
 [usethis]: https://usethis.r-lib.org
 [xml2]: https://xml2.r-lib.org
 [httr]: https://httr.r-lib.org
@@ -186,5 +182,3 @@ Bearbeiten sie eigenständig den Basics Primer.
 
 <!--Misc.-->
 [rOpenSci]: https://ropensci.org
-[wiki-snake-case]: https://en.wikipedia.org/wiki/Snake_case
-[Janus]: https://en.wikipedia.org/wiki/Janus

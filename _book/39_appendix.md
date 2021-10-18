@@ -1,0 +1,92 @@
+# (PART) Appendix {-} 
+
+# Fragen und Anregungen aus der Übung {#fragen}
+
+## Quantilsfunktion
+
+Als Beispiel betrachten wir die Quantilsfunktion
+
+$$Q: (0,1) \to \mathbb{R}, y \mapsto \text{inf}\{x\in \mathbb{R}: F(x)\geq y\}$$
+
+der $N(5,4)$ Verteilung. Diese Funktion können wir mit `qnorm()` berechnen und mithilfe von `stat_function()` dann plotten
+
+
+```r
+library(tidyverse)
+ggplot(data.frame(x=c(0,1)), aes(x)) +
+  stat_function(fun = "qnorm", args = list(mean = 5, sd = 2),
+                colour = "blue") + ylab("Q(x)") +
+  geom_hline(yintercept = qnorm(0.25, mean = 5, sd = 2), colour = "gold") +
+  scale_y_continuous(breaks=round(qnorm(c(0.05, 0.25, 0.5, 0.75, 0.95), mean = 5, sd = 2), 2) ) +
+  theme_minimal()
+```
+
+<img src="39_appendix_files/figure-html/unnamed-chunk-1-1.png" width="672" />
+
+
+Der Grafik können wir z.B. entnehmen, dass das 0.25 Quantil $q_{0.25}$ der $N(5,4)$ ungefähr den Wert 3.65 hat. Der genaue Wert lautet
+
+
+```r
+(q_025 <- qnorm(0.25, mean = 5, sd = 2))
+```
+
+```
+## [1] 3.65102
+```
+
+
+$q_{0.25}$ ist also der Wert, sodass die Wahrscheinlichkeit (unter der $N(5,4)$ Verteilung) Werte kleiner oder gleich $q_{0.25}$ anzunehmen, gleich 0.25 ist
+
+
+```r
+pnorm(q_025, mean = 5, sd = 2)
+```
+
+```
+## [1] 0.25
+```
+
+
+### QQ-Plot
+
+Nun erzeugen wir 500 Pseudo-Zufallszahlen mit $N(5,4)$ Verteilung.
+
+
+```r
+df <- tibble(x = rnorm(500, mean = 5, sd = 2))
+```
+
+
+Für diese Pseudo-Zufallszahlen berechnen wir nun die geordnete Stichprobe sowie die relativen Häufigkeiten (funktioniert hier so einfach, da es sich um eine st)
+
+
+
+```r
+df %>%
+  mutate(ord_x = sort(x), p = ecdf(ord_x)(ord_x)) %>%
+  ggplot(aes(x = p, y = ord_x)) + geom_point(colour = "blue") + 
+  geom_hline(yintercept = qnorm(0.25, mean = 5, sd = 2), colour = "gold") +
+  scale_y_continuous(breaks=round(qnorm(c(0.05, 0.25, 0.5, 0.75, 0.95), mean = 5, sd = 2), 2) ) +
+  ylab("emp. Quantile") + theme_minimal()
+```
+
+<img src="39_appendix_files/figure-html/unnamed-chunk-5-1.png" width="672" />
+
+
+
+Die beiden Grafiken sehen ähnlich aus. Aber ein Vergleich von zwei getrennten Grafiken ist natürlich nicht so einfach. Da die Werte auf der jeweiligen x-Achse nicht von großem Interesse sind, plottet man daher einfach die empirischen und theoretischen Quantile gegeneinander.
+
+
+```r
+ggplot(df, aes(sample = x)) + 
+  stat_qq(distribution = qnorm, dparams = list(mean = 5, sd = 2)) +
+  stat_qq_line(distribution = qnorm, dparams = list(mean = 5, sd = 2)) +
+  theme_minimal()
+```
+
+<img src="39_appendix_files/figure-html/unnamed-chunk-6-1.png" width="672" />
+
+
+
+

@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Kapitel 9 tidy ? | R4ews MA0009</title>
+<meta name="author" content="Stephan Haug">
+<meta name="description" content="Idealerweise liegt ein Datensatz so vor, dass er gut von einem Computer gelesen werden kann. In der Regel sind die Datensätze, mit denen wir uns beschäftigen, ja umfangreich, d.h. der Mensch will...">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="Kapitel 9 tidy ? | R4ews MA0009">
+<meta property="og:type" content="book">
+<meta property="og:description" content="Idealerweise liegt ein Datensatz so vor, dass er gut von einem Computer gelesen werden kann. In der Regel sind die Datensätze, mit denen wir uns beschäftigen, ja umfangreich, d.h. der Mensch will...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kapitel 9 tidy ? | R4ews MA0009">
+<meta name="twitter:description" content="Idealerweise liegt ein Datensatz so vor, dass er gut von einem Computer gelesen werden kann. In der Regel sind die Datensätze, mit denen wir uns beschäftigen, ja umfangreich, d.h. der Mensch will...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link href="libs/font-awesome-5.1.0/css/all.css" rel="stylesheet">
+<link href="libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet">
+<script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="anchor-links.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-68219208-1"></script><script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-68219208-1');
+      </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS -->
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">R4ews MA0009</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Willkommen zu R4ews</a></li>
+<li class="book-part">R, wie fange ich an</li>
+<li><a class="" href="install.html"><span class="header-section-number">1</span> Installieren von R und RStudio</a></li>
+<li><a class="" href="r-basics.html"><span class="header-section-number">2</span> R Basics und Arbeitsabläufe</a></li>
+<li class="book-part">Versionskontrolle und R Markdown</li>
+<li><a class="" href="version-control.html"><span class="header-section-number">3</span> Git, GitHub, and RStudio</a></li>
+<li><a class="" href="r-markdown.html"><span class="header-section-number">4</span> R Markdown</a></li>
+<li class="book-part">Datenanalyse Intro</li>
+<li><a class="" href="basic-data-care.html"><span class="header-section-number">5</span> Letzte Vorbereitungen …</a></li>
+<li><a class="" href="dplyr-intro.html"><span class="header-section-number">6</span> Einführung in dplyr</a></li>
+<li><a class="" href="dplyr-single.html"><span class="header-section-number">7</span> Mehr zu dplyr</a></li>
+<li><a class="" href="import-export.html"><span class="header-section-number">8</span> Daten I/O</a></li>
+<li><a class="active" href="tidy.html"><span class="header-section-number">9</span> tidy ?</a></li>
+<li class="book-part">ggplot2 Intro</li>
+<li><a class="" href="graphics-overview.html"><span class="header-section-number">10</span> Einführung</a></li>
+<li><a class="" href="bausteine.html"><span class="header-section-number">11</span> Bausteine</a></li>
+<li class="book-part">Noch viel mehr möglich</li>
+<li><a class="" href="packages.html"><span class="header-section-number">12</span> Pakete</a></li>
+<li><a class="" href="funktionen.html"><span class="header-section-number">13</span> Funktionen</a></li>
+<li><a class="" href="envscop.html"><span class="header-section-number">14</span> Environments und Scoping</a></li>
+<li class="book-part">Appendix</li>
+<li><a class="" href="fragen.html"><span class="header-section-number">15</span> Fragen und Anregungen aus der Übung</a></li>
+<li><a class="" href="literatur-3.html">Literatur</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="tidy" class="section level1" number="9">
+<h1>
+<span class="header-section-number">Kapitel 9</span> tidy ?<a class="anchor" aria-label="anchor" href="#tidy"><i class="fas fa-link"></i></a>
+</h1>
+<p>Idealerweise liegt ein Datensatz so vor, dass er <strong>gut</strong> von einem Computer gelesen werden kann. In der Regel sind die Datensätze, mit denen wir uns beschäftigen, ja umfangreich, d.h. der Mensch will den Datensatz ja gar nicht (ein-)lesen. Trotzdem sind Datensätze oft anders angelegt (der Mensch trifft die Entscheidung über das Layout).</p>
+<p>Der Computer kann einen Datensatz gut <em>verarbeiten</em>, wenn wir den Datensatz als <strong>tidy</strong> bezeichnen können. Hauptmerkmal von einem <strong>tidy</strong> Datensatz:</p>
+<ul>
+<li>Jede Spalte ist eine Variable</li>
+<li>Jede Zeile ist eine Beobachtung</li>
+</ul>
+<p>Untidy data mag z.B. der Grund dafür sein, dass Du mit einer Abbildung kämpfst. Daher lohnt es sich immer mal inne zu halten um zu überlegen, ob die Daten <strong>tidy</strong> sind. Unordnung ist eine häufige, oft übersehene Ursache für Qualen bei der Datenanalyse und -visualisierung.</p>
+<div id="lord-of-the-rings" class="section level2" number="9.1">
+<h2>
+<span class="header-section-number">9.1</span> Lord of the Rings<a class="anchor" aria-label="anchor" href="#lord-of-the-rings"><i class="fas fa-link"></i></a>
+</h2>
+<p>Von <a href="https://github.com/jennybc">Jenny Byran</a> (Autorin von STAT 545) habe ich folgenden Beispieldatensatz übernommen: <a href="https://github.com/jennybc/lotr">Data from the Lord of the Rings Trilogy</a></p>
+<div class="inline-table"><table class=" lightable-material-dark" style='font-family: "Source Sans Pro", helvetica, sans-serif; margin-left: auto; margin-right: auto;'>
+<thead><tr>
+<th style="text-align:left;">
+Film
+</th>
+<th style="text-align:left;">
+Race
+</th>
+<th style="text-align:right;">
+Female
+</th>
+<th style="text-align:right;">
+Male
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+The Fellowship Of The Ring
+</td>
+<td style="text-align:left;">
+Elf
+</td>
+<td style="text-align:right;">
+1229
+</td>
+<td style="text-align:right;">
+971
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+The Fellowship Of The Ring
+</td>
+<td style="text-align:left;">
+Hobbit
+</td>
+<td style="text-align:right;">
+14
+</td>
+<td style="text-align:right;">
+3644
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+The Fellowship Of The Ring
+</td>
+<td style="text-align:left;">
+Man
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+1995
+</td>
+</tr>
+</tbody>
+</table></div>
+<div class="inline-table"><table class=" lightable-material-dark" style='font-family: "Source Sans Pro", helvetica, sans-serif; margin-left: auto; margin-right: auto;'>
+<thead><tr>
+<th style="text-align:left;">
+Film
+</th>
+<th style="text-align:left;">
+Race
+</th>
+<th style="text-align:right;">
+Female
+</th>
+<th style="text-align:right;">
+Male
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+The Two Towers
+</td>
+<td style="text-align:left;">
+Elf
+</td>
+<td style="text-align:right;">
+331
+</td>
+<td style="text-align:right;">
+513
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+The Two Towers
+</td>
+<td style="text-align:left;">
+Hobbit
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+2463
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+The Two Towers
+</td>
+<td style="text-align:left;">
+Man
+</td>
+<td style="text-align:right;">
+401
+</td>
+<td style="text-align:right;">
+3589
+</td>
+</tr>
+</tbody>
+</table></div>
+<div class="inline-table"><table class=" lightable-material-dark" style='font-family: "Source Sans Pro", helvetica, sans-serif; margin-left: auto; margin-right: auto;'>
+<thead><tr>
+<th style="text-align:left;">
+Film
+</th>
+<th style="text-align:left;">
+Race
+</th>
+<th style="text-align:right;">
+Female
+</th>
+<th style="text-align:right;">
+Male
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+The Return Of The King
+</td>
+<td style="text-align:left;">
+Elf
+</td>
+<td style="text-align:right;">
+183
+</td>
+<td style="text-align:right;">
+510
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+The Return Of The King
+</td>
+<td style="text-align:left;">
+Hobbit
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+2673
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+The Return Of The King
+</td>
+<td style="text-align:left;">
+Man
+</td>
+<td style="text-align:right;">
+268
+</td>
+<td style="text-align:right;">
+2459
+</td>
+</tr>
+</tbody>
+</table></div>
+<p>Wir haben eine Tabelle pro Film. In jeder Tabelle haben wir die Gesamtzahl der gesprochenen Wörter, von Charakteren verschiedener Kategorien und Geschlechter.</p>
+<p>Stell dir vor, diese drei Tabellen als separate Arbeitsblätter in einer Excel-Arbeitsmappe zu finden. Oder in einigen Zellen am Rande eines Arbeitsblatts, das die zugrunde liegenden Rohdaten enthält. Oder als Tabellen auf einer Webseite oder in einem Word-Dokument.</p>
+<p>Das Format der Tabellen macht es für einen <em>Menschen</em> einfach, die Anzahl der von weiblichen Elfen in “The Two Towers” gesprochenen Wörter nachzuschlagen. Aber dieses Format macht es für einen <em>Computer</em> ziemlich schwer, solche Zählungen herauszuziehen und, was noch wichtiger ist, damit zu rechnen oder sie grafisch darzustellen.</p>
+<p>Diese Aufgabe ist dann wieder nicht so einfach, da die Daten <strong>untidy</strong> sind: Die Inhalte der Spalte <code>Female</code> und <code>Male</code> enthalten nicht die Information über das Geschlecht. Auf der anderen Seite sind Wert der Variable (noch nicht vorhanden) <code>Words</code> auf zwei Spalten verteilt.</p>
+</div>
+<div id="tidy-lord-of-the-rings-data" class="section level2" number="9.2">
+<h2>
+<span class="header-section-number">9.2</span> Tidy Lord of the Rings data<a class="anchor" aria-label="anchor" href="#tidy-lord-of-the-rings-data"><i class="fas fa-link"></i></a>
+</h2>
+<p>In sauberer Form sehen die Daten folgendermaßen aus:</p>
+<div class="inline-table"><table class=" lightable-material-dark" style='font-family: "Source Sans Pro", helvetica, sans-serif; margin-left: auto; margin-right: auto;'>
+<thead><tr>
+<th style="text-align:left;">
+Film
+</th>
+<th style="text-align:left;">
+Race
+</th>
+<th style="text-align:left;">
+Gender
+</th>
+<th style="text-align:right;">
+Words
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+The Fellowship Of The Ring
+</td>
+<td style="text-align:left;">
+Elf
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+1229
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+The Fellowship Of The Ring
+</td>
+<td style="text-align:left;">
+Elf
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+971
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+The Fellowship Of The Ring
+</td>
+<td style="text-align:left;">
+Hobbit
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+14
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+The Fellowship Of The Ring
+</td>
+<td style="text-align:left;">
+Hobbit
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+3644
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+The Fellowship Of The Ring
+</td>
+<td style="text-align:left;">
+Man
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+The Fellowship Of The Ring
+</td>
+<td style="text-align:left;">
+Man
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+1995
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+The Two Towers
+</td>
+<td style="text-align:left;">
+Elf
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+331
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+The Two Towers
+</td>
+<td style="text-align:left;">
+Elf
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+513
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+The Two Towers
+</td>
+<td style="text-align:left;">
+Hobbit
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+The Two Towers
+</td>
+<td style="text-align:left;">
+Hobbit
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+2463
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+The Two Towers
+</td>
+<td style="text-align:left;">
+Man
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+401
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+The Two Towers
+</td>
+<td style="text-align:left;">
+Man
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+3589
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+The Return Of The King
+</td>
+<td style="text-align:left;">
+Elf
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+183
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+The Return Of The King
+</td>
+<td style="text-align:left;">
+Elf
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+510
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+The Return Of The King
+</td>
+<td style="text-align:left;">
+Hobbit
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+The Return Of The King
+</td>
+<td style="text-align:left;">
+Hobbit
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+2673
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+The Return Of The King
+</td>
+<td style="text-align:left;">
+Man
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+268
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+The Return Of The King
+</td>
+<td style="text-align:left;">
+Man
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+2459
+</td>
+</tr>
+</tbody>
+</table></div>
+<p>Beachte, dass <strong>tidy</strong> data im Allgemeinen höher und schmaler sind. Bestimmte Elemente werden oft wiederholt, z. B. <code>Hobbit</code>. Aus diesen Gründen lehnen wir <strong>tidy</strong> Daten oft instinktiv als ineffizient oder hässlich ab. Aber, solange du nicht das Endprodukt für eine textuelle Präsentation von Daten erstellst, solltest du diesen Instinkt ignorieren.</p>
+</div>
+<div id="vorteile-von-tidy-data" class="section level2" number="9.3">
+<h2>
+<span class="header-section-number">9.3</span> Vorteile von tidy data<a class="anchor" aria-label="anchor" href="#vorteile-von-tidy-data"><i class="fas fa-link"></i></a>
+</h2>
+<p>Wenn die Daten in ordentlicher Form vorliegen, ist es naheliegend, <em>einen Computer</em> zu holen, um weitere Zusammenfassungen zu machen oder eine Abbildung zu erstellen.</p>
+<p>In dieser Form können wir nun leicht folgende Fragen beantworten:</p>
+<ul>
+<li><p>Wie viele Wörter haben die männlichen Hobbits insgesamt gesprochen?</p></li>
+<li><p>Dominiert eine bestimmte <code>Race</code> einen Film? Unterscheidet sich die dominierende <code>Race</code> in den Filmen?</p></li>
+</ul>
+<div id="wie-viele-wörter-haben-die-männlichen-hobbits-insgesamt-gesprochen" class="section level4" number="9.3.0.1">
+<h4>
+<span class="header-section-number">9.3.0.1</span> Wie viele Wörter haben die männlichen Hobbits insgesamt gesprochen?<a class="anchor" aria-label="anchor" href="#wie-viele-w%C3%B6rter-haben-die-m%C3%A4nnlichen-hobbits-insgesamt-gesprochen"><i class="fas fa-link"></i></a>
+</h4>
+<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
+<span class="va">lotr_tidy</span> <span class="op">%&gt;%</span> 
+  <span class="fu">count</span><span class="op">(</span><span class="va">Gender</span>, <span class="va">Race</span>, wt <span class="op">=</span> <span class="va">Words</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 3
+##   Gender Race       n
+##   &lt;chr&gt;  &lt;chr&gt;  &lt;dbl&gt;
+## 1 Female Elf     1743
+## 2 Female Hobbit    16
+## 3 Female Man      669
+## 4 Male   Elf     1994
+## 5 Male   Hobbit  8780
+## 6 Male   Man     8043</code></pre>
+<p>Nun braucht es nur noch ein kleines bisschen Code, um die Gesamtwortzahl für beide Geschlechter aller Kategorien über alle Filme hinweg zu berechnen. Die Gesamtzahl der von männlichen Hobbits gesprochenen Wörter ist 8780. Hier war es wichtig, alle Wortzählungen in einer einzigen Variable zu haben, innerhalb eines Data Frames, der auch eine Variable für Geschlecht und Kategorie enthielt.</p>
+</div>
+<div id="dominiert-eine-bestimmte-kategorie-einen-film-unterscheidet-sich-die-dominierende-kategorie-in-den-filmen" class="section level4" number="9.3.0.2">
+<h4>
+<span class="header-section-number">9.3.0.2</span> Dominiert eine bestimmte Kategorie einen Film? Unterscheidet sich die dominierende Kategorie in den Filmen?<a class="anchor" aria-label="anchor" href="#dominiert-eine-bestimmte-kategorie-einen-film-unterscheidet-sich-die-dominierende-kategorie-in-den-filmen"><i class="fas fa-link"></i></a>
+</h4>
+<p>Zunächst summieren wir über die Geschlechter hinweg, um die Wortzahlen für die verschiedenen Kategorien nach Film zu erhalten.</p>
+<div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="op">(</span><span class="va">by_race_film</span> <span class="op">&lt;-</span> <span class="va">lotr_tidy</span> <span class="op">%&gt;%</span> 
+   <span class="fu">group_by</span><span class="op">(</span><span class="va">Film</span>, <span class="va">Race</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+   <span class="fu">summarize</span><span class="op">(</span>Words <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Words</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## `summarise()` has grouped output by 'Film'. You can override using the `.groups` argument.</code></pre>
+<pre><code>## # A tibble: 9 x 3
+## # Groups:   Film [3]
+##   Film                       Race   Words
+##   &lt;chr&gt;                      &lt;chr&gt;  &lt;dbl&gt;
+## 1 The Fellowship Of The Ring Elf     2200
+## 2 The Fellowship Of The Ring Hobbit  3658
+## 3 The Fellowship Of The Ring Man     1995
+## 4 The Return Of The King     Elf      693
+## 5 The Return Of The King     Hobbit  2675
+## 6 The Return Of The King     Man     2727
+## 7 The Two Towers             Elf      844
+## 8 The Two Towers             Hobbit  2463
+## 9 The Two Towers             Man     3990</code></pre>
+<p>Wir können ganz genau auf diese Zahlen starren, um die Frage zu beantworten. Aber noch schöner ist es, die gerade berechneten Wortzahlen in einem Balkendiagramm darzustellen.</p>
+<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">by_race_film</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">Film</span>, y <span class="op">=</span> <span class="va">Words</span>, fill <span class="op">=</span> <span class="va">Race</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu">geom_bar</span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"identity"</span>, position <span class="op">=</span> <span class="st">"dodge"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">coord_flip</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu">guides</span><span class="op">(</span>fill <span class="op">=</span> <span class="fu">guide_legend</span><span class="op">(</span>reverse <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu">scale_fill_brewer</span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Set1"</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="10_tidy_files/figure-html/barchart-lotr-words-by-film-race-1.png" width="672"></div>
+<p>Hobbits sind in “The Fellowhip of the Ring” stark vertreten, während die Menschen in “The Two Towers” viel mehr Leinwandzeit hatten. Ebenso prominent waren sie im letzten Film, “The Return of the King”.</p>
+<p>Auch hier war es wichtig, alle Daten in einem einzigen Data Frame zu haben, alle Wortzählungen in einer einzigen Variable und zugehörige Variablen für Film und Kategorie.</p>
+<blockquote>
+<p>Im nächsten Schritt schauen wir uns nun an, wie man aus den obigen drei Tabellen eine sauberen Datensatz erzeugt.</p>
+</blockquote>
+</div>
+</div>
+<div id="untidy-lord-of-the-rings-data" class="section level2" number="9.4">
+<h2>
+<span class="header-section-number">9.4</span> Untidy Lord of the Rings data<a class="anchor" aria-label="anchor" href="#untidy-lord-of-the-rings-data"><i class="fas fa-link"></i></a>
+</h2>
+<p>Wir importieren nun die Daten, die in den drei filmspezifischen Wortzählungstabellen dargestellt wurden.</p>
+<p>Für jede Tabelle existiert eine eigene csv Datei:</p>
+<ul>
+<li><a href="https://github.com/jennybc/lotr-tidy/blob/master/data/The_Fellowship_Of_The_Ring.csv">The_Fellowship_Of_The_Ring.csv</a></li>
+<li><a href="https://github.com/jennybc/lotr-tidy/blob/master/data/The_Two_Towers.csv">The_Two_Towers.csv</a></li>
+<li><a href="https://github.com/jennybc/lotr-tidy/blob/master/data/The_Return_Of_The_King.csv">The_Return_Of_The_King.csv</a></li>
+</ul>
+<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">fship</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="st">"data"</span>, <span class="st">"The_Fellowship_Of_The_Ring.csv"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## Rows: 3 Columns: 4</code></pre>
+<pre><code>## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: ","
+## chr (2): Film, Race
+## dbl (2): Female, Male</code></pre>
+<pre><code>## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">ttow</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="st">"data"</span>, <span class="st">"The_Two_Towers.csv"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## Rows: 3 Columns: 4</code></pre>
+<pre><code>## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: ","
+## chr (2): Film, Race
+## dbl (2): Female, Male</code></pre>
+<pre><code>## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">rking</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="st">"data"</span>, <span class="st">"The_Return_Of_The_King.csv"</span><span class="op">)</span><span class="op">)</span> </code></pre></div>
+<pre><code>## Rows: 3 Columns: 4</code></pre>
+<pre><code>## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: ","
+## chr (2): Film, Race
+## dbl (2): Female, Male</code></pre>
+<pre><code>## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">rking</span></code></pre></div>
+<pre><code>## # A tibble: 3 x 4
+##   Film                   Race   Female  Male
+##   &lt;chr&gt;                  &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;
+## 1 The Return Of The King Elf       183   510
+## 2 The Return Of The King Hobbit      2  2673
+## 3 The Return Of The King Man       268  2459</code></pre>
+</div>
+<div id="und-nun-alles-zusammen" class="section level2" number="9.5">
+<h2>
+<span class="header-section-number">9.5</span> Und nun alles zusammen<a class="anchor" aria-label="anchor" href="#und-nun-alles-zusammen"><i class="fas fa-link"></i></a>
+</h2>
+<p>Wir haben jetzt ein Data Frame pro Film, jeweils mit den vier Variablen</p>
+<div class="sourceCode" id="cb127"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">rking</span><span class="op">)</span></code></pre></div>
+<pre><code>## [1] "Film"   "Race"   "Female" "Male"</code></pre>
+<p>Der erste Schritt beim Aufräumen dieser Daten besteht darin, sie zu einem Data Frame zusammenzufügen, indem wir die drei Data Frames zeilenweise stapeln. Dazu können wir die Funktion <code><a href="https://dplyr.tidyverse.org/reference/bind.html">dplyr::bind_rows()</a></code> verwenden.</p>
+<div class="sourceCode" id="cb129"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">lotr_untidy</span> <span class="op">&lt;-</span> <span class="fu">bind_rows</span><span class="op">(</span><span class="va">fship</span>, <span class="va">ttow</span>, <span class="va">rking</span><span class="op">)</span>
+<span class="va">lotr_untidy</span></code></pre></div>
+<pre><code>## # A tibble: 9 x 4
+##   Film                       Race   Female  Male
+##   &lt;chr&gt;                      &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;
+## 1 The Fellowship Of The Ring Elf      1229   971
+## 2 The Fellowship Of The Ring Hobbit     14  3644
+## 3 The Fellowship Of The Ring Man         0  1995
+## 4 The Two Towers             Elf       331   513
+## 5 The Two Towers             Hobbit      0  2463
+## 6 The Two Towers             Man       401  3589
+## 7 The Return Of The King     Elf       183   510
+## 8 The Return Of The King     Hobbit      2  2673
+## 9 The Return Of The King     Man       268  2459</code></pre>
+<p>Das Zusammensetzen eines großen Datenobjekts aus vielen kleinen ist eine relativ übliche Aufgabe bei der Datenaufbereitung. Wenn die Teile so ähnlich sind wie hier, ist es schön, sie gleich zu einem Objekt zusammenzusetzen. In anderen Szenarien müsst du möglicherweise einige Nacharbeiten an den einzelnen Objekten vornehmen, bevor sie gut zusammengefügt werden können.</p>
+<p>Wenn möglich, sollte man die einzelnen Stücke so früh wie möglich
+zusammensetzen, denn es ist einfacher und effizienter, ein einzelnes Objekt aufzuräumen als 20 oder 1000.</p>
+</div>
+<div id="nun-können-wir-aufräumen" class="section level2" number="9.6">
+<h2>
+<span class="header-section-number">9.6</span> Nun können wir aufräumen<a class="anchor" aria-label="anchor" href="#nun-k%C3%B6nnen-wir-aufr%C3%A4umen"><i class="fas fa-link"></i></a>
+</h2>
+<p>Wir verletzen immer noch eines der Grundprinzipien von <strong>tidy data</strong>. Die Anzahl an gesprochenen Wörtern ist eine grundlegende Variable in unserem Datensatz und sie ist derzeit auf zwei Variablen verteilt, <code>Female</code> und <code>Male</code>. Konzeptionell müssen wir die Wortanzahl in einer einzigen Variable zusammenfassen und eine neue Variable <code>Gender</code> erstellen, um zu verfolgen, ob die jeweilige Anzahl an Worten von Frauen oder Männern gesprochen wurde. Dies Aufgabe können wir mit der Funktion <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">tidyr::pivot_longer()</a></code> bearbeiten.</p>
+<div class="sourceCode" id="cb131"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">lotr_tidy</span> <span class="op">&lt;-</span>
+  <span class="fu">pivot_longer</span><span class="op">(</span><span class="va">lotr_untidy</span>, cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Female"</span>, <span class="st">"Male"</span><span class="op">)</span>, names_to <span class="op">=</span> <span class="st">'Gender'</span>, 
+               values_to <span class="op">=</span> <span class="st">'Words'</span><span class="op">)</span>
+<span class="va">lotr_tidy</span></code></pre></div>
+<pre><code>## # A tibble: 18 x 4
+##    Film                       Race   Gender Words
+##    &lt;chr&gt;                      &lt;chr&gt;  &lt;chr&gt;  &lt;dbl&gt;
+##  1 The Fellowship Of The Ring Elf    Female  1229
+##  2 The Fellowship Of The Ring Elf    Male     971
+##  3 The Fellowship Of The Ring Hobbit Female    14
+##  4 The Fellowship Of The Ring Hobbit Male    3644
+##  5 The Fellowship Of The Ring Man    Female     0
+##  6 The Fellowship Of The Ring Man    Male    1995
+##  7 The Two Towers             Elf    Female   331
+##  8 The Two Towers             Elf    Male     513
+##  9 The Two Towers             Hobbit Female     0
+## 10 The Two Towers             Hobbit Male    2463
+## 11 The Two Towers             Man    Female   401
+## 12 The Two Towers             Man    Male    3589
+## 13 The Return Of The King     Elf    Female   183
+## 14 The Return Of The King     Elf    Male     510
+## 15 The Return Of The King     Hobbit Female     2
+## 16 The Return Of The King     Hobbit Male    2673
+## 17 The Return Of The King     Man    Female   268
+## 18 The Return Of The King     Man    Male    2459</code></pre>
+<p>Um unseren obigen Aufruf von <code>pivot_longer()</code> zu erklären, lesen wir ihn links nach rechts: Nach der Auswahl des Datensatzes <code>lotr_untidy</code> haben wird die Spalten <code>Female</code> und <code>Male</code> genommen und ihre <em>Werte</em> in eine einzige neue Variable <code>Words</code> zusammengefasst. Dies erzwang die Erstellung einer neuen Variable <code>Gender</code>, die angibt, ob ein bestimmter Wert von <code>Words</code> von <code>Female</code> oder <code>Male</code> stammt. Alle anderen Variablen, wie <code>Film</code>, bleiben unverändert und werden einfach nach Bedarf repliziert. Die Dokumentation für <code>pivot_longer()</code> gibt weitere Beispiele und dokumentiert zusätzliche Argumente.</p>
+<p>Wenn man sich diese Arbeit gemacht hat, dann macht es schon Sinn sich auch das Ergebnis abzuspeichern</p>
+<div class="sourceCode" id="cb133"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">write_csv</span><span class="op">(</span><span class="va">lotr_tidy</span>, path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="st">"data"</span>, <span class="st">"lotr_tidy.csv"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## Warning: The `path` argument of `write_csv()` is deprecated as of readr 1.4.0.
+## Please use the `file` argument instead.</code></pre>
+<p>Trotzdem solltet ihr auch bei/nach der Datenaufbereitung auch die Skripte zur Datenaufbereitung wie auch die Originaldaten abspeichern.</p>
+</div>
+<div id="und-jetzt-noch-ein-bisschen-schmutzig-machen" class="section level2" number="9.7">
+<h2>
+<span class="header-section-number">9.7</span> Und jetzt noch ein bisschen “schmutzig” machen<a class="anchor" aria-label="anchor" href="#und-jetzt-noch-ein-bisschen-schmutzig-machen"><i class="fas fa-link"></i></a>
+</h2>
+<p>Manchmal (aber nicht so häufig) ist es doch nötig die Daten im <a href="https://de.wikipedia.org/wiki/Wide-Format_und_Long-Format">Wide Format</a> zu haben. Daher wollen wir zum Schluss die gerade gesäuberten LOTR Daten nochmal ein bisschen untidy machen.</p>
+<p>Dazu arbeiten wir mit den Funktion <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">tidyr::pivot_wider()</a></code>. Wir nehmen nun die Ausprägungen der Variable <code>Race</code> (anschließend dann <code>Gender</code>) als Variablennamen der neu zu bildenden Variablen. Die Werte dieser neuen Variablen sind durch die Variable <code>Words</code> festgelegt.</p>
+<div class="sourceCode" id="cb135"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">## Race</span>
+<span class="va">lotr_tidy</span> <span class="op">%&gt;%</span> 
+  <span class="fu">pivot_wider</span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">Race</span>, values_from <span class="op">=</span> <span class="va">Words</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 6 x 5
+##   Film                       Gender   Elf Hobbit   Man
+##   &lt;chr&gt;                      &lt;chr&gt;  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
+## 1 The Fellowship Of The Ring Female  1229     14     0
+## 2 The Fellowship Of The Ring Male     971   3644  1995
+## 3 The Two Towers             Female   331      0   401
+## 4 The Two Towers             Male     513   2463  3589
+## 5 The Return Of The King     Female   183      2   268
+## 6 The Return Of The King     Male     510   2673  2459</code></pre>
+<div class="sourceCode" id="cb137"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co">## Gender</span>
+<span class="va">lotr_tidy</span> <span class="op">%&gt;%</span> 
+  <span class="fu">pivot_wider</span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">Gender</span>, values_from <span class="op">=</span> <span class="va">Words</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 9 x 4
+##   Film                       Race   Female  Male
+##   &lt;chr&gt;                      &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;
+## 1 The Fellowship Of The Ring Elf      1229   971
+## 2 The Fellowship Of The Ring Hobbit     14  3644
+## 3 The Fellowship Of The Ring Man         0  1995
+## 4 The Two Towers             Elf       331   513
+## 5 The Two Towers             Hobbit      0  2463
+## 6 The Two Towers             Man       401  3589
+## 7 The Return Of The King     Elf       183   510
+## 8 The Return Of The King     Hobbit      2  2673
+## 9 The Return Of The King     Man       268  2459</code></pre>
+<p>Das erste Beispiel hat immer noch 6 Beobachtungen, zwei pro Film. Nehmen wir mal an, dass wir aber nur eine Beobachtung pro Film haben wollen. Dazu müssten wir die möglichen Kombinationen aus <code>Race</code> und <code>Gender</code> in neuen/weiteren Variablen zusammenfassen. Dies können wir über die Funktion <code><a href="https://tidyr.tidyverse.org/reference/unite.html">tidyr::unite()</a></code> erreichen.</p>
+<div class="sourceCode" id="cb139"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">lotr_tidy</span> <span class="op">%&gt;%</span> 
+  <span class="fu">unite</span><span class="op">(</span><span class="va">Race_Gender</span>, <span class="va">Race</span>, <span class="va">Gender</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 18 x 3
+##    Film                       Race_Gender   Words
+##    &lt;chr&gt;                      &lt;chr&gt;         &lt;dbl&gt;
+##  1 The Fellowship Of The Ring Elf_Female     1229
+##  2 The Fellowship Of The Ring Elf_Male        971
+##  3 The Fellowship Of The Ring Hobbit_Female    14
+##  4 The Fellowship Of The Ring Hobbit_Male    3644
+##  5 The Fellowship Of The Ring Man_Female        0
+##  6 The Fellowship Of The Ring Man_Male       1995
+##  7 The Two Towers             Elf_Female      331
+##  8 The Two Towers             Elf_Male        513
+##  9 The Two Towers             Hobbit_Female     0
+## 10 The Two Towers             Hobbit_Male    2463
+## 11 The Two Towers             Man_Female      401
+## 12 The Two Towers             Man_Male       3589
+## 13 The Return Of The King     Elf_Female      183
+## 14 The Return Of The King     Elf_Male        510
+## 15 The Return Of The King     Hobbit_Female     2
+## 16 The Return Of The King     Hobbit_Male    2673
+## 17 The Return Of The King     Man_Female      268
+## 18 The Return Of The King     Man_Male       2459</code></pre>
+<p>In Kombination mit <code>pivot_wider()</code> ergibt sich so</p>
+<div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">lotr_tidy</span> <span class="op">%&gt;%</span> 
+  <span class="fu">unite</span><span class="op">(</span><span class="va">Race_Gender</span>, <span class="va">Race</span>, <span class="va">Gender</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">pivot_wider</span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">Race_Gender</span>, values_from <span class="op">=</span> <span class="va">Words</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 3 x 7
+##   Film         Elf_Female Elf_Male Hobbit_Female Hobbit_Male Man_Female Man_Male
+##   &lt;chr&gt;             &lt;dbl&gt;    &lt;dbl&gt;         &lt;dbl&gt;       &lt;dbl&gt;      &lt;dbl&gt;    &lt;dbl&gt;
+## 1 The Fellows…       1229      971            14        3644          0     1995
+## 2 The Two Tow…        331      513             0        2463        401     3589
+## 3 The Return …        183      510             2        2673        268     2459</code></pre>
+<p>Zum Schluss könnten wir jetzt auch noch alles zurück auf Anfang stellen und die
+drei Datensätze vom Anfang wiederherstellen</p>
+<div class="sourceCode" id="cb143"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="op">(</span><span class="va">sep_list</span> <span class="op">&lt;-</span> <span class="va">lotr_tidy</span> <span class="op">%&gt;%</span> 
+  <span class="fu">pivot_wider</span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">Gender</span>, values_from <span class="op">=</span> <span class="va">Words</span><span class="op">)</span> <span class="op">%&gt;%</span>
+   <span class="fu">group_split</span><span class="op">(</span><span class="va">Film</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## &lt;list_of&lt;
+##   tbl_df&lt;
+##     Film  : character
+##     Race  : character
+##     Female: double
+##     Male  : double
+##   &gt;
+## &gt;[3]&gt;
+## [[1]]
+## # A tibble: 3 x 4
+##   Film                       Race   Female  Male
+##   &lt;chr&gt;                      &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;
+## 1 The Fellowship Of The Ring Elf      1229   971
+## 2 The Fellowship Of The Ring Hobbit     14  3644
+## 3 The Fellowship Of The Ring Man         0  1995
+## 
+## [[2]]
+## # A tibble: 3 x 4
+##   Film                   Race   Female  Male
+##   &lt;chr&gt;                  &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;
+## 1 The Return Of The King Elf       183   510
+## 2 The Return Of The King Hobbit      2  2673
+## 3 The Return Of The King Man       268  2459
+## 
+## [[3]]
+## # A tibble: 3 x 4
+##   Film           Race   Female  Male
+##   &lt;chr&gt;          &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;
+## 1 The Two Towers Elf       331   513
+## 2 The Two Towers Hobbit      0  2463
+## 3 The Two Towers Man       401  3589</code></pre>
+<p>Wir erhalten eine Liste mit drei Elemente, die deren Inhalt den drei Tabellen vom Anfang entspricht. Die Daten zu “The Return of the King” sind beispielsweise im zweiten Element enthalten.</p>
+<div class="sourceCode" id="cb145"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">sep_list</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span></code></pre></div>
+<pre><code>## # A tibble: 3 x 4
+##   Film                   Race   Female  Male
+##   &lt;chr&gt;                  &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt;
+## 1 The Return Of The King Elf       183   510
+## 2 The Return Of The King Hobbit      2  2673
+## 3 The Return Of The King Man       268  2459</code></pre>
+</div>
+<div id="literatur-1" class="section level2" number="9.8">
+<h2>
+<span class="header-section-number">9.8</span> Literatur<a class="anchor" aria-label="anchor" href="#literatur-1"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li>
+<a href="http://r4ds.had.co.nz/tidy-data.html">Tidy data</a> Kapitel in R for Data Science, by Garrett Grolemund and Hadley Wickham
+<ul>
+<li>
+<a href="https://tidyr.tidyverse.org/">tidyr</a> Paket</li>
+</ul>
+</li>
+<li>
+<a href="http://shop.oreilly.com/product/0636920024422.do">Bad Data Handbook</a> by By Q. Ethan McCallum, published by O’Reilly.
+<ul>
+<li>Chapter 3: Data Intended for Human Consumption, Not Machine Consumption by Paul Murrell.</li>
+</ul>
+</li>
+<li>Tidy data by Hadley Wickham. Journal of Statistical Software. Vol. 59, Issue 10, Sep 2014. <a href="http://www.jstatsoft.org/v59/i10" class="uri">http://www.jstatsoft.org/v59/i10</a>
+</li>
+</ul>
+</div>
+</div>
+
+
+
+  <div class="chapter-nav">
+<div class="prev"><a href="import-export.html"><span class="header-section-number">8</span> Daten I/O</a></div>
+<div class="next"><a href="graphics-overview.html"><span class="header-section-number">10</span> Einführung</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#tidy"><span class="header-section-number">9</span> tidy ?</a></li>
+<li><a class="nav-link" href="#lord-of-the-rings"><span class="header-section-number">9.1</span> Lord of the Rings</a></li>
+<li><a class="nav-link" href="#tidy-lord-of-the-rings-data"><span class="header-section-number">9.2</span> Tidy Lord of the Rings data</a></li>
+<li><a class="nav-link" href="#vorteile-von-tidy-data"><span class="header-section-number">9.3</span> Vorteile von tidy data</a></li>
+<li><a class="nav-link" href="#untidy-lord-of-the-rings-data"><span class="header-section-number">9.4</span> Untidy Lord of the Rings data</a></li>
+<li><a class="nav-link" href="#und-nun-alles-zusammen"><span class="header-section-number">9.5</span> Und nun alles zusammen</a></li>
+<li><a class="nav-link" href="#nun-k%C3%B6nnen-wir-aufr%C3%A4umen"><span class="header-section-number">9.6</span> Nun können wir aufräumen</a></li>
+<li><a class="nav-link" href="#und-jetzt-noch-ein-bisschen-schmutzig-machen"><span class="header-section-number">9.7</span> Und jetzt noch ein bisschen “schmutzig” machen</a></li>
+<li><a class="nav-link" href="#literatur-1"><span class="header-section-number">9.8</span> Literatur</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>R4ews MA0009</strong>" was written by Stephan Haug. </p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

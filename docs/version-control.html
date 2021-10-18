@@ -4,11 +4,20 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Kapitel 3 Git, GitHub, and RStudio | R4ews MA0009</title>
+<title>Kapitel 2 Git, GitHub, and RStudio | R4ews MA0009</title>
 <meta name="author" content="Stephan Haug">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.8/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="Versionskontrolle sollte nach dem Besuch der Einführung in die Programmierung bereits kein unbekanntes Thema mehr sein. Falls doch, solltet ihr mit ein paar Worten zu Git und GitHub von Jenny...">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="Kapitel 2 Git, GitHub, and RStudio | R4ews MA0009">
+<meta property="og:type" content="book">
+<meta property="og:description" content="Versionskontrolle sollte nach dem Besuch der Einführung in die Programmierung bereits kein unbekanntes Thema mehr sein. Falls doch, solltet ihr mit ein paar Worten zu Git und GitHub von Jenny...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kapitel 2 Git, GitHub, and RStudio | R4ews MA0009">
+<meta name="twitter:description" content="Versionskontrolle sollte nach dem Besuch der Einführung in die Programmierung bereits kein unbekanntes Thema mehr sein. Falls doch, solltet ihr mit ein paar Worten zu Git und GitHub von Jenny...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/_Lato-0.4.0/font.css" rel="stylesheet">
+<script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link href="libs/font-awesome-5.1.0/css/all.css" rel="stylesheet">
 <link href="libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet">
 <script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
@@ -18,7 +27,7 @@
       gtag('js', new Date());
 
       gtag('config', 'UA-68219208-1');
-      </script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
+      </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="r4ews.css">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -39,60 +48,40 @@
 </form>
 
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
-        <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html">Willkommen zu R4ews</a></li>
-<li class="book-part">R, wie fange ich an</li>
-<li><a class="" href="install.html"><span class="header-section-number">1</span> Installieren von R und RStudio</a></li>
-<li><a class="" href="r-basics.html"><span class="header-section-number">2</span> R Basics und Arbeitsabläufe</a></li>
-<li class="book-part">Versionskontrolle und R Markdown</li>
-<li><a class="active" href="version-control.html"><span class="header-section-number">3</span> Git, GitHub, and RStudio</a></li>
-<li><a class="" href="r-markdown.html"><span class="header-section-number">4</span> R Markdown</a></li>
-<li class="book-part">Datenanalyse Intro</li>
-<li><a class="" href="basic-data-care.html"><span class="header-section-number">5</span> Letzte Vorbereitungen …</a></li>
-<li><a class="" href="dplyr-intro.html"><span class="header-section-number">6</span> Einführung in dplyr</a></li>
-<li><a class="" href="dplyr-single.html"><span class="header-section-number">7</span> Mehr zu dplyr</a></li>
-<li><a class="" href="import-export.html"><span class="header-section-number">8</span> Daten I/O</a></li>
-<li><a class="" href="tidy.html"><span class="header-section-number">9</span> tidy ?</a></li>
-<li class="book-part">ggplot2 Intro</li>
-<li><a class="" href="graphics-overview.html"><span class="header-section-number">10</span> Einführung</a></li>
-<li><a class="" href="bausteine.html"><span class="header-section-number">11</span> Bausteine</a></li>
-<li class="book-part">Noch viel mehr möglich</li>
-<li><a class="" href="packages.html"><span class="header-section-number">12</span> Pakete</a></li>
-<li><a class="" href="funktionen.html"><span class="header-section-number">13</span> Funktionen</a></li>
-<li><a class="" href="envscop.html"><span class="header-section-number">14</span> Environments und Scoping</a></li>
-<li class="book-part">Appendix</li>
-<li><a class="" href="fragen.html"><span class="header-section-number">15</span> Fragen und Anregungen aus der Übung</a></li>
-<li><a class="" href="literatur-3.html">Literatur</a></li>
-</ul>
+        <ul class="book-toc list-unstyled"><li><a class="" href="index.html"><span class="header-section-number">Kapitel 2</span> Git, GitHub, and RStudio</a></li></ul>
 
         <div class="book-extra">
           
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="version-control" class="section level1" number="3">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="version-control" class="section level1" number="2">
 <h1>
-<span class="header-section-number">Kapitel 3</span> Git, GitHub, and RStudio<a class="anchor" aria-label="anchor" href="#version-control"><i class="fas fa-link"></i></a>
+<span class="header-section-number">Kapitel 2</span> Git, GitHub, and RStudio<a class="anchor" aria-label="anchor" href="#version-control"><i class="fas fa-link"></i></a>
 </h1>
-<!--Original content: https://stat545.com/git08_claim-stat545-repo.html-->
-<p>Wir wissen nicht ob Versionskontrolle bereits ein Thema war mit dem du dich beschäftigt hast. Wenn nicht, solltest du mit ein <a href="https://happygitwithr.com/big-picture.html">paar Worten zu Git und GitHub</a> von <em>Jenny Byran</em> (Autorin von STAT 545) starten.</p>
-<p>Ziel dieses Abschnitts wird es sein, dass du</p>
+<p>Versionskontrolle sollte nach dem Besuch der <a href="https://campus.tum.de/tumonline/pl/ui/%24ctx;design=pl;header=max;lang=de/wbModHBReport.wbGenHTMLForBeschr?pKnotenNr=1542104&amp;pSemesterNr=191&amp;pLangCode=DE">Einführung in die Programmierung</a> bereits kein unbekanntes Thema mehr sein. Falls doch, solltet ihr mit ein <a href="https://happygitwithr.com/big-picture.html">paar Worten zu Git und GitHub</a> von <em>Jenny Byran</em> (Autorin von STAT 545) starten.</p>
+<p>Ziel dieses Abschnitts wird es sein, dass ihr</p>
 <ol style="list-style-type: decimal">
-<li><p>einen <a href="https://happygitwithr.com/github-acct.html">GitHub Account</a> anlegst (falls nicht schon vorhanden)</p></li>
-<li><p><a href="https://happygitwithr.com/install-git.html">Git auf deinem Computer installierst</a></p></li>
-<li><p>dich bei <a href="https://happygitwithr.com/hello-git.html">Git vorstellst</a></p></li>
-<li><p>alles zusammenfügst und deine <a href="https://happygitwithr.com/push-pull-github.html">Verbindung zu GitHub testest</a></p></li>
-<li><p>abschließend noch RStudio ins Spiel bringst und <a href="https://happygitwithr.com/rstudio-git-github.html">RStudio mit Git und GitHub verbindest</a></p></li>
+<li><p>einen <a href="https://happygitwithr.com/github-acct.html">GitHub Account</a> anlegt (falls nicht schon vorhanden)</p></li>
+<li><p><a href="https://happygitwithr.com/install-git.html">Git auf eurem Computer installiert</a></p></li>
+<li><p>euch bei <a href="https://happygitwithr.com/hello-git.html">Git vorstellt</a></p></li>
+<li><p>eure <a href="https://happygitwithr.com/push-pull-github.html">Verbindung zu GitHub testet</a></p></li>
+<li><p>abschließend noch RStudio ins Spiel bringt und <a href="https://happygitwithr.com/rstudio-git-github.html">RStudio mit Git und GitHub verbindet</a></p></li>
 </ol>
-<p><strong>Bemerkung:</strong> Unter 5. wirst du ermutigt deine GitHub Zugangsdaten auf deinem Computer zu speichern. Wir können diesen Schritt nur empfehlen.</p>
-<p>Das Buch <a href="https://happygitwithr.com/"><em>Happy Git and GitHub for the useR</em></a> enthält noch viele weitere hilfreiche Git/GitHub Informationen. Auf manche kommen wir vielleicht im Laufe des Kurses noch zu sprechen. Andere sind vielleicht zu einem späteren Zeitpunkt interessant, wenn du an anspruchsvolleren Git Projekten arbeitest.</p>
+<p><strong>Bemerkung:</strong> Unter 5. werdet ihr ermutigt eure GitHub Zugangsdaten auf eurem Computer zu speichern. Dieser Schritt ist sehr empfehlenswert. Dazu findet ihr auch ein kurzes Video im Moodle Kurs zu EWS.</p>
+<div class="content-box-red">
+<p>⚠️<br>
+Die Verwendung von GitHub ist eine <strong>generelle Empfehlung</strong>. Ein GitHub Account kann in verschiedenen Situationen hilfreich sein, insbesondere auch nach dem Studium.<br>
+Während der Veranstaltung werdet ihr aber mit eurem <a href="https://gitlab.lrz.de/users/sign_in">LRZ GitLab</a> Account arbeiten.</p>
+</div>
+<p>Das Buch <a href="https://happygitwithr.com/"><em>Happy Git and GitHub for the useR</em></a> enthält noch viele weitere hilfreiche Git/GitHub Informationen. Auf manche kommen wir vielleicht im Laufe des Kurses noch zu sprechen. Andere sind vielleicht zu einem späteren Zeitpunkt interessant, wenn ihr an anspruchsvolleren Git Projekten arbeitet.</p>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="r-basics.html"><span class="header-section-number">2</span> R Basics und Arbeitsabläufe</a></div>
-<div class="next"><a href="r-markdown.html"><span class="header-section-number">4</span> R Markdown</a></div>
+<div class="empty"></div>
+<div class="empty"></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav"><li><a class="nav-link" href="#version-control"><span class="header-section-number">3</span> Git, GitHub, and RStudio</a></li></ul>
+      <div id="book-on-this-page"></div>
 
       <div class="book-extra">
         <ul class="list-unstyled">
@@ -116,18 +105,6 @@
   </div>
 
 </div></div>
-</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
+</footer>
 </body>
 </html>

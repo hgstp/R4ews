@@ -16,7 +16,7 @@ Alternativ können wir alle Befehle natürlich auch in eine R Markdown Datei sch
 
 Prinzipiell geht es in den folgenden Abschnitten um Datenmanagement. Es werden aber auch immer wieder ein paar Grafiken zu sehen sein. Dies ist aber kein Problem, da wir ja bereits den [Data Visualization Basics Primer](https://rstudio.cloud/learn/primers/1.1)
 
-<img src="img/data_vis_basics.png" width="100%" />
+<img src="img/data_vis_basics.png" width="100%" style="display: block; margin: auto;" />
 
 besucht haben und so den nötigen Background haben.
 
@@ -35,20 +35,20 @@ Daten aus einer Datenanalyse bestehen immer aus mehr als einem Datentyp. Aus die
 
 Wir werden mit einigen der Daten aus dem [Gapminder-Projekt] (https://www.gapminder.org) 
 
-<img src="img/gapminder.png" width="406" style="display: block; margin: auto;" />
+<img src="img/gapminder.png" width="80%" style="display: block; margin: auto;" />
 
 arbeiten. Die Daten sind im [gapminder] Paket enthalten, welches wir über CRAN installieren können:
 
 
 ```r
-install.packages("gapminder")
+> install.packages("gapminder")
 ```
 
 Um die Daten zu verwenden, müssen wir das Paket natürlich auch noch laden
 
 
 ```r
-library(gapminder)
+> library(gapminder)
 ```
 
 ## Die `gapminder` Daten sind ein "tibble"
@@ -57,14 +57,14 @@ Durch das Laden des `gapminder` Pakets haben wir nun Zugriff auf einen Datenobje
 
 
 ```r
-str(gapminder)
-#> tibble [1,704 × 6] (S3: tbl_df/tbl/data.frame)
-#>  $ country  : Factor w/ 142 levels "Afghanistan",..: 1 1 1 1 1 1 1 1 1 1 ...
-#>  $ continent: Factor w/ 5 levels "Africa","Americas",..: 3 3 3 3 3 3 3 3 3 3 ...
-#>  $ year     : int [1:1704] 1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...
-#>  $ lifeExp  : num [1:1704] 28.8 30.3 32 34 36.1 ...
-#>  $ pop      : int [1:1704] 8425333 9240934 10267083 11537966 13079460 14880372..
-#>  $ gdpPercap: num [1:1704] 779 821 853 836 740 ...
+> str(gapminder)
+## tibble [1,704 × 6] (S3: tbl_df/tbl/data.frame)
+##  $ country  : Factor w/ 142 levels "Afghanistan",..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ continent: Factor w/ 5 levels "Africa","Americas",..: 3 3 3 3 3 3 3 3 3 3 ...
+##  $ year     : int [1:1704] 1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...
+##  $ lifeExp  : num [1:1704] 28.8 30.3 32 34 36.1 ...
+##  $ pop      : int [1:1704] 8425333 9240934 10267083 11537966 13079460 14880372..
+##  $ gdpPercap: num [1:1704] 779 821 853 836 740 ...
 ```
 
 `str()` liefert eine vernünftige Beschreibung von fast allem, und im schlimmsten Fall kann tatsächlich auch nichts "Schlimmes" passieren. Aus dem Output erkennen wir, dass der Datensatz 1704 Beobachtungen enthält.
@@ -78,8 +78,8 @@ Dies ist der erste große Sieg für **tibbles**. Tidyverse bietet eine spezielle
 
 
 ```r
-class(gapminder)
-#> [1] "tbl_df"     "tbl"        "data.frame"
+> class(gapminder)
+## [1] "tbl_df"     "tbl"        "data.frame"
 ```
 
 Schau, es ist immer noch ein reguläres data frame, aber eben auch ein tibble.
@@ -90,112 +90,112 @@ Jetzt können wir `gapminder` einfach auf den Bildschirm anzeigen! Da es sich um
 
 
 ```r
-gapminder
-#> # A tibble: 1,704 x 6
-#>    country     continent  year lifeExp      pop gdpPercap
-#>    <fct>       <fct>     <int>   <dbl>    <int>     <dbl>
-#>  1 Afghanistan Asia       1952    28.8  8425333      779.
-#>  2 Afghanistan Asia       1957    30.3  9240934      821.
-#>  3 Afghanistan Asia       1962    32.0 10267083      853.
-#>  4 Afghanistan Asia       1967    34.0 11537966      836.
-#>  5 Afghanistan Asia       1972    36.1 13079460      740.
-#>  6 Afghanistan Asia       1977    38.4 14880372      786.
-#>  7 Afghanistan Asia       1982    39.9 12881816      978.
-#>  8 Afghanistan Asia       1987    40.8 13867957      852.
-#>  9 Afghanistan Asia       1992    41.7 16317921      649.
-#> 10 Afghanistan Asia       1997    41.8 22227415      635.
-#> # … with 1,694 more rows
+> gapminder
+## # A tibble: 1,704 x 6
+##    country     continent  year lifeExp      pop gdpPercap
+##    <fct>       <fct>     <int>   <dbl>    <int>     <dbl>
+##  1 Afghanistan Asia       1952    28.8  8425333      779.
+##  2 Afghanistan Asia       1957    30.3  9240934      821.
+##  3 Afghanistan Asia       1962    32.0 10267083      853.
+##  4 Afghanistan Asia       1967    34.0 11537966      836.
+##  5 Afghanistan Asia       1972    36.1 13079460      740.
+##  6 Afghanistan Asia       1977    38.4 14880372      786.
+##  7 Afghanistan Asia       1982    39.9 12881816      978.
+##  8 Afghanistan Asia       1987    40.8 13867957      852.
+##  9 Afghanistan Asia       1992    41.7 16317921      649.
+## 10 Afghanistan Asia       1997    41.8 22227415      635.
+## # … with 1,694 more rows
 ```
 
 Wenn du mit einem reinen data frame arbeitest - und dieses Feature magst - kannst du es mit `as_tibble()` in ein tibble transformieren.
 
 
 ```r
-library(tidyverse)
-as_tibble(iris)
-#> # A tibble: 150 x 5
-#>    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-#>           <dbl>       <dbl>        <dbl>       <dbl> <fct>  
-#>  1          5.1         3.5          1.4         0.2 setosa 
-#>  2          4.9         3            1.4         0.2 setosa 
-#>  3          4.7         3.2          1.3         0.2 setosa 
-#>  4          4.6         3.1          1.5         0.2 setosa 
-#>  5          5           3.6          1.4         0.2 setosa 
-#>  6          5.4         3.9          1.7         0.4 setosa 
-#>  7          4.6         3.4          1.4         0.3 setosa 
-#>  8          5           3.4          1.5         0.2 setosa 
-#>  9          4.4         2.9          1.4         0.2 setosa 
-#> 10          4.9         3.1          1.5         0.1 setosa 
-#> # … with 140 more rows
+> library(tidyverse)
+> as_tibble(iris)
+## # A tibble: 150 x 5
+##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+##           <dbl>       <dbl>        <dbl>       <dbl> <fct>  
+##  1          5.1         3.5          1.4         0.2 setosa 
+##  2          4.9         3            1.4         0.2 setosa 
+##  3          4.7         3.2          1.3         0.2 setosa 
+##  4          4.6         3.1          1.5         0.2 setosa 
+##  5          5           3.6          1.4         0.2 setosa 
+##  6          5.4         3.9          1.7         0.4 setosa 
+##  7          4.6         3.4          1.4         0.3 setosa 
+##  8          5           3.4          1.5         0.2 setosa 
+##  9          4.4         2.9          1.4         0.2 setosa 
+## 10          4.9         3.1          1.5         0.1 setosa 
+## # … with 140 more rows
 ```
 
 Weitere Möglichkeiten, grundlegende Informationen zu einem data frame abzufragen:
 
 
 ```r
-names(gapminder)
-#> [1] "country"   "continent" "year"      "lifeExp"   "pop"       "gdpPercap"
-ncol(gapminder)
-#> [1] 6
-length(gapminder)
-#> [1] 6
-dim(gapminder)
-#> [1] 1704    6
-nrow(gapminder)
-#> [1] 1704
+> names(gapminder)
+## [1] "country"   "continent" "year"      "lifeExp"   "pop"       "gdpPercap"
+> ncol(gapminder)
+## [1] 6
+> length(gapminder)
+## [1] 6
+> dim(gapminder)
+## [1] 1704    6
+> nrow(gapminder)
+## [1] 1704
 ```
 
 Ein bisschen deskriptive Statistik zum Inhalt eines data frames erhältst du mit `summary()`:
 
 
 ```r
-summary(gapminder)
-#>         country        continent        year         lifeExp    
-#>  Afghanistan:  12   Africa  :624   Min.   :1952   Min.   :23.6  
-#>  Albania    :  12   Americas:300   1st Qu.:1966   1st Qu.:48.2  
-#>  Algeria    :  12   Asia    :396   Median :1980   Median :60.7  
-#>  Angola     :  12   Europe  :360   Mean   :1980   Mean   :59.5  
-#>  Argentina  :  12   Oceania : 24   3rd Qu.:1993   3rd Qu.:70.8  
-#>  Australia  :  12                  Max.   :2007   Max.   :82.6  
-#>  (Other)    :1632                                               
-#>       pop             gdpPercap     
-#>  Min.   :6.00e+04   Min.   :   241  
-#>  1st Qu.:2.79e+06   1st Qu.:  1202  
-#>  Median :7.02e+06   Median :  3532  
-#>  Mean   :2.96e+07   Mean   :  7215  
-#>  3rd Qu.:1.96e+07   3rd Qu.:  9325  
-#>  Max.   :1.32e+09   Max.   :113523  
-#> 
+> summary(gapminder)
+##         country        continent        year         lifeExp    
+##  Afghanistan:  12   Africa  :624   Min.   :1952   Min.   :23.6  
+##  Albania    :  12   Americas:300   1st Qu.:1966   1st Qu.:48.2  
+##  Algeria    :  12   Asia    :396   Median :1980   Median :60.7  
+##  Angola     :  12   Europe  :360   Mean   :1980   Mean   :59.5  
+##  Argentina  :  12   Oceania : 24   3rd Qu.:1993   3rd Qu.:70.8  
+##  Australia  :  12                  Max.   :2007   Max.   :82.6  
+##  (Other)    :1632                                               
+##       pop             gdpPercap     
+##  Min.   :6.00e+04   Min.   :   241  
+##  1st Qu.:2.79e+06   1st Qu.:  1202  
+##  Median :7.02e+06   Median :  3532  
+##  Mean   :2.96e+07   Mean   :  7215  
+##  3rd Qu.:1.96e+07   3rd Qu.:  9325  
+##  Max.   :1.32e+09   Max.   :113523  
+## 
 ```
 
 
 > **Bemerkung:** `summary()` ist eine generische Funktion. Für eine gegebene Klasse (des Inputs) bestimmt die generische Funktion die passende Methode. Die Funktion `summary()` besitzt die folgenden Methoden:
 
 ```r
-methods(summary)
-#>  [1] summary,ANY-method             summary,DBIObject-method      
-#>  [3] summary.aov                    summary.aovlist*              
-#>  [5] summary.aspell*                summary.check_packages_in_dir*
-#>  [7] summary.connection             summary.data.frame            
-#>  [9] summary.Date                   summary.default               
-#> [11] summary.Duration*              summary.ecdf*                 
-#> [13] summary.factor                 summary.ggplot*               
-#> [15] summary.glm                    summary.haven_labelled*       
-#> [17] summary.hcl_palettes*          summary.infl*                 
-#> [19] summary.Interval*              summary.lm                    
-#> [21] summary.loess*                 summary.manova                
-#> [23] summary.matrix                 summary.mlm*                  
-#> [25] summary.nls*                   summary.packageStatus*        
-#> [27] summary.Period*                summary.POSIXct               
-#> [29] summary.POSIXlt                summary.ppr*                  
-#> [31] summary.prcomp*                summary.princomp*             
-#> [33] summary.proc_time              summary.rlang_error*          
-#> [35] summary.rlang_trace*           summary.srcfile               
-#> [37] summary.srcref                 summary.stepfun               
-#> [39] summary.stl*                   summary.table                 
-#> [41] summary.tukeysmooth*           summary.vctrs_sclr*           
-#> [43] summary.vctrs_vctr*            summary.warnings              
-#> see '?methods' for accessing help and source code
+> methods(summary)
+##  [1] summary,ANY-method             summary,DBIObject-method      
+##  [3] summary.aov                    summary.aovlist*              
+##  [5] summary.aspell*                summary.check_packages_in_dir*
+##  [7] summary.connection             summary.data.frame            
+##  [9] summary.Date                   summary.default               
+## [11] summary.Duration*              summary.ecdf*                 
+## [13] summary.factor                 summary.ggplot*               
+## [15] summary.glm                    summary.haven_labelled*       
+## [17] summary.hcl_palettes*          summary.infl*                 
+## [19] summary.Interval*              summary.lm                    
+## [21] summary.loess*                 summary.manova                
+## [23] summary.matrix                 summary.mlm*                  
+## [25] summary.nls*                   summary.packageStatus*        
+## [27] summary.Period*                summary.POSIXct               
+## [29] summary.POSIXlt                summary.ppr*                  
+## [31] summary.prcomp*                summary.princomp*             
+## [33] summary.proc_time              summary.rlang_error*          
+## [35] summary.rlang_trace*           summary.srcfile               
+## [37] summary.srcref                 summary.stepfun               
+## [39] summary.stl*                   summary.table                 
+## [41] summary.tukeysmooth*           summary.vctrs_sclr*           
+## [43] summary.vctrs_vctr*            summary.warnings              
+## see '?methods' for accessing help and source code
 ```
 
 
@@ -203,25 +203,25 @@ Obwohl wir uns formell noch nicht eingehender mit der Visualisierung beschäftig
 
 
 ```r
-ggplot(gapminder, mapping = aes(x = year, y = lifeExp)) +
-         geom_point()
+> ggplot(gapminder, mapping = aes(x = year, y = lifeExp)) +
++          geom_point()
 ```
 
-<img src="05_data-care-feeding_files/figure-html/first-plots-base-R-1.png" width="672" />
+<img src="05_data-care-feeding_files/figure-html/first-plots-base-R-1.png" width="80%" style="display: block; margin: auto;" />
 
 ```r
-ggplot(gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
-         geom_point()
+> ggplot(gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
++          geom_point()
 ```
 
-<img src="05_data-care-feeding_files/figure-html/first-plots-base-R-2.png" width="672" />
+<img src="05_data-care-feeding_files/figure-html/first-plots-base-R-2.png" width="80%" style="display: block; margin: auto;" />
 
 ```r
-ggplot(gapminder, mapping = aes(x = log(gdpPercap), y = lifeExp)) +
-         geom_point()
+> ggplot(gapminder, mapping = aes(x = log(gdpPercap), y = lifeExp)) +
++          geom_point()
 ```
 
-<img src="05_data-care-feeding_files/figure-html/first-plots-base-R-3.png" width="672" />
+<img src="05_data-care-feeding_files/figure-html/first-plots-base-R-3.png" width="80%" style="display: block; margin: auto;" />
 
 
 Grafiken dieser Art werden wir zu einem späteren Zeitpunkt noch genauer behandeln. Dann sprechen wir auch über deren Inhalt.
@@ -231,14 +231,14 @@ Wir schauen uns nochmal die Ausgabe von `str()` an, um darüber zu sprechen, was
 
 
 ```r
-str(gapminder)
-#> tibble [1,704 × 6] (S3: tbl_df/tbl/data.frame)
-#>  $ country  : Factor w/ 142 levels "Afghanistan",..: 1 1 1 1 1 1 1 1 1 1 ...
-#>  $ continent: Factor w/ 5 levels "Africa","Americas",..: 3 3 3 3 3 3 3 3 3 3 ...
-#>  $ year     : int [1:1704] 1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...
-#>  $ lifeExp  : num [1:1704] 28.8 30.3 32 34 36.1 ...
-#>  $ pop      : int [1:1704] 8425333 9240934 10267083 11537966 13079460 14880372..
-#>  $ gdpPercap: num [1:1704] 779 821 853 836 740 ...
+> str(gapminder)
+## tibble [1,704 × 6] (S3: tbl_df/tbl/data.frame)
+##  $ country  : Factor w/ 142 levels "Afghanistan",..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ continent: Factor w/ 5 levels "Africa","Americas",..: 3 3 3 3 3 3 3 3 3 3 ...
+##  $ year     : int [1:1704] 1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...
+##  $ lifeExp  : num [1:1704] 28.8 30.3 32 34 36.1 ...
+##  $ pop      : int [1:1704] 8425333 9240934 10267083 11537966 13079460 14880372..
+##  $ gdpPercap: num [1:1704] 779 821 853 836 740 ...
 ```
 
 Ein data frame ist ein Sonderfall einer *Liste*, die in R verwendet wird, um so gut wie alles aufzunehmen. Data frames sind ein Spezialfall, bei dem die Länge jedes Listenelements gleich ist. 
@@ -247,47 +247,47 @@ Nehmen wir mal an, dass wir eine Beschreibung der Variablen
 
 
 ```r
-names(gapminder)
-#> [1] "country"   "continent" "year"      "lifeExp"   "pop"       "gdpPercap"
+> names(gapminder)
+## [1] "country"   "continent" "year"      "lifeExp"   "pop"       "gdpPercap"
 ```
 
 zusammen mit den Daten abspeichern wollen. Dazu könnten wir ein tibble
 
 
 ```r
-(desc <- tibble(variables = names(gapminder),
-               desc = c("factor with 142 levels", "factor with 5 levels",
-                        "ranges from 1952 to 2007 in increments of 5 years",
-                        "life expectancy at birth, in years",
-                        "population","GDP per capita (US$, inflation-adjusted)")))
-#> # A tibble: 6 x 2
-#>   variables desc                                             
-#>   <chr>     <chr>                                            
-#> 1 country   factor with 142 levels                           
-#> 2 continent factor with 5 levels                             
-#> 3 year      ranges from 1952 to 2007 in increments of 5 years
-#> 4 lifeExp   life expectancy at birth, in years               
-#> 5 pop       population                                       
-#> 6 gdpPercap GDP per capita (US$, inflation-adjusted)
+> (desc <- tibble(variables = names(gapminder),
++                desc = c("factor with 142 levels", "factor with 5 levels",
++                         "ranges from 1952 to 2007 in increments of 5 years",
++                         "life expectancy at birth, in years",
++                         "population","GDP per capita (US$, inflation-adjusted)")))
+## # A tibble: 6 x 2
+##   variables desc                                             
+##   <chr>     <chr>                                            
+## 1 country   factor with 142 levels                           
+## 2 continent factor with 5 levels                             
+## 3 year      ranges from 1952 to 2007 in increments of 5 years
+## 4 lifeExp   life expectancy at birth, in years               
+## 5 pop       population                                       
+## 6 gdpPercap GDP per capita (US$, inflation-adjusted)
 ```
 
 erzeugen, das die Beschreibungen enthält. Dieses data frame hat nun die Dimension 6x2. Trotzdem können wir es mit `gapminder` kombinieren, wenn wir beide tibbles in einer Liste abspeichern
 
 
 ```r
-gapminder_desc <- list(gapminder, desc)
-str(gapminder_desc)
-#> List of 2
-#>  $ : tibble [1,704 × 6] (S3: tbl_df/tbl/data.frame)
-#>   ..$ country  : Factor w/ 142 levels "Afghanistan",..: 1 1 1 1 1 1 1 1 1 1 ...
-#>   ..$ continent: Factor w/ 5 levels "Africa","Americas",..: 3 3 3 3 3 3 3 3 3 ..
-#>   ..$ year     : int [1:1704] 1952 1957 1962 1967 1972 1977 1982 1987 1992 199..
-#>   ..$ lifeExp  : num [1:1704] 28.8 30.3 32 34 36.1 ...
-#>   ..$ pop      : int [1:1704] 8425333 9240934 10267083 11537966 13079460 14880..
-#>   ..$ gdpPercap: num [1:1704] 779 821 853 836 740 ...
-#>  $ : tibble [6 × 2] (S3: tbl_df/tbl/data.frame)
-#>   ..$ variables: chr [1:6] "country" "continent" "year" "lifeExp" ...
-#>   ..$ desc     : chr [1:6] "factor with 142 levels" "factor with 5 levels" "r"..
+> gapminder_desc <- list(gapminder, desc)
+> str(gapminder_desc)
+## List of 2
+##  $ : tibble [1,704 × 6] (S3: tbl_df/tbl/data.frame)
+##   ..$ country  : Factor w/ 142 levels "Afghanistan",..: 1 1 1 1 1 1 1 1 1 1 ...
+##   ..$ continent: Factor w/ 5 levels "Africa","Americas",..: 3 3 3 3 3 3 3 3 3 ..
+##   ..$ year     : int [1:1704] 1952 1957 1962 1967 1972 1977 1982 1987 1992 199..
+##   ..$ lifeExp  : num [1:1704] 28.8 30.3 32 34 36.1 ...
+##   ..$ pop      : int [1:1704] 8425333 9240934 10267083 11537966 13079460 14880..
+##   ..$ gdpPercap: num [1:1704] 779 821 853 836 740 ...
+##  $ : tibble [6 × 2] (S3: tbl_df/tbl/data.frame)
+##   ..$ variables: chr [1:6] "country" "continent" "year" "lifeExp" ...
+##   ..$ desc     : chr [1:6] "factor with 142 levels" "factor with 5 levels" "r"..
 ```
 
 
@@ -298,36 +298,36 @@ Um eine einzelne Variable aus einem data frame anzusprechen, kann man mit dem Do
 
 
 ```r
-head(gapminder$lifeExp)
-#> [1] 28.8 30.3 32.0 34.0 36.1 38.4
-summary(gapminder$lifeExp)
-#>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-#>    23.6    48.2    60.7    59.5    70.8    82.6
+> head(gapminder$lifeExp)
+## [1] 28.8 30.3 32.0 34.0 36.1 38.4
+> summary(gapminder$lifeExp)
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    23.6    48.2    60.7    59.5    70.8    82.6
 ```
 
 Zusätzlich wollen wir die noch die Verteilung von `lifeExp` visualisieren und plotten dazu ein Histogramm. Da wir dazu `ggplot()` verwenden, können wir `lifeExp` wieder direkt aufrufen.
 
 
 ```r
-ggplot(gapminder, mapping = aes(x = lifeExp)) + 
-  geom_histogram()
-#> `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+> ggplot(gapminder, mapping = aes(x = lifeExp)) + 
++   geom_histogram()
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
-<img src="05_data-care-feeding_files/figure-html/unnamed-chunk-17-1.png" width="672" />
+<img src="05_data-care-feeding_files/figure-html/unnamed-chunk-17-1.png" width="80%" style="display: block; margin: auto;" />
 
 Alternativ können wir die Einträge eines data frames auch über die eckigen Klammern `[]` indizieren.
 
 
 ```r
-summary(gapminder[,"lifeExp"])
-#>     lifeExp    
-#>  Min.   :23.6  
-#>  1st Qu.:48.2  
-#>  Median :60.7  
-#>  Mean   :59.5  
-#>  3rd Qu.:70.8  
-#>  Max.   :82.6
+> summary(gapminder[,"lifeExp"])
+##     lifeExp    
+##  Min.   :23.6  
+##  1st Qu.:48.2  
+##  Median :60.7  
+##  Mean   :59.5  
+##  3rd Qu.:70.8  
+##  Max.   :82.6
 ```
 
 Dabei spezifiziert der Eintrag links vom Komma die Zeilen und der Wert rechts davon die Spalten. Dies ist hilfreich, wenn man auf einzelne Werte zugreifen will. Aber beim Aufruf einer kompletten Variable (Spalte) ist die `$` Notation sicherlich vorteilhaft.
@@ -339,36 +339,36 @@ Die Variable `year` ist eine ganzzahlige Variable, aber da es so wenige untersch
 
 
 ```r
-summary(gapminder$year)
-#>    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-#>    1952    1966    1980    1980    1993    2007
-table(gapminder$year)
-#> 
-#> 1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 2002 2007 
-#>  142  142  142  142  142  142  142  142  142  142  142  142
+> summary(gapminder$year)
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    1952    1966    1980    1980    1993    2007
+> table(gapminder$year)
+## 
+## 1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 2002 2007 
+##  142  142  142  142  142  142  142  142  142  142  142  142
 ```
 
 Die Variablen `country` und  `continent` enthalten rein kategorische Informationen, die in R (häufig) als *factor* gespeichert werden.
 
 
 ```r
-class(gapminder$continent)
-#> [1] "factor"
-summary(gapminder$continent)
-#>   Africa Americas     Asia   Europe  Oceania 
-#>      624      300      396      360       24
-levels(gapminder$continent)
-#> [1] "Africa"   "Americas" "Asia"     "Europe"   "Oceania"
-nlevels(gapminder$continent)
-#> [1] 5
+> class(gapminder$continent)
+## [1] "factor"
+> summary(gapminder$continent)
+##   Africa Americas     Asia   Europe  Oceania 
+##      624      300      396      360       24
+> levels(gapminder$continent)
+## [1] "Africa"   "Americas" "Asia"     "Europe"   "Oceania"
+> nlevels(gapminder$continent)
+## [1] 5
 ```
 
 Die __Levels__ von `continent` sind "Afrika", "America" usw., und das ist es, was einem normalerweise in R angezeigt werden sollte, wenn man eine Faktorvariable aufruft. Im Allgemeinen sind die Levels von Menschen lesbare Zeichenfolgen, wie "male/female" und "control/treated". Aber vergiss *niemals*, dass R diese Information in kodierter Form speichert. Schauen dir zum Beispiel das Ergebnis von `str(gapminder$continent)` an, falls du skeptisch sein solltest.
 
 
 ```r
-str(gapminder$continent)
-#>  Factor w/ 5 levels "Africa","Americas",..: 3 3 3 3 3 3 3 3 3 3 ...
+> str(gapminder$continent)
+##  Factor w/ 5 levels "Africa","Americas",..: 3 3 3 3 3 3 3 3 3 3 ...
 ```
 
 Faktorvariablen haben Vor- und Nachteil. Im weiteren Verlauf zeigen wir sowohl die Vor- wie auch die Nachteile. Generell ist aber durchaus so, dass die Vorteile überwiegen.
@@ -380,14 +380,14 @@ Als Nächstes erstellen wir mit der Funktion `table()` eine Häufigkeitstabelle 
 
 
 ```r
-table(gapminder$continent)
-#> 
-#>   Africa Americas     Asia   Europe  Oceania 
-#>      624      300      396      360       24
-ggplot(gapminder, aes(x = continent)) + geom_bar()
+> table(gapminder$continent)
+## 
+##   Africa Americas     Asia   Europe  Oceania 
+##      624      300      396      360       24
+> ggplot(gapminder, aes(x = continent)) + geom_bar()
 ```
 
-<img src="05_data-care-feeding_files/figure-html/tabulate-continent-1.png" width="672" />
+<img src="05_data-care-feeding_files/figure-html/tabulate-continent-1.png" width="80%" style="display: block; margin: auto;" />
 
 In den folgenden Abbildungen sehen wir, wie Faktoren in Zahlen umgesetzt werden können. Der `continent`-Faktor lässt sich durch das [ggplot2]-Paket leicht in "Facetten" oder Farben und eine Legende abbilden. 
 
@@ -395,23 +395,23 @@ In den folgenden Abbildungen sehen wir, wie Faktoren in Zahlen umgesetzt werden 
 
 
 ```r
-# wir initialisieren ein grafik (ohne inhalt)
-p <- ggplot(filter(gapminder, continent != "Oceania"),
-            aes(x = gdpPercap, y = lifeExp))  
-p <- p + scale_x_log10() # auf der x-achse soll eine log skala verwendet werden
-p + geom_point() # ein scatterplot
-p + geom_point(aes(color = continent)) # für verschiedene kontinente werden verschiedene farben verwendet
-p + geom_point(alpha = (1/3), size = 3) + # punkte mit transparenz
-  geom_smooth(lwd = 3, se = FALSE) # geglätter zusammenhang
-#> `geom_smooth()` using method = 'gam' and formula 'y ~ s(x, bs = "cs")'
-p + geom_point(alpha = (1/3), size = 3) + 
-  facet_wrap(~ continent) + # für jeden kontinent wird eine eigener
-  # plot (innerhalb einer grafik) erzeugt
-  geom_smooth(lwd = 1.5, se = FALSE)
-#> `geom_smooth()` using method = 'loess' and formula 'y ~ x'
+> # wir initialisieren ein grafik (ohne inhalt)
+> p <- ggplot(filter(gapminder, continent != "Oceania"),
++             aes(x = gdpPercap, y = lifeExp))  
+> p <- p + scale_x_log10() # auf der x-achse soll eine log skala verwendet werden
+> p + geom_point() # ein scatterplot
+> p + geom_point(aes(color = continent)) # für verschiedene kontinente werden verschiedene farben verwendet
+> p + geom_point(alpha = (1/3), size = 3) + # punkte mit transparenz
++   geom_smooth(lwd = 3, se = FALSE) # geglätter zusammenhang
+## `geom_smooth()` using method = 'gam' and formula 'y ~ s(x, bs = "cs")'
+> p + geom_point(alpha = (1/3), size = 3) + 
++   facet_wrap(~ continent) + # für jeden kontinent wird eine eigener
++   # plot (innerhalb einer grafik) erzeugt
++   geom_smooth(lwd = 1.5, se = FALSE)
+## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
-<img src="05_data-care-feeding_files/figure-html/factors-nice-for-plots-1.png" width="49%" /><img src="05_data-care-feeding_files/figure-html/factors-nice-for-plots-2.png" width="49%" /><img src="05_data-care-feeding_files/figure-html/factors-nice-for-plots-3.png" width="49%" /><img src="05_data-care-feeding_files/figure-html/factors-nice-for-plots-4.png" width="49%" />
+<img src="05_data-care-feeding_files/figure-html/factors-nice-for-plots-1.png" width="49%" style="display: block; margin: auto;" /><img src="05_data-care-feeding_files/figure-html/factors-nice-for-plots-2.png" width="49%" style="display: block; margin: auto;" /><img src="05_data-care-feeding_files/figure-html/factors-nice-for-plots-3.png" width="49%" style="display: block; margin: auto;" /><img src="05_data-care-feeding_files/figure-html/factors-nice-for-plots-4.png" width="49%" style="display: block; margin: auto;" />
 
 
 ## Recap
@@ -532,4 +532,3 @@ p + geom_point(alpha = (1/3), size = 3) +
 
 <!--Misc.-->
 [rOpenSci]: https://ropensci.org
-[wiki-snake-case]: https://en.wikipedia.org/wiki/Snake_case

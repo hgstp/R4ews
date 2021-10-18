@@ -6,9 +6,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Kapitel 1 Installieren von R und RStudio | R4ews MA0009</title>
 <meta name="author" content="Stephan Haug">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.8/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="1.1 R und RStudio Zuerst benötigen wir R, eine freie Softwareumgebung für statistische Berechnungen und Grafiken. Installiert daher R von CRAN, dem Comprehensive R Archive Network. Wir empfehlen...">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="Kapitel 1 Installieren von R und RStudio | R4ews MA0009">
+<meta property="og:type" content="book">
+<meta property="og:description" content="1.1 R und RStudio Zuerst benötigen wir R, eine freie Softwareumgebung für statistische Berechnungen und Grafiken. Installiert daher R von CRAN, dem Comprehensive R Archive Network. Wir empfehlen...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kapitel 1 Installieren von R und RStudio | R4ews MA0009">
+<meta name="twitter:description" content="1.1 R und RStudio Zuerst benötigen wir R, eine freie Softwareumgebung für statistische Berechnungen und Grafiken. Installiert daher R von CRAN, dem Comprehensive R Archive Network. Wir empfehlen...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/_Lato-0.4.0/font.css" rel="stylesheet">
+<script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link href="libs/font-awesome-5.1.0/css/all.css" rel="stylesheet">
 <link href="libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet">
 <script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
@@ -18,7 +27,7 @@
       gtag('js', new Date());
 
       gtag('config', 'UA-68219208-1');
-      </script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
+      </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="r4ews.css">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -40,7 +49,7 @@
 
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html">Willkommen zu R4ews</a></li>
+<li><a class="" href="index.html">R4ews</a></li>
 <li class="book-part">R, wie fange ich an</li>
 <li><a class="active" href="install.html"><span class="header-section-number">1</span> Installieren von R und RStudio</a></li>
 <li><a class="" href="r-basics.html"><span class="header-section-number">2</span> R Basics und Arbeitsabläufe</a></li>
@@ -74,50 +83,43 @@
 <h1>
 <span class="header-section-number">Kapitel 1</span> Installieren von R und RStudio<a class="anchor" aria-label="anchor" href="#install"><i class="fas fa-link"></i></a>
 </h1>
-<!--Original content: https://stat545.com/block000_r-rstudio-install.html-->
 <div id="r-und-rstudio" class="section level2" number="1.1">
 <h2>
 <span class="header-section-number">1.1</span> R und RStudio<a class="anchor" aria-label="anchor" href="#r-und-rstudio"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
-<li><p>Installieren Sie <a href="https://www.r-project.org">R, eine freie Softwareumgebung für statistische Berechnungen und Grafiken</a> von <a href="https://cloud.r-project.org">CRAN</a>, dem Comprehensive R Archive Network. Wir empfehle Ihnen dringend, eine vorkompilierte Binärdistribution für Ihr Betriebssystem zu installieren - benutzen Sie die Links oben auf der CRAN Seite!</p></li>
+<li><p>Zuerst benötigen wir <a href="https://www.r-project.org">R, eine freie Softwareumgebung für statistische Berechnungen und Grafiken</a>. Installiert daher R von <a href="https://cloud.r-project.org">CRAN</a>, dem Comprehensive R Archive Network. Wir empfehlen euch dringend, eine vorkompilierte Binärdistribution zu installieren - benutzt daher die Links oben auf der CRAN Seite!</p></li>
 <li>
-<p>Installieren Sie die IDE von RStudio (steht für <em>integrated development environment</em>), eine leistungsfähige Benutzeroberfläche für R. Holen Sie sich die Open-Source-Edition von RStudio Desktop.</p>
+<p>Danach könnt ihr die IDE (steht für <em>integrated development environment</em>) von RStudio installieren. Dabei handelt es sich um eine leistungsfähige Benutzeroberfläche für R.</p>
 <ul>
-<li>Es ist vorteilhaft die <a href="https://www.rstudio.com/products/rstudio/download/preview/">Preview version</a> zu installieren. In der Regel ist sie bereits sehr stabil und man hat so Zugriff auf die neusten Features.</li>
-<li>Natürlich gibt es auch offizielle Veröffentlichungen <a href="https://www.rstudio.com/products/rstudio/#Desktop">here</a>.</li>
 <li>RStudio wird mit einem <strong>Text Editor</strong> geliefert, so dass es nicht unmittelbar erforderlich ist, einen separaten, eigenständigen Editor zu installieren.</li>
-<li>RStudio kann eine <strong>Schnittstelle zu Git(Hub)</strong> bilden. Sie müssen jedoch alle Git(Hub)-Installationen selbst vornehmen. Wir kommen später auf diesen Punkt zurück.</li>
+<li>RStudio bietet auch eine direkt <strong>Verbindung zu Git(Hub)</strong>. Um die notwendige Git-Installationen müsst ihr euch aber selbst kümmern. Wir kommen aber auch <a href="version-control.html#version-control">später</a> auf diesen Punkt zurück.</li>
 </ul>
 </li>
 </ul>
-<p>Wenn Sie eine bereits vorhandene R und/oder RStudio Installation haben, empfehlen wir Ihnen dringend, beide neu zu installieren und so aktuell wie möglich zu halten.</p>
-<ul>
-<li>
-<p>Wenn Sie R aktualisieren, müssen Sie alle Pakete, die Sie installiert haben, aktualisieren. Der unten stehende Befehl sollte Ihnen den Anfang machen, obwohl Sie möglicherweise weitere Argumente angeben müssen, wenn Sie z.B. eine nicht standardmäßige Bibliothek für Ihre Pakete verwendet haben.</p>
+<p>Wenn ihr bereits eine vorhandene R und/oder RStudio Installation habt, empfehlen wir euch dringend, beide neu zu installieren und so aktuell wie möglich zu halten.</p>
+<p>Wenn ihr R aktualisiert, müssen ihr alle Pakete, die ihr installiert habt, aktualisieren. Das könnt ihr leicht mit dem unten stehenden Befehl machen. Möglicherweise müsst ihr aber auch noch weitere Argumente angeben, wenn ihr z.B. eine nicht standardmäßige Bibliothek für eure Pakete verwendet.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/update.packages.html">update.packages</a></span><span class="op">(</span>ask <span class="op">=</span> <span class="cn">FALSE</span>, checkBuilt <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<p><strong>Bemerkung:</strong> hier wird nur nach Updates auf CRAN gesucht. Wenn Sie also ein Paket verwenden, das z.B. <em>nur</em> auf GitHub lebt, müssen Sie manuell aktualisieren, z.B. über <code><a href="https://devtools.r-lib.org//reference/remote-reexports.html">devtools::install_github()</a></code>.</p>
-</li>
-</ul>
+<p><strong>Bemerkung:</strong> Mit diesem Befehl wird nur nach Updates auf CRAN gesucht. Wenn ihr aber ein Paket verwenden, das z.B. <strong>nur</strong> auf GitHub lebt, müsst ihr manuell aktualisieren, z.B. über <code><a href="https://devtools.r-lib.org//reference/remote-reexports.html">devtools::install_github()</a></code>.</p>
 </div>
-<div id="funktioniert-ausprobieren" class="section level2" number="1.2">
+<div id="funktioniert-alles-am-besten-ausprobieren" class="section level2" number="1.2">
 <h2>
-<span class="header-section-number">1.2</span> Funktioniert? Ausprobieren<a class="anchor" aria-label="anchor" href="#funktioniert-ausprobieren"><i class="fas fa-link"></i></a>
+<span class="header-section-number">1.2</span> Funktioniert alles? Am besten ausprobieren<a class="anchor" aria-label="anchor" href="#funktioniert-alles-am-besten-ausprobieren"><i class="fas fa-link"></i></a>
 </h2>
-<ul>
-<li><p>Starten Sie RStudio auf Ihrem Computer. Sie sollten ein Fenster ähnlich zu diesem <a href="https://www.rstudio.com/wp-content/uploads/2014/04/rstudio-workbench.png">Screenshot</a>, erhalten.</p></li>
-<li><p>Setzen Sie den Cursor in den Bereich mit der Bezeichnung Konsole, wo Sie mit R interagieren können. Erstellen Sie ein einfaches Objekt mit einem Code wie</p></li>
-</ul>
+<p>Startet RStudio auf eurem Computer. Dann solltet ihr ein Fenster ähnlich zu diesem</p>
+<div class="inline-figure"><img src="img/rstudio_ide.png" width="100%"></div>
+<p>erhalten. Vermutlich ist euer Fenster nicht so dunkel. Aber wer es gerne dunkel mag, soll sich mal unter <code>Tools -&gt; Global -&gt; Appearance</code> die <em>Editor Themes</em> anschauen.</p>
+<p>Setzt den Cursor in das Fenster mit der Bezeichnung Console. Über die Konsole seid ihr in der Lage mit R zu interagieren. Erstellt ein einfaches Objekt mit einem Code wie</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">2</span> <span class="op">*</span> <span class="fl">4</span></code></pre></div>
-<p>(gefolgt von Enter oder Return). Inspizieren Sie dann das <code>x</code>-Objekt durch Eingabe von <code>x</code> gefolgt von Enter oder Return. Sie sollten den Wert 8 auf dem Bildschirm sehen. Wenn ja, haben Sie R und RStudio erfolgreich installiert.</p>
+<p>(gefolgt von Enter oder Return). Schaut euch dann das Objekt <code>x</code> genauer an, indem ihr <code>x</code> in der Konsole eingebt, gefolgt von Enter oder Return. Ihr sollten dann den Wert 8 auf dem Bildschirm sehen. Wenn ja, habet ihr R und RStudio erfolgreich installiert.</p>
 </div>
 <div id="add-on-packages" class="section level2" number="1.3">
 <h2>
 <span class="header-section-number">1.3</span> Add-on packages<a class="anchor" aria-label="anchor" href="#add-on-packages"><i class="fas fa-link"></i></a>
 </h2>
-<p>R ist ein erweiterbares System und viele Menschen teilen nützlichen Code, den sie als <em>Paket</em> entwickelt haben, über CRAN und GitHub. Um ein Paket von CRAN zu installieren, z.B. das Paket <a href="https://tidyverse.tidyverse.org">tidyverse</a> (ist genauer gesagt eine Kollektion von Paketen), kann man folgenden Befehl verwenden</p>
+<p>R ist ein erweiterbares System und viele Menschen teilen nützlichen Code, den sie als <strong>Paket</strong> entwickelt haben, über CRAN, GitHub, GitLab oder ähnlichen Plattformen. Um ein Paket von CRAN zu installieren, z.B. das Paket <a href="https://tidyverse.tidyverse.org">tidyverse</a> (ist genauer gesagt eine Kollektion von Paketen), kann man folgenden Befehl verwenden</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"tidyverse"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <p>Mit der Option <code>dependencies = TRUE</code> achten wir darauf, dass alle für <code>tidyverse</code> notwendigen Pakete, ebenfalls installiert werden.</p>
@@ -128,7 +130,7 @@
 </h2>
 <p>Ein guter Startpunkt für verschiedene R Themen sind die <a href="https://rstudio.cloud/learn/primers">RStudio primers</a>.</p>
 <div class="inline-figure"><img src="img/rstudio_primers.png" width="100%"></div>
-<p>Im Laufe des Kurses werden sie die Primers</p>
+<p>Im Laufe des Kurses werdet ihr die Primers</p>
 <ul>
 <li><a href="https://rstudio.cloud/learn/primers/1">The Basics</a></li>
 <li><a href="https://rstudio.cloud/learn/primers/2">Work with Data</a></li>
@@ -141,9 +143,9 @@
 <span class="header-section-number">1.5</span> Aufgabe<a class="anchor" aria-label="anchor" href="#aufgabe"><i class="fas fa-link"></i></a>
 </h2>
 <p>Wir beginnen mit <a href="https://rstudio.cloud/learn/primers/1">The Basics</a>. Hier wird unterschieden in <em>Programming</em> und <em>Visualization</em> Basics.</p>
-<p>Programming Basics beinhaltet Grundlagen zu Objekttypen, Funktionen und deren Argumente, Listen (eigentlich sind alle Objekte Listen, nur unterschiedlich speziell) und Paketen.</p>
-<p>Visualization Basics erklärt erste Schritte in der Verwendung des <code>ggplot2</code> Pakets, mit dem wir uns später noch eingehend beschäftigen werden.</p>
-<p>Bearbeiten sie eigenständig den Basics Primer.</p>
+<p><a href="https://rstudio.cloud/learn/primers/1.2">Programming Basics</a> beinhaltet Grundlagen zu Objekttypen, Funktionen und deren Argumente, Listen (eigentlich sind alle Objekte Listen, nur unterschiedlich speziell) und Paketen.</p>
+<p><a href="https://rstudio.cloud/learn/primers/1.1">Visualization Basics</a> erklärt erste Schritte in der Verwendung des <code>ggplot2</code> Pakets, mit dem wir uns später noch eingehend beschäftigen werden.</p>
+<p>Bearbeitet eigenständig den Basics Primer.</p>
 <!--Packages: main link-->
 <!--Packages: vignettes & CRAN/GitHub links-->
 <!--Bookdowns: main link-->
@@ -156,14 +158,14 @@
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="index.html">Willkommen zu R4ews</a></div>
+<div class="prev"><a href="index.html">R4ews</a></div>
 <div class="next"><a href="r-basics.html"><span class="header-section-number">2</span> R Basics und Arbeitsabläufe</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#install"><span class="header-section-number">1</span> Installieren von R und RStudio</a></li>
 <li><a class="nav-link" href="#r-und-rstudio"><span class="header-section-number">1.1</span> R und RStudio</a></li>
-<li><a class="nav-link" href="#funktioniert-ausprobieren"><span class="header-section-number">1.2</span> Funktioniert? Ausprobieren</a></li>
+<li><a class="nav-link" href="#funktioniert-alles-am-besten-ausprobieren"><span class="header-section-number">1.2</span> Funktioniert alles? Am besten ausprobieren</a></li>
 <li><a class="nav-link" href="#add-on-packages"><span class="header-section-number">1.3</span> Add-on packages</a></li>
 <li><a class="nav-link" href="#rstudio-primers"><span class="header-section-number">1.4</span> RStudio Primers</a></li>
 <li><a class="nav-link" href="#aufgabe"><span class="header-section-number">1.5</span> Aufgabe</a></li>
@@ -203,6 +205,22 @@
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
 </script>
 </body>
 </html>

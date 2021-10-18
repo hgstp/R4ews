@@ -1,6 +1,5 @@
 --- 
 title: "R4ews MA0009"
-#subtitle: "Data wrangling, exploration, and analysis with R"
 author: 
 - Stephan Haug
 knit: "bookdown::render_book"
@@ -14,29 +13,37 @@ always_allow_html: true
 
 ---
 
-# Willkommen zu R4ews {-}
+# R4ews {-}
 
 
 
-Willkommen zur  R Ergänzung zur Einführung in die Wahrscheinlichkeitstheorie und Statistik. Im Rahmen dieser Ergänzung lernen wir
+Willkommen zur __R Ergänzung zur Einführung in die Wahrscheinlichkeitstheorie und Statistik__. Im Rahmen dieser Ergänzung lernen wir
 
-> Daten untersuchen, aufbereiten, visualisieren und analysieren,
+:::: {.content-box-green}
+Daten untersuchen, aufbereiten, visualisieren und analysieren,
+::::
 
-Wir wollen all das reproduzierbar, wiederverwendbar und gemeinsam nutzbar machen, und vor allem wollen wir alles mit R machen.
 
-Auf dieser Website geht es um alles, was bei der Datenanalyse auftaucht **außer um statistische Modellierung und Schlussfolgerungen**. Dieser Teil der statistischen Analyse erfolgt in der Vorlesung *Einführung in die Wahrscheinlichkeitstheorie und Statistik*. 
+Wir wollen all das reproduzierbar, wiederverwendbar und gemeinsam nutzbar machen, und vor allem wollen wir alles mit __R__ machen.
+
+Auf dieser Website geht es um alles, was bei der Datenanalyse 
+auftaucht **außer um statistische Modellierung und Schlussfolgerungen**. Dieser Teil der statistischen Analyse erfolgt in der Vorlesung *Einführung in die Wahrscheinlichkeitstheorie und Statistik*. 
 
 
 Das Design von R4ews wurde durch die Notwendigkeit motiviert, mehr Ausgewogenheit in der angewandten statistischen Ausbildung zu schaffen. Datenanalysten verbringen viel Zeit mit der Projekt-Organisation, der Datenbereinigung und -aufbereitung sowie der Kommunikation. Diese Tätigkeiten können einen tiefgreifenden Einfluss auf die Qualität und Glaubwürdigkeit einer Analyse haben. Dennoch werden diese Fähigkeiten selten vermittelt, obwohl sie so wichtig und notwendig sind. R4ews versucht diese Lücke etwas zu verkleinern.
 
-> Das Material wird kontinuierlich über das Semester hinweg ergänzt/erweitert/verbessert.
+
+::: {content-box-red}
+Das Material wird kontinuierlich über das Semester hinweg ergänzt/erweitert/verbessert.
+:::
+
 
 **Letzte Änderung:**
 
 
 ```r
-date()
-#> [1] "Mon Jul 19 17:42:59 2021"
+> date()
+## [1] "Sun Oct 17 23:12:57 2021"
 ```
 
 
@@ -56,17 +63,17 @@ Wir bedanken uns bei den Autor\*innen von stat545 für das großartige Material.
 Die aktuelle Version dieses Buchs wurde mit 
 
 ```
-#> Finding R package dependencies ... Done!
-#>  setting  value                       
-#>  version  R version 4.0.3 (2020-10-10)
-#>  os       macOS Catalina 10.15.7      
-#>  system   x86_64, darwin17.0          
-#>  ui       X11                         
-#>  language (EN)                        
-#>  collate  en_US.UTF-8                 
-#>  ctype    en_US.UTF-8                 
-#>  tz       Europe/Berlin               
-#>  date     2021-07-19
+## Finding R package dependencies ... Done!
+##  setting  value                       
+##  version  R version 4.0.3 (2020-10-10)
+##  os       macOS Big Sur 10.16         
+##  system   x86_64, darwin17.0          
+##  ui       X11                         
+##  language (EN)                        
+##  collate  en_US.UTF-8                 
+##  ctype    en_US.UTF-8                 
+##  tz       Europe/Berlin               
+##  date     2021-10-17
 ```
 
 erstellt

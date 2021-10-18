@@ -6,9 +6,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Kapitel 9 tidy ? | R4ews MA0009</title>
 <meta name="author" content="Stephan Haug">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.2"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.8/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="Idealerweise liegt ein Datensatz so vor, dass er gut von einem Computer gelesen werden kann. In der Regel sind die Datensätze, mit denen wir uns beschäftigen, ja umfangreich, d.h. der Mensch will...">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="Kapitel 9 tidy ? | R4ews MA0009">
+<meta property="og:type" content="book">
+<meta property="og:description" content="Idealerweise liegt ein Datensatz so vor, dass er gut von einem Computer gelesen werden kann. In der Regel sind die Datensätze, mit denen wir uns beschäftigen, ja umfangreich, d.h. der Mensch will...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kapitel 9 tidy ? | R4ews MA0009">
+<meta name="twitter:description" content="Idealerweise liegt ein Datensatz so vor, dass er gut von einem Computer gelesen werden kann. In der Regel sind die Datensätze, mit denen wir uns beschäftigen, ja umfangreich, d.h. der Mensch will...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/_Lato-0.4.0/font.css" rel="stylesheet">
+<script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link href="libs/font-awesome-5.1.0/css/all.css" rel="stylesheet">
 <link href="libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet">
 <script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
@@ -18,7 +27,7 @@
       gtag('js', new Date());
 
       gtag('config', 'UA-68219208-1');
-      </script><script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/mark.js@8.11.1/dist/mark.min.js"></script><!-- CSS -->
+      </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="r4ews.css">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -40,7 +49,7 @@
 
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
         <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html">Willkommen zu R4ews</a></li>
+<li><a class="" href="index.html">R4ews</a></li>
 <li class="book-part">R, wie fange ich an</li>
 <li><a class="" href="install.html"><span class="header-section-number">1</span> Installieren von R und RStudio</a></li>
 <li><a class="" href="r-basics.html"><span class="header-section-number">2</span> R Basics und Arbeitsabläufe</a></li>
@@ -607,7 +616,7 @@ Male
   <span class="fu">coord_flip</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu">guides</span><span class="op">(</span>fill <span class="op">=</span> <span class="fu">guide_legend</span><span class="op">(</span>reverse <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
   <span class="fu">scale_fill_brewer</span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Set1"</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="10_tidy_files/figure-html/barchart-lotr-words-by-film-race-1.png" width="672"></div>
-<p>Hobbits sind in “The Fellowhip of the Ring” stark vertreten, während die Menschen in “The Two Towers” viel mehr Leinwandzeit hatten. Ebenso prominent waren sie im letzten Film, “The Return of the King.”</p>
+<p>Hobbits sind in “The Fellowhip of the Ring” stark vertreten, während die Menschen in “The Two Towers” viel mehr Leinwandzeit hatten. Ebenso prominent waren sie im letzten Film, “The Return of the King”.</p>
 <p>Auch hier war es wichtig, alle Daten in einem einzigen Data Frame zu haben, alle Wortzählungen in einer einzigen Variable und zugehörige Variablen für Film und Kategorie.</p>
 <blockquote>
 <p>Im nächsten Schritt schauen wir uns nun an, wie man aus den obigen drei Tabellen eine sauberen Datensatz erzeugt.</p>
@@ -627,35 +636,35 @@ Male
 </ul>
 <div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fship</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="st">"data"</span>, <span class="st">"The_Fellowship_Of_The_Ring.csv"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## Rows: 3 Columns: 4</code></pre>
+<pre><code>## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: ","
+## chr (2): Film, Race
+## dbl (2): Female, Male</code></pre>
 <pre><code>## 
-## ── Column specification ────────────────────────────────────────────────────────
-## cols(
-##   Film = col_character(),
-##   Race = col_character(),
-##   Female = col_double(),
-##   Male = col_double()
-## )</code></pre>
-<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">ttow</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="st">"data"</span>, <span class="st">"The_Two_Towers.csv"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>## 
-## ── Column specification ────────────────────────────────────────────────────────
-## cols(
-##   Film = col_character(),
-##   Race = col_character(),
-##   Female = col_double(),
-##   Male = col_double()
-## )</code></pre>
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">rking</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="st">"data"</span>, <span class="st">"The_Return_Of_The_King.csv"</span><span class="op">)</span><span class="op">)</span> </code></pre></div>
+<code class="sourceCode R"><span class="va">ttow</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="st">"data"</span>, <span class="st">"The_Two_Towers.csv"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## Rows: 3 Columns: 4</code></pre>
+<pre><code>## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: ","
+## chr (2): Film, Race
+## dbl (2): Female, Male</code></pre>
 <pre><code>## 
-## ── Column specification ────────────────────────────────────────────────────────
-## cols(
-##   Film = col_character(),
-##   Race = col_character(),
-##   Female = col_double(),
-##   Male = col_double()
-## )</code></pre>
-<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">rking</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="st">"data"</span>, <span class="st">"The_Return_Of_The_King.csv"</span><span class="op">)</span><span class="op">)</span> </code></pre></div>
+<pre><code>## Rows: 3 Columns: 4</code></pre>
+<pre><code>## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: ","
+## chr (2): Film, Race
+## dbl (2): Female, Male</code></pre>
+<pre><code>## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">rking</span></code></pre></div>
 <pre><code>## # A tibble: 3 x 4
 ##   Film                   Race   Female  Male
@@ -669,11 +678,11 @@ Male
 <span class="header-section-number">9.5</span> Und nun alles zusammen<a class="anchor" aria-label="anchor" href="#und-nun-alles-zusammen"><i class="fas fa-link"></i></a>
 </h2>
 <p>Wir haben jetzt ein Data Frame pro Film, jeweils mit den vier Variablen</p>
-<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb127"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">rking</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "Film"   "Race"   "Female" "Male"</code></pre>
 <p>Der erste Schritt beim Aufräumen dieser Daten besteht darin, sie zu einem Data Frame zusammenzufügen, indem wir die drei Data Frames zeilenweise stapeln. Dazu können wir die Funktion <code><a href="https://dplyr.tidyverse.org/reference/bind.html">dplyr::bind_rows()</a></code> verwenden.</p>
-<div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb129"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">lotr_untidy</span> <span class="op">&lt;-</span> <span class="fu">bind_rows</span><span class="op">(</span><span class="va">fship</span>, <span class="va">ttow</span>, <span class="va">rking</span><span class="op">)</span>
 <span class="va">lotr_untidy</span></code></pre></div>
 <pre><code>## # A tibble: 9 x 4
@@ -697,7 +706,7 @@ zusammensetzen, denn es ist einfacher und effizienter, ein einzelnes Objekt aufz
 <span class="header-section-number">9.6</span> Nun können wir aufräumen<a class="anchor" aria-label="anchor" href="#nun-k%C3%B6nnen-wir-aufr%C3%A4umen"><i class="fas fa-link"></i></a>
 </h2>
 <p>Wir verletzen immer noch eines der Grundprinzipien von <strong>tidy data</strong>. Die Anzahl an gesprochenen Wörtern ist eine grundlegende Variable in unserem Datensatz und sie ist derzeit auf zwei Variablen verteilt, <code>Female</code> und <code>Male</code>. Konzeptionell müssen wir die Wortanzahl in einer einzigen Variable zusammenfassen und eine neue Variable <code>Gender</code> erstellen, um zu verfolgen, ob die jeweilige Anzahl an Worten von Frauen oder Männern gesprochen wurde. Dies Aufgabe können wir mit der Funktion <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">tidyr::pivot_longer()</a></code> bearbeiten.</p>
-<div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb131"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">lotr_tidy</span> <span class="op">&lt;-</span>
   <span class="fu">pivot_longer</span><span class="op">(</span><span class="va">lotr_untidy</span>, cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Female"</span>, <span class="st">"Male"</span><span class="op">)</span>, names_to <span class="op">=</span> <span class="st">'Gender'</span>, 
                values_to <span class="op">=</span> <span class="st">'Words'</span><span class="op">)</span>
@@ -725,7 +734,7 @@ zusammensetzen, denn es ist einfacher und effizienter, ein einzelnes Objekt aufz
 ## 18 The Return Of The King     Man    Male    2459</code></pre>
 <p>Um unseren obigen Aufruf von <code>pivot_longer()</code> zu erklären, lesen wir ihn links nach rechts: Nach der Auswahl des Datensatzes <code>lotr_untidy</code> haben wird die Spalten <code>Female</code> und <code>Male</code> genommen und ihre <em>Werte</em> in eine einzige neue Variable <code>Words</code> zusammengefasst. Dies erzwang die Erstellung einer neuen Variable <code>Gender</code>, die angibt, ob ein bestimmter Wert von <code>Words</code> von <code>Female</code> oder <code>Male</code> stammt. Alle anderen Variablen, wie <code>Film</code>, bleiben unverändert und werden einfach nach Bedarf repliziert. Die Dokumentation für <code>pivot_longer()</code> gibt weitere Beispiele und dokumentiert zusätzliche Argumente.</p>
 <p>Wenn man sich diese Arbeit gemacht hat, dann macht es schon Sinn sich auch das Ergebnis abzuspeichern</p>
-<div class="sourceCode" id="cb127"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb133"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">write_csv</span><span class="op">(</span><span class="va">lotr_tidy</span>, path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="st">"data"</span>, <span class="st">"lotr_tidy.csv"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## Warning: The `path` argument of `write_csv()` is deprecated as of readr 1.4.0.
 ## Please use the `file` argument instead.</code></pre>
@@ -737,7 +746,7 @@ zusammensetzen, denn es ist einfacher und effizienter, ein einzelnes Objekt aufz
 </h2>
 <p>Manchmal (aber nicht so häufig) ist es doch nötig die Daten im <a href="https://de.wikipedia.org/wiki/Wide-Format_und_Long-Format">Wide Format</a> zu haben. Daher wollen wir zum Schluss die gerade gesäuberten LOTR Daten nochmal ein bisschen untidy machen.</p>
 <p>Dazu arbeiten wir mit den Funktion <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">tidyr::pivot_wider()</a></code>. Wir nehmen nun die Ausprägungen der Variable <code>Race</code> (anschließend dann <code>Gender</code>) als Variablennamen der neu zu bildenden Variablen. Die Werte dieser neuen Variablen sind durch die Variable <code>Words</code> festgelegt.</p>
-<div class="sourceCode" id="cb129"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb135"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## Race</span>
 <span class="va">lotr_tidy</span> <span class="op">%&gt;%</span> 
   <span class="fu">pivot_wider</span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">Race</span>, values_from <span class="op">=</span> <span class="va">Words</span><span class="op">)</span></code></pre></div>
@@ -750,7 +759,7 @@ zusammensetzen, denn es ist einfacher und effizienter, ein einzelnes Objekt aufz
 ## 4 The Two Towers             Male     513   2463  3589
 ## 5 The Return Of The King     Female   183      2   268
 ## 6 The Return Of The King     Male     510   2673  2459</code></pre>
-<div class="sourceCode" id="cb131"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb137"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## Gender</span>
 <span class="va">lotr_tidy</span> <span class="op">%&gt;%</span> 
   <span class="fu">pivot_wider</span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">Gender</span>, values_from <span class="op">=</span> <span class="va">Words</span><span class="op">)</span></code></pre></div>
@@ -767,7 +776,7 @@ zusammensetzen, denn es ist einfacher und effizienter, ein einzelnes Objekt aufz
 ## 8 The Return Of The King     Hobbit      2  2673
 ## 9 The Return Of The King     Man       268  2459</code></pre>
 <p>Das erste Beispiel hat immer noch 6 Beobachtungen, zwei pro Film. Nehmen wir mal an, dass wir aber nur eine Beobachtung pro Film haben wollen. Dazu müssten wir die möglichen Kombinationen aus <code>Race</code> und <code>Gender</code> in neuen/weiteren Variablen zusammenfassen. Dies können wir über die Funktion <code><a href="https://tidyr.tidyverse.org/reference/unite.html">tidyr::unite()</a></code> erreichen.</p>
-<div class="sourceCode" id="cb133"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb139"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">lotr_tidy</span> <span class="op">%&gt;%</span> 
   <span class="fu">unite</span><span class="op">(</span><span class="va">Race_Gender</span>, <span class="va">Race</span>, <span class="va">Gender</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 18 x 3
@@ -792,7 +801,7 @@ zusammensetzen, denn es ist einfacher und effizienter, ein einzelnes Objekt aufz
 ## 17 The Return Of The King     Man_Female      268
 ## 18 The Return Of The King     Man_Male       2459</code></pre>
 <p>In Kombination mit <code>pivot_wider()</code> ergibt sich so</p>
-<div class="sourceCode" id="cb135"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">lotr_tidy</span> <span class="op">%&gt;%</span> 
   <span class="fu">unite</span><span class="op">(</span><span class="va">Race_Gender</span>, <span class="va">Race</span>, <span class="va">Gender</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">pivot_wider</span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">Race_Gender</span>, values_from <span class="op">=</span> <span class="va">Words</span><span class="op">)</span></code></pre></div>
@@ -804,7 +813,7 @@ zusammensetzen, denn es ist einfacher und effizienter, ein einzelnes Objekt aufz
 ## 3 The Return …        183      510             2        2673        268     2459</code></pre>
 <p>Zum Schluss könnten wir jetzt auch noch alles zurück auf Anfang stellen und die
 drei Datensätze vom Anfang wiederherstellen</p>
-<div class="sourceCode" id="cb137"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb143"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="op">(</span><span class="va">sep_list</span> <span class="op">&lt;-</span> <span class="va">lotr_tidy</span> <span class="op">%&gt;%</span> 
   <span class="fu">pivot_wider</span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">Gender</span>, values_from <span class="op">=</span> <span class="va">Words</span><span class="op">)</span> <span class="op">%&gt;%</span>
    <span class="fu">group_split</span><span class="op">(</span><span class="va">Film</span><span class="op">)</span><span class="op">)</span></code></pre></div>
@@ -840,7 +849,7 @@ drei Datensätze vom Anfang wiederherstellen</p>
 ## 2 The Two Towers Hobbit      0  2463
 ## 3 The Two Towers Man       401  3589</code></pre>
 <p>Wir erhalten eine Liste mit drei Elemente, die deren Inhalt den drei Tabellen vom Anfang entspricht. Die Daten zu “The Return of the King” sind beispielsweise im zweiten Element enthalten.</p>
-<div class="sourceCode" id="cb139"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb145"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sep_list</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span></code></pre></div>
 <pre><code>## # A tibble: 3 x 4
 ##   Film                   Race   Female  Male
@@ -926,6 +935,22 @@ drei Datensätze vom Anfang wiederherstellen</p>
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
 </script>
 </body>
 </html>

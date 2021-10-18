@@ -1,6 +1,9 @@
 bookdown::bs4_book:
+  css: r4ews.css
   theme:
     primary: "#0065BD"
+    base_font: 
+      google: Lato
   includes:
     in_header: header.html
 
@@ -8,13 +11,7 @@ bookdown::bs4_book:
 bookdown::gitbook:
   includes:
     in_header: header.html
-  config:
-    toc:
-      collapse: section
-      before: |
-        <li><strong><a href="./">R4EWS</a></strong></li>
-    sharing: no
-  css: [assets/r4ews.css]
+  css: r4ews.css
 
 bookdown::pdf_book:
   latex_engine: "xelatex"

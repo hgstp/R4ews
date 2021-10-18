@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Kapitel 11 Bausteine | R4ews MA0009</title>
+<meta name="author" content="Stephan Haug">
+<meta name="description" content="11.1 Aesthetics Mit der Funktion aes() lässt sich das Aussehen der Grafik regeln (nicht der Inhalt). Wir können z.B. die Position: x und y die Farbe: color und fill die Form: shape den Linientyp:...">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="Kapitel 11 Bausteine | R4ews MA0009">
+<meta property="og:type" content="book">
+<meta property="og:description" content="11.1 Aesthetics Mit der Funktion aes() lässt sich das Aussehen der Grafik regeln (nicht der Inhalt). Wir können z.B. die Position: x und y die Farbe: color und fill die Form: shape den Linientyp:...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Kapitel 11 Bausteine | R4ews MA0009">
+<meta name="twitter:description" content="11.1 Aesthetics Mit der Funktion aes() lässt sich das Aussehen der Grafik regeln (nicht der Inhalt). Wir können z.B. die Position: x und y die Farbe: color und fill die Form: shape den Linientyp:...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link href="libs/font-awesome-5.1.0/css/all.css" rel="stylesheet">
+<link href="libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet">
+<script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+<script src="anchor-links.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-68219208-1"></script><script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-68219208-1');
+      </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS -->
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">R4ews MA0009</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Willkommen zu R4ews</a></li>
+<li class="book-part">R, wie fange ich an</li>
+<li><a class="" href="install.html"><span class="header-section-number">1</span> Installieren von R und RStudio</a></li>
+<li><a class="" href="r-basics.html"><span class="header-section-number">2</span> R Basics und Arbeitsabläufe</a></li>
+<li class="book-part">Versionskontrolle und R Markdown</li>
+<li><a class="" href="version-control.html"><span class="header-section-number">3</span> Git, GitHub, and RStudio</a></li>
+<li><a class="" href="r-markdown.html"><span class="header-section-number">4</span> R Markdown</a></li>
+<li class="book-part">Datenanalyse Intro</li>
+<li><a class="" href="basic-data-care.html"><span class="header-section-number">5</span> Letzte Vorbereitungen …</a></li>
+<li><a class="" href="dplyr-intro.html"><span class="header-section-number">6</span> Einführung in dplyr</a></li>
+<li><a class="" href="dplyr-single.html"><span class="header-section-number">7</span> Mehr zu dplyr</a></li>
+<li><a class="" href="import-export.html"><span class="header-section-number">8</span> Daten I/O</a></li>
+<li><a class="" href="tidy.html"><span class="header-section-number">9</span> tidy ?</a></li>
+<li class="book-part">ggplot2 Intro</li>
+<li><a class="" href="graphics-overview.html"><span class="header-section-number">10</span> Einführung</a></li>
+<li><a class="active" href="bausteine.html"><span class="header-section-number">11</span> Bausteine</a></li>
+<li class="book-part">Noch viel mehr möglich</li>
+<li><a class="" href="packages.html"><span class="header-section-number">12</span> Pakete</a></li>
+<li><a class="" href="funktionen.html"><span class="header-section-number">13</span> Funktionen</a></li>
+<li><a class="" href="envscop.html"><span class="header-section-number">14</span> Environments und Scoping</a></li>
+<li class="book-part">Appendix</li>
+<li><a class="" href="fragen.html"><span class="header-section-number">15</span> Fragen und Anregungen aus der Übung</a></li>
+<li><a class="" href="literatur-3.html">Literatur</a></li>
+</ul>
+
+        <div class="book-extra">
+          
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="bausteine" class="section level1" number="11">
+<h1>
+<span class="header-section-number">Kapitel 11</span> Bausteine<a class="anchor" aria-label="anchor" href="#bausteine"><i class="fas fa-link"></i></a>
+</h1>
+<div id="aes" class="section level2" number="11.1">
+<h2>
+<span class="header-section-number">11.1</span> Aesthetics<a class="anchor" aria-label="anchor" href="#aes"><i class="fas fa-link"></i></a>
+</h2>
+<p>Mit der Funktion <code>aes()</code> lässt sich das <strong>Aussehen</strong> der Grafik regeln (nicht der Inhalt). Wir können z.B.</p>
+<ul>
+<li>die Position: <code>x</code> und <code>y</code>
+</li>
+<li>die Farbe: <code>color</code> und <code>fill</code>
+</li>
+<li>die Form: <code>shape</code>
+</li>
+<li>den Linientyp: <code>linetype</code>
+</li>
+<li>die Größe der Symbol: <code>size</code>
+</li>
+</ul>
+<p>festlegen. Nicht jedes aesthetic kann allerdings mit allen verfügbaren geoms kombiniert werden. So macht z.B. der <code>linetype</code> ja wenig Sinn in <code>geom_point()</code>. Ein Übersicht der möglichen aesthetics findet man in der Hilfe jeder geom-Funktion</p>
+<pre><code>geom_point {ggplot2}    R Documentation
+Points
+Description
+The point geom is used to create scatterplots. The scatterplot is most useful for displaying the relationship between two continuous variables. It can be used to compare one continuous and one categorical variable, or two categorical variables, but a variation like geom_jitter(), geom_count(), or geom_bin2d() is usually more appropriate. A bubblechart is a scatterplot with a third variable mapped to the size of points.
+
+Usage
+geom_point(
+  mapping = NULL,
+  data = NULL,
+  stat = "identity",
+  position = "identity",
+  ...,
+  na.rm = FALSE,
+  show.legend = NA,
+  inherit.aes = TRUE
+)
+
+...
+
+Aesthetics
+geom_point() understands the following aesthetics (required aesthetics are in bold):
+
+x
+
+y
+
+alpha
+
+colour
+
+fill
+
+group
+
+shape
+
+size
+
+stroke
+
+Learn more about setting these aesthetics in vignette("ggplot2-specs").
+</code></pre>
+<p>In der <code>aes()</code> Funktion sollten die Daten den Wert der Argumente bestimmen. Werden Argumente auf fixe Werte gesetzt, so sind sie außerhalb der <code>aes()</code> Funktion zu setzen.</p>
+<p>In einem Plot der <code>gdpPercap</code> Daten für Deutschland und Frankreich wollen wir anhand von unterschiedlichen Farben die Daten der beiden Länder unterscheiden. Dazu müssen wir nur <code>colour</code> innerhalb von <code>aes()</code> den Wert <code>country</code> zuweisen.</p>
+<div class="sourceCode" id="cb151"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">gapminder</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Germany"</span>,<span class="st">"France"</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># auswählen der Daten </span>
+  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">gdpPercap</span>, colour <span class="op">=</span> <span class="va">country</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>  
+  <span class="fu">geom_point</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">3</span><span class="op">)</span> <span class="co"># size wird auf einen fixen Wert gesetzt (außerhalb von aes())</span></code></pre></div>
+<div class="inline-figure"><img src="11_ggplot2_intro_files/figure-html/unnamed-chunk-5-1.png" width="672"></div>
+</div>
+<div id="geoms" class="section level2" number="11.2">
+<h2>
+<span class="header-section-number">11.2</span> Geoms<a class="anchor" aria-label="anchor" href="#geoms"><i class="fas fa-link"></i></a>
+</h2>
+<p>Mit den <code>geom_xx()</code> Funktionen stellen wir die Daten als geometrische Formen in einer Grafik dar. Jede <code>ggplot2</code> Grafik benötigt daher mindestens ein <code>geom</code>. Beispiele sind</p>
+<ul>
+<li><code>geom_point()</code></li>
+<li><code>geom_line()</code></li>
+<li><code>geom_histogram()</code></li>
+</ul>
+<p>Da wir nicht alle verfügbaren <code>geoms</code> auflisten können, sei an dieser Stelle auf die <a href="https://ggplot2.tidyverse.org">ggplot2</a> Seite verwiesen.</p>
+<div class="sourceCode" id="cb152"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">gapminder</span> <span class="op">%&gt;%</span>
+  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">gdpPercap</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>  
+  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> 
+
+
+<span class="va">gapminder</span> <span class="op">%&gt;%</span>
+  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">gdpPercap</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>  
+  <span class="fu">geom_smooth</span><span class="op">(</span><span class="op">)</span> 
+<span class="co">#&gt; `geom_smooth()` using method = 'gam' and formula 'y ~ s(x, bs = "cs")'</span></code></pre></div>
+<p><img src="11_ggplot2_intro_files/figure-html/unnamed-chunk-6-1.png" width="50%"><img src="11_ggplot2_intro_files/figure-html/unnamed-chunk-6-2.png" width="50%"></p>
+<p>Wir haben hier die gleichen Daten visualisiert. Allerdings ist das Ergebnis doch recht unterschiedlich. Der Scatterplot zeigt alle (abgesehen von überzeichnen) Daten, wohingegen mit <code>geom_smooth()</code> eine geglätteter Zusammenhang dargestellt wird.</p>
+<p>Interessant sind hier natürlich die wenigen großen <code>gdpPercap</code> Werte</p>
+<div class="sourceCode" id="cb153"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">gapminder</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">gdpPercap</span> <span class="op">&gt;</span> <span class="fl">50000</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 6 x 6</span>
+<span class="co">#&gt;   country continent  year lifeExp     pop gdpPercap</span>
+<span class="co">#&gt;   &lt;fct&gt;   &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;   &lt;int&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 Kuwait  Asia       1952    55.6  160000   108382.</span>
+<span class="co">#&gt; 2 Kuwait  Asia       1957    58.0  212846   113523.</span>
+<span class="co">#&gt; 3 Kuwait  Asia       1962    60.5  358266    95458.</span>
+<span class="co">#&gt; 4 Kuwait  Asia       1967    64.6  575003    80895.</span>
+<span class="co">#&gt; 5 Kuwait  Asia       1972    67.7  841934   109348.</span>
+<span class="co">#&gt; 6 Kuwait  Asia       1977    69.3 1140357    59265.</span></code></pre></div>
+<p>Kuwait hat über den gesamten Zeitraum hohe GDP Werte. Aber zu Beginn der Aufzeichnungen waren die Werte in Bezug auf die damals noch recht kleine Populationsgröße außergewöhnlich hoch.</p>
+<p>Einem <code>ggplot</code> Objekt können wir nicht nur ein <code>geom</code> zuordnen. Prinzipiell können wir beliebig viele weitere <code>geoms</code> hinzufügen. Wir können also die gerade durchgeführte Glättung der Daten auch
+direkt zum Scatterplot hinzufügen</p>
+<div class="sourceCode" id="cb154"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">gapminder</span> <span class="op">%&gt;%</span>
+  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">gdpPercap</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>  
+  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_smooth</span><span class="op">(</span><span class="op">)</span> 
+<span class="co">#&gt; `geom_smooth()` using method = 'gam' and formula 'y ~ s(x, bs = "cs")'</span></code></pre></div>
+<div class="inline-figure"><img src="11_ggplot2_intro_files/figure-html/fig12-1.png" width="672"></div>
+<p>Wählen wir die Farbe der geometrischen Objekte anhand einer Faktorvariable, so erhalten wir automatisch eine entsprechende Legende</p>
+<div class="sourceCode" id="cb155"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">gapminder</span> <span class="op">%&gt;%</span>
+  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">gdpPercap</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>  
+  <span class="fu">geom_point</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>colour <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_smooth</span><span class="op">(</span><span class="op">)</span> 
+<span class="co">#&gt; `geom_smooth()` using method = 'gam' and formula 'y ~ s(x, bs = "cs")'</span></code></pre></div>
+<p><img src="11_ggplot2_intro_files/figure-html/fig13-1.png" width="672">
+Beachte auch, dass wir <code>colour</code> nur für <code>geom_point()</code> gewählt haben. Die Glättung erfolgt weiterhin über alle Daten und nicht separat für jeden Kontinent. Aber das wäre natürlich auch möglich. Dazu können wir <code>colour</code> wieder global in <code>ggplot()</code> definieren.</p>
+<div class="sourceCode" id="cb156"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">gapminder</span> <span class="op">%&gt;%</span>
+  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">gdpPercap</span>, colour <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>  
+  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_smooth</span><span class="op">(</span><span class="op">)</span> 
+<span class="co">#&gt; `geom_smooth()` using method = 'loess' and formula 'y ~ x'</span></code></pre></div>
+<div class="inline-figure"><img src="11_ggplot2_intro_files/figure-html/unnamed-chunk-8-1.png" width="672"></div>
+<p>Die Punkte sind mir etwas zu groß und der Linientyp gefällt mir auch nicht in diesem Plot. Aber das lässt sich schnell ändern.</p>
+<div class="sourceCode" id="cb157"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">gapminder</span> <span class="op">%&gt;%</span>
+  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">gdpPercap</span>, colour <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>  
+  <span class="fu">geom_point</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_smooth</span><span class="op">(</span>linetype <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> 
+<span class="co">#&gt; `geom_smooth()` using method = 'loess' and formula 'y ~ x'</span></code></pre></div>
+<div class="inline-figure"><img src="11_ggplot2_intro_files/figure-html/unnamed-chunk-9-1.png" width="672"></div>
+</div>
+<div id="stat-trans" class="section level2" number="11.3">
+<h2>
+<span class="header-section-number">11.3</span> Statistische Transformationen<a class="anchor" aria-label="anchor" href="#stat-trans"><i class="fas fa-link"></i></a>
+</h2>
+<p>Jede <code>geom_xx()</code> Funktion besitzt eine Default Statistik, die berechnet wird.</p>
+<div class="sourceCode" id="cb158"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/args.html">args</a></span><span class="op">(</span><span class="va">geom_point</span><span class="op">)</span>
+<span class="co">#&gt; function (mapping = NULL, data = NULL, stat = "identity", position = "identity", </span>
+<span class="co">#&gt;     ..., na.rm = FALSE, show.legend = NA, inherit.aes = TRUE) </span>
+<span class="co">#&gt; NULL</span></code></pre></div>
+<p>Bei einem Scatterplot ist dies nur die Identität.</p>
+<p>Ein Balkendiagramm verwendet anderseits</p>
+<div class="sourceCode" id="cb159"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/args.html">args</a></span><span class="op">(</span><span class="va">geom_bar</span><span class="op">)</span>
+<span class="co">#&gt; function (mapping = NULL, data = NULL, stat = "count", position = "stack", </span>
+<span class="co">#&gt;     ..., width = NULL, na.rm = FALSE, orientation = NA, show.legend = NA, </span>
+<span class="co">#&gt;     inherit.aes = TRUE) </span>
+<span class="co">#&gt; NULL</span></code></pre></div>
+<p>die Transformation <code>count</code>, was Sinn macht, da ja gezählt werden muss/soll wie viele Beobachtungen in die jeweilige Kategorie fallen.</p>
+<p>Der Aufruf der <code>stat_xx()</code> Funktion ist oftmals einfacher über die entsprechende <code>geom_xx()</code> Funktion, aber natürlich kann die <code>stat_xx()</code> Funktion auch direkt aufgerufen werden.</p>
+<div class="sourceCode" id="cb160"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">gapminder</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu">geom_bar</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="11_ggplot2_intro_files/figure-html/unnamed-chunk-12-1.png" width="672"></div>
+<div class="sourceCode" id="cb161"><pre class="downlit sourceCode r">
+<code class="sourceCode R">
+<span class="fu">ggplot</span><span class="op">(</span><span class="va">gapminder</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu">stat_count</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="11_ggplot2_intro_files/figure-html/unnamed-chunk-12-2.png" width="672"></div>
+<p>Jedes <code>geom</code> hat zwar ein Default-Transformation, aber natürlich können oftmals noch weitere Transformationen berechnet/genutzt werden. Im Abschnitt <strong>Computed variables</strong> der Hilfe zu einem <code>geom</code> sieht man alle verfügbaren Transformationen</p>
+<p>Für <code>geom_bar()</code> sind dies</p>
+<pre><code>Computed variables
+
+count
+number of points in bin
+
+prop
+groupwise proportion
+
+</code></pre>
+<p>Die relativen Häufigkeiten berechnet man also über <code>prop</code>. Dazu muss die y-Variable auf <code>prop</code> gesetzt werden. Da der Aufruf</p>
+<div class="sourceCode" id="cb163"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">gapminder</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">continent</span>, y <span class="op">=</span> <span class="va">prop</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<p>aber nach einer Variable <code>prop</code> suchen würde, muss eine alternative Notation in diesem Fall verwendet werden</p>
+<div class="sourceCode" id="cb164"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">gapminder</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">continent</span>, y <span class="op">=</span> <span class="va">..prop..</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu">geom_bar</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="11_ggplot2_intro_files/figure-html/unnamed-chunk-14-1.png" width="672"></div>
+<p>Das sieht jetzt noch nicht so wie wir das erwartet haben. Die
+relativen Häufigkeiten wurden innerhalb der fünf Gruppen berechnet und nicht über alle Beobachtungen. D.h. wir müssen der Funktion noch sagen, dass es nur eine Gruppe geben soll.</p>
+<div class="sourceCode" id="cb165"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">gapminder</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">continent</span>, y <span class="op">=</span> <span class="va">..prop..</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu">geom_bar</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>group <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="inline-figure"><img src="11_ggplot2_intro_files/figure-html/unnamed-chunk-15-1.png" width="672"></div>
+</div>
+<div id="scales" class="section level2" number="11.4">
+<h2>
+<span class="header-section-number">11.4</span> scales<a class="anchor" aria-label="anchor" href="#scales"><i class="fas fa-link"></i></a>
+</h2>
+<p>Scales steuern die Zuordnung von Daten zu aesthetics. Sie nehmen deine Daten und bestimmen damit Größe, Farbe, Position oder Form von Objekten. Sie erlauben dir auch die Achsen und die Legend nach deinen Vorstellungen anzupassen. Du kannst sicher mit <code>ggplot2</code> Grafiken erstellen, ohne zu wissen, wie <code>scales</code> funktionieren, aber wenn du <code>scales</code> verstehst und lernst, wie du sie einstellen kannst, wirst du viel mehr Kontrolle über deine Grafiken bekommen.</p>
+<p>Neben weiteren Möglichkeiten können wir über <code>scales</code> also</p>
+<ul>
+<li>
+<code>color</code> und <code>fill</code>
+</li>
+<li><code>position</code></li>
+<li><code>size</code></li>
+<li><code>shape</code></li>
+<li><code>line type</code></li>
+</ul>
+<p>durch Verwendung der <code>scale_"aesthetic"_"type"</code> Funktionen modifizieren. Argumente dieser Funktionen sind z.B. <code>name</code>, <code>limits</code>, <code>breaks</code> oder <code>labels</code>.</p>
+<p>Zuerst spielen wir etwas mit Farben. Dazu plotten wir erneut <code>year</code> gegen <code>gdpPercap</code> und wählen für jeden Kontinent eine eigene Farbe. Da wir die Farben über <code>colour</code> definieren, verwenden wir danach die Funktionen <code>scale_colour_xxx()</code> (im Vergleich zu z.B. <code>scale_fill_brewer()</code>).</p>
+<div class="sourceCode" id="cb166"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="op">(</span><span class="va">p</span> <span class="op">&lt;-</span> <span class="va">gapminder</span> <span class="op">%&gt;%</span>
+  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">gdpPercap</span>, colour <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>  
+  <span class="fu">geom_point</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_smooth</span><span class="op">(</span>linetype <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">)</span>
+<span class="co">#&gt; `geom_smooth()` using method = 'loess' and formula 'y ~ x'</span>
+
+<span class="va">p</span> <span class="op">+</span> <span class="fu">scale_colour_brewer</span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Set1"</span><span class="op">)</span> <span class="co"># Farbpaletten von http://colorbrewer2.org/</span>
+<span class="co">#&gt; `geom_smooth()` using method = 'loess' and formula 'y ~ x'</span>
+
+<span class="va">p</span> <span class="op">+</span> <span class="fu">scale_colour_grey</span><span class="op">(</span>start <span class="op">=</span> <span class="fl">0.1</span>, end <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span> <span class="co"># keine so gute Wahl</span>
+<span class="co">#&gt; `geom_smooth()` using method = 'loess' and formula 'y ~ x'</span>
+
+<span class="va">p</span> <span class="op">+</span> <span class="fu">scale_colour_manual</span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"blue"</span>, <span class="st">"gold"</span>, <span class="st">"sienna1"</span>, <span class="st">"sienna4"</span>, <span class="st">"hotpink1"</span>, <span class="st">"hotpink4"</span><span class="op">)</span>, name <span class="op">=</span> <span class="st">"Kontinent"</span><span class="op">)</span>
+<span class="co">#&gt; `geom_smooth()` using method = 'loess' and formula 'y ~ x'</span></code></pre></div>
+<p><img src="11_ggplot2_intro_files/figure-html/unnamed-chunk-16-1.png" width="50%"><img src="11_ggplot2_intro_files/figure-html/unnamed-chunk-16-2.png" width="50%"><img src="11_ggplot2_intro_files/figure-html/unnamed-chunk-16-3.png" width="50%"><img src="11_ggplot2_intro_files/figure-html/unnamed-chunk-16-4.png" width="50%"></p>
+<p>In diesem Beispiel haben wir also die Farbe über eine vorgegebene Palette, in Grau-Stufen bzw. manuell gewählt. Im letzten Beispiel haben wir zusätzlich noch den Titel der Legende geändert über das <code>name</code> Argument.</p>
+<p>Die Achsenbeschriftung der y-Achse ist nicht wirklich schön, weil nicht unbedingt selbsterklärend. Daher ändern wir im nächsten Schritt die Achsenbeschriftung.</p>
+<div class="sourceCode" id="cb167"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">p</span> <span class="op">&lt;-</span> <span class="va">p</span> <span class="op">+</span> <span class="fu">scale_colour_manual</span><span class="op">(</span>values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"blue"</span>, <span class="st">"gold"</span>, <span class="st">"sienna1"</span>, <span class="st">"sienna4"</span>, <span class="st">"hotpink1"</span>, <span class="st">"hotpink4"</span><span class="op">)</span><span class="op">)</span>
+
+<span class="va">p</span> <span class="op">+</span> <span class="fu">scale_y_continuous</span><span class="op">(</span><span class="st">"GDP pro Kopf"</span><span class="op">)</span>
+<span class="co">#&gt; `geom_smooth()` using method = 'loess' and formula 'y ~ x'</span></code></pre></div>
+<div class="inline-figure"><img src="11_ggplot2_intro_files/figure-html/unnamed-chunk-17-1.png" width="672"></div>
+<p>Da es sich bei <code>gdpPercap</code> um eine stetige Variable handelt, haben wir <code>scale_y_continuous()</code> verwendet (im Gegensatz zu <code>scale_y_discrete()</code>) um die Achsenbeschriftung zu ändern. Über die Hilfsfunktion <code>labs()</code> können wir die Beschriftung der Grafik aber auch einfacher/intuitiver ändern.</p>
+<div class="sourceCode" id="cb168"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="op">(</span><span class="va">p</span> <span class="op">&lt;-</span> <span class="va">p</span> <span class="op">+</span> <span class="fu">labs</span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Jahr"</span>, y <span class="op">=</span> <span class="st">"GDP pro Kopf"</span>,
+         title <span class="op">=</span> <span class="st">"Monoton steigendes GDP pro Kopf"</span>,
+         subtitle <span class="op">=</span> <span class="st">"Gestrichelte Linie zeigt Durchschnittswerte über alle Länder pro Kontinent"</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; `geom_smooth()` using method = 'loess' and formula 'y ~ x'</span></code></pre></div>
+<div class="inline-figure"><img src="11_ggplot2_intro_files/figure-html/unnamed-chunk-18-1.png" width="672"></div>
+<p>Die frühen Kuwait-Beobachtungen ziehen die y-Achse stark auseinander. Daher könnte man etwas in den Plot hinein zoomen wollen. Dazu kann man das Koordinatensystem anpassen über<code>coord_cartasian()</code>. Alternativ könnte man auch mit der Funktion <code><a href="https://rdrr.io/r/graphics/plot.window.html">ylim()</a></code> arbeiten (analog existiert natürlich auch <code>xlmin()</code>). Verwendet man <code><a href="https://rdrr.io/r/graphics/plot.window.html">xlim()</a></code> bzw. <code><a href="https://rdrr.io/r/graphics/plot.window.html">ylim()</a></code>, so werden alle Datenpunkte, die nicht im zu plottenden Bereich liegen, aber nicht nur nicht gezeichnet, sondern auch aus dem Datensatz (für diesen einen Plot) entfernt. Dies hat Auswirkungen auf Teile des Plots, die auf statistische Transformationen basieren, die mithilfe der vorhanden Daten berechnet wurden.</p>
+<div class="sourceCode" id="cb169"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">p</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/graphics/plot.window.html">ylim</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">55000</span><span class="op">)</span>
+<span class="co">#&gt; `geom_smooth()` using method = 'loess' and formula 'y ~ x'</span>
+<span class="co">#&gt; Warning: Removed 6 rows containing non-finite values</span>
+<span class="co">#&gt; (stat_smooth).</span>
+<span class="co">#&gt; Warning: Removed 6 rows containing missing values</span>
+<span class="co">#&gt; (geom_point).</span>
+<span class="op">(</span><span class="va">p</span> <span class="op">&lt;-</span> <span class="va">p</span> <span class="op">+</span> <span class="fu">coord_cartesian</span><span class="op">(</span>ylim <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">55000</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; `geom_smooth()` using method = 'loess' and formula 'y ~ x'</span></code></pre></div>
+<p><img src="11_ggplot2_intro_files/figure-html/unnamed-chunk-19-1.png" width="50%"><img src="11_ggplot2_intro_files/figure-html/unnamed-chunk-19-2.png" width="50%"></p>
+<p>In der rechten Grafik ist der Verlauf der Kurven unverändert. In der linken Grafik hingegen liegt die Kurve für Asien nun deutlich unter der Kurve für Amerika bis Mitte der 80er Jahre.</p>
+<p>Andere mögliche Positionsänderungen ergeben sich durch Skalierungen der Achsen wie <code>scale_x_log10()</code>, <code>scale_y_sqrt()</code> oder</p>
+<div class="sourceCode" id="cb170"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">p</span> <span class="op">+</span> <span class="fu">scale_x_reverse</span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; `geom_smooth()` using method = 'loess' and formula 'y ~ x'</span></code></pre></div>
+<div class="inline-figure"><img src="11_ggplot2_intro_files/figure-html/unnamed-chunk-20-1.png" width="672"></div>
+<p>Für weitere Optionen sei hier auf die <a href="https://ggplot2-book.org/index.html">online Version</a> der neuesten Auflage von <a href="https://ggplot2.tidyverse.org">ggplot2</a> <span class="citation">(<a href="literatur-3.html#ref-wickham2009" role="doc-biblioref">Wickham 2009</a>)</span> verwiesen.</p>
+</div>
+<div id="facets" class="section level2" number="11.5">
+<h2>
+<span class="header-section-number">11.5</span> facets<a class="anchor" aria-label="anchor" href="#facets"><i class="fas fa-link"></i></a>
+</h2>
+<p>Datensätze lassen sich oftmals bzgl. vorhandener Variablen gruppieren. Dann will man Zusammenhänge weiterer Variablen innerhalb dieser Gruppen darstellen. Entsteht die Gruppierung aufgrund einer Variable, so kannst du mit <code>facet_wrap()</code> arbeiten</p>
+<div class="sourceCode" id="cb171"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">gapminder</span> <span class="op">%&gt;%</span>
+  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">gdpPercap</span> <span class="op">)</span><span class="op">)</span> <span class="op">+</span>  
+  <span class="fu">geom_point</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_smooth</span><span class="op">(</span>linetype <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span> <span class="va">continent</span>, ncol <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
+<span class="co">#&gt; `geom_smooth()` using method = 'loess' and formula 'y ~ x'</span></code></pre></div>
+<div class="inline-figure"><img src="11_ggplot2_intro_files/figure-html/unnamed-chunk-21-1.png" width="672"></div>
+<p>In der letzten Grafik verwenden alle fünf Plots die gleiche Skala auf der y-Achse um die Vergleichbarkeit der Werte zu erhöhen. In manchen Fällen mag dies aber störend sein. Mit dem Argument <code>scale</code> kannst du die Skala “befreien”.</p>
+<div class="sourceCode" id="cb172"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">gapminder</span> <span class="op">%&gt;%</span>
+  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">gdpPercap</span> <span class="op">)</span><span class="op">)</span> <span class="op">+</span>  
+  <span class="fu">geom_point</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_smooth</span><span class="op">(</span>linetype <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span> <span class="va">continent</span>, ncol <span class="op">=</span> <span class="fl">2</span>, scales <span class="op">=</span> <span class="st">"free"</span><span class="op">)</span>
+<span class="co">#&gt; `geom_smooth()` using method = 'loess' and formula 'y ~ x'</span></code></pre></div>
+<div class="inline-figure"><img src="11_ggplot2_intro_files/figure-html/unnamed-chunk-22-1.png" width="672"></div>
+<p>Erfolgt die Gruppierung anhand von zwei Variablen, so bietet <code>facet_grid()</code> eine passende Aufteilung des Grafikfensters. Neben dem Kontinent betrachten wir nun auch noch ob die Populationsgröße des Landes im entsprechenden Jahr größer als 5000000 ist, oder eben nicht.</p>
+<div class="sourceCode" id="cb173"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">gapminder</span> <span class="op">%&gt;%</span>
+  <span class="fu">group_by</span><span class="op">(</span><span class="va">continent</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">gdpPercap</span> <span class="op">)</span><span class="op">)</span> <span class="op">+</span>  
+  <span class="fu">geom_point</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_smooth</span><span class="op">(</span>linetype <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">facet_grid</span><span class="op">(</span><span class="va">continent</span> <span class="op">~</span> <span class="va">pop</span> <span class="op">&gt;</span> <span class="fl">5000000</span>, scales <span class="op">=</span> <span class="st">"free"</span><span class="op">)</span>
+<span class="co">#&gt; `geom_smooth()` using method = 'loess' and formula 'y ~ x'</span></code></pre></div>
+<div class="inline-figure"><img src="11_ggplot2_intro_files/figure-html/unnamed-chunk-23-1.png" width="672"></div>
+<p>Für Ozeanien erhalten wir so z.B. eine Unterteilung in Australien (<code>TRUE</code>) und Neuseeland (<code>FALSE</code>).</p>
+</div>
+<div id="themes" class="section level2" number="11.6">
+<h2>
+<span class="header-section-number">11.6</span> themes<a class="anchor" aria-label="anchor" href="#themes"><i class="fas fa-link"></i></a>
+</h2>
+<p>Abschließend wollen wir noch über verschiedene <code>themes</code> sprechen. Über <code>themes</code> kann man das Aussehen der nicht datenbezogenen Elemente einer Grafik verändern, wie z.B.</p>
+<ul>
+<li>die Beschriftungen</li>
+<li>den Hintergrund</li>
+<li>die Legende</li>
+<li>….</li>
+</ul>
+<p>Eine Reihe von <code>themes</code> sind bereits vorhanden, wobei <code>theme_gray()</code> das Default <code>theme</code> ist. Siehe auch <code>?theme_gray()</code>.</p>
+<div class="sourceCode" id="cb174"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">p</span>
+<span class="co">#&gt; `geom_smooth()` using method = 'loess' and formula 'y ~ x'</span>
+<span class="va">p</span> <span class="op">+</span> <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; `geom_smooth()` using method = 'loess' and formula 'y ~ x'</span>
+<span class="va">p</span> <span class="op">+</span> <span class="fu">theme_dark</span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; `geom_smooth()` using method = 'loess' and formula 'y ~ x'</span>
+<span class="va">p</span> <span class="op">+</span> <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; `geom_smooth()` using method = 'loess' and formula 'y ~ x'</span></code></pre></div>
+<p><img src="11_ggplot2_intro_files/figure-html/unnamed-chunk-24-1.png" width="50%"><img src="11_ggplot2_intro_files/figure-html/unnamed-chunk-24-2.png" width="50%"><img src="11_ggplot2_intro_files/figure-html/unnamed-chunk-24-3.png" width="50%"><img src="11_ggplot2_intro_files/figure-html/unnamed-chunk-24-4.png" width="50%"></p>
+<p>Wir möchten nun gerne folgende Änderungen an der Grafik vornehmen:</p>
+<ul>
+<li>die Größe der Achsenbeschriftung ändern</li>
+<li>die Gitterlinien ohne Beschriftung entfernen</li>
+<li>eine Überschrift hinzufügen</li>
+<li>die Legende in die Grafik verschieben</li>
+<li>die Hintergrundfarbe der Grafik und der Legende ändern</li>
+</ul>
+<p>Die meisten dieser Änderungen können wir mit <code>theme()</code> durchführen.</p>
+<div class="sourceCode" id="cb175"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">p</span> <span class="op">+</span>
+  <span class="fu">theme</span><span class="op">(</span>
+    axis.text <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">14</span><span class="op">)</span>,
+    legend.key <span class="op">=</span> <span class="fu">element_rect</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"navy"</span><span class="op">)</span>,
+    legend.background <span class="op">=</span> <span class="fu">element_rect</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"green"</span><span class="op">)</span>,
+    legend.position <span class="op">=</span> <span class="st">"bottom"</span>,
+    panel.grid.major <span class="op">=</span> <span class="fu">element_line</span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"grey40"</span><span class="op">)</span>,
+    panel.grid.minor <span class="op">=</span> <span class="fu">element_blank</span><span class="op">(</span><span class="op">)</span>,
+    panel.background <span class="op">=</span> <span class="fu">element_rect</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"navy"</span><span class="op">)</span>
+  <span class="op">)</span>
+<span class="co">#&gt; `geom_smooth()` using method = 'loess' and formula 'y ~ x'</span></code></pre></div>
+<div class="inline-figure"><img src="11_ggplot2_intro_files/figure-html/unnamed-chunk-25-1.png" width="672"></div>
+<p>Ob das nun alles schön aussieht, sei dahingestellt, aber es zeigt durchaus die vorhandenen Möglichkeiten.</p>
+<p>Will man gewisse Einstellung öfter verwenden, so kann man diese auch in einem <code>theme</code> Objekt speichern und wiederverwenden.</p>
+<div class="sourceCode" id="cb176"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">mein_theme</span> <span class="op">&lt;-</span> <span class="fu">theme</span><span class="op">(</span>
+    axis.text <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">14</span><span class="op">)</span>,
+    legend.key <span class="op">=</span> <span class="fu">element_rect</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"hotpink3"</span><span class="op">)</span>,
+    panel.grid.major <span class="op">=</span> <span class="fu">element_line</span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"grey40"</span><span class="op">)</span>,
+    panel.grid.minor <span class="op">=</span> <span class="fu">element_blank</span><span class="op">(</span><span class="op">)</span>,
+    panel.background <span class="op">=</span> <span class="fu">element_rect</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"navy"</span><span class="op">)</span>
+  <span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">mein_theme</span><span class="op">)</span>
+<span class="co">#&gt; [1] "theme" "gg"</span></code></pre></div>
+<div class="sourceCode" id="cb177"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">p</span> <span class="op">+</span> <span class="va">mein_theme</span>
+<span class="co">#&gt; `geom_smooth()` using method = 'loess' and formula 'y ~ x'</span></code></pre></div>
+<div class="inline-figure"><img src="11_ggplot2_intro_files/figure-html/unnamed-chunk-27-1.png" width="672"></div>
+</div>
+<div id="buch-zum-paket" class="section level2" number="11.7">
+<h2>
+<span class="header-section-number">11.7</span> Buch zum Paket<a class="anchor" aria-label="anchor" href="#buch-zum-paket"><i class="fas fa-link"></i></a>
+</h2>
+<p>Dieser Abschnitt konnte nur einen kleinen Einblick in die Möglichkeiten des <code>ggplot2</code> Pakets geben. Eine ausführliche Beschreibung findet man im <a href="https://ggplot2-book.org">Buch</a> zum Paket.</p>
+<!--Packages: main link-->
+<!--Packages: vignettes & CRAN/GitHub links-->
+<!--Bookdowns: main link-->
+<!--Bookdowns: specific chapters-->
+<!--RStudio Cheat Sheets-->
+<!--Blog posts, slides, & papers-->
+<!--Papers/Books Cited-->
+<!--Misc.-->
+
+</div>
+</div>
+
+
+
+  <div class="chapter-nav">
+<div class="prev"><a href="graphics-overview.html"><span class="header-section-number">10</span> Einführung</a></div>
+<div class="next"><a href="packages.html"><span class="header-section-number">12</span> Pakete</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#bausteine"><span class="header-section-number">11</span> Bausteine</a></li>
+<li><a class="nav-link" href="#aes"><span class="header-section-number">11.1</span> Aesthetics</a></li>
+<li><a class="nav-link" href="#geoms"><span class="header-section-number">11.2</span> Geoms</a></li>
+<li><a class="nav-link" href="#stat-trans"><span class="header-section-number">11.3</span> Statistische Transformationen</a></li>
+<li><a class="nav-link" href="#scales"><span class="header-section-number">11.4</span> scales</a></li>
+<li><a class="nav-link" href="#facets"><span class="header-section-number">11.5</span> facets</a></li>
+<li><a class="nav-link" href="#themes"><span class="header-section-number">11.6</span> themes</a></li>
+<li><a class="nav-link" href="#buch-zum-paket"><span class="header-section-number">11.7</span> Buch zum Paket</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>R4ews MA0009</strong>" was written by Stephan Haug. </p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
+</script>
+</body>
+</html>

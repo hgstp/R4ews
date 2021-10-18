@@ -1,130 +1,112 @@
-# Writing and reading files {#import-export}
+# Daten I/O {#import-export}
 
 
 
-<!--Original content: https://stat545.com/block026_file-out-in.html-->
 
-## File I/O overview
+## Überblick
 
-We've been loading the Gapminder data as a data frame from the [gapminder] data package. We haven't been explicitly writing any data or derived results to file. In real life, you'll bring rectangular data into and out of R all the time. Sometimes you'll need to do same for non-rectangular objects.
+Wir haben die Gapminder-Daten als tibble aus dem [gapminder] Paket geladen. Wir haben im letzten Abschnitt weder Daten noch abgeleitete Ergebnisse explizit in eine Datei geschrieben. Im wirklichen Leben wirst du aber ständig Daten, die in Tabellenform vorliegen, in R ein- und auslesen. Manchmal muss das sogar für Daten geschehen, die nicht in Tabellenform vorliegen.
 
-How do you do this? What issues should you think about?
+Wie macht man das? Worauf muss man aufpassen?
 
-### Data import mindset
+### Daten Import
 
-Data import generally feels one of two ways:
+Für den Daten Import gibt es im Allgemeinen zwei Möglichkeiten:
 
-* *"Surprise me!"* This is the attitude you must adopt when you first get a dataset. You are just happy to import without an error. You start to explore. You discover flaws in the data and/or the import. You address them. Lather, rinse, repeat.
-* *"Another day in paradise."* This is the attitude when you bring in a tidy dataset you have maniacally cleaned in one or more cleaning scripts. There should be no surprises. You should express your expectations about the data in formal assertions at the very start of these downstream scripts.
+* *"Überrasche mich!"* Diese Haltung musst du einnehmen, wenn du zum ersten Mal einen Datensatz erhältst. Du musst einfach froh, wenn du die Daten ohne Fehler importieren konntest. Dann schaust du dir das Ergebnis an,  entdeckst Fehler in den Daten und/oder beim Import. Du behebst sie und beginnst nochmal von vorne.
+* *"Ein weiterer Tag im Paradies. "* Das ist die Einstellung, wenn du einen aufgeräumten Datensatz einliest, den du vorher in einem oder mehreren Reinigungsskripten wahnsinnig aufgeräumt haben. Es sollte keine Überraschungen geben. 
+
   
-In the second case, and as the first cases progresses, you actually know a lot about how the data is/should be. My main import advice: **use the arguments of your import function to get as far as you can, as fast as possible**. Novice code often has a great deal of unnecessary post import fussing around. Read the docs for the import functions and take maximum advantage of the arguments to control the import.
+Im zweiten Fall, und im weiteren Verlauf des ersten Falles, lernst du tatsächlich eine Menge darüber, wie die Daten sind/sein sollten. Ein wichtiger Import-Ratschlag: **Verwende die Argumente der Importfunktion, um so weit wie möglich und so schnell wie möglich zu kommen**. Anfängercode hat oft eine Menge unnötigen nachträglichen Aufwand. Lese die Hilfe zu den Importfunktionen und nutzen die Argumente maximal aus, um den Import zu steuern.
 
-### Data export mindset
+### Daten Export
 
-There will be many occasions when you need to write data from R. Two main examples:
+Es wird viele Gelegenheiten geben, bei denen du Daten aus R exportieren willst. Zwei wichtige Beispiele:
 
-* a tidy ready-to-analyze dataset that you heroically created from messy data
-* a numerical result from data aggregation or modelling or statistical inference 
+* einen gesäuberten Datensatz der bereit ist analysiert zu werden, den du heldenhaft aus recht unordentlichen Daten erstellt hast
+* ein numerisches Ergebnis aus einer Datenaggregation oder Modellierung oder einer statistischen Schlussfolgerung 
 
-First tip: __today's outputs are tomorrow's inputs__. Think back on all the pain you have suffered importing data and don't inflict such pain on yourself!
+Erster Tipp: __Der Output von heute ist der Input von morgen__. Denke an all die Schmerzen zurück, die du selbst beim Import von fremden Daten  erlitten hast, und fügen dir nicht selbst solche Schmerzen zu!
 
-Second tip: don't be too cute or clever. A plain text file that is readable by a human being in a text editor should be your default until you have __actual proof__ that this will not work. Reading and writing to exotic or proprietary formats will be the first thing to break in the future or on a different computer. It also creates barriers for anyone who has a different toolkit than you do. Be software-agnostic. Aim for future-proof and moron-proof.
+Zweiter Tipp: Sei nicht zu clever. Eine einfache Textdatei, die von einem Menschen in einem Texteditor lesbar ist, sollte dein Standard sein, bis du __einen guten Grund__ dafür hast, dass dies nicht funktionieren wird. Das Lesen und Schreiben in exotische Formate wird das erste sein, was in Zukunft oder auf einem anderen Computer kaputtgehen wird. Es schafft auch Barrieren für jeden, der ein anderes Toolkit hat als du. Strebe nach Zukunfts- und Idiotensicherheit.
 
-How does this fit with our emphasis on dynamic reporting via R Markdown? There is a time and place for everything. There are projects and documents where the scope and personnel will allow you to geek out with knitr and R Markdown. But there are lots of good reasons why (parts of) an analysis should not (only) be embedded in a dynamic report. Maybe you are just doing data cleaning to produce a valid input dataset. Maybe you are making a small but crucial contribution to a giant multi-author paper. Etc. Also remember there are other tools and workflows for making something reproducible. I'm looking at you, [make]["minimal make: a minimal tutorial on make"].
+
+Wie passt das zu unserer Betonung der dynamischen Berichterstattung über R Markdown? Es gibt für alles eine Zeit und einen Ort. Es gibt Projekte und Dokumente, bei denen du dich intensiv mit [knitr] und [rmarkdown]  beschäftigen kannst/willst/musst. Aber es gibt viele gute Gründe, warum (Teile von) einer Analyse nicht (nur) in einen dynamischen Bericht eingebettet werden sollten. Vielleicht bist du gerade dabei Daten zu bereinigen, um einen Datensatz für eine nachfolgende Analyse zu erzeugen. Vielleicht leistet du einen kleinen, aber entscheidenden Beitrag zu einem gigantischen Multi-Autoren-Papier. Etc. Denke auch daran, dass es natürlich auch noch andere Werkzeuge und Arbeitsabläufe gibt, um etwas reproduzierbar zu machen: z.B. [make]["minimal make: a minimal tutorial on make"].
 
 ## Load the tidyverse
 
-The main package we will be using is [readr], which provides drop-in substitute functions for `read.table()` and friends. However, to make some points about data export and import, it is nice to reorder factor levels. For that, we will use the [forcats] package, which is also included in the [tidyverse] meta-package.
+Das Hauptpaket, das wir verwenden werden, ist [readr], welches Alternativen zu den Standardfunktionen `read.table()` und `write.table()` bietet. Trotzdem laden wir standardmäßig einfach wieder [tidyverse].
 
 
 ```r
 library(tidyverse)
-#> ── Attaching packages ──────────────────────────────────────── tidyverse 1.3.0 ──
-#> ✓ ggplot2 3.3.2     ✓ purrr   0.3.4
-#> ✓ tibble  3.0.3     ✓ dplyr   1.0.2
-#> ✓ tidyr   1.1.2     ✓ stringr 1.4.0
-#> ✓ readr   1.3.1     ✓ forcats 0.5.0
-#> ── Conflicts ─────────────────────────────────────────── tidyverse_conflicts() ──
+#> ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
+#> ✓ ggplot2 3.3.5     ✓ purrr   0.3.4
+#> ✓ tibble  3.1.2     ✓ dplyr   1.0.7
+#> ✓ tidyr   1.1.3     ✓ stringr 1.4.0
+#> ✓ readr   2.0.1     ✓ forcats 0.5.1
+#> ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 #> x dplyr::filter() masks stats::filter()
 #> x dplyr::lag()    masks stats::lag()
 ```
 
-## Locate the Gapminder data
+## Einlesen der Gapminder Daten
 
-We could load the data from the package as usual, but instead we will load it from tab delimited file. The gapminder package includes the data normally found in the `gapminder` data frame as a `.tsv`. So let's get the path to that file on *your* system using the [fs] package.
+Die Gapminder Daten könnten wir natürlich wie zuvor über das Laden des `gapminder` Pakets verfügbar machen. Da es in diesem Abschnitt aber um das Einlesen von Daten geht, versuchen wir die Daten als `.tsv` Datei (tab-separated values - so sind sie im Paket gespeichert) einzulesen. Aber dies bedeutet natürlich, dass wir die entsprechende `.tsv` Datei erst mal finden müssen. Dabei hilft uns glücklicherweise das [fs] Paket.
 
 
 ```r
 library(fs)
 (gap_tsv <- path_package("gapminder", "extdata", "gapminder.tsv"))
-#> /Users/hgstp/Library/R/4.0/library/gapminder/extdata/gapminder.tsv
+#> /Library/Frameworks/R.framework/Versions/4.0/Resources/library/gapminder/extdata/gapminder.tsv
 ```
 
-## Bring rectangular data in
+Nachdem wir jetzt den Speicherort der Datei kennen, können wir versuchen sie einzulesen.
 
-The workhorse data import function of readr is `read_delim()`. Here we'll use a variant, `read_tsv()`, that anticipates tab-delimited data:
+
+## Einlesen von Daten in Tabellenform
+
+Die Haupt-Funktion zum Einlesen von Daten in readr ist `read_delim()`. Hier verwenden wir eine Variante, `read_tsv()`, für tabulatorgetrennte Daten:
 
 
 ```r
 gapminder <- read_tsv(gap_tsv)
-#> Parsed with column specification:
-#> cols(
-#>   country = col_character(),
-#>   continent = col_character(),
-#>   year = col_double(),
-#>   lifeExp = col_double(),
-#>   pop = col_double(),
-#>   gdpPercap = col_double()
-#> )
-str(gapminder, give.attr = FALSE)
-#> tibble [1,704 × 6] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
-#>  $ country  : chr [1:1704] "Afghanistan" "Afghanistan" "Afghanistan" "Afghani"..
-#>  $ continent: chr [1:1704] "Asia" "Asia" "Asia" "Asia" ...
-#>  $ year     : num [1:1704] 1952 1957 1962 1967 1972 ...
-#>  $ lifeExp  : num [1:1704] 28.8 30.3 32 34 36.1 ...
-#>  $ pop      : num [1:1704] 8425333 9240934 10267083 11537966 13079460 ...
-#>  $ gdpPercap: num [1:1704] 779 821 853 836 740 ...
+#> Rows: 1704 Columns: 6
+#> ── Column specification ────────────────────────────────────────────────────────
+#> Delimiter: "\t"
+#> chr (2): country, continent
+#> dbl (4): year, lifeExp, pop, gdpPercap
+#> 
+#> ℹ Use `spec()` to retrieve the full column specification for this data.
+#> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+glimpse(gapminder)
+#> Rows: 1,704
+#> Columns: 6
+#> $ country   <chr> "Afghanistan", "Afghanistan", "Afghanistan", "Afghanistan", …
+#> $ continent <chr> "Asia", "Asia", "Asia", "Asia", "Asia", "Asia", "Asia", "Asi…
+#> $ year      <dbl> 1952, 1957, 1962, 1967, 1972, 1977, 1982, 1987, 1992, 1997, …
+#> $ lifeExp   <dbl> 28.8, 30.3, 32.0, 34.0, 36.1, 38.4, 39.9, 40.8, 41.7, 41.8, …
+#> $ pop       <dbl> 8425333, 9240934, 10267083, 11537966, 13079460, 14880372, 12…
+#> $ gdpPercap <dbl> 779, 821, 853, 836, 740, 786, 978, 852, 649, 635, 727, 975, …
 ```
 
-For full flexibility re: specifying the delimiter, you can always use `readr::read_delim()`.
 
-There's a similar convenience wrapper for comma-separated values: `read_csv()`.
+Über den Tabulator Spalten in einer Datentabelle zu trennen, ist natürlich nur eine Variante neben weiteren Alternativen wie Komma, Strichpunkt, Leerzeichen, ...
 
-The most noticeable difference between the readr functions and base is that readr does NOT convert strings to factors by default. In the grand scheme of things, this is better default behavior, although we go ahead and convert them to factor here. Do not be deceived -- in general, you will do less post-import fussing if you use readr.
+Für Komma getrennte Daten würde man beispielsweise `read_csv()` verwenden. Für volle Flexibilität bei der Angabe des Trennzeichens kannst du aber jederzeit direkt `read_delim()` verwenden.
 
 
-```r
-gapminder <- gapminder %>%
-  mutate(country = factor(country),
-         continent = factor(continent))
-str(gapminder)
-#> tibble [1,704 × 6] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
-#>  $ country  : Factor w/ 142 levels "Afghanistan",..: 1 1 1 1 1 1 1 1 1 1 ...
-#>  $ continent: Factor w/ 5 levels "Africa","Americas",..: 3 3 3 3 3 3 3 3 3 3 ...
-#>  $ year     : num [1:1704] 1952 1957 1962 1967 1972 ...
-#>  $ lifeExp  : num [1:1704] 28.8 30.3 32 34 36.1 ...
-#>  $ pop      : num [1:1704] 8425333 9240934 10267083 11537966 13079460 ...
-#>  $ gdpPercap: num [1:1704] 779 821 853 836 740 ...
-#>  - attr(*, "spec")=
-#>   .. cols(
-#>   ..   country = col_character(),
-#>   ..   continent = col_character(),
-#>   ..   year = col_double(),
-#>   ..   lifeExp = col_double(),
-#>   ..   pop = col_double(),
-#>   ..   gdpPercap = col_double()
-#>   .. )
-```
 
-### Bring rectangular data in -- summary
+Der auffälligste Unterschied zwischen den readr-Funktionen und der Standardfunktion `read.table()`ist, dass readr standardmäßig Characters NICHT in Faktoren umwandelt. Im Großen und Ganzen ist dies ein besseres Standardverhalten, obwohl es natürlich immer wieder vorkommen wird, dass du einzelne Variablen nach dem Einlesen in einen Faktoren umwandeln wirst. Aber lass dich davon nicht täuschen - im Allgemeinen wirst du durch die Verwendung von readr nach dem Einlesen  weniger Anpassungen machen müssen im Vergleich zum Standardvorgehen.
 
-Default to `readr::read_delim()` and friends. Use the arguments!
+> Fazit: Benutze `readr::read_delim()` und "Freunde".
 
-The Gapminder data is too clean and simple to show off the great features of readr, so I encourage you to check out the part of the introduction vignette on [column types](https://cloud.r-project.org/web/packages/readr/vignettes/readr.html). There are many variable types that you will be able to parse correctly upon import, thereby eliminating a great deal of post-import fussing.
 
-## Compute something worthy of export
+Die Gapminder-Daten sind zu sauber und einfach, um die großartigen Funktionen von readr zur Geltung zu bringen. Ein Blick in [Introduction to readr](https://cloud.r-project.org/web/packages/readr/vignettes/readr.html) zeigt aber noch viele weitere Anpassungsmöglichkeiten der readr Funktionen.
 
-We need compute something worth writing to file. Let's create a country-level summary of maximum life expectancy.
+## Daten exportieren 
+
+Bevor wir etwas exportieren können, müssen (das ist natürlich so nicht richtig - niemand zwingt uns dazu) etwas berechnen, das es wert ist,  exportiert zu werden. Lass uns eine Zusammenfassung der maximalen Lebenserwartung auf Länderebene erstellen.
 
 
 ```r
@@ -132,11 +114,11 @@ gap_life_exp <- gapminder %>%
   group_by(country, continent) %>% 
   summarise(life_exp = max(lifeExp)) %>% 
   ungroup()
-#> `summarise()` regrouping output by 'country' (override with `.groups` argument)
+#> `summarise()` has grouped output by 'country'. You can override using the `.groups` argument.
 gap_life_exp
 #> # A tibble: 142 x 3
 #>    country     continent life_exp
-#>    <fct>       <fct>        <dbl>
+#>    <chr>       <chr>        <dbl>
 #>  1 Afghanistan Asia          43.8
 #>  2 Albania     Europe        76.4
 #>  3 Algeria     Africa        72.3
@@ -150,18 +132,16 @@ gap_life_exp
 #> # … with 132 more rows
 ```
 
-The `gap_life_exp` data frame is an example of an intermediate result that we want to store for the future and for downstream analyses or visualizations.
+Das `gap_life_exp` data frame ist ein Beispiel für ein Zwischenergebnis, das wir für die Zukunft und für nachgelagerte Analysen oder Visualisierungen speichern wollen.
 
-## Write rectangular data out
-
-The workhorse export function for rectangular data in readr is `write_delim()` and friends. Let's use `write_csv()` to get a comma-delimited file.
+Die Haupt-Exportfunktion in readr ist `write_delim()`. Für verschiedene Dateiformate gibt es auch hier wieder verschiedene Komfortfunktionen. Lass uns `write_csv()` benutzen, um eine kommagetrennte Datei zu erhalten.
 
 
 ```r
-write_csv(gap_life_exp, "gap_life_exp.csv")
+write_csv(gap_life_exp, "data/gap_life_exp.csv")
 ```
 
-Let's look at the first few lines of `gap_life_exp.csv`. If you're following along, you should be able to open this file or, in a shell, use `head()` on it.
+Schauen wir uns die ersten paar Zeilen von `gap_life_exp.csv` an. Dazu kannst du entweder die Datei öffnen oder, im Terminal, `head` darauf anwenden.
 
 
 ```
@@ -173,242 +153,225 @@ Angola,Africa,42.731
 Argentina,Americas,75.32
 ```
 
-This is pretty decent looking, though there is no visible alignment or separation into columns. Had we used the base function `read.csv()`, we would be seeing rownames and lots of quotes, unless we had explicitly shut that down. Nicer default behavior is the main reason we are using `readr::write_csv()` over `write.csv()`.
+Das sieht recht ordentlich aus, obwohl es keine sichtbare Ausrichtung oder Trennung in Spalten gibt. Hätten wir die Basisfunktion `read.csv()` benutzt, würden wir Zeilennamen und viele Anführungszeichen sehen, es sei denn, wir hätten diese Features explizit abgeschaltet. Das schönere Standardverhalten ist daher der Hauptgrund, warum wir `readr::write_csv()` gegenüber `write.csv()` bevorzugen.
 
-* It's not really fair to complain about the lack of visible alignment. Remember we are ["writing data for computers"]. If you really want to browse around the file, use `View()` in RStudio or open it in Microsoft Excel (!) but don't succumb to the temptation to start doing artisanal data manipulations there ... get back to R and construct commands that you can re-run the next 15 times you import/clean/aggregate/export the same dataset. Trust me, it will happen.
-
-## Invertibility
-
-It turns out these self-imposed rules are often in conflict with one another:
-
-* Write to plain text files
-* Break analysis into pieces: the output of script `i` is an input for script `i + 1`
-* Be the boss of factors: order the levels in a meaningful, usually non-alphabetical way
-* Avoid duplication of code and data
-
-Example: after performing the country-level summarization, we reorder the levels of the country factor, based on life expectancy. This reordering operation is conceptually important and must be embodied in R commands stored in a script. However, as soon as we write `gap_life_exp` to a plain text file, that meta-information about the countries is lost. Upon re-import with `read_delim()` and friends, we are back to alphabetically ordered factor levels. Any measure we take to avoid this loss immediately breaks another one of our rules.
-
-So what do I do? I must admit I save (and re-load) R-specific binary files. Right after I save the plain text file. [Belt and suspenders](https://www.wisegeek.com/what-does-it-mean-to-wear-belt-and-suspenders.htm).
-
-I have toyed with the idea of writing import helper functions for a specific project, that would re-order factor levels in principled ways. They could be defined in one file and called from many. This would also have a very natural implementation within [a workflow where each analytical project is an R package](https://www.carlboettiger.info/2012/05/06/research-workflow.html). But so far it has seemed too much like [yak shaving](https://seths.blog/2005/03/dont_shave_that/). I'm intrigued by a recent discussion of putting such information in YAML frontmatter (see Martin Fenner blog post, ["Using YAML frontmatter with CSV"](https://blog.datacite.org/using-yaml-frontmatter-with-csv/)).
-
-## Reordering the levels of the country factor
-
-The topic of factor level reordering is covered in Chapter \@ref(factors-boss), so let's Just. Do. It. I reorder the country factor levels according to the life expectancy summary we've already computed.
+> Es ist nicht wirklich fair, sich über den Mangel an sichtbarer Ausrichtung zu beklagen, schließlich erzeugen wir Dateien, die der Computer lesen soll. Falls du wirklich in der Datei "herumstöbern" willst, benutze  `View()` in RStudio oder öffnen die Datei mit einem Spreadsheet Programm (!). Aber erliege NIE der Versuchung, dort Datenmanipulationen vorzunehmen ... gehe  zurück zu R und schreibe dort die Befehle, die du die nächsten 15 Mal ausführen kannst, wenn du diesen Datensatz (oder Datensätze derselben Form) importieren/bereinigen/aggregieren/exportieren willst. 
 
 
-```r
-head(levels(gap_life_exp$country)) # alphabetical order
-#> [1] "Afghanistan" "Albania"     "Algeria"     "Angola"      "Argentina"  
-#> [6] "Australia"
-gap_life_exp <- gap_life_exp %>% 
-  mutate(country = fct_reorder(country, life_exp))
-head(levels(gap_life_exp$country)) # in increasing order of maximum life expectancy
-#> [1] "Sierra Leone" "Angola"       "Afghanistan"  "Liberia"      "Rwanda"      
-#> [6] "Mozambique"
-head(gap_life_exp)
-#> # A tibble: 6 x 3
-#>   country     continent life_exp
-#>   <fct>       <fct>        <dbl>
-#> 1 Afghanistan Asia          43.8
-#> 2 Albania     Europe        76.4
-#> 3 Algeria     Africa        72.3
-#> 4 Angola      Africa        42.7
-#> 5 Argentina   Americas      75.3
-#> 6 Australia   Oceania       81.2
-```
+## Daten über eine API
 
-Note that the __row order of `gap_life_exp` has not changed__. I could choose to reorder the rows of the data frame if, for example, I was about to prepare a table to present to people. But I'm not, so I won't.
+Interessante Datensätze sind der Treibstoff für ein gutes Data Science Projekt. APIs (Application Programming Interface) sind eine weitere sehr nützliche Methode, um auf interessante Daten zuzugreifen.
 
-## `saveRDS()` and `readRDS()`
+Anstatt einen Datensatz herunterladen zu müssen, ermöglichen APIs Daten direkt von bestimmten Websites über eine Schnittstelle anzufordern. Viele große Webseiten wie Twitter und Facebook ermöglichen über APIs den Zugriff auf Teile ihrer Daten.
 
-If you have a data frame AND you have exerted yourself to rationalize the factor levels, you have my blessing to save it to file in a way that will preserve this hard work upon re-import. Use `saveRDS()`.
+Wir werden die Grundlagen des Zugriffs auf eine API besprechen. Dazu benötigst du aber keine Vorwissen bzgl. APIs.
+
+### Einführung
+
+API ist ein allgemeiner Begriff für den Ort, an dem ein Computerprogramm mit einem anderen oder mit sich selbst interagiert. Wir sprechen über Web-APIs, bei denen zwei verschiedene Computer - ein Client und ein Server - miteinander interagieren, um Daten anzufordern bzw. bereitzustellen.
+
+APIs bieten eine ausgefeilte Möglichkeit Daten von einer Website anzufordern. Wenn eine Website wie Twitter eine API einrichtet, richten sie im Wesentlichen einen Computer ein, der auf Datenanfragen wartet.
+
+Sobald dieser Computer eine Datenanforderung empfängt, verarbeitet er die Daten selbst und sendet sie an den Computer, der sie angefordert hat. Unsere Aufgabe als Anforderer der Daten wird es sein R Code zu schreiben, der die Anforderung erstellt und dem Computer, auf dem die API läuft, mitteilt, was wir benötigen. Dieser Computer liest dann unseren Code, verarbeitet die Anfrage und gibt schön formatierte Daten zurück, die mithilfe existierender R Pakete verarbeitet werden können..
+
+
+### Erstellen von API-Anforderungen in R
+
+Um mit APIs in R zu arbeiten, müssen wir ein paar neue Pakete laden (und vorher natürlich installieren). Konkret werden wir mit den Paketen  `httr` und `jsonlite` arbeiten. Sie spielen bei der Einbindung der APIs unterschiedliche Rollen, aber beide sind unverzichtbar.
+
+Vermutlich hast du die beiden Pakete bisher nicht installiert. Daher ist der erste Schritt die beiden Pakete zu installieren
 
 
 ```r
-saveRDS(gap_life_exp, "gap_life_exp.rds")
+install.packages(c("httr", "jsonlite"))
+
 ```
 
-`saveRDS()` serializes an R object to a binary file. It's not a file you will able to open in an editor, diff nicely with Git(Hub), or share with non-R friends. It's a special purpose, limited use function that I use in specific situations.
-
-The opposite of `saveRDS()` is `readRDS()`. You must assign the return value to an object. I highly recommend you assign back to the same name as before. Why confuse yourself?!?
+und anschließend zu laden
 
 
 ```r
-rm(gap_life_exp)
-gap_life_exp
-#> Error in eval(expr, envir, enclos): object 'gap_life_exp' not found
-gap_life_exp <- readRDS("gap_life_exp.rds")
-gap_life_exp
-#> # A tibble: 142 x 3
-#>    country     continent life_exp
-#>    <fct>       <fct>        <dbl>
-#>  1 Afghanistan Asia          43.8
-#>  2 Albania     Europe        76.4
-#>  3 Algeria     Africa        72.3
-#>  4 Angola      Africa        42.7
-#>  5 Argentina   Americas      75.3
-#>  6 Australia   Oceania       81.2
-#>  7 Austria     Europe        79.8
-#>  8 Bahrain     Asia          75.6
-#>  9 Bangladesh  Asia          64.1
-#> 10 Belgium     Europe        79.4
-#> # … with 132 more rows
+library(httr)
+library(jsonlite)
+#> 
+#> Attaching package: 'jsonlite'
+#> The following object is masked from 'package:purrr':
+#> 
+#>     flatten
 ```
 
-`saveRDS()` has more arguments, in particular `compress` for controlling compression, so read the help for more advanced usage. It is also very handy for saving non-rectangular objects, like a fitted regression model, that took a nontrivial amount of time to compute.
 
-You will eventually hear about `save()` + `load()` and even `save.image()`. You may even see them in documentation and tutorials, but don't be tempted. Just say no. These functions encourage unsafe practices, like storing multiple objects together and even entire workspaces. There are legitimate uses of these functions, but not in your typical data analysis.
+### Unsere erste API-Anfrage stellen
 
-## Retaining factor levels upon re-import
+Der erste Schritt, um Daten von einer API zu erhalten, ist die eigentliche Anfrage in R. Diese Anfrage wird an den Computer-Server geschickt, der über die API verfügt, und wenn alles reibungslos verläuft, wird er eine Antwort zurücksenden. 
 
-Concrete demonstration of how non-alphabetical factor level order is lost with `write_delim()` / `read_delim()` workflows but maintained with `saveRDS()` / `readRDS()`.
+
+Es gibt verschiedene Arten von Anfragen, die man an einen API-Server stellen kann. Diese Arten von Anfragen entsprechen verschiedenen Aktionen, die der Server ausführen soll.
+
+Für unsere Zwecke fragen wir lediglich nach Daten, was einer GET-Anfrage entspricht. Andere Arten von Anfragen sind z.B. POST und PUT, aber diese sind für uns nicht von Interesse und daher brauchen wir uns darum nicht zu kümmern.
+
+Um eine GET-Anfrage zu erstellen, müssen wir die `GET()` Funktion aus dem `httr` Paket verwenden. Die `GET()` Funktion benötigt als Input eine URL, die die Adresse des Servers angibt, an den die Anforderung gesendet werden soll.
+
+
+Als Beispiel werden wir mit der Open Notify API arbeiten, die Daten zu verschiedenen NASA-Projekten enthält. Mithilfe der Open Notify API können wir uns über den Standort der Internationalen Raumstation informieren und erfahren, wie viele Personen sich derzeit im Weltraum aufhalten.
+
+Wir beginnen damit, dass wir unsere Anfrage mit der `GET()` Funktion stellen und die URL der API angeben:
 
 
 ```r
-(country_levels <- tibble(original = head(levels(gap_life_exp$country))))
-#> # A tibble: 6 x 1
-#>   original    
-#>   <chr>       
-#> 1 Sierra Leone
-#> 2 Angola      
-#> 3 Afghanistan 
-#> 4 Liberia     
-#> 5 Rwanda      
-#> 6 Mozambique
-write_csv(gap_life_exp, "gap_life_exp.csv")
-saveRDS(gap_life_exp, "gap_life_exp.rds")
-rm(gap_life_exp)
-head(gap_life_exp) # will cause error! proving gap_life_exp is really gone 
-#> Error in head(gap_life_exp): object 'gap_life_exp' not found
-gap_via_csv <- read_csv("gap_life_exp.csv") %>% 
-  mutate(country = factor(country))
-#> Parsed with column specification:
-#> cols(
-#>   country = col_character(),
-#>   continent = col_character(),
-#>   life_exp = col_double()
-#> )
-gap_via_rds <- readRDS("gap_life_exp.rds")
-country_levels <- country_levels %>% 
-  mutate(via_csv = head(levels(gap_via_csv$country)),
-         via_rds = head(levels(gap_via_rds$country)))
-country_levels
-#> # A tibble: 6 x 3
-#>   original     via_csv     via_rds     
-#>   <chr>        <chr>       <chr>       
-#> 1 Sierra Leone Afghanistan Sierra Leone
-#> 2 Angola       Albania     Angola      
-#> 3 Afghanistan  Algeria     Afghanistan 
-#> 4 Liberia      Angola      Liberia     
-#> 5 Rwanda       Argentina   Rwanda      
-#> 6 Mozambique   Australia   Mozambique
+jdata <- GET("http://api.open-notify.org/astros.json")
 ```
 
-Note how the original, post-reordering country factor levels are restored using the `saveRDS()` / `readRDS()` strategy but revert to alphabetical ordering using `write_csv()` / `read_csv()`.
+Die Ausgabe der Funktion `GET()` ist eine Liste, die alle Informationen enthält, die vom API-Server zurückgegeben werden. 
 
-## `dput()` and `dget()`
 
-One last method of saving and restoring data deserves a mention: `dput()` and `dget()`. `dput()` offers this odd combination of features: it creates a plain text representation of an R object which still manages to be quite opaque. If you use the `file =` argument, `dput()` can write this representation to file but you won't be tempted to actually read that thing. `dput()` creates an R-specific-but-not-binary representation. Let's try it out.
+### `GET()` Ausgabe
+
+Schauen wir uns einmal an, wie die Variable jdata in der R-Konsole aussieht:
 
 
 ```r
-## first restore gap_life_exp with our desired country factor level order
-gap_life_exp <- readRDS("gap_life_exp.rds")
-dput(gap_life_exp, "gap_life_exp-dput.txt")
+jdata
+#> Response [http://api.open-notify.org/astros.json]
+#>   Date: 2021-10-04 16:07
+#>   Status: 200
+#>   Content-Type: application/json
+#>   Size: 355 B
 ```
 
-Now let's look at the first few lines of the file `gap_life_exp-dput.txt`.
+Als erstes fällt auf, dass die URL enthalten ist, an die die GET-Anfrage gesendet wurde. Außerdem sehen wir das Datum und die Uhrzeit, zu der die Anfrage gestellt wurde, sowie die Größe der Antwort.
 
+Die Information `Content-Type` gibt uns eine Vorstellung davon, welche Form die Daten haben. Diese spezielle Antwort besagt, dass die Daten ein JSON-Format annehmen, womit auch klar ist warum wir das Paket `jsonlite` ebenfalls geladen haben.
+
+Der Status verdient eine besondere Aufmerksamkeit. `Status` bezieht sich auf den Erfolg oder Misserfolg der API-Anfrage, und er wird in Form einer Zahl angegeben. Die zurückgegebene Nummer gibt Auskunft darüber, ob die Anfrage erfolgreich war oder nicht, und kann auch einige Gründe für einen möglichen Misserfolg nennen.
+
+Die Zahl 200 ist das, was wir sehen wollen. Sie entspricht einem erfolgreichen Antrag, und das ist es, was wir hier haben. Eine Übersicht über weitere Status Codes findet man z.B. auf dieser [Webseite](https://www.restapitutorial.com/httpstatuscodes.html.
+
+
+### Handling JSON Data
+
+[JSON](https://www.json.org/json-en.html) steht für JavaScript Object Notation. Während JavaScript eine weitere Programmiersprache ist, liegt unser Schwerpunkt bei JSON auf seiner Struktur. JSON ist nützlich, weil es von einem Computer leicht lesbar ist, und aus diesem Grund ist es zur primären Art und Weise geworden, wie Daten über APIs transportiert werden. Die meisten APIs senden ihre Antworten im JSON-Format.
+
+JSON ist als eine Reihe von Schlüssel-Werte-Paaren formatiert, wobei ein bestimmtes Wort ("Schlüssel") mit einem bestimmten Wert assoziiert ist. Ein Beispiel für diese Schlüssel-Wert-Struktur ist unten dargestellt:
 
 ```
-structure(list(country = structure(c(3L, 107L, 74L, 2L, 98L, 
-138L, 128L, 102L, 49L, 125L, 26L, 56L, 96L, 47L, 75L, 85L, 18L, 
-12L, 37L, 24L, 133L, 13L, 16L, 117L, 84L, 82L, 53L, 9L, 28L, 
-120L, 22L, 104L, 114L, 109L, 115L, 23L, 73L, 97L, 66L, 71L, 15L, 
-29L, 20L, 122L, 134L, 40L, 35L, 123L, 38L, 126L, 60L, 25L, 7L, 
-39L, 59L, 141L, 86L, 140L, 51L, 63L, 64L, 52L, 121L, 135L, 132L, 
+{
+    “name”: “Jane Doe”,
+    “number_of_skills”: 2
+}
 ```
 
-Huh? Don't worry about it. Remember we are ["writing data for computers"]. The partner function `dget()` reads this representation back in.
+In ihrem aktuellen Zustand sind die Daten in der Variablen `jdata` nicht verwendbar. Die Daten sind als Unicode-Rohdaten in `jdata` enthalten, und müssen in das JSON-Format konvertiert werden.
+
+Dazu müssen wir zunächst den rohen Unicode in Character Daten konvertieren, die dem oben gezeigten JSON-Format ähneln. Die Funktion `rawToChar()` führt genau diese Aufgabe aus:
+
 
 
 ```r
-gap_life_exp_dget <- dget("gap_life_exp-dput.txt")
-country_levels <- country_levels %>% 
-  mutate(via_dput = head(levels(gap_life_exp_dget$country)))
-country_levels
-#> # A tibble: 6 x 4
-#>   original     via_csv     via_rds      via_dput    
-#>   <chr>        <chr>       <chr>        <chr>       
-#> 1 Sierra Leone Afghanistan Sierra Leone Sierra Leone
-#> 2 Angola       Albania     Angola       Angola      
-#> 3 Afghanistan  Algeria     Afghanistan  Afghanistan 
-#> 4 Liberia      Angola      Liberia      Liberia     
-#> 5 Rwanda       Argentina   Rwanda       Rwanda      
-#> 6 Mozambique   Australia   Mozambique   Mozambique
+rawToChar(jdata$content)
+#> [1] "{\"people\": [{\"craft\": \"ISS\", \"name\": \"Mark Vande Hei\"}, {\"craft\": \"ISS\", \"name\": \"Oleg Novitskiy\"}, {\"craft\": \"ISS\", \"name\": \"Pyotr Dubrov\"}, {\"craft\": \"ISS\", \"name\": \"Thomas Pesquet\"}, {\"craft\": \"ISS\", \"name\": \"Megan McArthur\"}, {\"craft\": \"ISS\", \"name\": \"Shane Kimbrough\"}, {\"craft\": \"ISS\", \"name\": \"Akihiko Hoshide\"}], \"number\": 7, \"message\": \"success\"}"
 ```
 
-Note how the original, post-reordering country factor levels are restored using the `dput()` / `dget()` strategy.
 
-But why on earth would you ever do this?
+Die resultierende Zeichenfolge sieht zwar recht unordentlich aus, aber es liegt wirklich die JSON-Struktur vor.
 
-The main application of this is [the creation of highly portable, self-contained minimal examples](https://stackoverflow.com/questions/5963269/how-to-make-a-great-r-reproducible-example). For example, if you want to pose a question on a forum or directly to an expert, it might be required or just plain courteous to NOT attach any data files. You will need a monolithic, plain text blob that defines any necessary objects and has the necessary code. `dput()` can be helpful for producing the piece of code that defines the object. If you `dput()` without specifying a file, you can copy the return value from Console and paste into a script. Or you can write to file and copy from there or add R commands below.
+Ausgehend von diesem Character Vektor können wir nun mit `fromJSON()` aus dem `jsonlite` alles in ein Listenformat transformieren.
 
-## Other types of objects to use `dput()` or `saveRDS()` on
-
-My special dispensation to abandon human-readable, plain text files is even broader than I've let on. Above, I give my blessing to store data.frames via `dput()` and/or `saveRDS()`, when you've done some rational factor level re-ordering. The same advice and mechanics apply a bit more broadly: you're also allowed to use R-specific file formats to save vital non-rectangular objects, such as a fitted nonlinear mixed effects model or a classification and regression tree.
-
-## Clean up
-
-We've written several files in this tutorial. Some of them are not of lasting value or have confusing filenames. I choose to delete them, while demonstrating some of the many functions R offers for interacting with the filesystem. It's up to you whether you want to submit this command or not.
+Die `fromJSON()` Funktion benötigt einen Character Vektor, der die JSON-Struktur enthält, die wir aus der Ausgabe von `rawToChar()` erhalten haben. Wenn wir also diese beiden Funktionen aneinanderreihen, erhalten wir die gewünschten Daten in einem Format, das wir in R leichter bearbeiten können.
 
 
 ```r
-file.remove(list.files(pattern = "^gap_life_exp"))
-#> [1] TRUE TRUE TRUE
+data <-  fromJSON(rawToChar(jdata$content))
+glimpse(data)
+#> List of 3
+#>  $ people :'data.frame':	7 obs. of  2 variables:
+#>   ..$ craft: chr [1:7] "ISS" "ISS" "ISS" "ISS" ...
+#>   ..$ name : chr [1:7] "Mark Vande Hei" "Oleg Novitskiy" "Pyotr Dubrov" "Thom"..
+#>  $ number : int 7
+#>  $ message: chr "success"
 ```
 
-## Pitfalls of delimited files
-
-If a delimited file contains fields where a human being has typed, be crazy paranoid because people do really nutty things. Especially people who aren't in the business of programming and have never had to compute on text. Claim: a person's regular expression skill is inversely proportional to the skill required to handle the files they create. Implication: if someone has never heard of regular expressions, prepare for lots of pain working with their files.
-
-When the header fields (often, but not always, the variable names) or actual data contain the delimiter, it can lead to parsing and import failures. Two popular delimiters are the comma `,` and the TAB `\t` and humans tend to use these when typing. If you can design this problem away during data capture, such as by using a drop down menu on an input form, by all means do so. Sometimes this is impossible or undesirable and you must deal with fairly free form text. That's a good time to allow/force text to be protected with quotes, because it will make parsing the delimited file go more smoothly.
-
-Sometimes, instead of rigid tab-delimiting, whitespace is used as the delimiter. That is, in fact, the default for both `read.table()` and `write.table()`. Assuming you will write/read variable names from the first line (a.k.a. the `header` in `write.table()` and `read.table()`), they must be valid R variable names ... or they will be coerced into something valid. So, for these two reasons, it is good practice to use "one word" variable names whenever possible. If you need to evoke multiple words, use `snake_case` or `camelCase` to cope. Example: the header entry for the field holding the subject's last name should be `last_name` or `lastName` NOT `last name`. With the readr package, "column names are left as is, not munged into valid R identifiers (i.e. there is no `check.names = TRUE`)". So you can get away with whitespace in variable names and yet I recommend that you do not.
-
-## Resources
-
-[Data import](http://r4ds.had.co.nz/data-import.html) chapter of [R for Data Science] by Hadley Wickham and Garrett Grolemund [-@wickham2016].
-
-White et al.'s "Nine simple ways to make it easier to (re)use your data" [-@white2013]. 
-
-* First appeared [in PeerJ Preprints](https://doi.org/10.7287/peerj.preprints.7v2)
-* Published in [Ideas in Ecology and Evolution in 2013](https://ojs.library.queensu.ca/index.php/IEE/article/view/4608)
-* Section 4 "Use Standard Data Formats" is especially good reading.
-  
-Wickham's paper on tidy data in the Journal of Statistical Software [-@wickham2014]. 
-
-* Available as a PDF [here](http://vita.had.co.nz/papers/tidy-data.pdf)
-
-Data Manipulation in R by Phil Spector [-@spector2008].
-
-* Available via [SpringerLink](https://www.springer.com/gp/book/9780387747309)
-* [Author's webpage](https://www.stat.berkeley.edu/%7Espector/)
-* [GoogleBooks search](https://books.google.com/books?id=grfuq1twFe4C&lpg=PP1&dq=data%2520manipulation%2520spector&pg=PP1#v=onepage&q&f=false)
-* See Chapter 2 ("Reading and Writing Data")
+Die Liste `data` hat drei Elemente. Uns interessiert in erster Linie das Data Frame `people`.
 
 
-<!--Links-->
-["writing data for computers"]: https://twitter.com/vsbuffalo/statuses/358699162679787521
+```r
+data$people
+#>   craft            name
+#> 1   ISS  Mark Vande Hei
+#> 2   ISS  Oleg Novitskiy
+#> 3   ISS    Pyotr Dubrov
+#> 4   ISS  Thomas Pesquet
+#> 5   ISS  Megan McArthur
+#> 6   ISS Shane Kimbrough
+#> 7   ISS Akihiko Hoshide
+```
+
+
+Also, da haben wir unsere Antwort: Zum Zeitpunkt des letzten Updates Mon Oct  4 18:07:45 2021 von R4ews befanden sich 7 Personen im Weltraum. Aber wenn du alles selbst ausprobierst, könnten es auch schon wieder andere Namen und eine andere Anzahl sein. Das ist einer der Vorteile von APIs - im Gegensatz zu herunterladbaren Datensätzen werden sie im Allgemeinen in Echtzeit oder nahezu in Echtzeit aktualisiert, so dass sie eine großartige Möglichkeit darstellen, Zugang zu sehr aktuellen Daten zu erhalten.
+
+
+In diesem Beispiel haben wir einen sehr unkomplizierten API-Workflow durchlaufen. Die meisten APIs erfordern, dass Sie demselben allgemeinen Muster folgen, aber dabei können sie durchaus komplexer sein.
+
+In unserem Beispiel war es ausreichen nur die URL anzugeben. Aber einige APIs verlangen durchaus mehr Informationen vom Benutzer. Im letzten Teil dieser Einführung gehen wir darauf ein, wie du der API mit deiner Anfrage zusätzliche Informationen zur Verfügung stellen kannst.
+
+### APIs und Abfrageparameter
+
+Was wäre, wenn wir wissen wollten, wann die ISS einen bestimmten Ort auf der Erde überfliegen würde? Die ISS Pass Times API von Open Notify verlangt von uns, dass wir zusätzliche Parameter angeben, bevor sie die gewünschten Daten zurückgeben kann.
+
+Wir müssen den Längen- und Breitengrad des Ortes angeben, nach dem wir im Rahmen unserer `GET()` Anfrage fragen. Sobald ein Längen- und Breitengrad angegeben ist, werden sie als Abfrageparameter mit der ursprünglichen URL kombiniert.
+
+Lass uns die API verwenden, um herauszufinden, wann die ISS Garching (auf 48.24896 Breiten- und  11.65101 Längengrad) passieren wird:
+
+
+```r
+jdata <-  GET("http://api.open-notify.org/iss-pass.json",
+    query = list(lat = 48.24896, lon = 11.65101))
+```
+
+
+Man muss in der Dokumentation für die API, mit man arbeiten will, nachsehen, ob es erforderliche Abfrageparameter gibt. Für die überwiegende Mehrheit der APIs, auf die du möglicherweise zugreifen möchtest, gibt es eine Dokumentation, die du lesen kannst (und lesen solltest), um ein klares Verständnis dafür zu erhalten, welche Parameter deine Anfrage erfordert. 
+
+Wie auch immer, jetzt, da wir unsere Anfrage einschließlich der Standortparameter gestellt haben, können wir die Antwort mit den gleichen Funktionen überprüfen, die wir zuvor verwendet haben. Lass uns die Daten aus der Antwort extrahieren:
 
 
 
-<!--STAT 545 external resources/content-->
-[useR-2014-dropbox]: https://www.dropbox.com/sh/i8qnluwmuieicxc/AAAgt9tIKoIm7WZKIyK25lh6a
-[Tidy data using Lord of the Rings]: https://github.com/jennybc/lotr-tidy#readme
-[ggplot2 tutorial]: https://github.com/jennybc/ggplot2-tutorial
-[R Graph Catalog]: https://github.com/jennybc/r-graph-catalog
+```r
+data <- fromJSON(rawToChar(jdata$content))
+data$response
+#>   duration   risetime
+#> 1      652 1633363018
+#> 2      645 1633368830
+#> 3      497 1633374673
+#> 4      468 1633429262
+#> 5      640 1633434941
+```
+
+
+
+Diese API gibt uns Zeiten in Form von [Unixzeit](https://de.wikipedia.org/wiki/Unixzeit) zurück. Unixzeit ist die Zeitspanne, die seit dem 1. Januar 1970 vergangen ist. Mithilfe der Funktion `as_datetime()` aus dem [lubridate] Paket können wir die Unixzeit aber leicht umrechnen
+
+
+```r
+lubridate::as_datetime(data$response$risetime)
+#> [1] "2021-10-04 15:56:58 UTC" "2021-10-04 17:33:50 UTC"
+#> [3] "2021-10-04 19:11:13 UTC" "2021-10-05 10:21:02 UTC"
+#> [5] "2021-10-05 11:55:41 UTC"
+```
+
+
+Wir haben hier wirklich nur die Basics in Bezug auf APIs eingeführt. Aber hoffentlich hat dir diese Einführung trotzdem das Vertrauen gegeben, sich mit einigen komplexeren und leistungsfähigeren APIs auseinanderzusetzen, und trägt dadurch dazu bei, eine ganz neue Welt von Daten zu erschließen, die du erforschen kannst!
+
+
+
+## Weiteres Material
+
+Hier sein noch auf das Kapitel [Data import](http://r4ds.had.co.nz/data-import.html) im Buch [R for Data Science] von Hadley Wickham und Garrett Grolemund [-@wickham2016] verwiesen für weitere Information zum Daten Import.
+
+
+
+
+
+
 
 <!--Packages: main link-->
 [dplyr]: https://dplyr.tidyverse.org
@@ -427,6 +390,7 @@ Data Manipulation in R by Phil Spector [-@spector2008].
 [devtools]: https://devtools.r-lib.org
 [roxygen2]: https://roxygen2.r-lib.org
 [knitr]: https://github.com/yihui/knitr
+[rmarkdown]: https://rmarkdown.rstudio.com/
 [usethis]: https://usethis.r-lib.org
 [xml2]: https://xml2.r-lib.org
 [httr]: https://httr.r-lib.org
@@ -506,5 +470,7 @@ Data Manipulation in R by Phil Spector [-@spector2008].
 
 <!--Misc.-->
 [rOpenSci]: https://ropensci.org
-[wiki-snake-case]: https://en.wikipedia.org/wiki/Snake_case
-[Janus]: https://en.wikipedia.org/wiki/Janus
+
+
+
+
