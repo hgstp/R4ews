@@ -273,8 +273,8 @@ l_x
 ##               - sum((data-mu)^2) / (2*sigma_2))
 ##     l_x
 ##   }
-## <bytecode: 0x7fe182fc2de8>
-## <environment: 0x7fe182829158>
+## <bytecode: 0x7fc60bebb650>
+## <environment: 0x7fc607f54128>
 ```
 
 ```r

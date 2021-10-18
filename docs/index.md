@@ -17,14 +17,14 @@ always_allow_html: true
 
 
 
-Willkommen zur __R Ergänzung zur Einführung in die Wahrscheinlichkeitstheorie und Statistik__. Im Rahmen dieser Ergänzung lernen wir
+Willkommen zur __R Ergänzung zur Einführung in die Wahrscheinlichkeitstheorie und Statistik__. Im Rahmen dieser Ergänzung lernen wir erste Schritte, wie wir
 
-:::: {.content-box-green}
-Daten untersuchen, aufbereiten, visualisieren und analysieren,
+:::: {.content-box-orange}
+Daten aufbereiten, visualisieren und analysieren. 🚀
 ::::
 
 
-Wir wollen all das reproduzierbar, wiederverwendbar und gemeinsam nutzbar machen, und vor allem wollen wir alles mit __R__ machen.
+All das wollen wir reproduzierbar und auch wiedervendbar machen. Und vor allem, wollen wir alles mit [__R__](www.r-project.org) machen.
 
 Auf dieser Website geht es um alles, was bei der Datenanalyse 
 auftaucht **außer um statistische Modellierung und Schlussfolgerungen**. Dieser Teil der statistischen Analyse erfolgt in der Vorlesung *Einführung in die Wahrscheinlichkeitstheorie und Statistik*. 
@@ -33,7 +33,7 @@ auftaucht **außer um statistische Modellierung und Schlussfolgerungen**. Dieser
 Das Design von R4ews wurde durch die Notwendigkeit motiviert, mehr Ausgewogenheit in der angewandten statistischen Ausbildung zu schaffen. Datenanalysten verbringen viel Zeit mit der Projekt-Organisation, der Datenbereinigung und -aufbereitung sowie der Kommunikation. Diese Tätigkeiten können einen tiefgreifenden Einfluss auf die Qualität und Glaubwürdigkeit einer Analyse haben. Dennoch werden diese Fähigkeiten selten vermittelt, obwohl sie so wichtig und notwendig sind. R4ews versucht diese Lücke etwas zu verkleinern.
 
 
-::: {content-box-red}
+::: {.content-box-red}
 Das Material wird kontinuierlich über das Semester hinweg ergänzt/erweitert/verbessert.
 :::
 
@@ -43,7 +43,7 @@ Das Material wird kontinuierlich über das Semester hinweg ergänzt/erweitert/ve
 
 ```r
 > date()
-## [1] "Sun Oct 17 23:12:57 2021"
+## [1] "Mon Oct 18 16:24:09 2021"
 ```
 
 
@@ -73,7 +73,7 @@ Die aktuelle Version dieses Buchs wurde mit
 ##  collate  en_US.UTF-8                 
 ##  ctype    en_US.UTF-8                 
 ##  tz       Europe/Berlin               
-##  date     2021-10-17
+##  date     2021-10-18
 ```
 
 erstellt
