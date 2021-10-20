@@ -43,7 +43,7 @@ Das Material wird kontinuierlich über das Semester hinweg ergänzt/erweitert/ve
 
 ```r
 > date()
-## [1] "Mon Oct 18 16:24:09 2021"
+## [1] "Wed Oct 20 09:27:13 2021"
 ```
 
 
@@ -73,7 +73,7 @@ Die aktuelle Version dieses Buchs wurde mit
 ##  collate  en_US.UTF-8                 
 ##  ctype    en_US.UTF-8                 
 ##  tz       Europe/Berlin               
-##  date     2021-10-18
+##  date     2021-10-20
 ```
 
 erstellt

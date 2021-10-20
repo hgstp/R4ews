@@ -264,7 +264,7 @@ Argentina,Americas,75.32</code></pre>
 <p>Schauen wir uns einmal an, wie die Variable jdata in der R-Konsole aussieht:</p>
 <div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="import-export.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> jdata</span>
 <span id="cb99-2"><a href="import-export.html#cb99-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Response [http://api.open-notify.org/astros.json]</span></span>
-<span id="cb99-3"><a href="import-export.html#cb99-3" aria-hidden="true" tabindex="-1"></a><span class="do">##   Date: 2021-10-18 14:24</span></span>
+<span id="cb99-3"><a href="import-export.html#cb99-3" aria-hidden="true" tabindex="-1"></a><span class="do">##   Date: 2021-10-20 07:27</span></span>
 <span id="cb99-4"><a href="import-export.html#cb99-4" aria-hidden="true" tabindex="-1"></a><span class="do">##   Status: 200</span></span>
 <span id="cb99-5"><a href="import-export.html#cb99-5" aria-hidden="true" tabindex="-1"></a><span class="do">##   Content-Type: application/json</span></span>
 <span id="cb99-6"><a href="import-export.html#cb99-6" aria-hidden="true" tabindex="-1"></a><span class="do">##   Size: 505 B</span></span></code></pre></div>
@@ -311,7 +311,7 @@ Argentina,Americas,75.32</code></pre>
 <span id="cb103-10"><a href="import-export.html#cb103-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 8  Shenzhou 13     Zhai Zhigang</span></span>
 <span id="cb103-11"><a href="import-export.html#cb103-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 9  Shenzhou 13      Wang Yaping</span></span>
 <span id="cb103-12"><a href="import-export.html#cb103-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 Shenzhou 13       Ye Guangfu</span></span></code></pre></div>
-<p>Also, da haben wir unsere Antwort: Zum Zeitpunkt des letzten Updates Mon Oct 18 16:24:27 2021 von R4ews befanden sich 10 Personen im Weltraum. Aber wenn du alles selbst ausprobierst, könnten es auch schon wieder andere Namen und eine andere Anzahl sein. Das ist einer der Vorteile von APIs - im Gegensatz zu herunterladbaren Datensätzen werden sie im Allgemeinen in Echtzeit oder nahezu in Echtzeit aktualisiert, so dass sie eine großartige Möglichkeit darstellen, Zugang zu sehr aktuellen Daten zu erhalten.</p>
+<p>Also, da haben wir unsere Antwort: Zum Zeitpunkt des letzten Updates Wed Oct 20 09:27:32 2021 von R4ews befanden sich 10 Personen im Weltraum. Aber wenn du alles selbst ausprobierst, könnten es auch schon wieder andere Namen und eine andere Anzahl sein. Das ist einer der Vorteile von APIs - im Gegensatz zu herunterladbaren Datensätzen werden sie im Allgemeinen in Echtzeit oder nahezu in Echtzeit aktualisiert, so dass sie eine großartige Möglichkeit darstellen, Zugang zu sehr aktuellen Daten zu erhalten.</p>
 <p>In diesem Beispiel haben wir einen sehr unkomplizierten API-Workflow durchlaufen. Die meisten APIs erfordern, dass Sie demselben allgemeinen Muster folgen, aber dabei können sie durchaus komplexer sein.</p>
 <p>In unserem Beispiel war es ausreichen nur die URL anzugeben. Aber einige APIs verlangen durchaus mehr Informationen vom Benutzer. Im letzten Teil dieser Einführung gehen wir darauf ein, wie du der API mit deiner Anfrage zusätzliche Informationen zur Verfügung stellen kannst.</p>
 </div>
@@ -329,16 +329,16 @@ Argentina,Americas,75.32</code></pre>
 <div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="import-export.html#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> data <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">rawToChar</span>(jdata<span class="sc">$</span>content))</span>
 <span id="cb105-2"><a href="import-export.html#cb105-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> data<span class="sc">$</span>response</span>
 <span id="cb105-3"><a href="import-export.html#cb105-3" aria-hidden="true" tabindex="-1"></a><span class="do">##   duration   risetime</span></span>
-<span id="cb105-4"><a href="import-export.html#cb105-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 1      131 1634567929</span></span>
-<span id="cb105-5"><a href="import-export.html#cb105-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 2      129 1634616780</span></span>
-<span id="cb105-6"><a href="import-export.html#cb105-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 3      598 1634622289</span></span>
-<span id="cb105-7"><a href="import-export.html#cb105-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 4      656 1634628050</span></span>
-<span id="cb105-8"><a href="import-export.html#cb105-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 5      648 1634633876</span></span></code></pre></div>
+<span id="cb105-4"><a href="import-export.html#cb105-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 1      650 1634717439</span></span>
+<span id="cb105-5"><a href="import-export.html#cb105-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 2      652 1634723267</span></span>
+<span id="cb105-6"><a href="import-export.html#cb105-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 3      643 1634729081</span></span>
+<span id="cb105-7"><a href="import-export.html#cb105-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 4      481 1634734929</span></span>
+<span id="cb105-8"><a href="import-export.html#cb105-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 5      487 1634789507</span></span></code></pre></div>
 <p>Diese API gibt uns Zeiten in Form von <a href="https://de.wikipedia.org/wiki/Unixzeit">Unixzeit</a> zurück. Unixzeit ist die Zeitspanne, die seit dem 1. Januar 1970 vergangen ist. Mithilfe der Funktion <code>as_datetime()</code> aus dem <a href="https://lubridate.tidyverse.org">lubridate</a> Paket können wir die Unixzeit aber leicht umrechnen</p>
 <div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="import-export.html#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> lubridate<span class="sc">::</span><span class="fu">as_datetime</span>(data<span class="sc">$</span>response<span class="sc">$</span>risetime)</span>
-<span id="cb106-2"><a href="import-export.html#cb106-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "2021-10-18 14:38:49 UTC" "2021-10-19 04:13:00 UTC"</span></span>
-<span id="cb106-3"><a href="import-export.html#cb106-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [3] "2021-10-19 05:44:49 UTC" "2021-10-19 07:20:50 UTC"</span></span>
-<span id="cb106-4"><a href="import-export.html#cb106-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [5] "2021-10-19 08:57:56 UTC"</span></span></code></pre></div>
+<span id="cb106-2"><a href="import-export.html#cb106-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "2021-10-20 08:10:39 UTC" "2021-10-20 09:47:47 UTC"</span></span>
+<span id="cb106-3"><a href="import-export.html#cb106-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [3] "2021-10-20 11:24:41 UTC" "2021-10-20 13:02:09 UTC"</span></span>
+<span id="cb106-4"><a href="import-export.html#cb106-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [5] "2021-10-21 04:11:47 UTC"</span></span></code></pre></div>
 <p>Wir haben hier wirklich nur die Basics in Bezug auf APIs eingeführt. Aber hoffentlich hat dir diese Einführung trotzdem das Vertrauen gegeben, sich mit einigen komplexeren und leistungsfähigeren APIs auseinanderzusetzen, und trägt dadurch dazu bei, eine ganz neue Welt von Daten zu erschließen, die du erforschen kannst!</p>
 </div>
 </div>

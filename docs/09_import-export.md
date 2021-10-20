@@ -233,7 +233,7 @@ Schauen wir uns einmal an, wie die Variable jdata in der R-Konsole aussieht:
 ```r
 > jdata
 ## Response [http://api.open-notify.org/astros.json]
-##   Date: 2021-10-18 14:24
+##   Date: 2021-10-20 07:27
 ##   Status: 200
 ##   Content-Type: application/json
 ##   Size: 505 B
@@ -310,7 +310,7 @@ Die Liste `data` hat drei Elemente. Uns interessiert in erster Linie das Data Fr
 ```
 
 
-Also, da haben wir unsere Antwort: Zum Zeitpunkt des letzten Updates Mon Oct 18 16:24:27 2021 von R4ews befanden sich 10 Personen im Weltraum. Aber wenn du alles selbst ausprobierst, könnten es auch schon wieder andere Namen und eine andere Anzahl sein. Das ist einer der Vorteile von APIs - im Gegensatz zu herunterladbaren Datensätzen werden sie im Allgemeinen in Echtzeit oder nahezu in Echtzeit aktualisiert, so dass sie eine großartige Möglichkeit darstellen, Zugang zu sehr aktuellen Daten zu erhalten.
+Also, da haben wir unsere Antwort: Zum Zeitpunkt des letzten Updates Wed Oct 20 09:27:32 2021 von R4ews befanden sich 10 Personen im Weltraum. Aber wenn du alles selbst ausprobierst, könnten es auch schon wieder andere Namen und eine andere Anzahl sein. Das ist einer der Vorteile von APIs - im Gegensatz zu herunterladbaren Datensätzen werden sie im Allgemeinen in Echtzeit oder nahezu in Echtzeit aktualisiert, so dass sie eine großartige Möglichkeit darstellen, Zugang zu sehr aktuellen Daten zu erhalten.
 
 
 In diesem Beispiel haben wir einen sehr unkomplizierten API-Workflow durchlaufen. Die meisten APIs erfordern, dass Sie demselben allgemeinen Muster folgen, aber dabei können sie durchaus komplexer sein.
@@ -342,11 +342,11 @@ Wie auch immer, jetzt, da wir unsere Anfrage einschließlich der Standortparamet
 > data <- fromJSON(rawToChar(jdata$content))
 > data$response
 ##   duration   risetime
-## 1      131 1634567929
-## 2      129 1634616780
-## 3      598 1634622289
-## 4      656 1634628050
-## 5      648 1634633876
+## 1      650 1634717439
+## 2      652 1634723267
+## 3      643 1634729081
+## 4      481 1634734929
+## 5      487 1634789507
 ```
 
 
@@ -356,9 +356,9 @@ Diese API gibt uns Zeiten in Form von [Unixzeit](https://de.wikipedia.org/wiki/U
 
 ```r
 > lubridate::as_datetime(data$response$risetime)
-## [1] "2021-10-18 14:38:49 UTC" "2021-10-19 04:13:00 UTC"
-## [3] "2021-10-19 05:44:49 UTC" "2021-10-19 07:20:50 UTC"
-## [5] "2021-10-19 08:57:56 UTC"
+## [1] "2021-10-20 08:10:39 UTC" "2021-10-20 09:47:47 UTC"
+## [3] "2021-10-20 11:24:41 UTC" "2021-10-20 13:02:09 UTC"
+## [5] "2021-10-21 04:11:47 UTC"
 ```
 
 

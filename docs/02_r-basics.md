@@ -138,7 +138,7 @@ Nicht alle Funktionen haben (oder erfordern) Argumente:
 
 ```r
 > date()
-## [1] "Mon Oct 18 16:24:12 2021"
+## [1] "Wed Oct 20 09:27:16 2021"
 ```
 
 Schaut euch nun euren Workspace an - unter Environment (vermutlich im Fenster rechts oben) seht ihr den Inhalt eures Workspace. Der Workspace ist der Ort, an dem sich benutzerdefinierte Objekte ansammeln. Eine Liste dieser Objekte könnt ihr auch mit diesen Befehlen erhalten:
@@ -269,7 +269,7 @@ Wir nehmen nun an, dass ihr ein RStudio Projekt angelegt und auch geöffnet habt
 > x <- runif(40)
 > y <- a + b * x + rnorm(40, sd = sqrt(sig_sq))
 > (x_n <- mean(x))
-## [1] 0.472
+## [1] 0.524
 > write(x_n, "mittelwert_x.txt")
 > plot(x, y)
 > abline(a, b, col = "purple")
@@ -306,7 +306,7 @@ Es ist üblich, R-Skripte mit einem `.R` oder `.r` Suffix zu speichern. Befolgt 
 
 Kommentare beginnen mit einem oder mehreren `#`-Symbolen. Verwendet Kommentare. RStudio hilft dir dabei ausgewählte Zeilen mit `Ctrl+Shift+C` (Windows und Linux) oder `command+Shif+C` (Mac) zu kommentieren oder vorhandene Kommentare wieder zu entfernen.
 
-Dieser __Workflow__ wird dir in Zukunft gute Dienste leisten:
+Dieser __Workflow__ wird euch in Zukunft gute Dienste leisten:
 
 ::: {.content-box-green}
 * Erstelle ein RStudio Projekt für ein analytisches Projekt

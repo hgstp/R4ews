@@ -279,7 +279,7 @@ Es ist üblich, R-Skripte mit einem `.R` oder `.r` Suffix zu speichern. Befolgt 
 
 Kommentare beginnen mit einem oder mehreren `#`-Symbolen. Verwendet Kommentare. RStudio hilft dir dabei ausgewählte Zeilen mit `Ctrl+Shift+C` (Windows und Linux) oder `command+Shif+C` (Mac) zu kommentieren oder vorhandene Kommentare wieder zu entfernen.
 
-Dieser __Workflow__ wird dir in Zukunft gute Dienste leisten:
+Dieser __Workflow__ wird euch in Zukunft gute Dienste leisten:
 
 ::: {.content-box-green}
 * Erstelle ein RStudio Projekt für ein analytisches Projekt
