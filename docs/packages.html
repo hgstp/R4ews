@@ -124,7 +124,7 @@ Lizenz, Titel, Abhängigkeiten, …)</li>
 </ul>
 <p>Bei der Erzeugung der Struktur (wie auch weiteren Schritten bei der Entwicklung) sollte man so viel wie möglich automatisieren. Wir verwenden dazu die von Hadley Wickham bereitgestellten Werkzeuge.</p>
 <p>Falls noch nicht geschehen, sollte man</p>
-<div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="packages.html#cb178-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"devtools"</span>, <span class="st">"roxygen2"</span>, <span class="st">"testthat"</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="packages.html#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"devtools"</span>, <span class="st">"roxygen2"</span>, <span class="st">"testthat"</span>))</span></code></pre></div>
 <p>ausführen. Diese Pakete erleichtern in Kombination mit RStudio das Erstellen von Paketen.</p>
 </div>
 <div id="c-compiler" class="section level2" number="12.2">
@@ -133,9 +133,9 @@ Lizenz, Titel, Abhängigkeiten, …)</li>
 </h2>
 <p>Um alle Möglichkeiten bei der Erstellung von R-Paketen ausnützen zu können, brauchst du außerdem einen Compiler und noch ein paar andere Werkzeuge. Dies ist aber vermutlich erst dann wirklich nötig, wenn du Pakete bauen willst, die C- oder C++-Code enthalten (nicht Teil des Kurses). RStudio sollte dich auch warnen und dir Unterstützung anbieten, sobald du versuchen solltest, etwas zu tun, das die Einrichtung einer Entwicklungsumgebung erfordert.</p>
 <p>Mit <code>has_devel()</code> kannst du aber bereits auch jetzt mal überprüfen ob dein System vielleicht schon bereit ist</p>
-<div class="sourceCode" id="cb179"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb179-1"><a href="packages.html#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(devtools)</span></code></pre></div>
-<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="packages.html#cb180-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">has_devel</span>()</span>
-<span id="cb180-2"><a href="packages.html#cb180-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Your system is ready to build packages!</span></span></code></pre></div>
+<div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb180-1"><a href="packages.html#cb180-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(devtools)</span></code></pre></div>
+<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="packages.html#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">has_devel</span>()</span>
+<span id="cb181-2"><a href="packages.html#cb181-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Your system is ready to build packages!</span></span></code></pre></div>
 <p>Dies scheint bei mir der Fall zu sein.</p>
 </div>
 <div id="r-code" class="section level2" number="12.3">
@@ -144,7 +144,7 @@ Lizenz, Titel, Abhängigkeiten, …)</li>
 </h2>
 <p>Das Verzeichnis <code>R/</code> ist der wichtigste Bestandteil eines Pakets, da dort der komplette R Code liegt.
 Dieses Verzeichnis (wie auch andere Teile) erzeugt man mit der Funktion <code><a href="https://devtools.r-lib.org//reference/create.html">devtools::create()</a></code>, z.B.</p>
-<div class="sourceCode" id="cb181"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb181-1"><a href="packages.html#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">create</span>(<span class="st">"Pfad_zum_Paket/Paketname"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="packages.html#cb182-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">create</span>(<span class="st">"Pfad_zum_Paket/Paketname"</span>)</span></code></pre></div>
 <p>Dieser Befehl erzeugt das Verzeichnis <code>Pfad_zum_Paket/Paketname</code>, welches</p>
 <ol style="list-style-type: decimal">
 <li>eine RStudio Projektdatei, <code>Paketname.Rproj</code>
@@ -200,7 +200,7 @@ Dieses Verzeichnis (wie auch andere Teile) erzeugt man mit der Funktion <code><a
 <span class="header-section-number">12.5</span> DESCRIPTION<a class="anchor" aria-label="anchor" href="#description"><i class="fas fa-link"></i></a>
 </h2>
 <p>Die DESCRIPTION Datei enthält Informationen über das Paket und ist ein essentieller Bestandteil jedes Pakets. Der Befehl</p>
-<div class="sourceCode" id="cb182"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb182-1"><a href="packages.html#cb182-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> usethis<span class="sc">::</span><span class="fu">create_package</span>(<span class="st">"meinR4EWSpckg"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="packages.html#cb183-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> usethis<span class="sc">::</span><span class="fu">create_package</span>(<span class="st">"meinR4EWSpckg"</span>)</span></code></pre></div>
 <p>erzeugt die DESCRIPTION Datei</p>
 <pre><code>Package: meinR4EWSpckg
 Type: Package
@@ -217,7 +217,7 @@ LazyData: true</code></pre>
 <p>Die wichtigsten Felder einer DESCRIPTION Datei sind dadurch vorhanden (und müssen gefüllt werden). Über die Punkte <code>Imports</code> und <code>Suggests</code> (nicht automatisch vorhanden) kann festgelegt werden welche anderen R Pakete zwingend notwendig bzw. hilfreich sind für das eigene Paket.</p>
 <p>Pakete in <code>Imports</code> werden beim Installieren des eigenen Pakets ebenfalls installiert, falls diese noch nicht vorhanden sind. Pakete in <code>Suggests</code> werden nicht automatisch installiert.</p>
 <p>Über</p>
-<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="packages.html#cb184-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> usethis<span class="sc">::</span><span class="fu">use_package</span>(<span class="st">"dplyr"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="packages.html#cb185-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> usethis<span class="sc">::</span><span class="fu">use_package</span>(<span class="st">"dplyr"</span>)</span></code></pre></div>
 <p>kann z.B. das Paket <code>dplyr</code> dem Punkt <code>Imports</code> hinzugefügt werden. <code><a href="https://usethis.r-lib.org/reference/use_package.html">usethis::use_package(type = "Suggests")</a></code> fügt <code>Suggests</code> weitere Pakete hinzu.</p>
 <div id="name-titel-beschreibung" class="section level3" number="12.5.1">
 <h3>
@@ -263,10 +263,10 @@ in der DESCRIPTION Datei R Code verwendet werden um die nötigen Informationen</
                   email = "haug@tum.de", 
                   role = c("cre", "aut"))</code></pre>
 <p>Der Output von <code><a href="https://rdrr.io/r/utils/person.html">person()</a></code> sieht dann folgendermaßen aus</p>
-<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="packages.html#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">person</span>(<span class="at">given =</span> <span class="st">"Stephan"</span>, <span class="at">family =</span> <span class="st">"Haug"</span>, </span>
-<span id="cb187-2"><a href="packages.html#cb187-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                   <span class="at">email =</span> <span class="st">"haug@tum.de"</span>, </span>
-<span id="cb187-3"><a href="packages.html#cb187-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                   <span class="at">role =</span> <span class="fu">c</span>(<span class="st">"cre"</span>, <span class="st">"aut"</span>))</span>
-<span id="cb187-4"><a href="packages.html#cb187-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "Stephan Haug &lt;haug@tum.de&gt; [cre, aut]"</span></span></code></pre></div>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="packages.html#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">person</span>(<span class="at">given =</span> <span class="st">"Stephan"</span>, <span class="at">family =</span> <span class="st">"Haug"</span>, </span>
+<span id="cb188-2"><a href="packages.html#cb188-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                   <span class="at">email =</span> <span class="st">"haug@tum.de"</span>, </span>
+<span id="cb188-3"><a href="packages.html#cb188-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                   <span class="at">role =</span> <span class="fu">c</span>(<span class="st">"cre"</span>, <span class="st">"aut"</span>))</span>
+<span id="cb188-4"><a href="packages.html#cb188-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "Stephan Haug &lt;haug@tum.de&gt; [cre, aut]"</span></span></code></pre></div>
 </div>
 <div id="version" class="section level3" number="12.5.3">
 <h3>
@@ -274,8 +274,8 @@ in der DESCRIPTION Datei R Code verwendet werden um die nötigen Informationen</
 </h3>
 <p><code><a href="https://devtools.r-lib.org//reference/create.html">devtools::create()</a></code> legt die Default-Version auf <code>0.1.0</code> fest. Generell sollte die Versionsnummer aber aus drei Teilen bestehen und die Form <code>x.y.z</code> haben, wobei <code>x</code> die Nummer für größere Updates, <code>y</code> die Nummer für kleinere Updates und <code>z</code> die Nummer für Korrekturen ist.</p>
 <p>Die aktuelle Version von <code>ggplot2</code> ist z.B.</p>
-<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="packages.html#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">packageVersion</span>(<span class="st">"ggplot2"</span>)</span>
-<span id="cb188-2"><a href="packages.html#cb188-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] '3.3.5'</span></span></code></pre></div>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="packages.html#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">packageVersion</span>(<span class="st">"ggplot2"</span>)</span>
+<span id="cb189-2"><a href="packages.html#cb189-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] '3.3.5'</span></span></code></pre></div>
 <p>Für Pakete, die sich in der Entwicklung befinden, bietet es sich an noch einen vierten Teil anzufügen und mit der Versionsnummer <code>0.0.0.9000</code> zu starten.</p>
 <p>Nach diesen Anpassung könnte die DESCRIPTION Datei also so aussehen</p>
 <pre><code>Package: meinR4EWSpckg
@@ -381,27 +381,27 @@ Weitere Tags sind im Abschnitt <a href="http://r-pkgs.had.co.nz/man.html#man-fun
 </h2>
 <p>Es ist nicht nur für das Erstellen von Paketen hilfreich das Konzept eines <code>NAMESPACE</code> verstanden zu haben, sondern auch für das generelle Arbeiten mit R. Man unterscheidet dabei <strong>Import</strong> <code>NAMESPACES</code> und <strong>Export</strong> <code>NAMESPACES</code>.</p>
 <p><strong>Import</strong> legt dabei fest wie die Funktion eines Pakets eine Funktion in einem anderen Paket findet. Betrachten wir z.B.</p>
-<div class="sourceCode" id="cb192"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb192-1"><a href="packages.html#cb192-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> nrow</span>
-<span id="cb192-2"><a href="packages.html#cb192-2" aria-hidden="true" tabindex="-1"></a><span class="do">## function (x) </span></span>
-<span id="cb192-3"><a href="packages.html#cb192-3" aria-hidden="true" tabindex="-1"></a><span class="do">## dim(x)[1L]</span></span>
-<span id="cb192-4"><a href="packages.html#cb192-4" aria-hidden="true" tabindex="-1"></a><span class="do">## &lt;bytecode: 0x7f93940a6fb8&gt;</span></span>
-<span id="cb192-5"><a href="packages.html#cb192-5" aria-hidden="true" tabindex="-1"></a><span class="do">## &lt;environment: namespace:base&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="packages.html#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> nrow</span>
+<span id="cb193-2"><a href="packages.html#cb193-2" aria-hidden="true" tabindex="-1"></a><span class="do">## function (x) </span></span>
+<span id="cb193-3"><a href="packages.html#cb193-3" aria-hidden="true" tabindex="-1"></a><span class="do">## dim(x)[1L]</span></span>
+<span id="cb193-4"><a href="packages.html#cb193-4" aria-hidden="true" tabindex="-1"></a><span class="do">## &lt;bytecode: 0x7f912e848db8&gt;</span></span>
+<span id="cb193-5"><a href="packages.html#cb193-5" aria-hidden="true" tabindex="-1"></a><span class="do">## &lt;environment: namespace:base&gt;</span></span></code></pre></div>
 <p>Diese Funktion ist definiert in Abhängigkeit von <code><a href="https://rdrr.io/r/base/dim.html">dim()</a></code> aus dem <code>base</code> Paket.</p>
 <p>Auch wenn wir die Funktion</p>
-<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="packages.html#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> dim <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>)</span>
-<span id="cb193-2"><a href="packages.html#cb193-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">dim</span>(mtcars)</span>
-<span id="cb193-3"><a href="packages.html#cb193-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1 1</span></span></code></pre></div>
+<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="packages.html#cb194-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> dim <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>)</span>
+<span id="cb194-2"><a href="packages.html#cb194-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">dim</span>(mtcars)</span>
+<span id="cb194-3"><a href="packages.html#cb194-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1 1</span></span></code></pre></div>
 <p>definieren, findet <code><a href="https://rdrr.io/r/base/nrow.html">nrow()</a></code> trotzdem die “richtige” Funktion</p>
-<div class="sourceCode" id="cb194"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb194-1"><a href="packages.html#cb194-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">nrow</span>(mtcars)</span>
-<span id="cb194-2"><a href="packages.html#cb194-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 32</span></span></code></pre></div>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="packages.html#cb195-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">nrow</span>(mtcars)</span>
+<span id="cb195-2"><a href="packages.html#cb195-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 32</span></span></code></pre></div>
 <p>da sie den <code>NAMESPACE</code> des <code>base</code> Pakets verwendet.</p>
 <p><strong>Export</strong> legt fest welche Funktionen eines Pakets außerhalb des Pakets zur Verfügung stehen sollen. Dies müssen/sollten nicht alle Funktionen sein. Ein Paket kann also interne Funktionen haben, die nur intern verwendet werden können.</p>
 <p>Über den Operator <code><a href="https://rdrr.io/r/base/ns-dblcolon.html">::</a></code> wird explizit auf den NAMESPACE eines Pakets zugegriffen. Auf diese Art und Weise vermeidet man auch Konflikte zwischen Funktionen aus verschiedenen Paketen, die aber den gleichem Namen haben. In einem solchen Fall kommt es darauf an welches Paket zuletzt geladen wurde. Dieses findet man dann zuerst im Suchpfad</p>
-<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="packages.html#cb195-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">search</span>()</span>
-<span id="cb195-2"><a href="packages.html#cb195-2" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] ".GlobalEnv"        "package:devtools"  "package:usethis"  </span></span>
-<span id="cb195-3"><a href="packages.html#cb195-3" aria-hidden="true" tabindex="-1"></a><span class="do">##  [4] "package:stats"     "package:graphics"  "package:grDevices"</span></span>
-<span id="cb195-4"><a href="packages.html#cb195-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  [7] "package:utils"     "package:datasets"  "package:methods"  </span></span>
-<span id="cb195-5"><a href="packages.html#cb195-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [10] "Autoloads"         "package:base"</span></span></code></pre></div>
+<div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="packages.html#cb196-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">search</span>()</span>
+<span id="cb196-2"><a href="packages.html#cb196-2" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] ".GlobalEnv"        "package:devtools"  "package:usethis"  </span></span>
+<span id="cb196-3"><a href="packages.html#cb196-3" aria-hidden="true" tabindex="-1"></a><span class="do">##  [4] "package:stats"     "package:graphics"  "package:grDevices"</span></span>
+<span id="cb196-4"><a href="packages.html#cb196-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  [7] "package:utils"     "package:datasets"  "package:methods"  </span></span>
+<span id="cb196-5"><a href="packages.html#cb196-5" aria-hidden="true" tabindex="-1"></a><span class="do">## [10] "Autoloads"         "package:base"</span></span></code></pre></div>
 <p>In der <code>NAMESPACE</code> Datei beschreiben</p>
 <ul>
 <li>
@@ -437,8 +437,8 @@ export_function &lt;- function(...){
 <span class="header-section-number">12.8</span> Daten einbinden<a class="anchor" aria-label="anchor" href="#daten-einbinden"><i class="fas fa-link"></i></a>
 </h2>
 <p>Daten, die das Paket enthalten sollte, legt man im Verzeichnis <code>/data</code> ab. Als Format sollte man <code>.rda</code> wählen (ist aber kein Muss). Der einfachste Weg dies zu berücksichtigen ist die Funktion <code><a href="https://usethis.r-lib.org/reference/use_data.html">usethis::use_data()</a></code> zu verwenden.</p>
-<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="packages.html#cb197-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> x <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb197-2"><a href="packages.html#cb197-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> usethis<span class="sc">::</span><span class="fu">use_data</span>(x, mtcars)</span></code></pre></div>
+<div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="packages.html#cb198-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> x <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>, <span class="dv">50</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb198-2"><a href="packages.html#cb198-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> usethis<span class="sc">::</span><span class="fu">use_data</span>(x, mtcars)</span></code></pre></div>
 <p>Dieser Befehl speichert die Objekte <code>x</code> und <code>mtcars</code> in den Dateien <code>data/x.rda</code> und <code>data/mtcars.rda</code> ab. Der Dateiname stimmt also mit dem Objektnamen überein.</p>
 <p>Datensätze sollten auf jeden Fall dokumentiert werden. Dazu fügt man einfach in eine der <code>.R</code> Dateien im Verzeichnis <code>/R</code> einen weiteren <code>roxygen2</code> Absatz ein. Für das Dokumentieren von Datensätzen stehen zwei weitere Tags bereit. Über <code>@format</code> beschreibt man das genaue Format der Daten, z.B. die einzelnen Spalten eines Data Frames, und mit <code>@source</code> gibt man (falls vorhanden) die Datenquelle an.</p>
 <p>Die Beschreibung des Datensatzes <code>x</code> könnte also z.B. so aussehen</p>
@@ -455,7 +455,7 @@ export_function &lt;- function(...){
 <span class="header-section-number">12.9</span> C++ (Special Topic)<a class="anchor" aria-label="anchor" href="#c-special-topic"><i class="fas fa-link"></i></a>
 </h2>
 <p>Will man in seinem Paket R Funktionen verwenden, die mithilfe von <code>Rcpp</code> aus kompiliertem C++ Code entstanden sind, so sollte man zur Vorbereitung</p>
-<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="packages.html#cb199-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> usethis<span class="sc">::</span><span class="fu">use_rcpp</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb200"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb200-1"><a href="packages.html#cb200-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> usethis<span class="sc">::</span><span class="fu">use_rcpp</span>()</span></code></pre></div>
 <p>ausführen. Danach ist das das Verzeichnis <code>/src</code> angelegt und <code>Rcpp</code> zu den Feldern <code>LinkingTo</code> und <code>Imports</code> in der <code>DESCRIPTION</code> Datei hinzugefügt. Außerdem wird man aufgefordert die roxygen Tags</p>
 <pre><code>#' @useDynLib meinR4EWSpckg
 #' @importFrom Rcpp sourceCpp</code></pre>
@@ -486,7 +486,7 @@ git push -u origin master</code></pre>
 <p>Angenommen es existiert bereits ein remote repository und das Paket soll dort “verwaltet” werden. Dann kannst du einfach dieses repository klonen</p>
 <pre><code>git clone https://gitlab.lrz.de/vw99xyz/paketName.git</code></pre>
 <p>Danach existiert im Verzeichnis, in dem der Befehl ausgeführt wurde, das Unterverzeichnis <code>paketName</code>. In R kannst du anschließend den Befehl</p>
-<div class="sourceCode" id="cb204"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb204-1"><a href="packages.html#cb204-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> devtools<span class="sc">::</span><span class="fu">create</span>(<span class="st">"paketName"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb205-1"><a href="packages.html#cb205-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> devtools<span class="sc">::</span><span class="fu">create</span>(<span class="st">"paketName"</span>)</span></code></pre></div>
 <p>ausführen (im Verzeichnis, welches das Git repository <code>paketName</code> enthält). Danach kannst du die Änderungen speichern über einen commit Befehl</p>
 <pre><code>git add -A
 git commit -m "paket struktur angelegt"</code></pre>

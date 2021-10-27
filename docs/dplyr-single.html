@@ -105,42 +105,42 @@
 <span class="header-section-number">7.2</span> Falls noch nicht geschehen: lade <code>dplyr</code> und <code>gapminder</code><a class="anchor" aria-label="anchor" href="#falls-noch-nicht-geschehen-lade-dplyr-und-gapminder"><i class="fas fa-link"></i></a>
 </h2>
 <p>Wir starten wieder mit dem Laden von <code>dplyr</code> (über <code>tidyverse</code>)</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="dplyr-single.html#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(tidyverse)</span>
-<span id="cb61-2"><a href="dplyr-single.html#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="do">## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</span></span>
-<span id="cb61-3"><a href="dplyr-single.html#cb61-3" aria-hidden="true" tabindex="-1"></a><span class="do">## ✓ ggplot2 3.3.5     ✓ purrr   0.3.4</span></span>
-<span id="cb61-4"><a href="dplyr-single.html#cb61-4" aria-hidden="true" tabindex="-1"></a><span class="do">## ✓ tibble  3.1.2     ✓ dplyr   1.0.7</span></span>
-<span id="cb61-5"><a href="dplyr-single.html#cb61-5" aria-hidden="true" tabindex="-1"></a><span class="do">## ✓ tidyr   1.1.3     ✓ stringr 1.4.0</span></span>
-<span id="cb61-6"><a href="dplyr-single.html#cb61-6" aria-hidden="true" tabindex="-1"></a><span class="do">## ✓ readr   2.0.1     ✓ forcats 0.5.1</span></span>
-<span id="cb61-7"><a href="dplyr-single.html#cb61-7" aria-hidden="true" tabindex="-1"></a><span class="do">## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──</span></span>
-<span id="cb61-8"><a href="dplyr-single.html#cb61-8" aria-hidden="true" tabindex="-1"></a><span class="do">## x dplyr::filter() masks stats::filter()</span></span>
-<span id="cb61-9"><a href="dplyr-single.html#cb61-9" aria-hidden="true" tabindex="-1"></a><span class="do">## x dplyr::lag()    masks stats::lag()</span></span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="dplyr-single.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(tidyverse)</span>
+<span id="cb62-2"><a href="dplyr-single.html#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="do">## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</span></span>
+<span id="cb62-3"><a href="dplyr-single.html#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="do">## ✓ ggplot2 3.3.5     ✓ purrr   0.3.4</span></span>
+<span id="cb62-4"><a href="dplyr-single.html#cb62-4" aria-hidden="true" tabindex="-1"></a><span class="do">## ✓ tibble  3.1.2     ✓ dplyr   1.0.7</span></span>
+<span id="cb62-5"><a href="dplyr-single.html#cb62-5" aria-hidden="true" tabindex="-1"></a><span class="do">## ✓ tidyr   1.1.3     ✓ stringr 1.4.0</span></span>
+<span id="cb62-6"><a href="dplyr-single.html#cb62-6" aria-hidden="true" tabindex="-1"></a><span class="do">## ✓ readr   2.0.1     ✓ forcats 0.5.1</span></span>
+<span id="cb62-7"><a href="dplyr-single.html#cb62-7" aria-hidden="true" tabindex="-1"></a><span class="do">## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──</span></span>
+<span id="cb62-8"><a href="dplyr-single.html#cb62-8" aria-hidden="true" tabindex="-1"></a><span class="do">## x dplyr::filter() masks stats::filter()</span></span>
+<span id="cb62-9"><a href="dplyr-single.html#cb62-9" aria-hidden="true" tabindex="-1"></a><span class="do">## x dplyr::lag()    masks stats::lag()</span></span></code></pre></div>
 <p>und <code>gapminder</code></p>
-<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="dplyr-single.html#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(gapminder)</span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="dplyr-single.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(gapminder)</span></code></pre></div>
 </div>
 <div id="mitmutate-neue-variablen-erstellen" class="section level2" number="7.3">
 <h2>
 <span class="header-section-number">7.3</span> Mit<code>mutate()</code> neue Variablen erstellen<a class="anchor" aria-label="anchor" href="#mitmutate-neue-variablen-erstellen"><i class="fas fa-link"></i></a>
 </h2>
 <p>Wir starten mit dem Anlegen einer Kopie von <code>gapminder</code>, die wir dann nach unseren Vorstellungen verändern (wäre aber auch nichts passiert, wenn wir alles mit <code>gapminder</code> durchführen würden).</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="dplyr-single.html#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> my_gap <span class="ot">&lt;-</span> gapminder</span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="dplyr-single.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> my_gap <span class="ot">&lt;-</span> gapminder</span></code></pre></div>
 <p>Unser Ziel ist es, dass GDP pro Land anzugeben. Das sollte machbar sein, da schließlich das Pro-Kopf-GDP wie auch die Bevölkerungszahl im Datensatz enthalten sind. Multiplizieren beider Variablen liefert uns das gewünschte Ergebnis.</p>
 <p><code>mutate()</code> ist eine Funktion, die neue Variablen definiert und in ein tibble einfügt. Du kannst auf bestehende Variablen einfach über ihren Namen zugreifen.</p>
-<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="dplyr-single.html#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> my_gap <span class="sc">%&gt;%</span></span>
-<span id="cb64-2"><a href="dplyr-single.html#cb64-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">mutate</span>(<span class="at">gdp =</span> pop <span class="sc">*</span> gdpPercap)</span>
-<span id="cb64-3"><a href="dplyr-single.html#cb64-3" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 1,704 x 7</span></span>
-<span id="cb64-4"><a href="dplyr-single.html#cb64-4" aria-hidden="true" tabindex="-1"></a><span class="do">##    country     continent  year lifeExp      pop gdpPercap          gdp</span></span>
-<span id="cb64-5"><a href="dplyr-single.html#cb64-5" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;        &lt;dbl&gt;</span></span>
-<span id="cb64-6"><a href="dplyr-single.html#cb64-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 Afghanistan Asia       1952    28.8  8425333      779.  6567086330.</span></span>
-<span id="cb64-7"><a href="dplyr-single.html#cb64-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 Afghanistan Asia       1957    30.3  9240934      821.  7585448670.</span></span>
-<span id="cb64-8"><a href="dplyr-single.html#cb64-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 Afghanistan Asia       1962    32.0 10267083      853.  8758855797.</span></span>
-<span id="cb64-9"><a href="dplyr-single.html#cb64-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 Afghanistan Asia       1967    34.0 11537966      836.  9648014150.</span></span>
-<span id="cb64-10"><a href="dplyr-single.html#cb64-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 Afghanistan Asia       1972    36.1 13079460      740.  9678553274.</span></span>
-<span id="cb64-11"><a href="dplyr-single.html#cb64-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 Afghanistan Asia       1977    38.4 14880372      786. 11697659231.</span></span>
-<span id="cb64-12"><a href="dplyr-single.html#cb64-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 Afghanistan Asia       1982    39.9 12881816      978. 12598563401.</span></span>
-<span id="cb64-13"><a href="dplyr-single.html#cb64-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 Afghanistan Asia       1987    40.8 13867957      852. 11820990309.</span></span>
-<span id="cb64-14"><a href="dplyr-single.html#cb64-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 Afghanistan Asia       1992    41.7 16317921      649. 10595901589.</span></span>
-<span id="cb64-15"><a href="dplyr-single.html#cb64-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 Afghanistan Asia       1997    41.8 22227415      635. 14121995875.</span></span>
-<span id="cb64-16"><a href="dplyr-single.html#cb64-16" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 1,694 more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="dplyr-single.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> my_gap <span class="sc">%&gt;%</span></span>
+<span id="cb65-2"><a href="dplyr-single.html#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">mutate</span>(<span class="at">gdp =</span> pop <span class="sc">*</span> gdpPercap)</span>
+<span id="cb65-3"><a href="dplyr-single.html#cb65-3" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 1,704 x 7</span></span>
+<span id="cb65-4"><a href="dplyr-single.html#cb65-4" aria-hidden="true" tabindex="-1"></a><span class="do">##    country     continent  year lifeExp      pop gdpPercap          gdp</span></span>
+<span id="cb65-5"><a href="dplyr-single.html#cb65-5" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;        &lt;dbl&gt;</span></span>
+<span id="cb65-6"><a href="dplyr-single.html#cb65-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 Afghanistan Asia       1952    28.8  8425333      779.  6567086330.</span></span>
+<span id="cb65-7"><a href="dplyr-single.html#cb65-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 Afghanistan Asia       1957    30.3  9240934      821.  7585448670.</span></span>
+<span id="cb65-8"><a href="dplyr-single.html#cb65-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 Afghanistan Asia       1962    32.0 10267083      853.  8758855797.</span></span>
+<span id="cb65-9"><a href="dplyr-single.html#cb65-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 Afghanistan Asia       1967    34.0 11537966      836.  9648014150.</span></span>
+<span id="cb65-10"><a href="dplyr-single.html#cb65-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 Afghanistan Asia       1972    36.1 13079460      740.  9678553274.</span></span>
+<span id="cb65-11"><a href="dplyr-single.html#cb65-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 Afghanistan Asia       1977    38.4 14880372      786. 11697659231.</span></span>
+<span id="cb65-12"><a href="dplyr-single.html#cb65-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 Afghanistan Asia       1982    39.9 12881816      978. 12598563401.</span></span>
+<span id="cb65-13"><a href="dplyr-single.html#cb65-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 Afghanistan Asia       1987    40.8 13867957      852. 11820990309.</span></span>
+<span id="cb65-14"><a href="dplyr-single.html#cb65-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 Afghanistan Asia       1992    41.7 16317921      649. 10595901589.</span></span>
+<span id="cb65-15"><a href="dplyr-single.html#cb65-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 Afghanistan Asia       1997    41.8 22227415      635. 14121995875.</span></span>
+<span id="cb65-16"><a href="dplyr-single.html#cb65-16" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 1,694 more rows</span></span></code></pre></div>
 <p>Hmmmm … diese GDP-Zahlen sind ziemlich groß und abstrakt. In dem Zusammenhang, bedenke den Ratschlag von <a href="https://fivethirtyeight.com/features/xkcd-randall-munroe-qanda-what-if/">Randall Munroe</a>:</p>
 <blockquote>
 <p>One thing that bothers me is large numbers presented without context… “If I added a zero to this number, would the sentence containing it mean something different to me?” If the answer is “no”, maybe the number has no business being in the sentence in the first place.</p>
@@ -159,37 +159,37 @@
 <li>Dividieren der <code>gdpPercap</code> Werte durch die deutschen Zahlen.</li>
 <li>Löschen der temporäre Variable <code>tmp</code> in <code>my_gap</code>.</li>
 </ol>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="dplyr-single.html#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> ger_gap <span class="ot">&lt;-</span> my_gap <span class="sc">%&gt;%</span></span>
-<span id="cb65-2"><a href="dplyr-single.html#cb65-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">"Germany"</span>)</span>
-<span id="cb65-3"><a href="dplyr-single.html#cb65-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
-<span id="cb65-4"><a href="dplyr-single.html#cb65-4" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> my_gap <span class="ot">&lt;-</span> my_gap <span class="sc">%&gt;%</span></span>
-<span id="cb65-5"><a href="dplyr-single.html#cb65-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">mutate</span>(<span class="at">tmp =</span> <span class="fu">rep</span>(ger_gap<span class="sc">$</span>gdpPercap, <span class="fu">nlevels</span>(country)),</span>
-<span id="cb65-6"><a href="dplyr-single.html#cb65-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>          <span class="at">gdpPercapRel =</span> gdpPercap <span class="sc">/</span> tmp,</span>
-<span id="cb65-7"><a href="dplyr-single.html#cb65-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>          <span class="at">tmp =</span> <span class="cn">NULL</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="dplyr-single.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> ger_gap <span class="ot">&lt;-</span> my_gap <span class="sc">%&gt;%</span></span>
+<span id="cb66-2"><a href="dplyr-single.html#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">"Germany"</span>)</span>
+<span id="cb66-3"><a href="dplyr-single.html#cb66-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span>
+<span id="cb66-4"><a href="dplyr-single.html#cb66-4" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> my_gap <span class="ot">&lt;-</span> my_gap <span class="sc">%&gt;%</span></span>
+<span id="cb66-5"><a href="dplyr-single.html#cb66-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">mutate</span>(<span class="at">tmp =</span> <span class="fu">rep</span>(ger_gap<span class="sc">$</span>gdpPercap, <span class="fu">nlevels</span>(country)),</span>
+<span id="cb66-6"><a href="dplyr-single.html#cb66-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>          <span class="at">gdpPercapRel =</span> gdpPercap <span class="sc">/</span> tmp,</span>
+<span id="cb66-7"><a href="dplyr-single.html#cb66-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>          <span class="at">tmp =</span> <span class="cn">NULL</span>)</span></code></pre></div>
 <p>Beachte, dass <code>mutate()</code> neue Variablen sequentiell erstellt, so dass du auf frühere Variablen (wie <code>tmp</code>) verweisen kannst um spätere Variablen (wie <code>gdpPercapRel</code>) zu definieren. Nachdem eine Variable nicht mehr benötigt wird, kannst du sie einfach auf <code>NULL</code> setzen.</p>
 <p>Hat das funktioniert? Einfach mal die Werte von <code>gdpPercapRel</code> für Deutschland anschauen. Sollten besser alle 1 sein!</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="dplyr-single.html#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> my_gap <span class="sc">%&gt;%</span> </span>
-<span id="cb66-2"><a href="dplyr-single.html#cb66-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">"Germany"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb66-3"><a href="dplyr-single.html#cb66-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">select</span>(country, year, gdpPercapRel)</span>
-<span id="cb66-4"><a href="dplyr-single.html#cb66-4" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 12 x 3</span></span>
-<span id="cb66-5"><a href="dplyr-single.html#cb66-5" aria-hidden="true" tabindex="-1"></a><span class="do">##    country  year gdpPercapRel</span></span>
-<span id="cb66-6"><a href="dplyr-single.html#cb66-6" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;fct&gt;   &lt;int&gt;        &lt;dbl&gt;</span></span>
-<span id="cb66-7"><a href="dplyr-single.html#cb66-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 Germany  1952            1</span></span>
-<span id="cb66-8"><a href="dplyr-single.html#cb66-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 Germany  1957            1</span></span>
-<span id="cb66-9"><a href="dplyr-single.html#cb66-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 Germany  1962            1</span></span>
-<span id="cb66-10"><a href="dplyr-single.html#cb66-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 Germany  1967            1</span></span>
-<span id="cb66-11"><a href="dplyr-single.html#cb66-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 Germany  1972            1</span></span>
-<span id="cb66-12"><a href="dplyr-single.html#cb66-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 Germany  1977            1</span></span>
-<span id="cb66-13"><a href="dplyr-single.html#cb66-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 Germany  1982            1</span></span>
-<span id="cb66-14"><a href="dplyr-single.html#cb66-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 Germany  1987            1</span></span>
-<span id="cb66-15"><a href="dplyr-single.html#cb66-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 Germany  1992            1</span></span>
-<span id="cb66-16"><a href="dplyr-single.html#cb66-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 Germany  1997            1</span></span>
-<span id="cb66-17"><a href="dplyr-single.html#cb66-17" aria-hidden="true" tabindex="-1"></a><span class="do">## 11 Germany  2002            1</span></span>
-<span id="cb66-18"><a href="dplyr-single.html#cb66-18" aria-hidden="true" tabindex="-1"></a><span class="do">## 12 Germany  2007            1</span></span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="dplyr-single.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> my_gap <span class="sc">%&gt;%</span> </span>
+<span id="cb67-2"><a href="dplyr-single.html#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">"Germany"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb67-3"><a href="dplyr-single.html#cb67-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">select</span>(country, year, gdpPercapRel)</span>
+<span id="cb67-4"><a href="dplyr-single.html#cb67-4" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 12 x 3</span></span>
+<span id="cb67-5"><a href="dplyr-single.html#cb67-5" aria-hidden="true" tabindex="-1"></a><span class="do">##    country  year gdpPercapRel</span></span>
+<span id="cb67-6"><a href="dplyr-single.html#cb67-6" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;fct&gt;   &lt;int&gt;        &lt;dbl&gt;</span></span>
+<span id="cb67-7"><a href="dplyr-single.html#cb67-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 Germany  1952            1</span></span>
+<span id="cb67-8"><a href="dplyr-single.html#cb67-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 Germany  1957            1</span></span>
+<span id="cb67-9"><a href="dplyr-single.html#cb67-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 Germany  1962            1</span></span>
+<span id="cb67-10"><a href="dplyr-single.html#cb67-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 Germany  1967            1</span></span>
+<span id="cb67-11"><a href="dplyr-single.html#cb67-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 Germany  1972            1</span></span>
+<span id="cb67-12"><a href="dplyr-single.html#cb67-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 Germany  1977            1</span></span>
+<span id="cb67-13"><a href="dplyr-single.html#cb67-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 Germany  1982            1</span></span>
+<span id="cb67-14"><a href="dplyr-single.html#cb67-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 Germany  1987            1</span></span>
+<span id="cb67-15"><a href="dplyr-single.html#cb67-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 Germany  1992            1</span></span>
+<span id="cb67-16"><a href="dplyr-single.html#cb67-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 Germany  1997            1</span></span>
+<span id="cb67-17"><a href="dplyr-single.html#cb67-17" aria-hidden="true" tabindex="-1"></a><span class="do">## 11 Germany  2002            1</span></span>
+<span id="cb67-18"><a href="dplyr-single.html#cb67-18" aria-hidden="true" tabindex="-1"></a><span class="do">## 12 Germany  2007            1</span></span></code></pre></div>
 <p>Ich nehme an Deutschland ist ein Land mit einem “hohen GDP” pro Kopf, daher gehe ich davon aus, dass die Verteilung von <code>gdpPercapRel</code> unter 1 liegt, möglicherweise sogar weit darunter. Aber besser mal nachschauen ob dem so ist:</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="dplyr-single.html#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">summary</span>(my_gap<span class="sc">$</span>gdpPercapRel)</span>
-<span id="cb67-2"><a href="dplyr-single.html#cb67-2" aria-hidden="true" tabindex="-1"></a><span class="do">##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></span>
-<span id="cb67-3"><a href="dplyr-single.html#cb67-3" aria-hidden="true" tabindex="-1"></a><span class="do">##    0.01    0.07    0.19    0.37    0.51   15.17</span></span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="dplyr-single.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">summary</span>(my_gap<span class="sc">$</span>gdpPercapRel)</span>
+<span id="cb68-2"><a href="dplyr-single.html#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="do">##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></span>
+<span id="cb68-3"><a href="dplyr-single.html#cb68-3" aria-hidden="true" tabindex="-1"></a><span class="do">##    0.01    0.07    0.19    0.37    0.51   15.17</span></span></code></pre></div>
 <p>Die Zahlen des relativen Pro-Kopf-GDP liegen im deutlich unter 1. Wir sehen, dass die meisten Länder, die in diesem Datensatz erfasst werden, über den gesamten Zeitraum im Vergleich zu Deutschland ein wesentlich niedrigeres Pro-Kopf-GDP aufweisen.</p>
 <p><strong>Tipp:</strong> Vertraue niemandem. Einschließlich (besonders?) dir selbst. Versuche immer, einen Weg zu finden, um zu überprüfen, ob du das gemacht hast, was du tun wolltest. Sei nicht schockiert, wenn du manchmal feststellen musst, dass dem nicht so ist.</p>
 </div>
@@ -198,58 +198,58 @@
 <span class="header-section-number">7.4</span> Mit <code>arrange()</code> die Zeilenreihenfolge ändern<a class="anchor" aria-label="anchor" href="#mit-arrange-die-zeilenreihenfolge-%C3%A4ndern"><i class="fas fa-link"></i></a>
 </h2>
 <p><code>arrange()</code> ordnet die Zeilen in einem data frame neu an. Stellen dir vor, du möchtest die Daten nach Jahr und Land und nicht nach Land und Jahr geordnet haben.</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="dplyr-single.html#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> my_gap <span class="sc">%&gt;%</span></span>
-<span id="cb68-2"><a href="dplyr-single.html#cb68-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">arrange</span>(year, country)</span>
-<span id="cb68-3"><a href="dplyr-single.html#cb68-3" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 1,704 x 7</span></span>
-<span id="cb68-4"><a href="dplyr-single.html#cb68-4" aria-hidden="true" tabindex="-1"></a><span class="do">##    country     continent  year lifeExp      pop gdpPercap gdpPercapRel</span></span>
-<span id="cb68-5"><a href="dplyr-single.html#cb68-5" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;        &lt;dbl&gt;</span></span>
-<span id="cb68-6"><a href="dplyr-single.html#cb68-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 Afghanistan Asia       1952    28.8  8425333      779.       0.109 </span></span>
-<span id="cb68-7"><a href="dplyr-single.html#cb68-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 Albania     Europe     1952    55.2  1282697     1601.       0.224 </span></span>
-<span id="cb68-8"><a href="dplyr-single.html#cb68-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 Algeria     Africa     1952    43.1  9279525     2449.       0.343 </span></span>
-<span id="cb68-9"><a href="dplyr-single.html#cb68-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 Angola      Africa     1952    30.0  4232095     3521.       0.493 </span></span>
-<span id="cb68-10"><a href="dplyr-single.html#cb68-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 Argentina   Americas   1952    62.5 17876956     5911.       0.827 </span></span>
-<span id="cb68-11"><a href="dplyr-single.html#cb68-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 Australia   Oceania    1952    69.1  8691212    10040.       1.41  </span></span>
-<span id="cb68-12"><a href="dplyr-single.html#cb68-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 Austria     Europe     1952    66.8  6927772     6137.       0.859 </span></span>
-<span id="cb68-13"><a href="dplyr-single.html#cb68-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 Bahrain     Asia       1952    50.9   120447     9867.       1.38  </span></span>
-<span id="cb68-14"><a href="dplyr-single.html#cb68-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 Bangladesh  Asia       1952    37.5 46886859      684.       0.0958</span></span>
-<span id="cb68-15"><a href="dplyr-single.html#cb68-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 Belgium     Europe     1952    68    8730405     8343.       1.17  </span></span>
-<span id="cb68-16"><a href="dplyr-single.html#cb68-16" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 1,694 more rows</span></span></code></pre></div>
-<p>Oder vielleicht willst du nur die Daten aus 2007 sehen, angeordnet entsprechend der Lebenserwartung.</p>
 <div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="dplyr-single.html#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> my_gap <span class="sc">%&gt;%</span></span>
-<span id="cb69-2"><a href="dplyr-single.html#cb69-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb69-3"><a href="dplyr-single.html#cb69-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">arrange</span>(lifeExp)</span>
-<span id="cb69-4"><a href="dplyr-single.html#cb69-4" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 142 x 7</span></span>
-<span id="cb69-5"><a href="dplyr-single.html#cb69-5" aria-hidden="true" tabindex="-1"></a><span class="do">##    country                continent  year lifeExp     pop gdpPercap gdpPercapRel</span></span>
-<span id="cb69-6"><a href="dplyr-single.html#cb69-6" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;fct&gt;                  &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;   &lt;int&gt;     &lt;dbl&gt;        &lt;dbl&gt;</span></span>
-<span id="cb69-7"><a href="dplyr-single.html#cb69-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 Swaziland              Africa     2007    39.6  1.13e6     4513.       0.140 </span></span>
-<span id="cb69-8"><a href="dplyr-single.html#cb69-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 Mozambique             Africa     2007    42.1  2.00e7      824.       0.0256</span></span>
-<span id="cb69-9"><a href="dplyr-single.html#cb69-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 Zambia                 Africa     2007    42.4  1.17e7     1271.       0.0395</span></span>
-<span id="cb69-10"><a href="dplyr-single.html#cb69-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 Sierra Leone           Africa     2007    42.6  6.14e6      863.       0.0268</span></span>
-<span id="cb69-11"><a href="dplyr-single.html#cb69-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 Lesotho                Africa     2007    42.6  2.01e6     1569.       0.0488</span></span>
-<span id="cb69-12"><a href="dplyr-single.html#cb69-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 Angola                 Africa     2007    42.7  1.24e7     4797.       0.149 </span></span>
-<span id="cb69-13"><a href="dplyr-single.html#cb69-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 Zimbabwe               Africa     2007    43.5  1.23e7      470.       0.0146</span></span>
-<span id="cb69-14"><a href="dplyr-single.html#cb69-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 Afghanistan            Asia       2007    43.8  3.19e7      975.       0.0303</span></span>
-<span id="cb69-15"><a href="dplyr-single.html#cb69-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 Central African Repub… Africa     2007    44.7  4.37e6      706.       0.0219</span></span>
-<span id="cb69-16"><a href="dplyr-single.html#cb69-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 Liberia                Africa     2007    45.7  3.19e6      415.       0.0129</span></span>
-<span id="cb69-17"><a href="dplyr-single.html#cb69-17" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 132 more rows</span></span></code></pre></div>
-<p>Das war nicht was du wolltest. Du wolltest nach absteigender Lebenserwartung sortieren. Dann verwende <code>desc()</code>.</p>
+<span id="cb69-2"><a href="dplyr-single.html#cb69-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">arrange</span>(year, country)</span>
+<span id="cb69-3"><a href="dplyr-single.html#cb69-3" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 1,704 x 7</span></span>
+<span id="cb69-4"><a href="dplyr-single.html#cb69-4" aria-hidden="true" tabindex="-1"></a><span class="do">##    country     continent  year lifeExp      pop gdpPercap gdpPercapRel</span></span>
+<span id="cb69-5"><a href="dplyr-single.html#cb69-5" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;        &lt;dbl&gt;</span></span>
+<span id="cb69-6"><a href="dplyr-single.html#cb69-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 Afghanistan Asia       1952    28.8  8425333      779.       0.109 </span></span>
+<span id="cb69-7"><a href="dplyr-single.html#cb69-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 Albania     Europe     1952    55.2  1282697     1601.       0.224 </span></span>
+<span id="cb69-8"><a href="dplyr-single.html#cb69-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 Algeria     Africa     1952    43.1  9279525     2449.       0.343 </span></span>
+<span id="cb69-9"><a href="dplyr-single.html#cb69-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 Angola      Africa     1952    30.0  4232095     3521.       0.493 </span></span>
+<span id="cb69-10"><a href="dplyr-single.html#cb69-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 Argentina   Americas   1952    62.5 17876956     5911.       0.827 </span></span>
+<span id="cb69-11"><a href="dplyr-single.html#cb69-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 Australia   Oceania    1952    69.1  8691212    10040.       1.41  </span></span>
+<span id="cb69-12"><a href="dplyr-single.html#cb69-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 Austria     Europe     1952    66.8  6927772     6137.       0.859 </span></span>
+<span id="cb69-13"><a href="dplyr-single.html#cb69-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 Bahrain     Asia       1952    50.9   120447     9867.       1.38  </span></span>
+<span id="cb69-14"><a href="dplyr-single.html#cb69-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 Bangladesh  Asia       1952    37.5 46886859      684.       0.0958</span></span>
+<span id="cb69-15"><a href="dplyr-single.html#cb69-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 Belgium     Europe     1952    68    8730405     8343.       1.17  </span></span>
+<span id="cb69-16"><a href="dplyr-single.html#cb69-16" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 1,694 more rows</span></span></code></pre></div>
+<p>Oder vielleicht willst du nur die Daten aus 2007 sehen, angeordnet entsprechend der Lebenserwartung.</p>
 <div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="dplyr-single.html#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> my_gap <span class="sc">%&gt;%</span></span>
 <span id="cb70-2"><a href="dplyr-single.html#cb70-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb70-3"><a href="dplyr-single.html#cb70-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">arrange</span>(<span class="fu">desc</span>(lifeExp))</span>
+<span id="cb70-3"><a href="dplyr-single.html#cb70-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">arrange</span>(lifeExp)</span>
 <span id="cb70-4"><a href="dplyr-single.html#cb70-4" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 142 x 7</span></span>
-<span id="cb70-5"><a href="dplyr-single.html#cb70-5" aria-hidden="true" tabindex="-1"></a><span class="do">##    country          continent  year lifeExp       pop gdpPercap gdpPercapRel</span></span>
-<span id="cb70-6"><a href="dplyr-single.html#cb70-6" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;fct&gt;            &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;     &lt;int&gt;     &lt;dbl&gt;        &lt;dbl&gt;</span></span>
-<span id="cb70-7"><a href="dplyr-single.html#cb70-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 Japan            Asia       2007    82.6 127467972    31656.        0.984</span></span>
-<span id="cb70-8"><a href="dplyr-single.html#cb70-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 Hong Kong, China Asia       2007    82.2   6980412    39725.        1.23 </span></span>
-<span id="cb70-9"><a href="dplyr-single.html#cb70-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 Iceland          Europe     2007    81.8    301931    36181.        1.12 </span></span>
-<span id="cb70-10"><a href="dplyr-single.html#cb70-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 Switzerland      Europe     2007    81.7   7554661    37506.        1.17 </span></span>
-<span id="cb70-11"><a href="dplyr-single.html#cb70-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 Australia        Oceania    2007    81.2  20434176    34435.        1.07 </span></span>
-<span id="cb70-12"><a href="dplyr-single.html#cb70-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 Spain            Europe     2007    80.9  40448191    28821.        0.896</span></span>
-<span id="cb70-13"><a href="dplyr-single.html#cb70-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 Sweden           Europe     2007    80.9   9031088    33860.        1.05 </span></span>
-<span id="cb70-14"><a href="dplyr-single.html#cb70-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 Israel           Asia       2007    80.7   6426679    25523.        0.793</span></span>
-<span id="cb70-15"><a href="dplyr-single.html#cb70-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 France           Europe     2007    80.7  61083916    30470.        0.947</span></span>
-<span id="cb70-16"><a href="dplyr-single.html#cb70-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 Canada           Americas   2007    80.7  33390141    36319.        1.13 </span></span>
+<span id="cb70-5"><a href="dplyr-single.html#cb70-5" aria-hidden="true" tabindex="-1"></a><span class="do">##    country                continent  year lifeExp     pop gdpPercap gdpPercapRel</span></span>
+<span id="cb70-6"><a href="dplyr-single.html#cb70-6" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;fct&gt;                  &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;   &lt;int&gt;     &lt;dbl&gt;        &lt;dbl&gt;</span></span>
+<span id="cb70-7"><a href="dplyr-single.html#cb70-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 Swaziland              Africa     2007    39.6  1.13e6     4513.       0.140 </span></span>
+<span id="cb70-8"><a href="dplyr-single.html#cb70-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 Mozambique             Africa     2007    42.1  2.00e7      824.       0.0256</span></span>
+<span id="cb70-9"><a href="dplyr-single.html#cb70-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 Zambia                 Africa     2007    42.4  1.17e7     1271.       0.0395</span></span>
+<span id="cb70-10"><a href="dplyr-single.html#cb70-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 Sierra Leone           Africa     2007    42.6  6.14e6      863.       0.0268</span></span>
+<span id="cb70-11"><a href="dplyr-single.html#cb70-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 Lesotho                Africa     2007    42.6  2.01e6     1569.       0.0488</span></span>
+<span id="cb70-12"><a href="dplyr-single.html#cb70-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 Angola                 Africa     2007    42.7  1.24e7     4797.       0.149 </span></span>
+<span id="cb70-13"><a href="dplyr-single.html#cb70-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 Zimbabwe               Africa     2007    43.5  1.23e7      470.       0.0146</span></span>
+<span id="cb70-14"><a href="dplyr-single.html#cb70-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 Afghanistan            Asia       2007    43.8  3.19e7      975.       0.0303</span></span>
+<span id="cb70-15"><a href="dplyr-single.html#cb70-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 Central African Repub… Africa     2007    44.7  4.37e6      706.       0.0219</span></span>
+<span id="cb70-16"><a href="dplyr-single.html#cb70-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 Liberia                Africa     2007    45.7  3.19e6      415.       0.0129</span></span>
 <span id="cb70-17"><a href="dplyr-single.html#cb70-17" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 132 more rows</span></span></code></pre></div>
+<p>Das war nicht was du wolltest. Du wolltest nach absteigender Lebenserwartung sortieren. Dann verwende <code>desc()</code>.</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="dplyr-single.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> my_gap <span class="sc">%&gt;%</span></span>
+<span id="cb71-2"><a href="dplyr-single.html#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2007</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb71-3"><a href="dplyr-single.html#cb71-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">arrange</span>(<span class="fu">desc</span>(lifeExp))</span>
+<span id="cb71-4"><a href="dplyr-single.html#cb71-4" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 142 x 7</span></span>
+<span id="cb71-5"><a href="dplyr-single.html#cb71-5" aria-hidden="true" tabindex="-1"></a><span class="do">##    country          continent  year lifeExp       pop gdpPercap gdpPercapRel</span></span>
+<span id="cb71-6"><a href="dplyr-single.html#cb71-6" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;fct&gt;            &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;     &lt;int&gt;     &lt;dbl&gt;        &lt;dbl&gt;</span></span>
+<span id="cb71-7"><a href="dplyr-single.html#cb71-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 Japan            Asia       2007    82.6 127467972    31656.        0.984</span></span>
+<span id="cb71-8"><a href="dplyr-single.html#cb71-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 Hong Kong, China Asia       2007    82.2   6980412    39725.        1.23 </span></span>
+<span id="cb71-9"><a href="dplyr-single.html#cb71-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 Iceland          Europe     2007    81.8    301931    36181.        1.12 </span></span>
+<span id="cb71-10"><a href="dplyr-single.html#cb71-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 Switzerland      Europe     2007    81.7   7554661    37506.        1.17 </span></span>
+<span id="cb71-11"><a href="dplyr-single.html#cb71-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 Australia        Oceania    2007    81.2  20434176    34435.        1.07 </span></span>
+<span id="cb71-12"><a href="dplyr-single.html#cb71-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 Spain            Europe     2007    80.9  40448191    28821.        0.896</span></span>
+<span id="cb71-13"><a href="dplyr-single.html#cb71-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 Sweden           Europe     2007    80.9   9031088    33860.        1.05 </span></span>
+<span id="cb71-14"><a href="dplyr-single.html#cb71-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 Israel           Asia       2007    80.7   6426679    25523.        0.793</span></span>
+<span id="cb71-15"><a href="dplyr-single.html#cb71-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 France           Europe     2007    80.7  61083916    30470.        0.947</span></span>
+<span id="cb71-16"><a href="dplyr-single.html#cb71-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 Canada           Americas   2007    80.7  33390141    36319.        1.13 </span></span>
+<span id="cb71-17"><a href="dplyr-single.html#cb71-17" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 132 more rows</span></span></code></pre></div>
 <p>Ein Tipp am Ende: verlasse dich bei deinen Analysen NIEMALS darauf, dass Zeilen oder Variablen in einer bestimmten Reihenfolge stehen. Aber manchmal will man Tabellen anderen präsentieren und dabei macht es durchaus Sinn die Zeilenreihenfolge je nach Fragestellung anzupassen.</p>
 </div>
 <div id="mit-rename-schöne-namen-vergeben" class="section level2" number="7.5">
@@ -257,36 +257,36 @@
 <span class="header-section-number">7.5</span> Mit <code>rename()</code> “schöne” Namen vergeben<a class="anchor" aria-label="anchor" href="#mit-rename-sch%C3%B6ne-namen-vergeben"><i class="fas fa-link"></i></a>
 </h2>
 <p>Ein paar der Namen in <code>gapminder</code> sind nicht besonders hübsch, wie z.B. <code>lifeExp</code>. life expectancy wären ja schließlich zwei Worte und daher finde ich (persönliche Meinung) es schöner dies auch im Variablennamen zu sehen</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="dplyr-single.html#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> my_gap <span class="sc">%&gt;%</span></span>
-<span id="cb71-2"><a href="dplyr-single.html#cb71-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">rename</span>(<span class="at">life_exp =</span> lifeExp,</span>
-<span id="cb71-3"><a href="dplyr-single.html#cb71-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>          <span class="at">gdp_percap =</span> gdpPercap,</span>
-<span id="cb71-4"><a href="dplyr-single.html#cb71-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>          <span class="at">gdp_percap_rel =</span> gdpPercapRel)</span>
-<span id="cb71-5"><a href="dplyr-single.html#cb71-5" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 1,704 x 7</span></span>
-<span id="cb71-6"><a href="dplyr-single.html#cb71-6" aria-hidden="true" tabindex="-1"></a><span class="do">##    country     continent  year life_exp      pop gdp_percap gdp_percap_rel</span></span>
-<span id="cb71-7"><a href="dplyr-single.html#cb71-7" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;    &lt;dbl&gt;    &lt;int&gt;      &lt;dbl&gt;          &lt;dbl&gt;</span></span>
-<span id="cb71-8"><a href="dplyr-single.html#cb71-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 Afghanistan Asia       1952     28.8  8425333       779.         0.109 </span></span>
-<span id="cb71-9"><a href="dplyr-single.html#cb71-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 Afghanistan Asia       1957     30.3  9240934       821.         0.0806</span></span>
-<span id="cb71-10"><a href="dplyr-single.html#cb71-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 Afghanistan Asia       1962     32.0 10267083       853.         0.0661</span></span>
-<span id="cb71-11"><a href="dplyr-single.html#cb71-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 Afghanistan Asia       1967     34.0 11537966       836.         0.0567</span></span>
-<span id="cb71-12"><a href="dplyr-single.html#cb71-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 Afghanistan Asia       1972     36.1 13079460       740.         0.0411</span></span>
-<span id="cb71-13"><a href="dplyr-single.html#cb71-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 Afghanistan Asia       1977     38.4 14880372       786.         0.0383</span></span>
-<span id="cb71-14"><a href="dplyr-single.html#cb71-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 Afghanistan Asia       1982     39.9 12881816       978.         0.0444</span></span>
-<span id="cb71-15"><a href="dplyr-single.html#cb71-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 Afghanistan Asia       1987     40.8 13867957       852.         0.0346</span></span>
-<span id="cb71-16"><a href="dplyr-single.html#cb71-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 Afghanistan Asia       1992     41.7 16317921       649.         0.0245</span></span>
-<span id="cb71-17"><a href="dplyr-single.html#cb71-17" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 Afghanistan Asia       1997     41.8 22227415       635.         0.0229</span></span>
-<span id="cb71-18"><a href="dplyr-single.html#cb71-18" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 1,694 more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="dplyr-single.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> my_gap <span class="sc">%&gt;%</span></span>
+<span id="cb72-2"><a href="dplyr-single.html#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">rename</span>(<span class="at">life_exp =</span> lifeExp,</span>
+<span id="cb72-3"><a href="dplyr-single.html#cb72-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>          <span class="at">gdp_percap =</span> gdpPercap,</span>
+<span id="cb72-4"><a href="dplyr-single.html#cb72-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>          <span class="at">gdp_percap_rel =</span> gdpPercapRel)</span>
+<span id="cb72-5"><a href="dplyr-single.html#cb72-5" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 1,704 x 7</span></span>
+<span id="cb72-6"><a href="dplyr-single.html#cb72-6" aria-hidden="true" tabindex="-1"></a><span class="do">##    country     continent  year life_exp      pop gdp_percap gdp_percap_rel</span></span>
+<span id="cb72-7"><a href="dplyr-single.html#cb72-7" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;    &lt;dbl&gt;    &lt;int&gt;      &lt;dbl&gt;          &lt;dbl&gt;</span></span>
+<span id="cb72-8"><a href="dplyr-single.html#cb72-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 Afghanistan Asia       1952     28.8  8425333       779.         0.109 </span></span>
+<span id="cb72-9"><a href="dplyr-single.html#cb72-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 Afghanistan Asia       1957     30.3  9240934       821.         0.0806</span></span>
+<span id="cb72-10"><a href="dplyr-single.html#cb72-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 Afghanistan Asia       1962     32.0 10267083       853.         0.0661</span></span>
+<span id="cb72-11"><a href="dplyr-single.html#cb72-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 Afghanistan Asia       1967     34.0 11537966       836.         0.0567</span></span>
+<span id="cb72-12"><a href="dplyr-single.html#cb72-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 Afghanistan Asia       1972     36.1 13079460       740.         0.0411</span></span>
+<span id="cb72-13"><a href="dplyr-single.html#cb72-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 Afghanistan Asia       1977     38.4 14880372       786.         0.0383</span></span>
+<span id="cb72-14"><a href="dplyr-single.html#cb72-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 Afghanistan Asia       1982     39.9 12881816       978.         0.0444</span></span>
+<span id="cb72-15"><a href="dplyr-single.html#cb72-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 Afghanistan Asia       1987     40.8 13867957       852.         0.0346</span></span>
+<span id="cb72-16"><a href="dplyr-single.html#cb72-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 Afghanistan Asia       1992     41.7 16317921       649.         0.0245</span></span>
+<span id="cb72-17"><a href="dplyr-single.html#cb72-17" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 Afghanistan Asia       1997     41.8 22227415       635.         0.0229</span></span>
+<span id="cb72-18"><a href="dplyr-single.html#cb72-18" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 1,694 more rows</span></span></code></pre></div>
 <p>Die Änderungen haben wir jetzt aber nicht abgespeichert (auch wenn sie schön waren), da wir den nachfolgenden Code auch weiterhin ausführen könnten ohne die Änderung der Variablennamen durchgeführt zu haben.</p>
 <p><strong>Bemerkung:</strong> Mit <code>select()</code> könnten wir bei der Auswahl von Variablen auch deren Namen ändern</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="dplyr-single.html#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> my_gap <span class="sc">%&gt;%</span></span>
-<span id="cb72-2"><a href="dplyr-single.html#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">"Burundi"</span>, year <span class="sc">&gt;</span> <span class="dv">1996</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb72-3"><a href="dplyr-single.html#cb72-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">select</span>(<span class="at">yr =</span> year, lifeExp, gdpPercap) <span class="sc">%&gt;%</span> </span>
-<span id="cb72-4"><a href="dplyr-single.html#cb72-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">select</span>(gdpPercap, <span class="fu">everything</span>())</span>
-<span id="cb72-5"><a href="dplyr-single.html#cb72-5" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 3 x 3</span></span>
-<span id="cb72-6"><a href="dplyr-single.html#cb72-6" aria-hidden="true" tabindex="-1"></a><span class="do">##   gdpPercap    yr lifeExp</span></span>
-<span id="cb72-7"><a href="dplyr-single.html#cb72-7" aria-hidden="true" tabindex="-1"></a><span class="do">##       &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt;</span></span>
-<span id="cb72-8"><a href="dplyr-single.html#cb72-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 1      463.  1997    45.3</span></span>
-<span id="cb72-9"><a href="dplyr-single.html#cb72-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 2      446.  2002    47.4</span></span>
-<span id="cb72-10"><a href="dplyr-single.html#cb72-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 3      430.  2007    49.6</span></span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="dplyr-single.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> my_gap <span class="sc">%&gt;%</span></span>
+<span id="cb73-2"><a href="dplyr-single.html#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">"Burundi"</span>, year <span class="sc">&gt;</span> <span class="dv">1996</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb73-3"><a href="dplyr-single.html#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">select</span>(<span class="at">yr =</span> year, lifeExp, gdpPercap) <span class="sc">%&gt;%</span> </span>
+<span id="cb73-4"><a href="dplyr-single.html#cb73-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">select</span>(gdpPercap, <span class="fu">everything</span>())</span>
+<span id="cb73-5"><a href="dplyr-single.html#cb73-5" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 3 x 3</span></span>
+<span id="cb73-6"><a href="dplyr-single.html#cb73-6" aria-hidden="true" tabindex="-1"></a><span class="do">##   gdpPercap    yr lifeExp</span></span>
+<span id="cb73-7"><a href="dplyr-single.html#cb73-7" aria-hidden="true" tabindex="-1"></a><span class="do">##       &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt;</span></span>
+<span id="cb73-8"><a href="dplyr-single.html#cb73-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 1      463.  1997    45.3</span></span>
+<span id="cb73-9"><a href="dplyr-single.html#cb73-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 2      446.  2002    47.4</span></span>
+<span id="cb73-10"><a href="dplyr-single.html#cb73-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 3      430.  2007    49.6</span></span></code></pre></div>
 <p><code>everything()</code> wählt alle übrigen (außer <code>gdpPercap</code>) Variablen. Da <code>gdpPercap</code> an erster Stelle gewählt wurde, wird die Variable auch zur ersten Spalte.</p>
 </div>
 <div id="group_by-macht-das-r-leben-einfacher" class="section level2" number="7.6">
@@ -307,63 +307,63 @@
 <span class="header-section-number">7.6.1</span> Die Dinge aufzählen<a class="anchor" aria-label="anchor" href="#die-dinge-aufz%C3%A4hlen"><i class="fas fa-link"></i></a>
 </h3>
 <p>Beginnen wir mit dem einfachen Zählen. Wie viele Beobachtungen haben wir pro Kontinent?</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="dplyr-single.html#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> my_gap <span class="sc">%&gt;%</span></span>
-<span id="cb73-2"><a href="dplyr-single.html#cb73-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">group_by</span>(continent) <span class="sc">%&gt;%</span></span>
-<span id="cb73-3"><a href="dplyr-single.html#cb73-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>())</span>
-<span id="cb73-4"><a href="dplyr-single.html#cb73-4" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 5 x 2</span></span>
-<span id="cb73-5"><a href="dplyr-single.html#cb73-5" aria-hidden="true" tabindex="-1"></a><span class="do">##   continent     n</span></span>
-<span id="cb73-6"><a href="dplyr-single.html#cb73-6" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;fct&gt;     &lt;int&gt;</span></span>
-<span id="cb73-7"><a href="dplyr-single.html#cb73-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 Africa      624</span></span>
-<span id="cb73-8"><a href="dplyr-single.html#cb73-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 Americas    300</span></span>
-<span id="cb73-9"><a href="dplyr-single.html#cb73-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 Asia        396</span></span>
-<span id="cb73-10"><a href="dplyr-single.html#cb73-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 Europe      360</span></span>
-<span id="cb73-11"><a href="dplyr-single.html#cb73-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 Oceania      24</span></span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="dplyr-single.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> my_gap <span class="sc">%&gt;%</span></span>
+<span id="cb74-2"><a href="dplyr-single.html#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">group_by</span>(continent) <span class="sc">%&gt;%</span></span>
+<span id="cb74-3"><a href="dplyr-single.html#cb74-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>())</span>
+<span id="cb74-4"><a href="dplyr-single.html#cb74-4" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 5 x 2</span></span>
+<span id="cb74-5"><a href="dplyr-single.html#cb74-5" aria-hidden="true" tabindex="-1"></a><span class="do">##   continent     n</span></span>
+<span id="cb74-6"><a href="dplyr-single.html#cb74-6" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;fct&gt;     &lt;int&gt;</span></span>
+<span id="cb74-7"><a href="dplyr-single.html#cb74-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 Africa      624</span></span>
+<span id="cb74-8"><a href="dplyr-single.html#cb74-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 Americas    300</span></span>
+<span id="cb74-9"><a href="dplyr-single.html#cb74-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 Asia        396</span></span>
+<span id="cb74-10"><a href="dplyr-single.html#cb74-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 Europe      360</span></span>
+<span id="cb74-11"><a href="dplyr-single.html#cb74-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 Oceania      24</span></span></code></pre></div>
 <p>Lassen uns hier kurz innehalten und über das tidyverse nachdenken. Du könntest dir mit <code><a href="https://rdrr.io/r/base/table.html">table()</a></code> die gleichen absoluten Häufigkeiten berechnen.</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="dplyr-single.html#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">table</span>(gapminder<span class="sc">$</span>continent)</span>
-<span id="cb74-2"><a href="dplyr-single.html#cb74-2" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb74-3"><a href="dplyr-single.html#cb74-3" aria-hidden="true" tabindex="-1"></a><span class="do">##   Africa Americas     Asia   Europe  Oceania </span></span>
-<span id="cb74-4"><a href="dplyr-single.html#cb74-4" aria-hidden="true" tabindex="-1"></a><span class="do">##      624      300      396      360       24</span></span>
-<span id="cb74-5"><a href="dplyr-single.html#cb74-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">str</span>(<span class="fu">table</span>(gapminder<span class="sc">$</span>continent))</span>
-<span id="cb74-6"><a href="dplyr-single.html#cb74-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  'table' int [1:5(1d)] 624 300 396 360 24</span></span>
-<span id="cb74-7"><a href="dplyr-single.html#cb74-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  - attr(*, "dimnames")=List of 1</span></span>
-<span id="cb74-8"><a href="dplyr-single.html#cb74-8" aria-hidden="true" tabindex="-1"></a><span class="do">##   ..$ : chr [1:5] "Africa" "Americas" "Asia" "Europe" ...</span></span></code></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="dplyr-single.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">table</span>(gapminder<span class="sc">$</span>continent)</span>
+<span id="cb75-2"><a href="dplyr-single.html#cb75-2" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb75-3"><a href="dplyr-single.html#cb75-3" aria-hidden="true" tabindex="-1"></a><span class="do">##   Africa Americas     Asia   Europe  Oceania </span></span>
+<span id="cb75-4"><a href="dplyr-single.html#cb75-4" aria-hidden="true" tabindex="-1"></a><span class="do">##      624      300      396      360       24</span></span>
+<span id="cb75-5"><a href="dplyr-single.html#cb75-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">str</span>(<span class="fu">table</span>(gapminder<span class="sc">$</span>continent))</span>
+<span id="cb75-6"><a href="dplyr-single.html#cb75-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  'table' int [1:5(1d)] 624 300 396 360 24</span></span>
+<span id="cb75-7"><a href="dplyr-single.html#cb75-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  - attr(*, "dimnames")=List of 1</span></span>
+<span id="cb75-8"><a href="dplyr-single.html#cb75-8" aria-hidden="true" tabindex="-1"></a><span class="do">##   ..$ : chr [1:5] "Africa" "Americas" "Asia" "Europe" ...</span></span></code></pre></div>
 <p>Aber das Objekt der Klasse <code>table</code>, das zurückgegeben wird, macht die nachfolgenden Berechnungen einfach etwas kniffliger, als es dir lieb ist. Zum Beispiel ist es zu schade, dass die Namen der Kontinente nur als <em>Namen</em> und nicht als richtige Faktor zusammen mit den berechneten Werten zurückgegeben werden. Dies ist ein Beispiel dafür, wie das tidyverse Übergänge glättet, bei denen die Ausgabe von Schritt <code>i</code> die Eingabe von Schritt <code>i + 1</code> werden soll.</p>
 <p>Die <code>tally()</code> Funktion ist eine Komfortfunktion, die weiß, wie man Zeilen zählt und dabei Gruppen berücksichtigt.</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="dplyr-single.html#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> my_gap <span class="sc">%&gt;%</span></span>
-<span id="cb75-2"><a href="dplyr-single.html#cb75-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">group_by</span>(continent) <span class="sc">%&gt;%</span></span>
-<span id="cb75-3"><a href="dplyr-single.html#cb75-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">tally</span>()</span>
-<span id="cb75-4"><a href="dplyr-single.html#cb75-4" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 5 x 2</span></span>
-<span id="cb75-5"><a href="dplyr-single.html#cb75-5" aria-hidden="true" tabindex="-1"></a><span class="do">##   continent     n</span></span>
-<span id="cb75-6"><a href="dplyr-single.html#cb75-6" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;fct&gt;     &lt;int&gt;</span></span>
-<span id="cb75-7"><a href="dplyr-single.html#cb75-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 Africa      624</span></span>
-<span id="cb75-8"><a href="dplyr-single.html#cb75-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 Americas    300</span></span>
-<span id="cb75-9"><a href="dplyr-single.html#cb75-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 Asia        396</span></span>
-<span id="cb75-10"><a href="dplyr-single.html#cb75-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 Europe      360</span></span>
-<span id="cb75-11"><a href="dplyr-single.html#cb75-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 Oceania      24</span></span></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="dplyr-single.html#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> my_gap <span class="sc">%&gt;%</span></span>
+<span id="cb76-2"><a href="dplyr-single.html#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">group_by</span>(continent) <span class="sc">%&gt;%</span></span>
+<span id="cb76-3"><a href="dplyr-single.html#cb76-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">tally</span>()</span>
+<span id="cb76-4"><a href="dplyr-single.html#cb76-4" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 5 x 2</span></span>
+<span id="cb76-5"><a href="dplyr-single.html#cb76-5" aria-hidden="true" tabindex="-1"></a><span class="do">##   continent     n</span></span>
+<span id="cb76-6"><a href="dplyr-single.html#cb76-6" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;fct&gt;     &lt;int&gt;</span></span>
+<span id="cb76-7"><a href="dplyr-single.html#cb76-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 Africa      624</span></span>
+<span id="cb76-8"><a href="dplyr-single.html#cb76-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 Americas    300</span></span>
+<span id="cb76-9"><a href="dplyr-single.html#cb76-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 Asia        396</span></span>
+<span id="cb76-10"><a href="dplyr-single.html#cb76-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 Europe      360</span></span>
+<span id="cb76-11"><a href="dplyr-single.html#cb76-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 Oceania      24</span></span></code></pre></div>
 <p>Die Funktion <code>count()</code> bietet noch mehr Komfort. Sie kann sowohl gruppieren als auch zählen.</p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="dplyr-single.html#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> my_gap <span class="sc">%&gt;%</span> </span>
-<span id="cb76-2"><a href="dplyr-single.html#cb76-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">count</span>(continent)</span>
-<span id="cb76-3"><a href="dplyr-single.html#cb76-3" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 5 x 2</span></span>
-<span id="cb76-4"><a href="dplyr-single.html#cb76-4" aria-hidden="true" tabindex="-1"></a><span class="do">##   continent     n</span></span>
-<span id="cb76-5"><a href="dplyr-single.html#cb76-5" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;fct&gt;     &lt;int&gt;</span></span>
-<span id="cb76-6"><a href="dplyr-single.html#cb76-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 Africa      624</span></span>
-<span id="cb76-7"><a href="dplyr-single.html#cb76-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 Americas    300</span></span>
-<span id="cb76-8"><a href="dplyr-single.html#cb76-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 Asia        396</span></span>
-<span id="cb76-9"><a href="dplyr-single.html#cb76-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 Europe      360</span></span>
-<span id="cb76-10"><a href="dplyr-single.html#cb76-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 Oceania      24</span></span></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="dplyr-single.html#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> my_gap <span class="sc">%&gt;%</span> </span>
+<span id="cb77-2"><a href="dplyr-single.html#cb77-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">count</span>(continent)</span>
+<span id="cb77-3"><a href="dplyr-single.html#cb77-3" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 5 x 2</span></span>
+<span id="cb77-4"><a href="dplyr-single.html#cb77-4" aria-hidden="true" tabindex="-1"></a><span class="do">##   continent     n</span></span>
+<span id="cb77-5"><a href="dplyr-single.html#cb77-5" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;fct&gt;     &lt;int&gt;</span></span>
+<span id="cb77-6"><a href="dplyr-single.html#cb77-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 Africa      624</span></span>
+<span id="cb77-7"><a href="dplyr-single.html#cb77-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 Americas    300</span></span>
+<span id="cb77-8"><a href="dplyr-single.html#cb77-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 Asia        396</span></span>
+<span id="cb77-9"><a href="dplyr-single.html#cb77-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 Europe      360</span></span>
+<span id="cb77-10"><a href="dplyr-single.html#cb77-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 Oceania      24</span></span></code></pre></div>
 <p>Was wäre, wenn uns nicht nur die Anzahl an Beobachtungen pro Kontinent interessiert, sondern auch die Anzahl an unterschiedlichen Ländern pro Kontinent. Da wir mehrere Zusammenfassungen innerhalb von <code>summarise()</code> berechnen. Verwenden Sie die Funktion <code>n_distinct()</code>, um die Anzahl der einzelnen Länder innerhalb jedes Kontinents zu zählen.</p>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="dplyr-single.html#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> my_gap <span class="sc">%&gt;%</span></span>
-<span id="cb77-2"><a href="dplyr-single.html#cb77-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">group_by</span>(continent) <span class="sc">%&gt;%</span></span>
-<span id="cb77-3"><a href="dplyr-single.html#cb77-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(),</span>
-<span id="cb77-4"><a href="dplyr-single.html#cb77-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>             <span class="at">n_countries =</span> <span class="fu">n_distinct</span>(country))</span>
-<span id="cb77-5"><a href="dplyr-single.html#cb77-5" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 5 x 3</span></span>
-<span id="cb77-6"><a href="dplyr-single.html#cb77-6" aria-hidden="true" tabindex="-1"></a><span class="do">##   continent     n n_countries</span></span>
-<span id="cb77-7"><a href="dplyr-single.html#cb77-7" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;fct&gt;     &lt;int&gt;       &lt;int&gt;</span></span>
-<span id="cb77-8"><a href="dplyr-single.html#cb77-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 Africa      624          52</span></span>
-<span id="cb77-9"><a href="dplyr-single.html#cb77-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 Americas    300          25</span></span>
-<span id="cb77-10"><a href="dplyr-single.html#cb77-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 Asia        396          33</span></span>
-<span id="cb77-11"><a href="dplyr-single.html#cb77-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 Europe      360          30</span></span>
-<span id="cb77-12"><a href="dplyr-single.html#cb77-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 Oceania      24           2</span></span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="dplyr-single.html#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> my_gap <span class="sc">%&gt;%</span></span>
+<span id="cb78-2"><a href="dplyr-single.html#cb78-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">group_by</span>(continent) <span class="sc">%&gt;%</span></span>
+<span id="cb78-3"><a href="dplyr-single.html#cb78-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb78-4"><a href="dplyr-single.html#cb78-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>             <span class="at">n_countries =</span> <span class="fu">n_distinct</span>(country))</span>
+<span id="cb78-5"><a href="dplyr-single.html#cb78-5" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 5 x 3</span></span>
+<span id="cb78-6"><a href="dplyr-single.html#cb78-6" aria-hidden="true" tabindex="-1"></a><span class="do">##   continent     n n_countries</span></span>
+<span id="cb78-7"><a href="dplyr-single.html#cb78-7" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;fct&gt;     &lt;int&gt;       &lt;int&gt;</span></span>
+<span id="cb78-8"><a href="dplyr-single.html#cb78-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 Africa      624          52</span></span>
+<span id="cb78-9"><a href="dplyr-single.html#cb78-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 Americas    300          25</span></span>
+<span id="cb78-10"><a href="dplyr-single.html#cb78-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 Asia        396          33</span></span>
+<span id="cb78-11"><a href="dplyr-single.html#cb78-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 Europe      360          30</span></span>
+<span id="cb78-12"><a href="dplyr-single.html#cb78-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 Oceania      24           2</span></span></code></pre></div>
 </div>
 <div id="deskriptive-statistiken-mit-summarise" class="section level3" number="7.6.2">
 <h3>
@@ -391,56 +391,56 @@ wobei <span class="math inline">\(x_{0.25}\)</span> und <span class="math inline
 <span class="math display">\[x_{(n)} = \max(x_1,\dots,x_n)\,.\]</span></p></li>
 </ul>
 <p>Auch wenn dies statistisch gesehen unklug sein mag, lass uns die durchschnittliche Lebenserwartung pro Kontinenten berechnen.</p>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="dplyr-single.html#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> my_gap <span class="sc">%&gt;%</span></span>
-<span id="cb78-2"><a href="dplyr-single.html#cb78-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">group_by</span>(continent) <span class="sc">%&gt;%</span></span>
-<span id="cb78-3"><a href="dplyr-single.html#cb78-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">summarise</span>(<span class="at">avg_lifeExp =</span> <span class="fu">mean</span>(lifeExp))</span>
-<span id="cb78-4"><a href="dplyr-single.html#cb78-4" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 5 x 2</span></span>
-<span id="cb78-5"><a href="dplyr-single.html#cb78-5" aria-hidden="true" tabindex="-1"></a><span class="do">##   continent avg_lifeExp</span></span>
-<span id="cb78-6"><a href="dplyr-single.html#cb78-6" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;fct&gt;           &lt;dbl&gt;</span></span>
-<span id="cb78-7"><a href="dplyr-single.html#cb78-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 Africa           48.9</span></span>
-<span id="cb78-8"><a href="dplyr-single.html#cb78-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 Americas         64.7</span></span>
-<span id="cb78-9"><a href="dplyr-single.html#cb78-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 Asia             60.1</span></span>
-<span id="cb78-10"><a href="dplyr-single.html#cb78-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 Europe           71.9</span></span>
-<span id="cb78-11"><a href="dplyr-single.html#cb78-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 Oceania          74.3</span></span></code></pre></div>
-<p><code>summarise_at()</code> wendet die gleiche(n) Zusammenfassungs-Funktion(en) auf mehrere Variablen an. Lass uns die durchschnittliche Lebenserwartung sowie den Median und das Pro-Kopf-GDP nach Kontinenten pro Jahr berechnen… aber nur für 1952 und 2007.</p>
 <div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="dplyr-single.html#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> my_gap <span class="sc">%&gt;%</span></span>
-<span id="cb79-2"><a href="dplyr-single.html#cb79-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">filter</span>(year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1952</span>, <span class="dv">2007</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb79-3"><a href="dplyr-single.html#cb79-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">group_by</span>(continent, year) <span class="sc">%&gt;%</span></span>
-<span id="cb79-4"><a href="dplyr-single.html#cb79-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">summarise_at</span>(<span class="fu">vars</span>(lifeExp, gdpPercap), <span class="fu">list</span>(mean, median))</span>
-<span id="cb79-5"><a href="dplyr-single.html#cb79-5" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 10 x 6</span></span>
-<span id="cb79-6"><a href="dplyr-single.html#cb79-6" aria-hidden="true" tabindex="-1"></a><span class="do">## # Groups:   continent [5]</span></span>
-<span id="cb79-7"><a href="dplyr-single.html#cb79-7" aria-hidden="true" tabindex="-1"></a><span class="do">##    continent  year lifeExp_fn1 gdpPercap_fn1 lifeExp_fn2 gdpPercap_fn2</span></span>
-<span id="cb79-8"><a href="dplyr-single.html#cb79-8" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;fct&gt;     &lt;int&gt;       &lt;dbl&gt;         &lt;dbl&gt;       &lt;dbl&gt;         &lt;dbl&gt;</span></span>
-<span id="cb79-9"><a href="dplyr-single.html#cb79-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 Africa     1952        39.1         1253.        38.8          987.</span></span>
-<span id="cb79-10"><a href="dplyr-single.html#cb79-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 Africa     2007        54.8         3089.        52.9         1452.</span></span>
-<span id="cb79-11"><a href="dplyr-single.html#cb79-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 Americas   1952        53.3         4079.        54.7         3048.</span></span>
-<span id="cb79-12"><a href="dplyr-single.html#cb79-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 Americas   2007        73.6        11003.        72.9         8948.</span></span>
-<span id="cb79-13"><a href="dplyr-single.html#cb79-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 Asia       1952        46.3         5195.        44.9         1207.</span></span>
-<span id="cb79-14"><a href="dplyr-single.html#cb79-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 Asia       2007        70.7        12473.        72.4         4471.</span></span>
-<span id="cb79-15"><a href="dplyr-single.html#cb79-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 Europe     1952        64.4         5661.        65.9         5142.</span></span>
-<span id="cb79-16"><a href="dplyr-single.html#cb79-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 Europe     2007        77.6        25054.        78.6        28054.</span></span>
-<span id="cb79-17"><a href="dplyr-single.html#cb79-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 Oceania    1952        69.3        10298.        69.3        10298.</span></span>
-<span id="cb79-18"><a href="dplyr-single.html#cb79-18" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 Oceania    2007        80.7        29810.        80.7        29810.</span></span></code></pre></div>
-<p>Konzentrieren wir uns nur auf Asien. Wie hoch ist die minimale und maximale Lebenserwartung pro Jahr?</p>
+<span id="cb79-2"><a href="dplyr-single.html#cb79-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">group_by</span>(continent) <span class="sc">%&gt;%</span></span>
+<span id="cb79-3"><a href="dplyr-single.html#cb79-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">summarise</span>(<span class="at">avg_lifeExp =</span> <span class="fu">mean</span>(lifeExp))</span>
+<span id="cb79-4"><a href="dplyr-single.html#cb79-4" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 5 x 2</span></span>
+<span id="cb79-5"><a href="dplyr-single.html#cb79-5" aria-hidden="true" tabindex="-1"></a><span class="do">##   continent avg_lifeExp</span></span>
+<span id="cb79-6"><a href="dplyr-single.html#cb79-6" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;fct&gt;           &lt;dbl&gt;</span></span>
+<span id="cb79-7"><a href="dplyr-single.html#cb79-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 Africa           48.9</span></span>
+<span id="cb79-8"><a href="dplyr-single.html#cb79-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 Americas         64.7</span></span>
+<span id="cb79-9"><a href="dplyr-single.html#cb79-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 Asia             60.1</span></span>
+<span id="cb79-10"><a href="dplyr-single.html#cb79-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 Europe           71.9</span></span>
+<span id="cb79-11"><a href="dplyr-single.html#cb79-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 Oceania          74.3</span></span></code></pre></div>
+<p><code>summarise_at()</code> wendet die gleiche(n) Zusammenfassungs-Funktion(en) auf mehrere Variablen an. Lass uns die durchschnittliche Lebenserwartung sowie den Median und das Pro-Kopf-GDP nach Kontinenten pro Jahr berechnen… aber nur für 1952 und 2007.</p>
 <div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="dplyr-single.html#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> my_gap <span class="sc">%&gt;%</span></span>
-<span id="cb80-2"><a href="dplyr-single.html#cb80-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">filter</span>(continent <span class="sc">==</span> <span class="st">"Asia"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb80-3"><a href="dplyr-single.html#cb80-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span></span>
-<span id="cb80-4"><a href="dplyr-single.html#cb80-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">summarise</span>(<span class="at">min_lifeExp =</span> <span class="fu">min</span>(lifeExp), <span class="at">max_lifeExp =</span> <span class="fu">max</span>(lifeExp))</span>
-<span id="cb80-5"><a href="dplyr-single.html#cb80-5" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 12 x 3</span></span>
-<span id="cb80-6"><a href="dplyr-single.html#cb80-6" aria-hidden="true" tabindex="-1"></a><span class="do">##     year min_lifeExp max_lifeExp</span></span>
-<span id="cb80-7"><a href="dplyr-single.html#cb80-7" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;int&gt;       &lt;dbl&gt;       &lt;dbl&gt;</span></span>
-<span id="cb80-8"><a href="dplyr-single.html#cb80-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  1  1952        28.8        65.4</span></span>
-<span id="cb80-9"><a href="dplyr-single.html#cb80-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  2  1957        30.3        67.8</span></span>
-<span id="cb80-10"><a href="dplyr-single.html#cb80-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  3  1962        32.0        69.4</span></span>
-<span id="cb80-11"><a href="dplyr-single.html#cb80-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  4  1967        34.0        71.4</span></span>
-<span id="cb80-12"><a href="dplyr-single.html#cb80-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  5  1972        36.1        73.4</span></span>
-<span id="cb80-13"><a href="dplyr-single.html#cb80-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  6  1977        31.2        75.4</span></span>
-<span id="cb80-14"><a href="dplyr-single.html#cb80-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  7  1982        39.9        77.1</span></span>
-<span id="cb80-15"><a href="dplyr-single.html#cb80-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  8  1987        40.8        78.7</span></span>
-<span id="cb80-16"><a href="dplyr-single.html#cb80-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  9  1992        41.7        79.4</span></span>
-<span id="cb80-17"><a href="dplyr-single.html#cb80-17" aria-hidden="true" tabindex="-1"></a><span class="do">## 10  1997        41.8        80.7</span></span>
-<span id="cb80-18"><a href="dplyr-single.html#cb80-18" aria-hidden="true" tabindex="-1"></a><span class="do">## 11  2002        42.1        82  </span></span>
-<span id="cb80-19"><a href="dplyr-single.html#cb80-19" aria-hidden="true" tabindex="-1"></a><span class="do">## 12  2007        43.8        82.6</span></span></code></pre></div>
+<span id="cb80-2"><a href="dplyr-single.html#cb80-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">filter</span>(year <span class="sc">%in%</span> <span class="fu">c</span>(<span class="dv">1952</span>, <span class="dv">2007</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb80-3"><a href="dplyr-single.html#cb80-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">group_by</span>(continent, year) <span class="sc">%&gt;%</span></span>
+<span id="cb80-4"><a href="dplyr-single.html#cb80-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">summarise_at</span>(<span class="fu">vars</span>(lifeExp, gdpPercap), <span class="fu">list</span>(mean, median))</span>
+<span id="cb80-5"><a href="dplyr-single.html#cb80-5" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 10 x 6</span></span>
+<span id="cb80-6"><a href="dplyr-single.html#cb80-6" aria-hidden="true" tabindex="-1"></a><span class="do">## # Groups:   continent [5]</span></span>
+<span id="cb80-7"><a href="dplyr-single.html#cb80-7" aria-hidden="true" tabindex="-1"></a><span class="do">##    continent  year lifeExp_fn1 gdpPercap_fn1 lifeExp_fn2 gdpPercap_fn2</span></span>
+<span id="cb80-8"><a href="dplyr-single.html#cb80-8" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;fct&gt;     &lt;int&gt;       &lt;dbl&gt;         &lt;dbl&gt;       &lt;dbl&gt;         &lt;dbl&gt;</span></span>
+<span id="cb80-9"><a href="dplyr-single.html#cb80-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 Africa     1952        39.1         1253.        38.8          987.</span></span>
+<span id="cb80-10"><a href="dplyr-single.html#cb80-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 Africa     2007        54.8         3089.        52.9         1452.</span></span>
+<span id="cb80-11"><a href="dplyr-single.html#cb80-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 Americas   1952        53.3         4079.        54.7         3048.</span></span>
+<span id="cb80-12"><a href="dplyr-single.html#cb80-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 Americas   2007        73.6        11003.        72.9         8948.</span></span>
+<span id="cb80-13"><a href="dplyr-single.html#cb80-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 Asia       1952        46.3         5195.        44.9         1207.</span></span>
+<span id="cb80-14"><a href="dplyr-single.html#cb80-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 Asia       2007        70.7        12473.        72.4         4471.</span></span>
+<span id="cb80-15"><a href="dplyr-single.html#cb80-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 Europe     1952        64.4         5661.        65.9         5142.</span></span>
+<span id="cb80-16"><a href="dplyr-single.html#cb80-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 Europe     2007        77.6        25054.        78.6        28054.</span></span>
+<span id="cb80-17"><a href="dplyr-single.html#cb80-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 Oceania    1952        69.3        10298.        69.3        10298.</span></span>
+<span id="cb80-18"><a href="dplyr-single.html#cb80-18" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 Oceania    2007        80.7        29810.        80.7        29810.</span></span></code></pre></div>
+<p>Konzentrieren wir uns nur auf Asien. Wie hoch ist die minimale und maximale Lebenserwartung pro Jahr?</p>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="dplyr-single.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> my_gap <span class="sc">%&gt;%</span></span>
+<span id="cb81-2"><a href="dplyr-single.html#cb81-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">filter</span>(continent <span class="sc">==</span> <span class="st">"Asia"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb81-3"><a href="dplyr-single.html#cb81-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span></span>
+<span id="cb81-4"><a href="dplyr-single.html#cb81-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">summarise</span>(<span class="at">min_lifeExp =</span> <span class="fu">min</span>(lifeExp), <span class="at">max_lifeExp =</span> <span class="fu">max</span>(lifeExp))</span>
+<span id="cb81-5"><a href="dplyr-single.html#cb81-5" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 12 x 3</span></span>
+<span id="cb81-6"><a href="dplyr-single.html#cb81-6" aria-hidden="true" tabindex="-1"></a><span class="do">##     year min_lifeExp max_lifeExp</span></span>
+<span id="cb81-7"><a href="dplyr-single.html#cb81-7" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;int&gt;       &lt;dbl&gt;       &lt;dbl&gt;</span></span>
+<span id="cb81-8"><a href="dplyr-single.html#cb81-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  1  1952        28.8        65.4</span></span>
+<span id="cb81-9"><a href="dplyr-single.html#cb81-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  2  1957        30.3        67.8</span></span>
+<span id="cb81-10"><a href="dplyr-single.html#cb81-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  3  1962        32.0        69.4</span></span>
+<span id="cb81-11"><a href="dplyr-single.html#cb81-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  4  1967        34.0        71.4</span></span>
+<span id="cb81-12"><a href="dplyr-single.html#cb81-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  5  1972        36.1        73.4</span></span>
+<span id="cb81-13"><a href="dplyr-single.html#cb81-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  6  1977        31.2        75.4</span></span>
+<span id="cb81-14"><a href="dplyr-single.html#cb81-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  7  1982        39.9        77.1</span></span>
+<span id="cb81-15"><a href="dplyr-single.html#cb81-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  8  1987        40.8        78.7</span></span>
+<span id="cb81-16"><a href="dplyr-single.html#cb81-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  9  1992        41.7        79.4</span></span>
+<span id="cb81-17"><a href="dplyr-single.html#cb81-17" aria-hidden="true" tabindex="-1"></a><span class="do">## 10  1997        41.8        80.7</span></span>
+<span id="cb81-18"><a href="dplyr-single.html#cb81-18" aria-hidden="true" tabindex="-1"></a><span class="do">## 11  2002        42.1        82  </span></span>
+<span id="cb81-19"><a href="dplyr-single.html#cb81-19" aria-hidden="true" tabindex="-1"></a><span class="do">## 12  2007        43.8        82.6</span></span></code></pre></div>
 <p>Natürlich wäre es viel interessanter zu sehen, <em>welches</em> Land diese extremen Beobachtungen beigetragen hat. Kommt das Minimum (Maximum) immer aus dem gleichen Land? Wir gehen dem in Kürze mit Window Funktionen nach.</p>
 </div>
 </div>
@@ -454,26 +454,26 @@ wobei <span class="math inline">\(x_{0.25}\)</span> und <span class="math inline
 <span class="header-section-number">7.7.1</span> Berechnungen innerhalb der Gruppen<a class="anchor" aria-label="anchor" href="#berechnungen-innerhalb-der-gruppen"><i class="fas fa-link"></i></a>
 </h3>
 <p>Machen wir eine neue Variable, die die gewonnenen (verlorenen) Lebenserwartungsjahre im Vergleich zu 1952 für jedes einzelne Land angibt. Wir gruppieren nach Ländern und verwenden <code>mutate()</code>, um eine neue Variable zu erstellen. Die Funktion <code>first()</code> extrahiert dabei den ersten Wert aus einem Vektor. Beachte, dass <code>first()</code> mit dem Vektor der Lebenserwartungen <em>in jeder Ländergruppe</em> arbeitet.</p>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="dplyr-single.html#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> my_gap <span class="sc">%&gt;%</span> </span>
-<span id="cb81-2"><a href="dplyr-single.html#cb81-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">group_by</span>(country) <span class="sc">%&gt;%</span> </span>
-<span id="cb81-3"><a href="dplyr-single.html#cb81-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">select</span>(country, year, lifeExp) <span class="sc">%&gt;%</span> </span>
-<span id="cb81-4"><a href="dplyr-single.html#cb81-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">mutate</span>(<span class="at">lifeExp_gain =</span> lifeExp <span class="sc">-</span> <span class="fu">first</span>(lifeExp)) <span class="sc">%&gt;%</span> </span>
-<span id="cb81-5"><a href="dplyr-single.html#cb81-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">filter</span>(year <span class="sc">&lt;</span> <span class="dv">1963</span>)</span>
-<span id="cb81-6"><a href="dplyr-single.html#cb81-6" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 426 x 4</span></span>
-<span id="cb81-7"><a href="dplyr-single.html#cb81-7" aria-hidden="true" tabindex="-1"></a><span class="do">## # Groups:   country [142]</span></span>
-<span id="cb81-8"><a href="dplyr-single.html#cb81-8" aria-hidden="true" tabindex="-1"></a><span class="do">##    country      year lifeExp lifeExp_gain</span></span>
-<span id="cb81-9"><a href="dplyr-single.html#cb81-9" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;fct&gt;       &lt;int&gt;   &lt;dbl&gt;        &lt;dbl&gt;</span></span>
-<span id="cb81-10"><a href="dplyr-single.html#cb81-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 Afghanistan  1952    28.8         0   </span></span>
-<span id="cb81-11"><a href="dplyr-single.html#cb81-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 Afghanistan  1957    30.3         1.53</span></span>
-<span id="cb81-12"><a href="dplyr-single.html#cb81-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 Afghanistan  1962    32.0         3.20</span></span>
-<span id="cb81-13"><a href="dplyr-single.html#cb81-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 Albania      1952    55.2         0   </span></span>
-<span id="cb81-14"><a href="dplyr-single.html#cb81-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 Albania      1957    59.3         4.05</span></span>
-<span id="cb81-15"><a href="dplyr-single.html#cb81-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 Albania      1962    64.8         9.59</span></span>
-<span id="cb81-16"><a href="dplyr-single.html#cb81-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 Algeria      1952    43.1         0   </span></span>
-<span id="cb81-17"><a href="dplyr-single.html#cb81-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 Algeria      1957    45.7         2.61</span></span>
-<span id="cb81-18"><a href="dplyr-single.html#cb81-18" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 Algeria      1962    48.3         5.23</span></span>
-<span id="cb81-19"><a href="dplyr-single.html#cb81-19" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 Angola       1952    30.0         0   </span></span>
-<span id="cb81-20"><a href="dplyr-single.html#cb81-20" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 416 more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="dplyr-single.html#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> my_gap <span class="sc">%&gt;%</span> </span>
+<span id="cb82-2"><a href="dplyr-single.html#cb82-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">group_by</span>(country) <span class="sc">%&gt;%</span> </span>
+<span id="cb82-3"><a href="dplyr-single.html#cb82-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">select</span>(country, year, lifeExp) <span class="sc">%&gt;%</span> </span>
+<span id="cb82-4"><a href="dplyr-single.html#cb82-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">mutate</span>(<span class="at">lifeExp_gain =</span> lifeExp <span class="sc">-</span> <span class="fu">first</span>(lifeExp)) <span class="sc">%&gt;%</span> </span>
+<span id="cb82-5"><a href="dplyr-single.html#cb82-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">filter</span>(year <span class="sc">&lt;</span> <span class="dv">1963</span>)</span>
+<span id="cb82-6"><a href="dplyr-single.html#cb82-6" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 426 x 4</span></span>
+<span id="cb82-7"><a href="dplyr-single.html#cb82-7" aria-hidden="true" tabindex="-1"></a><span class="do">## # Groups:   country [142]</span></span>
+<span id="cb82-8"><a href="dplyr-single.html#cb82-8" aria-hidden="true" tabindex="-1"></a><span class="do">##    country      year lifeExp lifeExp_gain</span></span>
+<span id="cb82-9"><a href="dplyr-single.html#cb82-9" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;fct&gt;       &lt;int&gt;   &lt;dbl&gt;        &lt;dbl&gt;</span></span>
+<span id="cb82-10"><a href="dplyr-single.html#cb82-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 Afghanistan  1952    28.8         0   </span></span>
+<span id="cb82-11"><a href="dplyr-single.html#cb82-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 Afghanistan  1957    30.3         1.53</span></span>
+<span id="cb82-12"><a href="dplyr-single.html#cb82-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 Afghanistan  1962    32.0         3.20</span></span>
+<span id="cb82-13"><a href="dplyr-single.html#cb82-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 Albania      1952    55.2         0   </span></span>
+<span id="cb82-14"><a href="dplyr-single.html#cb82-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 Albania      1957    59.3         4.05</span></span>
+<span id="cb82-15"><a href="dplyr-single.html#cb82-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 Albania      1962    64.8         9.59</span></span>
+<span id="cb82-16"><a href="dplyr-single.html#cb82-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 Algeria      1952    43.1         0   </span></span>
+<span id="cb82-17"><a href="dplyr-single.html#cb82-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 Algeria      1957    45.7         2.61</span></span>
+<span id="cb82-18"><a href="dplyr-single.html#cb82-18" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 Algeria      1962    48.3         5.23</span></span>
+<span id="cb82-19"><a href="dplyr-single.html#cb82-19" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 Angola       1952    30.0         0   </span></span>
+<span id="cb82-20"><a href="dplyr-single.html#cb82-20" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 416 more rows</span></span></code></pre></div>
 <p>Innerhalb eines Landes nehmen wir die Differenz zwischen der Lebenserwartung im Jahr <span class="math inline">\(i\)</span> und der Lebenserwartung im Jahr 1952. Daher sehen wir für 1952 immer Nullen und für die meisten Länder eine Folge von positiven und steigenden Zahlen.</p>
 </div>
 <div id="window-functions" class="section level3" number="7.7.2">
@@ -482,118 +482,118 @@ wobei <span class="math inline">\(x_{0.25}\)</span> und <span class="math inline
 </h3>
 <p>Window Funktionen nehmen <span class="math inline">\(n\)</span>-Eingaben entgegen und geben <span class="math inline">\(n\)</span>-Ausgaben zurück. Außerdem hängt die Ausgabe von allen Werten ab. So ist <code><a href="https://rdrr.io/r/base/rank.html">rank()</a></code> eine Window Funktion, aber <code><a href="https://rdrr.io/r/base/Log.html">log()</a></code> ist es nicht.</p>
 <p>Betrachten wir noch einmal die schlechtesten und besten Lebenserwartungen in Asien im Laufe der Zeit, behalten aber Informationen darüber bei, <em>welches</em> Land diese Extremwerte beisteuert.</p>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="dplyr-single.html#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> my_gap <span class="sc">%&gt;%</span></span>
-<span id="cb82-2"><a href="dplyr-single.html#cb82-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">filter</span>(continent <span class="sc">==</span> <span class="st">"Asia"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb82-3"><a href="dplyr-single.html#cb82-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">select</span>(year, country, lifeExp) <span class="sc">%&gt;%</span></span>
-<span id="cb82-4"><a href="dplyr-single.html#cb82-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span></span>
-<span id="cb82-5"><a href="dplyr-single.html#cb82-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">filter</span>(<span class="fu">min_rank</span>(<span class="fu">desc</span>(lifeExp)) <span class="sc">&lt;</span> <span class="dv">2</span> <span class="sc">|</span> <span class="fu">min_rank</span>(lifeExp) <span class="sc">&lt;</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb82-6"><a href="dplyr-single.html#cb82-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">arrange</span>(year) <span class="sc">%&gt;%</span></span>
-<span id="cb82-7"><a href="dplyr-single.html#cb82-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">print</span>(<span class="at">n =</span> <span class="cn">Inf</span>)  <span class="co"># erzwingt eine Ausgabe aller Zeilen</span></span>
-<span id="cb82-8"><a href="dplyr-single.html#cb82-8" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 24 x 3</span></span>
-<span id="cb82-9"><a href="dplyr-single.html#cb82-9" aria-hidden="true" tabindex="-1"></a><span class="do">## # Groups:   year [12]</span></span>
-<span id="cb82-10"><a href="dplyr-single.html#cb82-10" aria-hidden="true" tabindex="-1"></a><span class="do">##     year country     lifeExp</span></span>
-<span id="cb82-11"><a href="dplyr-single.html#cb82-11" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;int&gt; &lt;fct&gt;         &lt;dbl&gt;</span></span>
-<span id="cb82-12"><a href="dplyr-single.html#cb82-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  1  1952 Afghanistan    28.8</span></span>
-<span id="cb82-13"><a href="dplyr-single.html#cb82-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  2  1952 Israel         65.4</span></span>
-<span id="cb82-14"><a href="dplyr-single.html#cb82-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  3  1957 Afghanistan    30.3</span></span>
-<span id="cb82-15"><a href="dplyr-single.html#cb82-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  4  1957 Israel         67.8</span></span>
-<span id="cb82-16"><a href="dplyr-single.html#cb82-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  5  1962 Afghanistan    32.0</span></span>
-<span id="cb82-17"><a href="dplyr-single.html#cb82-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  6  1962 Israel         69.4</span></span>
-<span id="cb82-18"><a href="dplyr-single.html#cb82-18" aria-hidden="true" tabindex="-1"></a><span class="do">##  7  1967 Afghanistan    34.0</span></span>
-<span id="cb82-19"><a href="dplyr-single.html#cb82-19" aria-hidden="true" tabindex="-1"></a><span class="do">##  8  1967 Japan          71.4</span></span>
-<span id="cb82-20"><a href="dplyr-single.html#cb82-20" aria-hidden="true" tabindex="-1"></a><span class="do">##  9  1972 Afghanistan    36.1</span></span>
-<span id="cb82-21"><a href="dplyr-single.html#cb82-21" aria-hidden="true" tabindex="-1"></a><span class="do">## 10  1972 Japan          73.4</span></span>
-<span id="cb82-22"><a href="dplyr-single.html#cb82-22" aria-hidden="true" tabindex="-1"></a><span class="do">## 11  1977 Cambodia       31.2</span></span>
-<span id="cb82-23"><a href="dplyr-single.html#cb82-23" aria-hidden="true" tabindex="-1"></a><span class="do">## 12  1977 Japan          75.4</span></span>
-<span id="cb82-24"><a href="dplyr-single.html#cb82-24" aria-hidden="true" tabindex="-1"></a><span class="do">## 13  1982 Afghanistan    39.9</span></span>
-<span id="cb82-25"><a href="dplyr-single.html#cb82-25" aria-hidden="true" tabindex="-1"></a><span class="do">## 14  1982 Japan          77.1</span></span>
-<span id="cb82-26"><a href="dplyr-single.html#cb82-26" aria-hidden="true" tabindex="-1"></a><span class="do">## 15  1987 Afghanistan    40.8</span></span>
-<span id="cb82-27"><a href="dplyr-single.html#cb82-27" aria-hidden="true" tabindex="-1"></a><span class="do">## 16  1987 Japan          78.7</span></span>
-<span id="cb82-28"><a href="dplyr-single.html#cb82-28" aria-hidden="true" tabindex="-1"></a><span class="do">## 17  1992 Afghanistan    41.7</span></span>
-<span id="cb82-29"><a href="dplyr-single.html#cb82-29" aria-hidden="true" tabindex="-1"></a><span class="do">## 18  1992 Japan          79.4</span></span>
-<span id="cb82-30"><a href="dplyr-single.html#cb82-30" aria-hidden="true" tabindex="-1"></a><span class="do">## 19  1997 Afghanistan    41.8</span></span>
-<span id="cb82-31"><a href="dplyr-single.html#cb82-31" aria-hidden="true" tabindex="-1"></a><span class="do">## 20  1997 Japan          80.7</span></span>
-<span id="cb82-32"><a href="dplyr-single.html#cb82-32" aria-hidden="true" tabindex="-1"></a><span class="do">## 21  2002 Afghanistan    42.1</span></span>
-<span id="cb82-33"><a href="dplyr-single.html#cb82-33" aria-hidden="true" tabindex="-1"></a><span class="do">## 22  2002 Japan          82  </span></span>
-<span id="cb82-34"><a href="dplyr-single.html#cb82-34" aria-hidden="true" tabindex="-1"></a><span class="do">## 23  2007 Afghanistan    43.8</span></span>
-<span id="cb82-35"><a href="dplyr-single.html#cb82-35" aria-hidden="true" tabindex="-1"></a><span class="do">## 24  2007 Japan          82.6</span></span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="dplyr-single.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> my_gap <span class="sc">%&gt;%</span></span>
+<span id="cb83-2"><a href="dplyr-single.html#cb83-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">filter</span>(continent <span class="sc">==</span> <span class="st">"Asia"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb83-3"><a href="dplyr-single.html#cb83-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">select</span>(year, country, lifeExp) <span class="sc">%&gt;%</span></span>
+<span id="cb83-4"><a href="dplyr-single.html#cb83-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span></span>
+<span id="cb83-5"><a href="dplyr-single.html#cb83-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">filter</span>(<span class="fu">min_rank</span>(<span class="fu">desc</span>(lifeExp)) <span class="sc">&lt;</span> <span class="dv">2</span> <span class="sc">|</span> <span class="fu">min_rank</span>(lifeExp) <span class="sc">&lt;</span> <span class="dv">2</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb83-6"><a href="dplyr-single.html#cb83-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">arrange</span>(year) <span class="sc">%&gt;%</span></span>
+<span id="cb83-7"><a href="dplyr-single.html#cb83-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">print</span>(<span class="at">n =</span> <span class="cn">Inf</span>)  <span class="co"># erzwingt eine Ausgabe aller Zeilen</span></span>
+<span id="cb83-8"><a href="dplyr-single.html#cb83-8" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 24 x 3</span></span>
+<span id="cb83-9"><a href="dplyr-single.html#cb83-9" aria-hidden="true" tabindex="-1"></a><span class="do">## # Groups:   year [12]</span></span>
+<span id="cb83-10"><a href="dplyr-single.html#cb83-10" aria-hidden="true" tabindex="-1"></a><span class="do">##     year country     lifeExp</span></span>
+<span id="cb83-11"><a href="dplyr-single.html#cb83-11" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;int&gt; &lt;fct&gt;         &lt;dbl&gt;</span></span>
+<span id="cb83-12"><a href="dplyr-single.html#cb83-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  1  1952 Afghanistan    28.8</span></span>
+<span id="cb83-13"><a href="dplyr-single.html#cb83-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  2  1952 Israel         65.4</span></span>
+<span id="cb83-14"><a href="dplyr-single.html#cb83-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  3  1957 Afghanistan    30.3</span></span>
+<span id="cb83-15"><a href="dplyr-single.html#cb83-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  4  1957 Israel         67.8</span></span>
+<span id="cb83-16"><a href="dplyr-single.html#cb83-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  5  1962 Afghanistan    32.0</span></span>
+<span id="cb83-17"><a href="dplyr-single.html#cb83-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  6  1962 Israel         69.4</span></span>
+<span id="cb83-18"><a href="dplyr-single.html#cb83-18" aria-hidden="true" tabindex="-1"></a><span class="do">##  7  1967 Afghanistan    34.0</span></span>
+<span id="cb83-19"><a href="dplyr-single.html#cb83-19" aria-hidden="true" tabindex="-1"></a><span class="do">##  8  1967 Japan          71.4</span></span>
+<span id="cb83-20"><a href="dplyr-single.html#cb83-20" aria-hidden="true" tabindex="-1"></a><span class="do">##  9  1972 Afghanistan    36.1</span></span>
+<span id="cb83-21"><a href="dplyr-single.html#cb83-21" aria-hidden="true" tabindex="-1"></a><span class="do">## 10  1972 Japan          73.4</span></span>
+<span id="cb83-22"><a href="dplyr-single.html#cb83-22" aria-hidden="true" tabindex="-1"></a><span class="do">## 11  1977 Cambodia       31.2</span></span>
+<span id="cb83-23"><a href="dplyr-single.html#cb83-23" aria-hidden="true" tabindex="-1"></a><span class="do">## 12  1977 Japan          75.4</span></span>
+<span id="cb83-24"><a href="dplyr-single.html#cb83-24" aria-hidden="true" tabindex="-1"></a><span class="do">## 13  1982 Afghanistan    39.9</span></span>
+<span id="cb83-25"><a href="dplyr-single.html#cb83-25" aria-hidden="true" tabindex="-1"></a><span class="do">## 14  1982 Japan          77.1</span></span>
+<span id="cb83-26"><a href="dplyr-single.html#cb83-26" aria-hidden="true" tabindex="-1"></a><span class="do">## 15  1987 Afghanistan    40.8</span></span>
+<span id="cb83-27"><a href="dplyr-single.html#cb83-27" aria-hidden="true" tabindex="-1"></a><span class="do">## 16  1987 Japan          78.7</span></span>
+<span id="cb83-28"><a href="dplyr-single.html#cb83-28" aria-hidden="true" tabindex="-1"></a><span class="do">## 17  1992 Afghanistan    41.7</span></span>
+<span id="cb83-29"><a href="dplyr-single.html#cb83-29" aria-hidden="true" tabindex="-1"></a><span class="do">## 18  1992 Japan          79.4</span></span>
+<span id="cb83-30"><a href="dplyr-single.html#cb83-30" aria-hidden="true" tabindex="-1"></a><span class="do">## 19  1997 Afghanistan    41.8</span></span>
+<span id="cb83-31"><a href="dplyr-single.html#cb83-31" aria-hidden="true" tabindex="-1"></a><span class="do">## 20  1997 Japan          80.7</span></span>
+<span id="cb83-32"><a href="dplyr-single.html#cb83-32" aria-hidden="true" tabindex="-1"></a><span class="do">## 21  2002 Afghanistan    42.1</span></span>
+<span id="cb83-33"><a href="dplyr-single.html#cb83-33" aria-hidden="true" tabindex="-1"></a><span class="do">## 22  2002 Japan          82  </span></span>
+<span id="cb83-34"><a href="dplyr-single.html#cb83-34" aria-hidden="true" tabindex="-1"></a><span class="do">## 23  2007 Afghanistan    43.8</span></span>
+<span id="cb83-35"><a href="dplyr-single.html#cb83-35" aria-hidden="true" tabindex="-1"></a><span class="do">## 24  2007 Japan          82.6</span></span></code></pre></div>
 <p>Wir sehen, dass (min = Afghanistan, max = Japan) das häufigste Ergebnis ist, aber Kambodscha und Israel tauchen jeweils mindestens einmal als min bzw. max auf.
 Aber wäre es nicht schön, eine Zeile pro Jahr zu haben?</p>
 <p>Wie hat das eigentlich funktioniert? Dazu schauen wir uns die Beobachtungen aus Asien mal direkt an.</p>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="dplyr-single.html#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> (asia <span class="ot">&lt;-</span> my_gap <span class="sc">%&gt;%</span></span>
-<span id="cb83-2"><a href="dplyr-single.html#cb83-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">filter</span>(continent <span class="sc">==</span> <span class="st">"Asia"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb83-3"><a href="dplyr-single.html#cb83-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">select</span>(year, country, lifeExp) <span class="sc">%&gt;%</span></span>
-<span id="cb83-4"><a href="dplyr-single.html#cb83-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">group_by</span>(year))</span>
-<span id="cb83-5"><a href="dplyr-single.html#cb83-5" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 396 x 3</span></span>
-<span id="cb83-6"><a href="dplyr-single.html#cb83-6" aria-hidden="true" tabindex="-1"></a><span class="do">## # Groups:   year [12]</span></span>
-<span id="cb83-7"><a href="dplyr-single.html#cb83-7" aria-hidden="true" tabindex="-1"></a><span class="do">##     year country     lifeExp</span></span>
-<span id="cb83-8"><a href="dplyr-single.html#cb83-8" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;int&gt; &lt;fct&gt;         &lt;dbl&gt;</span></span>
-<span id="cb83-9"><a href="dplyr-single.html#cb83-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  1  1952 Afghanistan    28.8</span></span>
-<span id="cb83-10"><a href="dplyr-single.html#cb83-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  2  1957 Afghanistan    30.3</span></span>
-<span id="cb83-11"><a href="dplyr-single.html#cb83-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  3  1962 Afghanistan    32.0</span></span>
-<span id="cb83-12"><a href="dplyr-single.html#cb83-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  4  1967 Afghanistan    34.0</span></span>
-<span id="cb83-13"><a href="dplyr-single.html#cb83-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  5  1972 Afghanistan    36.1</span></span>
-<span id="cb83-14"><a href="dplyr-single.html#cb83-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  6  1977 Afghanistan    38.4</span></span>
-<span id="cb83-15"><a href="dplyr-single.html#cb83-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  7  1982 Afghanistan    39.9</span></span>
-<span id="cb83-16"><a href="dplyr-single.html#cb83-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  8  1987 Afghanistan    40.8</span></span>
-<span id="cb83-17"><a href="dplyr-single.html#cb83-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  9  1992 Afghanistan    41.7</span></span>
-<span id="cb83-18"><a href="dplyr-single.html#cb83-18" aria-hidden="true" tabindex="-1"></a><span class="do">## 10  1997 Afghanistan    41.8</span></span>
-<span id="cb83-19"><a href="dplyr-single.html#cb83-19" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 386 more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="dplyr-single.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> (asia <span class="ot">&lt;-</span> my_gap <span class="sc">%&gt;%</span></span>
+<span id="cb84-2"><a href="dplyr-single.html#cb84-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">filter</span>(continent <span class="sc">==</span> <span class="st">"Asia"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb84-3"><a href="dplyr-single.html#cb84-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">select</span>(year, country, lifeExp) <span class="sc">%&gt;%</span></span>
+<span id="cb84-4"><a href="dplyr-single.html#cb84-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">group_by</span>(year))</span>
+<span id="cb84-5"><a href="dplyr-single.html#cb84-5" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 396 x 3</span></span>
+<span id="cb84-6"><a href="dplyr-single.html#cb84-6" aria-hidden="true" tabindex="-1"></a><span class="do">## # Groups:   year [12]</span></span>
+<span id="cb84-7"><a href="dplyr-single.html#cb84-7" aria-hidden="true" tabindex="-1"></a><span class="do">##     year country     lifeExp</span></span>
+<span id="cb84-8"><a href="dplyr-single.html#cb84-8" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;int&gt; &lt;fct&gt;         &lt;dbl&gt;</span></span>
+<span id="cb84-9"><a href="dplyr-single.html#cb84-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  1  1952 Afghanistan    28.8</span></span>
+<span id="cb84-10"><a href="dplyr-single.html#cb84-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  2  1957 Afghanistan    30.3</span></span>
+<span id="cb84-11"><a href="dplyr-single.html#cb84-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  3  1962 Afghanistan    32.0</span></span>
+<span id="cb84-12"><a href="dplyr-single.html#cb84-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  4  1967 Afghanistan    34.0</span></span>
+<span id="cb84-13"><a href="dplyr-single.html#cb84-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  5  1972 Afghanistan    36.1</span></span>
+<span id="cb84-14"><a href="dplyr-single.html#cb84-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  6  1977 Afghanistan    38.4</span></span>
+<span id="cb84-15"><a href="dplyr-single.html#cb84-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  7  1982 Afghanistan    39.9</span></span>
+<span id="cb84-16"><a href="dplyr-single.html#cb84-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  8  1987 Afghanistan    40.8</span></span>
+<span id="cb84-17"><a href="dplyr-single.html#cb84-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  9  1992 Afghanistan    41.7</span></span>
+<span id="cb84-18"><a href="dplyr-single.html#cb84-18" aria-hidden="true" tabindex="-1"></a><span class="do">## 10  1997 Afghanistan    41.8</span></span>
+<span id="cb84-19"><a href="dplyr-single.html#cb84-19" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 386 more rows</span></span></code></pre></div>
 <p>Jetzt wenden wir eine Window Funktion an – <code>min_rank()</code>. Da <code>asia</code> nach Jahren gruppiert ist, operiert <code>min_rank()</code> innerhalb von Mini-Datensätzen, jeder für ein bestimmtes Jahr. Auf die Variable <code>LifeExp</code> angewandt, liefert <code>min_rank()</code> den Rang der beobachteten Lebenserwartung jedes Landes.</p>
 <p><strong>Bemerkung:</strong> Der <code>min</code>-Teil gibt nur an, wie die Verbindungen unterbrochen werden.</p>
-<div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="dplyr-single.html#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">rank</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">5</span>), <span class="at">ties.method =</span> <span class="st">"min"</span>)</span>
-<span id="cb84-2"><a href="dplyr-single.html#cb84-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1 2 2 4</span></span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="dplyr-single.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">rank</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">5</span>), <span class="at">ties.method =</span> <span class="st">"min"</span>)</span>
+<span id="cb85-2"><a href="dplyr-single.html#cb85-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1 2 2 4</span></span></code></pre></div>
 <p>Neben dem Minimum gibt es aber auch noch eine Reihe weiterer Alternative, wie z.B. den Durchschnitt</p>
-<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="dplyr-single.html#cb85-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">rank</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">5</span>))</span>
-<span id="cb85-2"><a href="dplyr-single.html#cb85-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1.0 2.5 2.5 4.0</span></span></code></pre></div>
+<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="dplyr-single.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">rank</span>(<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">5</span>))</span>
+<span id="cb86-2"><a href="dplyr-single.html#cb86-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1.0 2.5 2.5 4.0</span></span></code></pre></div>
 <p>Dann schauen wir uns die Ränge der Lebenserwartung innerhalb eines Jahres mal explizit an für ein paar Länder, sowohl in der (Standard-) aufsteigenden als auch in der absteigenden Reihenfolge.</p>
 <p>Da wir im zweiten Schritt nach einigen Ländern filtern, erzeugen wir im ersten Schritt mit <code>mutate()</code> die gewünschten Werte und weisen sie neuen Variablen zu.</p>
-<div class="sourceCode" id="cb86"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb86-1"><a href="dplyr-single.html#cb86-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> asia <span class="sc">%&gt;%</span></span>
-<span id="cb86-2"><a href="dplyr-single.html#cb86-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">mutate</span>(<span class="at">le_rank =</span> <span class="fu">min_rank</span>(lifeExp),</span>
-<span id="cb86-3"><a href="dplyr-single.html#cb86-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>          <span class="at">le_desc_rank =</span> <span class="fu">min_rank</span>(<span class="fu">desc</span>(lifeExp))) <span class="sc">%&gt;%</span> </span>
-<span id="cb86-4"><a href="dplyr-single.html#cb86-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">filter</span>(country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Afghanistan"</span>, <span class="st">"Japan"</span>, <span class="st">"Thailand"</span>), year <span class="sc">&gt;</span> <span class="dv">1995</span>)</span>
-<span id="cb86-5"><a href="dplyr-single.html#cb86-5" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 9 x 5</span></span>
-<span id="cb86-6"><a href="dplyr-single.html#cb86-6" aria-hidden="true" tabindex="-1"></a><span class="do">## # Groups:   year [3]</span></span>
-<span id="cb86-7"><a href="dplyr-single.html#cb86-7" aria-hidden="true" tabindex="-1"></a><span class="do">##    year country     lifeExp le_rank le_desc_rank</span></span>
-<span id="cb86-8"><a href="dplyr-single.html#cb86-8" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;int&gt; &lt;fct&gt;         &lt;dbl&gt;   &lt;int&gt;        &lt;int&gt;</span></span>
-<span id="cb86-9"><a href="dplyr-single.html#cb86-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 1  1997 Afghanistan    41.8       1           33</span></span>
-<span id="cb86-10"><a href="dplyr-single.html#cb86-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 2  2002 Afghanistan    42.1       1           33</span></span>
-<span id="cb86-11"><a href="dplyr-single.html#cb86-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 3  2007 Afghanistan    43.8       1           33</span></span>
-<span id="cb86-12"><a href="dplyr-single.html#cb86-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 4  1997 Japan          80.7      33            1</span></span>
-<span id="cb86-13"><a href="dplyr-single.html#cb86-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 5  2002 Japan          82        33            1</span></span>
-<span id="cb86-14"><a href="dplyr-single.html#cb86-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 6  2007 Japan          82.6      33            1</span></span>
-<span id="cb86-15"><a href="dplyr-single.html#cb86-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 7  1997 Thailand       67.5      12           22</span></span>
-<span id="cb86-16"><a href="dplyr-single.html#cb86-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 8  2002 Thailand       68.6      12           22</span></span>
-<span id="cb86-17"><a href="dplyr-single.html#cb86-17" aria-hidden="true" tabindex="-1"></a><span class="do">## 9  2007 Thailand       70.6      12           22</span></span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="dplyr-single.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> asia <span class="sc">%&gt;%</span></span>
+<span id="cb87-2"><a href="dplyr-single.html#cb87-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">mutate</span>(<span class="at">le_rank =</span> <span class="fu">min_rank</span>(lifeExp),</span>
+<span id="cb87-3"><a href="dplyr-single.html#cb87-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>          <span class="at">le_desc_rank =</span> <span class="fu">min_rank</span>(<span class="fu">desc</span>(lifeExp))) <span class="sc">%&gt;%</span> </span>
+<span id="cb87-4"><a href="dplyr-single.html#cb87-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">filter</span>(country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Afghanistan"</span>, <span class="st">"Japan"</span>, <span class="st">"Thailand"</span>), year <span class="sc">&gt;</span> <span class="dv">1995</span>)</span>
+<span id="cb87-5"><a href="dplyr-single.html#cb87-5" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 9 x 5</span></span>
+<span id="cb87-6"><a href="dplyr-single.html#cb87-6" aria-hidden="true" tabindex="-1"></a><span class="do">## # Groups:   year [3]</span></span>
+<span id="cb87-7"><a href="dplyr-single.html#cb87-7" aria-hidden="true" tabindex="-1"></a><span class="do">##    year country     lifeExp le_rank le_desc_rank</span></span>
+<span id="cb87-8"><a href="dplyr-single.html#cb87-8" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;int&gt; &lt;fct&gt;         &lt;dbl&gt;   &lt;int&gt;        &lt;int&gt;</span></span>
+<span id="cb87-9"><a href="dplyr-single.html#cb87-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 1  1997 Afghanistan    41.8       1           33</span></span>
+<span id="cb87-10"><a href="dplyr-single.html#cb87-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 2  2002 Afghanistan    42.1       1           33</span></span>
+<span id="cb87-11"><a href="dplyr-single.html#cb87-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 3  2007 Afghanistan    43.8       1           33</span></span>
+<span id="cb87-12"><a href="dplyr-single.html#cb87-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 4  1997 Japan          80.7      33            1</span></span>
+<span id="cb87-13"><a href="dplyr-single.html#cb87-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 5  2002 Japan          82        33            1</span></span>
+<span id="cb87-14"><a href="dplyr-single.html#cb87-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 6  2007 Japan          82.6      33            1</span></span>
+<span id="cb87-15"><a href="dplyr-single.html#cb87-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 7  1997 Thailand       67.5      12           22</span></span>
+<span id="cb87-16"><a href="dplyr-single.html#cb87-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 8  2002 Thailand       68.6      12           22</span></span>
+<span id="cb87-17"><a href="dplyr-single.html#cb87-17" aria-hidden="true" tabindex="-1"></a><span class="do">## 9  2007 Thailand       70.6      12           22</span></span></code></pre></div>
 <p>Afghanistan neigt dazu, 1 in der <code>le_rank</code>-Variablen zu haben, Japan neigt dazu, 1 in der <code>le_desc_rank</code>-Variablen zu haben und andere Länder, wie Thailand, zeigen deutlich weniger extreme Ränge.</p>
 <p>Damit sollte der ursprüngliche <code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code> Befehl</p>
-<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="dplyr-single.html#cb87-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">filter</span>(<span class="fu">min_rank</span>(<span class="fu">desc</span>(lifeExp)) <span class="sc">&lt;</span> <span class="dv">2</span> <span class="sc">|</span> <span class="fu">min_rank</span>(lifeExp) <span class="sc">&lt;</span> <span class="dv">2</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="dplyr-single.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">filter</span>(<span class="fu">min_rank</span>(<span class="fu">desc</span>(lifeExp)) <span class="sc">&lt;</span> <span class="dv">2</span> <span class="sc">|</span> <span class="fu">min_rank</span>(lifeExp) <span class="sc">&lt;</span> <span class="dv">2</span>)</span></code></pre></div>
 <p>auch klar sein.</p>
 <p>Diese beiden Sätze von Rängen werden on-the-fly, innerhalb der Jahresgruppe, gebildet, und <code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code> behält Zeilen mit Rang weniger als 2. Da wir dies für aufsteigende und absteigende Ränge tun, erhalten wir sowohl den minimalen als auch den maximalen Rang.</p>
 <p>Wenn wir nur das Minimum ODER das Maximum gewollt hätten, hätte auch ein alternativer Ansatz mit <code>top_n()</code> funktioniert.</p>
-<div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="dplyr-single.html#cb88-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> my_gap <span class="sc">%&gt;%</span></span>
-<span id="cb88-2"><a href="dplyr-single.html#cb88-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">filter</span>(continent <span class="sc">==</span> <span class="st">"Asia"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb88-3"><a href="dplyr-single.html#cb88-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">select</span>(year, country, lifeExp) <span class="sc">%&gt;%</span></span>
-<span id="cb88-4"><a href="dplyr-single.html#cb88-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">arrange</span>(year) <span class="sc">%&gt;%</span></span>
-<span id="cb88-5"><a href="dplyr-single.html#cb88-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span></span>
-<span id="cb88-6"><a href="dplyr-single.html#cb88-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co">#top_n(1, wt = lifeExp)        ## für das Minimum</span></span>
-<span id="cb88-7"><a href="dplyr-single.html#cb88-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">top_n</span>(<span class="dv">1</span>, <span class="at">wt =</span> <span class="fu">desc</span>(lifeExp)) <span class="do">## bzw. das Maximum</span></span>
-<span id="cb88-8"><a href="dplyr-single.html#cb88-8" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 12 x 3</span></span>
-<span id="cb88-9"><a href="dplyr-single.html#cb88-9" aria-hidden="true" tabindex="-1"></a><span class="do">## # Groups:   year [12]</span></span>
-<span id="cb88-10"><a href="dplyr-single.html#cb88-10" aria-hidden="true" tabindex="-1"></a><span class="do">##     year country     lifeExp</span></span>
-<span id="cb88-11"><a href="dplyr-single.html#cb88-11" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;int&gt; &lt;fct&gt;         &lt;dbl&gt;</span></span>
-<span id="cb88-12"><a href="dplyr-single.html#cb88-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  1  1952 Afghanistan    28.8</span></span>
-<span id="cb88-13"><a href="dplyr-single.html#cb88-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  2  1957 Afghanistan    30.3</span></span>
-<span id="cb88-14"><a href="dplyr-single.html#cb88-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  3  1962 Afghanistan    32.0</span></span>
-<span id="cb88-15"><a href="dplyr-single.html#cb88-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  4  1967 Afghanistan    34.0</span></span>
-<span id="cb88-16"><a href="dplyr-single.html#cb88-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  5  1972 Afghanistan    36.1</span></span>
-<span id="cb88-17"><a href="dplyr-single.html#cb88-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  6  1977 Cambodia       31.2</span></span>
-<span id="cb88-18"><a href="dplyr-single.html#cb88-18" aria-hidden="true" tabindex="-1"></a><span class="do">##  7  1982 Afghanistan    39.9</span></span>
-<span id="cb88-19"><a href="dplyr-single.html#cb88-19" aria-hidden="true" tabindex="-1"></a><span class="do">##  8  1987 Afghanistan    40.8</span></span>
-<span id="cb88-20"><a href="dplyr-single.html#cb88-20" aria-hidden="true" tabindex="-1"></a><span class="do">##  9  1992 Afghanistan    41.7</span></span>
-<span id="cb88-21"><a href="dplyr-single.html#cb88-21" aria-hidden="true" tabindex="-1"></a><span class="do">## 10  1997 Afghanistan    41.8</span></span>
-<span id="cb88-22"><a href="dplyr-single.html#cb88-22" aria-hidden="true" tabindex="-1"></a><span class="do">## 11  2002 Afghanistan    42.1</span></span>
-<span id="cb88-23"><a href="dplyr-single.html#cb88-23" aria-hidden="true" tabindex="-1"></a><span class="do">## 12  2007 Afghanistan    43.8</span></span></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="dplyr-single.html#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> my_gap <span class="sc">%&gt;%</span></span>
+<span id="cb89-2"><a href="dplyr-single.html#cb89-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">filter</span>(continent <span class="sc">==</span> <span class="st">"Asia"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb89-3"><a href="dplyr-single.html#cb89-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">select</span>(year, country, lifeExp) <span class="sc">%&gt;%</span></span>
+<span id="cb89-4"><a href="dplyr-single.html#cb89-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">arrange</span>(year) <span class="sc">%&gt;%</span></span>
+<span id="cb89-5"><a href="dplyr-single.html#cb89-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">group_by</span>(year) <span class="sc">%&gt;%</span></span>
+<span id="cb89-6"><a href="dplyr-single.html#cb89-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co">#top_n(1, wt = lifeExp)        ## für das Minimum</span></span>
+<span id="cb89-7"><a href="dplyr-single.html#cb89-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">top_n</span>(<span class="dv">1</span>, <span class="at">wt =</span> <span class="fu">desc</span>(lifeExp)) <span class="do">## bzw. das Maximum</span></span>
+<span id="cb89-8"><a href="dplyr-single.html#cb89-8" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 12 x 3</span></span>
+<span id="cb89-9"><a href="dplyr-single.html#cb89-9" aria-hidden="true" tabindex="-1"></a><span class="do">## # Groups:   year [12]</span></span>
+<span id="cb89-10"><a href="dplyr-single.html#cb89-10" aria-hidden="true" tabindex="-1"></a><span class="do">##     year country     lifeExp</span></span>
+<span id="cb89-11"><a href="dplyr-single.html#cb89-11" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;int&gt; &lt;fct&gt;         &lt;dbl&gt;</span></span>
+<span id="cb89-12"><a href="dplyr-single.html#cb89-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  1  1952 Afghanistan    28.8</span></span>
+<span id="cb89-13"><a href="dplyr-single.html#cb89-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  2  1957 Afghanistan    30.3</span></span>
+<span id="cb89-14"><a href="dplyr-single.html#cb89-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  3  1962 Afghanistan    32.0</span></span>
+<span id="cb89-15"><a href="dplyr-single.html#cb89-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  4  1967 Afghanistan    34.0</span></span>
+<span id="cb89-16"><a href="dplyr-single.html#cb89-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  5  1972 Afghanistan    36.1</span></span>
+<span id="cb89-17"><a href="dplyr-single.html#cb89-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  6  1977 Cambodia       31.2</span></span>
+<span id="cb89-18"><a href="dplyr-single.html#cb89-18" aria-hidden="true" tabindex="-1"></a><span class="do">##  7  1982 Afghanistan    39.9</span></span>
+<span id="cb89-19"><a href="dplyr-single.html#cb89-19" aria-hidden="true" tabindex="-1"></a><span class="do">##  8  1987 Afghanistan    40.8</span></span>
+<span id="cb89-20"><a href="dplyr-single.html#cb89-20" aria-hidden="true" tabindex="-1"></a><span class="do">##  9  1992 Afghanistan    41.7</span></span>
+<span id="cb89-21"><a href="dplyr-single.html#cb89-21" aria-hidden="true" tabindex="-1"></a><span class="do">## 10  1997 Afghanistan    41.8</span></span>
+<span id="cb89-22"><a href="dplyr-single.html#cb89-22" aria-hidden="true" tabindex="-1"></a><span class="do">## 11  2002 Afghanistan    42.1</span></span>
+<span id="cb89-23"><a href="dplyr-single.html#cb89-23" aria-hidden="true" tabindex="-1"></a><span class="do">## 12  2007 Afghanistan    43.8</span></span></code></pre></div>
 </div>
 </div>
 <div id="großes-finale" class="section level2" number="7.8">
@@ -603,26 +603,26 @@ Aber wäre es nicht schön, eine Zeile pro Jahr zu haben?</p>
 <p>Beantworten wir also die Frage: <em>Welches Land hat den stärksten Rückgang der Lebenserwartung um 5 Jahre erlebt?</em></p>
 <p>Die Beobachtungsfrequenz im Datensatz ist fünf Jahre, d.h. wir haben Daten für 1952, 1957 usw. Dies bedeutet also, dass die Veränderungen der Lebenserwartung zwischen benachbarten Zeitpunkten betrachtet werden müssen.</p>
 <p>Zum jetzigen Zeitpunkt ist das einfach zu einfach, also lasst es uns, wenn wir schon dabei sind, nach Kontinenten machen.</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="dplyr-single.html#cb89-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> my_gap <span class="sc">%&gt;%</span></span>
-<span id="cb89-2"><a href="dplyr-single.html#cb89-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">select</span>(country, year, continent, lifeExp) <span class="sc">%&gt;%</span></span>
-<span id="cb89-3"><a href="dplyr-single.html#cb89-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">group_by</span>(continent, country) <span class="sc">%&gt;%</span></span>
-<span id="cb89-4"><a href="dplyr-single.html#cb89-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># für jedes Land werden die Unterschiede berechnet</span></span>
-<span id="cb89-5"><a href="dplyr-single.html#cb89-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">mutate</span>(<span class="at">le_delta =</span> lifeExp <span class="sc">-</span> <span class="fu">lag</span>(lifeExp)) <span class="sc">%&gt;%</span> </span>
-<span id="cb89-6"><a href="dplyr-single.html#cb89-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="do">## für jedes Land wird nur der kleinste Wert behalten</span></span>
-<span id="cb89-7"><a href="dplyr-single.html#cb89-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">summarise</span>(<span class="at">worst_le_delta =</span> <span class="fu">min</span>(le_delta, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb89-8"><a href="dplyr-single.html#cb89-8" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="do">## nun wird noch pro Kontinent, die Zeile mit dem kleinsten Wert ausgegeben</span></span>
-<span id="cb89-9"><a href="dplyr-single.html#cb89-9" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">top_n</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="at">wt =</span> worst_le_delta) <span class="sc">%&gt;%</span> </span>
-<span id="cb89-10"><a href="dplyr-single.html#cb89-10" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">arrange</span>(worst_le_delta)</span>
-<span id="cb89-11"><a href="dplyr-single.html#cb89-11" aria-hidden="true" tabindex="-1"></a><span class="do">## `summarise()` has grouped output by 'continent'. You can override using the `.groups` argument.</span></span>
-<span id="cb89-12"><a href="dplyr-single.html#cb89-12" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 5 x 3</span></span>
-<span id="cb89-13"><a href="dplyr-single.html#cb89-13" aria-hidden="true" tabindex="-1"></a><span class="do">## # Groups:   continent [5]</span></span>
-<span id="cb89-14"><a href="dplyr-single.html#cb89-14" aria-hidden="true" tabindex="-1"></a><span class="do">##   continent country     worst_le_delta</span></span>
-<span id="cb89-15"><a href="dplyr-single.html#cb89-15" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;fct&gt;     &lt;fct&gt;                &lt;dbl&gt;</span></span>
-<span id="cb89-16"><a href="dplyr-single.html#cb89-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 Africa    Rwanda             -20.4  </span></span>
-<span id="cb89-17"><a href="dplyr-single.html#cb89-17" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 Asia      Cambodia            -9.10 </span></span>
-<span id="cb89-18"><a href="dplyr-single.html#cb89-18" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 Americas  El Salvador         -1.51 </span></span>
-<span id="cb89-19"><a href="dplyr-single.html#cb89-19" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 Europe    Montenegro          -1.46 </span></span>
-<span id="cb89-20"><a href="dplyr-single.html#cb89-20" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 Oceania   Australia            0.170</span></span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="dplyr-single.html#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> my_gap <span class="sc">%&gt;%</span></span>
+<span id="cb90-2"><a href="dplyr-single.html#cb90-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">select</span>(country, year, continent, lifeExp) <span class="sc">%&gt;%</span></span>
+<span id="cb90-3"><a href="dplyr-single.html#cb90-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">group_by</span>(continent, country) <span class="sc">%&gt;%</span></span>
+<span id="cb90-4"><a href="dplyr-single.html#cb90-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># für jedes Land werden die Unterschiede berechnet</span></span>
+<span id="cb90-5"><a href="dplyr-single.html#cb90-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">mutate</span>(<span class="at">le_delta =</span> lifeExp <span class="sc">-</span> <span class="fu">lag</span>(lifeExp)) <span class="sc">%&gt;%</span> </span>
+<span id="cb90-6"><a href="dplyr-single.html#cb90-6" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="do">## für jedes Land wird nur der kleinste Wert behalten</span></span>
+<span id="cb90-7"><a href="dplyr-single.html#cb90-7" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">summarise</span>(<span class="at">worst_le_delta =</span> <span class="fu">min</span>(le_delta, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb90-8"><a href="dplyr-single.html#cb90-8" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="do">## nun wird noch pro Kontinent, die Zeile mit dem kleinsten Wert ausgegeben</span></span>
+<span id="cb90-9"><a href="dplyr-single.html#cb90-9" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">top_n</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="at">wt =</span> worst_le_delta) <span class="sc">%&gt;%</span> </span>
+<span id="cb90-10"><a href="dplyr-single.html#cb90-10" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">arrange</span>(worst_le_delta)</span>
+<span id="cb90-11"><a href="dplyr-single.html#cb90-11" aria-hidden="true" tabindex="-1"></a><span class="do">## `summarise()` has grouped output by 'continent'. You can override using the `.groups` argument.</span></span>
+<span id="cb90-12"><a href="dplyr-single.html#cb90-12" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 5 x 3</span></span>
+<span id="cb90-13"><a href="dplyr-single.html#cb90-13" aria-hidden="true" tabindex="-1"></a><span class="do">## # Groups:   continent [5]</span></span>
+<span id="cb90-14"><a href="dplyr-single.html#cb90-14" aria-hidden="true" tabindex="-1"></a><span class="do">##   continent country     worst_le_delta</span></span>
+<span id="cb90-15"><a href="dplyr-single.html#cb90-15" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;fct&gt;     &lt;fct&gt;                &lt;dbl&gt;</span></span>
+<span id="cb90-16"><a href="dplyr-single.html#cb90-16" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 Africa    Rwanda             -20.4  </span></span>
+<span id="cb90-17"><a href="dplyr-single.html#cb90-17" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 Asia      Cambodia            -9.10 </span></span>
+<span id="cb90-18"><a href="dplyr-single.html#cb90-18" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 Americas  El Salvador         -1.51 </span></span>
+<span id="cb90-19"><a href="dplyr-single.html#cb90-19" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 Europe    Montenegro          -1.46 </span></span>
+<span id="cb90-20"><a href="dplyr-single.html#cb90-20" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 Oceania   Australia            0.170</span></span></code></pre></div>
 <p>Denk ruhig eine Weile über das Ergebnis nach. Meistens sieht man hier in trockenen Statistiken über die durchschnittliche Lebenserwartung, wie Völkermord aussieht.</p>
 <p>Unterteile den Code, beginnend von oben, in Stücke und überprüfe die einzelnen Zwischenergebnisse. So wurde der Code auch geschrieben/entwickelt, mit vielen Fehlern und Verfeinerungen auf dem Weg.</p>
 </div>

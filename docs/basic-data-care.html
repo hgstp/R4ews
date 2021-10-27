@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Kapitel 5 Letzte Vorbereitungen … | R4ews MA0009</title>
 <meta name="author" content="Stephan Haug">
-<meta name="description" content="Jetzt ist es an der Zeit, sich zu vergewissern in welchem Verzeichnis auf deinem Computer du dich befindest. Falls du ein RStudio Projekt nutzt, sollte diese Frage leicht zu beantworten sein....">
+<meta name="description" content="Jetzt ist es an der Zeit, sich zu vergewissern in welchem Verzeichnis ihr auf eurem Computer ihr euch befindet. Falls ihr ein RStudio Projekt nutzt, sollte diese Frage leicht zu beantworten sein....">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
 <meta property="og:title" content="Kapitel 5 Letzte Vorbereitungen … | R4ews MA0009">
 <meta property="og:type" content="book">
-<meta property="og:description" content="Jetzt ist es an der Zeit, sich zu vergewissern in welchem Verzeichnis auf deinem Computer du dich befindest. Falls du ein RStudio Projekt nutzt, sollte diese Frage leicht zu beantworten sein....">
+<meta property="og:description" content="Jetzt ist es an der Zeit, sich zu vergewissern in welchem Verzeichnis ihr auf eurem Computer ihr euch befindet. Falls ihr ein RStudio Projekt nutzt, sollte diese Frage leicht zu beantworten sein....">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kapitel 5 Letzte Vorbereitungen … | R4ews MA0009">
-<meta name="twitter:description" content="Jetzt ist es an der Zeit, sich zu vergewissern in welchem Verzeichnis auf deinem Computer du dich befindest. Falls du ein RStudio Projekt nutzt, sollte diese Frage leicht zu beantworten sein....">
+<meta name="twitter:description" content="Jetzt ist es an der Zeit, sich zu vergewissern in welchem Verzeichnis ihr auf eurem Computer ihr euch befindet. Falls ihr ein RStudio Projekt nutzt, sollte diese Frage leicht zu beantworten sein....">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/_Lato-0.4.0/font.css" rel="stylesheet">
@@ -83,264 +83,271 @@
 <h1>
 <span class="header-section-number">Kapitel 5</span> Letzte Vorbereitungen …<a class="anchor" aria-label="anchor" href="#basic-data-care"><i class="fas fa-link"></i></a>
 </h1>
-<p>Jetzt ist es an der Zeit, sich zu vergewissern in welchem Verzeichnis auf deinem Computer du dich befindest. Falls du ein <a href="r-basics.html#rprojs">RStudio Projekt</a> nutzt, sollte diese Frage leicht zu beantworten sein. Falls du trotzdem unsicher bist, gib <code><a href="https://rdrr.io/r/base/getwd.html">getwd()</a></code> in der Konsole ein, um das aktuelle Arbeitsverzeichnis zu sehen.</p>
-<p>Alle nachfolgenden Code Beispiele wollen wir abspeichern in einer <code>.R</code> Datei, die wir im aktuellen Arbeitsverzeichnis abspeichern wollen. Idealerweise geben wir dieser Datei noch einen Namen, wie etwa <code>datenanalyse_teil_1.R</code>, der uns schon viel über den möglichen Inhalt erzählt.
+<p>Jetzt ist es an der Zeit, sich zu vergewissern in welchem Verzeichnis ihr auf eurem Computer ihr euch befindet. Falls ihr ein <a href="r-basics.html#rprojs">RStudio Projekt</a> nutzt, sollte diese Frage leicht zu beantworten sein. Falls ihr trotzdem unsicher seid, gebt <code><a href="https://rdrr.io/r/base/getwd.html">getwd()</a></code> in der Konsole ein, um das aktuelle Arbeitsverzeichnis zu sehen.</p>
+<p>Alle nachfolgenden Code Beispiele wollen wir in einer <code>.R</code> Datei abspeichern, die dann im aktuellen Arbeitsverzeichnis gespeichert werden soll. Idealerweise geben wir dieser Datei noch einen Namen, wie etwa <code>datenanalyse_teil_1.R</code>, der uns schon viel über den möglichen Inhalt erzählt.
 Alternativ können wir alle Befehle natürlich auch in eine R Markdown Datei schreiben, siehe <a href="r-markdown.html#r-markdown">Test drive R Markdown</a>.</p>
-<p>Prinzipiell geht es in den folgenden Abschnitten um Datenmanagement. Es werden aber auch immer wieder ein paar Grafiken zu sehen sein. Dies ist aber kein Problem, da wir ja bereits den <a href="https://rstudio.cloud/learn/primers/1.1">Data Visualization Basics Primer</a></p>
+<p>Prinzipiell geht es in den folgenden Abschnitten um Datenmanagement. Es werden aber auch immer wieder ein paar Grafiken zu sehen sein. Dies ist aber kein Problem, da ihr ja bereits den <a href="https://rstudio.cloud/learn/primers/1.1">Data Visualization Basics Primer</a></p>
 <div class="inline-figure"><img src="img/data_vis_basics.png" width="100%" style="display: block; margin: auto;"></div>
-<p>besucht haben und so den nötigen Background haben.</p>
+<p>besucht habt und somit den nötigen Background besitzt.</p>
 <div id="data-frames-sind-fantastisch" class="section level2" number="5.1">
 <h2>
 <span class="header-section-number">5.1</span> Data Frames sind fantastisch<a class="anchor" aria-label="anchor" href="#data-frames-sind-fantastisch"><i class="fas fa-link"></i></a>
 </h2>
-<p>Das Standardformat für Daten ist ein data frame. Die meisten Funktionen zur Inferenz, Modellierung und graphischen Darstellung erwarten, dass ihnen über ein <code>data =</code> Argument ein data frame übergeben wird. Dies gilt für die Basis R schon seit langem.</p>
+<p>Das Standardformat für Daten ist ein data frame. Die meisten Funktionen zur Inferenz, Modellierung und graphischen Darstellung erwarten, dass ihnen über ein <code>data =</code> Argument ein data frame übergeben wird. Dies gilt für Funktion aus der R Basisdistribution schon seit langem.</p>
 <p>Die als <a href="https://tidyverse.tidyverse.org">tidyverse</a> bekannte Kollektion von Paketen geht noch einen Schritt weiter und priorisiert ausdrücklich die Verarbeitung von data frames. Tatsächlich priorisiert <a href="https://tidyverse.tidyverse.org">tidyverse</a> eine besondere Art von data frames, die als “tibble” bezeichnet wird.</p>
-<p>Data frames - im Gegensatz zu allgemeinen Arrays oder speziell Matrizen in R - können Variablen unterschiedlicher Typen enthalten, wie z. B. Textdaten (Subjekt-ID oder Name), quantitative Daten (Anzahl der weißen Blutkörperchen) und kategoriale Informationen (behandelt vs. unbehandelt). Genauer gesagt können in data frames unterschiedliche Spalten aus unterschiedlichen Datentypen bestehen. Innerhalb einer Spalte müssen aber alle Einträge vom gleichen Typ sein.</p>
-<p>Daten aus einer Datenanalyse bestehen immer aus mehr als einem Datentyp. Aus diesem Grund können Matrizen oder Arrays nicht zur Datenanalyse verwendet werden, da man sonst mit verschiedenen, unverbundenen Objekten (Matrizen, Arrays) arbeiten müsste und diese nur schwer koordinieren kann.</p>
+<p>Data frames - im Gegensatz zu allgemeinen Arrays oder speziell Matrizen - können Variablen unterschiedlicher Typen enthalten, wie z.B. Textdaten (Subjekt-ID oder Name), quantitative Daten (Anzahl der weißen Blutkörperchen) und qualitative/kategoriale Informationen (behandelt vs. unbehandelt). Genauer gesagt können in data frames unterschiedliche Spalten aus unterschiedlichen Datentypen bestehen. Innerhalb einer Spalte müssen aber alle Einträge vom gleichen Typ sein.</p>
+<p>Daten aus einer Datenanalyse bestehen immer aus mehr als einem Datentyp. Aus diesem Grund eigenen sich Matrizen oder Arrays nicht zur Datenanalyse, da man sonst mit verschiedenen, unverbundenen Objekten (Matrizen, Arrays) arbeiten müsste und diese nur schwer koordinieren kann.</p>
 </div>
 <div id="gapminder-data" class="section level2" number="5.2">
 <h2>
 <span class="header-section-number">5.2</span> Gapminder data<a class="anchor" aria-label="anchor" href="#gapminder-data"><i class="fas fa-link"></i></a>
 </h2>
-<p>Wir werden mit einigen der Daten aus dem [Gapminder-Projekt] (<a href="https://www.gapminder.org" class="uri">https://www.gapminder.org</a>)</p>
+<p>Wir werden mit einem Teil der Daten aus dem <a href="https://www.gapminder.org">Gapminder-Projekt</a></p>
 <div class="inline-figure"><img src="img/gapminder.png" width="80%" style="display: block; margin: auto;"></div>
 <p>arbeiten. Die Daten sind im <a href="https://github.com/jennybc/gapminder">gapminder</a> Paket enthalten, welches wir über CRAN installieren können:</p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="basic-data-care.html#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">install.packages</span>(<span class="st">"gapminder"</span>)</span></code></pre></div>
 <p>Um die Daten zu verwenden, müssen wir das Paket natürlich auch noch laden</p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="basic-data-care.html#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(gapminder)</span></code></pre></div>
+<div class="content-box-gray">
+<p>Gapminder wurde von Hans, Anna und Ola Rosling gegründet. Auf der Webseite des Projekts findet man nicht nur viel Informatives, sondern auch sehr Unterhaltsames</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="basic-data-care.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> knitr<span class="sc">::</span><span class="fu">include_url</span>(<span class="st">"https://www.youtube.com/embed/Sm5xF-UYgdg"</span>)</span></code></pre></div>
+<iframe src="https://www.youtube.com/embed/Sm5xF-UYgdg" width="80%" height="400px">
+</iframe>
+<p>Leider ist Hans Rosling bereits 2017 verstorben.</p>
+</div>
 </div>
 <div id="die-gapminder-daten-sind-ein-tibble" class="section level2" number="5.3">
 <h2>
 <span class="header-section-number">5.3</span> Die <code>gapminder</code> Daten sind ein “tibble”<a class="anchor" aria-label="anchor" href="#die-gapminder-daten-sind-ein-tibble"><i class="fas fa-link"></i></a>
 </h2>
-<p>Durch das Laden des <code>gapminder</code> Pakets haben wir nun Zugriff auf einen Datenobjekt mit demselben Namen. Schau dir nun mithilfe der Funktion <code><a href="https://rdrr.io/r/utils/str.html">str()</a></code> die Struktur des Objekts an.</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="basic-data-care.html#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">str</span>(gapminder)</span>
-<span id="cb27-2"><a href="basic-data-care.html#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="do">## tibble [1,704 × 6] (S3: tbl_df/tbl/data.frame)</span></span>
-<span id="cb27-3"><a href="basic-data-care.html#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ country  : Factor w/ 142 levels "Afghanistan",..: 1 1 1 1 1 1 1 1 1 1 ...</span></span>
-<span id="cb27-4"><a href="basic-data-care.html#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ continent: Factor w/ 5 levels "Africa","Americas",..: 3 3 3 3 3 3 3 3 3 3 ...</span></span>
-<span id="cb27-5"><a href="basic-data-care.html#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ year     : int [1:1704] 1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...</span></span>
-<span id="cb27-6"><a href="basic-data-care.html#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ lifeExp  : num [1:1704] 28.8 30.3 32 34 36.1 ...</span></span>
-<span id="cb27-7"><a href="basic-data-care.html#cb27-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ pop      : int [1:1704] 8425333 9240934 10267083 11537966 13079460 14880372..</span></span>
-<span id="cb27-8"><a href="basic-data-care.html#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ gdpPercap: num [1:1704] 779 821 853 836 740 ...</span></span></code></pre></div>
+<p>Durch das Laden des <code>gapminder</code> Pakets haben wir nun Zugriff auf einen Datenobjekt mit demselben Namen. Schauen wir uns mithilfe der Funktion <code><a href="https://rdrr.io/r/utils/str.html">str()</a></code> mal die Struktur dieses Objekts an.</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="basic-data-care.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">str</span>(gapminder)</span>
+<span id="cb28-2"><a href="basic-data-care.html#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="do">## tibble [1,704 × 6] (S3: tbl_df/tbl/data.frame)</span></span>
+<span id="cb28-3"><a href="basic-data-care.html#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ country  : Factor w/ 142 levels "Afghanistan",..: 1 1 1 1 1 1 1 1 1 1 ...</span></span>
+<span id="cb28-4"><a href="basic-data-care.html#cb28-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ continent: Factor w/ 5 levels "Africa","Americas",..: 3 3 3 3 3 3 3 3 3 3 ...</span></span>
+<span id="cb28-5"><a href="basic-data-care.html#cb28-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ year     : int [1:1704] 1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...</span></span>
+<span id="cb28-6"><a href="basic-data-care.html#cb28-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ lifeExp  : num [1:1704] 28.8 30.3 32 34 36.1 ...</span></span>
+<span id="cb28-7"><a href="basic-data-care.html#cb28-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ pop      : int [1:1704] 8425333 9240934 10267083 11537966 13079460 14880372..</span></span>
+<span id="cb28-8"><a href="basic-data-care.html#cb28-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ gdpPercap: num [1:1704] 779 821 853 836 740 ...</span></span></code></pre></div>
 <p><code><a href="https://rdrr.io/r/utils/str.html">str()</a></code> liefert eine vernünftige Beschreibung von fast allem, und im schlimmsten Fall kann tatsächlich auch nichts “Schlimmes” passieren. Aus dem Output erkennen wir, dass der Datensatz 1704 Beobachtungen enthält.</p>
 <p>Auf der anderen Seite hätten wir durch direkten Aufruf von <code>gapminder</code> den Inhalt auch direkt auf den Bildschirm schreiben können. Aber vielleicht hast du schon mal einen größeren Datensatz aufgerufen und zögerst nun etwas, da große Datensätze einfach die Konsole füllen und nur sehr wenig Einblick bieten.</p>
 <p>Dies ist der erste große Sieg für <strong>tibbles</strong>. Tidyverse bietet eine spezielle data frame Variante an: ein “tibble”. Dies wird auch verdeutlicht, wenn man sich z.B. die Klasse des <code>gapminder</code> Objekts anschaut</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="basic-data-care.html#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">class</span>(gapminder)</span>
-<span id="cb28-2"><a href="basic-data-care.html#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "tbl_df"     "tbl"        "data.frame"</span></span></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="basic-data-care.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">class</span>(gapminder)</span>
+<span id="cb29-2"><a href="basic-data-care.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "tbl_df"     "tbl"        "data.frame"</span></span></code></pre></div>
 <p>Schau, es ist immer noch ein reguläres data frame, aber eben auch ein tibble.</p>
 <p>Jetzt können wir <code>gapminder</code> einfach auf den Bildschirm anzeigen! Da es sich um ein tibble handelt, wird nur das Wichtigste angezeigt und deine Konsole läuft nicht voll.</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="basic-data-care.html#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> gapminder</span>
-<span id="cb29-2"><a href="basic-data-care.html#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 1,704 x 6</span></span>
-<span id="cb29-3"><a href="basic-data-care.html#cb29-3" aria-hidden="true" tabindex="-1"></a><span class="do">##    country     continent  year lifeExp      pop gdpPercap</span></span>
-<span id="cb29-4"><a href="basic-data-care.html#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;</span></span>
-<span id="cb29-5"><a href="basic-data-care.html#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 Afghanistan Asia       1952    28.8  8425333      779.</span></span>
-<span id="cb29-6"><a href="basic-data-care.html#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 Afghanistan Asia       1957    30.3  9240934      821.</span></span>
-<span id="cb29-7"><a href="basic-data-care.html#cb29-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 Afghanistan Asia       1962    32.0 10267083      853.</span></span>
-<span id="cb29-8"><a href="basic-data-care.html#cb29-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 Afghanistan Asia       1967    34.0 11537966      836.</span></span>
-<span id="cb29-9"><a href="basic-data-care.html#cb29-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 Afghanistan Asia       1972    36.1 13079460      740.</span></span>
-<span id="cb29-10"><a href="basic-data-care.html#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 Afghanistan Asia       1977    38.4 14880372      786.</span></span>
-<span id="cb29-11"><a href="basic-data-care.html#cb29-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 Afghanistan Asia       1982    39.9 12881816      978.</span></span>
-<span id="cb29-12"><a href="basic-data-care.html#cb29-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 Afghanistan Asia       1987    40.8 13867957      852.</span></span>
-<span id="cb29-13"><a href="basic-data-care.html#cb29-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 Afghanistan Asia       1992    41.7 16317921      649.</span></span>
-<span id="cb29-14"><a href="basic-data-care.html#cb29-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 Afghanistan Asia       1997    41.8 22227415      635.</span></span>
-<span id="cb29-15"><a href="basic-data-care.html#cb29-15" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 1,694 more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="basic-data-care.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> gapminder</span>
+<span id="cb30-2"><a href="basic-data-care.html#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 1,704 x 6</span></span>
+<span id="cb30-3"><a href="basic-data-care.html#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="do">##    country     continent  year lifeExp      pop gdpPercap</span></span>
+<span id="cb30-4"><a href="basic-data-care.html#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;</span></span>
+<span id="cb30-5"><a href="basic-data-care.html#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 Afghanistan Asia       1952    28.8  8425333      779.</span></span>
+<span id="cb30-6"><a href="basic-data-care.html#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 Afghanistan Asia       1957    30.3  9240934      821.</span></span>
+<span id="cb30-7"><a href="basic-data-care.html#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 Afghanistan Asia       1962    32.0 10267083      853.</span></span>
+<span id="cb30-8"><a href="basic-data-care.html#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 Afghanistan Asia       1967    34.0 11537966      836.</span></span>
+<span id="cb30-9"><a href="basic-data-care.html#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 Afghanistan Asia       1972    36.1 13079460      740.</span></span>
+<span id="cb30-10"><a href="basic-data-care.html#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 Afghanistan Asia       1977    38.4 14880372      786.</span></span>
+<span id="cb30-11"><a href="basic-data-care.html#cb30-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 Afghanistan Asia       1982    39.9 12881816      978.</span></span>
+<span id="cb30-12"><a href="basic-data-care.html#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 Afghanistan Asia       1987    40.8 13867957      852.</span></span>
+<span id="cb30-13"><a href="basic-data-care.html#cb30-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 Afghanistan Asia       1992    41.7 16317921      649.</span></span>
+<span id="cb30-14"><a href="basic-data-care.html#cb30-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 Afghanistan Asia       1997    41.8 22227415      635.</span></span>
+<span id="cb30-15"><a href="basic-data-care.html#cb30-15" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 1,694 more rows</span></span></code></pre></div>
 <p>Wenn du mit einem reinen data frame arbeitest - und dieses Feature magst - kannst du es mit <code>as_tibble()</code> in ein tibble transformieren.</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="basic-data-care.html#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(tidyverse)</span>
-<span id="cb30-2"><a href="basic-data-care.html#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">as_tibble</span>(iris)</span>
-<span id="cb30-3"><a href="basic-data-care.html#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 150 x 5</span></span>
-<span id="cb30-4"><a href="basic-data-care.html#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="do">##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species</span></span>
-<span id="cb30-5"><a href="basic-data-care.html#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="do">##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;  </span></span>
-<span id="cb30-6"><a href="basic-data-care.html#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  1          5.1         3.5          1.4         0.2 setosa </span></span>
-<span id="cb30-7"><a href="basic-data-care.html#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  2          4.9         3            1.4         0.2 setosa </span></span>
-<span id="cb30-8"><a href="basic-data-care.html#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  3          4.7         3.2          1.3         0.2 setosa </span></span>
-<span id="cb30-9"><a href="basic-data-care.html#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  4          4.6         3.1          1.5         0.2 setosa </span></span>
-<span id="cb30-10"><a href="basic-data-care.html#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  5          5           3.6          1.4         0.2 setosa </span></span>
-<span id="cb30-11"><a href="basic-data-care.html#cb30-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  6          5.4         3.9          1.7         0.4 setosa </span></span>
-<span id="cb30-12"><a href="basic-data-care.html#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  7          4.6         3.4          1.4         0.3 setosa </span></span>
-<span id="cb30-13"><a href="basic-data-care.html#cb30-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  8          5           3.4          1.5         0.2 setosa </span></span>
-<span id="cb30-14"><a href="basic-data-care.html#cb30-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  9          4.4         2.9          1.4         0.2 setosa </span></span>
-<span id="cb30-15"><a href="basic-data-care.html#cb30-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 10          4.9         3.1          1.5         0.1 setosa </span></span>
-<span id="cb30-16"><a href="basic-data-care.html#cb30-16" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 140 more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="basic-data-care.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(tidyverse)</span>
+<span id="cb31-2"><a href="basic-data-care.html#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">as_tibble</span>(iris)</span>
+<span id="cb31-3"><a href="basic-data-care.html#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 150 x 5</span></span>
+<span id="cb31-4"><a href="basic-data-care.html#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="do">##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species</span></span>
+<span id="cb31-5"><a href="basic-data-care.html#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="do">##           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;  </span></span>
+<span id="cb31-6"><a href="basic-data-care.html#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  1          5.1         3.5          1.4         0.2 setosa </span></span>
+<span id="cb31-7"><a href="basic-data-care.html#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  2          4.9         3            1.4         0.2 setosa </span></span>
+<span id="cb31-8"><a href="basic-data-care.html#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  3          4.7         3.2          1.3         0.2 setosa </span></span>
+<span id="cb31-9"><a href="basic-data-care.html#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  4          4.6         3.1          1.5         0.2 setosa </span></span>
+<span id="cb31-10"><a href="basic-data-care.html#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  5          5           3.6          1.4         0.2 setosa </span></span>
+<span id="cb31-11"><a href="basic-data-care.html#cb31-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  6          5.4         3.9          1.7         0.4 setosa </span></span>
+<span id="cb31-12"><a href="basic-data-care.html#cb31-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  7          4.6         3.4          1.4         0.3 setosa </span></span>
+<span id="cb31-13"><a href="basic-data-care.html#cb31-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  8          5           3.4          1.5         0.2 setosa </span></span>
+<span id="cb31-14"><a href="basic-data-care.html#cb31-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  9          4.4         2.9          1.4         0.2 setosa </span></span>
+<span id="cb31-15"><a href="basic-data-care.html#cb31-15" aria-hidden="true" tabindex="-1"></a><span class="do">## 10          4.9         3.1          1.5         0.1 setosa </span></span>
+<span id="cb31-16"><a href="basic-data-care.html#cb31-16" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 140 more rows</span></span></code></pre></div>
 <p>Weitere Möglichkeiten, grundlegende Informationen zu einem data frame abzufragen:</p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="basic-data-care.html#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">names</span>(gapminder)</span>
-<span id="cb31-2"><a href="basic-data-care.html#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "country"   "continent" "year"      "lifeExp"   "pop"       "gdpPercap"</span></span>
-<span id="cb31-3"><a href="basic-data-care.html#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ncol</span>(gapminder)</span>
-<span id="cb31-4"><a href="basic-data-care.html#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 6</span></span>
-<span id="cb31-5"><a href="basic-data-care.html#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">length</span>(gapminder)</span>
-<span id="cb31-6"><a href="basic-data-care.html#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 6</span></span>
-<span id="cb31-7"><a href="basic-data-care.html#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">dim</span>(gapminder)</span>
-<span id="cb31-8"><a href="basic-data-care.html#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1704    6</span></span>
-<span id="cb31-9"><a href="basic-data-care.html#cb31-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">nrow</span>(gapminder)</span>
-<span id="cb31-10"><a href="basic-data-care.html#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1704</span></span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="basic-data-care.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">names</span>(gapminder)</span>
+<span id="cb32-2"><a href="basic-data-care.html#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "country"   "continent" "year"      "lifeExp"   "pop"       "gdpPercap"</span></span>
+<span id="cb32-3"><a href="basic-data-care.html#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ncol</span>(gapminder)</span>
+<span id="cb32-4"><a href="basic-data-care.html#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 6</span></span>
+<span id="cb32-5"><a href="basic-data-care.html#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">length</span>(gapminder)</span>
+<span id="cb32-6"><a href="basic-data-care.html#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 6</span></span>
+<span id="cb32-7"><a href="basic-data-care.html#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">dim</span>(gapminder)</span>
+<span id="cb32-8"><a href="basic-data-care.html#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1704    6</span></span>
+<span id="cb32-9"><a href="basic-data-care.html#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">nrow</span>(gapminder)</span>
+<span id="cb32-10"><a href="basic-data-care.html#cb32-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1704</span></span></code></pre></div>
 <p>Ein bisschen deskriptive Statistik zum Inhalt eines data frames erhältst du mit <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code>:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="basic-data-care.html#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">summary</span>(gapminder)</span>
-<span id="cb32-2"><a href="basic-data-care.html#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="do">##         country        continent        year         lifeExp    </span></span>
-<span id="cb32-3"><a href="basic-data-care.html#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="do">##  Afghanistan:  12   Africa  :624   Min.   :1952   Min.   :23.6  </span></span>
-<span id="cb32-4"><a href="basic-data-care.html#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  Albania    :  12   Americas:300   1st Qu.:1966   1st Qu.:48.2  </span></span>
-<span id="cb32-5"><a href="basic-data-care.html#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  Algeria    :  12   Asia    :396   Median :1980   Median :60.7  </span></span>
-<span id="cb32-6"><a href="basic-data-care.html#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  Angola     :  12   Europe  :360   Mean   :1980   Mean   :59.5  </span></span>
-<span id="cb32-7"><a href="basic-data-care.html#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  Argentina  :  12   Oceania : 24   3rd Qu.:1993   3rd Qu.:70.8  </span></span>
-<span id="cb32-8"><a href="basic-data-care.html#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  Australia  :  12                  Max.   :2007   Max.   :82.6  </span></span>
-<span id="cb32-9"><a href="basic-data-care.html#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  (Other)    :1632                                               </span></span>
-<span id="cb32-10"><a href="basic-data-care.html#cb32-10" aria-hidden="true" tabindex="-1"></a><span class="do">##       pop             gdpPercap     </span></span>
-<span id="cb32-11"><a href="basic-data-care.html#cb32-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  Min.   :6.00e+04   Min.   :   241  </span></span>
-<span id="cb32-12"><a href="basic-data-care.html#cb32-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  1st Qu.:2.79e+06   1st Qu.:  1202  </span></span>
-<span id="cb32-13"><a href="basic-data-care.html#cb32-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  Median :7.02e+06   Median :  3532  </span></span>
-<span id="cb32-14"><a href="basic-data-care.html#cb32-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  Mean   :2.96e+07   Mean   :  7215  </span></span>
-<span id="cb32-15"><a href="basic-data-care.html#cb32-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  3rd Qu.:1.96e+07   3rd Qu.:  9325  </span></span>
-<span id="cb32-16"><a href="basic-data-care.html#cb32-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  Max.   :1.32e+09   Max.   :113523  </span></span>
-<span id="cb32-17"><a href="basic-data-care.html#cb32-17" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="basic-data-care.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">summary</span>(gapminder)</span>
+<span id="cb33-2"><a href="basic-data-care.html#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="do">##         country        continent        year         lifeExp    </span></span>
+<span id="cb33-3"><a href="basic-data-care.html#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="do">##  Afghanistan:  12   Africa  :624   Min.   :1952   Min.   :23.6  </span></span>
+<span id="cb33-4"><a href="basic-data-care.html#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  Albania    :  12   Americas:300   1st Qu.:1966   1st Qu.:48.2  </span></span>
+<span id="cb33-5"><a href="basic-data-care.html#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  Algeria    :  12   Asia    :396   Median :1980   Median :60.7  </span></span>
+<span id="cb33-6"><a href="basic-data-care.html#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  Angola     :  12   Europe  :360   Mean   :1980   Mean   :59.5  </span></span>
+<span id="cb33-7"><a href="basic-data-care.html#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  Argentina  :  12   Oceania : 24   3rd Qu.:1993   3rd Qu.:70.8  </span></span>
+<span id="cb33-8"><a href="basic-data-care.html#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  Australia  :  12                  Max.   :2007   Max.   :82.6  </span></span>
+<span id="cb33-9"><a href="basic-data-care.html#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="do">##  (Other)    :1632                                               </span></span>
+<span id="cb33-10"><a href="basic-data-care.html#cb33-10" aria-hidden="true" tabindex="-1"></a><span class="do">##       pop             gdpPercap     </span></span>
+<span id="cb33-11"><a href="basic-data-care.html#cb33-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  Min.   :6.00e+04   Min.   :   241  </span></span>
+<span id="cb33-12"><a href="basic-data-care.html#cb33-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  1st Qu.:2.79e+06   1st Qu.:  1202  </span></span>
+<span id="cb33-13"><a href="basic-data-care.html#cb33-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  Median :7.02e+06   Median :  3532  </span></span>
+<span id="cb33-14"><a href="basic-data-care.html#cb33-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  Mean   :2.96e+07   Mean   :  7215  </span></span>
+<span id="cb33-15"><a href="basic-data-care.html#cb33-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  3rd Qu.:1.96e+07   3rd Qu.:  9325  </span></span>
+<span id="cb33-16"><a href="basic-data-care.html#cb33-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  Max.   :1.32e+09   Max.   :113523  </span></span>
+<span id="cb33-17"><a href="basic-data-care.html#cb33-17" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span></code></pre></div>
 <blockquote>
 <p><strong>Bemerkung:</strong> <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> ist eine generische Funktion. Für eine gegebene Klasse (des Inputs) bestimmt die generische Funktion die passende Methode. Die Funktion <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> besitzt die folgenden Methoden:</p>
 </blockquote>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="basic-data-care.html#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">methods</span>(summary)</span>
-<span id="cb33-2"><a href="basic-data-care.html#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] summary,ANY-method             summary,DBIObject-method      </span></span>
-<span id="cb33-3"><a href="basic-data-care.html#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="do">##  [3] summary.aov                    summary.aovlist*              </span></span>
-<span id="cb33-4"><a href="basic-data-care.html#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  [5] summary.aspell*                summary.check_packages_in_dir*</span></span>
-<span id="cb33-5"><a href="basic-data-care.html#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  [7] summary.connection             summary.data.frame            </span></span>
-<span id="cb33-6"><a href="basic-data-care.html#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  [9] summary.Date                   summary.default               </span></span>
-<span id="cb33-7"><a href="basic-data-care.html#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [11] summary.Duration*              summary.ecdf*                 </span></span>
-<span id="cb33-8"><a href="basic-data-care.html#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [13] summary.factor                 summary.ggplot*               </span></span>
-<span id="cb33-9"><a href="basic-data-care.html#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [15] summary.glm                    summary.haven_labelled*       </span></span>
-<span id="cb33-10"><a href="basic-data-care.html#cb33-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [17] summary.hcl_palettes*          summary.infl*                 </span></span>
-<span id="cb33-11"><a href="basic-data-care.html#cb33-11" aria-hidden="true" tabindex="-1"></a><span class="do">## [19] summary.Interval*              summary.lm                    </span></span>
-<span id="cb33-12"><a href="basic-data-care.html#cb33-12" aria-hidden="true" tabindex="-1"></a><span class="do">## [21] summary.loess*                 summary.manova                </span></span>
-<span id="cb33-13"><a href="basic-data-care.html#cb33-13" aria-hidden="true" tabindex="-1"></a><span class="do">## [23] summary.matrix                 summary.mlm*                  </span></span>
-<span id="cb33-14"><a href="basic-data-care.html#cb33-14" aria-hidden="true" tabindex="-1"></a><span class="do">## [25] summary.nls*                   summary.packageStatus*        </span></span>
-<span id="cb33-15"><a href="basic-data-care.html#cb33-15" aria-hidden="true" tabindex="-1"></a><span class="do">## [27] summary.Period*                summary.POSIXct               </span></span>
-<span id="cb33-16"><a href="basic-data-care.html#cb33-16" aria-hidden="true" tabindex="-1"></a><span class="do">## [29] summary.POSIXlt                summary.ppr*                  </span></span>
-<span id="cb33-17"><a href="basic-data-care.html#cb33-17" aria-hidden="true" tabindex="-1"></a><span class="do">## [31] summary.prcomp*                summary.princomp*             </span></span>
-<span id="cb33-18"><a href="basic-data-care.html#cb33-18" aria-hidden="true" tabindex="-1"></a><span class="do">## [33] summary.proc_time              summary.rlang_error*          </span></span>
-<span id="cb33-19"><a href="basic-data-care.html#cb33-19" aria-hidden="true" tabindex="-1"></a><span class="do">## [35] summary.rlang_trace*           summary.srcfile               </span></span>
-<span id="cb33-20"><a href="basic-data-care.html#cb33-20" aria-hidden="true" tabindex="-1"></a><span class="do">## [37] summary.srcref                 summary.stepfun               </span></span>
-<span id="cb33-21"><a href="basic-data-care.html#cb33-21" aria-hidden="true" tabindex="-1"></a><span class="do">## [39] summary.stl*                   summary.table                 </span></span>
-<span id="cb33-22"><a href="basic-data-care.html#cb33-22" aria-hidden="true" tabindex="-1"></a><span class="do">## [41] summary.tukeysmooth*           summary.vctrs_sclr*           </span></span>
-<span id="cb33-23"><a href="basic-data-care.html#cb33-23" aria-hidden="true" tabindex="-1"></a><span class="do">## [43] summary.vctrs_vctr*            summary.warnings              </span></span>
-<span id="cb33-24"><a href="basic-data-care.html#cb33-24" aria-hidden="true" tabindex="-1"></a><span class="do">## see '?methods' for accessing help and source code</span></span></code></pre></div>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="basic-data-care.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">methods</span>(summary)</span>
+<span id="cb34-2"><a href="basic-data-care.html#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="do">##  [1] summary,ANY-method             summary,DBIObject-method      </span></span>
+<span id="cb34-3"><a href="basic-data-care.html#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="do">##  [3] summary.aov                    summary.aovlist*              </span></span>
+<span id="cb34-4"><a href="basic-data-care.html#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  [5] summary.aspell*                summary.check_packages_in_dir*</span></span>
+<span id="cb34-5"><a href="basic-data-care.html#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  [7] summary.connection             summary.data.frame            </span></span>
+<span id="cb34-6"><a href="basic-data-care.html#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  [9] summary.Date                   summary.default               </span></span>
+<span id="cb34-7"><a href="basic-data-care.html#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [11] summary.Duration*              summary.ecdf*                 </span></span>
+<span id="cb34-8"><a href="basic-data-care.html#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="do">## [13] summary.factor                 summary.ggplot*               </span></span>
+<span id="cb34-9"><a href="basic-data-care.html#cb34-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [15] summary.glm                    summary.haven_labelled*       </span></span>
+<span id="cb34-10"><a href="basic-data-care.html#cb34-10" aria-hidden="true" tabindex="-1"></a><span class="do">## [17] summary.hcl_palettes*          summary.infl*                 </span></span>
+<span id="cb34-11"><a href="basic-data-care.html#cb34-11" aria-hidden="true" tabindex="-1"></a><span class="do">## [19] summary.Interval*              summary.lm                    </span></span>
+<span id="cb34-12"><a href="basic-data-care.html#cb34-12" aria-hidden="true" tabindex="-1"></a><span class="do">## [21] summary.loess*                 summary.manova                </span></span>
+<span id="cb34-13"><a href="basic-data-care.html#cb34-13" aria-hidden="true" tabindex="-1"></a><span class="do">## [23] summary.matrix                 summary.mlm*                  </span></span>
+<span id="cb34-14"><a href="basic-data-care.html#cb34-14" aria-hidden="true" tabindex="-1"></a><span class="do">## [25] summary.nls*                   summary.packageStatus*        </span></span>
+<span id="cb34-15"><a href="basic-data-care.html#cb34-15" aria-hidden="true" tabindex="-1"></a><span class="do">## [27] summary.Period*                summary.POSIXct               </span></span>
+<span id="cb34-16"><a href="basic-data-care.html#cb34-16" aria-hidden="true" tabindex="-1"></a><span class="do">## [29] summary.POSIXlt                summary.ppr*                  </span></span>
+<span id="cb34-17"><a href="basic-data-care.html#cb34-17" aria-hidden="true" tabindex="-1"></a><span class="do">## [31] summary.prcomp*                summary.princomp*             </span></span>
+<span id="cb34-18"><a href="basic-data-care.html#cb34-18" aria-hidden="true" tabindex="-1"></a><span class="do">## [33] summary.proc_time              summary.rlang_error*          </span></span>
+<span id="cb34-19"><a href="basic-data-care.html#cb34-19" aria-hidden="true" tabindex="-1"></a><span class="do">## [35] summary.rlang_trace*           summary.srcfile               </span></span>
+<span id="cb34-20"><a href="basic-data-care.html#cb34-20" aria-hidden="true" tabindex="-1"></a><span class="do">## [37] summary.srcref                 summary.stepfun               </span></span>
+<span id="cb34-21"><a href="basic-data-care.html#cb34-21" aria-hidden="true" tabindex="-1"></a><span class="do">## [39] summary.stl*                   summary.table                 </span></span>
+<span id="cb34-22"><a href="basic-data-care.html#cb34-22" aria-hidden="true" tabindex="-1"></a><span class="do">## [41] summary.tukeysmooth*           summary.vctrs_sclr*           </span></span>
+<span id="cb34-23"><a href="basic-data-care.html#cb34-23" aria-hidden="true" tabindex="-1"></a><span class="do">## [43] summary.vctrs_vctr*            summary.warnings              </span></span>
+<span id="cb34-24"><a href="basic-data-care.html#cb34-24" aria-hidden="true" tabindex="-1"></a><span class="do">## see '?methods' for accessing help and source code</span></span></code></pre></div>
 <p>Obwohl wir uns formell noch nicht eingehender mit der Visualisierung beschäftigt haben, ist es wichtig ein paar Grafiken zu erzeugen um einen ersten Eindruck über den Datensatz zu bekommen. Auf der anderen Seite werden die Grafiken aber auch nicht (viel) aufwendiger als im Data Visualisation Basics Primer</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="basic-data-care.html#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ggplot</span>(gapminder, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> lifeExp)) <span class="sc">+</span></span>
-<span id="cb34-2"><a href="basic-data-care.html#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>          <span class="fu">geom_point</span>()</span></code></pre></div>
-<div class="inline-figure"><img src="05_data-care-feeding_files/figure-html/first-plots-base-R-1.png" width="80%" style="display: block; margin: auto;"></div>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="basic-data-care.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ggplot</span>(gapminder, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> gdpPercap, <span class="at">y =</span> lifeExp)) <span class="sc">+</span></span>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="basic-data-care.html#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ggplot</span>(gapminder, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> lifeExp)) <span class="sc">+</span></span>
 <span id="cb35-2"><a href="basic-data-care.html#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>          <span class="fu">geom_point</span>()</span></code></pre></div>
-<div class="inline-figure"><img src="05_data-care-feeding_files/figure-html/first-plots-base-R-2.png" width="80%" style="display: block; margin: auto;"></div>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="basic-data-care.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ggplot</span>(gapminder, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log</span>(gdpPercap), <span class="at">y =</span> lifeExp)) <span class="sc">+</span></span>
+<div class="inline-figure"><img src="05_data-care-feeding_files/figure-html/first-plots-base-R-1.png" width="80%" style="display: block; margin: auto;"></div>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="basic-data-care.html#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ggplot</span>(gapminder, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> gdpPercap, <span class="at">y =</span> lifeExp)) <span class="sc">+</span></span>
 <span id="cb36-2"><a href="basic-data-care.html#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>          <span class="fu">geom_point</span>()</span></code></pre></div>
+<div class="inline-figure"><img src="05_data-care-feeding_files/figure-html/first-plots-base-R-2.png" width="80%" style="display: block; margin: auto;"></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="basic-data-care.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ggplot</span>(gapminder, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">log</span>(gdpPercap), <span class="at">y =</span> lifeExp)) <span class="sc">+</span></span>
+<span id="cb37-2"><a href="basic-data-care.html#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>          <span class="fu">geom_point</span>()</span></code></pre></div>
 <div class="inline-figure"><img src="05_data-care-feeding_files/figure-html/first-plots-base-R-3.png" width="80%" style="display: block; margin: auto;"></div>
 <p>Grafiken dieser Art werden wir zu einem späteren Zeitpunkt noch genauer behandeln. Dann sprechen wir auch über deren Inhalt.</p>
 <p>Wir schauen uns nochmal die Ausgabe von <code><a href="https://rdrr.io/r/utils/str.html">str()</a></code> an, um darüber zu sprechen, was ein data frame genau ist.</p>
-<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="basic-data-care.html#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">str</span>(gapminder)</span>
-<span id="cb37-2"><a href="basic-data-care.html#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="do">## tibble [1,704 × 6] (S3: tbl_df/tbl/data.frame)</span></span>
-<span id="cb37-3"><a href="basic-data-care.html#cb37-3" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ country  : Factor w/ 142 levels "Afghanistan",..: 1 1 1 1 1 1 1 1 1 1 ...</span></span>
-<span id="cb37-4"><a href="basic-data-care.html#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ continent: Factor w/ 5 levels "Africa","Americas",..: 3 3 3 3 3 3 3 3 3 3 ...</span></span>
-<span id="cb37-5"><a href="basic-data-care.html#cb37-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ year     : int [1:1704] 1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...</span></span>
-<span id="cb37-6"><a href="basic-data-care.html#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ lifeExp  : num [1:1704] 28.8 30.3 32 34 36.1 ...</span></span>
-<span id="cb37-7"><a href="basic-data-care.html#cb37-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ pop      : int [1:1704] 8425333 9240934 10267083 11537966 13079460 14880372..</span></span>
-<span id="cb37-8"><a href="basic-data-care.html#cb37-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ gdpPercap: num [1:1704] 779 821 853 836 740 ...</span></span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="basic-data-care.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">str</span>(gapminder)</span>
+<span id="cb38-2"><a href="basic-data-care.html#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="do">## tibble [1,704 × 6] (S3: tbl_df/tbl/data.frame)</span></span>
+<span id="cb38-3"><a href="basic-data-care.html#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ country  : Factor w/ 142 levels "Afghanistan",..: 1 1 1 1 1 1 1 1 1 1 ...</span></span>
+<span id="cb38-4"><a href="basic-data-care.html#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ continent: Factor w/ 5 levels "Africa","Americas",..: 3 3 3 3 3 3 3 3 3 3 ...</span></span>
+<span id="cb38-5"><a href="basic-data-care.html#cb38-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ year     : int [1:1704] 1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 ...</span></span>
+<span id="cb38-6"><a href="basic-data-care.html#cb38-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ lifeExp  : num [1:1704] 28.8 30.3 32 34 36.1 ...</span></span>
+<span id="cb38-7"><a href="basic-data-care.html#cb38-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ pop      : int [1:1704] 8425333 9240934 10267083 11537966 13079460 14880372..</span></span>
+<span id="cb38-8"><a href="basic-data-care.html#cb38-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ gdpPercap: num [1:1704] 779 821 853 836 740 ...</span></span></code></pre></div>
 <p>Ein data frame ist ein Sonderfall einer <em>Liste</em>, die in R verwendet wird, um so gut wie alles aufzunehmen. Data frames sind ein Spezialfall, bei dem die Länge jedes Listenelements gleich ist.</p>
 <p>Nehmen wir mal an, dass wir eine Beschreibung der Variablen</p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="basic-data-care.html#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">names</span>(gapminder)</span>
-<span id="cb38-2"><a href="basic-data-care.html#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "country"   "continent" "year"      "lifeExp"   "pop"       "gdpPercap"</span></span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="basic-data-care.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">names</span>(gapminder)</span>
+<span id="cb39-2"><a href="basic-data-care.html#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "country"   "continent" "year"      "lifeExp"   "pop"       "gdpPercap"</span></span></code></pre></div>
 <p>zusammen mit den Daten abspeichern wollen. Dazu könnten wir ein tibble</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="basic-data-care.html#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> (desc <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">variables =</span> <span class="fu">names</span>(gapminder),</span>
-<span id="cb39-2"><a href="basic-data-care.html#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                <span class="at">desc =</span> <span class="fu">c</span>(<span class="st">"factor with 142 levels"</span>, <span class="st">"factor with 5 levels"</span>,</span>
-<span id="cb39-3"><a href="basic-data-care.html#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                         <span class="st">"ranges from 1952 to 2007 in increments of 5 years"</span>,</span>
-<span id="cb39-4"><a href="basic-data-care.html#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                         <span class="st">"life expectancy at birth, in years"</span>,</span>
-<span id="cb39-5"><a href="basic-data-care.html#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                         <span class="st">"population"</span>,<span class="st">"GDP per capita (US$, inflation-adjusted)"</span>)))</span>
-<span id="cb39-6"><a href="basic-data-care.html#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 6 x 2</span></span>
-<span id="cb39-7"><a href="basic-data-care.html#cb39-7" aria-hidden="true" tabindex="-1"></a><span class="do">##   variables desc                                             </span></span>
-<span id="cb39-8"><a href="basic-data-care.html#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;chr&gt;     &lt;chr&gt;                                            </span></span>
-<span id="cb39-9"><a href="basic-data-care.html#cb39-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 country   factor with 142 levels                           </span></span>
-<span id="cb39-10"><a href="basic-data-care.html#cb39-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 continent factor with 5 levels                             </span></span>
-<span id="cb39-11"><a href="basic-data-care.html#cb39-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 year      ranges from 1952 to 2007 in increments of 5 years</span></span>
-<span id="cb39-12"><a href="basic-data-care.html#cb39-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 lifeExp   life expectancy at birth, in years               </span></span>
-<span id="cb39-13"><a href="basic-data-care.html#cb39-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 pop       population                                       </span></span>
-<span id="cb39-14"><a href="basic-data-care.html#cb39-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 6 gdpPercap GDP per capita (US$, inflation-adjusted)</span></span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="basic-data-care.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> (desc <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">variables =</span> <span class="fu">names</span>(gapminder),</span>
+<span id="cb40-2"><a href="basic-data-care.html#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                <span class="at">desc =</span> <span class="fu">c</span>(<span class="st">"factor with 142 levels"</span>, <span class="st">"factor with 5 levels"</span>,</span>
+<span id="cb40-3"><a href="basic-data-care.html#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                         <span class="st">"ranges from 1952 to 2007 in increments of 5 years"</span>,</span>
+<span id="cb40-4"><a href="basic-data-care.html#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                         <span class="st">"life expectancy at birth, in years"</span>,</span>
+<span id="cb40-5"><a href="basic-data-care.html#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>                         <span class="st">"population"</span>,<span class="st">"GDP per capita (US$, inflation-adjusted)"</span>)))</span>
+<span id="cb40-6"><a href="basic-data-care.html#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 6 x 2</span></span>
+<span id="cb40-7"><a href="basic-data-care.html#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="do">##   variables desc                                             </span></span>
+<span id="cb40-8"><a href="basic-data-care.html#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="do">##   &lt;chr&gt;     &lt;chr&gt;                                            </span></span>
+<span id="cb40-9"><a href="basic-data-care.html#cb40-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 country   factor with 142 levels                           </span></span>
+<span id="cb40-10"><a href="basic-data-care.html#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 continent factor with 5 levels                             </span></span>
+<span id="cb40-11"><a href="basic-data-care.html#cb40-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 year      ranges from 1952 to 2007 in increments of 5 years</span></span>
+<span id="cb40-12"><a href="basic-data-care.html#cb40-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 lifeExp   life expectancy at birth, in years               </span></span>
+<span id="cb40-13"><a href="basic-data-care.html#cb40-13" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 pop       population                                       </span></span>
+<span id="cb40-14"><a href="basic-data-care.html#cb40-14" aria-hidden="true" tabindex="-1"></a><span class="do">## 6 gdpPercap GDP per capita (US$, inflation-adjusted)</span></span></code></pre></div>
 <p>erzeugen, das die Beschreibungen enthält. Dieses data frame hat nun die Dimension 6x2. Trotzdem können wir es mit <code>gapminder</code> kombinieren, wenn wir beide tibbles in einer Liste abspeichern</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="basic-data-care.html#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> gapminder_desc <span class="ot">&lt;-</span> <span class="fu">list</span>(gapminder, desc)</span>
-<span id="cb40-2"><a href="basic-data-care.html#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">str</span>(gapminder_desc)</span>
-<span id="cb40-3"><a href="basic-data-care.html#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="do">## List of 2</span></span>
-<span id="cb40-4"><a href="basic-data-care.html#cb40-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ : tibble [1,704 × 6] (S3: tbl_df/tbl/data.frame)</span></span>
-<span id="cb40-5"><a href="basic-data-care.html#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="do">##   ..$ country  : Factor w/ 142 levels "Afghanistan",..: 1 1 1 1 1 1 1 1 1 1 ...</span></span>
-<span id="cb40-6"><a href="basic-data-care.html#cb40-6" aria-hidden="true" tabindex="-1"></a><span class="do">##   ..$ continent: Factor w/ 5 levels "Africa","Americas",..: 3 3 3 3 3 3 3 3 3 ..</span></span>
-<span id="cb40-7"><a href="basic-data-care.html#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="do">##   ..$ year     : int [1:1704] 1952 1957 1962 1967 1972 1977 1982 1987 1992 199..</span></span>
-<span id="cb40-8"><a href="basic-data-care.html#cb40-8" aria-hidden="true" tabindex="-1"></a><span class="do">##   ..$ lifeExp  : num [1:1704] 28.8 30.3 32 34 36.1 ...</span></span>
-<span id="cb40-9"><a href="basic-data-care.html#cb40-9" aria-hidden="true" tabindex="-1"></a><span class="do">##   ..$ pop      : int [1:1704] 8425333 9240934 10267083 11537966 13079460 14880..</span></span>
-<span id="cb40-10"><a href="basic-data-care.html#cb40-10" aria-hidden="true" tabindex="-1"></a><span class="do">##   ..$ gdpPercap: num [1:1704] 779 821 853 836 740 ...</span></span>
-<span id="cb40-11"><a href="basic-data-care.html#cb40-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ : tibble [6 × 2] (S3: tbl_df/tbl/data.frame)</span></span>
-<span id="cb40-12"><a href="basic-data-care.html#cb40-12" aria-hidden="true" tabindex="-1"></a><span class="do">##   ..$ variables: chr [1:6] "country" "continent" "year" "lifeExp" ...</span></span>
-<span id="cb40-13"><a href="basic-data-care.html#cb40-13" aria-hidden="true" tabindex="-1"></a><span class="do">##   ..$ desc     : chr [1:6] "factor with 142 levels" "factor with 5 levels" "r"..</span></span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="basic-data-care.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> gapminder_desc <span class="ot">&lt;-</span> <span class="fu">list</span>(gapminder, desc)</span>
+<span id="cb41-2"><a href="basic-data-care.html#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">str</span>(gapminder_desc)</span>
+<span id="cb41-3"><a href="basic-data-care.html#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="do">## List of 2</span></span>
+<span id="cb41-4"><a href="basic-data-care.html#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ : tibble [1,704 × 6] (S3: tbl_df/tbl/data.frame)</span></span>
+<span id="cb41-5"><a href="basic-data-care.html#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="do">##   ..$ country  : Factor w/ 142 levels "Afghanistan",..: 1 1 1 1 1 1 1 1 1 1 ...</span></span>
+<span id="cb41-6"><a href="basic-data-care.html#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="do">##   ..$ continent: Factor w/ 5 levels "Africa","Americas",..: 3 3 3 3 3 3 3 3 3 ..</span></span>
+<span id="cb41-7"><a href="basic-data-care.html#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="do">##   ..$ year     : int [1:1704] 1952 1957 1962 1967 1972 1977 1982 1987 1992 199..</span></span>
+<span id="cb41-8"><a href="basic-data-care.html#cb41-8" aria-hidden="true" tabindex="-1"></a><span class="do">##   ..$ lifeExp  : num [1:1704] 28.8 30.3 32 34 36.1 ...</span></span>
+<span id="cb41-9"><a href="basic-data-care.html#cb41-9" aria-hidden="true" tabindex="-1"></a><span class="do">##   ..$ pop      : int [1:1704] 8425333 9240934 10267083 11537966 13079460 14880..</span></span>
+<span id="cb41-10"><a href="basic-data-care.html#cb41-10" aria-hidden="true" tabindex="-1"></a><span class="do">##   ..$ gdpPercap: num [1:1704] 779 821 853 836 740 ...</span></span>
+<span id="cb41-11"><a href="basic-data-care.html#cb41-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ : tibble [6 × 2] (S3: tbl_df/tbl/data.frame)</span></span>
+<span id="cb41-12"><a href="basic-data-care.html#cb41-12" aria-hidden="true" tabindex="-1"></a><span class="do">##   ..$ variables: chr [1:6] "country" "continent" "year" "lifeExp" ...</span></span>
+<span id="cb41-13"><a href="basic-data-care.html#cb41-13" aria-hidden="true" tabindex="-1"></a><span class="do">##   ..$ desc     : chr [1:6] "factor with 142 levels" "factor with 5 levels" "r"..</span></span></code></pre></div>
 </div>
 <div id="variablen-in-einem-data-frame" class="section level2" number="5.4">
 <h2>
 <span class="header-section-number">5.4</span> Variablen in einem Data Frame<a class="anchor" aria-label="anchor" href="#variablen-in-einem-data-frame"><i class="fas fa-link"></i></a>
 </h2>
 <p>Um eine einzelne Variable aus einem data frame anzusprechen, kann man mit dem Dollarzeichen <code><a href="https://rdrr.io/r/base/Extract.html">$</a></code> arbeiten. Wir schauen uns dazu die numerische Variable <code>lifeExp</code> an.</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="basic-data-care.html#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">head</span>(gapminder<span class="sc">$</span>lifeExp)</span>
-<span id="cb41-2"><a href="basic-data-care.html#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 28.8 30.3 32.0 34.0 36.1 38.4</span></span>
-<span id="cb41-3"><a href="basic-data-care.html#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">summary</span>(gapminder<span class="sc">$</span>lifeExp)</span>
-<span id="cb41-4"><a href="basic-data-care.html#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="do">##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></span>
-<span id="cb41-5"><a href="basic-data-care.html#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="do">##    23.6    48.2    60.7    59.5    70.8    82.6</span></span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="basic-data-care.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">head</span>(gapminder<span class="sc">$</span>lifeExp)</span>
+<span id="cb42-2"><a href="basic-data-care.html#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 28.8 30.3 32.0 34.0 36.1 38.4</span></span>
+<span id="cb42-3"><a href="basic-data-care.html#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">summary</span>(gapminder<span class="sc">$</span>lifeExp)</span>
+<span id="cb42-4"><a href="basic-data-care.html#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="do">##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></span>
+<span id="cb42-5"><a href="basic-data-care.html#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="do">##    23.6    48.2    60.7    59.5    70.8    82.6</span></span></code></pre></div>
 <p>Zusätzlich wollen wir die noch die Verteilung von <code>lifeExp</code> visualisieren und plotten dazu ein Histogramm. Da wir dazu <code>ggplot()</code> verwenden, können wir <code>lifeExp</code> wieder direkt aufrufen.</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="basic-data-care.html#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ggplot</span>(gapminder, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> lifeExp)) <span class="sc">+</span> </span>
-<span id="cb42-2"><a href="basic-data-care.html#cb42-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">geom_histogram</span>()</span>
-<span id="cb42-3"><a href="basic-data-care.html#cb42-3" aria-hidden="true" tabindex="-1"></a><span class="do">## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span></span></code></pre></div>
-<div class="inline-figure"><img src="05_data-care-feeding_files/figure-html/unnamed-chunk-17-1.png" width="80%" style="display: block; margin: auto;"></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="basic-data-care.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ggplot</span>(gapminder, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> lifeExp)) <span class="sc">+</span> </span>
+<span id="cb43-2"><a href="basic-data-care.html#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">geom_histogram</span>()</span>
+<span id="cb43-3"><a href="basic-data-care.html#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="do">## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span></span></code></pre></div>
+<div class="inline-figure"><img src="05_data-care-feeding_files/figure-html/unnamed-chunk-18-1.png" width="80%" style="display: block; margin: auto;"></div>
 <p>Alternativ können wir die Einträge eines data frames auch über die eckigen Klammern <code>[]</code> indizieren.</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="basic-data-care.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">summary</span>(gapminder[,<span class="st">"lifeExp"</span>])</span>
-<span id="cb43-2"><a href="basic-data-care.html#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="do">##     lifeExp    </span></span>
-<span id="cb43-3"><a href="basic-data-care.html#cb43-3" aria-hidden="true" tabindex="-1"></a><span class="do">##  Min.   :23.6  </span></span>
-<span id="cb43-4"><a href="basic-data-care.html#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  1st Qu.:48.2  </span></span>
-<span id="cb43-5"><a href="basic-data-care.html#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  Median :60.7  </span></span>
-<span id="cb43-6"><a href="basic-data-care.html#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  Mean   :59.5  </span></span>
-<span id="cb43-7"><a href="basic-data-care.html#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  3rd Qu.:70.8  </span></span>
-<span id="cb43-8"><a href="basic-data-care.html#cb43-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  Max.   :82.6</span></span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="basic-data-care.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">summary</span>(gapminder[,<span class="st">"lifeExp"</span>])</span>
+<span id="cb44-2"><a href="basic-data-care.html#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="do">##     lifeExp    </span></span>
+<span id="cb44-3"><a href="basic-data-care.html#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="do">##  Min.   :23.6  </span></span>
+<span id="cb44-4"><a href="basic-data-care.html#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  1st Qu.:48.2  </span></span>
+<span id="cb44-5"><a href="basic-data-care.html#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  Median :60.7  </span></span>
+<span id="cb44-6"><a href="basic-data-care.html#cb44-6" aria-hidden="true" tabindex="-1"></a><span class="do">##  Mean   :59.5  </span></span>
+<span id="cb44-7"><a href="basic-data-care.html#cb44-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  3rd Qu.:70.8  </span></span>
+<span id="cb44-8"><a href="basic-data-care.html#cb44-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  Max.   :82.6</span></span></code></pre></div>
 <p>Dabei spezifiziert der Eintrag links vom Komma die Zeilen und der Wert rechts davon die Spalten. Dies ist hilfreich, wenn man auf einzelne Werte zugreifen will. Aber beim Aufruf einer kompletten Variable (Spalte) ist die <code><a href="https://rdrr.io/r/base/Extract.html">$</a></code> Notation sicherlich vorteilhaft.</p>
 <p>Die Variable <code>year</code> ist eine ganzzahlige Variable, aber da es so wenige unterschiedliche Werte gibt, funktioniert sie auch ein wenig wie eine kategoriale Variable.</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="basic-data-care.html#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">summary</span>(gapminder<span class="sc">$</span>year)</span>
-<span id="cb44-2"><a href="basic-data-care.html#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="do">##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></span>
-<span id="cb44-3"><a href="basic-data-care.html#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="do">##    1952    1966    1980    1980    1993    2007</span></span>
-<span id="cb44-4"><a href="basic-data-care.html#cb44-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">table</span>(gapminder<span class="sc">$</span>year)</span>
-<span id="cb44-5"><a href="basic-data-care.html#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb44-6"><a href="basic-data-care.html#cb44-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 2002 2007 </span></span>
-<span id="cb44-7"><a href="basic-data-care.html#cb44-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  142  142  142  142  142  142  142  142  142  142  142  142</span></span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="basic-data-care.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">summary</span>(gapminder<span class="sc">$</span>year)</span>
+<span id="cb45-2"><a href="basic-data-care.html#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="do">##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></span>
+<span id="cb45-3"><a href="basic-data-care.html#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="do">##    1952    1966    1980    1980    1993    2007</span></span>
+<span id="cb45-4"><a href="basic-data-care.html#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">table</span>(gapminder<span class="sc">$</span>year)</span>
+<span id="cb45-5"><a href="basic-data-care.html#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb45-6"><a href="basic-data-care.html#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 2002 2007 </span></span>
+<span id="cb45-7"><a href="basic-data-care.html#cb45-7" aria-hidden="true" tabindex="-1"></a><span class="do">##  142  142  142  142  142  142  142  142  142  142  142  142</span></span></code></pre></div>
 <p>Die Variablen <code>country</code> und <code>continent</code> enthalten rein kategorische Informationen, die in R (häufig) als <em>factor</em> gespeichert werden.</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="basic-data-care.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">class</span>(gapminder<span class="sc">$</span>continent)</span>
-<span id="cb45-2"><a href="basic-data-care.html#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "factor"</span></span>
-<span id="cb45-3"><a href="basic-data-care.html#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">summary</span>(gapminder<span class="sc">$</span>continent)</span>
-<span id="cb45-4"><a href="basic-data-care.html#cb45-4" aria-hidden="true" tabindex="-1"></a><span class="do">##   Africa Americas     Asia   Europe  Oceania </span></span>
-<span id="cb45-5"><a href="basic-data-care.html#cb45-5" aria-hidden="true" tabindex="-1"></a><span class="do">##      624      300      396      360       24</span></span>
-<span id="cb45-6"><a href="basic-data-care.html#cb45-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">levels</span>(gapminder<span class="sc">$</span>continent)</span>
-<span id="cb45-7"><a href="basic-data-care.html#cb45-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "Africa"   "Americas" "Asia"     "Europe"   "Oceania"</span></span>
-<span id="cb45-8"><a href="basic-data-care.html#cb45-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">nlevels</span>(gapminder<span class="sc">$</span>continent)</span>
-<span id="cb45-9"><a href="basic-data-care.html#cb45-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 5</span></span></code></pre></div>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="basic-data-care.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">class</span>(gapminder<span class="sc">$</span>continent)</span>
+<span id="cb46-2"><a href="basic-data-care.html#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "factor"</span></span>
+<span id="cb46-3"><a href="basic-data-care.html#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">summary</span>(gapminder<span class="sc">$</span>continent)</span>
+<span id="cb46-4"><a href="basic-data-care.html#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="do">##   Africa Americas     Asia   Europe  Oceania </span></span>
+<span id="cb46-5"><a href="basic-data-care.html#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="do">##      624      300      396      360       24</span></span>
+<span id="cb46-6"><a href="basic-data-care.html#cb46-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">levels</span>(gapminder<span class="sc">$</span>continent)</span>
+<span id="cb46-7"><a href="basic-data-care.html#cb46-7" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "Africa"   "Americas" "Asia"     "Europe"   "Oceania"</span></span>
+<span id="cb46-8"><a href="basic-data-care.html#cb46-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">nlevels</span>(gapminder<span class="sc">$</span>continent)</span>
+<span id="cb46-9"><a href="basic-data-care.html#cb46-9" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 5</span></span></code></pre></div>
 <p>Die <strong>Levels</strong> von <code>continent</code> sind “Afrika”, “America” usw., und das ist es, was einem normalerweise in R angezeigt werden sollte, wenn man eine Faktorvariable aufruft. Im Allgemeinen sind die Levels von Menschen lesbare Zeichenfolgen, wie “male/female” und “control/treated”. Aber vergiss <em>niemals</em>, dass R diese Information in kodierter Form speichert. Schauen dir zum Beispiel das Ergebnis von <code><a href="https://rdrr.io/r/utils/str.html">str(gapminder$continent)</a></code> an, falls du skeptisch sein solltest.</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="basic-data-care.html#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">str</span>(gapminder<span class="sc">$</span>continent)</span>
-<span id="cb46-2"><a href="basic-data-care.html#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="do">##  Factor w/ 5 levels "Africa","Americas",..: 3 3 3 3 3 3 3 3 3 3 ...</span></span></code></pre></div>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="basic-data-care.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">str</span>(gapminder<span class="sc">$</span>continent)</span>
+<span id="cb47-2"><a href="basic-data-care.html#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="do">##  Factor w/ 5 levels "Africa","Americas",..: 3 3 3 3 3 3 3 3 3 3 ...</span></span></code></pre></div>
 <p>Faktorvariablen haben Vor- und Nachteil. Im weiteren Verlauf zeigen wir sowohl die Vor- wie auch die Nachteile. Generell ist aber durchaus so, dass die Vorteile überwiegen.</p>
 <p>Als Nächstes erstellen wir mit der Funktion <code><a href="https://rdrr.io/r/base/table.html">table()</a></code> eine Häufigkeitstabelle für die Variable <code>count</code>. Dieser Inhalt wird anschließend visualisiert über die Funktion <code>geom_bar()</code>. Die entsprechende Berechnung der Häufigkeitstabelle wird dabei aber sowohl von <code><a href="https://rdrr.io/r/base/table.html">table()</a></code> wie auch von <code>geom_bar()</code> (über die statistische Transformation <code>stat_count()</code>) durchgeführt, oder anders gesagt, wir können an <code>geom_bar()</code> den Datensatz (hier <code>gapminder</code>) anstatt von vorab berechneten Werten übergeben.</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="basic-data-care.html#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">table</span>(gapminder<span class="sc">$</span>continent)</span>
-<span id="cb47-2"><a href="basic-data-care.html#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb47-3"><a href="basic-data-care.html#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="do">##   Africa Americas     Asia   Europe  Oceania </span></span>
-<span id="cb47-4"><a href="basic-data-care.html#cb47-4" aria-hidden="true" tabindex="-1"></a><span class="do">##      624      300      396      360       24</span></span>
-<span id="cb47-5"><a href="basic-data-care.html#cb47-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ggplot</span>(gapminder, <span class="fu">aes</span>(<span class="at">x =</span> continent)) <span class="sc">+</span> <span class="fu">geom_bar</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="basic-data-care.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">table</span>(gapminder<span class="sc">$</span>continent)</span>
+<span id="cb48-2"><a href="basic-data-care.html#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb48-3"><a href="basic-data-care.html#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="do">##   Africa Americas     Asia   Europe  Oceania </span></span>
+<span id="cb48-4"><a href="basic-data-care.html#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="do">##      624      300      396      360       24</span></span>
+<span id="cb48-5"><a href="basic-data-care.html#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ggplot</span>(gapminder, <span class="fu">aes</span>(<span class="at">x =</span> continent)) <span class="sc">+</span> <span class="fu">geom_bar</span>()</span></code></pre></div>
 <div class="inline-figure"><img src="05_data-care-feeding_files/figure-html/tabulate-continent-1.png" width="80%" style="display: block; margin: auto;"></div>
 <p>In den folgenden Abbildungen sehen wir, wie Faktoren in Zahlen umgesetzt werden können. Der <code>continent</code>-Faktor lässt sich durch das <a href="https://ggplot2.tidyverse.org">ggplot2</a>-Paket leicht in “Facetten” oder Farben und eine Legende abbilden.</p>
 <p><em>Die Erstellung von Grafiken mit ggplot2 werden wir noch genauer besprechen. Daher kannst du dich also ruhig zurücklehnen und die Plots genießen oder blind kopieren/einfügen.</em></p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="basic-data-care.html#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># wir initialisieren ein grafik (ohne inhalt)</span></span>
-<span id="cb48-2"><a href="basic-data-care.html#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="fu">filter</span>(gapminder, continent <span class="sc">!=</span> <span class="st">"Oceania"</span>),</span>
-<span id="cb48-3"><a href="basic-data-care.html#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>             <span class="fu">aes</span>(<span class="at">x =</span> gdpPercap, <span class="at">y =</span> lifeExp))  </span>
-<span id="cb48-4"><a href="basic-data-care.html#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">scale_x_log10</span>() <span class="co"># auf der x-achse soll eine log skala verwendet werden</span></span>
-<span id="cb48-5"><a href="basic-data-care.html#cb48-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> p <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="co"># ein scatterplot</span></span>
-<span id="cb48-6"><a href="basic-data-care.html#cb48-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> p <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> continent)) <span class="co"># für verschiedene kontinente werden verschiedene farben verwendet</span></span>
-<span id="cb48-7"><a href="basic-data-care.html#cb48-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> p <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">alpha =</span> (<span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>), <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span> <span class="co"># punkte mit transparenz</span></span>
-<span id="cb48-8"><a href="basic-data-care.html#cb48-8" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">geom_smooth</span>(<span class="at">lwd =</span> <span class="dv">3</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="co"># geglätter zusammenhang</span></span>
-<span id="cb48-9"><a href="basic-data-care.html#cb48-9" aria-hidden="true" tabindex="-1"></a><span class="do">## `geom_smooth()` using method = 'gam' and formula 'y ~ s(x, bs = "cs")'</span></span>
-<span id="cb48-10"><a href="basic-data-care.html#cb48-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> p <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">alpha =</span> (<span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>), <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span> </span>
-<span id="cb48-11"><a href="basic-data-care.html#cb48-11" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">facet_wrap</span>(<span class="sc">~</span> continent) <span class="sc">+</span> <span class="co"># für jeden kontinent wird eine eigener</span></span>
-<span id="cb48-12"><a href="basic-data-care.html#cb48-12" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># plot (innerhalb einer grafik) erzeugt</span></span>
-<span id="cb48-13"><a href="basic-data-care.html#cb48-13" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">geom_smooth</span>(<span class="at">lwd =</span> <span class="fl">1.5</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb48-14"><a href="basic-data-care.html#cb48-14" aria-hidden="true" tabindex="-1"></a><span class="do">## `geom_smooth()` using method = 'loess' and formula 'y ~ x'</span></span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="basic-data-care.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="co"># wir initialisieren ein grafik (ohne inhalt)</span></span>
+<span id="cb49-2"><a href="basic-data-care.html#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="fu">filter</span>(gapminder, continent <span class="sc">!=</span> <span class="st">"Oceania"</span>),</span>
+<span id="cb49-3"><a href="basic-data-care.html#cb49-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>             <span class="fu">aes</span>(<span class="at">x =</span> gdpPercap, <span class="at">y =</span> lifeExp))  </span>
+<span id="cb49-4"><a href="basic-data-care.html#cb49-4" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">scale_x_log10</span>() <span class="co"># auf der x-achse soll eine log skala verwendet werden</span></span>
+<span id="cb49-5"><a href="basic-data-care.html#cb49-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> p <span class="sc">+</span> <span class="fu">geom_point</span>() <span class="co"># ein scatterplot</span></span>
+<span id="cb49-6"><a href="basic-data-care.html#cb49-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> p <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color =</span> continent)) <span class="co"># für verschiedene kontinente werden verschiedene farben verwendet</span></span>
+<span id="cb49-7"><a href="basic-data-care.html#cb49-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> p <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">alpha =</span> (<span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>), <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span> <span class="co"># punkte mit transparenz</span></span>
+<span id="cb49-8"><a href="basic-data-care.html#cb49-8" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">geom_smooth</span>(<span class="at">lwd =</span> <span class="dv">3</span>, <span class="at">se =</span> <span class="cn">FALSE</span>) <span class="co"># geglätter zusammenhang</span></span>
+<span id="cb49-9"><a href="basic-data-care.html#cb49-9" aria-hidden="true" tabindex="-1"></a><span class="do">## `geom_smooth()` using method = 'gam' and formula 'y ~ s(x, bs = "cs")'</span></span>
+<span id="cb49-10"><a href="basic-data-care.html#cb49-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> p <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">alpha =</span> (<span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>), <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span> </span>
+<span id="cb49-11"><a href="basic-data-care.html#cb49-11" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">facet_wrap</span>(<span class="sc">~</span> continent) <span class="sc">+</span> <span class="co"># für jeden kontinent wird eine eigener</span></span>
+<span id="cb49-12"><a href="basic-data-care.html#cb49-12" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="co"># plot (innerhalb einer grafik) erzeugt</span></span>
+<span id="cb49-13"><a href="basic-data-care.html#cb49-13" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">geom_smooth</span>(<span class="at">lwd =</span> <span class="fl">1.5</span>, <span class="at">se =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb49-14"><a href="basic-data-care.html#cb49-14" aria-hidden="true" tabindex="-1"></a><span class="do">## `geom_smooth()` using method = 'loess' and formula 'y ~ x'</span></span></code></pre></div>
 <p><img src="05_data-care-feeding_files/figure-html/factors-nice-for-plots-1.png" width="49%" style="display: block; margin: auto;"><img src="05_data-care-feeding_files/figure-html/factors-nice-for-plots-2.png" width="49%" style="display: block; margin: auto;"><img src="05_data-care-feeding_files/figure-html/factors-nice-for-plots-3.png" width="49%" style="display: block; margin: auto;"><img src="05_data-care-feeding_files/figure-html/factors-nice-for-plots-4.png" width="49%" style="display: block; margin: auto;"></p>
 </div>
 <div id="recap" class="section level2" number="5.5">

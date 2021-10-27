@@ -138,7 +138,7 @@ Nicht alle Funktionen haben (oder erfordern) Argumente:
 
 ```r
 > date()
-## [1] "Wed Oct 20 09:27:16 2021"
+## [1] "Tue Oct 26 17:34:58 2021"
 ```
 
 Schaut euch nun euren Workspace an - unter Environment (vermutlich im Fenster rechts oben) seht ihr den Inhalt eures Workspace. Der Workspace ist der Ort, an dem sich benutzerdefinierte Objekte ansammeln. Eine Liste dieser Objekte könnt ihr auch mit diesen Befehlen erhalten:
@@ -269,7 +269,7 @@ Wir nehmen nun an, dass ihr ein RStudio Projekt angelegt und auch geöffnet habt
 > x <- runif(40)
 > y <- a + b * x + rnorm(40, sd = sqrt(sig_sq))
 > (x_n <- mean(x))
-## [1] 0.524
+## [1] 0.49
 > write(x_n, "mittelwert_x.txt")
 > plot(x, y)
 > abline(a, b, col = "purple")
@@ -309,13 +309,13 @@ Kommentare beginnen mit einem oder mehreren `#`-Symbolen. Verwendet Kommentare. 
 Dieser __Workflow__ wird euch in Zukunft gute Dienste leisten:
 
 ::: {.content-box-green}
-* Erstelle ein RStudio Projekt für ein analytisches Projekt
-* Speichere alle Input Dateien innerhalb des Projekts (wir werden bald über den Import sprechen)
-* Bewahre alle Skripte zu diesem Projekt dort auf; bearbeite sie und führen sie dort aus
-* Speichere den Output innerhalb des Projekts (wie z.B. das PDF im letzten Beispiel)
+* erstelle ein RStudio Projekt für jedes neue R "Vorhaben"
+* speichere alle Input Dateien innerhalb des Projekts (wir werden bald über den Import sprechen)
+* bewahre alle Skripte zu diesem Projekt dort auf; bearbeite sie und führen sie dort aus
+* speichere den Output innerhalb des Projekts (wie z.B. das PDF im letzten Beispiel)
 :::
 
-Ihr solltet vermeiden die Maus für Teile des Workflows zu verwenden, wie z.B. das Laden eines Datensatzes oder das Speichern einer Grafik. Das ist sehr wichtig für die Reproduzierbarkeit und um im Nachhinein feststellen zu können, wie eine numerische Tabelle oder eine PDF-Datei tatsächlich erzeugt wurde (eine Suche auf der lokalen Festplatte nach dem entsprechenden Dateinamen unter den `.R`-Dateien führt zum entsprechenden Skript).
+Ihr solltet vermeiden die Maus für Teile des Workflows zu verwenden, wie z.B. das Laden eines Datensatzes oder das Speichern einer Grafik. Das ist sehr wichtig für die Reproduzierbarkeit und um im Nachhinein feststellen zu können, wie eine numerische Tabelle oder eine PDF-Datei tatsächlich erzeugt wurde.
 
 
 

@@ -97,15 +97,15 @@
 <span class="header-section-number">10.1</span> <code>ggplot2</code> laden<a class="anchor" aria-label="anchor" href="#ggplot2-laden"><i class="fas fa-link"></i></a>
 </h2>
 <p>Wie zuvor auch, laden wir stets das komplette <code>tidyverse</code>. Man weiß ja vorher nie so genau was man alles so braucht.</p>
-<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="graphics-overview.html#cb147-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(tidyverse)</span>
-<span id="cb147-2"><a href="graphics-overview.html#cb147-2" aria-hidden="true" tabindex="-1"></a><span class="do">## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</span></span>
-<span id="cb147-3"><a href="graphics-overview.html#cb147-3" aria-hidden="true" tabindex="-1"></a><span class="do">## ✓ ggplot2 3.3.5     ✓ purrr   0.3.4</span></span>
-<span id="cb147-4"><a href="graphics-overview.html#cb147-4" aria-hidden="true" tabindex="-1"></a><span class="do">## ✓ tibble  3.1.2     ✓ dplyr   1.0.7</span></span>
-<span id="cb147-5"><a href="graphics-overview.html#cb147-5" aria-hidden="true" tabindex="-1"></a><span class="do">## ✓ tidyr   1.1.3     ✓ stringr 1.4.0</span></span>
-<span id="cb147-6"><a href="graphics-overview.html#cb147-6" aria-hidden="true" tabindex="-1"></a><span class="do">## ✓ readr   2.0.1     ✓ forcats 0.5.1</span></span>
-<span id="cb147-7"><a href="graphics-overview.html#cb147-7" aria-hidden="true" tabindex="-1"></a><span class="do">## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──</span></span>
-<span id="cb147-8"><a href="graphics-overview.html#cb147-8" aria-hidden="true" tabindex="-1"></a><span class="do">## x dplyr::filter() masks stats::filter()</span></span>
-<span id="cb147-9"><a href="graphics-overview.html#cb147-9" aria-hidden="true" tabindex="-1"></a><span class="do">## x dplyr::lag()    masks stats::lag()</span></span></code></pre></div>
+<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="graphics-overview.html#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(tidyverse)</span>
+<span id="cb148-2"><a href="graphics-overview.html#cb148-2" aria-hidden="true" tabindex="-1"></a><span class="do">## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</span></span>
+<span id="cb148-3"><a href="graphics-overview.html#cb148-3" aria-hidden="true" tabindex="-1"></a><span class="do">## ✓ ggplot2 3.3.5     ✓ purrr   0.3.4</span></span>
+<span id="cb148-4"><a href="graphics-overview.html#cb148-4" aria-hidden="true" tabindex="-1"></a><span class="do">## ✓ tibble  3.1.2     ✓ dplyr   1.0.7</span></span>
+<span id="cb148-5"><a href="graphics-overview.html#cb148-5" aria-hidden="true" tabindex="-1"></a><span class="do">## ✓ tidyr   1.1.3     ✓ stringr 1.4.0</span></span>
+<span id="cb148-6"><a href="graphics-overview.html#cb148-6" aria-hidden="true" tabindex="-1"></a><span class="do">## ✓ readr   2.0.1     ✓ forcats 0.5.1</span></span>
+<span id="cb148-7"><a href="graphics-overview.html#cb148-7" aria-hidden="true" tabindex="-1"></a><span class="do">## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──</span></span>
+<span id="cb148-8"><a href="graphics-overview.html#cb148-8" aria-hidden="true" tabindex="-1"></a><span class="do">## x dplyr::filter() masks stats::filter()</span></span>
+<span id="cb148-9"><a href="graphics-overview.html#cb148-9" aria-hidden="true" tabindex="-1"></a><span class="do">## x dplyr::lag()    masks stats::lag()</span></span></code></pre></div>
 </div>
 <div id="idee" class="section level2" number="10.2">
 <h2>
@@ -126,8 +126,8 @@
 </ul>
 <p>enthalten.</p>
 <p>Die einzelnen Teile eines Plots werden dann mit dem <code><a href="https://rdrr.io/r/base/Arithmetic.html">+</a></code> Operator zusammengefügt.Initialisiert wird ein Plot mit <code>ggplot()</code>. Ohne weitere Bestandteile wird aber nur eine leere Grafik erzeugt</p>
-<div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="graphics-overview.html#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(gapminder)</span>
-<span id="cb148-2"><a href="graphics-overview.html#cb148-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ggplot</span>(gapminder) </span></code></pre></div>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="graphics-overview.html#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(gapminder)</span>
+<span id="cb149-2"><a href="graphics-overview.html#cb149-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ggplot</span>(gapminder) </span></code></pre></div>
 <div class="inline-figure"><img src="11_ggplot2_intro_files/figure-html/unnamed-chunk-3-1.png" width="80%" style="display: block; margin: auto;"></div>
 <p>In den folgenden Abschnitten lernen wir daher wie weitere Bestandteile zum Plot hinzugefügt werden.</p>
 </div>
@@ -136,10 +136,10 @@
 <span class="header-section-number">10.3</span> Ein einfacher Scatterplot<a class="anchor" aria-label="anchor" href="#ein-einfacher-scatterplot"><i class="fas fa-link"></i></a>
 </h2>
 <p>Wir schauen uns zum Start einfach mal für Deutschland den Verlauf des <code>gdpPercap</code> über die Zeit an.</p>
-<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="graphics-overview.html#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb149-2"><a href="graphics-overview.html#cb149-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">"Germany"</span>) <span class="sc">%&gt;%</span> <span class="co"># auswählen der Daten </span></span>
-<span id="cb149-3"><a href="graphics-overview.html#cb149-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> gdpPercap)) <span class="sc">+</span>  <span class="co"># plot initialisieren</span></span>
-<span id="cb149-4"><a href="graphics-overview.html#cb149-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">geom_point</span>() <span class="co"># punkte zum Darstellen der Daten verwenden</span></span></code></pre></div>
+<div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="graphics-overview.html#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb150-2"><a href="graphics-overview.html#cb150-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">"Germany"</span>) <span class="sc">%&gt;%</span> <span class="co"># auswählen der Daten </span></span>
+<span id="cb150-3"><a href="graphics-overview.html#cb150-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> year, <span class="at">y =</span> gdpPercap)) <span class="sc">+</span>  <span class="co"># plot initialisieren</span></span>
+<span id="cb150-4"><a href="graphics-overview.html#cb150-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">geom_point</span>() <span class="co"># punkte zum Darstellen der Daten verwenden</span></span></code></pre></div>
 <div class="inline-figure"><img src="11_ggplot2_intro_files/figure-html/unnamed-chunk-4-1.png" width="80%" style="display: block; margin: auto;"></div>
 <p>In diesem einfachen Beispiel haben wir bereits gesehen, dass <code>ggplot()</code> über den Pipe-Operator verknüpft werden kann.</p>
 </div>

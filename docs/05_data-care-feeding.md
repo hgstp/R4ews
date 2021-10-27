@@ -8,32 +8,32 @@
 
 
 
-Jetzt ist es an der Zeit, sich zu vergewissern in welchem Verzeichnis auf deinem Computer du dich befindest. Falls du ein  [RStudio Projekt](#rprojs) nutzt, sollte diese Frage leicht zu beantworten sein. Falls du trotzdem unsicher bist, gib `getwd()` in der Konsole ein, um das aktuelle Arbeitsverzeichnis zu sehen.
+Jetzt ist es an der Zeit, sich zu vergewissern in welchem Verzeichnis ihr auf eurem Computer ihr euch befindet. Falls ihr ein  [RStudio Projekt](#rprojs) nutzt, sollte diese Frage leicht zu beantworten sein. Falls ihr trotzdem unsicher seid, gebt `getwd()` in der Konsole ein, um das aktuelle Arbeitsverzeichnis zu sehen.
 
-Alle nachfolgenden Code Beispiele wollen wir abspeichern in einer `.R` Datei, die wir im aktuellen Arbeitsverzeichnis abspeichern wollen. Idealerweise geben wir dieser Datei noch einen Namen, wie etwa `datenanalyse_teil_1.R`, der uns schon viel über den möglichen Inhalt erzählt.
+Alle nachfolgenden Code Beispiele wollen wir in einer `.R` Datei abspeichern, die dann im aktuellen Arbeitsverzeichnis gespeichert werden soll. Idealerweise geben wir dieser Datei noch einen Namen, wie etwa `datenanalyse_teil_1.R`, der uns schon viel über den möglichen Inhalt erzählt.
 Alternativ können wir alle Befehle natürlich auch in eine R Markdown Datei schreiben, siehe [Test drive R Markdown](#r-markdown).
 
 
-Prinzipiell geht es in den folgenden Abschnitten um Datenmanagement. Es werden aber auch immer wieder ein paar Grafiken zu sehen sein. Dies ist aber kein Problem, da wir ja bereits den [Data Visualization Basics Primer](https://rstudio.cloud/learn/primers/1.1)
+Prinzipiell geht es in den folgenden Abschnitten um Datenmanagement. Es werden aber auch immer wieder ein paar Grafiken zu sehen sein. Dies ist aber kein Problem, da ihr ja bereits den [Data Visualization Basics Primer](https://rstudio.cloud/learn/primers/1.1)
 
 <img src="img/data_vis_basics.png" width="100%" style="display: block; margin: auto;" />
 
-besucht haben und so den nötigen Background haben.
+besucht habt und somit den nötigen Background besitzt.
 
 ## Data Frames sind fantastisch
 
-Das Standardformat für Daten ist ein data frame. Die meisten Funktionen zur Inferenz, Modellierung und graphischen Darstellung erwarten, dass ihnen über ein `data =` Argument ein data frame übergeben wird. Dies gilt für die Basis R schon seit langem.
+Das Standardformat für Daten ist ein data frame. Die meisten Funktionen zur Inferenz, Modellierung und graphischen Darstellung erwarten, dass ihnen über ein `data =` Argument ein data frame übergeben wird. Dies gilt für Funktion aus der R Basisdistribution schon seit langem.
 
 Die als [tidyverse] bekannte Kollektion von Paketen geht noch einen Schritt weiter und priorisiert ausdrücklich die Verarbeitung von data frames. Tatsächlich priorisiert [tidyverse] eine besondere Art von data frames, die als "tibble" bezeichnet wird.
 
-Data frames - im Gegensatz zu allgemeinen Arrays oder speziell Matrizen in R - können Variablen unterschiedlicher Typen enthalten, wie z. B. Textdaten (Subjekt-ID oder Name), quantitative Daten (Anzahl der weißen Blutkörperchen) und kategoriale Informationen (behandelt vs. unbehandelt). Genauer gesagt können in data frames unterschiedliche Spalten aus unterschiedlichen Datentypen bestehen. Innerhalb einer Spalte müssen aber alle Einträge vom gleichen Typ sein.
+Data frames - im Gegensatz zu allgemeinen Arrays oder speziell Matrizen  - können Variablen unterschiedlicher Typen enthalten, wie z.B. Textdaten (Subjekt-ID oder Name), quantitative Daten (Anzahl der weißen Blutkörperchen) und qualitative/kategoriale Informationen (behandelt vs. unbehandelt). Genauer gesagt können in data frames unterschiedliche Spalten aus unterschiedlichen Datentypen bestehen. Innerhalb einer Spalte müssen aber alle Einträge vom gleichen Typ sein.
 
-Daten aus einer Datenanalyse bestehen immer aus mehr als einem Datentyp. Aus diesem Grund können Matrizen oder Arrays nicht zur Datenanalyse verwendet werden, da man sonst mit verschiedenen, unverbundenen Objekten (Matrizen, Arrays) arbeiten müsste und diese nur schwer koordinieren kann.
+Daten aus einer Datenanalyse bestehen immer aus mehr als einem Datentyp. Aus diesem Grund eigenen sich Matrizen oder Arrays nicht zur Datenanalyse, da man sonst mit verschiedenen, unverbundenen Objekten (Matrizen, Arrays) arbeiten müsste und diese nur schwer koordinieren kann.
 
 
 ## Gapminder data
 
-Wir werden mit einigen der Daten aus dem [Gapminder-Projekt] (https://www.gapminder.org) 
+Wir werden mit einem Teil der Daten aus dem [Gapminder-Projekt](https://www.gapminder.org) 
 
 <img src="img/gapminder.png" width="80%" style="display: block; margin: auto;" />
 
@@ -51,9 +51,29 @@ Um die Daten zu verwenden, müssen wir das Paket natürlich auch noch laden
 > library(gapminder)
 ```
 
+
+::: {.content-box-gray}
+Gapminder wurde von Hans, Anna und Ola Rosling gegründet. Auf der Webseite des Projekts findet man nicht nur viel Informatives, sondern auch sehr Unterhaltsames
+
+
+
+```r
+> knitr::include_url("https://www.youtube.com/embed/Sm5xF-UYgdg")
+```
+
+<iframe src="https://www.youtube.com/embed/Sm5xF-UYgdg" width="80%" height="400px"></iframe>
+
+
+Leider ist Hans Rosling bereits 2017 verstorben.
+
+
+:::
+
+
+
 ## Die `gapminder` Daten sind ein "tibble"
 
-Durch das Laden des `gapminder` Pakets haben wir nun Zugriff auf einen Datenobjekt mit demselben Namen. Schau dir nun mithilfe der Funktion `str()` die Struktur des Objekts an.
+Durch das Laden des `gapminder` Pakets haben wir nun Zugriff auf einen Datenobjekt mit demselben Namen. Schauen wir uns mithilfe der Funktion `str()` mal die Struktur dieses Objekts an.
 
 
 ```r
@@ -314,7 +334,7 @@ Zusätzlich wollen wir die noch die Verteilung von `lifeExp` visualisieren und p
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
-<img src="05_data-care-feeding_files/figure-html/unnamed-chunk-17-1.png" width="80%" style="display: block; margin: auto;" />
+<img src="05_data-care-feeding_files/figure-html/unnamed-chunk-18-1.png" width="80%" style="display: block; margin: auto;" />
 
 Alternativ können wir die Einträge eines data frames auch über die eckigen Klammern `[]` indizieren.
 
