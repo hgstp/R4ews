@@ -571,7 +571,7 @@ Male
 <h4>
 <span class="header-section-number">9.3.0.1</span> Wie viele Wörter haben die männlichen Hobbits insgesamt gesprochen?<a class="anchor" aria-label="anchor" href="#wie-viele-w%C3%B6rter-haben-die-m%C3%A4nnlichen-hobbits-insgesamt-gesprochen"><i class="fas fa-link"></i></a>
 </h4>
-<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
 <span class="va">lotr_tidy</span> <span class="op">%&gt;%</span> 
   <span class="fu">count</span><span class="op">(</span><span class="va">Gender</span>, <span class="va">Race</span>, wt <span class="op">=</span> <span class="va">Words</span><span class="op">)</span></code></pre></div>
@@ -591,7 +591,7 @@ Male
 <span class="header-section-number">9.3.0.2</span> Dominiert eine bestimmte Kategorie einen Film? Unterscheidet sich die dominierende Kategorie in den Filmen?<a class="anchor" aria-label="anchor" href="#dominiert-eine-bestimmte-kategorie-einen-film-unterscheidet-sich-die-dominierende-kategorie-in-den-filmen"><i class="fas fa-link"></i></a>
 </h4>
 <p>Zunächst summieren wir über die Geschlechter hinweg, um die Wortzahlen für die verschiedenen Kategorien nach Film zu erhalten.</p>
-<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="op">(</span><span class="va">by_race_film</span> <span class="op">&lt;-</span> <span class="va">lotr_tidy</span> <span class="op">%&gt;%</span> 
    <span class="fu">group_by</span><span class="op">(</span><span class="va">Film</span>, <span class="va">Race</span><span class="op">)</span> <span class="op">%&gt;%</span> 
    <span class="fu">summarize</span><span class="op">(</span>Words <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">Words</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
@@ -610,7 +610,7 @@ Male
 ## 8 The Two Towers             Hobbit  2463
 ## 9 The Two Towers             Man     3990</code></pre>
 <p>Wir können ganz genau auf diese Zahlen starren, um die Frage zu beantworten. Aber noch schöner ist es, die gerade berechneten Wortzahlen in einem Balkendiagramm darzustellen.</p>
-<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">by_race_film</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">Film</span>, y <span class="op">=</span> <span class="va">Words</span>, fill <span class="op">=</span> <span class="va">Race</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
   <span class="fu">geom_bar</span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"identity"</span>, position <span class="op">=</span> <span class="st">"dodge"</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">coord_flip</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu">guides</span><span class="op">(</span>fill <span class="op">=</span> <span class="fu">guide_legend</span><span class="op">(</span>reverse <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
@@ -634,7 +634,7 @@ Male
 <li><a href="https://github.com/jennybc/lotr-tidy/blob/master/data/The_Two_Towers.csv">The_Two_Towers.csv</a></li>
 <li><a href="https://github.com/jennybc/lotr-tidy/blob/master/data/The_Return_Of_The_King.csv">The_Return_Of_The_King.csv</a></li>
 </ul>
-<div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">fship</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="st">"data"</span>, <span class="st">"The_Fellowship_Of_The_Ring.csv"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## Rows: 3 Columns: 4</code></pre>
 <pre><code>## ── Column specification ────────────────────────────────────────────────────────
@@ -644,7 +644,7 @@ Male
 <pre><code>## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ttow</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="st">"data"</span>, <span class="st">"The_Two_Towers.csv"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## Rows: 3 Columns: 4</code></pre>
 <pre><code>## ── Column specification ────────────────────────────────────────────────────────
@@ -654,7 +654,7 @@ Male
 <pre><code>## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">rking</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="st">"data"</span>, <span class="st">"The_Return_Of_The_King.csv"</span><span class="op">)</span><span class="op">)</span> </code></pre></div>
 <pre><code>## Rows: 3 Columns: 4</code></pre>
 <pre><code>## ── Column specification ────────────────────────────────────────────────────────
@@ -664,7 +664,7 @@ Male
 <pre><code>## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">rking</span></code></pre></div>
 <pre><code>## # A tibble: 3 x 4
 ##   Film                   Race   Female  Male
@@ -678,11 +678,11 @@ Male
 <span class="header-section-number">9.5</span> Und nun alles zusammen<a class="anchor" aria-label="anchor" href="#und-nun-alles-zusammen"><i class="fas fa-link"></i></a>
 </h2>
 <p>Wir haben jetzt ein Data Frame pro Film, jeweils mit den vier Variablen</p>
-<div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb127"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="va">rking</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] "Film"   "Race"   "Female" "Male"</code></pre>
 <p>Der erste Schritt beim Aufräumen dieser Daten besteht darin, sie zu einem Data Frame zusammenzufügen, indem wir die drei Data Frames zeilenweise stapeln. Dazu können wir die Funktion <code><a href="https://dplyr.tidyverse.org/reference/bind.html">dplyr::bind_rows()</a></code> verwenden.</p>
-<div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb129"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">lotr_untidy</span> <span class="op">&lt;-</span> <span class="fu">bind_rows</span><span class="op">(</span><span class="va">fship</span>, <span class="va">ttow</span>, <span class="va">rking</span><span class="op">)</span>
 <span class="va">lotr_untidy</span></code></pre></div>
 <pre><code>## # A tibble: 9 x 4
@@ -706,7 +706,7 @@ zusammensetzen, denn es ist einfacher und effizienter, ein einzelnes Objekt aufz
 <span class="header-section-number">9.6</span> Nun können wir aufräumen<a class="anchor" aria-label="anchor" href="#nun-k%C3%B6nnen-wir-aufr%C3%A4umen"><i class="fas fa-link"></i></a>
 </h2>
 <p>Wir verletzen immer noch eines der Grundprinzipien von <strong>tidy data</strong>. Die Anzahl an gesprochenen Wörtern ist eine grundlegende Variable in unserem Datensatz und sie ist derzeit auf zwei Variablen verteilt, <code>Female</code> und <code>Male</code>. Konzeptionell müssen wir die Wortanzahl in einer einzigen Variable zusammenfassen und eine neue Variable <code>Gender</code> erstellen, um zu verfolgen, ob die jeweilige Anzahl an Worten von Frauen oder Männern gesprochen wurde. Dies Aufgabe können wir mit der Funktion <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">tidyr::pivot_longer()</a></code> bearbeiten.</p>
-<div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb131"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">lotr_tidy</span> <span class="op">&lt;-</span>
   <span class="fu">pivot_longer</span><span class="op">(</span><span class="va">lotr_untidy</span>, cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Female"</span>, <span class="st">"Male"</span><span class="op">)</span>, names_to <span class="op">=</span> <span class="st">'Gender'</span>, 
                values_to <span class="op">=</span> <span class="st">'Words'</span><span class="op">)</span>
@@ -734,7 +734,7 @@ zusammensetzen, denn es ist einfacher und effizienter, ein einzelnes Objekt aufz
 ## 18 The Return Of The King     Man    Male    2459</code></pre>
 <p>Um unseren obigen Aufruf von <code>pivot_longer()</code> zu erklären, lesen wir ihn links nach rechts: Nach der Auswahl des Datensatzes <code>lotr_untidy</code> haben wird die Spalten <code>Female</code> und <code>Male</code> genommen und ihre <em>Werte</em> in eine einzige neue Variable <code>Words</code> zusammengefasst. Dies erzwang die Erstellung einer neuen Variable <code>Gender</code>, die angibt, ob ein bestimmter Wert von <code>Words</code> von <code>Female</code> oder <code>Male</code> stammt. Alle anderen Variablen, wie <code>Film</code>, bleiben unverändert und werden einfach nach Bedarf repliziert. Die Dokumentation für <code>pivot_longer()</code> gibt weitere Beispiele und dokumentiert zusätzliche Argumente.</p>
 <p>Wenn man sich diese Arbeit gemacht hat, dann macht es schon Sinn sich auch das Ergebnis abzuspeichern</p>
-<div class="sourceCode" id="cb134"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb133"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">write_csv</span><span class="op">(</span><span class="va">lotr_tidy</span>, path <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html">file.path</a></span><span class="op">(</span><span class="st">"data"</span>, <span class="st">"lotr_tidy.csv"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## Warning: The `path` argument of `write_csv()` is deprecated as of readr 1.4.0.
 ## Please use the `file` argument instead.</code></pre>
@@ -746,7 +746,7 @@ zusammensetzen, denn es ist einfacher und effizienter, ein einzelnes Objekt aufz
 </h2>
 <p>Manchmal (aber nicht so häufig) ist es doch nötig die Daten im <a href="https://de.wikipedia.org/wiki/Wide-Format_und_Long-Format">Wide Format</a> zu haben. Daher wollen wir zum Schluss die gerade gesäuberten LOTR Daten nochmal ein bisschen untidy machen.</p>
 <p>Dazu arbeiten wir mit den Funktion <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">tidyr::pivot_wider()</a></code>. Wir nehmen nun die Ausprägungen der Variable <code>Race</code> (anschließend dann <code>Gender</code>) als Variablennamen der neu zu bildenden Variablen. Die Werte dieser neuen Variablen sind durch die Variable <code>Words</code> festgelegt.</p>
-<div class="sourceCode" id="cb136"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb135"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## Race</span>
 <span class="va">lotr_tidy</span> <span class="op">%&gt;%</span> 
   <span class="fu">pivot_wider</span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">Race</span>, values_from <span class="op">=</span> <span class="va">Words</span><span class="op">)</span></code></pre></div>
@@ -759,7 +759,7 @@ zusammensetzen, denn es ist einfacher und effizienter, ein einzelnes Objekt aufz
 ## 4 The Two Towers             Male     513   2463  3589
 ## 5 The Return Of The King     Female   183      2   268
 ## 6 The Return Of The King     Male     510   2673  2459</code></pre>
-<div class="sourceCode" id="cb138"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb137"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## Gender</span>
 <span class="va">lotr_tidy</span> <span class="op">%&gt;%</span> 
   <span class="fu">pivot_wider</span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">Gender</span>, values_from <span class="op">=</span> <span class="va">Words</span><span class="op">)</span></code></pre></div>
@@ -776,7 +776,7 @@ zusammensetzen, denn es ist einfacher und effizienter, ein einzelnes Objekt aufz
 ## 8 The Return Of The King     Hobbit      2  2673
 ## 9 The Return Of The King     Man       268  2459</code></pre>
 <p>Das erste Beispiel hat immer noch 6 Beobachtungen, zwei pro Film. Nehmen wir mal an, dass wir aber nur eine Beobachtung pro Film haben wollen. Dazu müssten wir die möglichen Kombinationen aus <code>Race</code> und <code>Gender</code> in neuen/weiteren Variablen zusammenfassen. Dies können wir über die Funktion <code><a href="https://tidyr.tidyverse.org/reference/unite.html">tidyr::unite()</a></code> erreichen.</p>
-<div class="sourceCode" id="cb140"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb139"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">lotr_tidy</span> <span class="op">%&gt;%</span> 
   <span class="fu">unite</span><span class="op">(</span><span class="va">Race_Gender</span>, <span class="va">Race</span>, <span class="va">Gender</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 18 x 3
@@ -801,7 +801,7 @@ zusammensetzen, denn es ist einfacher und effizienter, ein einzelnes Objekt aufz
 ## 17 The Return Of The King     Man_Female      268
 ## 18 The Return Of The King     Man_Male       2459</code></pre>
 <p>In Kombination mit <code>pivot_wider()</code> ergibt sich so</p>
-<div class="sourceCode" id="cb142"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">lotr_tidy</span> <span class="op">%&gt;%</span> 
   <span class="fu">unite</span><span class="op">(</span><span class="va">Race_Gender</span>, <span class="va">Race</span>, <span class="va">Gender</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu">pivot_wider</span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">Race_Gender</span>, values_from <span class="op">=</span> <span class="va">Words</span><span class="op">)</span></code></pre></div>
@@ -813,7 +813,7 @@ zusammensetzen, denn es ist einfacher und effizienter, ein einzelnes Objekt aufz
 ## 3 The Return …        183      510             2        2673        268     2459</code></pre>
 <p>Zum Schluss könnten wir jetzt auch noch alles zurück auf Anfang stellen und die
 drei Datensätze vom Anfang wiederherstellen</p>
-<div class="sourceCode" id="cb144"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb143"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="op">(</span><span class="va">sep_list</span> <span class="op">&lt;-</span> <span class="va">lotr_tidy</span> <span class="op">%&gt;%</span> 
   <span class="fu">pivot_wider</span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">Gender</span>, values_from <span class="op">=</span> <span class="va">Words</span><span class="op">)</span> <span class="op">%&gt;%</span>
    <span class="fu">group_split</span><span class="op">(</span><span class="va">Film</span><span class="op">)</span><span class="op">)</span></code></pre></div>
@@ -849,7 +849,7 @@ drei Datensätze vom Anfang wiederherstellen</p>
 ## 2 The Two Towers Hobbit      0  2463
 ## 3 The Two Towers Man       401  3589</code></pre>
 <p>Wir erhalten eine Liste mit drei Elemente, die deren Inhalt den drei Tabellen vom Anfang entspricht. Die Daten zu “The Return of the King” sind beispielsweise im zweiten Element enthalten.</p>
-<div class="sourceCode" id="cb146"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb145"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">sep_list</span><span class="op">[[</span><span class="fl">2</span><span class="op">]</span><span class="op">]</span></code></pre></div>
 <pre><code>## # A tibble: 3 x 4
 ##   Film                   Race   Female  Male

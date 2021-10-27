@@ -56,11 +56,6 @@ Um die Daten zu verwenden, müssen wir das Paket natürlich auch noch laden
 Gapminder wurde von Hans, Anna und Ola Rosling gegründet. Auf der Webseite des Projekts findet man nicht nur viel Informatives, sondern auch sehr Unterhaltsames
 
 
-
-```r
-> knitr::include_url("https://www.youtube.com/embed/Sm5xF-UYgdg")
-```
-
 <iframe src="https://www.youtube.com/embed/Sm5xF-UYgdg" width="80%" height="400px"></iframe>
 
 
@@ -90,9 +85,9 @@ Durch das Laden des `gapminder` Pakets haben wir nun Zugriff auf einen Datenobje
 `str()` liefert eine vernünftige Beschreibung von fast allem, und im schlimmsten Fall kann tatsächlich auch nichts "Schlimmes" passieren. Aus dem Output erkennen wir, dass der Datensatz 1704 Beobachtungen enthält.
 
 
-Auf der anderen Seite hätten wir durch direkten Aufruf von `gapminder` den Inhalt auch direkt auf den Bildschirm schreiben können. Aber vielleicht hast du schon mal einen größeren Datensatz aufgerufen und zögerst nun etwas, da große Datensätze einfach die Konsole füllen und nur sehr wenig Einblick bieten.
+Auf der anderen Seite hätten wir durch direkten Aufruf von `gapminder` den Inhalt auch direkt auf den Bildschirm schreiben können. Aber vielleicht habt ihr schon mal einen größeren Datensatz aufgerufen und zögert nun etwas, da große Datensätze tendenziell einfach die Konsole füllen und nur sehr wenig Einblick bieten.
 
-Dies ist der erste große Sieg für **tibbles**. Tidyverse bietet eine spezielle data frame Variante an: ein "tibble". Dies wird auch verdeutlicht, wenn man sich z.B. die Klasse des `gapminder` Objekts anschaut
+Tidyverse bietet eine spezielle data frame Variante an: ein __tibble__. `gapminder` ist ein ein tibble. Das sieht man auch, wenn man sich die Klasse dieses Objekts anzeigen lässt
 
 
 
@@ -102,11 +97,11 @@ Dies ist der erste große Sieg für **tibbles**. Tidyverse bietet eine spezielle
 ## [1] "tbl_df"     "tbl"        "data.frame"
 ```
 
-Schau, es ist immer noch ein reguläres data frame, aber eben auch ein tibble.
+Es ist immer noch ein reguläres data frame, aber zusätzlich eben auch ein tibble.
 
 
 
-Jetzt können wir `gapminder` einfach auf den Bildschirm anzeigen! Da es sich um ein tibble handelt, wird nur das Wichtigste angezeigt und deine Konsole läuft nicht voll.
+Wenn wir nun `gapminder` einfach auf den Bildschirm ausgeben, sehen wir, dass die Konsole nicht voll läuft.
 
 
 ```r
@@ -127,7 +122,10 @@ Jetzt können wir `gapminder` einfach auf den Bildschirm anzeigen! Da es sich um
 ## # … with 1,694 more rows
 ```
 
-Wenn du mit einem reinen data frame arbeitest - und dieses Feature magst - kannst du es mit `as_tibble()` in ein tibble transformieren.
+Dies ist der erste große Vorteil eines **tibbles** gegenüber einem data frame.
+
+
+Wenn ihr mit einem reinen data frame arbeitet - und dieses Feature gefällt euch - so könnt ihr es mit `as_tibble()` in ein tibble transformieren.
 
 
 ```r
@@ -165,7 +163,7 @@ Weitere Möglichkeiten, grundlegende Informationen zu einem data frame abzufrage
 ## [1] 1704
 ```
 
-Ein bisschen deskriptive Statistik zum Inhalt eines data frames erhältst du mit `summary()`:
+Ein bisschen _deskriptive Statistik_ zum Inhalt eines data frames erhält man mit der `summary()` Funktion:
 
 
 ```r

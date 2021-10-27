@@ -138,7 +138,7 @@ Nicht alle Funktionen haben (oder erfordern) Argumente:
 
 ```r
 > date()
-## [1] "Tue Oct 26 17:34:58 2021"
+## [1] "Wed Oct 27 10:07:16 2021"
 ```
 
 Schaut euch nun euren Workspace an - unter Environment (vermutlich im Fenster rechts oben) seht ihr den Inhalt eures Workspace. Der Workspace ist der Ort, an dem sich benutzerdefinierte Objekte ansammeln. Eine Liste dieser Objekte könnt ihr auch mit diesen Befehlen erhalten:
@@ -269,7 +269,7 @@ Wir nehmen nun an, dass ihr ein RStudio Projekt angelegt und auch geöffnet habt
 > x <- runif(40)
 > y <- a + b * x + rnorm(40, sd = sqrt(sig_sq))
 > (x_n <- mean(x))
-## [1] 0.49
+## [1] 0.464
 > write(x_n, "mittelwert_x.txt")
 > plot(x, y)
 > abline(a, b, col = "purple")

@@ -121,24 +121,24 @@
 <span class="header-section-number">8.2</span> Load the tidyverse<a class="anchor" aria-label="anchor" href="#load-the-tidyverse"><i class="fas fa-link"></i></a>
 </h2>
 <p>Das Hauptpaket, das wir verwenden werden, ist <a href="https://readr.tidyverse.org">readr</a>, welches Alternativen zu den Standardfunktionen <code><a href="https://rdrr.io/r/utils/read.table.html">read.table()</a></code> und <code><a href="https://rdrr.io/r/utils/write.table.html">write.table()</a></code> bietet. Trotzdem laden wir standardmäßig einfach wieder <a href="https://tidyverse.tidyverse.org">tidyverse</a>.</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="import-export.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(tidyverse)</span>
-<span id="cb91-2"><a href="import-export.html#cb91-2" aria-hidden="true" tabindex="-1"></a><span class="do">## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</span></span>
-<span id="cb91-3"><a href="import-export.html#cb91-3" aria-hidden="true" tabindex="-1"></a><span class="do">## ✓ ggplot2 3.3.5     ✓ purrr   0.3.4</span></span>
-<span id="cb91-4"><a href="import-export.html#cb91-4" aria-hidden="true" tabindex="-1"></a><span class="do">## ✓ tibble  3.1.2     ✓ dplyr   1.0.7</span></span>
-<span id="cb91-5"><a href="import-export.html#cb91-5" aria-hidden="true" tabindex="-1"></a><span class="do">## ✓ tidyr   1.1.3     ✓ stringr 1.4.0</span></span>
-<span id="cb91-6"><a href="import-export.html#cb91-6" aria-hidden="true" tabindex="-1"></a><span class="do">## ✓ readr   2.0.1     ✓ forcats 0.5.1</span></span>
-<span id="cb91-7"><a href="import-export.html#cb91-7" aria-hidden="true" tabindex="-1"></a><span class="do">## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──</span></span>
-<span id="cb91-8"><a href="import-export.html#cb91-8" aria-hidden="true" tabindex="-1"></a><span class="do">## x dplyr::filter() masks stats::filter()</span></span>
-<span id="cb91-9"><a href="import-export.html#cb91-9" aria-hidden="true" tabindex="-1"></a><span class="do">## x dplyr::lag()    masks stats::lag()</span></span></code></pre></div>
+<div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="import-export.html#cb90-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(tidyverse)</span>
+<span id="cb90-2"><a href="import-export.html#cb90-2" aria-hidden="true" tabindex="-1"></a><span class="do">## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</span></span>
+<span id="cb90-3"><a href="import-export.html#cb90-3" aria-hidden="true" tabindex="-1"></a><span class="do">## ✓ ggplot2 3.3.5     ✓ purrr   0.3.4</span></span>
+<span id="cb90-4"><a href="import-export.html#cb90-4" aria-hidden="true" tabindex="-1"></a><span class="do">## ✓ tibble  3.1.2     ✓ dplyr   1.0.7</span></span>
+<span id="cb90-5"><a href="import-export.html#cb90-5" aria-hidden="true" tabindex="-1"></a><span class="do">## ✓ tidyr   1.1.3     ✓ stringr 1.4.0</span></span>
+<span id="cb90-6"><a href="import-export.html#cb90-6" aria-hidden="true" tabindex="-1"></a><span class="do">## ✓ readr   2.0.1     ✓ forcats 0.5.1</span></span>
+<span id="cb90-7"><a href="import-export.html#cb90-7" aria-hidden="true" tabindex="-1"></a><span class="do">## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──</span></span>
+<span id="cb90-8"><a href="import-export.html#cb90-8" aria-hidden="true" tabindex="-1"></a><span class="do">## x dplyr::filter() masks stats::filter()</span></span>
+<span id="cb90-9"><a href="import-export.html#cb90-9" aria-hidden="true" tabindex="-1"></a><span class="do">## x dplyr::lag()    masks stats::lag()</span></span></code></pre></div>
 </div>
 <div id="einlesen-der-gapminder-daten" class="section level2" number="8.3">
 <h2>
 <span class="header-section-number">8.3</span> Einlesen der Gapminder Daten<a class="anchor" aria-label="anchor" href="#einlesen-der-gapminder-daten"><i class="fas fa-link"></i></a>
 </h2>
 <p>Die Gapminder Daten könnten wir natürlich wie zuvor über das Laden des <code>gapminder</code> Pakets verfügbar machen. Da es in diesem Abschnitt aber um das Einlesen von Daten geht, versuchen wir die Daten als <code>.tsv</code> Datei (tab-separated values - so sind sie im Paket gespeichert) einzulesen. Aber dies bedeutet natürlich, dass wir die entsprechende <code>.tsv</code> Datei erst mal finden müssen. Dabei hilft uns glücklicherweise das <a href="https://fs.r-lib.org/index.html">fs</a> Paket.</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="import-export.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(fs)</span>
-<span id="cb92-2"><a href="import-export.html#cb92-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> (gap_tsv <span class="ot">&lt;-</span> <span class="fu">path_package</span>(<span class="st">"gapminder"</span>, <span class="st">"extdata"</span>, <span class="st">"gapminder.tsv"</span>))</span>
-<span id="cb92-3"><a href="import-export.html#cb92-3" aria-hidden="true" tabindex="-1"></a><span class="do">## /Library/Frameworks/R.framework/Versions/4.0/Resources/library/gapminder/extdata/gapminder.tsv</span></span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="import-export.html#cb91-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(fs)</span>
+<span id="cb91-2"><a href="import-export.html#cb91-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> (gap_tsv <span class="ot">&lt;-</span> <span class="fu">path_package</span>(<span class="st">"gapminder"</span>, <span class="st">"extdata"</span>, <span class="st">"gapminder.tsv"</span>))</span>
+<span id="cb91-3"><a href="import-export.html#cb91-3" aria-hidden="true" tabindex="-1"></a><span class="do">## /Library/Frameworks/R.framework/Versions/4.0/Resources/library/gapminder/extdata/gapminder.tsv</span></span></code></pre></div>
 <p>Nachdem wir jetzt den Speicherort der Datei kennen, können wir versuchen sie einzulesen.</p>
 </div>
 <div id="einlesen-von-daten-in-tabellenform" class="section level2" number="8.4">
@@ -146,24 +146,24 @@
 <span class="header-section-number">8.4</span> Einlesen von Daten in Tabellenform<a class="anchor" aria-label="anchor" href="#einlesen-von-daten-in-tabellenform"><i class="fas fa-link"></i></a>
 </h2>
 <p>Die Haupt-Funktion zum Einlesen von Daten in readr ist <code>read_delim()</code>. Hier verwenden wir eine Variante, <code>read_tsv()</code>, für tabulatorgetrennte Daten:</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="import-export.html#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> gapminder <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(gap_tsv)</span>
-<span id="cb93-2"><a href="import-export.html#cb93-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Rows: 1704 Columns: 6</span></span>
-<span id="cb93-3"><a href="import-export.html#cb93-3" aria-hidden="true" tabindex="-1"></a><span class="do">## ── Column specification ────────────────────────────────────────────────────────</span></span>
-<span id="cb93-4"><a href="import-export.html#cb93-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Delimiter: "\t"</span></span>
-<span id="cb93-5"><a href="import-export.html#cb93-5" aria-hidden="true" tabindex="-1"></a><span class="do">## chr (2): country, continent</span></span>
-<span id="cb93-6"><a href="import-export.html#cb93-6" aria-hidden="true" tabindex="-1"></a><span class="do">## dbl (4): year, lifeExp, pop, gdpPercap</span></span>
-<span id="cb93-7"><a href="import-export.html#cb93-7" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb93-8"><a href="import-export.html#cb93-8" aria-hidden="true" tabindex="-1"></a><span class="do">## ℹ Use `spec()` to retrieve the full column specification for this data.</span></span>
-<span id="cb93-9"><a href="import-export.html#cb93-9" aria-hidden="true" tabindex="-1"></a><span class="do">## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span>
-<span id="cb93-10"><a href="import-export.html#cb93-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">glimpse</span>(gapminder)</span>
-<span id="cb93-11"><a href="import-export.html#cb93-11" aria-hidden="true" tabindex="-1"></a><span class="do">## Rows: 1,704</span></span>
-<span id="cb93-12"><a href="import-export.html#cb93-12" aria-hidden="true" tabindex="-1"></a><span class="do">## Columns: 6</span></span>
-<span id="cb93-13"><a href="import-export.html#cb93-13" aria-hidden="true" tabindex="-1"></a><span class="do">## $ country   &lt;chr&gt; "Afghanistan", "Afghanistan", "Afghanistan", "Afghanistan", …</span></span>
-<span id="cb93-14"><a href="import-export.html#cb93-14" aria-hidden="true" tabindex="-1"></a><span class="do">## $ continent &lt;chr&gt; "Asia", "Asia", "Asia", "Asia", "Asia", "Asia", "Asia", "Asi…</span></span>
-<span id="cb93-15"><a href="import-export.html#cb93-15" aria-hidden="true" tabindex="-1"></a><span class="do">## $ year      &lt;dbl&gt; 1952, 1957, 1962, 1967, 1972, 1977, 1982, 1987, 1992, 1997, …</span></span>
-<span id="cb93-16"><a href="import-export.html#cb93-16" aria-hidden="true" tabindex="-1"></a><span class="do">## $ lifeExp   &lt;dbl&gt; 28.8, 30.3, 32.0, 34.0, 36.1, 38.4, 39.9, 40.8, 41.7, 41.8, …</span></span>
-<span id="cb93-17"><a href="import-export.html#cb93-17" aria-hidden="true" tabindex="-1"></a><span class="do">## $ pop       &lt;dbl&gt; 8425333, 9240934, 10267083, 11537966, 13079460, 14880372, 12…</span></span>
-<span id="cb93-18"><a href="import-export.html#cb93-18" aria-hidden="true" tabindex="-1"></a><span class="do">## $ gdpPercap &lt;dbl&gt; 779, 821, 853, 836, 740, 786, 978, 852, 649, 635, 727, 975, …</span></span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="import-export.html#cb92-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> gapminder <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(gap_tsv)</span>
+<span id="cb92-2"><a href="import-export.html#cb92-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Rows: 1704 Columns: 6</span></span>
+<span id="cb92-3"><a href="import-export.html#cb92-3" aria-hidden="true" tabindex="-1"></a><span class="do">## ── Column specification ────────────────────────────────────────────────────────</span></span>
+<span id="cb92-4"><a href="import-export.html#cb92-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Delimiter: "\t"</span></span>
+<span id="cb92-5"><a href="import-export.html#cb92-5" aria-hidden="true" tabindex="-1"></a><span class="do">## chr (2): country, continent</span></span>
+<span id="cb92-6"><a href="import-export.html#cb92-6" aria-hidden="true" tabindex="-1"></a><span class="do">## dbl (4): year, lifeExp, pop, gdpPercap</span></span>
+<span id="cb92-7"><a href="import-export.html#cb92-7" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb92-8"><a href="import-export.html#cb92-8" aria-hidden="true" tabindex="-1"></a><span class="do">## ℹ Use `spec()` to retrieve the full column specification for this data.</span></span>
+<span id="cb92-9"><a href="import-export.html#cb92-9" aria-hidden="true" tabindex="-1"></a><span class="do">## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span>
+<span id="cb92-10"><a href="import-export.html#cb92-10" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">glimpse</span>(gapminder)</span>
+<span id="cb92-11"><a href="import-export.html#cb92-11" aria-hidden="true" tabindex="-1"></a><span class="do">## Rows: 1,704</span></span>
+<span id="cb92-12"><a href="import-export.html#cb92-12" aria-hidden="true" tabindex="-1"></a><span class="do">## Columns: 6</span></span>
+<span id="cb92-13"><a href="import-export.html#cb92-13" aria-hidden="true" tabindex="-1"></a><span class="do">## $ country   &lt;chr&gt; "Afghanistan", "Afghanistan", "Afghanistan", "Afghanistan", …</span></span>
+<span id="cb92-14"><a href="import-export.html#cb92-14" aria-hidden="true" tabindex="-1"></a><span class="do">## $ continent &lt;chr&gt; "Asia", "Asia", "Asia", "Asia", "Asia", "Asia", "Asia", "Asi…</span></span>
+<span id="cb92-15"><a href="import-export.html#cb92-15" aria-hidden="true" tabindex="-1"></a><span class="do">## $ year      &lt;dbl&gt; 1952, 1957, 1962, 1967, 1972, 1977, 1982, 1987, 1992, 1997, …</span></span>
+<span id="cb92-16"><a href="import-export.html#cb92-16" aria-hidden="true" tabindex="-1"></a><span class="do">## $ lifeExp   &lt;dbl&gt; 28.8, 30.3, 32.0, 34.0, 36.1, 38.4, 39.9, 40.8, 41.7, 41.8, …</span></span>
+<span id="cb92-17"><a href="import-export.html#cb92-17" aria-hidden="true" tabindex="-1"></a><span class="do">## $ pop       &lt;dbl&gt; 8425333, 9240934, 10267083, 11537966, 13079460, 14880372, 12…</span></span>
+<span id="cb92-18"><a href="import-export.html#cb92-18" aria-hidden="true" tabindex="-1"></a><span class="do">## $ gdpPercap &lt;dbl&gt; 779, 821, 853, 836, 740, 786, 978, 852, 649, 635, 727, 975, …</span></span></code></pre></div>
 <p>Über den Tabulator Spalten in einer Datentabelle zu trennen, ist natürlich nur eine Variante neben weiteren Alternativen wie Komma, Strichpunkt, Leerzeichen, …</p>
 <p>Für Komma getrennte Daten würde man beispielsweise <code>read_csv()</code> verwenden. Für volle Flexibilität bei der Angabe des Trennzeichens kannst du aber jederzeit direkt <code>read_delim()</code> verwenden.</p>
 <p>Der auffälligste Unterschied zwischen den readr-Funktionen und der Standardfunktion <code><a href="https://rdrr.io/r/utils/read.table.html">read.table()</a></code>ist, dass readr standardmäßig Characters NICHT in Faktoren umwandelt. Im Großen und Ganzen ist dies ein besseres Standardverhalten, obwohl es natürlich immer wieder vorkommen wird, dass du einzelne Variablen nach dem Einlesen in einen Faktoren umwandeln wirst. Aber lass dich davon nicht täuschen - im Allgemeinen wirst du durch die Verwendung von readr nach dem Einlesen weniger Anpassungen machen müssen im Vergleich zum Standardvorgehen.</p>
@@ -177,29 +177,29 @@
 <span class="header-section-number">8.5</span> Daten exportieren<a class="anchor" aria-label="anchor" href="#daten-exportieren"><i class="fas fa-link"></i></a>
 </h2>
 <p>Bevor wir etwas exportieren können, müssen (das ist natürlich so nicht richtig - niemand zwingt uns dazu) etwas berechnen, das es wert ist, exportiert zu werden. Lass uns eine Zusammenfassung der maximalen Lebenserwartung auf Länderebene erstellen.</p>
-<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="import-export.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> gap_life_exp <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
-<span id="cb94-2"><a href="import-export.html#cb94-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">group_by</span>(country, continent) <span class="sc">%&gt;%</span> </span>
-<span id="cb94-3"><a href="import-export.html#cb94-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">summarise</span>(<span class="at">life_exp =</span> <span class="fu">max</span>(lifeExp)) <span class="sc">%&gt;%</span> </span>
-<span id="cb94-4"><a href="import-export.html#cb94-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">ungroup</span>()</span>
-<span id="cb94-5"><a href="import-export.html#cb94-5" aria-hidden="true" tabindex="-1"></a><span class="do">## `summarise()` has grouped output by 'country'. You can override using the `.groups` argument.</span></span>
-<span id="cb94-6"><a href="import-export.html#cb94-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> gap_life_exp</span>
-<span id="cb94-7"><a href="import-export.html#cb94-7" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 142 x 3</span></span>
-<span id="cb94-8"><a href="import-export.html#cb94-8" aria-hidden="true" tabindex="-1"></a><span class="do">##    country     continent life_exp</span></span>
-<span id="cb94-9"><a href="import-export.html#cb94-9" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt;       &lt;chr&gt;        &lt;dbl&gt;</span></span>
-<span id="cb94-10"><a href="import-export.html#cb94-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 Afghanistan Asia          43.8</span></span>
-<span id="cb94-11"><a href="import-export.html#cb94-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 Albania     Europe        76.4</span></span>
-<span id="cb94-12"><a href="import-export.html#cb94-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 Algeria     Africa        72.3</span></span>
-<span id="cb94-13"><a href="import-export.html#cb94-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 Angola      Africa        42.7</span></span>
-<span id="cb94-14"><a href="import-export.html#cb94-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 Argentina   Americas      75.3</span></span>
-<span id="cb94-15"><a href="import-export.html#cb94-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 Australia   Oceania       81.2</span></span>
-<span id="cb94-16"><a href="import-export.html#cb94-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 Austria     Europe        79.8</span></span>
-<span id="cb94-17"><a href="import-export.html#cb94-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 Bahrain     Asia          75.6</span></span>
-<span id="cb94-18"><a href="import-export.html#cb94-18" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 Bangladesh  Asia          64.1</span></span>
-<span id="cb94-19"><a href="import-export.html#cb94-19" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 Belgium     Europe        79.4</span></span>
-<span id="cb94-20"><a href="import-export.html#cb94-20" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 132 more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="import-export.html#cb93-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> gap_life_exp <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span></span>
+<span id="cb93-2"><a href="import-export.html#cb93-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">group_by</span>(country, continent) <span class="sc">%&gt;%</span> </span>
+<span id="cb93-3"><a href="import-export.html#cb93-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">summarise</span>(<span class="at">life_exp =</span> <span class="fu">max</span>(lifeExp)) <span class="sc">%&gt;%</span> </span>
+<span id="cb93-4"><a href="import-export.html#cb93-4" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">ungroup</span>()</span>
+<span id="cb93-5"><a href="import-export.html#cb93-5" aria-hidden="true" tabindex="-1"></a><span class="do">## `summarise()` has grouped output by 'country'. You can override using the `.groups` argument.</span></span>
+<span id="cb93-6"><a href="import-export.html#cb93-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> gap_life_exp</span>
+<span id="cb93-7"><a href="import-export.html#cb93-7" aria-hidden="true" tabindex="-1"></a><span class="do">## # A tibble: 142 x 3</span></span>
+<span id="cb93-8"><a href="import-export.html#cb93-8" aria-hidden="true" tabindex="-1"></a><span class="do">##    country     continent life_exp</span></span>
+<span id="cb93-9"><a href="import-export.html#cb93-9" aria-hidden="true" tabindex="-1"></a><span class="do">##    &lt;chr&gt;       &lt;chr&gt;        &lt;dbl&gt;</span></span>
+<span id="cb93-10"><a href="import-export.html#cb93-10" aria-hidden="true" tabindex="-1"></a><span class="do">##  1 Afghanistan Asia          43.8</span></span>
+<span id="cb93-11"><a href="import-export.html#cb93-11" aria-hidden="true" tabindex="-1"></a><span class="do">##  2 Albania     Europe        76.4</span></span>
+<span id="cb93-12"><a href="import-export.html#cb93-12" aria-hidden="true" tabindex="-1"></a><span class="do">##  3 Algeria     Africa        72.3</span></span>
+<span id="cb93-13"><a href="import-export.html#cb93-13" aria-hidden="true" tabindex="-1"></a><span class="do">##  4 Angola      Africa        42.7</span></span>
+<span id="cb93-14"><a href="import-export.html#cb93-14" aria-hidden="true" tabindex="-1"></a><span class="do">##  5 Argentina   Americas      75.3</span></span>
+<span id="cb93-15"><a href="import-export.html#cb93-15" aria-hidden="true" tabindex="-1"></a><span class="do">##  6 Australia   Oceania       81.2</span></span>
+<span id="cb93-16"><a href="import-export.html#cb93-16" aria-hidden="true" tabindex="-1"></a><span class="do">##  7 Austria     Europe        79.8</span></span>
+<span id="cb93-17"><a href="import-export.html#cb93-17" aria-hidden="true" tabindex="-1"></a><span class="do">##  8 Bahrain     Asia          75.6</span></span>
+<span id="cb93-18"><a href="import-export.html#cb93-18" aria-hidden="true" tabindex="-1"></a><span class="do">##  9 Bangladesh  Asia          64.1</span></span>
+<span id="cb93-19"><a href="import-export.html#cb93-19" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 Belgium     Europe        79.4</span></span>
+<span id="cb93-20"><a href="import-export.html#cb93-20" aria-hidden="true" tabindex="-1"></a><span class="do">## # … with 132 more rows</span></span></code></pre></div>
 <p>Das <code>gap_life_exp</code> data frame ist ein Beispiel für ein Zwischenergebnis, das wir für die Zukunft und für nachgelagerte Analysen oder Visualisierungen speichern wollen.</p>
 <p>Die Haupt-Exportfunktion in readr ist <code>write_delim()</code>. Für verschiedene Dateiformate gibt es auch hier wieder verschiedene Komfortfunktionen. Lass uns <code>write_csv()</code> benutzen, um eine kommagetrennte Datei zu erhalten.</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="import-export.html#cb95-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">write_csv</span>(gap_life_exp, <span class="st">"data/gap_life_exp.csv"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="import-export.html#cb94-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">write_csv</span>(gap_life_exp, <span class="st">"data/gap_life_exp.csv"</span>)</span></code></pre></div>
 <p>Schauen wir uns die ersten paar Zeilen von <code>gap_life_exp.csv</code> an. Dazu kannst du entweder die Datei öffnen oder, im Terminal, <code>head</code> darauf anwenden.</p>
 <pre><code>country,continent,life_exp
 Afghanistan,Asia,43.828
@@ -233,16 +233,16 @@ Argentina,Americas,75.32</code></pre>
 </h3>
 <p>Um mit APIs in R zu arbeiten, müssen wir ein paar neue Pakete laden (und vorher natürlich installieren). Konkret werden wir mit den Paketen <code>httr</code> und <code>jsonlite</code> arbeiten. Sie spielen bei der Einbindung der APIs unterschiedliche Rollen, aber beide sind unverzichtbar.</p>
 <p>Vermutlich hast du die beiden Pakete bisher nicht installiert. Daher ist der erste Schritt die beiden Pakete zu installieren</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="import-export.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"httr"</span>, <span class="st">"jsonlite"</span>))</span>
-<span id="cb97-2"><a href="import-export.html#cb97-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span></code></pre></div>
+<div class="sourceCode" id="cb96"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb96-1"><a href="import-export.html#cb96-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"httr"</span>, <span class="st">"jsonlite"</span>))</span>
+<span id="cb96-2"><a href="import-export.html#cb96-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> </span></code></pre></div>
 <p>und anschließend zu laden</p>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="import-export.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(httr)</span>
-<span id="cb98-2"><a href="import-export.html#cb98-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(jsonlite)</span>
-<span id="cb98-3"><a href="import-export.html#cb98-3" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb98-4"><a href="import-export.html#cb98-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Attaching package: 'jsonlite'</span></span>
-<span id="cb98-5"><a href="import-export.html#cb98-5" aria-hidden="true" tabindex="-1"></a><span class="do">## The following object is masked from 'package:purrr':</span></span>
-<span id="cb98-6"><a href="import-export.html#cb98-6" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb98-7"><a href="import-export.html#cb98-7" aria-hidden="true" tabindex="-1"></a><span class="do">##     flatten</span></span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="import-export.html#cb97-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(httr)</span>
+<span id="cb97-2"><a href="import-export.html#cb97-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(jsonlite)</span>
+<span id="cb97-3"><a href="import-export.html#cb97-3" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb97-4"><a href="import-export.html#cb97-4" aria-hidden="true" tabindex="-1"></a><span class="do">## Attaching package: 'jsonlite'</span></span>
+<span id="cb97-5"><a href="import-export.html#cb97-5" aria-hidden="true" tabindex="-1"></a><span class="do">## The following object is masked from 'package:purrr':</span></span>
+<span id="cb97-6"><a href="import-export.html#cb97-6" aria-hidden="true" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb97-7"><a href="import-export.html#cb97-7" aria-hidden="true" tabindex="-1"></a><span class="do">##     flatten</span></span></code></pre></div>
 </div>
 <div id="unsere-erste-api-anfrage-stellen" class="section level3" number="8.6.3">
 <h3>
@@ -254,7 +254,7 @@ Argentina,Americas,75.32</code></pre>
 <p>Um eine GET-Anfrage zu erstellen, müssen wir die <code>GET()</code> Funktion aus dem <code>httr</code> Paket verwenden. Die <code>GET()</code> Funktion benötigt als Input eine URL, die die Adresse des Servers angibt, an den die Anforderung gesendet werden soll.</p>
 <p>Als Beispiel werden wir mit der Open Notify API arbeiten, die Daten zu verschiedenen NASA-Projekten enthält. Mithilfe der Open Notify API können wir uns über den Standort der Internationalen Raumstation informieren und erfahren, wie viele Personen sich derzeit im Weltraum aufhalten.</p>
 <p>Wir beginnen damit, dass wir unsere Anfrage mit der <code>GET()</code> Funktion stellen und die URL der API angeben:</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="import-export.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> jdata <span class="ot">&lt;-</span> <span class="fu">GET</span>(<span class="st">"http://api.open-notify.org/astros.json"</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="import-export.html#cb98-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> jdata <span class="ot">&lt;-</span> <span class="fu">GET</span>(<span class="st">"http://api.open-notify.org/astros.json"</span>)</span></code></pre></div>
 <p>Die Ausgabe der Funktion <code>GET()</code> ist eine Liste, die alle Informationen enthält, die vom API-Server zurückgegeben werden.</p>
 </div>
 <div id="get-ausgabe" class="section level3" number="8.6.4">
@@ -262,12 +262,12 @@ Argentina,Americas,75.32</code></pre>
 <span class="header-section-number">8.6.4</span> <code>GET()</code> Ausgabe<a class="anchor" aria-label="anchor" href="#get-ausgabe"><i class="fas fa-link"></i></a>
 </h3>
 <p>Schauen wir uns einmal an, wie die Variable jdata in der R-Konsole aussieht:</p>
-<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="import-export.html#cb100-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> jdata</span>
-<span id="cb100-2"><a href="import-export.html#cb100-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Response [http://api.open-notify.org/astros.json]</span></span>
-<span id="cb100-3"><a href="import-export.html#cb100-3" aria-hidden="true" tabindex="-1"></a><span class="do">##   Date: 2021-10-26 15:35</span></span>
-<span id="cb100-4"><a href="import-export.html#cb100-4" aria-hidden="true" tabindex="-1"></a><span class="do">##   Status: 200</span></span>
-<span id="cb100-5"><a href="import-export.html#cb100-5" aria-hidden="true" tabindex="-1"></a><span class="do">##   Content-Type: application/json</span></span>
-<span id="cb100-6"><a href="import-export.html#cb100-6" aria-hidden="true" tabindex="-1"></a><span class="do">##   Size: 505 B</span></span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="import-export.html#cb99-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> jdata</span>
+<span id="cb99-2"><a href="import-export.html#cb99-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Response [http://api.open-notify.org/astros.json]</span></span>
+<span id="cb99-3"><a href="import-export.html#cb99-3" aria-hidden="true" tabindex="-1"></a><span class="do">##   Date: 2021-10-27 08:07</span></span>
+<span id="cb99-4"><a href="import-export.html#cb99-4" aria-hidden="true" tabindex="-1"></a><span class="do">##   Status: 200</span></span>
+<span id="cb99-5"><a href="import-export.html#cb99-5" aria-hidden="true" tabindex="-1"></a><span class="do">##   Content-Type: application/json</span></span>
+<span id="cb99-6"><a href="import-export.html#cb99-6" aria-hidden="true" tabindex="-1"></a><span class="do">##   Size: 505 B</span></span></code></pre></div>
 <p>Als erstes fällt auf, dass die URL enthalten ist, an die die GET-Anfrage gesendet wurde. Außerdem sehen wir das Datum und die Uhrzeit, zu der die Anfrage gestellt wurde, sowie die Größe der Antwort.</p>
 <p>Die Information <code>Content-Type</code> gibt uns eine Vorstellung davon, welche Form die Daten haben. Diese spezielle Antwort besagt, dass die Daten ein JSON-Format annehmen, womit auch klar ist warum wir das Paket <code>jsonlite</code> ebenfalls geladen haben.</p>
 <p>Der Status verdient eine besondere Aufmerksamkeit. <code>Status</code> bezieht sich auf den Erfolg oder Misserfolg der API-Anfrage, und er wird in Form einer Zahl angegeben. Die zurückgegebene Nummer gibt Auskunft darüber, ob die Anfrage erfolgreich war oder nicht, und kann auch einige Gründe für einen möglichen Misserfolg nennen.</p>
@@ -285,33 +285,33 @@ Argentina,Americas,75.32</code></pre>
 }</code></pre>
 <p>In ihrem aktuellen Zustand sind die Daten in der Variablen <code>jdata</code> nicht verwendbar. Die Daten sind als Unicode-Rohdaten in <code>jdata</code> enthalten, und müssen in das JSON-Format konvertiert werden.</p>
 <p>Dazu müssen wir zunächst den rohen Unicode in Character Daten konvertieren, die dem oben gezeigten JSON-Format ähneln. Die Funktion <code><a href="https://rdrr.io/r/base/rawConversion.html">rawToChar()</a></code> führt genau diese Aufgabe aus:</p>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="import-export.html#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">rawToChar</span>(jdata<span class="sc">$</span>content)</span>
-<span id="cb102-2"><a href="import-export.html#cb102-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "{\"number\": 10, \"people\": [{\"craft\": \"ISS\", \"name\": \"Mark Vande Hei\"}, {\"craft\": \"ISS\", \"name\": \"Pyotr Dubrov\"}, {\"craft\": \"ISS\", \"name\": \"Thomas Pesquet\"}, {\"craft\": \"ISS\", \"name\": \"Megan McArthur\"}, {\"craft\": \"ISS\", \"name\": \"Shane Kimbrough\"}, {\"craft\": \"ISS\", \"name\": \"Akihiko Hoshide\"}, {\"craft\": \"ISS\", \"name\": \"Anton Shkaplerov\"}, {\"craft\": \"Shenzhou 13\", \"name\": \"Zhai Zhigang\"}, {\"craft\": \"Shenzhou 13\", \"name\": \"Wang Yaping\"}, {\"craft\": \"Shenzhou 13\", \"name\": \"Ye Guangfu\"}], \"message\": \"success\"}"</span></span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="import-export.html#cb101-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">rawToChar</span>(jdata<span class="sc">$</span>content)</span>
+<span id="cb101-2"><a href="import-export.html#cb101-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "{\"number\": 10, \"people\": [{\"craft\": \"ISS\", \"name\": \"Mark Vande Hei\"}, {\"craft\": \"ISS\", \"name\": \"Pyotr Dubrov\"}, {\"craft\": \"ISS\", \"name\": \"Thomas Pesquet\"}, {\"craft\": \"ISS\", \"name\": \"Megan McArthur\"}, {\"craft\": \"ISS\", \"name\": \"Shane Kimbrough\"}, {\"craft\": \"ISS\", \"name\": \"Akihiko Hoshide\"}, {\"craft\": \"ISS\", \"name\": \"Anton Shkaplerov\"}, {\"craft\": \"Shenzhou 13\", \"name\": \"Zhai Zhigang\"}, {\"craft\": \"Shenzhou 13\", \"name\": \"Wang Yaping\"}, {\"craft\": \"Shenzhou 13\", \"name\": \"Ye Guangfu\"}], \"message\": \"success\"}"</span></span></code></pre></div>
 <p>Die resultierende Zeichenfolge sieht zwar recht unordentlich aus, aber es liegt wirklich die JSON-Struktur vor.</p>
 <p>Ausgehend von diesem Character Vektor können wir nun mit <code>fromJSON()</code> aus dem <code>jsonlite</code> alles in ein Listenformat transformieren.</p>
 <p>Die <code>fromJSON()</code> Funktion benötigt einen Character Vektor, der die JSON-Struktur enthält, die wir aus der Ausgabe von <code><a href="https://rdrr.io/r/base/rawConversion.html">rawToChar()</a></code> erhalten haben. Wenn wir also diese beiden Funktionen aneinanderreihen, erhalten wir die gewünschten Daten in einem Format, das wir in R leichter bearbeiten können.</p>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="import-export.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> data <span class="ot">&lt;-</span>  <span class="fu">fromJSON</span>(<span class="fu">rawToChar</span>(jdata<span class="sc">$</span>content))</span>
-<span id="cb103-2"><a href="import-export.html#cb103-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">glimpse</span>(data)</span>
-<span id="cb103-3"><a href="import-export.html#cb103-3" aria-hidden="true" tabindex="-1"></a><span class="do">## List of 3</span></span>
-<span id="cb103-4"><a href="import-export.html#cb103-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ number : int 10</span></span>
-<span id="cb103-5"><a href="import-export.html#cb103-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ people :'data.frame': 10 obs. of  2 variables:</span></span>
-<span id="cb103-6"><a href="import-export.html#cb103-6" aria-hidden="true" tabindex="-1"></a><span class="do">##   ..$ craft: chr [1:10] "ISS" "ISS" "ISS" "ISS" ...</span></span>
-<span id="cb103-7"><a href="import-export.html#cb103-7" aria-hidden="true" tabindex="-1"></a><span class="do">##   ..$ name : chr [1:10] "Mark Vande Hei" "Pyotr Dubrov" "Thomas Pesquet" "Meg"..</span></span>
-<span id="cb103-8"><a href="import-export.html#cb103-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ message: chr "success"</span></span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="import-export.html#cb102-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> data <span class="ot">&lt;-</span>  <span class="fu">fromJSON</span>(<span class="fu">rawToChar</span>(jdata<span class="sc">$</span>content))</span>
+<span id="cb102-2"><a href="import-export.html#cb102-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">glimpse</span>(data)</span>
+<span id="cb102-3"><a href="import-export.html#cb102-3" aria-hidden="true" tabindex="-1"></a><span class="do">## List of 3</span></span>
+<span id="cb102-4"><a href="import-export.html#cb102-4" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ number : int 10</span></span>
+<span id="cb102-5"><a href="import-export.html#cb102-5" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ people :'data.frame': 10 obs. of  2 variables:</span></span>
+<span id="cb102-6"><a href="import-export.html#cb102-6" aria-hidden="true" tabindex="-1"></a><span class="do">##   ..$ craft: chr [1:10] "ISS" "ISS" "ISS" "ISS" ...</span></span>
+<span id="cb102-7"><a href="import-export.html#cb102-7" aria-hidden="true" tabindex="-1"></a><span class="do">##   ..$ name : chr [1:10] "Mark Vande Hei" "Pyotr Dubrov" "Thomas Pesquet" "Meg"..</span></span>
+<span id="cb102-8"><a href="import-export.html#cb102-8" aria-hidden="true" tabindex="-1"></a><span class="do">##  $ message: chr "success"</span></span></code></pre></div>
 <p>Die Liste <code>data</code> hat drei Elemente. Uns interessiert in erster Linie das Data Frame <code>people</code>.</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="import-export.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> data<span class="sc">$</span>people</span>
-<span id="cb104-2"><a href="import-export.html#cb104-2" aria-hidden="true" tabindex="-1"></a><span class="do">##          craft             name</span></span>
-<span id="cb104-3"><a href="import-export.html#cb104-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 1          ISS   Mark Vande Hei</span></span>
-<span id="cb104-4"><a href="import-export.html#cb104-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 2          ISS     Pyotr Dubrov</span></span>
-<span id="cb104-5"><a href="import-export.html#cb104-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 3          ISS   Thomas Pesquet</span></span>
-<span id="cb104-6"><a href="import-export.html#cb104-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 4          ISS   Megan McArthur</span></span>
-<span id="cb104-7"><a href="import-export.html#cb104-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 5          ISS  Shane Kimbrough</span></span>
-<span id="cb104-8"><a href="import-export.html#cb104-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 6          ISS  Akihiko Hoshide</span></span>
-<span id="cb104-9"><a href="import-export.html#cb104-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 7          ISS Anton Shkaplerov</span></span>
-<span id="cb104-10"><a href="import-export.html#cb104-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 8  Shenzhou 13     Zhai Zhigang</span></span>
-<span id="cb104-11"><a href="import-export.html#cb104-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 9  Shenzhou 13      Wang Yaping</span></span>
-<span id="cb104-12"><a href="import-export.html#cb104-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 Shenzhou 13       Ye Guangfu</span></span></code></pre></div>
-<p>Also, da haben wir unsere Antwort: Zum Zeitpunkt des letzten Updates Tue Oct 26 17:35:17 2021 von R4ews befanden sich 10 Personen im Weltraum. Aber wenn du alles selbst ausprobierst, könnten es auch schon wieder andere Namen und eine andere Anzahl sein. Das ist einer der Vorteile von APIs - im Gegensatz zu herunterladbaren Datensätzen werden sie im Allgemeinen in Echtzeit oder nahezu in Echtzeit aktualisiert, so dass sie eine großartige Möglichkeit darstellen, Zugang zu sehr aktuellen Daten zu erhalten.</p>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="import-export.html#cb103-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> data<span class="sc">$</span>people</span>
+<span id="cb103-2"><a href="import-export.html#cb103-2" aria-hidden="true" tabindex="-1"></a><span class="do">##          craft             name</span></span>
+<span id="cb103-3"><a href="import-export.html#cb103-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 1          ISS   Mark Vande Hei</span></span>
+<span id="cb103-4"><a href="import-export.html#cb103-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 2          ISS     Pyotr Dubrov</span></span>
+<span id="cb103-5"><a href="import-export.html#cb103-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 3          ISS   Thomas Pesquet</span></span>
+<span id="cb103-6"><a href="import-export.html#cb103-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 4          ISS   Megan McArthur</span></span>
+<span id="cb103-7"><a href="import-export.html#cb103-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 5          ISS  Shane Kimbrough</span></span>
+<span id="cb103-8"><a href="import-export.html#cb103-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 6          ISS  Akihiko Hoshide</span></span>
+<span id="cb103-9"><a href="import-export.html#cb103-9" aria-hidden="true" tabindex="-1"></a><span class="do">## 7          ISS Anton Shkaplerov</span></span>
+<span id="cb103-10"><a href="import-export.html#cb103-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 8  Shenzhou 13     Zhai Zhigang</span></span>
+<span id="cb103-11"><a href="import-export.html#cb103-11" aria-hidden="true" tabindex="-1"></a><span class="do">## 9  Shenzhou 13      Wang Yaping</span></span>
+<span id="cb103-12"><a href="import-export.html#cb103-12" aria-hidden="true" tabindex="-1"></a><span class="do">## 10 Shenzhou 13       Ye Guangfu</span></span></code></pre></div>
+<p>Also, da haben wir unsere Antwort: Zum Zeitpunkt des letzten Updates Wed Oct 27 10:07:33 2021 von R4ews befanden sich 10 Personen im Weltraum. Aber wenn du alles selbst ausprobierst, könnten es auch schon wieder andere Namen und eine andere Anzahl sein. Das ist einer der Vorteile von APIs - im Gegensatz zu herunterladbaren Datensätzen werden sie im Allgemeinen in Echtzeit oder nahezu in Echtzeit aktualisiert, so dass sie eine großartige Möglichkeit darstellen, Zugang zu sehr aktuellen Daten zu erhalten.</p>
 <p>In diesem Beispiel haben wir einen sehr unkomplizierten API-Workflow durchlaufen. Die meisten APIs erfordern, dass Sie demselben allgemeinen Muster folgen, aber dabei können sie durchaus komplexer sein.</p>
 <p>In unserem Beispiel war es ausreichen nur die URL anzugeben. Aber einige APIs verlangen durchaus mehr Informationen vom Benutzer. Im letzten Teil dieser Einführung gehen wir darauf ein, wie du der API mit deiner Anfrage zusätzliche Informationen zur Verfügung stellen kannst.</p>
 </div>
@@ -322,23 +322,23 @@ Argentina,Americas,75.32</code></pre>
 <p>Was wäre, wenn wir wissen wollten, wann die ISS einen bestimmten Ort auf der Erde überfliegen würde? Die ISS Pass Times API von Open Notify verlangt von uns, dass wir zusätzliche Parameter angeben, bevor sie die gewünschten Daten zurückgeben kann.</p>
 <p>Wir müssen den Längen- und Breitengrad des Ortes angeben, nach dem wir im Rahmen unserer <code>GET()</code> Anfrage fragen. Sobald ein Längen- und Breitengrad angegeben ist, werden sie als Abfrageparameter mit der ursprünglichen URL kombiniert.</p>
 <p>Lass uns die API verwenden, um herauszufinden, wann die ISS Garching (auf 48.24896 Breiten- und 11.65101 Längengrad) passieren wird:</p>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="import-export.html#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> jdata <span class="ot">&lt;-</span>  <span class="fu">GET</span>(<span class="st">"http://api.open-notify.org/iss-pass.json"</span>,</span>
-<span id="cb105-2"><a href="import-export.html#cb105-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     <span class="at">query =</span> <span class="fu">list</span>(<span class="at">lat =</span> <span class="fl">48.24896</span>, <span class="at">lon =</span> <span class="fl">11.65101</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="import-export.html#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> jdata <span class="ot">&lt;-</span>  <span class="fu">GET</span>(<span class="st">"http://api.open-notify.org/iss-pass.json"</span>,</span>
+<span id="cb104-2"><a href="import-export.html#cb104-2" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>     <span class="at">query =</span> <span class="fu">list</span>(<span class="at">lat =</span> <span class="fl">48.24896</span>, <span class="at">lon =</span> <span class="fl">11.65101</span>))</span></code></pre></div>
 <p>Man muss in der Dokumentation für die API, mit man arbeiten will, nachsehen, ob es erforderliche Abfrageparameter gibt. Für die überwiegende Mehrheit der APIs, auf die du möglicherweise zugreifen möchtest, gibt es eine Dokumentation, die du lesen kannst (und lesen solltest), um ein klares Verständnis dafür zu erhalten, welche Parameter deine Anfrage erfordert.</p>
 <p>Wie auch immer, jetzt, da wir unsere Anfrage einschließlich der Standortparameter gestellt haben, können wir die Antwort mit den gleichen Funktionen überprüfen, die wir zuvor verwendet haben. Lass uns die Daten aus der Antwort extrahieren:</p>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="import-export.html#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> data <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">rawToChar</span>(jdata<span class="sc">$</span>content))</span>
-<span id="cb106-2"><a href="import-export.html#cb106-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> data<span class="sc">$</span>response</span>
-<span id="cb106-3"><a href="import-export.html#cb106-3" aria-hidden="true" tabindex="-1"></a><span class="do">##   duration   risetime</span></span>
-<span id="cb106-4"><a href="import-export.html#cb106-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 1      179 1635296903</span></span>
-<span id="cb106-5"><a href="import-export.html#cb106-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 2      603 1635302436</span></span>
-<span id="cb106-6"><a href="import-export.html#cb106-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 3      656 1635308200</span></span>
-<span id="cb106-7"><a href="import-export.html#cb106-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 4      649 1635314027</span></span>
-<span id="cb106-8"><a href="import-export.html#cb106-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 5      655 1635319850</span></span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="import-export.html#cb105-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> data <span class="ot">&lt;-</span> <span class="fu">fromJSON</span>(<span class="fu">rawToChar</span>(jdata<span class="sc">$</span>content))</span>
+<span id="cb105-2"><a href="import-export.html#cb105-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> data<span class="sc">$</span>response</span>
+<span id="cb105-3"><a href="import-export.html#cb105-3" aria-hidden="true" tabindex="-1"></a><span class="do">##   duration   risetime</span></span>
+<span id="cb105-4"><a href="import-export.html#cb105-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 1      624 1635325664</span></span>
+<span id="cb105-5"><a href="import-export.html#cb105-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 2      355 1635331553</span></span>
+<span id="cb105-6"><a href="import-export.html#cb105-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 3      561 1635386033</span></span>
+<span id="cb105-7"><a href="import-export.html#cb105-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 4      654 1635391767</span></span>
+<span id="cb105-8"><a href="import-export.html#cb105-8" aria-hidden="true" tabindex="-1"></a><span class="do">## 5      651 1635397585</span></span></code></pre></div>
 <p>Diese API gibt uns Zeiten in Form von <a href="https://de.wikipedia.org/wiki/Unixzeit">Unixzeit</a> zurück. Unixzeit ist die Zeitspanne, die seit dem 1. Januar 1970 vergangen ist. Mithilfe der Funktion <code>as_datetime()</code> aus dem <a href="https://lubridate.tidyverse.org">lubridate</a> Paket können wir die Unixzeit aber leicht umrechnen</p>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="import-export.html#cb107-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> lubridate<span class="sc">::</span><span class="fu">as_datetime</span>(data<span class="sc">$</span>response<span class="sc">$</span>risetime)</span>
-<span id="cb107-2"><a href="import-export.html#cb107-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "2021-10-27 01:08:23 UTC" "2021-10-27 02:40:36 UTC"</span></span>
-<span id="cb107-3"><a href="import-export.html#cb107-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [3] "2021-10-27 04:16:40 UTC" "2021-10-27 05:53:47 UTC"</span></span>
-<span id="cb107-4"><a href="import-export.html#cb107-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [5] "2021-10-27 07:30:50 UTC"</span></span></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="import-export.html#cb106-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> lubridate<span class="sc">::</span><span class="fu">as_datetime</span>(data<span class="sc">$</span>response<span class="sc">$</span>risetime)</span>
+<span id="cb106-2"><a href="import-export.html#cb106-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] "2021-10-27 09:07:44 UTC" "2021-10-27 10:45:53 UTC"</span></span>
+<span id="cb106-3"><a href="import-export.html#cb106-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [3] "2021-10-28 01:53:53 UTC" "2021-10-28 03:29:27 UTC"</span></span>
+<span id="cb106-4"><a href="import-export.html#cb106-4" aria-hidden="true" tabindex="-1"></a><span class="do">## [5] "2021-10-28 05:06:25 UTC"</span></span></code></pre></div>
 <p>Wir haben hier wirklich nur die Basics in Bezug auf APIs eingeführt. Aber hoffentlich hat dir diese Einführung trotzdem das Vertrauen gegeben, sich mit einigen komplexeren und leistungsfähigeren APIs auseinanderzusetzen, und trägt dadurch dazu bei, eine ganz neue Welt von Daten zu erschließen, die du erforschen kannst!</p>
 </div>
 </div>
