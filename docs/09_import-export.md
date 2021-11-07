@@ -39,7 +39,7 @@ Das Hauptpaket, das wir verwenden werden, ist [readr], welches Alternativen zu d
 
 
 ```r
-> library(tidyverse)
+library(tidyverse)
 ## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
 ## ✓ ggplot2 3.3.5     ✓ purrr   0.3.4
 ## ✓ tibble  3.1.2     ✓ dplyr   1.0.7
@@ -56,8 +56,8 @@ Die Gapminder Daten könnten wir natürlich wie zuvor über das Laden des `gapmi
 
 
 ```r
-> library(fs)
-> (gap_tsv <- path_package("gapminder", "extdata", "gapminder.tsv"))
+library(fs)
+(gap_tsv <- path_package("gapminder", "extdata", "gapminder.tsv"))
 ## /Library/Frameworks/R.framework/Versions/4.0/Resources/library/gapminder/extdata/gapminder.tsv
 ```
 
@@ -70,7 +70,7 @@ Die Haupt-Funktion zum Einlesen von Daten in readr ist `read_delim()`. Hier verw
 
 
 ```r
-> gapminder <- read_tsv(gap_tsv)
+gapminder <- read_tsv(gap_tsv)
 ## Rows: 1704 Columns: 6
 ## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: "\t"
@@ -79,7 +79,7 @@ Die Haupt-Funktion zum Einlesen von Daten in readr ist `read_delim()`. Hier verw
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-> glimpse(gapminder)
+glimpse(gapminder)
 ## Rows: 1,704
 ## Columns: 6
 ## $ country   <chr> "Afghanistan", "Afghanistan", "Afghanistan", "Afghanistan", …
@@ -110,12 +110,12 @@ Bevor wir etwas exportieren können, müssen (das ist natürlich so nicht richti
 
 
 ```r
-> gap_life_exp <- gapminder %>%
-+   group_by(country, continent) %>% 
-+   summarise(life_exp = max(lifeExp)) %>% 
-+   ungroup()
+gap_life_exp <- gapminder %>%
+  group_by(country, continent) %>% 
+  summarise(life_exp = max(lifeExp)) %>% 
+  ungroup()
 ## `summarise()` has grouped output by 'country'. You can override using the `.groups` argument.
-> gap_life_exp
+gap_life_exp
 ## # A tibble: 142 x 3
 ##    country     continent life_exp
 ##    <chr>       <chr>        <dbl>
@@ -138,7 +138,7 @@ Die Haupt-Exportfunktion in readr ist `write_delim()`. Für verschiedene Dateifo
 
 
 ```r
-> write_csv(gap_life_exp, "data/gap_life_exp.csv")
+write_csv(gap_life_exp, "data/gap_life_exp.csv")
 ```
 
 Schauen wir uns die ersten paar Zeilen von `gap_life_exp.csv` an. Dazu kannst du entweder die Datei öffnen oder, im Terminal, `head` darauf anwenden.
@@ -183,16 +183,16 @@ Vermutlich hast du die beiden Pakete bisher nicht installiert. Daher ist der ers
 
 
 ```r
-> install.packages(c("httr", "jsonlite"))
-> 
+install.packages(c("httr", "jsonlite"))
+
 ```
 
 und anschließend zu laden
 
 
 ```r
-> library(httr)
-> library(jsonlite)
+library(httr)
+library(jsonlite)
 ## 
 ## Attaching package: 'jsonlite'
 ## The following object is masked from 'package:purrr':
@@ -219,7 +219,7 @@ Wir beginnen damit, dass wir unsere Anfrage mit der `GET()` Funktion stellen und
 
 
 ```r
-> jdata <- GET("http://api.open-notify.org/astros.json")
+jdata <- GET("http://api.open-notify.org/astros.json")
 ```
 
 Die Ausgabe der Funktion `GET()` ist eine Liste, die alle Informationen enthält, die vom API-Server zurückgegeben werden. 
@@ -231,9 +231,9 @@ Schauen wir uns einmal an, wie die Variable jdata in der R-Konsole aussieht:
 
 
 ```r
-> jdata
+jdata
 ## Response [http://api.open-notify.org/astros.json]
-##   Date: 2021-10-27 08:07
+##   Date: 2021-11-07 19:47
 ##   Status: 200
 ##   Content-Type: application/json
 ##   Size: 505 B
@@ -268,7 +268,7 @@ Dazu müssen wir zunächst den rohen Unicode in Character Daten konvertieren, di
 
 
 ```r
-> rawToChar(jdata$content)
+rawToChar(jdata$content)
 ## [1] "{\"number\": 10, \"people\": [{\"craft\": \"ISS\", \"name\": \"Mark Vande Hei\"}, {\"craft\": \"ISS\", \"name\": \"Pyotr Dubrov\"}, {\"craft\": \"ISS\", \"name\": \"Thomas Pesquet\"}, {\"craft\": \"ISS\", \"name\": \"Megan McArthur\"}, {\"craft\": \"ISS\", \"name\": \"Shane Kimbrough\"}, {\"craft\": \"ISS\", \"name\": \"Akihiko Hoshide\"}, {\"craft\": \"ISS\", \"name\": \"Anton Shkaplerov\"}, {\"craft\": \"Shenzhou 13\", \"name\": \"Zhai Zhigang\"}, {\"craft\": \"Shenzhou 13\", \"name\": \"Wang Yaping\"}, {\"craft\": \"Shenzhou 13\", \"name\": \"Ye Guangfu\"}], \"message\": \"success\"}"
 ```
 
@@ -281,8 +281,8 @@ Die `fromJSON()` Funktion benötigt einen Character Vektor, der die JSON-Struktu
 
 
 ```r
-> data <-  fromJSON(rawToChar(jdata$content))
-> glimpse(data)
+data <-  fromJSON(rawToChar(jdata$content))
+glimpse(data)
 ## List of 3
 ##  $ number : int 10
 ##  $ people :'data.frame':	10 obs. of  2 variables:
@@ -295,7 +295,7 @@ Die Liste `data` hat drei Elemente. Uns interessiert in erster Linie das Data Fr
 
 
 ```r
-> data$people
+data$people
 ##          craft             name
 ## 1          ISS   Mark Vande Hei
 ## 2          ISS     Pyotr Dubrov
@@ -310,7 +310,7 @@ Die Liste `data` hat drei Elemente. Uns interessiert in erster Linie das Data Fr
 ```
 
 
-Also, da haben wir unsere Antwort: Zum Zeitpunkt des letzten Updates Wed Oct 27 10:07:33 2021 von R4ews befanden sich 10 Personen im Weltraum. Aber wenn du alles selbst ausprobierst, könnten es auch schon wieder andere Namen und eine andere Anzahl sein. Das ist einer der Vorteile von APIs - im Gegensatz zu herunterladbaren Datensätzen werden sie im Allgemeinen in Echtzeit oder nahezu in Echtzeit aktualisiert, so dass sie eine großartige Möglichkeit darstellen, Zugang zu sehr aktuellen Daten zu erhalten.
+Also, da haben wir unsere Antwort: Zum Zeitpunkt des letzten Updates Sun Nov  7 20:47:18 2021 von R4ews befanden sich 10 Personen im Weltraum. Aber wenn du alles selbst ausprobierst, könnten es auch schon wieder andere Namen und eine andere Anzahl sein. Das ist einer der Vorteile von APIs - im Gegensatz zu herunterladbaren Datensätzen werden sie im Allgemeinen in Echtzeit oder nahezu in Echtzeit aktualisiert, so dass sie eine großartige Möglichkeit darstellen, Zugang zu sehr aktuellen Daten zu erhalten.
 
 
 In diesem Beispiel haben wir einen sehr unkomplizierten API-Workflow durchlaufen. Die meisten APIs erfordern, dass Sie demselben allgemeinen Muster folgen, aber dabei können sie durchaus komplexer sein.
@@ -327,8 +327,8 @@ Lass uns die API verwenden, um herauszufinden, wann die ISS Garching (auf 48.248
 
 
 ```r
-> jdata <-  GET("http://api.open-notify.org/iss-pass.json",
-+     query = list(lat = 48.24896, lon = 11.65101))
+jdata <-  GET("http://api.open-notify.org/iss-pass.json",
+    query = list(lat = 48.24896, lon = 11.65101))
 ```
 
 
@@ -339,14 +339,14 @@ Wie auch immer, jetzt, da wir unsere Anfrage einschließlich der Standortparamet
 
 
 ```r
-> data <- fromJSON(rawToChar(jdata$content))
-> data$response
+data <- fromJSON(rawToChar(jdata$content))
+data$response
 ##   duration   risetime
-## 1      624 1635325664
-## 2      355 1635331553
-## 3      561 1635386033
-## 4      654 1635391767
-## 5      651 1635397585
+## 1      215 1636317025
+## 2      607 1636322574
+## 3      657 1636328340
+## 4      650 1636334167
+## 5      656 1636339989
 ```
 
 
@@ -355,10 +355,10 @@ Diese API gibt uns Zeiten in Form von [Unixzeit](https://de.wikipedia.org/wiki/U
 
 
 ```r
-> lubridate::as_datetime(data$response$risetime)
-## [1] "2021-10-27 09:07:44 UTC" "2021-10-27 10:45:53 UTC"
-## [3] "2021-10-28 01:53:53 UTC" "2021-10-28 03:29:27 UTC"
-## [5] "2021-10-28 05:06:25 UTC"
+lubridate::as_datetime(data$response$risetime)
+## [1] "2021-11-07 20:30:25 UTC" "2021-11-07 22:02:54 UTC"
+## [3] "2021-11-07 23:39:00 UTC" "2021-11-08 01:16:07 UTC"
+## [5] "2021-11-08 02:53:09 UTC"
 ```
 
 

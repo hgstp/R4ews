@@ -139,9 +139,13 @@ Tatsächlich sind diese Verben ein Spezialfall reiner Funktionen: sie nehmen als
 Die Daten sind für all diese Funktionen aus __stets__ das erste Inputargument.
 
 
-Die `dplyr` Einführung geht weiter im Kapitel [Mehr zu `dplyr`](#dplyr-single).
+
+## Aufgabe
+
+Die `dplyr` Einführung geht weiter im Kapitel [Mehr zu `dplyr`](#dplyr-single). Bearbeitet aber vorher den letzten Abschnitte des [Work with Data](https://rstudio.cloud/learn/primers/2) Primers:
 
 
+[Deriving Information with dplyr](https://rstudio.cloud/learn/primers/2.3) zeigt euch wie ihr über bestehenden Variablen neue Variablen definiert und leicht zusammenfassende Statistiken innerhalb vorab definiertert Gruppen berechnet.
 
 
 ```{r links, child="links.md"}

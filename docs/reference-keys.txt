@@ -18,7 +18,7 @@ data-frames-sind-fantastisch
 gapminder-data
 die-gapminder-daten-sind-ein-tibble
 variablen-in-einem-data-frame
-recap
+aufgabe-1
 dplyr-intro
 einstieg
 wie-immer-laden-wir-zu-beginn-tidyverse
@@ -27,6 +27,7 @@ der-pipe-operator
 mit-select-variablen-auswählen
 jetzt-nochmal-ein-vergleich-zu-r-standardbefehlen
 pure-predictable-pipeable
+aufgabe-2
 dplyr-single
 wo-stehen-wir
 falls-noch-nicht-geschehen-lade-dplyr-und-gapminder

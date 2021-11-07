@@ -18,7 +18,7 @@ Der Fokus liegt in diesem Abschnitt auf `dplyr`. Aber da wir immer wieder auch F
 
 
 ```r
-> library(tidyverse)
+library(tidyverse)
 ## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
 ## ✓ ggplot2 3.3.5     ✓ purrr   0.3.4
 ## ✓ tibble  3.1.2     ✓ dplyr   1.0.7
@@ -33,7 +33,7 @@ Zusätzlich wollen wir auch noch [gapminder] laden.
 
 
 ```r
-> library(gapminder)
+library(gapminder)
 ```
 
 
@@ -44,13 +44,13 @@ Zusätzlich wollen wir auch noch [gapminder] laden.
 
 
 ```r
-> filter(gapminder, lifeExp < 29)
+filter(gapminder, lifeExp < 29)
 ## # A tibble: 2 x 6
 ##   country     continent  year lifeExp     pop gdpPercap
 ##   <fct>       <fct>     <int>   <dbl>   <int>     <dbl>
 ## 1 Afghanistan Asia       1952    28.8 8425333      779.
 ## 2 Rwanda      Africa     1992    23.6 7290203      737.
-> filter(gapminder, country == "Rwanda", year > 1979)
+filter(gapminder, country == "Rwanda", year > 1979)
 ## # A tibble: 6 x 6
 ##   country continent  year lifeExp     pop gdpPercap
 ##   <fct>   <fct>     <int>   <dbl>   <int>     <dbl>
@@ -60,7 +60,7 @@ Zusätzlich wollen wir auch noch [gapminder] laden.
 ## 4 Rwanda  Africa     1997    36.1 7212583      590.
 ## 5 Rwanda  Africa     2002    43.4 7852401      786.
 ## 6 Rwanda  Africa     2007    46.2 8860588      863.
-> filter(gapminder, country %in% c("Rwanda", "Afghanistan"))
+filter(gapminder, country %in% c("Rwanda", "Afghanistan"))
 ## # A tibble: 24 x 6
 ##    country     continent  year lifeExp      pop gdpPercap
 ##    <fct>       <fct>     <int>   <dbl>    <int>     <dbl>
@@ -81,15 +81,15 @@ Zum Vergleich kann man sich einen R Standardbefehl anschauen, der zum gleichen E
 
 
 ```r
-> gapminder[gapminder$lifeExp < 29, ] 
-> subset(gapminder, country == "Rwanda" & year > 1979) ## subset funktioniert ähnlich wir filter
+gapminder[gapminder$lifeExp < 29, ] 
+subset(gapminder, country == "Rwanda" & year > 1979) ## subset funktioniert ähnlich wir filter
 ```
 
 Unter keinen Umständen solltest du allerdings deine Daten so unterteilen, wie hier:
 
 
 ```r
-> auswahl <- gapminder[241:252, ]
+auswahl <- gapminder[241:252, ]
 ```
 
 Warum ist das eine blöde Idee?
@@ -99,7 +99,7 @@ Warum ist das eine blöde Idee?
   
 
 ```r
-> filter(gapminder, country == "Canada")
+filter(gapminder, country == "Canada")
 ```
 
 Dieser Aufruf erklärt sich von selbst und ist ziemlich robust.
@@ -114,7 +114,7 @@ Erstmal ein Beispiel
 
 
 ```r
-> gapminder %>% head()
+gapminder %>% head()
 ## # A tibble: 6 x 6
 ##   country     continent  year lifeExp      pop gdpPercap
 ##   <fct>       <fct>     <int>   <dbl>    <int>     <dbl>
@@ -132,7 +132,7 @@ Keine Angst, du kannst immer noch weitere Argumente für die Funktion auf der re
 
 
 ```r
-> gapminder %>% head(3)
+gapminder %>% head(3)
 ## # A tibble: 3 x 6
 ##   country     continent  year lifeExp      pop gdpPercap
 ##   <fct>       <fct>     <int>   <dbl>    <int>     <dbl>
@@ -152,7 +152,7 @@ Verwende  `select()`, um aus den Daten verschiedene Variablen (Spalten) auszuwä
 
 
 ```r
-> select(gapminder, year, lifeExp)
+select(gapminder, year, lifeExp)
 ## # A tibble: 1,704 x 2
 ##     year lifeExp
 ##    <int>   <dbl>
@@ -174,9 +174,9 @@ Und nun noch kombiniert mit `head()` über den Pipe-Operator:
 
 
 ```r
-> gapminder %>%
-+   select(year, lifeExp) %>%
-+   head(4)
+gapminder %>%
+  select(year, lifeExp) %>%
+  head(4)
 ## # A tibble: 4 x 2
 ##    year lifeExp
 ##   <int>   <dbl>
@@ -194,9 +194,9 @@ Hier sind die Daten für Kambodscha, aber nur bestimmte Variablen:
 
 
 ```r
-> gapminder %>%
-+   filter(country == "Cambodia") %>%
-+   select(year, lifeExp)
+gapminder %>%
+  filter(country == "Cambodia") %>%
+  select(year, lifeExp)
 ## # A tibble: 12 x 2
 ##     year lifeExp
 ##    <int>   <dbl>
@@ -218,7 +218,7 @@ und so würde ein typischer R Standardbefehl aussehen:
 
 
 ```r
-> gapminder[gapminder$country == "Cambodia", c("year", "lifeExp")]
+gapminder[gapminder$country == "Cambodia", c("year", "lifeExp")]
 ## # A tibble: 12 x 2
 ##     year lifeExp
 ##    <int>   <dbl>
@@ -251,9 +251,13 @@ Tatsächlich sind diese Verben ein Spezialfall reiner Funktionen: sie nehmen als
 Die Daten sind für all diese Funktionen aus __stets__ das erste Inputargument.
 
 
-Die `dplyr` Einführung geht weiter im Kapitel [Mehr zu `dplyr`](#dplyr-single).
+
+## Aufgabe
+
+Die `dplyr` Einführung geht weiter im Kapitel [Mehr zu `dplyr`](#dplyr-single). Bearbeitet aber vorher den letzten Abschnitte des [Work with Data](https://rstudio.cloud/learn/primers/2) Primers:
 
 
+[Deriving Information with dplyr](https://rstudio.cloud/learn/primers/2.3) zeigt euch wie ihr über bestehenden Variablen neue Variablen definiert und leicht zusammenfassende Statistiken innerhalb vorab definiertert Gruppen berechnet.
 
 
 

@@ -22,8 +22,8 @@ Geht nun in die Konsole um mit R zu interagieren. Erstellt die nachfolgende Zuor
 
 
 ```r
-> x <- 3 * 4
-> x
+x <- 3 * 4
+x
 ## [1] 12
 ```
 
@@ -31,7 +31,7 @@ Alle R Befehle, die ein Objekte erstellen ("Zuweisungen"), haben die Form:
 
 
 ```r
-> objectName <- value
+objectName <- value
 ```
 
 Ihr werdet im weiteren Verlauf noch viele Zuweisungen vornehmen. Tatsächlich ist es etwas mühsam den Operator `<-` zu tippen. Seid aber trotzdem nicht faul und benutzt stattdessen einfach `=` - auch wenn das theoretisch funktionieren würde. Aber später kann die Verwendung von `=` für Zuweisungen zu Verwirrung führen. Verwendet   stattdessen in RStudio die Tastenkombination: `Alt` + `-` (Minuszeichen) bzw. `option` + `-`.
@@ -55,7 +55,7 @@ Führt nun nachfolgenden Befehl aus
 
 
 ```r
-> this_is_a_really_long_name <- 2.5
+this_is_a_really_long_name <- 2.5
 ```
 
 In eurem Workspace ist nun das Objekt `this_is_a_really_long_name` vorhanden. Probiert mithilfe dieses Objekts die Vervollständigungsfunktion von RStudio aus: 
@@ -67,16 +67,16 @@ Gib die ersten paar Zeichen ein, drücke anschließend die TAB Taste, fügen wei
 Führt nun den Befehl 
 
 ```r
-> zwei_hoch_drei <- 2 ^ 3
+zwei_hoch_drei <- 2 ^ 3
 ```
 
 aus, um anschließend den Inhalt des Objekts anzuzeigen.
 
 
 ```r
-> zwei.hoch.drei
+zwei.hoch.drei
 ## Error in eval(expr, envir, enclos): object 'zwei.hoch.drei' not found
-> zwei_Hoch_drei
+zwei_Hoch_drei
 ## Error in eval(expr, envir, enclos): object 'zwei_Hoch_drei' not found
 ```
 
@@ -87,7 +87,7 @@ R verfügt über eine überwältigende Sammlung eingebauter Funktionen, die nach
 
 
 ```r
-> functionName(arg1 = val1, arg2 = val2, ...)
+functionName(arg1 = val1, arg2 = val2, ...)
 ```
 
 Als nächstes wollen wir die Funktion `seq()` verwenden, die reguläre Zahlensequenzen erzeugt. Dabei wollen wir noch ein weiteres hilfreiches Feature von RStudio demonstrieren.
@@ -100,7 +100,7 @@ Fügt man jetzt die öffnende runde Klammer hinzu, so wird die zugehörige schli
 
 
 ```r
-> seq(1, 10)
+seq(1, 10)
 ##  [1]  1  2  3  4  5  6  7  8  9 10
 ```
 
@@ -113,15 +113,15 @@ Analog zur Unterstützung mit den runden Klammern, werden auch schließende  Anf
 
 
 ```r
-> yo <- "hello world"
+yo <- "hello world"
 ```
 
 Nach einer Zuweisung wird der entsprechende Wert des Objekts nicht angezeigt. Daher ist man vielleicht dazu geneigt das Objekt gleich erneut aufzurufen
 
 
 ```r
-> y <- seq(1, 10)
-> y
+y <- seq(1, 10)
+y
 ##  [1]  1  2  3  4  5  6  7  8  9 10
 ```
 
@@ -129,7 +129,7 @@ Diese typische Aktion kann verkürzt werden, indem die Zuweisung in Klammern ges
 
 
 ```r
-> (y <- seq(1, 10))
+(y <- seq(1, 10))
 ##  [1]  1  2  3  4  5  6  7  8  9 10
 ```
 
@@ -137,19 +137,19 @@ Nicht alle Funktionen haben (oder erfordern) Argumente:
 
 
 ```r
-> date()
-## [1] "Wed Oct 27 10:07:16 2021"
+date()
+## [1] "Sun Nov  7 20:47:02 2021"
 ```
 
 Schaut euch nun euren Workspace an - unter Environment (vermutlich im Fenster rechts oben) seht ihr den Inhalt eures Workspace. Der Workspace ist der Ort, an dem sich benutzerdefinierte Objekte ansammeln. Eine Liste dieser Objekte könnt ihr auch mit diesen Befehlen erhalten:
 
 
 ```r
-> objects()
+objects()
 ## [1] "this_is_a_really_long_name" "x"                         
 ## [3] "y"                          "yo"                        
 ## [5] "zwei_hoch_drei"
-> ls()
+ls()
 ## [1] "this_is_a_really_long_name" "x"                         
 ## [3] "y"                          "yo"                        
 ## [5] "zwei_hoch_drei"
@@ -159,14 +159,14 @@ Wenn ihr nun das Objekt mit dem Namen `y` entfernen möchtet, könnt ihr das wie
 
 
 ```r
-> rm(y)
+rm(y)
 ```
 
 Alles löschen kann man mit dem Befehl
 
 
 ```r
-> rm(list = ls())
+rm(list = ls())
 ```
 
 oder man klickt auf den Besen im Environment Fenster von RStudio.
@@ -236,7 +236,7 @@ Das aktuelle Arbeitsverzeichnis könnt ihr euch anzeigen lassen mit dem Befehl
 
 
 ```r
-> getwd()
+getwd()
 ```
 
 Aber es wird auch oben an der RStudio Konsole direkt angezeigt.
@@ -263,22 +263,22 @@ Wir nehmen nun an, dass ihr ein RStudio Projekt angelegt und auch geöffnet habt
 
 
 ```r
-> a <- 2
-> b <- -3
-> sig_sq <- 0.5
-> x <- runif(40)
-> y <- a + b * x + rnorm(40, sd = sqrt(sig_sq))
-> (x_n <- mean(x))
-## [1] 0.464
-> write(x_n, "mittelwert_x.txt")
-> plot(x, y)
-> abline(a, b, col = "purple")
+a <- 2
+b <- -3
+sig_sq <- 0.5
+x <- runif(40)
+y <- a + b * x + rnorm(40, sd = sqrt(sig_sq))
+(x_n <- mean(x))
+## [1] 0.465
+write(x_n, "mittelwert_x.txt")
+plot(x, y)
+abline(a, b, col = "purple")
 ```
 
 <img src="02_r-basics_files/figure-html/toy-line-1.png" width="80%" style="display: block; margin: auto;" />
 
 ```r
-> dev.print(pdf, "scatterplot.pdf")
+dev.print(pdf, "scatterplot.pdf")
 ## quartz_off_screen 
 ##                 2
 ```

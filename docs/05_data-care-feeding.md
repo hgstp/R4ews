@@ -20,7 +20,7 @@ Prinzipiell geht es in den folgenden Abschnitten um Datenmanagement. Es werden a
 
 besucht habt und somit den nötigen Background besitzt.
 
-## Data Frames sind fantastisch
+## Data frames sind fantastisch
 
 Das Standardformat für Daten ist ein data frame. Die meisten Funktionen zur Inferenz, Modellierung und graphischen Darstellung erwarten, dass ihnen über ein `data =` Argument ein data frame übergeben wird. Dies gilt für Funktion aus der R Basisdistribution schon seit langem.
 
@@ -41,18 +41,18 @@ arbeiten. Die Daten sind im [gapminder] Paket enthalten, welches wir über CRAN 
 
 
 ```r
-> install.packages("gapminder")
+install.packages("gapminder")
 ```
 
 Um die Daten zu verwenden, müssen wir das Paket natürlich auch noch laden
 
 
 ```r
-> library(gapminder)
+library(gapminder)
 ```
 
 
-::: {.content-box-gray}
+::: {.content-box-black}
 Gapminder wurde von Hans, Anna und Ola Rosling gegründet. Auf der Webseite des Projekts findet man nicht nur viel Informatives, sondern auch sehr Unterhaltsames
 
 
@@ -72,7 +72,7 @@ Durch das Laden des `gapminder` Pakets haben wir nun Zugriff auf einen Datenobje
 
 
 ```r
-> str(gapminder)
+str(gapminder)
 ## tibble [1,704 × 6] (S3: tbl_df/tbl/data.frame)
 ##  $ country  : Factor w/ 142 levels "Afghanistan",..: 1 1 1 1 1 1 1 1 1 1 ...
 ##  $ continent: Factor w/ 5 levels "Africa","Americas",..: 3 3 3 3 3 3 3 3 3 3 ...
@@ -93,7 +93,7 @@ Tidyverse bietet eine spezielle data frame Variante an: ein __tibble__. `gapmind
 
 
 ```r
-> class(gapminder)
+class(gapminder)
 ## [1] "tbl_df"     "tbl"        "data.frame"
 ```
 
@@ -105,7 +105,7 @@ Wenn wir nun `gapminder` einfach auf den Bildschirm ausgeben, sehen wir, dass di
 
 
 ```r
-> gapminder
+gapminder
 ## # A tibble: 1,704 x 6
 ##    country     continent  year lifeExp      pop gdpPercap
 ##    <fct>       <fct>     <int>   <dbl>    <int>     <dbl>
@@ -129,8 +129,8 @@ Wenn ihr mit einem reinen data frame arbeitet - und dieses Feature gefällt euch
 
 
 ```r
-> library(tidyverse)
-> as_tibble(iris)
+library(tidyverse)
+as_tibble(iris)
 ## # A tibble: 150 x 5
 ##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ##           <dbl>       <dbl>        <dbl>       <dbl> <fct>  
@@ -151,15 +151,15 @@ Weitere Möglichkeiten, grundlegende Informationen zu einem data frame abzufrage
 
 
 ```r
-> names(gapminder)
+names(gapminder)
 ## [1] "country"   "continent" "year"      "lifeExp"   "pop"       "gdpPercap"
-> ncol(gapminder)
+ncol(gapminder)
 ## [1] 6
-> length(gapminder)
+length(gapminder)
 ## [1] 6
-> dim(gapminder)
+dim(gapminder)
 ## [1] 1704    6
-> nrow(gapminder)
+nrow(gapminder)
 ## [1] 1704
 ```
 
@@ -167,7 +167,7 @@ Ein bisschen _deskriptive Statistik_ zum Inhalt eines data frames erhält man mi
 
 
 ```r
-> summary(gapminder)
+summary(gapminder)
 ##         country        continent        year         lifeExp    
 ##  Afghanistan:  12   Africa  :624   Min.   :1952   Min.   :23.6  
 ##  Albania    :  12   Americas:300   1st Qu.:1966   1st Qu.:48.2  
@@ -187,10 +187,11 @@ Ein bisschen _deskriptive Statistik_ zum Inhalt eines data frames erhält man mi
 ```
 
 
-> **Bemerkung:** `summary()` ist eine generische Funktion. Für eine gegebene Klasse (des Inputs) bestimmt die generische Funktion die passende Methode. Die Funktion `summary()` besitzt die folgenden Methoden:
+::: {.content-box-yellow}
+**Bemerkung:** `summary()` ist eine generische Funktion. Für eine gegebene Klasse (des Inputs) bestimmt die generische Funktion die passende Methode. Die Funktion `summary()` besitzt z.B. die folgenden Methoden:
 
 ```r
-> methods(summary)
+methods(summary)
 ##  [1] summary,ANY-method             summary,DBIObject-method      
 ##  [3] summary.aov                    summary.aovlist*              
 ##  [5] summary.aspell*                summary.check_packages_in_dir*
@@ -215,41 +216,51 @@ Ein bisschen _deskriptive Statistik_ zum Inhalt eines data frames erhält man mi
 ## [43] summary.vctrs_vctr*            summary.warnings              
 ## see '?methods' for accessing help and source code
 ```
+:::
 
+Obwohl wir uns formell noch nicht eingehender mit der Visualisierung beschäftigt haben, ist es wichtig ein paar Grafiken zu erzeugen um einen ersten Eindruck über den Datensatz zu bekommen. Auf der anderen Seite werden die Grafiken aber auch nicht (viel) aufwendiger als die Beispiele im [Visualisation Basics Primer](https://rstudio.cloud/learn/primers/1.1).
 
-Obwohl wir uns formell noch nicht eingehender mit der Visualisierung beschäftigt haben, ist es wichtig ein paar Grafiken zu erzeugen um einen ersten Eindruck über den Datensatz zu bekommen. Auf der anderen Seite werden die Grafiken aber auch nicht (viel) aufwendiger als im Data Visualisation Basics Primer
+Interessant ist z.B. der zeitliche Verlauf der Lebenserwartung
 
 
 ```r
-> ggplot(gapminder, mapping = aes(x = year, y = lifeExp)) +
-+          geom_point()
+ggplot(gapminder, mapping = aes(x = year, y = lifeExp)) +
+         geom_point()
 ```
 
-<img src="05_data-care-feeding_files/figure-html/first-plots-base-R-1.png" width="80%" style="display: block; margin: auto;" />
+<img src="05_data-care-feeding_files/figure-html/unnamed-chunk-14-1.png" width="80%" style="display: block; margin: auto;" />
+
+oder der Zusammenhang zwischen dem GDP ([gross domestic product](https://de.wikipedia.org/wiki/Bruttoinlandsprodukt)) und der Lebenserwartung
+
+
 
 ```r
-> ggplot(gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
-+          geom_point()
+ggplot(gapminder, mapping = aes(x = gdpPercap, y = lifeExp)) +
+  geom_point()
 ```
 
-<img src="05_data-care-feeding_files/figure-html/first-plots-base-R-2.png" width="80%" style="display: block; margin: auto;" />
+<img src="05_data-care-feeding_files/figure-html/unnamed-chunk-15-1.png" width="80%" style="display: block; margin: auto;" />
 
 ```r
-> ggplot(gapminder, mapping = aes(x = log(gdpPercap), y = lifeExp)) +
-+          geom_point()
+ggplot(gapminder, mapping = aes(x = log(gdpPercap), y = lifeExp)) +
+  geom_point()
 ```
 
-<img src="05_data-care-feeding_files/figure-html/first-plots-base-R-3.png" width="80%" style="display: block; margin: auto;" />
+<img src="05_data-care-feeding_files/figure-html/unnamed-chunk-15-2.png" width="80%" style="display: block; margin: auto;" />
 
 
-Grafiken dieser Art werden wir zu einem späteren Zeitpunkt noch genauer behandeln. Dann sprechen wir auch über deren Inhalt.
 
+
+Grafiken dieser Art werden wir zu einem späteren Zeitpunkt noch genauer behandeln. Dann sprechen wir natürlich auch intensiv über deren Inhalt.
+
+
+<br>
 
 Wir schauen uns nochmal die Ausgabe von `str()` an, um darüber zu sprechen, was ein data frame genau ist.
 
 
 ```r
-> str(gapminder)
+str(gapminder)
 ## tibble [1,704 × 6] (S3: tbl_df/tbl/data.frame)
 ##  $ country  : Factor w/ 142 levels "Afghanistan",..: 1 1 1 1 1 1 1 1 1 1 ...
 ##  $ continent: Factor w/ 5 levels "Africa","Americas",..: 3 3 3 3 3 3 3 3 3 3 ...
@@ -259,13 +270,13 @@ Wir schauen uns nochmal die Ausgabe von `str()` an, um darüber zu sprechen, was
 ##  $ gdpPercap: num [1:1704] 779 821 853 836 740 ...
 ```
 
-Ein data frame ist ein Sonderfall einer *Liste*, die in R verwendet wird, um so gut wie alles aufzunehmen. Data frames sind ein Spezialfall, bei dem die Länge jedes Listenelements gleich ist. 
+Ein data frame ist ein Sonderfall einer __Liste__. R verwendet Listen um so gut wie alles in ein Objekt aufnehmen zu können. Data frames sind nun ein Spezialfall einer Liste, bei dem die Länge jedes Listenelements gleich ist. 
 
 Nehmen wir mal an, dass wir eine Beschreibung der Variablen
 
 
 ```r
-> names(gapminder)
+names(gapminder)
 ## [1] "country"   "continent" "year"      "lifeExp"   "pop"       "gdpPercap"
 ```
 
@@ -273,11 +284,11 @@ zusammen mit den Daten abspeichern wollen. Dazu könnten wir ein tibble
 
 
 ```r
-> (desc <- tibble(variables = names(gapminder),
-+                desc = c("factor with 142 levels", "factor with 5 levels",
-+                         "ranges from 1952 to 2007 in increments of 5 years",
-+                         "life expectancy at birth, in years",
-+                         "population","GDP per capita (US$, inflation-adjusted)")))
+(desc <- tibble(variables = names(gapminder),
+               desc = c("factor with 142 levels", "factor with 5 levels",
+                        "ranges from 1952 to 2007 in increments of 5 years",
+                        "life expectancy at birth, in years",
+                        "population","GDP per capita (US$, inflation-adjusted)")))
 ## # A tibble: 6 x 2
 ##   variables desc                                             
 ##   <chr>     <chr>                                            
@@ -289,12 +300,12 @@ zusammen mit den Daten abspeichern wollen. Dazu könnten wir ein tibble
 ## 6 gdpPercap GDP per capita (US$, inflation-adjusted)
 ```
 
-erzeugen, das die Beschreibungen enthält. Dieses data frame hat nun die Dimension 6x2. Trotzdem können wir es mit `gapminder` kombinieren, wenn wir beide tibbles in einer Liste abspeichern
+erzeugen, das die Beschreibungen enthält. Dieses data frame hat nun 6 Zeilen und 2 Spalten. Trotzdem können wir es mit `gapminder` kombinieren, wenn wir beide tibbles in einer Liste abspeichern
 
 
 ```r
-> gapminder_desc <- list(gapminder, desc)
-> str(gapminder_desc)
+gapminder_desc <- list(gapminder, desc)
+str(gapminder_desc)
 ## List of 2
 ##  $ : tibble [1,704 × 6] (S3: tbl_df/tbl/data.frame)
 ##   ..$ country  : Factor w/ 142 levels "Afghanistan",..: 1 1 1 1 1 1 1 1 1 1 ...
@@ -310,35 +321,52 @@ erzeugen, das die Beschreibungen enthält. Dieses data frame hat nun die Dimensi
 
 
 
-## Variablen in einem Data Frame
+## Variablen in einem data frame
 
-Um eine einzelne Variable aus einem data frame anzusprechen, kann man mit dem Dollarzeichen `$` arbeiten. Wir schauen uns dazu die numerische Variable `lifeExp` an.
+Einzelne Variable in einem data frame kann man mit dem Dollarzeichen `$` ansprechen. Als Beispiel schauen wir uns die numerische Variable `lifeExp` genauer an.
 
 
 ```r
-> head(gapminder$lifeExp)
+head(gapminder$lifeExp)
 ## [1] 28.8 30.3 32.0 34.0 36.1 38.4
-> summary(gapminder$lifeExp)
+summary(gapminder$lifeExp)
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##    23.6    48.2    60.7    59.5    70.8    82.6
 ```
 
-Zusätzlich wollen wir die noch die Verteilung von `lifeExp` visualisieren und plotten dazu ein Histogramm. Da wir dazu `ggplot()` verwenden, können wir `lifeExp` wieder direkt aufrufen.
+Die `summary()` Funktion berechnet, neben dem empirischen Mittel, das [Five-number summary](https://en.wikipedia.org/wiki/Five-number_summary), bestehend aus
+
+1. dem Minimum
+
+2. dem unteren Quartil (das empirische [0.25 Quantil](https://de.wikipedia.org/wiki/Empirisches_Quantil#Quartil))
+
+3. dem [Median](https://de.wikipedia.org/wiki/Median)
+
+4. dem oberen Quartil (das empirische [0.75 Quantil](https://de.wikipedia.org/wiki/Empirisches_Quantil#Quartil))
+
+5. dem Maximum
+
+
+
+Zusätzlich wollen wir noch die Verteilung von `lifeExp` visualisieren und plotten dazu ein Histogramm. Dazu verwenden wir wieder `ggplot()`. 
+
+Beachtet, dass ihr inerhalb der `ggplot2` Funktionen Variablen eines data frames direkt ansprechen könnt. Es ist hier also nicht nötig mit dem `$` Operator zu arbeiten.
 
 
 ```r
-> ggplot(gapminder, mapping = aes(x = lifeExp)) + 
-+   geom_histogram()
+ggplot(gapminder, mapping = aes(x = lifeExp)) + 
+  geom_histogram()
 ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 ```
 
-<img src="05_data-care-feeding_files/figure-html/unnamed-chunk-18-1.png" width="80%" style="display: block; margin: auto;" />
+<img src="05_data-care-feeding_files/figure-html/unnamed-chunk-20-1.png" width="80%" style="display: block; margin: auto;" />
 
-Alternativ können wir die Einträge eines data frames auch über die eckigen Klammern `[]` indizieren.
+
+Alternativ können wir die Einträge eines data frames aber auch über die eckigen Klammern `[]` indizieren.
 
 
 ```r
-> summary(gapminder[,"lifeExp"])
+summary(gapminder[,"lifeExp"])
 ##     lifeExp    
 ##  Min.   :23.6  
 ##  1st Qu.:48.2  
@@ -348,107 +376,128 @@ Alternativ können wir die Einträge eines data frames auch über die eckigen Kl
 ##  Max.   :82.6
 ```
 
-Dabei spezifiziert der Eintrag links vom Komma die Zeilen und der Wert rechts davon die Spalten. Dies ist hilfreich, wenn man auf einzelne Werte zugreifen will. Aber beim Aufruf einer kompletten Variable (Spalte) ist die `$` Notation sicherlich vorteilhaft.
+Dabei spezifiziert der Eintrag links vom Komma die Zeilen und der Wert rechts davon die Spalten. Dies ist hilfreich, wenn man auf einzelne Werte zugreifen will. Aber beim Aufruf nur einer Variable (Spalte), ist die `$` Notation sicherlich vorteilhafter.
 
 
 
 
-Die Variable `year` ist eine ganzzahlige Variable, aber da es so wenige unterschiedliche Werte gibt, funktioniert sie auch ein wenig wie eine kategoriale Variable.
+Die Variable `year` ist eine ganzzahlige Variable, aber da es so wenige unterschiedliche Werte gibt, funktioniert sie auch ein wenig wie eine kategoriale Variable und es macht Sinn die Häufigkeit der einzelnen Ausprägungen zu zählen.
 
 
 ```r
-> summary(gapminder$year)
+summary(gapminder$year)
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##    1952    1966    1980    1980    1993    2007
-> table(gapminder$year)
+table(gapminder$year)
 ## 
 ## 1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 2002 2007 
 ##  142  142  142  142  142  142  142  142  142  142  142  142
 ```
 
+Wir erkennen, dass in jedem Jahr die gleiche Anzahl an Beobachtungen vorhanden ist. Es handelt sich dabei stets um Beobachtungen aus den gleichen 142 Ländern. Dies erkennt man aus dieser Ausgabe aber natürlich noch nicht.
+
+
 Die Variablen `country` und  `continent` enthalten rein kategorische Informationen, die in R (häufig) als *factor* gespeichert werden.
 
 
 ```r
-> class(gapminder$continent)
+class(gapminder$continent)
 ## [1] "factor"
-> summary(gapminder$continent)
+summary(gapminder$continent)
 ##   Africa Americas     Asia   Europe  Oceania 
 ##      624      300      396      360       24
-> levels(gapminder$continent)
+levels(gapminder$continent)
 ## [1] "Africa"   "Americas" "Asia"     "Europe"   "Oceania"
-> nlevels(gapminder$continent)
+nlevels(gapminder$continent)
 ## [1] 5
 ```
 
-Die __Levels__ von `continent` sind "Afrika", "America" usw., und das ist es, was einem normalerweise in R angezeigt werden sollte, wenn man eine Faktorvariable aufruft. Im Allgemeinen sind die Levels von Menschen lesbare Zeichenfolgen, wie "male/female" und "control/treated". Aber vergiss *niemals*, dass R diese Information in kodierter Form speichert. Schauen dir zum Beispiel das Ergebnis von `str(gapminder$continent)` an, falls du skeptisch sein solltest.
+Die __Levels__ von `continent` sind `"Afrika"`, `"America"` usw., also Beschreibungen, die man gut lesen und verstehen kann. So sollte es sein, wenn man in R eine Faktorvariable aufruft. Im Allgemeinen sind die Levels von Menschen lesbare Zeichenfolgen, wie `"male/female"` oder `"control/treated"`. 
+
+Euch sollte aber auch klar sein, dass R diese Information in kodierter Form speichert. Als Beispiel könnt ihr euch das Ergebnis von `str(gapminder$continent)` anschauen
+
+
 
 
 ```r
-> str(gapminder$continent)
+str(gapminder$continent)
 ##  Factor w/ 5 levels "Africa","Americas",..: 3 3 3 3 3 3 3 3 3 3 ...
 ```
 
 Faktorvariablen haben Vor- und Nachteil. Im weiteren Verlauf zeigen wir sowohl die Vor- wie auch die Nachteile. Generell ist aber durchaus so, dass die Vorteile überwiegen.
 
 
-Als Nächstes erstellen wir mit der Funktion `table()` eine Häufigkeitstabelle für die Variable `count`. Dieser Inhalt wird anschließend visualisiert über die Funktion `geom_bar()`. Die entsprechende Berechnung der Häufigkeitstabelle wird dabei aber sowohl von `table()` wie auch von `geom_bar()` (über die statistische Transformation `stat_count()`) durchgeführt, oder anders gesagt, wir können an `geom_bar()` den Datensatz (hier `gapminder`) anstatt von vorab berechneten Werten übergeben.
+Als Nächstes erstellen wir mit der Funktion `table()` eine Häufigkeitstabelle für die Variable `count`. Die berechneten Werte wollen wir anschließend noch mithilfe der Funktion `geom_bar()` visualisieren. Die zu plottenden Häufigkeiten müssen dabei aber nicht an die Funktion `geom_bar()` übergeben werden. Die Funktion berechnet selbst (über die statistische Transformation `stat_count()`) die entsprechenden Werte.
 
 
 
 
 ```r
-> table(gapminder$continent)
+table(gapminder$continent)
 ## 
 ##   Africa Americas     Asia   Europe  Oceania 
 ##      624      300      396      360       24
-> ggplot(gapminder, aes(x = continent)) + geom_bar()
+ggplot(gapminder, aes(x = continent)) + geom_bar()
 ```
 
 <img src="05_data-care-feeding_files/figure-html/tabulate-continent-1.png" width="80%" style="display: block; margin: auto;" />
 
-In den folgenden Abbildungen sehen wir, wie Faktoren in Zahlen umgesetzt werden können. Der `continent`-Faktor lässt sich durch das [ggplot2]-Paket leicht in "Facetten" oder Farben und eine Legende abbilden. 
+In den folgenden Abbildungen sehen wir, wie die kodierten Zahlenwerte einer Faktor Variable genutzt werden können. Der `continent`-Faktor lässt sich im  [ggplot2]-Paket leicht in "Facetten" oder Farben abbilden. 
 
-*Die Erstellung von Grafiken mit ggplot2 werden wir noch genauer besprechen. Daher kannst du dich also ruhig zurücklehnen und die Plots genießen oder blind kopieren/einfügen.*
+
+::: {.content-box-orange}
+Die Erstellung von Grafiken mit ggplot2 werden wir noch genauer besprechen. Daher könnt ihr euch also ruhig zurücklehnen und die Plots einfach genießen oder blind kopieren/einfügen.
+
+:::
+
+Zunächst initialisieren wir eine Grafik ohne Inhalt, da nicht gesagt wird, wie die Daten geplottete werden sollen.
+
+```r
+p <- ggplot(filter(gapminder, 
+                   continent != "Oceania"), # Daten aus Oceania werden "herausgefiltert"
+            aes(x = gdpPercap, y = lifeExp))  
+```
+
+Für die x-Achse wählen wir im nächsten Schritt eine log Skala (zur Basis 10).
 
 
 ```r
-> # wir initialisieren ein grafik (ohne inhalt)
-> p <- ggplot(filter(gapminder, continent != "Oceania"),
-+             aes(x = gdpPercap, y = lifeExp))  
-> p <- p + scale_x_log10() # auf der x-achse soll eine log skala verwendet werden
-> p + geom_point() # ein scatterplot
-> p + geom_point(aes(color = continent)) # für verschiedene kontinente werden verschiedene farben verwendet
-> p + geom_point(alpha = (1/3), size = 3) + # punkte mit transparenz
-+   geom_smooth(lwd = 3, se = FALSE) # geglätter zusammenhang
+p <- p + scale_x_log10() 
+```
+
+Zum Grafikobjekt `p` werden nun weitere Komponenten hinzugefügt und dann jeweils geplottet
+
+
+```r
+# einen scatterplot
+p + geom_point() 
+# mit verschiedenen farben für die verschiedenen kontinente
+p + geom_point(aes(color = continent))  
+# punkte mit transparenz
+p + geom_point(alpha = (1/3), size = 3) + 
+  geom_smooth(lwd = 3, se = FALSE) # einen geglätteten zusammenhang
 ## `geom_smooth()` using method = 'gam' and formula 'y ~ s(x, bs = "cs")'
-> p + geom_point(alpha = (1/3), size = 3) + 
-+   facet_wrap(~ continent) + # für jeden kontinent wird eine eigener
-+   # plot (innerhalb einer grafik) erzeugt
-+   geom_smooth(lwd = 1.5, se = FALSE)
+# für jeden kontinent einen eigenen plot (innerhalb einer grafik) erzeugen
+p + geom_point(alpha = (1/3), size = 3) + 
+  facet_wrap(~ continent) + 
+  geom_smooth(lwd = 1.5, se = FALSE)
 ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
-<img src="05_data-care-feeding_files/figure-html/factors-nice-for-plots-1.png" width="49%" style="display: block; margin: auto;" /><img src="05_data-care-feeding_files/figure-html/factors-nice-for-plots-2.png" width="49%" style="display: block; margin: auto;" /><img src="05_data-care-feeding_files/figure-html/factors-nice-for-plots-3.png" width="49%" style="display: block; margin: auto;" /><img src="05_data-care-feeding_files/figure-html/factors-nice-for-plots-4.png" width="49%" style="display: block; margin: auto;" />
+<img src="05_data-care-feeding_files/figure-html/factors-nice-for-plots-1.png" width="49%" /><img src="05_data-care-feeding_files/figure-html/factors-nice-for-plots-2.png" width="49%" /><img src="05_data-care-feeding_files/figure-html/factors-nice-for-plots-3.png" width="49%" /><img src="05_data-care-feeding_files/figure-html/factors-nice-for-plots-4.png" width="49%" />
 
 
-## Recap
 
-* Benutze data frames!!!
+## Aufgabe
 
-* Benutze [tidyverse]!!! Dadurch wird eine spezielle Art von data frames, ein "tibble", bereitgestellt, die neben anderen Vorteilen ein nettes Standarddruckverhalten aufweist.
+Im nächsten Abschnitt starten wir mit dem `dplyr` Paket. Bearbeitet daher zur Vorbereitung die ersten beiden Abschnitte des [Work with Data](https://rstudio.cloud/learn/primers/2) Primers:
 
-* Im Zweifelsfall kannst du dir immer Inhalte anzeigen lassen über `str()` oder im Fall eines tibbles, einfach das tibble selbst aufrufen.
 
-* Sei dir immer über die Anzahl an  Zeilen und Spalten deiner data frames bewusst.
+[Working with Tibbbles](https://rstudio.cloud/learn/primers/2.1) zeigt die Verwendung von Tibbles sowie die Verwaltung von `tidyverse`-Paketen. 
 
-* Sei dir im Klaren welche Art (numerisch, kategorial,  ...) von Variablen in deinen data frames enthalten sind.
+[Isolating Data with dplyr](https://rstudio.cloud/learn/primers/2.2) zeigt wie ihr Variablen auswählt, Beobachtungen filtert und Werte neu anordnet. Zudem wird der Pipe-Operator von R, `%>%`, eingeführt.
 
-* Benutze factors!!! Aber mach das bewusst und mit Vorsicht.
 
-* Führe für jede Variable eine grundlegende statistische und visuelle Überprüfung durch.
-
-* Ruf Variablen mit ihrem Namen auf, z.B. `gapminder$lifeExp`, nicht mit der Spaltennummer. Dein Code wird dadurch robuster und lesbarer sein.
 
 
 

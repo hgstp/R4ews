@@ -1,7 +1,6 @@
 --- 
 title: "R4ews MA0009"
-author: 
-- Stephan Haug
+author: Stephan Haug
 knit: "bookdown::render_book"
 site: bookdown::bookdown_site
 documentclass: book
@@ -10,7 +9,6 @@ biblio-style: apalike
 link-citations: yes
 description: "R4ews: R Ergänzung zum Modul MA009."
 always_allow_html: true
-
 ---
 
 # R4ews {-}
@@ -42,8 +40,8 @@ Das Material wird kontinuierlich über das Semester hinweg ergänzt/erweitert/ve
 
 
 ```r
-> date()
-## [1] "Wed Oct 27 10:07:13 2021"
+date()
+## [1] "Sun Nov  7 20:46:59 2021"
 ```
 
 
@@ -73,7 +71,7 @@ Die aktuelle Version dieses Buchs wurde mit
 ##  collate  en_US.UTF-8                 
 ##  ctype    en_US.UTF-8                 
 ##  tz       Europe/Berlin               
-##  date     2021-10-27
+##  date     2021-11-07
 ```
 
 erstellt

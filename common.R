@@ -4,7 +4,7 @@
 
 knitr::opts_chunk$set(
   comment = "##",
-  prompt = TRUE,
+  prompt = FALSE,
   collapse = TRUE,
   # cache = TRUE,
   # fig.retina = 0.8, # figures are either vectors or 300 dpi diagrams

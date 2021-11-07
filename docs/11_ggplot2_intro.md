@@ -20,7 +20,7 @@ Wie zuvor auch, laden wir stets das komplette `tidyverse`. Man weiß ja vorher n
 
 
 ```r
-> library(tidyverse)
+library(tidyverse)
 ## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
 ## ✓ ggplot2 3.3.5     ✓ purrr   0.3.4
 ## ✓ tibble  3.1.2     ✓ dplyr   1.0.7
@@ -54,8 +54,8 @@ Die einzelnen Teile eines Plots werden dann mit dem `+` Operator zusammengefügt
 
 
 ```r
-> library(gapminder)
-> ggplot(gapminder) 
+library(gapminder)
+ggplot(gapminder) 
 ```
 
 <img src="11_ggplot2_intro_files/figure-html/unnamed-chunk-3-1.png" width="80%" style="display: block; margin: auto;" />
@@ -69,10 +69,10 @@ Wir schauen uns zum Start einfach mal für Deutschland den Verlauf des `gdpPerca
 
 
 ```r
-> gapminder %>%
-+   filter(country == "Germany") %>% # auswählen der Daten 
-+   ggplot(aes(x = year, y = gdpPercap)) +  # plot initialisieren
-+   geom_point() # punkte zum Darstellen der Daten verwenden
+gapminder %>%
+  filter(country == "Germany") %>% # auswählen der Daten 
+  ggplot(aes(x = year, y = gdpPercap)) +  # plot initialisieren
+  geom_point() # punkte zum Darstellen der Daten verwenden
 ```
 
 <img src="11_ggplot2_intro_files/figure-html/unnamed-chunk-4-1.png" width="80%" style="display: block; margin: auto;" />
@@ -147,10 +147,10 @@ In einem Plot der `gdpPercap` Daten für Deutschland und Frankreich wollen wir a
 
 
 ```r
-> gapminder %>%
-+   filter(country %in% c("Germany","France")) %>% # auswählen der Daten 
-+   ggplot(aes(x = year, y = gdpPercap, colour = country)) +  
-+   geom_point(size = 3) # size wird auf einen fixen Wert gesetzt (außerhalb von aes())
+gapminder %>%
+  filter(country %in% c("Germany","France")) %>% # auswählen der Daten 
+  ggplot(aes(x = year, y = gdpPercap, colour = country)) +  
+  geom_point(size = 3) # size wird auf einen fixen Wert gesetzt (außerhalb von aes())
 ```
 
 <img src="11_ggplot2_intro_files/figure-html/unnamed-chunk-5-1.png" width="80%" style="display: block; margin: auto;" />
@@ -172,14 +172,14 @@ Da wir nicht alle verfügbaren `geoms` auflisten können, sei an dieser Stelle a
 
 
 ```r
-> gapminder %>%
-+   ggplot(aes(x = year, y = gdpPercap)) +  
-+   geom_point() 
-> 
-> 
-> gapminder %>%
-+   ggplot(aes(x = year, y = gdpPercap)) +  
-+   geom_smooth() 
+gapminder %>%
+  ggplot(aes(x = year, y = gdpPercap)) +  
+  geom_point() 
+
+
+gapminder %>%
+  ggplot(aes(x = year, y = gdpPercap)) +  
+  geom_smooth() 
 ## `geom_smooth()` using method = 'gam' and formula 'y ~ s(x, bs = "cs")'
 ```
 
@@ -193,8 +193,8 @@ Interessant sind hier natürlich die wenigen großen `gdpPercap` Werte
 
 
 ```r
-> gapminder %>%
-+   filter(gdpPercap > 50000)
+gapminder %>%
+  filter(gdpPercap > 50000)
 ## # A tibble: 6 x 6
 ##   country continent  year lifeExp     pop gdpPercap
 ##   <fct>   <fct>     <int>   <dbl>   <int>     <dbl>
@@ -216,10 +216,10 @@ direkt zum Scatterplot hinzufügen
 
 
 ```r
-> gapminder %>%
-+   ggplot(aes(x = year, y = gdpPercap)) +  
-+   geom_point() +
-+   geom_smooth() 
+gapminder %>%
+  ggplot(aes(x = year, y = gdpPercap)) +  
+  geom_point() +
+  geom_smooth() 
 ## `geom_smooth()` using method = 'gam' and formula 'y ~ s(x, bs = "cs")'
 ```
 
@@ -231,10 +231,10 @@ Wählen wir die Farbe der geometrischen Objekte anhand einer Faktorvariable, so 
 
 
 ```r
-> gapminder %>%
-+   ggplot(aes(x = year, y = gdpPercap)) +  
-+   geom_point(aes(colour = continent)) +
-+   geom_smooth() 
+gapminder %>%
+  ggplot(aes(x = year, y = gdpPercap)) +  
+  geom_point(aes(colour = continent)) +
+  geom_smooth() 
 ## `geom_smooth()` using method = 'gam' and formula 'y ~ s(x, bs = "cs")'
 ```
 
@@ -243,10 +243,10 @@ Beachte auch, dass wir `colour` nur für `geom_point()` gewählt haben. Die Glä
 
 
 ```r
-> gapminder %>%
-+   ggplot(aes(x = year, y = gdpPercap, colour = continent)) +  
-+   geom_point() +
-+   geom_smooth() 
+gapminder %>%
+  ggplot(aes(x = year, y = gdpPercap, colour = continent)) +  
+  geom_point() +
+  geom_smooth() 
 ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
@@ -256,10 +256,10 @@ Die Punkte sind mir etwas zu groß und der Linientyp gefällt mir auch nicht in 
 
 
 ```r
-> gapminder %>%
-+   ggplot(aes(x = year, y = gdpPercap, colour = continent)) +  
-+   geom_point(size = 0.9) +
-+   geom_smooth(linetype = 2) 
+gapminder %>%
+  ggplot(aes(x = year, y = gdpPercap, colour = continent)) +  
+  geom_point(size = 0.9) +
+  geom_smooth(linetype = 2) 
 ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
@@ -272,7 +272,7 @@ Jede `geom_xx()` Funktion besitzt eine Default Statistik, die berechnet wird.
 
 
 ```r
-> args(geom_point)
+args(geom_point)
 ## function (mapping = NULL, data = NULL, stat = "identity", position = "identity", 
 ##     ..., na.rm = FALSE, show.legend = NA, inherit.aes = TRUE) 
 ## NULL
@@ -285,7 +285,7 @@ Ein Balkendiagramm verwendet anderseits
 
 
 ```r
-> args(geom_bar)
+args(geom_bar)
 ## function (mapping = NULL, data = NULL, stat = "count", position = "stack", 
 ##     ..., width = NULL, na.rm = FALSE, orientation = NA, show.legend = NA, 
 ##     inherit.aes = TRUE) 
@@ -298,16 +298,16 @@ Der Aufruf der `stat_xx()` Funktion ist oftmals einfacher über die entsprechend
 
 
 ```r
-> ggplot(gapminder, aes(x = continent)) + 
-+   geom_bar()
+ggplot(gapminder, aes(x = continent)) + 
+  geom_bar()
 ```
 
 <img src="11_ggplot2_intro_files/figure-html/unnamed-chunk-12-1.png" width="80%" style="display: block; margin: auto;" />
 
 ```r
-> 
-> ggplot(gapminder, aes(x = continent)) + 
-+   stat_count()
+
+ggplot(gapminder, aes(x = continent)) + 
+  stat_count()
 ```
 
 <img src="11_ggplot2_intro_files/figure-html/unnamed-chunk-12-2.png" width="80%" style="display: block; margin: auto;" />
@@ -333,15 +333,15 @@ Die relativen Häufigkeiten berechnet man also über `prop`. Dazu muss die y-Var
 
 
 ```r
-> ggplot(gapminder, aes(x = continent, y = prop))
+ggplot(gapminder, aes(x = continent, y = prop))
 ```
 
 aber nach einer Variable `prop` suchen würde, muss eine alternative Notation in diesem Fall verwendet werden
 
 
 ```r
-> ggplot(gapminder, aes(x = continent, y = ..prop..)) + 
-+   geom_bar()
+ggplot(gapminder, aes(x = continent, y = ..prop..)) + 
+  geom_bar()
 ```
 
 <img src="11_ggplot2_intro_files/figure-html/unnamed-chunk-14-1.png" width="80%" style="display: block; margin: auto;" />
@@ -353,8 +353,8 @@ relativen Häufigkeiten wurden innerhalb der fünf Gruppen berechnet und nicht �
 
 
 ```r
-> ggplot(gapminder, aes(x = continent, y = ..prop..)) + 
-+   geom_bar(aes(group = 1))
+ggplot(gapminder, aes(x = continent, y = ..prop..)) + 
+  geom_bar(aes(group = 1))
 ```
 
 <img src="11_ggplot2_intro_files/figure-html/unnamed-chunk-15-1.png" width="80%" style="display: block; margin: auto;" />
@@ -382,19 +382,19 @@ Zuerst spielen wir etwas mit Farben. Dazu plotten wir erneut `year` gegen `gdpPe
 
 
 ```r
-> (p <- gapminder %>%
-+   ggplot(aes(x = year, y = gdpPercap, colour = continent)) +  
-+   geom_point(size = 0.9) +
-+   geom_smooth(linetype = 2) )
+(p <- gapminder %>%
+  ggplot(aes(x = year, y = gdpPercap, colour = continent)) +  
+  geom_point(size = 0.9) +
+  geom_smooth(linetype = 2) )
 ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
-> 
-> p + scale_colour_brewer(palette = "Set1") # Farbpaletten von http://colorbrewer2.org/
+
+p + scale_colour_brewer(palette = "Set1") # Farbpaletten von http://colorbrewer2.org/
 ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
-> 
-> p + scale_colour_grey(start = 0.1, end = 0.9) # keine so gute Wahl
+
+p + scale_colour_grey(start = 0.1, end = 0.9) # keine so gute Wahl
 ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
-> 
-> p + scale_colour_manual(values = c("blue", "gold", "sienna1", "sienna4", "hotpink1", "hotpink4"), name = "Kontinent")
+
+p + scale_colour_manual(values = c("blue", "gold", "sienna1", "sienna4", "hotpink1", "hotpink4"), name = "Kontinent")
 ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
@@ -407,9 +407,9 @@ Die Achsenbeschriftung der y-Achse ist nicht wirklich schön, weil nicht unbedin
 
 
 ```r
-> p <- p + scale_colour_manual(values = c("blue", "gold", "sienna1", "sienna4", "hotpink1", "hotpink4"))
-> 
-> p + scale_y_continuous("GDP pro Kopf")
+p <- p + scale_colour_manual(values = c("blue", "gold", "sienna1", "sienna4", "hotpink1", "hotpink4"))
+
+p + scale_y_continuous("GDP pro Kopf")
 ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
@@ -419,9 +419,9 @@ Da es sich bei `gdpPercap` um eine stetige Variable handelt, haben wir `scale_y_
 
 
 ```r
-> (p <- p + labs(x = "Jahr", y = "GDP pro Kopf",
-+          title = "Monoton steigendes GDP pro Kopf",
-+          subtitle = "Gestrichelte Linie zeigt Durchschnittswerte über alle Länder pro Kontinent"))
+(p <- p + labs(x = "Jahr", y = "GDP pro Kopf",
+         title = "Monoton steigendes GDP pro Kopf",
+         subtitle = "Gestrichelte Linie zeigt Durchschnittswerte über alle Länder pro Kontinent"))
 ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
@@ -433,13 +433,13 @@ Die frühen Kuwait-Beobachtungen ziehen die y-Achse stark auseinander. Daher kö
 
 
 ```r
-> p + ylim(0,55000)
+p + ylim(0,55000)
 ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ## Warning: Removed 6 rows containing non-finite values
 ## (stat_smooth).
 ## Warning: Removed 6 rows containing missing values
 ## (geom_point).
-> (p <- p + coord_cartesian(ylim = c(0, 55000)))
+(p <- p + coord_cartesian(ylim = c(0, 55000)))
 ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
@@ -452,7 +452,7 @@ Andere mögliche Positionsänderungen ergeben sich durch Skalierungen der Achsen
 
 
 ```r
-> p + scale_x_reverse()
+p + scale_x_reverse()
 ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
@@ -470,11 +470,11 @@ Datensätze lassen sich oftmals bzgl. vorhandener Variablen gruppieren. Dann wil
 
 
 ```r
-> gapminder %>%
-+   ggplot(aes(x = year, y = gdpPercap )) +  
-+   geom_point(size = 0.9) +
-+   geom_smooth(linetype = 2) +
-+   facet_wrap(~ continent, ncol = 2)
+gapminder %>%
+  ggplot(aes(x = year, y = gdpPercap )) +  
+  geom_point(size = 0.9) +
+  geom_smooth(linetype = 2) +
+  facet_wrap(~ continent, ncol = 2)
 ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
@@ -484,11 +484,11 @@ In der letzten Grafik verwenden alle fünf Plots die gleiche Skala auf der y-Ach
 
 
 ```r
-> gapminder %>%
-+   ggplot(aes(x = year, y = gdpPercap )) +  
-+   geom_point(size = 0.9) +
-+   geom_smooth(linetype = 2) +
-+   facet_wrap(~ continent, ncol = 2, scales = "free")
+gapminder %>%
+  ggplot(aes(x = year, y = gdpPercap )) +  
+  geom_point(size = 0.9) +
+  geom_smooth(linetype = 2) +
+  facet_wrap(~ continent, ncol = 2, scales = "free")
 ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
@@ -498,12 +498,12 @@ Erfolgt die Gruppierung anhand von zwei Variablen, so bietet `facet_grid()` eine
 
 
 ```r
-> gapminder %>%
-+   group_by(continent) %>%
-+   ggplot(aes(x = year, y = gdpPercap )) +  
-+   geom_point(size = 0.9) +
-+   geom_smooth(linetype = 2) +
-+   facet_grid(continent ~ pop > 5000000, scales = "free")
+gapminder %>%
+  group_by(continent) %>%
+  ggplot(aes(x = year, y = gdpPercap )) +  
+  geom_point(size = 0.9) +
+  geom_smooth(linetype = 2) +
+  facet_grid(continent ~ pop > 5000000, scales = "free")
 ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
@@ -526,13 +526,13 @@ Eine Reihe von `themes` sind bereits vorhanden, wobei `theme_gray()` das Default
 
 
 ```r
-> p
+p
 ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
-> p + theme_bw()
+p + theme_bw()
 ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
-> p + theme_dark()
+p + theme_dark()
 ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
-> p + theme_minimal()
+p + theme_minimal()
 ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
@@ -553,16 +553,16 @@ Die meisten dieser Änderungen können wir mit `theme()` durchführen.
 
 
 ```r
-> p +
-+   theme(
-+     axis.text = element_text(size = 14),
-+     legend.key = element_rect(fill = "navy"),
-+     legend.background = element_rect(fill = "green"),
-+     legend.position = "bottom",
-+     panel.grid.major = element_line(colour = "grey40"),
-+     panel.grid.minor = element_blank(),
-+     panel.background = element_rect(fill = "navy")
-+   )
+p +
+  theme(
+    axis.text = element_text(size = 14),
+    legend.key = element_rect(fill = "navy"),
+    legend.background = element_rect(fill = "green"),
+    legend.position = "bottom",
+    panel.grid.major = element_line(colour = "grey40"),
+    panel.grid.minor = element_blank(),
+    panel.background = element_rect(fill = "navy")
+  )
 ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
@@ -574,21 +574,21 @@ Will man gewisse Einstellung öfter verwenden, so kann man diese auch in einem `
 
 
 ```r
-> mein_theme <- theme(
-+     axis.text = element_text(size = 14),
-+     legend.key = element_rect(fill = "hotpink3"),
-+     panel.grid.major = element_line(colour = "grey40"),
-+     panel.grid.minor = element_blank(),
-+     panel.background = element_rect(fill = "navy")
-+   )
-> class(mein_theme)
+mein_theme <- theme(
+    axis.text = element_text(size = 14),
+    legend.key = element_rect(fill = "hotpink3"),
+    panel.grid.major = element_line(colour = "grey40"),
+    panel.grid.minor = element_blank(),
+    panel.background = element_rect(fill = "navy")
+  )
+class(mein_theme)
 ## [1] "theme" "gg"
 ```
 
 
 
 ```r
-> p + mein_theme
+p + mein_theme
 ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 

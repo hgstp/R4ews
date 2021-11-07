@@ -1,7 +1,6 @@
 --- 
 title: "R4ews MA0009"
-author: 
-- Stephan Haug
+author: Stephan Haug
 knit: "bookdown::render_book"
 site: bookdown::bookdown_site
 documentclass: book
@@ -10,7 +9,6 @@ biblio-style: apalike
 link-citations: yes
 description: "R4ews: R Ergänzung zum Modul MA009."
 always_allow_html: true
-
 ---
 
 # R4ews {-}
