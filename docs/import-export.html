@@ -272,7 +272,7 @@ Argentina,Americas,75.32</code></pre>
 <div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">jdata</span>
 <span class="co">## Response [http://api.open-notify.org/astros.json]</span>
-<span class="co">##   Date: 2021-11-15 22:03</span>
+<span class="co">##   Date: 2021-11-16 15:04</span>
 <span class="co">##   Status: 200</span>
 <span class="co">##   Content-Type: application/json</span>
 <span class="co">##   Size: 497 B</span></code></pre></div>
@@ -322,7 +322,7 @@ Argentina,Americas,75.32</code></pre>
 <span class="co">## 8     Tom Marshburn         ISS</span>
 <span class="co">## 9      Kayla Barron         ISS</span>
 <span class="co">## 10  Matthias Maurer         ISS</span></code></pre></div>
-<p>Also, da haben wir unsere Antwort: Zum Zeitpunkt des letzten Updates Mon Nov 15 23:03:41 2021 von R4ews befanden sich 10 Personen im Weltraum. Aber wenn du alles selbst ausprobierst, könnten es auch schon wieder andere Namen und eine andere Anzahl sein. Das ist einer der Vorteile von APIs - im Gegensatz zu herunterladbaren Datensätzen werden sie im Allgemeinen in Echtzeit oder nahezu in Echtzeit aktualisiert, so dass sie eine großartige Möglichkeit darstellen, Zugang zu sehr aktuellen Daten zu erhalten.</p>
+<p>Also, da haben wir unsere Antwort: Zum Zeitpunkt des letzten Updates Tue Nov 16 16:04:35 2021 von R4ews befanden sich 10 Personen im Weltraum. Aber wenn du alles selbst ausprobierst, könnten es auch schon wieder andere Namen und eine andere Anzahl sein. Das ist einer der Vorteile von APIs - im Gegensatz zu herunterladbaren Datensätzen werden sie im Allgemeinen in Echtzeit oder nahezu in Echtzeit aktualisiert, so dass sie eine großartige Möglichkeit darstellen, Zugang zu sehr aktuellen Daten zu erhalten.</p>
 <p>In diesem Beispiel haben wir einen sehr unkomplizierten API-Workflow durchlaufen. Die meisten APIs erfordern, dass Sie demselben allgemeinen Muster folgen, aber dabei können sie durchaus komplexer sein.</p>
 <p>In unserem Beispiel war es ausreichen nur die URL anzugeben. Aber einige APIs verlangen durchaus mehr Informationen vom Benutzer. Im letzten Teil dieser Einführung gehen wir darauf ein, wie du der API mit deiner Anfrage zusätzliche Informationen zur Verfügung stellen kannst.</p>
 </div>
@@ -342,17 +342,17 @@ Argentina,Americas,75.32</code></pre>
 <code class="sourceCode R"><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html">fromJSON</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rawConversion.html">rawToChar</a></span><span class="op">(</span><span class="va">jdata</span><span class="op">$</span><span class="va">content</span><span class="op">)</span><span class="op">)</span>
 <span class="va">data</span><span class="op">$</span><span class="va">response</span>
 <span class="co">##   duration   risetime</span>
-<span class="co">## 1      652 1637014341</span>
-<span class="co">## 2      658 1637020165</span>
-<span class="co">## 3      620 1637025981</span>
-<span class="co">## 4      321 1637031883</span>
-<span class="co">## 5      575 1637086349</span></code></pre></div>
+<span class="co">## 1      575 1637086348</span>
+<span class="co">## 2      658 1637092090</span>
+<span class="co">## 3      653 1637097912</span>
+<span class="co">## 4      656 1637103740</span>
+<span class="co">## 5      641 1637109554</span></code></pre></div>
 <p>Diese API gibt uns Zeiten in Form von <a href="https://de.wikipedia.org/wiki/Unixzeit">Unixzeit</a> zurück. Unixzeit ist die Zeitspanne, die seit dem 1. Januar 1970 vergangen ist. Mithilfe der Funktion <code>as_datetime()</code> aus dem <a href="https://lubridate.tidyverse.org">lubridate</a> Paket können wir die Unixzeit aber leicht umrechnen</p>
 <div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">lubridate</span><span class="fu">::</span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/as_date.html">as_datetime</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">response</span><span class="op">$</span><span class="va">risetime</span><span class="op">)</span>
-<span class="co">## [1] "2021-11-15 22:12:21 UTC" "2021-11-15 23:49:25 UTC"</span>
-<span class="co">## [3] "2021-11-16 01:26:21 UTC" "2021-11-16 03:04:43 UTC"</span>
-<span class="co">## [5] "2021-11-16 18:12:29 UTC"</span></code></pre></div>
+<span class="co">## [1] "2021-11-16 18:12:28 UTC" "2021-11-16 19:48:10 UTC"</span>
+<span class="co">## [3] "2021-11-16 21:25:12 UTC" "2021-11-16 23:02:20 UTC"</span>
+<span class="co">## [5] "2021-11-17 00:39:14 UTC"</span></code></pre></div>
 <p>Wir haben hier wirklich nur die Basics in Bezug auf APIs eingeführt. Aber hoffentlich hat dir diese Einführung trotzdem das Vertrauen gegeben, sich mit einigen komplexeren und leistungsfähigeren APIs auseinanderzusetzen, und trägt dadurch dazu bei, eine ganz neue Welt von Daten zu erschließen, die du erforschen kannst!</p>
 </div>
 </div>

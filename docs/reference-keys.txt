@@ -21,7 +21,6 @@ variablen-in-einem-data-frame
 aufgabe-1
 dplyr-intro
 einstieg
-wie-immer-laden-wir-zu-beginn-tidyverse
 filter-indizieren-von-zeilen
 der-pipe-operator
 mit-select-variablen-auswählen
@@ -30,12 +29,11 @@ pure-predictable-pipeable
 aufgabe-2
 dplyr-single
 wo-stehen-wir
-falls-noch-nicht-geschehen-lade-dplyr-und-gapminder
 mitmutate-neue-variablen-erstellen
 mit-arrange-die-zeilenreihenfolge-ändern
 mit-rename-schöne-namen-vergeben
 group_by-macht-das-r-leben-einfacher
-die-dinge-aufzählen
+dinge-aufzählen
 deskriptive-statistiken-mit-summarise
 gruppierte-veränderungen
 berechnungen-innerhalb-der-gruppen

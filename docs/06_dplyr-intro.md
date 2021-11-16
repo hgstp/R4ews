@@ -7,6 +7,22 @@
 
 [dplyr] ist ein Paket zur Datenmanipulation, entwickelt von Hadley Wickham und Romain Francois. Das Paket ist Teil des  [tidyverse] und gehört als Kernpaket zu den Paketen, die über `library(tidyverse)` geladen werden.
 
+
+Die Autoren des Pakets verstehen `dplyr`  als eine _Grammatik_ der Datenmanipulation. Daher werden die wichtigsten `dplyr` Funktionen auch oft als Verben bezeichnet. Diese Verben sollen euch helfen, die häufigsten Herausforderungen bei der Datenmanipulation zu lösen:
+
++ `mutate()`: fügt neue Variablen zum Datensatz hinzu, die Funktionen von bestehenden Variablen sind
+    
++ `select()`: wählt Variablen (Spalten) basierend auf ihren Namen aus
+    
++ `filter()`: wählt Zeilen basierend auf anzugebenden Bedingungen aus
+    
++ `summarise()`: reduziert mehrere Werte auf eine einzige Zusammenfassung
+    
++ `arrange()`: ändert die Reihenfolge der Zeilen
+
+
+
+
 Der Ursprung von `dplyr` liegt in einem früheren Paket mit dem Namen [plyr], das zum Ziel hat die ["split-apply-combine"-Strategie der Datenanalyse](https://www.jstatsoft.org/article/view/v040i01) [@wickham2011a] umzusetzen. Wo `plyr` noch einen vielfältigen Satz von Ein- und Ausgabetypen abdeckt (z.B. Arrays, data frames, Listen), hat `dplyr` einen klaren Fokus auf data frames oder __tibbles__, wenn man sich im tidyverse befindet. 
 
 `dplyr` bietet schnelle Alternativen zu den R Standardfunktionen:
@@ -347,7 +363,7 @@ Die `dplyr` Einführung geht weiter im Kapitel [Mehr zu `dplyr`](#dplyr-single).
 [Happy Git and GitHub for the useR]: https://happygitwithr.com
 [R for Data Science]: https://r4ds.had.co.nz
 [The tidyverse style guide]: https://style.tidyverse.org
-[Advanced R]: http://adv-r.had.co.nz
+[Advanced R]: https://adv-r.hadley.nz/
 [Tidyverse design principles]: https://principles.tidyverse.org
 [R Packages]: https://r-pkgs.org/index.html
 [R Graphics Cookbook]: http://shop.oreilly.com/product/0636920023135.do

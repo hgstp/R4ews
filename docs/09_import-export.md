@@ -233,7 +233,7 @@ Schauen wir uns einmal an, wie die Variable jdata in der R-Konsole aussieht:
 ```r
 jdata
 ## Response [http://api.open-notify.org/astros.json]
-##   Date: 2021-11-15 22:03
+##   Date: 2021-11-16 15:04
 ##   Status: 200
 ##   Content-Type: application/json
 ##   Size: 497 B
@@ -310,7 +310,7 @@ data$people
 ```
 
 
-Also, da haben wir unsere Antwort: Zum Zeitpunkt des letzten Updates Mon Nov 15 23:03:41 2021 von R4ews befanden sich 10 Personen im Weltraum. Aber wenn du alles selbst ausprobierst, könnten es auch schon wieder andere Namen und eine andere Anzahl sein. Das ist einer der Vorteile von APIs - im Gegensatz zu herunterladbaren Datensätzen werden sie im Allgemeinen in Echtzeit oder nahezu in Echtzeit aktualisiert, so dass sie eine großartige Möglichkeit darstellen, Zugang zu sehr aktuellen Daten zu erhalten.
+Also, da haben wir unsere Antwort: Zum Zeitpunkt des letzten Updates Tue Nov 16 16:04:35 2021 von R4ews befanden sich 10 Personen im Weltraum. Aber wenn du alles selbst ausprobierst, könnten es auch schon wieder andere Namen und eine andere Anzahl sein. Das ist einer der Vorteile von APIs - im Gegensatz zu herunterladbaren Datensätzen werden sie im Allgemeinen in Echtzeit oder nahezu in Echtzeit aktualisiert, so dass sie eine großartige Möglichkeit darstellen, Zugang zu sehr aktuellen Daten zu erhalten.
 
 
 In diesem Beispiel haben wir einen sehr unkomplizierten API-Workflow durchlaufen. Die meisten APIs erfordern, dass Sie demselben allgemeinen Muster folgen, aber dabei können sie durchaus komplexer sein.
@@ -342,11 +342,11 @@ Wie auch immer, jetzt, da wir unsere Anfrage einschließlich der Standortparamet
 data <- fromJSON(rawToChar(jdata$content))
 data$response
 ##   duration   risetime
-## 1      652 1637014341
-## 2      658 1637020165
-## 3      620 1637025981
-## 4      321 1637031883
-## 5      575 1637086349
+## 1      575 1637086348
+## 2      658 1637092090
+## 3      653 1637097912
+## 4      656 1637103740
+## 5      641 1637109554
 ```
 
 
@@ -356,9 +356,9 @@ Diese API gibt uns Zeiten in Form von [Unixzeit](https://de.wikipedia.org/wiki/U
 
 ```r
 lubridate::as_datetime(data$response$risetime)
-## [1] "2021-11-15 22:12:21 UTC" "2021-11-15 23:49:25 UTC"
-## [3] "2021-11-16 01:26:21 UTC" "2021-11-16 03:04:43 UTC"
-## [5] "2021-11-16 18:12:29 UTC"
+## [1] "2021-11-16 18:12:28 UTC" "2021-11-16 19:48:10 UTC"
+## [3] "2021-11-16 21:25:12 UTC" "2021-11-16 23:02:20 UTC"
+## [5] "2021-11-17 00:39:14 UTC"
 ```
 
 
@@ -434,7 +434,7 @@ Hier sein noch auf das Kapitel [Data import](http://r4ds.had.co.nz/data-import.h
 [Happy Git and GitHub for the useR]: https://happygitwithr.com
 [R for Data Science]: https://r4ds.had.co.nz
 [The tidyverse style guide]: https://style.tidyverse.org
-[Advanced R]: http://adv-r.had.co.nz
+[Advanced R]: https://adv-r.hadley.nz/
 [Tidyverse design principles]: https://principles.tidyverse.org
 [R Packages]: https://r-pkgs.org/index.html
 [R Graphics Cookbook]: http://shop.oreilly.com/product/0636920023135.do

@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Kapitel 7 Mehr zu dplyr | R4ews MA0009</title>
 <meta name="author" content="Stephan Haug">
-<meta name="description" content="7.1 Wo stehen wir? In Kapitel 6, Einführung in dplyr, haben wir bereits zwei sehr wichtige Verben sowie einen Operator vorgestellt und verwendet: filter() zum Auswählen spezieller Zeilen eines...">
+<meta name="description" content="7.1 Wo stehen wir? In Kapitel 6, Einführung in dplyr, haben wir bereits zwei sehr wichtige Verben sowie einen Operator vorgestellt und verwendet: filter() zur Auswahl spezieller Zeilen eines...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
 <meta property="og:title" content="Kapitel 7 Mehr zu dplyr | R4ews MA0009">
 <meta property="og:type" content="book">
-<meta property="og:description" content="7.1 Wo stehen wir? In Kapitel 6, Einführung in dplyr, haben wir bereits zwei sehr wichtige Verben sowie einen Operator vorgestellt und verwendet: filter() zum Auswählen spezieller Zeilen eines...">
+<meta property="og:description" content="7.1 Wo stehen wir? In Kapitel 6, Einführung in dplyr, haben wir bereits zwei sehr wichtige Verben sowie einen Operator vorgestellt und verwendet: filter() zur Auswahl spezieller Zeilen eines...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kapitel 7 Mehr zu dplyr | R4ews MA0009">
-<meta name="twitter:description" content="7.1 Wo stehen wir? In Kapitel 6, Einführung in dplyr, haben wir bereits zwei sehr wichtige Verben sowie einen Operator vorgestellt und verwendet: filter() zum Auswählen spezieller Zeilen eines...">
+<meta name="twitter:description" content="7.1 Wo stehen wir? In Kapitel 6, Einführung in dplyr, haben wir bereits zwei sehr wichtige Verben sowie einen Operator vorgestellt und verwendet: filter() zur Auswahl spezieller Zeilen eines...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/_Lato-0.4.0/font.css" rel="stylesheet">
@@ -87,23 +87,18 @@
 <h2>
 <span class="header-section-number">7.1</span> Wo stehen wir?<a class="anchor" aria-label="anchor" href="#wo-stehen-wir"><i class="fas fa-link"></i></a>
 </h2>
-<p>In Kapitel <a href="dplyr-intro.html#dplyr-intro">6</a>, Einführung in <code>dplyr</code>, haben wir bereits zwei sehr wichtige Verben sowie einen Operator vorgestellt und verwendet:</p>
+<p>In Kapitel <a href="dplyr-intro.html#dplyr-intro">6</a>, <em>Einführung in <code>dplyr</code></em>, haben wir bereits zwei sehr wichtige Verben sowie einen Operator vorgestellt und verwendet:</p>
 <ul>
 <li>
-<code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code> zum Auswählen spezieller Zeilen eines Datensatzes</li>
+<code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code> zur Auswahl spezieller Zeilen eines Datensatzes</li>
 <li>
-<code>select()</code> zum Auswählen spezieller Variablen eines Datensatzes</li>
-<li>den Pipe-Operator <code>%&gt;%</code>, der das Objekt auf der linken Seite überführt als erstes Funktionsargument der Funktion auf der rechten Seite</li>
+<code>select()</code> zur Auswahl spezieller Variablen eines Datensatzes</li>
+<li>den Pipe-Operator <code>%&gt;%</code>, der das Objekt auf der linken Seite überführt in das erste Funktionsargument der Funktion auf der rechten Seite des Aufrufs</li>
 </ul>
-<p>Wir haben auch die Rolle von <code>dplyr</code> innerhalb des tidyverse besprochen:</p>
-<blockquote>
+<p>Wir haben zudem auch noch die Rolle von <code>dplyr</code> innerhalb des tidyverse besprochen:</p>
+<div class="content-box-gray">
 <p><a href="https://dplyr.tidyverse.org">dplyr</a> ist ein Kernpaket der <a href="https://tidyverse.tidyverse.org">tidyverse</a> Kollektion von Paketen. Da wir die anderen oft beiläufig benutzen, werden wir stets dplyr und die anderen über <code><a href="https://tidyverse.tidyverse.org">library(tidyverse)</a></code> laden.</p>
-</blockquote>
 </div>
-<div id="falls-noch-nicht-geschehen-lade-dplyr-und-gapminder" class="section level2" number="7.2">
-<h2>
-<span class="header-section-number">7.2</span> Falls noch nicht geschehen: lade <code>dplyr</code> und <code>gapminder</code><a class="anchor" aria-label="anchor" href="#falls-noch-nicht-geschehen-lade-dplyr-und-gapminder"><i class="fas fa-link"></i></a>
-</h2>
 <p>Wir starten wieder mit dem Laden von <code>dplyr</code> (über <code>tidyverse</code>)</p>
 <div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
@@ -119,15 +114,15 @@
 <div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jennybc/gapminder">gapminder</a></span><span class="op">)</span></code></pre></div>
 </div>
-<div id="mitmutate-neue-variablen-erstellen" class="section level2" number="7.3">
+<div id="mitmutate-neue-variablen-erstellen" class="section level2" number="7.2">
 <h2>
-<span class="header-section-number">7.3</span> Mit<code>mutate()</code> neue Variablen erstellen<a class="anchor" aria-label="anchor" href="#mitmutate-neue-variablen-erstellen"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.2</span> Mit<code>mutate()</code> neue Variablen erstellen<a class="anchor" aria-label="anchor" href="#mitmutate-neue-variablen-erstellen"><i class="fas fa-link"></i></a>
 </h2>
-<p>Wir starten mit dem Anlegen einer Kopie von <code>gapminder</code>, die wir dann nach unseren Vorstellungen verändern (wäre aber auch nichts passiert, wenn wir alles mit <code>gapminder</code> durchführen würden).</p>
+<p>Wir starten mit dem Anlegen einer Kopie von <code>gapminder</code>, die wir dann nach unseren Vorstellungen verändern (es wäre aber auch nichts passiert, wenn wir alles mit <code>gapminder</code> durchführen würden; mit dem Befehl <code><a href="https://rdrr.io/pkg/gapminder/man/gapminder.html">gapminder::gapminder</a></code> können wir immer auf die Originalversion zurückgreifen).</p>
 <div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">my_gap</span> <span class="op">&lt;-</span> <span class="va">gapminder</span></code></pre></div>
-<p>Unser Ziel ist es, dass GDP pro Land anzugeben. Das sollte machbar sein, da schließlich das Pro-Kopf-GDP wie auch die Bevölkerungszahl im Datensatz enthalten sind. Multiplizieren beider Variablen liefert uns das gewünschte Ergebnis.</p>
-<p><code>mutate()</code> ist eine Funktion, die neue Variablen definiert und in ein tibble einfügt. Du kannst auf bestehende Variablen einfach über ihren Namen zugreifen.</p>
+<p>Unser <strong>Ziel</strong> ist es, dass GDP pro Land anzugeben. Das sollte machbar sein, da schließlich das Pro-Kopf-GDP wie auch die Bevölkerungszahl im Datensatz enthalten sind. Multiplizieren beider Variablen liefert uns das gewünschte Ergebnis.</p>
+<p><code>mutate()</code> ist eine Funktion, die neue Variablen definiert und in ein tibble einfügt. Dabei können wir auf bestehende Variablen einfach über ihren Namen zugreifen.</p>
 <div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">my_gap</span> <span class="op">%&gt;%</span>
   <span class="fu">mutate</span><span class="op">(</span>gdp <span class="op">=</span> <span class="va">pop</span> <span class="op">*</span> <span class="va">gdpPercap</span><span class="op">)</span>
@@ -149,19 +144,20 @@
 <blockquote>
 <p>One thing that bothers me is large numbers presented without context… “If I added a zero to this number, would the sentence containing it mean something different to me?” If the answer is “no”, maybe the number has no business being in the sentence in the first place.</p>
 </blockquote>
-<p>Vielleicht wäre es für die Betrachter unseres tibbles sinnvoller, beim Pro-Kopf-GDP zu bleiben. Aber was wäre, wenn wir das Pro-Kopf-GDP angeben würde, <em>in Relation zu irgendeinem Vergleichsland</em>. Wir könnten alles in Bezug auf die entsprechenden Daten aus Deutschland angeben.</p>
-<p>Dazu müssen wir eine neue Variable erstellen, die <code>gdpPercap</code> geteilt durch die deutschen <code>gdpPercap</code> Werte ist, wobei wir darauf achten müssen, dass wir immer zwei Zahlen teilen, die sich auf dasselbe Jahr beziehen.</p>
-<p>Wie können wir das schaffen:</p>
+<p>Vielleicht wäre es doch sinnvoller, wenn wir beim Pro-Kopf-GDP bleiben. Aber was wäre, wenn wir das Pro-Kopf-GDP angeben würden <em>in Relation zu irgendeinem Vergleichsland</em>. Wir könnten alles in Bezug auf die entsprechenden Daten aus Deutschland angeben.</p>
+<p>Dazu müssen wir eine neue Variable erstellen, die aus den <code>gdpPercap</code> Werten , geteilt durch die deutschen <code>gdpPercap</code> Werte, besteht. Beim Erstellen der Variable müssen wir aber darauf achten, dass wir immer zwei Zahlen teilen, die sich auf dasselbe Jahr beziehen.</p>
+<p><strong>Wie können wir das schaffen?</strong></p>
 <ol style="list-style-type: decimal">
-<li>Deutschland Beobachtungen in einem Objekt <code>ger_gap</code> speichern</li>
-<li>Erstellen Sie eine neue temporäre Variable <code>tmp</code> in <code>my_gap</code>:
+<li>Beobachtungen für Deutschland in einem Objekt <code>ger_gap</code> speichern</li>
+<li>Erstellen einer neue <em>temporären</em> Variable <code>tmp</code> in <code>my_gap</code>, die definiert wird durch:
 <ol style="list-style-type: lower-roman">
-<li>Die <code>gdpPercap</code>-Variable aus <code>tmp</code> aufrufen.</li>
-<li>Mit <code><a href="https://rdrr.io/r/base/rep.html">rep()</a></code> die <code>gdpPerap</code> Wert aus <code>tmp</code> einmal pro Land im <code>my_gap</code> reproduzieren, damit ein Vektor, der die gleiche Anzahl an Beobachtungen wie <code>my_gap</code> hat.</li>
+<li>die <code>gdpPercap</code>-Variable aus <code>ger_gap</code> aufrufen</li>
+<li>mit <code><a href="https://rdrr.io/r/base/rep.html">rep()</a></code> die <code>gdpPerap</code> Wert aus <code>ger_gap</code> einmal pro Land im <code>my_gap</code> reproduzieren, damit ein Vektor entsteht, der die gleiche Anzahl an Beobachtungen wie <code>my_gap</code> hat</li>
 </ol>
 </li>
-<li>Dividieren der <code>gdpPercap</code> Werte durch die deutschen Zahlen.</li>
-<li>Löschen der temporäre Variable <code>tmp</code> in <code>my_gap</code>.</li>
+<li>Dividieren der <code>gdpPercap</code> Werte durch die deutschen Zahlen</li>
+<li>Löschen der temporären Variable <code>tmp</code> in <code>my_gap</code>
+</li>
 </ol>
 <div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ger_gap</span> <span class="op">&lt;-</span> <span class="va">my_gap</span> <span class="op">%&gt;%</span>
@@ -171,8 +167,8 @@
   <span class="fu">mutate</span><span class="op">(</span>tmp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="va">ger_gap</span><span class="op">$</span><span class="va">gdpPercap</span>, <span class="fu"><a href="https://rdrr.io/r/base/nlevels.html">nlevels</a></span><span class="op">(</span><span class="va">country</span><span class="op">)</span><span class="op">)</span>,
          gdpPercapRel <span class="op">=</span> <span class="va">gdpPercap</span> <span class="op">/</span> <span class="va">tmp</span>,
          tmp <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></code></pre></div>
-<p>Beachte, dass <code>mutate()</code> neue Variablen sequentiell erstellt, so dass du auf frühere Variablen (wie <code>tmp</code>) verweisen kannst um spätere Variablen (wie <code>gdpPercapRel</code>) zu definieren. Nachdem eine Variable nicht mehr benötigt wird, kannst du sie einfach auf <code>NULL</code> setzen.</p>
-<p>Hat das funktioniert? Einfach mal die Werte von <code>gdpPercapRel</code> für Deutschland anschauen. Sollten besser alle 1 sein!</p>
+<p>Beachte, dass <code>mutate()</code> neue Variablen sequentiell erstellt, so dass man auf frühere Variablen (wie <code>tmp</code>) verweisen kann um spätere Variablen (wie <code>gdpPercapRel</code>) zu definieren. Nachdem eine Variable nicht mehr benötigt wird, kann man sie einfach auf <code>NULL</code> setzen.</p>
+<p>Bleibt die Frage ob das so funktioniert hat. Um diese Frage zu beantworten, können wir uns aber einfach mal die Werte von <code>gdpPercapRel</code> für Deutschland anschauen. Die sollten besser alle 1 sein!</p>
 <div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">my_gap</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op">==</span> <span class="st">"Germany"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
@@ -192,19 +188,21 @@
 <span class="co">## 10 Germany  1997            1</span>
 <span class="co">## 11 Germany  2002            1</span>
 <span class="co">## 12 Germany  2007            1</span></code></pre></div>
-<p>Ich nehme an Deutschland ist ein Land mit einem “hohen GDP” pro Kopf, daher gehe ich davon aus, dass die Verteilung von <code>gdpPercapRel</code> unter 1 liegt, möglicherweise sogar weit darunter. Aber besser mal nachschauen ob dem so ist:</p>
+<p>Ich glaube, wir können annehmen, dass Deutschland ein Land mit einem “hohen GDP” pro Kopf ist. Daher sollte die Verteilung von <code>gdpPercapRel</code> auf Werten unter 1 konzentriert sein, möglicherweise sogar weit darunter. Aber besser mal nachschauen ob dem so ist:</p>
 <div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">my_gap</span><span class="op">$</span><span class="va">gdpPercapRel</span><span class="op">)</span>
 <span class="co">##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span>
 <span class="co">##    0.01    0.07    0.19    0.37    0.51   15.17</span></code></pre></div>
-<p>Die Zahlen des relativen Pro-Kopf-GDP liegen im deutlich unter 1. Wir sehen, dass die meisten Länder, die in diesem Datensatz erfasst werden, über den gesamten Zeitraum im Vergleich zu Deutschland ein wesentlich niedrigeres Pro-Kopf-GDP aufweisen.</p>
-<p><strong>Tipp:</strong> Vertraue niemandem. Einschließlich (besonders?) dir selbst. Versuche immer, einen Weg zu finden, um zu überprüfen, ob du das gemacht hast, was du tun wolltest. Sei nicht schockiert, wenn du manchmal feststellen musst, dass dem nicht so ist.</p>
+<p>Die Zahlen des relativen Pro-Kopf-GDP liegen deutlich unter 1. Wir sehen, dass die meisten Länder, die in diesem Datensatz erfasst werden, über den gesamten Zeitraum im Vergleich zu Deutschland ein wesentlich niedrigeres Pro-Kopf-GDP aufweisen.</p>
+<div class="content-box-yellow">
+<p><strong>Tipp:</strong> Vertraut niemandem - einschließlich (besonders?) euch selbst. Versucht immer, einen Weg zu finden, um zu überprüfen, ob ihr das gemacht habt, was ihr tun wolltet. Seid aber nicht schockiert, wenn ihr manchmal feststellen müsst, dass dem nicht so ist. 😉</p>
 </div>
-<div id="mit-arrange-die-zeilenreihenfolge-ändern" class="section level2" number="7.4">
+</div>
+<div id="mit-arrange-die-zeilenreihenfolge-ändern" class="section level2" number="7.3">
 <h2>
-<span class="header-section-number">7.4</span> Mit <code>arrange()</code> die Zeilenreihenfolge ändern<a class="anchor" aria-label="anchor" href="#mit-arrange-die-zeilenreihenfolge-%C3%A4ndern"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.3</span> Mit <code>arrange()</code> die Zeilenreihenfolge ändern<a class="anchor" aria-label="anchor" href="#mit-arrange-die-zeilenreihenfolge-%C3%A4ndern"><i class="fas fa-link"></i></a>
 </h2>
-<p><code>arrange()</code> ordnet die Zeilen in einem data frame neu an. Stellen dir vor, du möchtest die Daten nach Jahr und Land und nicht nach Land und Jahr geordnet haben.</p>
+<p><code>arrange()</code> ordnet die Zeilen in einem data frame neu an. Stellen wir uns mal vor, dass wir die Daten nach Jahr und Land und nicht nach Land und Jahr ordnen wollen.</p>
 <div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">my_gap</span> <span class="op">%&gt;%</span>
   <span class="fu">arrange</span><span class="op">(</span><span class="va">year</span>, <span class="va">country</span><span class="op">)</span>
@@ -222,7 +220,7 @@
 <span class="co">##  9 Bangladesh  Asia       1952    37.5 46886859      684.       0.0958</span>
 <span class="co">## 10 Belgium     Europe     1952    68    8730405     8343.       1.17  </span>
 <span class="co">## # … with 1,694 more rows</span></code></pre></div>
-<p>Oder vielleicht willst du nur die Daten aus 2007 sehen, angeordnet entsprechend der Lebenserwartung.</p>
+<p>Oder vielleicht interessieren euch nur die Daten aus 2007, angeordnet entsprechend der Lebenserwartung.</p>
 <div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">my_gap</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">==</span> <span class="fl">2007</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -241,7 +239,7 @@
 <span class="co">##  9 Central African Repub… Africa     2007    44.7  4.37e6      706.       0.0219</span>
 <span class="co">## 10 Liberia                Africa     2007    45.7  3.19e6      415.       0.0129</span>
 <span class="co">## # … with 132 more rows</span></code></pre></div>
-<p>Das war nicht was du wolltest. Du wolltest nach absteigender Lebenserwartung sortieren. Dann verwende <code>desc()</code>.</p>
+<p>Das war nun aber nicht das Ergebnis, welches ihr sehen wolltet. Ihr wolltet eigentlich nach absteigender Lebenserwartung sortieren. Dazu müsst ihr <code>desc()</code> verwenden.</p>
 <div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">my_gap</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">==</span> <span class="fl">2007</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -260,13 +258,15 @@
 <span class="co">##  9 France           Europe     2007    80.7  61083916    30470.        0.947</span>
 <span class="co">## 10 Canada           Americas   2007    80.7  33390141    36319.        1.13 </span>
 <span class="co">## # … with 132 more rows</span></code></pre></div>
-<p>Ein Tipp am Ende: verlasse dich bei deinen Analysen NIEMALS darauf, dass Zeilen oder Variablen in einer bestimmten Reihenfolge stehen. Aber manchmal will man Tabellen anderen präsentieren und dabei macht es durchaus Sinn die Zeilenreihenfolge je nach Fragestellung anzupassen.</p>
+<div class="content-box-yellow">
+<p><strong>Tipp:</strong> Verlasst euch NIEMALS darauf, dass Zeilen oder Variablen in einer bestimmten Reihenfolge stehen. Aber manchmal will man Tabellen anderen präsentieren und dabei macht es durchaus Sinn die Zeilenreihenfolge je nach Fragestellung anzupassen.</p>
 </div>
-<div id="mit-rename-schöne-namen-vergeben" class="section level2" number="7.5">
+</div>
+<div id="mit-rename-schöne-namen-vergeben" class="section level2" number="7.4">
 <h2>
-<span class="header-section-number">7.5</span> Mit <code>rename()</code> “schöne” Namen vergeben<a class="anchor" aria-label="anchor" href="#mit-rename-sch%C3%B6ne-namen-vergeben"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.4</span> Mit <code>rename()</code> “schöne” Namen vergeben<a class="anchor" aria-label="anchor" href="#mit-rename-sch%C3%B6ne-namen-vergeben"><i class="fas fa-link"></i></a>
 </h2>
-<p>Ein paar der Namen in <code>gapminder</code> sind nicht besonders hübsch, wie z.B. <code>lifeExp</code>. life expectancy wären ja schließlich zwei Worte und daher finde ich (persönliche Meinung) es schöner dies auch im Variablennamen zu sehen</p>
+<p>Ein paar der Namen in <code>gapminder</code> sind nicht besonders hübsch, wie z.B. <code>lifeExp</code>. life expectancy wären ja schließlich zwei Worte und daher finde ich (persönliche Meinung) es schöner, dies auch im Variablennamen zu sehen</p>
 <div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">my_gap</span> <span class="op">%&gt;%</span>
   <span class="fu">rename</span><span class="op">(</span>life_exp <span class="op">=</span> <span class="va">lifeExp</span>,
@@ -286,7 +286,7 @@
 <span class="co">##  9 Afghanistan Asia       1992     41.7 16317921       649.         0.0245</span>
 <span class="co">## 10 Afghanistan Asia       1997     41.8 22227415       635.         0.0229</span>
 <span class="co">## # … with 1,694 more rows</span></code></pre></div>
-<p>Die Änderungen haben wir jetzt aber nicht abgespeichert (auch wenn sie schön waren), da wir den nachfolgenden Code auch weiterhin ausführen könnten ohne die Änderung der Variablennamen durchgeführt zu haben.</p>
+<p>Die Änderungen haben wir jetzt aber nicht abgespeichert (auch wenn sie schön waren), da wir den nachfolgenden Code auch weiterhin ausführen möchten, ohne die Variablennamen entsprechend zu ändern.</p>
 <p><strong>Bemerkung:</strong> Mit <code>select()</code> könnten wir bei der Auswahl von Variablen auch deren Namen ändern</p>
 <div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">my_gap</span> <span class="op">%&gt;%</span>
@@ -301,11 +301,13 @@
 <span class="co">## 3      430.  2007    49.6</span></code></pre></div>
 <p><code>everything()</code> wählt alle übrigen (außer <code>gdpPercap</code>) Variablen. Da <code>gdpPercap</code> an erster Stelle gewählt wurde, wird die Variable auch zur ersten Spalte.</p>
 </div>
-<div id="group_by-macht-das-r-leben-einfacher" class="section level2" number="7.6">
+<div id="group_by-macht-das-r-leben-einfacher" class="section level2" number="7.5">
 <h2>
-<span class="header-section-number">7.6</span> <code>group_by()</code> macht das R Leben einfacher<a class="anchor" aria-label="anchor" href="#group_by-macht-das-r-leben-einfacher"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.5</span> <code>group_by()</code> macht das R Leben einfacher<a class="anchor" aria-label="anchor" href="#group_by-macht-das-r-leben-einfacher"><i class="fas fa-link"></i></a>
 </h2>
-<p>Nehmen wir mal an, dass uns die Antwort auf die Frage “In welchem Land ist die Lebenserwartung innerhalb von 5 Jahren am stärksten gesunken?” interessiert.</p>
+<p>Nehmen wir mal an, dass uns die Antwort auf die Frage</p>
+<p>“In welchem Land ist die Lebenserwartung innerhalb von 5 Jahren am stärksten gesunken?”</p>
+<p>interessiert.</p>
 <p><code>dplyr</code> bietet uns mächtige Hilfsmittel um diese Frage zu beantworten:</p>
 <ul>
 <li><p><code>group_by()</code> fügt dem Datensatz eine zusätzliche Struktur hinzu – Gruppierungsinformationen – die die Grundlage für Berechnungen innerhalb der Gruppen bilden.</p></li>
@@ -313,10 +315,10 @@
 <li><p>Window Funktionen nehmen einen Datensatz mit <span class="math inline">\(n\)</span>-Beobachtungen und geben einen Datensatz mit <span class="math inline">\(n\)</span>-Beobachtungen zurück.</p></li>
 <li><p><code>mutate()</code> und <code>summarise()</code> berücksichtigen Gruppen.</p></li>
 </ul>
-<p>Kombiniert mit den Verben, die du bereits kennst, kannst du mit diesen neuen Werkzeugen eine extrem vielfältige Reihe von Problemen relativ einfach lösen.</p>
-<div id="die-dinge-aufzählen" class="section level3" number="7.6.1">
+<p>Kombiniert mit den Verben, die wir bereits kennen, könnt ihr mit diesen neuen Werkzeugen eine extrem vielfältige Reihe von Problemen relativ einfach lösen.</p>
+<div id="dinge-aufzählen" class="section level3" number="7.5.1">
 <h3>
-<span class="header-section-number">7.6.1</span> Die Dinge aufzählen<a class="anchor" aria-label="anchor" href="#die-dinge-aufz%C3%A4hlen"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.5.1</span> Dinge aufzählen<a class="anchor" aria-label="anchor" href="#dinge-aufz%C3%A4hlen"><i class="fas fa-link"></i></a>
 </h3>
 <p>Beginnen wir mit dem einfachen Zählen. Wie viele Beobachtungen haben wir pro Kontinent?</p>
 <div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
@@ -331,7 +333,7 @@
 <span class="co">## 3 Asia        396</span>
 <span class="co">## 4 Europe      360</span>
 <span class="co">## 5 Oceania      24</span></code></pre></div>
-<p>Lassen uns hier kurz innehalten und über das tidyverse nachdenken. Du könntest dir mit <code><a href="https://rdrr.io/r/base/table.html">table()</a></code> die gleichen absoluten Häufigkeiten berechnen.</p>
+<p>Lasst uns hier kurz innehalten und über das tidyverse nachdenken. Ihr könntet die gleichen absoluten Häufigkeiten natürlich auch mit <code><a href="https://rdrr.io/r/base/table.html">table()</a></code> berechnen.</p>
 <div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">gapminder</span><span class="op">$</span><span class="va">continent</span><span class="op">)</span>
 <span class="co">## </span>
@@ -341,7 +343,7 @@
 <span class="co">##  'table' int [1:5(1d)] 624 300 396 360 24</span>
 <span class="co">##  - attr(*, "dimnames")=List of 1</span>
 <span class="co">##   ..$ : chr [1:5] "Africa" "Americas" "Asia" "Europe" ...</span></code></pre></div>
-<p>Aber das Objekt der Klasse <code>table</code>, das zurückgegeben wird, macht die nachfolgenden Berechnungen einfach etwas kniffliger, als es dir lieb ist. Zum Beispiel ist es zu schade, dass die Namen der Kontinente nur als <em>Namen</em> und nicht als richtige Faktor zusammen mit den berechneten Werten zurückgegeben werden. Dies ist ein Beispiel dafür, wie das tidyverse Übergänge glättet, bei denen die Ausgabe von Schritt <code>i</code> die Eingabe von Schritt <code>i + 1</code> werden soll.</p>
+<p>Das Ergebnis ist ein Objekt der Klasse <code>table</code>. Dies macht die nachfolgenden Berechnungen leider etwas kniffliger, als es euch lieb ist. Zum Beispiel ist es schade, dass die Namen der Kontinente nur als <em>Namen</em> und nicht als richtiger Faktor zusammen mit den berechneten Werten zurückgegeben werden. Dies ist ein Beispiel dafür, wie das tidyverse Übergänge glättet, bei denen die Ausgabe von Schritt <code>i</code> die Eingabe von Schritt <code>i + 1</code> werden soll.</p>
 <p>Die <code>tally()</code> Funktion ist eine Komfortfunktion, die weiß, wie man Zeilen zählt und dabei Gruppen berücksichtigt.</p>
 <div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">my_gap</span> <span class="op">%&gt;%</span>
@@ -382,9 +384,9 @@
 <span class="co">## 4 Europe      360          30</span>
 <span class="co">## 5 Oceania      24           2</span></code></pre></div>
 </div>
-<div id="deskriptive-statistiken-mit-summarise" class="section level3" number="7.6.2">
+<div id="deskriptive-statistiken-mit-summarise" class="section level3" number="7.5.2">
 <h3>
-<span class="header-section-number">7.6.2</span> Deskriptive Statistiken mit <code>summarise()</code><a class="anchor" aria-label="anchor" href="#deskriptive-statistiken-mit-summarise"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.5.2</span> Deskriptive Statistiken mit <code>summarise()</code><a class="anchor" aria-label="anchor" href="#deskriptive-statistiken-mit-summarise"><i class="fas fa-link"></i></a>
 </h3>
 <p>In Kombination mit <code>summarise()</code> können wir eine Vielzahl an verschiedenen Funktionen verwenden. Einige davon berechnen klassische <strong>deskriptive Statistiken</strong>:</p>
 <p>In allen betrachteten Fällen seien <span class="math inline">\(x_1,\dots,x_n\)</span> numerische Beobachtungen.</p>
@@ -407,7 +409,7 @@ wobei <span class="math inline">\(x_{0.25}\)</span> und <span class="math inline
 <li><p>und <code><a href="https://rdrr.io/r/base/Extremes.html">max()</a></code> berechnet demnach das Maximum
 <span class="math display">\[x_{(n)} = \max(x_1,\dots,x_n)\,.\]</span></p></li>
 </ul>
-<p>Auch wenn dies statistisch gesehen unklug sein mag, lass uns die durchschnittliche Lebenserwartung pro Kontinenten berechnen.</p>
+<p>Auch wenn dies statistisch gesehen unklug sein mag, lasst uns die durchschnittliche Lebenserwartung pro Kontinenten berechnen.</p>
 <div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">my_gap</span> <span class="op">%&gt;%</span>
   <span class="fu">group_by</span><span class="op">(</span><span class="va">continent</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -420,7 +422,7 @@ wobei <span class="math inline">\(x_{0.25}\)</span> und <span class="math inline
 <span class="co">## 3 Asia             60.1</span>
 <span class="co">## 4 Europe           71.9</span>
 <span class="co">## 5 Oceania          74.3</span></code></pre></div>
-<p><code>summarise_at()</code> wendet die gleiche(n) Zusammenfassungs-Funktion(en) auf mehrere Variablen an. Lass uns die durchschnittliche Lebenserwartung sowie den Median und das Pro-Kopf-GDP nach Kontinenten pro Jahr berechnen… aber nur für 1952 und 2007.</p>
+<p><code>summarise_at()</code> wendet die gleiche(n) Zusammenfassungs-Funktion(en) auf mehrere Variablen an. Lasst uns die durchschnittliche Lebenserwartung sowie den Median und das Pro-Kopf-GDP nach Kontinenten pro Jahr berechnen… aber nur für 1952 und 2007.</p>
 <div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">my_gap</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1952</span>, <span class="fl">2007</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -440,7 +442,7 @@ wobei <span class="math inline">\(x_{0.25}\)</span> und <span class="math inline
 <span class="co">##  8 Europe     2007        77.6        25054.        78.6        28054.</span>
 <span class="co">##  9 Oceania    1952        69.3        10298.        69.3        10298.</span>
 <span class="co">## 10 Oceania    2007        80.7        29810.        80.7        29810.</span></code></pre></div>
-<p>Konzentrieren wir uns nur auf Asien. Wie hoch ist die minimale und maximale Lebenserwartung pro Jahr?</p>
+<p>Im nächsten Schritt konzentrieren wir uns nur auf Asien. Wie hoch ist die minimale und maximale Lebenserwartung pro Jahr?</p>
 <div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">my_gap</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">continent</span> <span class="op">==</span> <span class="st">"Asia"</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -461,19 +463,19 @@ wobei <span class="math inline">\(x_{0.25}\)</span> und <span class="math inline
 <span class="co">## 10  1997        41.8        80.7</span>
 <span class="co">## 11  2002        42.1        82  </span>
 <span class="co">## 12  2007        43.8        82.6</span></code></pre></div>
-<p>Natürlich wäre es viel interessanter zu sehen, <em>welches</em> Land diese extremen Beobachtungen beigetragen hat. Kommt das Minimum (Maximum) immer aus dem gleichen Land? Wir gehen dem in Kürze mit Window Funktionen nach.</p>
+<p>Natürlich wäre es viel interessanter zu sehen, <em>welches</em> Land bzw. welche Länder diese extremen Beobachtungen beigetragen haben. Kommt das Minimum (Maximum) immer aus dem gleichen Land? Wir gehen dem in Kürze mithilfe von Window Funktionen nach.</p>
 </div>
 </div>
-<div id="gruppierte-veränderungen" class="section level2" number="7.7">
+<div id="gruppierte-veränderungen" class="section level2" number="7.6">
 <h2>
-<span class="header-section-number">7.7</span> Gruppierte Veränderungen<a class="anchor" aria-label="anchor" href="#gruppierte-ver%C3%A4nderungen"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.6</span> Gruppierte Veränderungen<a class="anchor" aria-label="anchor" href="#gruppierte-ver%C3%A4nderungen"><i class="fas fa-link"></i></a>
 </h2>
 <p>Manchmal möchte man die <span class="math inline">\(n\)</span>-Zeilen für jede Gruppe nicht zu einer Zeile zusammenfassen. Stattdessen möchte man die Gruppen behalten, aber innerhalb dieser Gruppen rechnen.</p>
-<div id="berechnungen-innerhalb-der-gruppen" class="section level3" number="7.7.1">
+<div id="berechnungen-innerhalb-der-gruppen" class="section level3" number="7.6.1">
 <h3>
-<span class="header-section-number">7.7.1</span> Berechnungen innerhalb der Gruppen<a class="anchor" aria-label="anchor" href="#berechnungen-innerhalb-der-gruppen"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.6.1</span> Berechnungen innerhalb der Gruppen<a class="anchor" aria-label="anchor" href="#berechnungen-innerhalb-der-gruppen"><i class="fas fa-link"></i></a>
 </h3>
-<p>Machen wir eine neue Variable, die die gewonnenen (verlorenen) Lebenserwartungsjahre im Vergleich zu 1952 für jedes einzelne Land angibt. Wir gruppieren nach Ländern und verwenden <code>mutate()</code>, um eine neue Variable zu erstellen. Die Funktion <code>first()</code> extrahiert dabei den ersten Wert aus einem Vektor. Beachte, dass <code>first()</code> mit dem Vektor der Lebenserwartungen <em>in jeder Ländergruppe</em> arbeitet.</p>
+<p>Lasst uns eine neue Variable definieren, die die gewonnenen (verlorenen) Lebenserwartungsjahre im Vergleich zu 1952 für jedes einzelne Land angibt. Wir gruppieren nach Ländern und verwenden <code>mutate()</code>, um eine neue Variable zu erstellen. Die Funktion <code>first()</code> extrahiert dabei den ersten Wert aus einem Vektor. Beachtet, dass <code>first()</code> mit dem Vektor der Lebenserwartungen <em>in jeder Ländergruppe</em> arbeitet.</p>
 <div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">my_gap</span> <span class="op">%&gt;%</span> 
   <span class="fu">group_by</span><span class="op">(</span><span class="va">country</span><span class="op">)</span> <span class="op">%&gt;%</span> 
@@ -497,11 +499,11 @@ wobei <span class="math inline">\(x_{0.25}\)</span> und <span class="math inline
 <span class="co">## # … with 416 more rows</span></code></pre></div>
 <p>Innerhalb eines Landes nehmen wir die Differenz zwischen der Lebenserwartung im Jahr <span class="math inline">\(i\)</span> und der Lebenserwartung im Jahr 1952. Daher sehen wir für 1952 immer Nullen und für die meisten Länder eine Folge von positiven und steigenden Zahlen.</p>
 </div>
-<div id="window-functions" class="section level3" number="7.7.2">
+<div id="window-functions" class="section level3" number="7.6.2">
 <h3>
-<span class="header-section-number">7.7.2</span> Window Funktionen<a class="anchor" aria-label="anchor" href="#window-functions"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.6.2</span> Window Funktionen<a class="anchor" aria-label="anchor" href="#window-functions"><i class="fas fa-link"></i></a>
 </h3>
-<p>Window Funktionen nehmen <span class="math inline">\(n\)</span>-Eingaben entgegen und geben <span class="math inline">\(n\)</span>-Ausgaben zurück. Außerdem hängt die Ausgabe von allen Werten ab. So ist <code><a href="https://rdrr.io/r/base/rank.html">rank()</a></code> eine Window Funktion, aber <code><a href="https://rdrr.io/r/base/Log.html">log()</a></code> ist es nicht.</p>
+<p>Window Funktionen nehmen <span class="math inline">\(n\)</span>-Eingaben entgegen und geben <span class="math inline">\(n\)</span>-Ausgaben zurück. Zudem hängt die Ausgabe von allen Eingabewerten ab. So ist <code><a href="https://rdrr.io/r/base/rank.html">rank()</a></code> eine Window Funktion, aber <code><a href="https://rdrr.io/r/base/Log.html">log()</a></code> ist es nicht.</p>
 <p>Betrachten wir noch einmal die schlechtesten und besten Lebenserwartungen in Asien im Laufe der Zeit, behalten aber Informationen darüber bei, <em>welches</em> Land diese Extremwerte beisteuert.</p>
 <div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">my_gap</span> <span class="op">%&gt;%</span>
@@ -539,9 +541,11 @@ wobei <span class="math inline">\(x_{0.25}\)</span> und <span class="math inline
 <span class="co">## 22  2002 Japan          82  </span>
 <span class="co">## 23  2007 Afghanistan    43.8</span>
 <span class="co">## 24  2007 Japan          82.6</span></code></pre></div>
-<p>Wir sehen, dass (min = Afghanistan, max = Japan) das häufigste Ergebnis ist, aber Kambodscha und Israel tauchen jeweils mindestens einmal als min bzw. max auf.
-Aber wäre es nicht schön, eine Zeile pro Jahr zu haben?</p>
-<p>Wie hat das eigentlich funktioniert? Dazu schauen wir uns die Beobachtungen aus Asien mal direkt an.</p>
+<p>Wir sehen, dass (min = Afghanistan, max = Japan) das häufigste Ergebnis ist, aber Kambodscha und Israel tauchen jeweils mindestens einmal als min bzw. max auf.</p>
+<blockquote>
+<p>Aber wäre es nicht schön, eine Zeile pro Jahr zu haben?</p>
+</blockquote>
+<p>Zuerst sollten wir uns aber vielleicht nochmal fragen wie das eigentlich funktioniert hat? Dazu schauen wir uns die Beobachtungen aus Asien mal direkt an.</p>
 <div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="op">(</span><span class="va">asia</span> <span class="op">&lt;-</span> <span class="va">my_gap</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">continent</span> <span class="op">==</span> <span class="st">"Asia"</span><span class="op">)</span> <span class="op">%&gt;%</span>
@@ -562,7 +566,8 @@ Aber wäre es nicht schön, eine Zeile pro Jahr zu haben?</p>
 <span class="co">##  9  1992 Afghanistan    41.7</span>
 <span class="co">## 10  1997 Afghanistan    41.8</span>
 <span class="co">## # … with 386 more rows</span></code></pre></div>
-<p>Jetzt wenden wir eine Window Funktion an – <code>min_rank()</code>. Da <code>asia</code> nach Jahren gruppiert ist, operiert <code>min_rank()</code> innerhalb von Mini-Datensätzen, jeder für ein bestimmtes Jahr. Auf die Variable <code>LifeExp</code> angewandt, liefert <code>min_rank()</code> den Rang der beobachteten Lebenserwartung jedes Landes.</p>
+<p>Jetzt wenden wir die Window Funktion <code>min_rank()</code> an. Da <code>asia</code> nach Jahren gruppiert ist, operiert <code>min_rank()</code> innerhalb von Mini-Datensätzen. Auf die Variable <code>LifeExp</code> angewandt, liefert <code>min_rank()</code> den Rang der beobachteten Lebenserwartung jedes Landes.</p>
+<div class="content-box-gray">
 <p><strong>Bemerkung:</strong> Der <code>min</code>-Teil gibt nur an, wie die Verbindungen unterbrochen werden.</p>
 <div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/rank.html">rank</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">3</span>,<span class="fl">3</span>,<span class="fl">5</span><span class="op">)</span>, ties.method <span class="op">=</span> <span class="st">"min"</span><span class="op">)</span>
@@ -571,8 +576,8 @@ Aber wäre es nicht schön, eine Zeile pro Jahr zu haben?</p>
 <div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/rank.html">rank</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">3</span>,<span class="fl">3</span>,<span class="fl">5</span><span class="op">)</span><span class="op">)</span>
 <span class="co">## [1] 1.0 2.5 2.5 4.0</span></code></pre></div>
-<p>Dann schauen wir uns die Ränge der Lebenserwartung innerhalb eines Jahres mal explizit an für ein paar Länder, sowohl in der (Standard-) aufsteigenden als auch in der absteigenden Reihenfolge.</p>
-<p>Da wir im zweiten Schritt nach einigen Ländern filtern, erzeugen wir im ersten Schritt mit <code>mutate()</code> die gewünschten Werte und weisen sie neuen Variablen zu.</p>
+</div>
+<p>Im nächsten Schritt schauen wir uns die Ränge der Lebenserwartung innerhalb eines Jahres mal explizit für ein paar Länder (Afghanistan, Japan undThailand) an - sowohl in der (Standard-) aufsteigenden als auch in der absteigenden Reihenfolge.</p>
 <div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">asia</span> <span class="op">%&gt;%</span>
   <span class="fu">mutate</span><span class="op">(</span>le_rank <span class="op">=</span> <span class="fu">min_rank</span><span class="op">(</span><span class="va">lifeExp</span><span class="op">)</span>,
@@ -596,68 +601,71 @@ Aber wäre es nicht schön, eine Zeile pro Jahr zu haben?</p>
 <div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="fu">min_rank</span><span class="op">(</span><span class="fu">desc</span><span class="op">(</span><span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op">&lt;</span> <span class="fl">2</span> <span class="op">|</span> <span class="fu">min_rank</span><span class="op">(</span><span class="va">lifeExp</span><span class="op">)</span> <span class="op">&lt;</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
 <p>auch klar sein.</p>
-<p>Diese beiden Sätze von Rängen werden on-the-fly, innerhalb der Jahresgruppe, gebildet, und <code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code> behält Zeilen mit Rang weniger als 2. Da wir dies für aufsteigende und absteigende Ränge tun, erhalten wir sowohl den minimalen als auch den maximalen Rang.</p>
-<p>Wenn wir nur das Minimum ODER das Maximum gewollt hätten, hätte auch ein alternativer Ansatz mit <code>top_n()</code> funktioniert.</p>
+<p>Diese beiden Sätze von Rängen werden on-the-fly, innerhalb der Jahresgruppe, gebildet, und <code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code> behält alle Zeilen, die einen Rangwert kleiner als 2 haben. Da wir dies für aufsteigende und absteigende Ränge machen, erhalten wir sowohl die Beobachtungen mit dem minimalen als auch dem maximalen Rang.</p>
+<p>Wenn wir nur das Minimum ODER das Maximum gewollt hätten, hätte auch ein alternativer Ansatz mit <code>slice_min()</code> bzw. <code>slice_max()</code> funktioniert.</p>
 <div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">my_gap</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">continent</span> <span class="op">==</span> <span class="st">"Asia"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">select</span><span class="op">(</span><span class="va">year</span>, <span class="va">country</span>, <span class="va">lifeExp</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">arrange</span><span class="op">(</span><span class="va">year</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">group_by</span><span class="op">(</span><span class="va">year</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="co">#top_n(1, wt = lifeExp)        ## für das Minimum</span>
-  <span class="fu">top_n</span><span class="op">(</span><span class="fl">1</span>, wt <span class="op">=</span> <span class="fu">desc</span><span class="op">(</span><span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="co">## bzw. das Maximum</span>
+<span class="co"># slice_min(lifeExp, n = 1)        ## für das Minimum</span>
+  <span class="fu">slice_max</span><span class="op">(</span><span class="va">lifeExp</span>, n <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="co">## bzw. das Maximum</span>
 <span class="co">## # A tibble: 12 x 3</span>
 <span class="co">## # Groups:   year [12]</span>
-<span class="co">##     year country     lifeExp</span>
-<span class="co">##    &lt;int&gt; &lt;fct&gt;         &lt;dbl&gt;</span>
-<span class="co">##  1  1952 Afghanistan    28.8</span>
-<span class="co">##  2  1957 Afghanistan    30.3</span>
-<span class="co">##  3  1962 Afghanistan    32.0</span>
-<span class="co">##  4  1967 Afghanistan    34.0</span>
-<span class="co">##  5  1972 Afghanistan    36.1</span>
-<span class="co">##  6  1977 Cambodia       31.2</span>
-<span class="co">##  7  1982 Afghanistan    39.9</span>
-<span class="co">##  8  1987 Afghanistan    40.8</span>
-<span class="co">##  9  1992 Afghanistan    41.7</span>
-<span class="co">## 10  1997 Afghanistan    41.8</span>
-<span class="co">## 11  2002 Afghanistan    42.1</span>
-<span class="co">## 12  2007 Afghanistan    43.8</span></code></pre></div>
+<span class="co">##     year country lifeExp</span>
+<span class="co">##    &lt;int&gt; &lt;fct&gt;     &lt;dbl&gt;</span>
+<span class="co">##  1  1952 Israel     65.4</span>
+<span class="co">##  2  1957 Israel     67.8</span>
+<span class="co">##  3  1962 Israel     69.4</span>
+<span class="co">##  4  1967 Japan      71.4</span>
+<span class="co">##  5  1972 Japan      73.4</span>
+<span class="co">##  6  1977 Japan      75.4</span>
+<span class="co">##  7  1982 Japan      77.1</span>
+<span class="co">##  8  1987 Japan      78.7</span>
+<span class="co">##  9  1992 Japan      79.4</span>
+<span class="co">## 10  1997 Japan      80.7</span>
+<span class="co">## 11  2002 Japan      82  </span>
+<span class="co">## 12  2007 Japan      82.6</span></code></pre></div>
 </div>
 </div>
-<div id="großes-finale" class="section level2" number="7.8">
+<div id="großes-finale" class="section level2" number="7.7">
 <h2>
-<span class="header-section-number">7.8</span> Großes Finale<a class="anchor" aria-label="anchor" href="#gro%C3%9Fes-finale"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.7</span> Großes Finale<a class="anchor" aria-label="anchor" href="#gro%C3%9Fes-finale"><i class="fas fa-link"></i></a>
 </h2>
-<p>Beantworten wir also die Frage: <em>Welches Land hat den stärksten Rückgang der Lebenserwartung um 5 Jahre erlebt?</em></p>
+<p>Beantworten wir also die Frage:</p>
+<blockquote>
+<p>Welches Land hat den stärksten Rückgang der Lebenserwartung innerhalb von 5 Jahre erlebt?</p>
+</blockquote>
 <p>Die Beobachtungsfrequenz im Datensatz ist fünf Jahre, d.h. wir haben Daten für 1952, 1957 usw. Dies bedeutet also, dass die Veränderungen der Lebenserwartung zwischen benachbarten Zeitpunkten betrachtet werden müssen.</p>
-<p>Zum jetzigen Zeitpunkt ist das einfach zu einfach, also lasst es uns, wenn wir schon dabei sind, nach Kontinenten machen.</p>
+<p>Zum jetzigen Zeitpunkt ist die Beantwortung der Frage einfach zu einfach. Daher lasst uns die Frage pro Kontinenten beantworten.</p>
 <div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">my_gap</span> <span class="op">%&gt;%</span>
   <span class="fu">select</span><span class="op">(</span><span class="va">country</span>, <span class="va">year</span>, <span class="va">continent</span>, <span class="va">lifeExp</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">group_by</span><span class="op">(</span><span class="va">continent</span>, <span class="va">country</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="co"># für jedes Land werden die Unterschiede berechnet</span>
-  <span class="fu">mutate</span><span class="op">(</span>le_delta <span class="op">=</span> <span class="va">lifeExp</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lag.html">lag</a></span><span class="op">(</span><span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">mutate</span><span class="op">(</span>delta <span class="op">=</span> <span class="va">lifeExp</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lag.html">lag</a></span><span class="op">(</span><span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="co">## für jedes Land wird nur der kleinste Wert behalten</span>
-  <span class="fu">summarise</span><span class="op">(</span>worst_le_delta <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">le_delta</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">summarise</span><span class="op">(</span>worst_delta <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">delta</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="co">## nun wird noch pro Kontinent, die Zeile mit dem kleinsten Wert ausgegeben</span>
-  <span class="fu">top_n</span><span class="op">(</span><span class="op">-</span><span class="fl">1</span>, wt <span class="op">=</span> <span class="va">worst_le_delta</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">arrange</span><span class="op">(</span><span class="va">worst_le_delta</span><span class="op">)</span>
+  <span class="fu">slice_min</span><span class="op">(</span><span class="va">worst_delta</span>, n <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">arrange</span><span class="op">(</span><span class="va">worst_delta</span><span class="op">)</span>
 <span class="co">## `summarise()` has grouped output by 'continent'. You can override using the `.groups` argument.</span>
 <span class="co">## # A tibble: 5 x 3</span>
 <span class="co">## # Groups:   continent [5]</span>
-<span class="co">##   continent country     worst_le_delta</span>
-<span class="co">##   &lt;fct&gt;     &lt;fct&gt;                &lt;dbl&gt;</span>
-<span class="co">## 1 Africa    Rwanda             -20.4  </span>
-<span class="co">## 2 Asia      Cambodia            -9.10 </span>
-<span class="co">## 3 Americas  El Salvador         -1.51 </span>
-<span class="co">## 4 Europe    Montenegro          -1.46 </span>
-<span class="co">## 5 Oceania   Australia            0.170</span></code></pre></div>
-<p>Denk ruhig eine Weile über das Ergebnis nach. Meistens sieht man hier in trockenen Statistiken über die durchschnittliche Lebenserwartung, wie Völkermord aussieht.</p>
-<p>Unterteile den Code, beginnend von oben, in Stücke und überprüfe die einzelnen Zwischenergebnisse. So wurde der Code auch geschrieben/entwickelt, mit vielen Fehlern und Verfeinerungen auf dem Weg.</p>
+<span class="co">##   continent country     worst_delta</span>
+<span class="co">##   &lt;fct&gt;     &lt;fct&gt;             &lt;dbl&gt;</span>
+<span class="co">## 1 Africa    Rwanda          -20.4  </span>
+<span class="co">## 2 Asia      Cambodia         -9.10 </span>
+<span class="co">## 3 Americas  El Salvador      -1.51 </span>
+<span class="co">## 4 Europe    Montenegro       -1.46 </span>
+<span class="co">## 5 Oceania   Australia         0.170</span></code></pre></div>
+<p>Denkt ruhig eine Weile über das Ergebnis nach. Hier sieht in trockenen Statistiken über die durchschnittliche Lebenserwartung, wie Völkermord aussieht.</p>
+<p>Um den Code besser zu verstehen, unterteilt ihn, beginnend von oben, in Stücke und überprüft die einzelnen Zwischenergebnisse. So wurde der Code auch geschrieben/entwickelt, mit vielen Fehlern und Verfeinerungen auf dem Weg.</p>
 </div>
-<div id="literatur" class="section level2" number="7.9">
+<div id="literatur" class="section level2" number="7.8">
 <h2>
-<span class="header-section-number">7.9</span> Literatur<a class="anchor" aria-label="anchor" href="#literatur"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.8</span> Literatur<a class="anchor" aria-label="anchor" href="#literatur"><i class="fas fa-link"></i></a>
 </h2>
 <p>An dieser Stelle sei noch auf die <a href="https://dplyr.tidyverse.org/">dplyr Webseite</a> und das Kapitel
 <a href="https://r4ds.had.co.nz/transform.html">Data transformation</a> in <a href="https://r4ds.had.co.nz">R for Data Science</a> <span class="citation">(<a href="literatur-3.html#ref-wickham2016" role="doc-biblioref">Wickham and Grolemund 2016</a>)</span> verwiesen.</p>
@@ -680,24 +688,23 @@ Aber wäre es nicht schön, eine Zeile pro Jahr zu haben?</p>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#dplyr-single"><span class="header-section-number">7</span> Mehr zu dplyr</a></li>
 <li><a class="nav-link" href="#wo-stehen-wir"><span class="header-section-number">7.1</span> Wo stehen wir?</a></li>
-<li><a class="nav-link" href="#falls-noch-nicht-geschehen-lade-dplyr-und-gapminder"><span class="header-section-number">7.2</span> Falls noch nicht geschehen: lade dplyr und gapminder</a></li>
-<li><a class="nav-link" href="#mitmutate-neue-variablen-erstellen"><span class="header-section-number">7.3</span> Mitmutate() neue Variablen erstellen</a></li>
-<li><a class="nav-link" href="#mit-arrange-die-zeilenreihenfolge-%C3%A4ndern"><span class="header-section-number">7.4</span> Mit arrange() die Zeilenreihenfolge ändern</a></li>
-<li><a class="nav-link" href="#mit-rename-sch%C3%B6ne-namen-vergeben"><span class="header-section-number">7.5</span> Mit rename() “schöne” Namen vergeben</a></li>
+<li><a class="nav-link" href="#mitmutate-neue-variablen-erstellen"><span class="header-section-number">7.2</span> Mitmutate() neue Variablen erstellen</a></li>
+<li><a class="nav-link" href="#mit-arrange-die-zeilenreihenfolge-%C3%A4ndern"><span class="header-section-number">7.3</span> Mit arrange() die Zeilenreihenfolge ändern</a></li>
+<li><a class="nav-link" href="#mit-rename-sch%C3%B6ne-namen-vergeben"><span class="header-section-number">7.4</span> Mit rename() “schöne” Namen vergeben</a></li>
 <li>
-<a class="nav-link" href="#group_by-macht-das-r-leben-einfacher"><span class="header-section-number">7.6</span> group_by() macht das R Leben einfacher</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#die-dinge-aufz%C3%A4hlen"><span class="header-section-number">7.6.1</span> Die Dinge aufzählen</a></li>
-<li><a class="nav-link" href="#deskriptive-statistiken-mit-summarise"><span class="header-section-number">7.6.2</span> Deskriptive Statistiken mit summarise()</a></li>
+<a class="nav-link" href="#group_by-macht-das-r-leben-einfacher"><span class="header-section-number">7.5</span> group_by() macht das R Leben einfacher</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#dinge-aufz%C3%A4hlen"><span class="header-section-number">7.5.1</span> Dinge aufzählen</a></li>
+<li><a class="nav-link" href="#deskriptive-statistiken-mit-summarise"><span class="header-section-number">7.5.2</span> Deskriptive Statistiken mit summarise()</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#gruppierte-ver%C3%A4nderungen"><span class="header-section-number">7.7</span> Gruppierte Veränderungen</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#berechnungen-innerhalb-der-gruppen"><span class="header-section-number">7.7.1</span> Berechnungen innerhalb der Gruppen</a></li>
-<li><a class="nav-link" href="#window-functions"><span class="header-section-number">7.7.2</span> Window Funktionen</a></li>
+<a class="nav-link" href="#gruppierte-ver%C3%A4nderungen"><span class="header-section-number">7.6</span> Gruppierte Veränderungen</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#berechnungen-innerhalb-der-gruppen"><span class="header-section-number">7.6.1</span> Berechnungen innerhalb der Gruppen</a></li>
+<li><a class="nav-link" href="#window-functions"><span class="header-section-number">7.6.2</span> Window Funktionen</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#gro%C3%9Fes-finale"><span class="header-section-number">7.8</span> Großes Finale</a></li>
-<li><a class="nav-link" href="#literatur"><span class="header-section-number">7.9</span> Literatur</a></li>
+<li><a class="nav-link" href="#gro%C3%9Fes-finale"><span class="header-section-number">7.7</span> Großes Finale</a></li>
+<li><a class="nav-link" href="#literatur"><span class="header-section-number">7.8</span> Literatur</a></li>
 </ul>
 
       <div class="book-extra">
