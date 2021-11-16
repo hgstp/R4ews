@@ -41,7 +41,7 @@ Das Material wird kontinuierlich über das Semester hinweg ergänzt/erweitert/ve
 
 ```r
 date()
-## [1] "Sun Nov  7 20:46:59 2021"
+## [1] "Mon Nov 15 23:03:18 2021"
 ```
 
 
@@ -71,7 +71,7 @@ Die aktuelle Version dieses Buchs wurde mit
 ##  collate  en_US.UTF-8                 
 ##  ctype    en_US.UTF-8                 
 ##  tz       Europe/Berlin               
-##  date     2021-11-07
+##  date     2021-11-15
 ```
 
 erstellt

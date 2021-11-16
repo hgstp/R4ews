@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Kapitel 6 Einführung in dplyr | R4ews MA0009</title>
+<title>Kapitel 2 Einführung in dplyr | R4ews MA0009</title>
 <meta name="author" content="Stephan Haug">
-<meta name="description" content="6.1 Einstieg dplyr ist ein Paket zur Datenmanipulation, entwickelt von Hadley Wickham und Romain Francois. In erster Linie will es schnell und ausdrucksstark sein. Es wird als Teil des...">
+<meta name="description" content="2.1 Einstieg dplyr ist ein Paket zur Datenmanipulation, entwickelt von Hadley Wickham und Romain Francois. Das Paket ist Teil des tidyverse und gehört als Kernpaket zu den Paketen, die über...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
-<meta property="og:title" content="Kapitel 6 Einführung in dplyr | R4ews MA0009">
+<meta property="og:title" content="Kapitel 2 Einführung in dplyr | R4ews MA0009">
 <meta property="og:type" content="book">
-<meta property="og:description" content="6.1 Einstieg dplyr ist ein Paket zur Datenmanipulation, entwickelt von Hadley Wickham und Romain Francois. In erster Linie will es schnell und ausdrucksstark sein. Es wird als Teil des...">
+<meta property="og:description" content="2.1 Einstieg dplyr ist ein Paket zur Datenmanipulation, entwickelt von Hadley Wickham und Romain Francois. Das Paket ist Teil des tidyverse und gehört als Kernpaket zu den Paketen, die über...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Kapitel 6 Einführung in dplyr | R4ews MA0009">
-<meta name="twitter:description" content="6.1 Einstieg dplyr ist ein Paket zur Datenmanipulation, entwickelt von Hadley Wickham und Romain Francois. In erster Linie will es schnell und ausdrucksstark sein. Es wird als Teil des...">
+<meta name="twitter:title" content="Kapitel 2 Einführung in dplyr | R4ews MA0009">
+<meta name="twitter:description" content="2.1 Einstieg dplyr ist ein Paket zur Datenmanipulation, entwickelt von Hadley Wickham und Romain Francois. Das Paket ist Teil des tidyverse und gehört als Kernpaket zu den Paketen, die über...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/_Lato-0.4.0/font.css" rel="stylesheet">
@@ -48,54 +48,39 @@
 </form>
 
       <nav aria-label="Table of contents"><h2>Table of contents</h2>
-        <ul class="book-toc list-unstyled">
-<li><a class="" href="index.html">R4ews</a></li>
-<li class="book-part">R, wie fange ich an</li>
-<li><a class="" href="install.html"><span class="header-section-number">1</span> Installieren von R und RStudio</a></li>
-<li><a class="" href="r-basics.html"><span class="header-section-number">2</span> R Basics und Arbeitsabläufe</a></li>
-<li class="book-part">Versionskontrolle und R Markdown</li>
-<li><a class="" href="version-control.html"><span class="header-section-number">3</span> Git, GitHub, and RStudio</a></li>
-<li><a class="" href="r-markdown.html"><span class="header-section-number">4</span> R Markdown</a></li>
-<li class="book-part">Datenanalyse Intro</li>
-<li><a class="" href="basic-data-care.html"><span class="header-section-number">5</span> Letzte Vorbereitungen …</a></li>
-<li><a class="active" href="dplyr-intro.html"><span class="header-section-number">6</span> Einführung in dplyr</a></li>
-<li><a class="" href="dplyr-single.html"><span class="header-section-number">7</span> Mehr zu dplyr</a></li>
-<li><a class="" href="import-export.html"><span class="header-section-number">8</span> Daten I/O</a></li>
-<li><a class="" href="tidy.html"><span class="header-section-number">9</span> tidy ?</a></li>
-<li class="book-part">ggplot2 Intro</li>
-<li><a class="" href="graphics-overview.html"><span class="header-section-number">10</span> Einführung</a></li>
-<li><a class="" href="bausteine.html"><span class="header-section-number">11</span> Bausteine</a></li>
-<li class="book-part">Noch viel mehr möglich</li>
-<li><a class="" href="packages.html"><span class="header-section-number">12</span> Pakete</a></li>
-<li><a class="" href="funktionen.html"><span class="header-section-number">13</span> Funktionen</a></li>
-<li><a class="" href="envscop.html"><span class="header-section-number">14</span> Environments und Scoping</a></li>
-<li class="book-part">Appendix</li>
-<li><a class="" href="fragen.html"><span class="header-section-number">15</span> Fragen und Anregungen aus der Übung</a></li>
-<li><a class="" href="literatur-3.html">Literatur</a></li>
-</ul>
+        <ul class="book-toc list-unstyled"><li><a class="" href="index.html"><span class="header-section-number">Kapitel 2</span> Einführung in dplyr</a></li></ul>
 
         <div class="book-extra">
           
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="dplyr-intro" class="section level1" number="6">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="dplyr-intro" class="section level1" number="2">
 <h1>
-<span class="header-section-number">Kapitel 6</span> Einführung in dplyr<a class="anchor" aria-label="anchor" href="#dplyr-intro"><i class="fas fa-link"></i></a>
+<span class="header-section-number">Kapitel 2</span> Einführung in dplyr<a class="anchor" aria-label="anchor" href="#dplyr-intro"><i class="fas fa-link"></i></a>
 </h1>
-<div id="einstieg" class="section level2" number="6.1">
+<div id="einstieg" class="section level2" number="2.1">
 <h2>
-<span class="header-section-number">6.1</span> Einstieg<a class="anchor" aria-label="anchor" href="#einstieg"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.1</span> Einstieg<a class="anchor" aria-label="anchor" href="#einstieg"><i class="fas fa-link"></i></a>
 </h2>
-<p><a href="https://dplyr.tidyverse.org">dplyr</a> ist ein Paket zur Datenmanipulation, entwickelt von Hadley Wickham und Romain Francois. In erster Linie will es schnell und ausdrucksstark sein. Es wird als Teil des “Metapakets” <a href="https://tidyverse.tidyverse.org">tidyverse</a> installiert und gehört als Kernpaket zu den Paketen, die über <code><a href="https://tidyverse.tidyverse.org">library(tidyverse)</a></code> geladen werden.</p>
-<p>Die Wurzeln von <code>dplyr</code> liegen in einem früheren Paket mit dem Namen <a href="http://plyr.had.co.nz">plyr</a>, das zum Ziel hat die <a href="https://www.jstatsoft.org/article/view/v040i01">“split-apply-combine”-Strategie der Datenanalyse</a> <span class="citation">(<a href="literatur-3.html#ref-wickham2011a" role="doc-biblioref">Wickham 2011</a>)</span> umzusetzen. Wo <code>plyr</code> noch einen vielfältigen Satz von Ein- und Ausgaben abdeckt (z.B. Arrays, data frames, Listen), hat <code>dplyr</code> einen klaren Fokus auf data frames oder, im Tidyverse, <strong>tibbles</strong>.</p>
-<p><code>dplyr</code> bietet schnelle Alternativen zu den R Standardfunktionen: <code><a href="https://rdrr.io/r/base/subset.html">subset()</a></code>, <code><a href="https://rdrr.io/r/base/apply.html">apply()</a></code>, <code>[sl]apply()</code>, <code><a href="https://rdrr.io/r/base/tapply.html">tapply()</a></code>, <code><a href="https://rdrr.io/r/stats/aggregate.html">aggregate()</a></code>, <code><a href="https://rdrr.io/r/base/split.html">split()</a></code>, <code><a href="https://rdrr.io/r/base/do.call.html">do.call()</a></code>, <code><a href="https://rdrr.io/r/base/with.html">with()</a></code>, <code><a href="https://rdrr.io/r/base/with.html">within()</a></code>, und mehr. Ferner kann man <code>dplyr</code> nutzen um über Zeilen oder Gruppen von Zeilen zu iterieren, was eine schnelle Alternative zur Nutzung von <code>for</code> Schleifen darstellt.</p>
-<div id="wie-immer-laden-wir-zu-beginn-tidyverse" class="section level3" number="6.1.1">
-<h3>
-<span class="header-section-number">6.1.1</span> Wie immer, laden wir zu Beginn <code>tidyverse</code><a class="anchor" aria-label="anchor" href="#wie-immer-laden-wir-zu-beginn-tidyverse"><i class="fas fa-link"></i></a>
-</h3>
+<p><a href="https://dplyr.tidyverse.org">dplyr</a> ist ein Paket zur Datenmanipulation, entwickelt von Hadley Wickham und Romain Francois. Das Paket ist Teil des <a href="https://tidyverse.tidyverse.org">tidyverse</a> und gehört als Kernpaket zu den Paketen, die über <code><a href="https://tidyverse.tidyverse.org">library(tidyverse)</a></code> geladen werden.</p>
+<p>Der Ursprung von <code>dplyr</code> liegt in einem früheren Paket mit dem Namen <a href="http://plyr.had.co.nz">plyr</a>, das zum Ziel hat die <a href="https://www.jstatsoft.org/article/view/v040i01">“split-apply-combine”-Strategie der Datenanalyse</a> <span class="citation">(<a href="literatur-3.html#ref-wickham2011a" role="doc-biblioref">Wickham 2011</a>)</span> umzusetzen. Wo <code>plyr</code> noch einen vielfältigen Satz von Ein- und Ausgabetypen abdeckt (z.B. Arrays, data frames, Listen), hat <code>dplyr</code> einen klaren Fokus auf data frames oder <strong>tibbles</strong>, wenn man sich im tidyverse befindet.</p>
+<p><code>dplyr</code> bietet schnelle Alternativen zu den R Standardfunktionen:</p>
+<ul>
+<li><p><code><a href="https://rdrr.io/r/base/subset.html">subset()</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/r/base/apply.html">apply()</a></code>, <code><a href="https://rdrr.io/r/base/lapply.html">sapply()</a></code>, <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code>, <code><a href="https://rdrr.io/r/base/tapply.html">tapply()</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/r/stats/aggregate.html">aggregate()</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/r/base/split.html">split()</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/r/base/do.call.html">do.call()</a></code></p></li>
+<li><p><code><a href="https://rdrr.io/r/base/with.html">with()</a></code>, <code><a href="https://rdrr.io/r/base/with.html">within()</a></code></p></li>
+</ul>
+<p>und mehr. Ferner bietet <code>dplyr</code> die Möglichkeit schnell über Zeilen oder Gruppen von Zeilen zu iterieren, was eine schnelle Alternative zur Nutzung von <code>for</code> Schleifen darstellt.</p>
+<div class="content-box-grey">
+<p><strong>Wie immer, laden wir zu Beginn</strong>
+<img src="img/tidyverse.png" width="30%" style="display: block; margin: auto 0 auto auto;"></p>
+</div>
 <p>Der Fokus liegt in diesem Abschnitt auf <code>dplyr</code>. Aber da wir immer wieder auch Funktionen aus anderen “tidyverse-Paketen” nutzen, laden wir stets <code>tidyverse</code>.</p>
-<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
 <span class="co">## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</span>
 <span class="co">## ✓ ggplot2 3.3.5     ✓ purrr   0.3.4</span>
@@ -105,17 +90,16 @@
 <span class="co">## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──</span>
 <span class="co">## x dplyr::filter() masks stats::filter()</span>
 <span class="co">## x dplyr::lag()    masks stats::lag()</span></code></pre></div>
-<p>Zusätzlich wollen wir auch noch <a href="https://github.com/jennybc/gapminder">gapminder</a> laden.</p>
-<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
+<p>Zusätzlich wollen wir auch noch das Paket <a href="https://github.com/jennybc/gapminder">gapminder</a> laden, da wir erneut mit dem <code>gapminder</code> Datensatz arbeiten wollen.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jennybc/gapminder">gapminder</a></span><span class="op">)</span></code></pre></div>
 </div>
-</div>
-<div id="filter-indizieren-von-zeilen" class="section level2" number="6.2">
+<div id="filter-indizieren-von-zeilen" class="section level2" number="2.2">
 <h2>
-<span class="header-section-number">6.2</span> <code>filter()</code>: Indizieren von Zeilen<a class="anchor" aria-label="anchor" href="#filter-indizieren-von-zeilen"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.2</span> <code>filter()</code>: Indizieren von Zeilen<a class="anchor" aria-label="anchor" href="#filter-indizieren-von-zeilen"><i class="fas fa-link"></i></a>
 </h2>
-<p><code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code> nimmt logische Ausdrücke und gibt die Zeilen zurück, für die der logische Ausdruck ein <code>TRUE</code> ergibt.</p>
-<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<p>Die Funktion <code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code> erwartet logische Ausdrücke als Input und gibt die Zeilen zurück, für die die Kombination der verwendeten logischen Ausdrücke ein <code>TRUE</code> ergibt.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">gapminder</span>, <span class="va">lifeExp</span> <span class="op">&lt;</span> <span class="fl">29</span><span class="op">)</span>
 <span class="co">## # A tibble: 2 x 6</span>
 <span class="co">##   country     continent  year lifeExp     pop gdpPercap</span>
@@ -148,29 +132,36 @@
 <span class="co">## 10 Afghanistan Asia       1997    41.8 22227415      635.</span>
 <span class="co">## # … with 14 more rows</span></code></pre></div>
 <p>Zum Vergleich kann man sich einen R Standardbefehl anschauen, der zum gleichen Ergebnis führt:</p>
-<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gapminder</span><span class="op">[</span><span class="va">gapminder</span><span class="op">$</span><span class="va">lifeExp</span> <span class="op">&lt;</span> <span class="fl">29</span>, <span class="op">]</span> 
-<span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">gapminder</span>, <span class="va">country</span> <span class="op">==</span> <span class="st">"Rwanda"</span> <span class="op">&amp;</span> <span class="va">year</span> <span class="op">&gt;</span> <span class="fl">1979</span><span class="op">)</span> <span class="co">## subset funktioniert ähnlich wir filter</span></code></pre></div>
-<p>Unter keinen Umständen solltest du allerdings deine Daten so unterteilen, wie hier:</p>
-<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
+<span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">gapminder</span>, <span class="va">country</span> <span class="op">==</span> <span class="st">"Rwanda"</span> <span class="op">&amp;</span> <span class="va">year</span> <span class="op">&gt;</span> <span class="fl">1979</span><span class="op">)</span> 
+<span class="co">## subset funktioniert ähnlich wie filter</span>
+<span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">gapminder</span>, <span class="va">country</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Rwanda"</span>, <span class="st">"Afghanistan"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<p>Wir erkennen sofort, dass wir mithilfe von <code>dplyr</code> sehr leicht den Datensatz aufteilen können, basierend auf der Tatsache ob Bedingungen erfüllt werden oder eben nicht.</p>
+<p>Daher solltet ihr unter keinen Umständen eure Daten so unterteilen, wie hier:</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">auswahl</span> <span class="op">&lt;-</span> <span class="va">gapminder</span><span class="op">[</span><span class="fl">241</span><span class="op">:</span><span class="fl">252</span>, <span class="op">]</span></code></pre></div>
 <p>Warum ist das eine blöde Idee?</p>
 <ul>
-<li>Es ist nicht selbstdokumentierend. Was ist das Besondere an den Zeilen 241 bis 252?</li>
-<li>Es ist fehleranfällig. Diese Codezeile wird zu anderen Ergebnissen führen, wenn jemand die Zeilenreihenfolge von <code>gapminder</code> ändert, z.B. die Daten früher im Skript sortiert.</li>
+<li><p>Der Befehl dokumentiert sich nicht selbst. Was ist das Besondere an den Zeilen 241 bis 252?</p></li>
+<li><p>Der Befehl ist fehleranfällig. Diese Codezeile wird zu anderen Ergebnissen führen, wenn jemand die Zeilenreihenfolge von <code>gapminder</code> ändert, z.B. die Daten vor diesem Befehl erst sortiert.</p></li>
 </ul>
-<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
+<p>Ganz anders verhält es sich mit diesem Beispiel:</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">gapminder</span>, <span class="va">country</span> <span class="op">==</span> <span class="st">"Canada"</span><span class="op">)</span></code></pre></div>
-<p>Dieser Aufruf erklärt sich von selbst und ist ziemlich robust.</p>
+<p>Der Befehl erklärt sich von selbst und ist ziemlich robust.</p>
 </div>
-<div id="der-pipe-operator" class="section level2" number="6.3">
+<div id="der-pipe-operator" class="section level2" number="2.3">
 <h2>
-<span class="header-section-number">6.3</span> Der Pipe-Operator<a class="anchor" aria-label="anchor" href="#der-pipe-operator"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.3</span> Der Pipe-Operator<a class="anchor" aria-label="anchor" href="#der-pipe-operator"><i class="fas fa-link"></i></a>
 </h2>
 <p>Bevor es weitergeht, wollen wir aber den Pipe-Operator, den das Tidyverse aus dem <a href="https://magrittr.tidyverse.org">magrittr</a>-Paket von Stefan Bache importiert, vorstellen. Mithilfe des Pipe-Operators ist man in der Lage Befehle für mehrere Operationen auszuführen, ohne sie ineinander zu verschachteln. Diese neue Syntax führt zu Code, der viel einfacher zu schreiben und zu lesen ist.</p>
-<p>Und so sieht er aus: <code>%&gt;%</code>. Das entsprechende RStudio Tastenkürzel lautet: Ctrl+Shift+M (Windows), Cmd+Shift+M (Mac).</p>
+<blockquote>
+<p>Und so sieht er aus: <code>%&gt;%</code>.</p>
+</blockquote>
+<p>Das entsprechende RStudio Tastenkürzel lautet: Ctrl+Shift+M (Windows), Cmd+Shift+M (Mac).</p>
 <p>Erstmal ein Beispiel</p>
-<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gapminder</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">## # A tibble: 6 x 6</span>
 <span class="co">##   country     continent  year lifeExp      pop gdpPercap</span>
@@ -181,9 +172,9 @@
 <span class="co">## 4 Afghanistan Asia       1967    34.0 11537966      836.</span>
 <span class="co">## 5 Afghanistan Asia       1972    36.1 13079460      740.</span>
 <span class="co">## 6 Afghanistan Asia       1977    38.4 14880372      786.</span></code></pre></div>
-<p>Du siehst, der Befehl ist äquivalent zu <code><a href="https://rdrr.io/r/utils/head.html">head(gapminder)</a></code>. Der Pipe-Operator nimmt das Objekt auf der linken Seite und leitet es in den Funktionsaufruf auf der rechten Seite weiter - er gibt es buchstäblich als erstes Argument ein.</p>
-<p>Keine Angst, du kannst immer noch weitere Argumente für die Funktion auf der rechten Seite angeben! Um die ersten 3 Reihen von <code>gapminder</code> zu sehen, könnte man sagen: <code><a href="https://rdrr.io/r/utils/head.html">head(gapminder, 3)</a></code> oder:</p>
-<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
+<p>Man erkennt sofort, der Befehl ist äquivalent zu <code><a href="https://rdrr.io/r/utils/head.html">head(gapminder)</a></code>. Der Pipe-Operator nimmt das Objekt auf der linken Seite und leitet es in den Funktionsaufruf auf der rechten Seite weiter - er gibt es buchstäblich als erstes Argument ein.</p>
+<p>Und natürlich kann man immer noch weitere Argumente für die Funktion auf der rechten Seite angeben. Um die ersten 3 Reihen von <code>gapminder</code> zu sehen, könnte man sagen: <code><a href="https://rdrr.io/r/utils/head.html">head(gapminder, 3)</a></code> oder:</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gapminder</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span>
 <span class="co">## # A tibble: 3 x 6</span>
 <span class="co">##   country     continent  year lifeExp      pop gdpPercap</span>
@@ -191,15 +182,14 @@
 <span class="co">## 1 Afghanistan Asia       1952    28.8  8425333      779.</span>
 <span class="co">## 2 Afghanistan Asia       1957    30.3  9240934      821.</span>
 <span class="co">## 3 Afghanistan Asia       1962    32.0 10267083      853.</span></code></pre></div>
-<p>Du bist wahrscheinlich noch nicht sehr beeindruckt, aber das sollte sich noch ändern.</p>
+<p>Wahrscheinlich seid ihr aufgrund dieses Beispiels noch nicht besonders beeindruckt vom Pipe-Operator <code>%&gt;%</code>, aber das sollte sich noch ändern.</p>
 </div>
-<div id="mit-select-variablen-auswählen" class="section level2" number="6.4">
+<div id="mit-select-variablen-auswählen" class="section level2" number="2.4">
 <h2>
-<span class="header-section-number">6.4</span> Mit <code>select()</code> Variablen auswählen<a class="anchor" aria-label="anchor" href="#mit-select-variablen-ausw%C3%A4hlen"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.4</span> Mit <code>select()</code> Variablen auswählen<a class="anchor" aria-label="anchor" href="#mit-select-variablen-ausw%C3%A4hlen"><i class="fas fa-link"></i></a>
 </h2>
-<p>Nun zurück zu <code>dplyr</code>….</p>
-<p>Verwende <code>select()</code>, um aus den Daten verschiedene Variablen (Spalten) auszuwählen. Hier kommt eine typische Verwendung von <code>select()</code>:</p>
-<div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
+<p>Verwendet <code>select()</code>, um aus den Daten verschiedene Variablen (Spalten) auszuwählen. Hier kommt eine typische Verwendung von <code>select()</code>:</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">select</span><span class="op">(</span><span class="va">gapminder</span>, <span class="va">year</span>, <span class="va">lifeExp</span><span class="op">)</span>
 <span class="co">## # A tibble: 1,704 x 2</span>
 <span class="co">##     year lifeExp</span>
@@ -216,7 +206,7 @@
 <span class="co">## 10  1997    41.8</span>
 <span class="co">## # … with 1,694 more rows</span></code></pre></div>
 <p>Und nun noch kombiniert mit <code><a href="https://rdrr.io/r/utils/head.html">head()</a></code> über den Pipe-Operator:</p>
-<div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gapminder</span> <span class="op">%&gt;%</span>
   <span class="fu">select</span><span class="op">(</span><span class="va">year</span>, <span class="va">lifeExp</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span>
@@ -227,14 +217,14 @@
 <span class="co">## 2  1957    30.3</span>
 <span class="co">## 3  1962    32.0</span>
 <span class="co">## 4  1967    34.0</span></code></pre></div>
-<p>In Worten: “Nimm <code>gapminder</code>, wähle die Variablen <code>year</code> und <code>lifeExp</code> und zeige dann die ersten 4 Zeilen an.”</p>
-</div>
-<div id="jetzt-nochmal-ein-vergleich-zu-r-standardbefehlen" class="section level2" number="6.5">
-<h2>
-<span class="header-section-number">6.5</span> Jetzt nochmal ein Vergleich zu R Standardbefehlen<a class="anchor" aria-label="anchor" href="#jetzt-nochmal-ein-vergleich-zu-r-standardbefehlen"><i class="fas fa-link"></i></a>
-</h2>
-<p>Hier sind die Daten für Kambodscha, aber nur bestimmte Variablen:</p>
-<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
+<p>Der letzte Befehl nochmal in Worten:</p>
+<p>“Nimm <code>gapminder</code>, wähle die Variablen <code>year</code> und <code>lifeExp</code> und zeige dann die ersten 4 Zeilen an.”</p>
+<div id="jetzt-nochmal-ein-vergleich-zu-r-standardbefehlen" class="section level3" number="2.4.1">
+<h3>
+<span class="header-section-number">2.4.1</span> Jetzt nochmal ein Vergleich zu R Standardbefehlen<a class="anchor" aria-label="anchor" href="#jetzt-nochmal-ein-vergleich-zu-r-standardbefehlen"><i class="fas fa-link"></i></a>
+</h3>
+<p>Hier sind die Daten für Kambodscha, allerdings nur die Variablen <code>year</code> und <code>lifeExp</code>:</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gapminder</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op">==</span> <span class="st">"Cambodia"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu">select</span><span class="op">(</span><span class="va">year</span>, <span class="va">lifeExp</span><span class="op">)</span>
@@ -253,8 +243,8 @@
 <span class="co">## 10  1997    56.5</span>
 <span class="co">## 11  2002    56.8</span>
 <span class="co">## 12  2007    59.7</span></code></pre></div>
-<p>und so würde ein typischer R Standardbefehl aussehen:</p>
-<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
+<p>Das gleiche Ergebnis würde man mit diesem R Standardbefehl erhalten:</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gapminder</span><span class="op">[</span><span class="va">gapminder</span><span class="op">$</span><span class="va">country</span> <span class="op">==</span> <span class="st">"Cambodia"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"year"</span>, <span class="st">"lifeExp"</span><span class="op">)</span><span class="op">]</span>
 <span class="co">## # A tibble: 12 x 2</span>
 <span class="co">##     year lifeExp</span>
@@ -271,23 +261,24 @@
 <span class="co">## 10  1997    56.5</span>
 <span class="co">## 11  2002    56.8</span>
 <span class="co">## 12  2007    59.7</span></code></pre></div>
-<p>der zum gleichen Ergebnis führt. Wir würden sagen, dass der <code>dplyr</code> Befehl deutlich leichter zu lesen ist.</p>
+<p>Ich hoffe, ihr stimmt mir zu, dass der <code>dplyr</code> Befehl deutlich leichter zu lesen ist.</p>
 </div>
-<div id="pure-predictable-pipeable" class="section level2" number="6.6">
+</div>
+<div id="pure-predictable-pipeable" class="section level2" number="2.5">
 <h2>
-<span class="header-section-number">6.6</span> Pure, predictable, pipeable<a class="anchor" aria-label="anchor" href="#pure-predictable-pipeable"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.5</span> Pure, predictable, pipeable<a class="anchor" aria-label="anchor" href="#pure-predictable-pipeable"><i class="fas fa-link"></i></a>
 </h2>
-<p>Bisher haben wir nur etwas an der Oberfläche von <code>dplyr</code> gekratzt, trotzdem möchten wir auf ein Schlüsselprinzipien hinweisen, die du vielleicht langsam zu schätzen lernen wirst.</p>
-<p>Die Verben (Hauptfunktionen) von dplyr, wie z.B. <code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code> und <code>select()</code>, sind <a href="https://en.wikipedia.org/wiki/Pure_function">pure functions</a>. Dazu schreibt Hadley Wickham <a href="http://adv-r.had.co.nz/Functions.html">Functions chapter</a> in seinem <a href="http://adv-r.had.co.nz">Advanced R</a> Buch <span class="citation">(<a href="literatur-3.html#ref-wickham2015a" role="doc-biblioref">2015a</a>)</span>:</p>
+<p>Bisher haben wir nur etwas an der Oberfläche von <code>dplyr</code> gekratzt, trotzdem möchten wir auf ein Schlüsselprinzip hinweisen, das du vielleicht langsam zu schätzen lernen wirst.</p>
+<p>Die Verben (Hauptfunktionen) von dplyr, wie z.B. <code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code> und <code>select()</code>, sind <a href="https://en.wikipedia.org/wiki/Pure_function">pure functions</a>. Dazu schreibt Hadley Wickham im Kapitel <a href="https://adv-r.hadley.nz/functions.html">Functions</a> in seinem <a href="http://adv-r.had.co.nz">Advanced R</a> Buch <span class="citation">(<a href="literatur-3.html#ref-wickham2019" role="doc-biblioref">2019</a>)</span>:</p>
 <blockquote>
 <p>The functions that are the easiest to understand and reason about are pure functions: functions that always map the same input to the same output and have no other impact on the workspace. In other words, pure functions have no side effects: they don’t affect the state of the world in any way apart from the value they return.</p>
 </blockquote>
 <p>Tatsächlich sind diese Verben ein Spezialfall reiner Funktionen: sie nehmen als Input und Output denselben Objekttyp an, i.d.R. ein data frame.</p>
-<p>Die Daten sind für all diese Funktionen aus <strong>stets</strong> das erste Inputargument.</p>
+<p>Die Daten sind für all diese Funktionen auch <strong>stets</strong> das erste Inputargument.</p>
 </div>
-<div id="aufgabe-2" class="section level2" number="6.7">
+<div id="aufgabe-2" class="section level2" number="2.6">
 <h2>
-<span class="header-section-number">6.7</span> Aufgabe<a class="anchor" aria-label="anchor" href="#aufgabe-2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">2.6</span> Aufgabe<a class="anchor" aria-label="anchor" href="#aufgabe-2"><i class="fas fa-link"></i></a>
 </h2>
 <p>Die <code>dplyr</code> Einführung geht weiter im Kapitel <a href="dplyr-single.html#dplyr-single">Mehr zu <code>dplyr</code></a>. Bearbeitet aber vorher den letzten Abschnitte des <a href="https://rstudio.cloud/learn/primers/2">Work with Data</a> Primers:</p>
 <p><a href="https://rstudio.cloud/learn/primers/2.3">Deriving Information with dplyr</a> zeigt euch wie ihr über bestehenden Variablen neue Variablen definiert und leicht zusammenfassende Statistiken innerhalb vorab definiertert Gruppen berechnet.</p>
@@ -303,22 +294,11 @@
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="basic-data-care.html"><span class="header-section-number">5</span> Letzte Vorbereitungen …</a></div>
-<div class="next"><a href="dplyr-single.html"><span class="header-section-number">7</span> Mehr zu dplyr</a></div>
+<div class="empty"></div>
+<div class="empty"></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
-      <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#dplyr-intro"><span class="header-section-number">6</span> Einführung in dplyr</a></li>
-<li>
-<a class="nav-link" href="#einstieg"><span class="header-section-number">6.1</span> Einstieg</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#wie-immer-laden-wir-zu-beginn-tidyverse"><span class="header-section-number">6.1.1</span> Wie immer, laden wir zu Beginn tidyverse</a></li></ul>
-</li>
-<li><a class="nav-link" href="#filter-indizieren-von-zeilen"><span class="header-section-number">6.2</span> filter(): Indizieren von Zeilen</a></li>
-<li><a class="nav-link" href="#der-pipe-operator"><span class="header-section-number">6.3</span> Der Pipe-Operator</a></li>
-<li><a class="nav-link" href="#mit-select-variablen-ausw%C3%A4hlen"><span class="header-section-number">6.4</span> Mit select() Variablen auswählen</a></li>
-<li><a class="nav-link" href="#jetzt-nochmal-ein-vergleich-zu-r-standardbefehlen"><span class="header-section-number">6.5</span> Jetzt nochmal ein Vergleich zu R Standardbefehlen</a></li>
-<li><a class="nav-link" href="#pure-predictable-pipeable"><span class="header-section-number">6.6</span> Pure, predictable, pipeable</a></li>
-<li><a class="nav-link" href="#aufgabe-2"><span class="header-section-number">6.7</span> Aufgabe</a></li>
-</ul>
+      <div id="book-on-this-page"></div>
 
       <div class="book-extra">
         <ul class="list-unstyled">
@@ -342,34 +322,6 @@
   </div>
 
 </div></div>
-</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
-for (let popover of popovers) {
-  const div = document.createElement('div');
-  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
-  div.innerHTML = popover.getAttribute('data-content');
-
-  var has_math = div.querySelector("span.math");
-  if (has_math) {
-    document.body.appendChild(div);
-    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
-    MathJax.Hub.Queue(function() {
-      popover.setAttribute('data-content', div.innerHTML);
-      document.body.removeChild(div);
-    })
-  }
-}
-</script>
+</footer>
 </body>
 </html>

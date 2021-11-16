@@ -57,7 +57,7 @@
 [Happy Git and GitHub for the useR]: https://happygitwithr.com
 [R for Data Science]: https://r4ds.had.co.nz
 [The tidyverse style guide]: https://style.tidyverse.org
-[Advanced R]: http://adv-r.had.co.nz
+[Advanced R]: https://adv-r.hadley.nz/
 [Tidyverse design principles]: https://principles.tidyverse.org
 [R Packages]: https://r-pkgs.org/index.html
 [R Graphics Cookbook]: http://shop.oreilly.com/product/0636920023135.do

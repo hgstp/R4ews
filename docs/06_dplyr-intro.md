@@ -5,14 +5,31 @@
 
 ## Einstieg
 
-[dplyr] ist ein Paket zur Datenmanipulation, entwickelt von Hadley Wickham und Romain Francois. In erster Linie will es schnell und  ausdrucksstark sein. Es wird als Teil des "Metapakets" [tidyverse] installiert und gehört als Kernpaket zu den Paketen, die über `library(tidyverse)` geladen werden.
+[dplyr] ist ein Paket zur Datenmanipulation, entwickelt von Hadley Wickham und Romain Francois. Das Paket ist Teil des  [tidyverse] und gehört als Kernpaket zu den Paketen, die über `library(tidyverse)` geladen werden.
 
-Die Wurzeln von `dplyr` liegen in einem früheren Paket mit dem Namen [plyr], das zum Ziel hat die ["split-apply-combine"-Strategie der Datenanalyse](https://www.jstatsoft.org/article/view/v040i01) [@wickham2011a] umzusetzen. Wo `plyr` noch einen vielfältigen Satz von Ein- und Ausgaben abdeckt (z.B. Arrays, data frames, Listen), hat `dplyr` einen klaren Fokus auf data frames oder, im Tidyverse, __tibbles__. 
+Der Ursprung von `dplyr` liegt in einem früheren Paket mit dem Namen [plyr], das zum Ziel hat die ["split-apply-combine"-Strategie der Datenanalyse](https://www.jstatsoft.org/article/view/v040i01) [@wickham2011a] umzusetzen. Wo `plyr` noch einen vielfältigen Satz von Ein- und Ausgabetypen abdeckt (z.B. Arrays, data frames, Listen), hat `dplyr` einen klaren Fokus auf data frames oder __tibbles__, wenn man sich im tidyverse befindet. 
 
-`dplyr` bietet schnelle Alternativen zu den R Standardfunktionen: `subset()`, `apply()`, `[sl]apply()`, `tapply()`, `aggregate()`, `split()`, `do.call()`, `with()`, `within()`, und mehr. Ferner kann man `dplyr` nutzen um über Zeilen oder Gruppen von Zeilen zu iterieren, was eine schnelle Alternative zur Nutzung von `for` Schleifen darstellt.
+`dplyr` bietet schnelle Alternativen zu den R Standardfunktionen:
 
-### Wie immer, laden wir zu Beginn `tidyverse`
++ `subset()`
 
++ `apply()`, `sapply()`, `lapply()`, `tapply()`
+
++ `aggregate()` 
++ `split()`
+
++ `do.call()`
+
++ `with()`, `within()`
+
+und mehr. Ferner bietet `dplyr` die Möglichkeit schnell über Zeilen oder Gruppen von Zeilen zu iterieren, was eine schnelle Alternative zur Nutzung von `for` Schleifen darstellt.
+
+
+
+:::: {.content-box-grey}
+__Wie immer, laden wir zu Beginn__ 
+<img src="img/tidyverse.png" width="30%" style="display: block; margin: auto 0 auto auto;" />
+::::
 
 Der Fokus liegt in diesem Abschnitt auf `dplyr`. Aber da wir immer wieder auch Funktionen aus anderen "tidyverse-Paketen" nutzen, laden wir stets `tidyverse`.
 
@@ -29,7 +46,7 @@ library(tidyverse)
 ## x dplyr::lag()    masks stats::lag()
 ```
 
-Zusätzlich wollen wir auch noch [gapminder] laden.
+Zusätzlich wollen wir auch noch das Paket [gapminder] laden, da wir erneut mit dem `gapminder` Datensatz arbeiten wollen.
 
 
 ```r
@@ -40,7 +57,7 @@ library(gapminder)
 
 ## `filter()`: Indizieren von Zeilen
 
-`filter()` nimmt logische Ausdrücke und gibt die Zeilen zurück, für die der logische Ausdruck ein `TRUE` ergibt.
+Die Funktion `filter()` erwartet logische Ausdrücke als Input und gibt die Zeilen zurück, für die die Kombination der verwendeten logischen Ausdrücke ein `TRUE` ergibt.
 
 
 ```r
@@ -82,10 +99,14 @@ Zum Vergleich kann man sich einen R Standardbefehl anschauen, der zum gleichen E
 
 ```r
 gapminder[gapminder$lifeExp < 29, ] 
-subset(gapminder, country == "Rwanda" & year > 1979) ## subset funktioniert ähnlich wir filter
+subset(gapminder, country == "Rwanda" & year > 1979) 
+## subset funktioniert ähnlich wie filter
+subset(gapminder, country %in% c("Rwanda", "Afghanistan"))
 ```
 
-Unter keinen Umständen solltest du allerdings deine Daten so unterteilen, wie hier:
+Wir erkennen sofort, dass wir mithilfe von `dplyr` sehr leicht den Datensatz aufteilen können, basierend auf der Tatsache ob Bedingungen erfüllt werden oder eben nicht.    
+
+Daher solltet ihr unter keinen Umständen eure Daten so unterteilen, wie hier:
 
 
 ```r
@@ -94,21 +115,25 @@ auswahl <- gapminder[241:252, ]
 
 Warum ist das eine blöde Idee?
 
-* Es ist nicht selbstdokumentierend. Was ist das Besondere an den Zeilen 241 bis 252?
-* Es ist fehleranfällig. Diese Codezeile wird zu anderen Ergebnissen führen, wenn jemand die Zeilenreihenfolge von `gapminder` ändert, z.B. die Daten früher im Skript sortiert.
-  
+* Der Befehl dokumentiert sich nicht selbst. Was ist das Besondere an den Zeilen 241 bis 252?
+
+* Der Befehl ist fehleranfällig. Diese Codezeile wird zu anderen Ergebnissen führen, wenn jemand die Zeilenreihenfolge von `gapminder` ändert, z.B. die Daten vor diesem Befehl erst sortiert.
+
+Ganz anders verhält es sich mit diesem Beispiel:
 
 ```r
 filter(gapminder, country == "Canada")
 ```
 
-Dieser Aufruf erklärt sich von selbst und ist ziemlich robust.
+Der Befehl erklärt sich von selbst und ist ziemlich robust.
 
 ## Der Pipe-Operator
 
 Bevor es weitergeht, wollen wir aber den Pipe-Operator, den das Tidyverse aus dem [magrittr]-Paket von Stefan Bache importiert, vorstellen. Mithilfe des Pipe-Operators ist man in der Lage Befehle für mehrere Operationen auszuführen, ohne sie ineinander zu verschachteln. Diese neue Syntax führt zu Code, der viel einfacher zu schreiben und zu lesen ist.
 
-Und so sieht er aus: `%>%`. Das entsprechende RStudio Tastenkürzel lautet: Ctrl+Shift+M (Windows), Cmd+Shift+M (Mac).
+>Und so sieht er aus: `%>%`. 
+
+Das entsprechende RStudio Tastenkürzel lautet: Ctrl+Shift+M (Windows), Cmd+Shift+M (Mac).
 
 Erstmal ein Beispiel
 
@@ -126,9 +151,9 @@ gapminder %>% head()
 ## 6 Afghanistan Asia       1977    38.4 14880372      786.
 ```
 
-Du siehst, der Befehl ist äquivalent zu `head(gapminder)`. Der Pipe-Operator nimmt das Objekt auf der linken Seite und leitet es in den Funktionsaufruf auf der rechten Seite weiter - er gibt es buchstäblich als erstes Argument ein.
+Man erkennt sofort, der Befehl ist äquivalent zu `head(gapminder)`. Der Pipe-Operator nimmt das Objekt auf der linken Seite und leitet es in den Funktionsaufruf auf der rechten Seite weiter - er gibt es buchstäblich als erstes Argument ein.
 
-Keine Angst, du kannst immer noch weitere Argumente für die Funktion auf der rechten Seite angeben! Um die ersten 3 Reihen von `gapminder` zu sehen, könnte man sagen: `head(gapminder, 3)` oder:
+Und natürlich kann man immer noch weitere Argumente für die Funktion auf der rechten Seite angeben. Um die ersten 3 Reihen von `gapminder` zu sehen, könnte man sagen: `head(gapminder, 3)` oder:
 
 
 ```r
@@ -142,13 +167,13 @@ gapminder %>% head(3)
 ```
 
 
-Du bist wahrscheinlich noch nicht sehr beeindruckt, aber das sollte sich noch ändern.
+Wahrscheinlich seid ihr aufgrund dieses Beispiels noch nicht besonders beeindruckt vom Pipe-Operator `%>%`, aber das sollte sich noch ändern.
+
 
 ## Mit `select()` Variablen auswählen
 
-Nun zurück zu `dplyr`....
 
-Verwende  `select()`, um aus den Daten verschiedene Variablen (Spalten) auszuwählen. Hier kommt eine typische Verwendung von `select()`:
+Verwendet  `select()`, um aus den Daten verschiedene Variablen (Spalten) auszuwählen. Hier kommt eine typische Verwendung von `select()`:
 
 
 ```r
@@ -186,11 +211,13 @@ gapminder %>%
 ## 4  1967    34.0
 ```
 
-In Worten: "Nimm `gapminder`, wähle die Variablen `year` und `lifeExp` und zeige dann die ersten 4 Zeilen an."
+Der letzte Befehl nochmal in Worten: 
 
-## Jetzt nochmal ein Vergleich zu R Standardbefehlen
+"Nimm `gapminder`, wähle die Variablen `year` und `lifeExp` und zeige dann die ersten 4 Zeilen an."
 
-Hier sind die Daten für Kambodscha, aber nur bestimmte Variablen:
+### Jetzt nochmal ein Vergleich zu R Standardbefehlen
+
+Hier sind die Daten für Kambodscha, allerdings nur die Variablen `year` und `lifeExp`:
 
 
 ```r
@@ -214,7 +241,7 @@ gapminder %>%
 ## 12  2007    59.7
 ```
 
-und so würde ein typischer R Standardbefehl aussehen:
+Das gleiche Ergebnis würde man mit diesem R Standardbefehl erhalten:
 
 
 ```r
@@ -236,19 +263,19 @@ gapminder[gapminder$country == "Cambodia", c("year", "lifeExp")]
 ## 12  2007    59.7
 ```
 
-der zum gleichen Ergebnis führt. Wir würden sagen, dass der `dplyr` Befehl deutlich leichter zu lesen ist.
+Ich hoffe, ihr stimmt mir zu,  dass der `dplyr` Befehl deutlich leichter zu lesen ist.
 
 ## Pure, predictable, pipeable
 
-Bisher haben wir nur etwas an der Oberfläche von `dplyr` gekratzt, trotzdem möchten wir auf ein Schlüsselprinzipien hinweisen, die du vielleicht langsam zu schätzen lernen wirst. 
+Bisher haben wir nur etwas an der Oberfläche von `dplyr` gekratzt, trotzdem möchten wir auf ein Schlüsselprinzip hinweisen, das du vielleicht langsam zu schätzen lernen wirst. 
 
-Die Verben (Hauptfunktionen) von dplyr, wie z.B. `filter()` und `select()`, sind [pure functions](https://en.wikipedia.org/wiki/Pure_function). Dazu schreibt Hadley Wickham [Functions chapter](http://adv-r.had.co.nz/Functions.html) in seinem [Advanced R] Buch [-@wickham2015a]:
+Die Verben (Hauptfunktionen) von dplyr, wie z.B. `filter()` und `select()`, sind [pure functions](https://en.wikipedia.org/wiki/Pure_function). Dazu schreibt Hadley Wickham im Kapitel [Functions](https://adv-r.hadley.nz/functions.html) in seinem [Advanced R] Buch [-@wickham2019]:
 
 > The functions that are the easiest to understand and reason about are pure functions: functions that always map the same input to the same output and have no other impact on the workspace. In other words, pure functions have no side effects: they don’t affect the state of the world in any way apart from the value they return.
 
 Tatsächlich sind diese Verben ein Spezialfall reiner Funktionen: sie nehmen als Input und Output denselben Objekttyp an, i.d.R. ein data frame.
 
-Die Daten sind für all diese Funktionen aus __stets__ das erste Inputargument.
+Die Daten sind für all diese Funktionen auch __stets__ das erste Inputargument.
 
 
 
