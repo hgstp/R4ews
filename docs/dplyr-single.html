@@ -61,7 +61,7 @@
 <li><a class="" href="dplyr-intro.html"><span class="header-section-number">6</span> Einführung in dplyr</a></li>
 <li><a class="active" href="dplyr-single.html"><span class="header-section-number">7</span> Mehr zu dplyr</a></li>
 <li><a class="" href="import-export.html"><span class="header-section-number">8</span> Daten I/O</a></li>
-<li><a class="" href="tidy.html"><span class="header-section-number">9</span> tidy ?</a></li>
+<li><a class="" href="tidy.html"><span class="header-section-number">9</span> tidy was?</a></li>
 <li class="book-part">ggplot2 Intro</li>
 <li><a class="" href="graphics-overview.html"><span class="header-section-number">10</span> Einführung</a></li>
 <li><a class="" href="bausteine.html"><span class="header-section-number">11</span> Bausteine</a></li>
@@ -114,9 +114,9 @@
 <div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jennybc/gapminder">gapminder</a></span><span class="op">)</span></code></pre></div>
 </div>
-<div id="mitmutate-neue-variablen-erstellen" class="section level2" number="7.2">
+<div id="mit-mutate-neue-variablen-erstellen" class="section level2" number="7.2">
 <h2>
-<span class="header-section-number">7.2</span> Mit<code>mutate()</code> neue Variablen erstellen<a class="anchor" aria-label="anchor" href="#mitmutate-neue-variablen-erstellen"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.2</span> Mit <code>mutate()</code> neue Variablen erstellen<a class="anchor" aria-label="anchor" href="#mit-mutate-neue-variablen-erstellen"><i class="fas fa-link"></i></a>
 </h2>
 <p>Wir starten mit dem Anlegen einer Kopie von <code>gapminder</code>, die wir dann nach unseren Vorstellungen verändern (es wäre aber auch nichts passiert, wenn wir alles mit <code>gapminder</code> durchführen würden; mit dem Befehl <code><a href="https://rdrr.io/pkg/gapminder/man/gapminder.html">gapminder::gapminder</a></code> können wir immer auf die Originalversion zurückgreifen).</p>
 <div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
@@ -301,9 +301,9 @@
 <span class="co">## 3      430.  2007    49.6</span></code></pre></div>
 <p><code>everything()</code> wählt alle übrigen (außer <code>gdpPercap</code>) Variablen. Da <code>gdpPercap</code> an erster Stelle gewählt wurde, wird die Variable auch zur ersten Spalte.</p>
 </div>
-<div id="group_by-macht-das-r-leben-einfacher" class="section level2" number="7.5">
+<div id="summarise-in-kombination-mit-group_by" class="section level2" number="7.5">
 <h2>
-<span class="header-section-number">7.5</span> <code>group_by()</code> macht das R Leben einfacher<a class="anchor" aria-label="anchor" href="#group_by-macht-das-r-leben-einfacher"><i class="fas fa-link"></i></a>
+<span class="header-section-number">7.5</span> <code>summarise()</code> in Kombination mit <code>group_by()</code><a class="anchor" aria-label="anchor" href="#summarise-in-kombination-mit-group_by"><i class="fas fa-link"></i></a>
 </h2>
 <p>Nehmen wir mal an, dass uns die Antwort auf die Frage</p>
 <p>“In welchem Land ist die Lebenserwartung innerhalb von 5 Jahren am stärksten gesunken?”</p>
@@ -312,7 +312,6 @@
 <ul>
 <li><p><code>group_by()</code> fügt dem Datensatz eine zusätzliche Struktur hinzu – Gruppierungsinformationen – die die Grundlage für Berechnungen innerhalb der Gruppen bilden.</p></li>
 <li><p><code>summarise()</code> nimmt einen Datensatz mit <span class="math inline">\(n\)</span>-Beobachtungen, berechnet die angeforderten Zusammenfassungen und gibt einen Datensatz mit einer Beobachtung (falls nur eine Zusammenfassung angefordert wurde) zurück.</p></li>
-<li><p>Window Funktionen nehmen einen Datensatz mit <span class="math inline">\(n\)</span>-Beobachtungen und geben einen Datensatz mit <span class="math inline">\(n\)</span>-Beobachtungen zurück.</p></li>
 <li><p><code>mutate()</code> und <code>summarise()</code> berücksichtigen Gruppen.</p></li>
 </ul>
 <p>Kombiniert mit den Verben, die wir bereits kennen, könnt ihr mit diesen neuen Werkzeugen eine extrem vielfältige Reihe von Problemen relativ einfach lösen.</p>
@@ -660,7 +659,7 @@ wobei <span class="math inline">\(x_{0.25}\)</span> und <span class="math inline
 <span class="co">## 3 Americas  El Salvador      -1.51 </span>
 <span class="co">## 4 Europe    Montenegro       -1.46 </span>
 <span class="co">## 5 Oceania   Australia         0.170</span></code></pre></div>
-<p>Denkt ruhig eine Weile über das Ergebnis nach. Hier sieht in trockenen Statistiken über die durchschnittliche Lebenserwartung, wie Völkermord aussieht.</p>
+<p>Denkt ruhig eine Weile über das Ergebnis nach. Hier sieht man in trockenen Statistiken über die durchschnittliche Lebenserwartung, wie Völkermord aussieht.</p>
 <p>Um den Code besser zu verstehen, unterteilt ihn, beginnend von oben, in Stücke und überprüft die einzelnen Zwischenergebnisse. So wurde der Code auch geschrieben/entwickelt, mit vielen Fehlern und Verfeinerungen auf dem Weg.</p>
 </div>
 <div id="literatur" class="section level2" number="7.8">
@@ -688,11 +687,11 @@ wobei <span class="math inline">\(x_{0.25}\)</span> und <span class="math inline
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#dplyr-single"><span class="header-section-number">7</span> Mehr zu dplyr</a></li>
 <li><a class="nav-link" href="#wo-stehen-wir"><span class="header-section-number">7.1</span> Wo stehen wir?</a></li>
-<li><a class="nav-link" href="#mitmutate-neue-variablen-erstellen"><span class="header-section-number">7.2</span> Mitmutate() neue Variablen erstellen</a></li>
+<li><a class="nav-link" href="#mit-mutate-neue-variablen-erstellen"><span class="header-section-number">7.2</span> Mit mutate() neue Variablen erstellen</a></li>
 <li><a class="nav-link" href="#mit-arrange-die-zeilenreihenfolge-%C3%A4ndern"><span class="header-section-number">7.3</span> Mit arrange() die Zeilenreihenfolge ändern</a></li>
 <li><a class="nav-link" href="#mit-rename-sch%C3%B6ne-namen-vergeben"><span class="header-section-number">7.4</span> Mit rename() “schöne” Namen vergeben</a></li>
 <li>
-<a class="nav-link" href="#group_by-macht-das-r-leben-einfacher"><span class="header-section-number">7.5</span> group_by() macht das R Leben einfacher</a><ul class="nav navbar-nav">
+<a class="nav-link" href="#summarise-in-kombination-mit-group_by"><span class="header-section-number">7.5</span> summarise() in Kombination mit group_by()</a><ul class="nav navbar-nav">
 <li><a class="nav-link" href="#dinge-aufz%C3%A4hlen"><span class="header-section-number">7.5.1</span> Dinge aufzählen</a></li>
 <li><a class="nav-link" href="#deskriptive-statistiken-mit-summarise"><span class="header-section-number">7.5.2</span> Deskriptive Statistiken mit summarise()</a></li>
 </ul>

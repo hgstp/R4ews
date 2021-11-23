@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Kapitel 8 Daten I/O | R4ews MA0009</title>
 <meta name="author" content="Stephan Haug">
-<meta name="description" content="8.1 Überblick Wir haben die Gapminder-Daten als tibble aus dem gapminder Paket geladen. Wir haben im letzten Abschnitt weder Daten noch abgeleitete Ergebnisse explizit in eine Datei geschrieben....">
+<meta name="description" content="8.1 Überblick Im letzten Abschnitt haben wir die Gapminder-Daten als tibble aus dem gapminder Paket geladen. Dabei haben wir dann weder Daten, noch abgeleitete Ergebnisse, explizit in eine Datei...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
 <meta property="og:title" content="Kapitel 8 Daten I/O | R4ews MA0009">
 <meta property="og:type" content="book">
-<meta property="og:description" content="8.1 Überblick Wir haben die Gapminder-Daten als tibble aus dem gapminder Paket geladen. Wir haben im letzten Abschnitt weder Daten noch abgeleitete Ergebnisse explizit in eine Datei geschrieben....">
+<meta property="og:description" content="8.1 Überblick Im letzten Abschnitt haben wir die Gapminder-Daten als tibble aus dem gapminder Paket geladen. Dabei haben wir dann weder Daten, noch abgeleitete Ergebnisse, explizit in eine Datei...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kapitel 8 Daten I/O | R4ews MA0009">
-<meta name="twitter:description" content="8.1 Überblick Wir haben die Gapminder-Daten als tibble aus dem gapminder Paket geladen. Wir haben im letzten Abschnitt weder Daten noch abgeleitete Ergebnisse explizit in eine Datei geschrieben....">
+<meta name="twitter:description" content="8.1 Überblick Im letzten Abschnitt haben wir die Gapminder-Daten als tibble aus dem gapminder Paket geladen. Dabei haben wir dann weder Daten, noch abgeleitete Ergebnisse, explizit in eine Datei...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/_Lato-0.4.0/font.css" rel="stylesheet">
@@ -61,7 +61,7 @@
 <li><a class="" href="dplyr-intro.html"><span class="header-section-number">6</span> Einführung in dplyr</a></li>
 <li><a class="" href="dplyr-single.html"><span class="header-section-number">7</span> Mehr zu dplyr</a></li>
 <li><a class="active" href="import-export.html"><span class="header-section-number">8</span> Daten I/O</a></li>
-<li><a class="" href="tidy.html"><span class="header-section-number">9</span> tidy ?</a></li>
+<li><a class="" href="tidy.html"><span class="header-section-number">9</span> tidy was?</a></li>
 <li class="book-part">ggplot2 Intro</li>
 <li><a class="" href="graphics-overview.html"><span class="header-section-number">10</span> Einführung</a></li>
 <li><a class="" href="bausteine.html"><span class="header-section-number">11</span> Bausteine</a></li>
@@ -87,40 +87,46 @@
 <h2>
 <span class="header-section-number">8.1</span> Überblick<a class="anchor" aria-label="anchor" href="#%C3%BCberblick"><i class="fas fa-link"></i></a>
 </h2>
-<p>Wir haben die Gapminder-Daten als tibble aus dem <a href="https://github.com/jennybc/gapminder">gapminder</a> Paket geladen. Wir haben im letzten Abschnitt weder Daten noch abgeleitete Ergebnisse explizit in eine Datei geschrieben. Im wirklichen Leben wirst du aber ständig Daten, die in Tabellenform vorliegen, in R ein- und auslesen. Manchmal muss das sogar für Daten geschehen, die nicht in Tabellenform vorliegen.</p>
+<p>Im letzten Abschnitt haben wir die Gapminder-Daten als tibble aus dem <a href="https://github.com/jennybc/gapminder">gapminder</a> Paket geladen. Dabei haben wir dann weder Daten, noch abgeleitete Ergebnisse, explizit in eine Datei geschrieben. Im wirklichen Leben werdet ihr aber ständig Daten, die in Tabellenform vorliegen, in R ein- und auslesen. Manchmal muss das sogar für Daten geschehen, die nicht in Tabellenform vorliegen.</p>
+<blockquote>
 <p>Wie macht man das? Worauf muss man aufpassen?</p>
+</blockquote>
 <div id="daten-import" class="section level3" number="8.1.1">
 <h3>
 <span class="header-section-number">8.1.1</span> Daten Import<a class="anchor" aria-label="anchor" href="#daten-import"><i class="fas fa-link"></i></a>
 </h3>
-<p>Für den Daten Import gibt es im Allgemeinen zwei Möglichkeiten:</p>
+<p>Für das Importieren von Daten gibt es im Allgemeinen zwei Szenarien:</p>
 <ul>
-<li>
-<em>“Überrasche mich!”</em> Diese Haltung musst du einnehmen, wenn du zum ersten Mal einen Datensatz erhältst. Du musst einfach froh, wenn du die Daten ohne Fehler importieren konntest. Dann schaust du dir das Ergebnis an, entdeckst Fehler in den Daten und/oder beim Import. Du behebst sie und beginnst nochmal von vorne.</li>
-<li>
-<em>“Ein weiterer Tag im Paradies.”</em> Das ist die Einstellung, wenn du einen aufgeräumten Datensatz einliest, den du vorher in einem oder mehreren Reinigungsskripten wahnsinnig aufgeräumt haben. Es sollte keine Überraschungen geben.</li>
+<li><p><em>“Überrasche mich!”</em> Diese Haltung müsst ihr einnehmen, wenn ihr einen Datensatz erhaltet und zum ersten Mal versucht diesen einzulesen. Man muss froh sein, wenn man die Daten ohne Fehlermeldung importieren kann. Dann schaust man sich das Ergebnis an und entdeckt vermutlich Fehler in den Daten und/oder beim Import. Anschließend behebt ihr die Fehler und beginnt nochmal von vorne.</p></li>
+<li><p><em>“Ein weiterer Tag im Paradies.”</em> Das wird vermutlich euer Gefühl sein, wenn ihr versucht einen <a href="tidy.html#tidy">aufgeräumten Datensatz</a> einzulesen (den jemand vorher in einem oder mehreren Reinigungsskripten aufgeräumt hat). Es sollte keine Überraschungen geben.</p></li>
 </ul>
-<p>Im zweiten Fall, und im weiteren Verlauf des ersten Falles, lernst du tatsächlich eine Menge darüber, wie die Daten sind/sein sollten. Ein wichtiger Import-Ratschlag: <strong>Verwende die Argumente der Importfunktion, um so weit wie möglich und so schnell wie möglich zu kommen</strong>. Anfängercode hat oft eine Menge unnötigen nachträglichen Aufwand. Lese die Hilfe zu den Importfunktionen und nutzen die Argumente maximal aus, um den Import zu steuern.</p>
+<p>Im zweiten Fall, und im weiteren Verlauf des ersten Falles, lernt ihr tatsächlich eine Menge darüber, wie die Daten strukturiert sind/sein sollten.</p>
+<div class="content-box-orange">
+<p><strong>Ein wichtiger Import-Ratschlag:</strong> <em>Verwende die Argumente der Importfunktion, um so weit wie möglich und so schnell wie möglich zu kommen</em>. Macht man dies nicht, so sind oft nach dem Einlesen der Daten noch eine Reihe von weiteren Schritten nötig, bevor man mit der eigentlichen Analyse beginnen kann. Daher lest die Hilfe zu den Importfunktionen und nutzt die Argumente maximal aus, um den Import zu steuern.</p>
+</div>
 </div>
 <div id="daten-export" class="section level3" number="8.1.2">
 <h3>
 <span class="header-section-number">8.1.2</span> Daten Export<a class="anchor" aria-label="anchor" href="#daten-export"><i class="fas fa-link"></i></a>
 </h3>
-<p>Es wird viele Gelegenheiten geben, bei denen du Daten aus R exportieren willst. Zwei wichtige Beispiele:</p>
+<p>Es wird viele Gelegenheiten geben, bei denen ihr Daten aus R exportieren wollt. Zwei wichtige Beispiele:</p>
 <ul>
-<li>einen gesäuberten Datensatz der bereit ist analysiert zu werden, den du heldenhaft aus recht unordentlichen Daten erstellt hast</li>
-<li>ein numerisches Ergebnis aus einer Datenaggregation oder Modellierung oder einer statistischen Schlussfolgerung</li>
+<li><p>einen gesäuberten Datensatz, der bereit ist analysiert zu werden</p></li>
+<li><p>ein numerisches Ergebnis aus einer Datenaggregation oder Modellierung oder einer statistischen Schlussfolgerung</p></li>
 </ul>
-<p>Erster Tipp: <strong>Der Output von heute ist der Input von morgen</strong>. Denke an all die Schmerzen zurück, die du selbst beim Import von fremden Daten erlitten hast, und fügen dir nicht selbst solche Schmerzen zu!</p>
-<p>Zweiter Tipp: Sei nicht zu clever. Eine einfache Textdatei, die von einem Menschen in einem Texteditor lesbar ist, sollte dein Standard sein, bis du <strong>einen guten Grund</strong> dafür hast, dass dies nicht funktionieren wird. Das Lesen und Schreiben in exotische Formate wird das erste sein, was in Zukunft oder auf einem anderen Computer kaputtgehen wird. Es schafft auch Barrieren für jeden, der ein anderes Toolkit hat als du. Strebe nach Zukunfts- und Idiotensicherheit.</p>
-<p>Wie passt das zu unserer Betonung der dynamischen Berichterstattung über R Markdown? Es gibt für alles eine Zeit und einen Ort. Es gibt Projekte und Dokumente, bei denen du dich intensiv mit <a href="https://github.com/yihui/knitr">knitr</a> und <a href="https://rmarkdown.rstudio.com/">rmarkdown</a> beschäftigen kannst/willst/musst. Aber es gibt viele gute Gründe, warum (Teile von) einer Analyse nicht (nur) in einen dynamischen Bericht eingebettet werden sollten. Vielleicht bist du gerade dabei Daten zu bereinigen, um einen Datensatz für eine nachfolgende Analyse zu erzeugen. Vielleicht leistet du einen kleinen, aber entscheidenden Beitrag zu einem gigantischen Multi-Autoren-Papier. Etc. Denke auch daran, dass es natürlich auch noch andere Werkzeuge und Arbeitsabläufe gibt, um etwas reproduzierbar zu machen: z.B. <a href="https://kbroman.org/minimal_make/">make</a>.</p>
+<div class="content-box-gray">
+<p><strong>Erster Tipp:</strong> <em>Der Output von heute ist der Input von morgen</em>. Denkt an all die Schmerzen zurück, die ihr selbst beim Import von fremden Daten erlitten habt, und fügt euch nicht selbst solche Schmerzen zu!</p>
+<p><strong>Zweiter Tipp:</strong> Seid nicht zu clever. Eine einfache Textdatei, die von einem Menschen in einem Texteditor lesbar ist, sollte euer <em>Standard</em> sein, bis es <em>einen guten Grund</em> dafür gibt, dass dies nicht ausreichend ist. Das Lesen und Schreiben in exotische Formate wird das erste sein, was in Zukunft oder auf einem anderen Computer nicht mehr funktionieren wird. Es schafft auch Barrieren für jeden, der ein anderes Toolkit hat als ihr. Strebe also nach Zukunfts- und Idiotensicherheit.</p>
+</div>
+<p>Wie passt das zu unserer Betonung der dynamischen Berichterstattung über R Markdown? Es gibt für alles eine Zeit und einen Ort. Es gibt Projekte und Dokumente, bei denen ihr euch intensiv mit <a href="https://github.com/yihui/knitr">knitr</a> und <a href="https://rmarkdown.rstudio.com/">rmarkdown</a> beschäftigen könnt/wollt/müsst. Aber es gibt viele gute Gründe, warum (Teile) einer Analyse nicht (nur) in einen dynamischen Bericht eingebettet werden sollten. Vielleicht wollt ihr Daten bereinigen, um einen Datensatz für eine nachfolgende Analyse zu erzeugen. Vielleicht leistet ihr einen kleinen, aber entscheidenden Beitrag zu einem gigantischen Multi-Autoren-Papier, usw. ….</p>
+<p>Denkt zudem daran, dass es natürlich auch noch andere Werkzeuge und Arbeitsabläufe gibt, um etwas reproduzierbar zu machen: z.B. <a href="https://kbroman.org/minimal_make/">make</a>.</p>
 </div>
 </div>
-<div id="load-the-tidyverse" class="section level2" number="8.2">
+<div id="readr" class="section level2" number="8.2">
 <h2>
-<span class="header-section-number">8.2</span> Load the tidyverse<a class="anchor" aria-label="anchor" href="#load-the-tidyverse"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.2</span> <code>readr</code><a class="anchor" aria-label="anchor" href="#readr"><i class="fas fa-link"></i></a>
 </h2>
-<p>Das Hauptpaket, das wir verwenden werden, ist <a href="https://readr.tidyverse.org">readr</a>, welches Alternativen zu den Standardfunktionen <code><a href="https://rdrr.io/r/utils/read.table.html">read.table()</a></code> und <code><a href="https://rdrr.io/r/utils/write.table.html">write.table()</a></code> bietet. Trotzdem laden wir standardmäßig einfach wieder <a href="https://tidyverse.tidyverse.org">tidyverse</a>.</p>
+<p>Zur Einlesen und Ausgeben von Datensätzen verwenden wir das <a href="https://readr.tidyverse.org">readr</a> Paket, welches Alternativen zu den Standardfunktionen <code><a href="https://rdrr.io/r/utils/read.table.html">read.table()</a></code> und <code><a href="https://rdrr.io/r/utils/write.table.html">write.table()</a></code> bietet. <code>readr</code> ist Teil des <a href="https://tidyverse.tidyverse.org">tidyverse</a> und daher laden wir standardmäßig einfach wieder</p>
 <div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
 <span class="co">## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</span>
@@ -131,23 +137,19 @@
 <span class="co">## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──</span>
 <span class="co">## x dplyr::filter() masks stats::filter()</span>
 <span class="co">## x dplyr::lag()    masks stats::lag()</span></code></pre></div>
-</div>
-<div id="einlesen-der-gapminder-daten" class="section level2" number="8.3">
-<h2>
-<span class="header-section-number">8.3</span> Einlesen der Gapminder Daten<a class="anchor" aria-label="anchor" href="#einlesen-der-gapminder-daten"><i class="fas fa-link"></i></a>
-</h2>
-<p>Die Gapminder Daten könnten wir natürlich wie zuvor über das Laden des <code>gapminder</code> Pakets verfügbar machen. Da es in diesem Abschnitt aber um das Einlesen von Daten geht, versuchen wir die Daten als <code>.tsv</code> Datei (tab-separated values - so sind sie im Paket gespeichert) einzulesen. Aber dies bedeutet natürlich, dass wir die entsprechende <code>.tsv</code> Datei erst mal finden müssen. Dabei hilft uns glücklicherweise das <a href="https://fs.r-lib.org/index.html">fs</a> Paket.</p>
+<p><strong>Einlesen der Gapminder Daten</strong></p>
+<p>Die Gapminder Daten könnten wir natürlich wie zuvor über das Laden des <code>gapminder</code> Pakets verfügbar machen. Da es in diesem Abschnitt aber um das Einlesen von Daten geht, versuchen wir die Daten als <code>.tsv</code> Datei (Tab getrennte Werte - so sind die Daten im Paket gespeichert) einzulesen. Aber dies bedeutet natürlich, dass wir die entsprechende <code>.tsv</code> Datei erst mal finden müssen. Dabei hilft uns glücklicherweise das <a href="https://fs.r-lib.org/index.html">fs</a> Paket.</p>
 <div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://fs.r-lib.org">fs</a></span><span class="op">)</span>
 <span class="op">(</span><span class="va">gap_tsv</span> <span class="op">&lt;-</span> <span class="fu"><a href="http://fs.r-lib.org/reference/path_package.html">path_package</a></span><span class="op">(</span><span class="st">"gapminder"</span>, <span class="st">"extdata"</span>, <span class="st">"gapminder.tsv"</span><span class="op">)</span><span class="op">)</span>
 <span class="co">## /Library/Frameworks/R.framework/Versions/4.0/Resources/library/gapminder/extdata/gapminder.tsv</span></code></pre></div>
 <p>Nachdem wir jetzt den Speicherort der Datei kennen, können wir versuchen sie einzulesen.</p>
 </div>
-<div id="einlesen-von-daten-in-tabellenform" class="section level2" number="8.4">
+<div id="einlesen-von-daten-in-tabellenform" class="section level2" number="8.3">
 <h2>
-<span class="header-section-number">8.4</span> Einlesen von Daten in Tabellenform<a class="anchor" aria-label="anchor" href="#einlesen-von-daten-in-tabellenform"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.3</span> Einlesen von Daten in Tabellenform<a class="anchor" aria-label="anchor" href="#einlesen-von-daten-in-tabellenform"><i class="fas fa-link"></i></a>
 </h2>
-<p>Die Haupt-Funktion zum Einlesen von Daten in readr ist <code>read_delim()</code>. Hier verwenden wir eine Variante, <code>read_tsv()</code>, für tabulatorgetrennte Daten:</p>
+<p>Die Haupt-Funktion zum Einlesen von Daten in readr ist <code>read_delim()</code>. Hier verwenden wir eine Variante, <code>read_tsv()</code>, für Tab getrennte Daten:</p>
 <div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gapminder</span> <span class="op">&lt;-</span> <span class="fu">read_tsv</span><span class="op">(</span><span class="va">gap_tsv</span><span class="op">)</span>
 <span class="co">## Rows: 1704 Columns: 6</span>
@@ -167,19 +169,25 @@
 <span class="co">## $ lifeExp   &lt;dbl&gt; 28.8, 30.3, 32.0, 34.0, 36.1, 38.4, 39.9, 40.8, 41.7, 41.8, …</span>
 <span class="co">## $ pop       &lt;dbl&gt; 8425333, 9240934, 10267083, 11537966, 13079460, 14880372, 12…</span>
 <span class="co">## $ gdpPercap &lt;dbl&gt; 779, 821, 853, 836, 740, 786, 978, 852, 649, 635, 727, 975, …</span></code></pre></div>
-<p>Über den Tabulator Spalten in einer Datentabelle zu trennen, ist natürlich nur eine Variante neben weiteren Alternativen wie Komma, Strichpunkt, Leerzeichen, …</p>
-<p>Für Komma getrennte Daten würde man beispielsweise <code>read_csv()</code> verwenden. Für volle Flexibilität bei der Angabe des Trennzeichens kannst du aber jederzeit direkt <code>read_delim()</code> verwenden.</p>
-<p>Der auffälligste Unterschied zwischen den readr-Funktionen und der Standardfunktion <code><a href="https://rdrr.io/r/utils/read.table.html">read.table()</a></code>ist, dass readr standardmäßig Characters NICHT in Faktoren umwandelt. Im Großen und Ganzen ist dies ein besseres Standardverhalten, obwohl es natürlich immer wieder vorkommen wird, dass du einzelne Variablen nach dem Einlesen in einen Faktoren umwandeln wirst. Aber lass dich davon nicht täuschen - im Allgemeinen wirst du durch die Verwendung von readr nach dem Einlesen weniger Anpassungen machen müssen im Vergleich zum Standardvorgehen.</p>
+<p>Über den Tabulator Spalten in einer Datentabelle zu trennen, ist natürlich nur eine Variante neben weiteren Alternativen wie</p>
+<ul>
+<li><p>Komma: <code>read_csv()</code></p></li>
+<li><p>Strichpunkt: <code>read_csv2()</code></p></li>
+<li><p>Leerzeichen: <code>read_table()</code></p></li>
+<li><p>…</p></li>
+</ul>
+<p>Für volle Flexibilität bei der Angabe des Trennzeichens kann aber jederzeit direkt <code>read_delim()</code> verwendet werden.</p>
+<p>Der auffälligste Unterschied zwischen den <a href="https://readr.tidyverse.org">readr</a>-Funktionen und der Standardfunktion <code><a href="https://rdrr.io/r/utils/read.table.html">read.table()</a></code>ist, dass <a href="https://readr.tidyverse.org">readr</a> standardmäßig characters <strong>NICHT</strong> in Faktoren umwandelt. Im Großen und Ganzen ist dies schon vorteilhafter, obwohl es natürlich auch immer wieder vorkommen wird, dass ihr einzelne Variablen beim Einlesen explizit als Faktorvariable einlesen werdet.</p>
 <blockquote>
-<p>Fazit: Benutze <code><a href="https://readr.tidyverse.org/reference/read_delim.html">readr::read_delim()</a></code> und “Freunde”.</p>
+<p>Fazit: Benutzt <code><a href="https://readr.tidyverse.org/reference/read_delim.html">readr::read_delim()</a></code> und “Freunde”.</p>
 </blockquote>
 <p>Die Gapminder-Daten sind zu sauber und einfach, um die großartigen Funktionen von readr zur Geltung zu bringen. Ein Blick in <a href="https://cloud.r-project.org/web/packages/readr/vignettes/readr.html">Introduction to readr</a> zeigt aber noch viele weitere Anpassungsmöglichkeiten der readr Funktionen.</p>
 </div>
-<div id="daten-exportieren" class="section level2" number="8.5">
+<div id="daten-exportieren" class="section level2" number="8.4">
 <h2>
-<span class="header-section-number">8.5</span> Daten exportieren<a class="anchor" aria-label="anchor" href="#daten-exportieren"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.4</span> Daten exportieren<a class="anchor" aria-label="anchor" href="#daten-exportieren"><i class="fas fa-link"></i></a>
 </h2>
-<p>Bevor wir etwas exportieren können, müssen (das ist natürlich so nicht richtig - niemand zwingt uns dazu) etwas berechnen, das es wert ist, exportiert zu werden. Lass uns eine Zusammenfassung der maximalen Lebenserwartung auf Länderebene erstellen.</p>
+<p>Bevor wir etwas exportieren können, müssen wir natürlich (was so sicher nicht richtig ist - niemand zwingt uns dazu 😉) etwas berechnen, das es wert ist, exportiert zu werden. Lasst uns doch eine Zusammenfassung der maximalen Lebenserwartung auf Länderebene erstellen.</p>
 <div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gap_life_exp</span> <span class="op">&lt;-</span> <span class="va">gapminder</span> <span class="op">%&gt;%</span>
   <span class="fu">group_by</span><span class="op">(</span><span class="va">country</span>, <span class="va">continent</span><span class="op">)</span> <span class="op">%&gt;%</span> 
@@ -201,11 +209,11 @@
 <span class="co">##  9 Bangladesh  Asia          64.1</span>
 <span class="co">## 10 Belgium     Europe        79.4</span>
 <span class="co">## # … with 132 more rows</span></code></pre></div>
-<p>Das <code>gap_life_exp</code> data frame ist ein Beispiel für ein Zwischenergebnis, das wir für die Zukunft und für nachgelagerte Analysen oder Visualisierungen speichern wollen.</p>
-<p>Die Haupt-Exportfunktion in readr ist <code>write_delim()</code>. Für verschiedene Dateiformate gibt es auch hier wieder verschiedene Komfortfunktionen. Lass uns <code>write_csv()</code> benutzen, um eine kommagetrennte Datei zu erhalten.</p>
+<p>Das Objekt <code>gap_life_exp</code> ist nun ein Beispiel für ein Zwischenergebnis, das wir für die Zukunft und für nachgelagerte Analysen oder Visualisierungen speichern wollen.</p>
+<p>Die Haupt-Exportfunktion in readr ist <code>write_delim()</code>. Für verschiedene Dateiformate gibt es auch hier wieder verschiedene Komfortfunktionen. Mithilfe von <code>write_csv()</code> können wir den Inhalt von <code>gap_life_exp</code> in einer kommagetrennten Datei abspeichern.</p>
 <div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">write_csv</span><span class="op">(</span><span class="va">gap_life_exp</span>, <span class="st">"data/gap_life_exp.csv"</span><span class="op">)</span></code></pre></div>
-<p>Schauen wir uns die ersten paar Zeilen von <code>gap_life_exp.csv</code> an. Dazu kannst du entweder die Datei öffnen oder, im Terminal, <code>head</code> darauf anwenden.</p>
+<p>Schauen wir uns die ersten paar Zeilen von <code>gap_life_exp.csv</code> an. Dazu können wir entweder die Datei öffnen oder, im Terminal, <code>head</code> darauf anwenden.</p>
 <pre><code>country,continent,life_exp
 Afghanistan,Asia,43.828
 Albania,Europe,76.423
@@ -213,34 +221,34 @@ Algeria,Africa,72.301
 Angola,Africa,42.731
 Argentina,Americas,75.32</code></pre>
 <p>Das sieht recht ordentlich aus, obwohl es keine sichtbare Ausrichtung oder Trennung in Spalten gibt. Hätten wir die Basisfunktion <code><a href="https://rdrr.io/r/utils/read.table.html">read.csv()</a></code> benutzt, würden wir Zeilennamen und viele Anführungszeichen sehen, es sei denn, wir hätten diese Features explizit abgeschaltet. Das schönere Standardverhalten ist daher der Hauptgrund, warum wir <code><a href="https://readr.tidyverse.org/reference/write_delim.html">readr::write_csv()</a></code> gegenüber <code><a href="https://rdrr.io/r/utils/write.table.html">write.csv()</a></code> bevorzugen.</p>
-<blockquote>
-<p>Es ist nicht wirklich fair, sich über den Mangel an sichtbarer Ausrichtung zu beklagen, schließlich erzeugen wir Dateien, die der Computer lesen soll. Falls du wirklich in der Datei “herumstöbern” willst, benutze <code><a href="https://rdrr.io/r/utils/View.html">View()</a></code> in RStudio oder öffnen die Datei mit einem Spreadsheet Programm (!). Aber erliege NIE der Versuchung, dort Datenmanipulationen vorzunehmen … gehe zurück zu R und schreibe dort die Befehle, die du die nächsten 15 Mal ausführen kannst, wenn du diesen Datensatz (oder Datensätze derselben Form) importieren/bereinigen/aggregieren/exportieren willst.</p>
-</blockquote>
+<div class="content-box-grey">
+<p>Es ist nicht wirklich fair, sich über den Mangel an sichtbarer Ausrichtung zu beklagen, schließlich erzeugen wir Dateien, die der Computer lesen soll. Falls ihr aber wirklich in der Datei “herumstöbern” wollt, benutzt <code><a href="https://rdrr.io/r/utils/View.html">View()</a></code> in RStudio oder öffnen die Datei mit einem Spreadsheet Programm (!). Aber erliegt <strong>NIE</strong> der Versuchung, dort Datenmanipulationen vorzunehmen … kehrt zurück zu R und schreibt dort die entsprechenden Befehle, die ihr die nächsten 15 Mal (oder so oft wie nötig) ausführen könnt, wenn ihr diesen Datensatz (oder Datensätze derselben Form) importieren/bereinigen/aggregieren/exportieren wollt.</p>
 </div>
-<div id="daten-über-eine-api" class="section level2" number="8.6">
+</div>
+<div id="daten-über-eine-api" class="section level2" number="8.5">
 <h2>
-<span class="header-section-number">8.6</span> Daten über eine API<a class="anchor" aria-label="anchor" href="#daten-%C3%BCber-eine-api"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.5</span> Daten über eine API<a class="anchor" aria-label="anchor" href="#daten-%C3%BCber-eine-api"><i class="fas fa-link"></i></a>
 </h2>
-<p>Interessante Datensätze sind der Treibstoff für ein gutes Data Science Projekt. APIs (Application Programming Interface) sind eine weitere sehr nützliche Methode, um auf interessante Daten zuzugreifen.</p>
-<p>Anstatt einen Datensatz herunterladen zu müssen, ermöglichen APIs Daten direkt von bestimmten Websites über eine Schnittstelle anzufordern. Viele große Webseiten wie Twitter und Facebook ermöglichen über APIs den Zugriff auf Teile ihrer Daten.</p>
-<p>Wir werden die Grundlagen des Zugriffs auf eine API besprechen. Dazu benötigst du aber keine Vorwissen bzgl. APIs.</p>
-<div id="einführung" class="section level3" number="8.6.1">
+<p>Interessante Datensätze sind der <em>Treibstoff</em> für ein gutes Data Science Projekt. APIs (Application Programming Interface) sind eine weitere sehr nützliche Methode, um auf interessante Daten zuzugreifen.</p>
+<p>Anstatt einen Datensatz herunterladen zu müssen, ermöglichen APIs Daten direkt von bestimmten Webseiten über eine Schnittstelle anzufordern. Viele große Webseiten wie <a href="https://www.earthdatascience.org/courses/earth-analytics/get-data-using-apis/intro-to-social-media-text-mining-r/">Twitter</a> und Facebook ermöglichen über APIs den Zugriff auf Teile ihrer Daten.</p>
+<p>Wir werden die Grundlagen des Zugriffs auf eine API besprechen. Dazu benötigt ihr aber kein Vorwissen bzgl. APIs.</p>
+<div id="einführung" class="section level3" number="8.5.1">
 <h3>
-<span class="header-section-number">8.6.1</span> Einführung<a class="anchor" aria-label="anchor" href="#einf%C3%BChrung"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.5.1</span> Einführung<a class="anchor" aria-label="anchor" href="#einf%C3%BChrung"><i class="fas fa-link"></i></a>
 </h3>
 <p>API ist ein allgemeiner Begriff für den Ort, an dem ein Computerprogramm mit einem anderen oder mit sich selbst interagiert. Wir sprechen über Web-APIs, bei denen zwei verschiedene Computer - ein Client und ein Server - miteinander interagieren, um Daten anzufordern bzw. bereitzustellen.</p>
-<p>APIs bieten eine ausgefeilte Möglichkeit Daten von einer Website anzufordern. Wenn eine Website wie Twitter eine API einrichtet, richten sie im Wesentlichen einen Computer ein, der auf Datenanfragen wartet.</p>
+<p>APIs bieten eine ausgefeilte Möglichkeit Daten von einer Webseite anzufordern. Wenn eine Webseite wie Twitter eine API einrichtet, richten sie im Wesentlichen einen Computer ein, der auf Datenanfragen wartet.</p>
 <p>Sobald dieser Computer eine Datenanforderung empfängt, verarbeitet er die Daten selbst und sendet sie an den Computer, der sie angefordert hat. Unsere Aufgabe als Anforderer der Daten wird es sein R Code zu schreiben, der die Anforderung erstellt und dem Computer, auf dem die API läuft, mitteilt, was wir benötigen. Dieser Computer liest dann unseren Code, verarbeitet die Anfrage und gibt schön formatierte Daten zurück, die mithilfe existierender R Pakete verarbeitet werden können..</p>
 </div>
-<div id="erstellen-von-api-anforderungen-in-r" class="section level3" number="8.6.2">
+<div id="erstellen-von-api-anforderungen-in-r" class="section level3" number="8.5.2">
 <h3>
-<span class="header-section-number">8.6.2</span> Erstellen von API-Anforderungen in R<a class="anchor" aria-label="anchor" href="#erstellen-von-api-anforderungen-in-r"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.5.2</span> Erstellen von API-Anforderungen in R<a class="anchor" aria-label="anchor" href="#erstellen-von-api-anforderungen-in-r"><i class="fas fa-link"></i></a>
 </h3>
 <p>Um mit APIs in R zu arbeiten, müssen wir ein paar neue Pakete laden (und vorher natürlich installieren). Konkret werden wir mit den Paketen <code>httr</code> und <code>jsonlite</code> arbeiten. Sie spielen bei der Einbindung der APIs unterschiedliche Rollen, aber beide sind unverzichtbar.</p>
-<p>Vermutlich hast du die beiden Pakete bisher nicht installiert. Daher ist der erste Schritt die beiden Pakete zu installieren</p>
+<p>Vermutlich habt ihr die beiden Pakete bisher nicht installiert. Dahersstarten wir mit dem Installieren dieser beiden Pakete</p>
 <div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"httr"</span>, <span class="st">"jsonlite"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<p>und anschließend zu laden</p>
+<p>und laden sie anschließend</p>
 <div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://httr.r-lib.org/">httr</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://arxiv.org/abs/1403.2805">jsonlite</a></span><span class="op">)</span>
@@ -250,40 +258,40 @@ Argentina,Americas,75.32</code></pre>
 <span class="co">## </span>
 <span class="co">##     flatten</span></code></pre></div>
 </div>
-<div id="unsere-erste-api-anfrage-stellen" class="section level3" number="8.6.3">
+<div id="unsere-erste-api-anfrage-stellen" class="section level3" number="8.5.3">
 <h3>
-<span class="header-section-number">8.6.3</span> Unsere erste API-Anfrage stellen<a class="anchor" aria-label="anchor" href="#unsere-erste-api-anfrage-stellen"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.5.3</span> Unsere erste API-Anfrage stellen<a class="anchor" aria-label="anchor" href="#unsere-erste-api-anfrage-stellen"><i class="fas fa-link"></i></a>
 </h3>
-<p>Der erste Schritt, um Daten von einer API zu erhalten, ist die eigentliche Anfrage in R. Diese Anfrage wird an den Computer-Server geschickt, der über die API verfügt, und wenn alles reibungslos verläuft, wird er eine Antwort zurücksenden.</p>
-<p>Es gibt verschiedene Arten von Anfragen, die man an einen API-Server stellen kann. Diese Arten von Anfragen entsprechen verschiedenen Aktionen, die der Server ausführen soll.</p>
-<p>Für unsere Zwecke fragen wir lediglich nach Daten, was einer GET-Anfrage entspricht. Andere Arten von Anfragen sind z.B. POST und PUT, aber diese sind für uns nicht von Interesse und daher brauchen wir uns darum nicht zu kümmern.</p>
+<p>Der erste Schritt, um Daten von einer API zu erhalten, ist die eigentliche Anfrage in R. Diese Anfrage wird an den Server geschickt, der über die API verfügt, und wenn alles reibungslos verläuft, wird er uns eine Antwort zurücksenden.</p>
+<p>Es gibt verschiedene Arten von Anfragen, die man an einen API-Server stellen kann. Diese verschiedenen Typen von Anfragen entsprechen verschiedenen Aktionen, die der Server ausführen soll.</p>
+<p>Für unsere Zwecke fragen wir lediglich nach Daten, was einer <strong>GET</strong>-Anfrage entspricht. Andere Arten von Anfragen sind z.B. POST und PUT, aber diese sind für uns nicht von Interesse und daher brauchen wir uns darum nicht zu kümmern.</p>
 <p>Um eine GET-Anfrage zu erstellen, müssen wir die <code><a href="https://httr.r-lib.org/reference/GET.html">GET()</a></code> Funktion aus dem <code>httr</code> Paket verwenden. Die <code><a href="https://httr.r-lib.org/reference/GET.html">GET()</a></code> Funktion benötigt als Input eine URL, die die Adresse des Servers angibt, an den die Anforderung gesendet werden soll.</p>
-<p>Als Beispiel werden wir mit der Open Notify API arbeiten, die Daten zu verschiedenen NASA-Projekten enthält. Mithilfe der Open Notify API können wir uns über den Standort der Internationalen Raumstation informieren und erfahren, wie viele Personen sich derzeit im Weltraum aufhalten.</p>
+<p>Als Beispiel werden wir mit der <a href="http://open-notify.org/">Open Notify</a> API arbeiten, die Daten zu verschiedenen NASA-Projekten enthält. Mithilfe der Open Notify API können wir uns über den Standort der Internationalen Raumstation informieren und erfahren, wie viele Personen sich derzeit im Weltraum aufhalten.</p>
 <p>Wir beginnen damit, dass wir unsere Anfrage mit der <code><a href="https://httr.r-lib.org/reference/GET.html">GET()</a></code> Funktion stellen und die URL der API angeben:</p>
 <div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">jdata</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://httr.r-lib.org/reference/GET.html">GET</a></span><span class="op">(</span><span class="st">"http://api.open-notify.org/astros.json"</span><span class="op">)</span></code></pre></div>
 <p>Die Ausgabe der Funktion <code><a href="https://httr.r-lib.org/reference/GET.html">GET()</a></code> ist eine Liste, die alle Informationen enthält, die vom API-Server zurückgegeben werden.</p>
 </div>
-<div id="get-ausgabe" class="section level3" number="8.6.4">
+<div id="get-ausgabe" class="section level3" number="8.5.4">
 <h3>
-<span class="header-section-number">8.6.4</span> <code>GET()</code> Ausgabe<a class="anchor" aria-label="anchor" href="#get-ausgabe"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.5.4</span> <code>GET()</code> Ausgabe<a class="anchor" aria-label="anchor" href="#get-ausgabe"><i class="fas fa-link"></i></a>
 </h3>
 <p>Schauen wir uns einmal an, wie die Variable jdata in der R-Konsole aussieht:</p>
 <div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">jdata</span>
 <span class="co">## Response [http://api.open-notify.org/astros.json]</span>
-<span class="co">##   Date: 2021-11-16 15:04</span>
+<span class="co">##   Date: 2021-11-23 21:55</span>
 <span class="co">##   Status: 200</span>
 <span class="co">##   Content-Type: application/json</span>
 <span class="co">##   Size: 497 B</span></code></pre></div>
-<p>Als erstes fällt auf, dass die URL enthalten ist, an die die GET-Anfrage gesendet wurde. Außerdem sehen wir das Datum und die Uhrzeit, zu der die Anfrage gestellt wurde, sowie die Größe der Antwort.</p>
-<p>Die Information <code>Content-Type</code> gibt uns eine Vorstellung davon, welche Form die Daten haben. Diese spezielle Antwort besagt, dass die Daten ein JSON-Format annehmen, womit auch klar ist warum wir das Paket <code>jsonlite</code> ebenfalls geladen haben.</p>
-<p>Der Status verdient eine besondere Aufmerksamkeit. <code>Status</code> bezieht sich auf den Erfolg oder Misserfolg der API-Anfrage, und er wird in Form einer Zahl angegeben. Die zurückgegebene Nummer gibt Auskunft darüber, ob die Anfrage erfolgreich war oder nicht, und kann auch einige Gründe für einen möglichen Misserfolg nennen.</p>
+<p>Als erstes fällt auf, dass die URL enthalten ist, an die die GET-Anfrage gesendet wurde. Außerdem erkennen wir das Datum und die Uhrzeit, zu der die Anfrage gestellt wurde, sowie die Größe der Antwort.</p>
+<p>Die Information <code>Content-Type</code> gibt uns eine Vorstellung davon, welche Form die Daten haben. Diese spezielle Antwort besagt, dass die Daten ein JSON-Format annehmen, womit auch klar ist warum wir das Paket <code>jsonlite</code> geladen haben.</p>
+<p>Der Status verdient eine besondere Aufmerksamkeit. <code>Status</code> bezieht sich auf den Erfolg oder Misserfolg der API-Anfrage, und er wird in Form einer Zahl angegeben. Die zurückgegebene Nummer gibt Auskunft darüber, ob die Anfrage erfolgreich war oder nicht. Dort können auch Gründe für einen möglichen Misserfolg enthalten sein.</p>
 <p>Die Zahl 200 ist das, was wir sehen wollen. Sie entspricht einem erfolgreichen Antrag, und das ist es, was wir hier haben. Eine Übersicht über weitere Status Codes findet man z.B. auf dieser [Webseite](<a href="https://www.restapitutorial.com/httpstatuscodes.html" class="uri">https://www.restapitutorial.com/httpstatuscodes.html</a>.</p>
 </div>
-<div id="handling-json-data" class="section level3" number="8.6.5">
+<div id="handling-json-data" class="section level3" number="8.5.5">
 <h3>
-<span class="header-section-number">8.6.5</span> Handling JSON Data<a class="anchor" aria-label="anchor" href="#handling-json-data"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.5.5</span> Handling JSON Data<a class="anchor" aria-label="anchor" href="#handling-json-data"><i class="fas fa-link"></i></a>
 </h3>
 <p><a href="https://www.json.org/json-en.html">JSON</a> steht für JavaScript Object Notation. Während JavaScript eine weitere Programmiersprache ist, liegt unser Schwerpunkt bei JSON auf seiner Struktur. JSON ist nützlich, weil es von einem Computer leicht lesbar ist, und aus diesem Grund ist es zur primären Art und Weise geworden, wie Daten über APIs transportiert werden. Die meisten APIs senden ihre Antworten im JSON-Format.</p>
 <p>JSON ist als eine Reihe von Schlüssel-Werte-Paaren formatiert, wobei ein bestimmtes Wort (“Schlüssel”) mit einem bestimmten Wert assoziiert ist. Ein Beispiel für diese Schlüssel-Wert-Struktur ist unten dargestellt:</p>
@@ -292,13 +300,13 @@ Argentina,Americas,75.32</code></pre>
     “number_of_skills”: 2
 }</code></pre>
 <p>In ihrem aktuellen Zustand sind die Daten in der Variablen <code>jdata</code> nicht verwendbar. Die Daten sind als Unicode-Rohdaten in <code>jdata</code> enthalten, und müssen in das JSON-Format konvertiert werden.</p>
-<p>Dazu müssen wir zunächst den rohen Unicode in Character Daten konvertieren, die dem oben gezeigten JSON-Format ähneln. Die Funktion <code><a href="https://rdrr.io/r/base/rawConversion.html">rawToChar()</a></code> führt genau diese Aufgabe aus:</p>
+<p>Dazu müssen wir zunächst den rohen Unicode in character Daten konvertieren, die dem oben gezeigten JSON-Format ähneln. Die Funktion <code><a href="https://rdrr.io/r/base/rawConversion.html">rawToChar()</a></code> führt genau diese Aufgabe aus:</p>
 <div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/rawConversion.html">rawToChar</a></span><span class="op">(</span><span class="va">jdata</span><span class="op">$</span><span class="va">content</span><span class="op">)</span>
 <span class="co">## [1] "{\"message\": \"success\", \"people\": [{\"name\": \"Mark Vande Hei\", \"craft\": \"ISS\"}, {\"name\": \"Pyotr Dubrov\", \"craft\": \"ISS\"}, {\"name\": \"Anton Shkaplerov\", \"craft\": \"ISS\"}, {\"name\": \"Zhai Zhigang\", \"craft\": \"Shenzhou 13\"}, {\"name\": \"Wang Yaping\", \"craft\": \"Shenzhou 13\"}, {\"name\": \"Ye Guangfu\", \"craft\": \"Shenzhou 13\"}, {\"name\": \"Raja Chari\", \"craft\": \"ISS\"}, {\"name\": \"Tom Marshburn\", \"craft\": \"ISS\"}, {\"name\": \"Kayla Barron\", \"craft\": \"ISS\"}, {\"name\": \"Matthias Maurer\", \"craft\": \"ISS\"}], \"number\": 10}"</span></code></pre></div>
 <p>Die resultierende Zeichenfolge sieht zwar recht unordentlich aus, aber es liegt wirklich die JSON-Struktur vor.</p>
-<p>Ausgehend von diesem Character Vektor können wir nun mit <code><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html">fromJSON()</a></code> aus dem <code>jsonlite</code> alles in ein Listenformat transformieren.</p>
-<p>Die <code><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html">fromJSON()</a></code> Funktion benötigt einen Character Vektor, der die JSON-Struktur enthält, die wir aus der Ausgabe von <code><a href="https://rdrr.io/r/base/rawConversion.html">rawToChar()</a></code> erhalten haben. Wenn wir also diese beiden Funktionen aneinanderreihen, erhalten wir die gewünschten Daten in einem Format, das wir in R leichter bearbeiten können.</p>
+<p>Ausgehend von diesem character Vektor können wir nun mit <code><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html">fromJSON()</a></code>, aus dem <code>jsonlite</code> Paket, alles in ein Listenformat transformieren.</p>
+<p>Die <code><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html">fromJSON()</a></code> Funktion benötigt einen character Vektor, der die JSON-Struktur enthält, die wir aus der Ausgabe von <code><a href="https://rdrr.io/r/base/rawConversion.html">rawToChar()</a></code> erhalten haben. Wenn wir also diese beiden Funktionen nacheinander anwenden, erhalten wir die gewünschten Daten in einem Format, das wir in R leicht bearbeiten können.</p>
 <div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">data</span> <span class="op">&lt;-</span>  <span class="fu"><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html">fromJSON</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rawConversion.html">rawToChar</a></span><span class="op">(</span><span class="va">jdata</span><span class="op">$</span><span class="va">content</span><span class="op">)</span><span class="op">)</span>
 <span class="fu">glimpse</span><span class="op">(</span><span class="va">data</span><span class="op">)</span>
@@ -322,45 +330,45 @@ Argentina,Americas,75.32</code></pre>
 <span class="co">## 8     Tom Marshburn         ISS</span>
 <span class="co">## 9      Kayla Barron         ISS</span>
 <span class="co">## 10  Matthias Maurer         ISS</span></code></pre></div>
-<p>Also, da haben wir unsere Antwort: Zum Zeitpunkt des letzten Updates Tue Nov 16 16:04:35 2021 von R4ews befanden sich 10 Personen im Weltraum. Aber wenn du alles selbst ausprobierst, könnten es auch schon wieder andere Namen und eine andere Anzahl sein. Das ist einer der Vorteile von APIs - im Gegensatz zu herunterladbaren Datensätzen werden sie im Allgemeinen in Echtzeit oder nahezu in Echtzeit aktualisiert, so dass sie eine großartige Möglichkeit darstellen, Zugang zu sehr aktuellen Daten zu erhalten.</p>
-<p>In diesem Beispiel haben wir einen sehr unkomplizierten API-Workflow durchlaufen. Die meisten APIs erfordern, dass Sie demselben allgemeinen Muster folgen, aber dabei können sie durchaus komplexer sein.</p>
-<p>In unserem Beispiel war es ausreichen nur die URL anzugeben. Aber einige APIs verlangen durchaus mehr Informationen vom Benutzer. Im letzten Teil dieser Einführung gehen wir darauf ein, wie du der API mit deiner Anfrage zusätzliche Informationen zur Verfügung stellen kannst.</p>
+<p>Also, da haben wir unsere Antwort: Zum Zeitpunkt des letzten Updates Nov 23, 2021 von R4ews befanden sich 10 Personen im Weltraum. Aber wenn ihr den Code zu einem späteren Zeitpunkt ausprobiert, könnten es auch schon wieder andere Namen und eine andere Anzahl sein. Das ist einer der Vorteile von APIs - im Gegensatz zu Datensätzen, die man im Spreadsheet Format herunterladen kann, werden sie in der Regel in Echtzeit oder nahezu in Echtzeit aktualisiert. APIs bieten somit die Möglichkeit leicht auf sehr aktuellen Daten zuzugreifen.</p>
+<p>In diesem Beispiel haben wir einen sehr unkomplizierten API-Workflow durchlaufen. Die meisten APIs fordern, dass man demselben allgemeinen Muster folgt, aber dabei können die jeweilgen Aufrufe/Befehle durchaus deutlich komplexer sein.</p>
+<p>In unserem Beispiel war es ausreichen nur die URL anzugeben. Aber einige APIs verlangen mehr Informationen vom Benutzer. Im letzten Teil dieser Einführung gehen wir darauf ein, wie ihr der API in eurer Anfrage zusätzliche Informationen zur Verfügung stellen könnt.</p>
 </div>
-<div id="apis-und-abfrageparameter" class="section level3" number="8.6.6">
+<div id="apis-und-abfrageparameter" class="section level3" number="8.5.6">
 <h3>
-<span class="header-section-number">8.6.6</span> APIs und Abfrageparameter<a class="anchor" aria-label="anchor" href="#apis-und-abfrageparameter"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.5.6</span> APIs und Abfrageparameter<a class="anchor" aria-label="anchor" href="#apis-und-abfrageparameter"><i class="fas fa-link"></i></a>
 </h3>
 <p>Was wäre, wenn wir wissen wollten, wann die ISS einen bestimmten Ort auf der Erde überfliegen würde? Die ISS Pass Times API von Open Notify verlangt von uns, dass wir zusätzliche Parameter angeben, bevor sie die gewünschten Daten zurückgeben kann.</p>
 <p>Wir müssen den Längen- und Breitengrad des Ortes angeben, nach dem wir im Rahmen unserer <code><a href="https://httr.r-lib.org/reference/GET.html">GET()</a></code> Anfrage fragen. Sobald ein Längen- und Breitengrad angegeben ist, werden sie als Abfrageparameter mit der ursprünglichen URL kombiniert.</p>
-<p>Lass uns die API verwenden, um herauszufinden, wann die ISS Garching (auf 48.24896 Breiten- und 11.65101 Längengrad) passieren wird:</p>
+<p>Lasst uns die API verwenden, um herauszufinden, wann die ISS Garching (auf 48.24896 Breiten- und 11.65101 Längengrad) passieren wird:</p>
 <div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">jdata</span> <span class="op">&lt;-</span>  <span class="fu"><a href="https://httr.r-lib.org/reference/GET.html">GET</a></span><span class="op">(</span><span class="st">"http://api.open-notify.org/iss-pass.json"</span>,
     query <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>lat <span class="op">=</span> <span class="fl">48.24896</span>, lon <span class="op">=</span> <span class="fl">11.65101</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<p>Man muss in der Dokumentation für die API, mit man arbeiten will, nachsehen, ob es erforderliche Abfrageparameter gibt. Für die überwiegende Mehrheit der APIs, auf die du möglicherweise zugreifen möchtest, gibt es eine Dokumentation, die du lesen kannst (und lesen solltest), um ein klares Verständnis dafür zu erhalten, welche Parameter deine Anfrage erfordert.</p>
-<p>Wie auch immer, jetzt, da wir unsere Anfrage einschließlich der Standortparameter gestellt haben, können wir die Antwort mit den gleichen Funktionen überprüfen, die wir zuvor verwendet haben. Lass uns die Daten aus der Antwort extrahieren:</p>
+<p>Man muss in der Dokumentation für die API, mit der man arbeiten will, nachsehen, ob es erforderliche Abfrageparameter gibt. Für die überwiegende Mehrheit der APIs, auf die ihr möglicherweise zugreifen möchtet, existiert eine Dokumentation, die beschreibt welche Parameter in der Anfrage enthalten sein müssen, um ein gewünschtes Ergebnis zurückzugeben.</p>
+<p>Wie auch immer, jetzt, da wir unsere Anfrage einschließlich der Standortparameter gestellt haben, können wir die Antwort mit den gleichen Funktionen überprüfen, die wir zuvor verwendet haben. Lasst uns die Daten aus der Antwort extrahieren:</p>
 <div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html">fromJSON</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rawConversion.html">rawToChar</a></span><span class="op">(</span><span class="va">jdata</span><span class="op">$</span><span class="va">content</span><span class="op">)</span><span class="op">)</span>
 <span class="va">data</span><span class="op">$</span><span class="va">response</span>
 <span class="co">##   duration   risetime</span>
-<span class="co">## 1      575 1637086348</span>
-<span class="co">## 2      658 1637092090</span>
-<span class="co">## 3      653 1637097912</span>
-<span class="co">## 4      656 1637103740</span>
-<span class="co">## 5      641 1637109554</span></code></pre></div>
-<p>Diese API gibt uns Zeiten in Form von <a href="https://de.wikipedia.org/wiki/Unixzeit">Unixzeit</a> zurück. Unixzeit ist die Zeitspanne, die seit dem 1. Januar 1970 vergangen ist. Mithilfe der Funktion <code>as_datetime()</code> aus dem <a href="https://lubridate.tidyverse.org">lubridate</a> Paket können wir die Unixzeit aber leicht umrechnen</p>
+<span class="co">## 1      618 1637706207</span>
+<span class="co">## 2      293 1637712120</span>
+<span class="co">## 3      583 1637766568</span>
+<span class="co">## 4      659 1637772315</span>
+<span class="co">## 5      654 1637778138</span></code></pre></div>
+<p>Diese API gibt uns die Zeit in Form von <a href="https://de.wikipedia.org/wiki/Unixzeit">Unixzeit</a> zurück. Unixzeit ist die Zeitspanne, die seit dem 1. Januar 1970 vergangen ist. Mithilfe der Funktion <code>as_datetime()</code> aus dem <a href="https://lubridate.tidyverse.org">lubridate</a> Paket können wir die Unixzeit aber leicht umrechnen</p>
 <div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">lubridate</span><span class="fu">::</span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/as_date.html">as_datetime</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">response</span><span class="op">$</span><span class="va">risetime</span><span class="op">)</span>
-<span class="co">## [1] "2021-11-16 18:12:28 UTC" "2021-11-16 19:48:10 UTC"</span>
-<span class="co">## [3] "2021-11-16 21:25:12 UTC" "2021-11-16 23:02:20 UTC"</span>
-<span class="co">## [5] "2021-11-17 00:39:14 UTC"</span></code></pre></div>
-<p>Wir haben hier wirklich nur die Basics in Bezug auf APIs eingeführt. Aber hoffentlich hat dir diese Einführung trotzdem das Vertrauen gegeben, sich mit einigen komplexeren und leistungsfähigeren APIs auseinanderzusetzen, und trägt dadurch dazu bei, eine ganz neue Welt von Daten zu erschließen, die du erforschen kannst!</p>
+<span class="co">## [1] "2021-11-23 22:23:27 UTC" "2021-11-24 00:02:00 UTC"</span>
+<span class="co">## [3] "2021-11-24 15:09:28 UTC" "2021-11-24 16:45:15 UTC"</span>
+<span class="co">## [5] "2021-11-24 18:22:18 UTC"</span></code></pre></div>
+<p>Damit wollen wir den Abschnitt zu APIs beenden. Macht euch bewusst, dass wir hier wirklich nur die Basics in Bezug auf APIs eingeführt haben. Aber hoffentlich hat euch diese Einführung trotzdem ausreichend Vertrauen gegeben, sich mit einigen komplexeren und leistungsfähigeren APIs auseinanderzusetzen. Hoffentlich seid ihr nun in der Lage euch eine ganz neue Welt von Daten zu erschließen, die darauf warten erforscht zu werden!</p>
 </div>
 </div>
-<div id="weiteres-material" class="section level2" number="8.7">
+<div id="weiteres-material" class="section level2" number="8.6">
 <h2>
-<span class="header-section-number">8.7</span> Weiteres Material<a class="anchor" aria-label="anchor" href="#weiteres-material"><i class="fas fa-link"></i></a>
+<span class="header-section-number">8.6</span> Weiteres Material<a class="anchor" aria-label="anchor" href="#weiteres-material"><i class="fas fa-link"></i></a>
 </h2>
-<p>Hier sein noch auf das Kapitel <a href="http://r4ds.had.co.nz/data-import.html">Data import</a> im Buch <a href="https://r4ds.had.co.nz">R for Data Science</a> von Hadley Wickham und Garrett Grolemund <span class="citation">(<a href="literatur-3.html#ref-wickham2016" role="doc-biblioref">2016</a>)</span> verwiesen für weitere Information zum Daten Import.</p>
+<p>Wer noch mehr zum Thema Daten Import lesen will, der soll einen Blick in das Kapitel <a href="http://r4ds.had.co.nz/data-import.html">Data import</a> im Buch <a href="https://r4ds.had.co.nz">R for Data Science</a> von Hadley Wickham und Garrett Grolemund <span class="citation">(<a href="literatur-3.html#ref-wickham2016" role="doc-biblioref">2016</a>)</span> werfen.</p>
 <!--Packages: main link-->
 <!--Packages: vignettes & CRAN/GitHub links-->
 <!--Bookdowns: main link-->
@@ -374,7 +382,7 @@ Argentina,Americas,75.32</code></pre>
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="dplyr-single.html"><span class="header-section-number">7</span> Mehr zu dplyr</a></div>
-<div class="next"><a href="tidy.html"><span class="header-section-number">9</span> tidy ?</a></div>
+<div class="next"><a href="tidy.html"><span class="header-section-number">9</span> tidy was?</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
@@ -385,21 +393,20 @@ Argentina,Americas,75.32</code></pre>
 <li><a class="nav-link" href="#daten-export"><span class="header-section-number">8.1.2</span> Daten Export</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#load-the-tidyverse"><span class="header-section-number">8.2</span> Load the tidyverse</a></li>
-<li><a class="nav-link" href="#einlesen-der-gapminder-daten"><span class="header-section-number">8.3</span> Einlesen der Gapminder Daten</a></li>
-<li><a class="nav-link" href="#einlesen-von-daten-in-tabellenform"><span class="header-section-number">8.4</span> Einlesen von Daten in Tabellenform</a></li>
-<li><a class="nav-link" href="#daten-exportieren"><span class="header-section-number">8.5</span> Daten exportieren</a></li>
+<li><a class="nav-link" href="#readr"><span class="header-section-number">8.2</span> readr</a></li>
+<li><a class="nav-link" href="#einlesen-von-daten-in-tabellenform"><span class="header-section-number">8.3</span> Einlesen von Daten in Tabellenform</a></li>
+<li><a class="nav-link" href="#daten-exportieren"><span class="header-section-number">8.4</span> Daten exportieren</a></li>
 <li>
-<a class="nav-link" href="#daten-%C3%BCber-eine-api"><span class="header-section-number">8.6</span> Daten über eine API</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#einf%C3%BChrung"><span class="header-section-number">8.6.1</span> Einführung</a></li>
-<li><a class="nav-link" href="#erstellen-von-api-anforderungen-in-r"><span class="header-section-number">8.6.2</span> Erstellen von API-Anforderungen in R</a></li>
-<li><a class="nav-link" href="#unsere-erste-api-anfrage-stellen"><span class="header-section-number">8.6.3</span> Unsere erste API-Anfrage stellen</a></li>
-<li><a class="nav-link" href="#get-ausgabe"><span class="header-section-number">8.6.4</span> GET() Ausgabe</a></li>
-<li><a class="nav-link" href="#handling-json-data"><span class="header-section-number">8.6.5</span> Handling JSON Data</a></li>
-<li><a class="nav-link" href="#apis-und-abfrageparameter"><span class="header-section-number">8.6.6</span> APIs und Abfrageparameter</a></li>
+<a class="nav-link" href="#daten-%C3%BCber-eine-api"><span class="header-section-number">8.5</span> Daten über eine API</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#einf%C3%BChrung"><span class="header-section-number">8.5.1</span> Einführung</a></li>
+<li><a class="nav-link" href="#erstellen-von-api-anforderungen-in-r"><span class="header-section-number">8.5.2</span> Erstellen von API-Anforderungen in R</a></li>
+<li><a class="nav-link" href="#unsere-erste-api-anfrage-stellen"><span class="header-section-number">8.5.3</span> Unsere erste API-Anfrage stellen</a></li>
+<li><a class="nav-link" href="#get-ausgabe"><span class="header-section-number">8.5.4</span> GET() Ausgabe</a></li>
+<li><a class="nav-link" href="#handling-json-data"><span class="header-section-number">8.5.5</span> Handling JSON Data</a></li>
+<li><a class="nav-link" href="#apis-und-abfrageparameter"><span class="header-section-number">8.5.6</span> APIs und Abfrageparameter</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#weiteres-material"><span class="header-section-number">8.7</span> Weiteres Material</a></li>
+<li><a class="nav-link" href="#weiteres-material"><span class="header-section-number">8.6</span> Weiteres Material</a></li>
 </ul>
 
       <div class="book-extra">

@@ -1,0 +1,73 @@
+# (PART) ggplot2 Intro {-} 
+
+# Einführung {#graphics-overview}
+
+```{r include = FALSE}
+source("common.R")
+```
+
+Das Paket `ggplot2` verwendet eine Grammatik beim Erzeugen von Grafiken. Diese basiert auf 
+
+> [Wilkinson (2005): *The Grammar of Graphics*, Springer.](http://link.springer.com/book/10.1007%2F0-387-28695-0)
+
+Dadurch
+
+- ist eine starke Abstraktion bei der Definition einer Grafik möglich
+- steht ein sehr flexibles Grafiksystem zur Verfügung.
+
+
+## `ggplot2` laden
+
+Wie zuvor auch, laden wir stets das komplette `tidyverse`. Man weiß ja vorher nie so genau was man alles so braucht.
+
+```{r}
+library(tidyverse)
+```
+
+
+## Idee
+
+Die grundlegende Idee des ggplot2 Ansatzes zum Erstellen von Grafiken, besteht darin die Bausteine eines Plots unabhängig voneinander zu definieren. Ein Plot besteht immer aus:
+
+- Daten (als `data.frame` oder `tibble`)
+- Koordinatensystem
+- Skala
+- geometrisches Objekt zur Darstellung (`geom`)
+
+Zusätzlich kann er aber auch noch
+
+
+- statistische Transformationen (`stat`)
+- verschiedene Facetten
+- ...
+
+enthalten.
+
+Die einzelnen Teile eines Plots werden dann mit dem `+` Operator zusammengefügt.Initialisiert wird ein Plot mit `ggplot()`. Ohne weitere Bestandteile wird aber nur eine leere Grafik erzeugt
+
+```{r}
+library(gapminder)
+ggplot(gapminder) 
+```
+
+In den folgenden Abschnitten lernen wir daher wie weitere Bestandteile zum Plot hinzugefügt werden.
+
+
+## Ein einfacher Scatterplot
+
+Wir schauen uns zum Start einfach mal für Deutschland den Verlauf des `gdpPercap` über die Zeit an.
+
+```{r}
+gapminder %>%
+  filter(country == "Germany") %>% # auswählen der Daten 
+  ggplot(aes(x = year, y = gdpPercap)) +  # plot initialisieren
+  geom_point() # punkte zum Darstellen der Daten verwenden
+
+```
+
+In diesem einfachen Beispiel haben wir bereits gesehen, dass `ggplot()` über den Pipe-Operator verknüpft werden kann.
+
+
+
+```{r links, child="links.md"}
+```

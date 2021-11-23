@@ -43,7 +43,7 @@ library(gapminder)
 
 
 
-## Mit`mutate()` neue Variablen erstellen
+## Mit `mutate()` neue Variablen erstellen
 
 Wir starten mit dem Anlegen einer Kopie von `gapminder`, die wir dann nach unseren Vorstellungen verändern (es wäre aber auch nichts passiert, wenn wir alles mit `gapminder` durchführen würden; mit dem Befehl `gapminder::gapminder` können wir immer auf die Originalversion zurückgreifen).
 
@@ -267,7 +267,7 @@ my_gap %>%
 
 `everything()` wählt alle übrigen (außer `gdpPercap`) Variablen. Da `gdpPercap` an erster Stelle gewählt wurde, wird die Variable auch zur ersten Spalte. 
 
-## `group_by()` macht das R Leben einfacher
+## `summarise()` in Kombination mit `group_by()` 
 
 Nehmen wir mal an, dass uns die Antwort auf die Frage 
 
@@ -282,7 +282,6 @@ interessiert.
 
 * `summarise()` nimmt einen Datensatz mit $n$-Beobachtungen, berechnet die angeforderten Zusammenfassungen und gibt einen Datensatz mit einer Beobachtung (falls nur eine Zusammenfassung angefordert wurde) zurück.
 
-* Window Funktionen nehmen einen Datensatz mit $n$-Beobachtungen und geben einen Datensatz mit $n$-Beobachtungen zurück.
 
 * `mutate()` und `summarise()` berücksichtigen Gruppen.
 
@@ -713,7 +712,7 @@ my_gap %>%
 ## 5 Oceania   Australia         0.170
 ```
 
-Denkt ruhig eine Weile über das Ergebnis nach. Hier sieht in trockenen Statistiken über die durchschnittliche Lebenserwartung, wie Völkermord aussieht.
+Denkt ruhig eine Weile über das Ergebnis nach. Hier sieht man in trockenen Statistiken über die durchschnittliche Lebenserwartung, wie Völkermord aussieht.
 
 Um den Code besser zu verstehen, unterteilt ihn, beginnend von oben, in Stücke und überprüft die einzelnen Zwischenergebnisse. So wurde der Code auch geschrieben/entwickelt, mit vielen Fehlern und Verfeinerungen auf dem Weg. 
 

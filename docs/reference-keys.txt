@@ -29,10 +29,10 @@ pure-predictable-pipeable
 aufgabe-2
 dplyr-single
 wo-stehen-wir
-mitmutate-neue-variablen-erstellen
+mit-mutate-neue-variablen-erstellen
 mit-arrange-die-zeilenreihenfolge-ändern
 mit-rename-schöne-namen-vergeben
-group_by-macht-das-r-leben-einfacher
+summarise-in-kombination-mit-group_by
 dinge-aufzählen
 deskriptive-statistiken-mit-summarise
 gruppierte-veränderungen
@@ -44,8 +44,7 @@ import-export
 überblick
 daten-import
 daten-export
-load-the-tidyverse
-einlesen-der-gapminder-daten
+readr
 einlesen-von-daten-in-tabellenform
 daten-exportieren
 daten-über-eine-api

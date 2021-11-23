@@ -1,6 +1,8 @@
 # (PART) Versionskontrolle und R Markdown  {-} 
 
-
+```{r include = FALSE}
+source("common.R")
+```
 
 
 # Git, GitHub, and RStudio {#version-control}
@@ -25,7 +27,7 @@ Ziel dieses Abschnitts wird es sein, dass ihr
 
 
 :::{.content-box-red}
-⚠️    
+`r emo::ji("warning")`    
 Die Verwendung von GitHub ist eine __generelle Empfehlung__. Ein GitHub Account kann in verschiedenen Situationen hilfreich sein, insbesondere auch nach dem Studium.    
 Während der Veranstaltung werdet ihr aber mit eurem [LRZ GitLab](https://gitlab.lrz.de/users/sign_in) Account arbeiten. 
 :::
@@ -33,20 +35,3 @@ Während der Veranstaltung werdet ihr aber mit eurem [LRZ GitLab](https://gitlab
 
 Das Buch [*Happy Git and GitHub for the useR*](https://happygitwithr.com/) enthält noch viele weitere hilfreiche Git/GitHub Informationen. Auf manche kommen wir vielleicht im Laufe des Kurses noch zu sprechen. Andere sind vielleicht zu einem späteren Zeitpunkt interessant, wenn ihr an anspruchsvolleren Git Projekten arbeitet.
 
-
-
-# R Markdown {#r-markdown}
-
-<!--Original content: https://stat545.com/block007_first-use-rmarkdown.html-->
-
-Ausgewählte Hausaufgaben werdet ihr als R Markdown Dokument abgeben. R Markdown ist eine sehr zugängliche Methode zur Erstellung von Dokumenten, die Prosa Text mit R-Code und den daraus erzeugten Berechnungen, Tabellen und Abbildungen kombinieren.
-
-Ein möglicher R Markdown Workflow, der eine Interaktion mit Git, GitHub, und RStudio beinhaltet, wird auf der Seite
-
-[Test drive R Markdown](https://happygitwithr.com/rmd-test-drive.html)
-
-vorgestellt.
-
-:::{.content-box-yellow}
-Wir werden versuchen diesen Workflow im Rahmen des R Projekts umzusetzen.
-:::

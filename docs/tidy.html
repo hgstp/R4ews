@@ -4,15 +4,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Kapitel 9 tidy ? | R4ews MA0009</title>
+<title>Kapitel 9 tidy was? | R4ews MA0009</title>
 <meta name="author" content="Stephan Haug">
 <meta name="description" content="Idealerweise liegt ein Datensatz so vor, dass er gut von einem Computer gelesen werden kann. In der Regel sind die Datensätze, mit denen wir uns beschäftigen, ja umfangreich, d.h. der Mensch will...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
-<meta property="og:title" content="Kapitel 9 tidy ? | R4ews MA0009">
+<meta property="og:title" content="Kapitel 9 tidy was? | R4ews MA0009">
 <meta property="og:type" content="book">
 <meta property="og:description" content="Idealerweise liegt ein Datensatz so vor, dass er gut von einem Computer gelesen werden kann. In der Regel sind die Datensätze, mit denen wir uns beschäftigen, ja umfangreich, d.h. der Mensch will...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Kapitel 9 tidy ? | R4ews MA0009">
+<meta name="twitter:title" content="Kapitel 9 tidy was? | R4ews MA0009">
 <meta name="twitter:description" content="Idealerweise liegt ein Datensatz so vor, dass er gut von einem Computer gelesen werden kann. In der Regel sind die Datensätze, mit denen wir uns beschäftigen, ja umfangreich, d.h. der Mensch will...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -61,7 +61,7 @@
 <li><a class="" href="dplyr-intro.html"><span class="header-section-number">6</span> Einführung in dplyr</a></li>
 <li><a class="" href="dplyr-single.html"><span class="header-section-number">7</span> Mehr zu dplyr</a></li>
 <li><a class="" href="import-export.html"><span class="header-section-number">8</span> Daten I/O</a></li>
-<li><a class="active" href="tidy.html"><span class="header-section-number">9</span> tidy ?</a></li>
+<li><a class="active" href="tidy.html"><span class="header-section-number">9</span> tidy was?</a></li>
 <li class="book-part">ggplot2 Intro</li>
 <li><a class="" href="graphics-overview.html"><span class="header-section-number">10</span> Einführung</a></li>
 <li><a class="" href="bausteine.html"><span class="header-section-number">11</span> Bausteine</a></li>
@@ -81,7 +81,7 @@
 </div>
   </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="tidy" class="section level1" number="9">
 <h1>
-<span class="header-section-number">Kapitel 9</span> tidy ?<a class="anchor" aria-label="anchor" href="#tidy"><i class="fas fa-link"></i></a>
+<span class="header-section-number">Kapitel 9</span> tidy was?<a class="anchor" aria-label="anchor" href="#tidy"><i class="fas fa-link"></i></a>
 </h1>
 <p>Idealerweise liegt ein Datensatz so vor, dass er <strong>gut</strong> von einem Computer gelesen werden kann. In der Regel sind die Datensätze, mit denen wir uns beschäftigen, ja umfangreich, d.h. der Mensch will den Datensatz ja gar nicht (ein-)lesen. Trotzdem sind Datensätze oft anders angelegt (der Mensch trifft die Entscheidung über das Layout).</p>
 <p>Der Computer kann einen Datensatz gut <em>verarbeiten</em>, wenn wir den Datensatz als <strong>tidy</strong> bezeichnen können. Hauptmerkmal von einem <strong>tidy</strong> Datensatz:</p>
@@ -615,7 +615,7 @@ Male
   <span class="fu">geom_bar</span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"identity"</span>, position <span class="op">=</span> <span class="st">"dodge"</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">coord_flip</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu">guides</span><span class="op">(</span>fill <span class="op">=</span> <span class="fu">guide_legend</span><span class="op">(</span>reverse <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
   <span class="fu">scale_fill_brewer</span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Set1"</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="10_tidy_files/figure-html/barchart-lotr-words-by-film-race-1.png" width="672"></div>
+<div class="inline-figure"><img src="09_tidy_files/figure-html/barchart-lotr-words-by-film-race-1.png" width="672"></div>
 <p>Hobbits sind in “The Fellowhip of the Ring” stark vertreten, während die Menschen in “The Two Towers” viel mehr Leinwandzeit hatten. Ebenso prominent waren sie im letzten Film, “The Return of the King”.</p>
 <p>Auch hier war es wichtig, alle Daten in einem einzigen Data Frame zu haben, alle Wortzählungen in einer einzigen Variable und zugehörige Variablen für Film und Kategorie.</p>
 <blockquote>
@@ -890,7 +890,7 @@ drei Datensätze vom Anfang wiederherstellen</p>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#tidy"><span class="header-section-number">9</span> tidy ?</a></li>
+<li><a class="nav-link" href="#tidy"><span class="header-section-number">9</span> tidy was?</a></li>
 <li><a class="nav-link" href="#lord-of-the-rings"><span class="header-section-number">9.1</span> Lord of the Rings</a></li>
 <li><a class="nav-link" href="#tidy-lord-of-the-rings-data"><span class="header-section-number">9.2</span> Tidy Lord of the Rings data</a></li>
 <li><a class="nav-link" href="#vorteile-von-tidy-data"><span class="header-section-number">9.3</span> Vorteile von tidy data</a></li>
