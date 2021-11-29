@@ -301,7 +301,7 @@ Innerhalb eines Landes nehmen wir die Differenz zwischen der Lebenserwartung im 
 
 ### Window Funktionen {#window-functions}
 
-Window Funktionen nehmen $n$-Eingaben entgegen und geben $n$-Ausgaben zurück. Zudem hängt die Ausgabe von allen Eingabewerten ab. So ist `rank()` eine Window Funktion, aber `log()` ist es nicht. 
+Window Funktionen nehmen eine Eingabe der Länge $n$ und berechnen eine Ausgabe derselben Länge. Diese Ausgabewerte hängen dabei von allen Eingabewerten ab. So ist z.B. `rank()` eine Window Funktion, aber `log()` ist es nicht. 
 
 
 Betrachten wir noch einmal die schlechtesten und besten Lebenserwartungen in Asien im Laufe der Zeit, behalten aber Informationen darüber bei, *welches* Land diese Extremwerte beisteuert.
