@@ -502,7 +502,7 @@ wobei <span class="math inline">\(x_{0.25}\)</span> und <span class="math inline
 <h3>
 <span class="header-section-number">7.6.2</span> Window Funktionen<a class="anchor" aria-label="anchor" href="#window-functions"><i class="fas fa-link"></i></a>
 </h3>
-<p>Window Funktionen nehmen <span class="math inline">\(n\)</span>-Eingaben entgegen und geben <span class="math inline">\(n\)</span>-Ausgaben zurück. Zudem hängt die Ausgabe von allen Eingabewerten ab. So ist <code><a href="https://rdrr.io/r/base/rank.html">rank()</a></code> eine Window Funktion, aber <code><a href="https://rdrr.io/r/base/Log.html">log()</a></code> ist es nicht.</p>
+<p>Window Funktionen nehmen eine Eingabe der Länge <span class="math inline">\(n\)</span> und berechnen eine Ausgabe derselben Länge. Diese Ausgabewerte hängen dabei von allen Eingabewerten ab. So ist z.B. <code><a href="https://rdrr.io/r/base/rank.html">rank()</a></code> eine Window Funktion, aber <code><a href="https://rdrr.io/r/base/Log.html">log()</a></code> ist es nicht.</p>
 <p>Betrachten wir noch einmal die schlechtesten und besten Lebenserwartungen in Asien im Laufe der Zeit, behalten aber Informationen darüber bei, <em>welches</em> Land diese Extremwerte beisteuert.</p>
 <div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">my_gap</span> <span class="op">%&gt;%</span>
