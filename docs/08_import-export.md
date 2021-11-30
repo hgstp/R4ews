@@ -256,7 +256,7 @@ Schauen wir uns einmal an, wie die Variable jdata in der R-Konsole aussieht:
 ```r
 jdata
 ## Response [http://api.open-notify.org/astros.json]
-##   Date: 2021-11-30 07:43
+##   Date: 2021-11-30 20:36
 ##   Status: 200
 ##   Content-Type: application/json
 ##   Size: 497 B
@@ -365,11 +365,11 @@ Wie auch immer, jetzt, da wir unsere Anfrage einschließlich der Standortparamet
 data <- fromJSON(rawToChar(jdata$content))
 data$response
 ##   duration   risetime
-## 1      450 1638273897
-## 2      642 1638279564
-## 3      658 1638285362
-## 4      654 1638291192
-## 5      658 1638297010
+## 1      313 1638357554
+## 2      621 1638363152
+## 3      660 1638368928
+## 4      653 1638374757
+## 5      660 1638380579
 ```
 
 
@@ -379,9 +379,9 @@ Diese API gibt uns die Zeit in Form von [Unixzeit](https://de.wikipedia.org/wiki
 
 ```r
 lubridate::as_datetime(data$response$risetime)
-## [1] "2021-11-30 12:04:57 UTC" "2021-11-30 13:39:24 UTC"
-## [3] "2021-11-30 15:16:02 UTC" "2021-11-30 16:53:12 UTC"
-## [5] "2021-11-30 18:30:10 UTC"
+## [1] "2021-12-01 11:19:14 UTC" "2021-12-01 12:52:32 UTC"
+## [3] "2021-12-01 14:28:48 UTC" "2021-12-01 16:05:57 UTC"
+## [5] "2021-12-01 17:42:59 UTC"
 ```
 
 

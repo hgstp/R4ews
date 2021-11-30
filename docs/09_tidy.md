@@ -7,18 +7,21 @@
 
 
 
-Idealerweise liegt ein Datensatz so vor, dass er __gut__ von einem Computer gelesen werden kann. In der Regel sind die Datensätze, mit denen wir uns beschäftigen, ja umfangreich, d.h. der Mensch will den Datensatz ja gar nicht (ein-)lesen. Trotzdem sind Datensätze oft anders angelegt (der Mensch trifft die Entscheidung über das Layout).
+Idealerweise liegt ein Datensatz so vor, dass er __gut__ von einem Computer gelesen werden kann. In der Regel sind die Datensätze, mit denen wir uns beschäftigen, ja umfangreich, d.h. der Mensch will den Datensatz ja gar nicht (ein-)lesen. Trotzdem sind Datensätze oft anders angelegt (der Mensch, und nicht der Computer 💻, trifft die Entscheidung über das Layout).
 
+:::: {.content-box-gray}
 Der Computer kann einen Datensatz gut *verarbeiten*, wenn wir den Datensatz als __tidy__ bezeichnen können. Hauptmerkmal von einem __tidy__ Datensatz:
 
   * Jede Spalte ist eine Variable
   * Jede Zeile ist eine Beobachtung
+:::: 
 
-Untidy data mag z.B. der Grund dafür sein, dass Du mit einer Abbildung kämpfst. Daher lohnt es sich immer mal inne zu halten um zu überlegen, ob die Daten __tidy__ sind. Unordnung ist eine häufige, oft übersehene Ursache für Qualen bei der Datenanalyse und -visualisierung.
+
+Liegt untidy data vor, so verlängert sich (fast) immer die Zeit bis man mit den interessanten Schritten,  z.B. Erstellen einer Grafik, starten kann. Daher lohnt es sich immer mal inne zu halten um zu überlegen, ob die Daten __tidy__ sind. Unordnung im Datensatz ist eine häufige, aber oft übersehene, Ursache für unnötige Qualen bei der Datenanalyse und -visualisierung.
 
 ## Lord of the Rings 
 
-Von [Jenny Byran](https://github.com/jennybc) (Autorin von STAT 545) habe ich folgenden Beispieldatensatz übernommen: [Data from the Lord of the Rings Trilogy](https://github.com/jennybc/lotr)
+Von [Jenny Byran](https://github.com/jennybc) (Autorin von STAT 545) haben wir folgenden Beispieldatensatz übernommen: [Data from the Lord of the Rings Trilogy](https://github.com/jennybc/lotr)
 
 <table class=" lightable-material-dark" style='font-family: "Source Sans Pro", helvetica, sans-serif; margin-left: auto; margin-right: auto;'>
  <thead>
@@ -118,16 +121,16 @@ Von [Jenny Byran](https://github.com/jennybc) (Autorin von STAT 545) habe ich fo
 
 Wir haben eine Tabelle pro Film. In jeder Tabelle haben wir die Gesamtzahl der gesprochenen Wörter, von Charakteren verschiedener Kategorien und Geschlechter.
 
-Stell dir vor, diese drei Tabellen als separate Arbeitsblätter in einer Excel-Arbeitsmappe zu finden. Oder in einigen Zellen am Rande eines Arbeitsblatts, das die zugrunde liegenden Rohdaten enthält. Oder als Tabellen auf einer Webseite oder in einem Word-Dokument.
+Stellt euch vor, diese drei Tabellen als separate Arbeitsblätter in einer Excel-Datei zu finden. Oder in einigen Zellen am Rande eines Arbeitsblatts, das die zugrunde liegenden Rohdaten enthält. Oder als Tabellen auf einer Webseite oder in einem Word-Dokument.
 
-Das Format der Tabellen macht es für einen *Menschen* einfach, die Anzahl der von weiblichen Elfen in "The Two Towers" gesprochenen Wörter nachzuschlagen. Aber dieses Format macht es für einen *Computer* ziemlich schwer, solche Zählungen herauszuziehen und, was noch wichtiger ist, damit zu rechnen oder sie grafisch darzustellen.
+Das Format der Tabellen macht es für *Menschen* einfach, die Anzahl der in "The Two Towers" von weiblichen Elfen  gesprochenen Wörter nachzuschlagen. Aber dieses Format macht es für einen *Computer* ziemlich schwer, solche Zahlen zu extrahieren  und, was noch wichtiger ist, damit zu rechnen oder sie grafisch darzustellen.
 
-Diese Aufgabe ist dann wieder nicht so einfach, da die Daten __untidy__ sind: Die Inhalte der Spalte `Female` und `Male` enthalten nicht die Information über das Geschlecht. Auf der anderen Seite sind Wert der Variable (noch nicht vorhanden) `Words` auf zwei Spalten verteilt.
+Diese Aufgabe ist nicht so einfach, da die Daten __untidy__ sind. So enthalten z.B. die  Spalten `Female` und `Male`  nicht die Information über das Geschlecht. Auf der anderen Seite sind Wert der Variable (noch nicht vorhanden) `Words` auf zwei Spalten verteilt.
 
 
 ## Tidy Lord of the Rings data
 
-In sauberer Form sehen die Daten folgendermaßen aus:
+Aufgeräumt sehen die Daten folgendermaßen aus:
 
 
 <table class=" lightable-material-dark" style='font-family: "Source Sans Pro", helvetica, sans-serif; margin-left: auto; margin-right: auto;'>
@@ -251,23 +254,26 @@ In sauberer Form sehen die Daten folgendermaßen aus:
 </tbody>
 </table>
 
-Beachte, dass __tidy__  data im Allgemeinen höher und schmaler sind. Bestimmte Elemente werden oft wiederholt, z. B. `Hobbit`. Aus diesen Gründen lehnen wir __tidy__ Daten oft instinktiv als ineffizient oder hässlich ab. Aber, solange du nicht das Endprodukt für eine textuelle Präsentation von Daten erstellst, solltest du diesen Instinkt ignorieren.
+Beachtet, dass __tidy__  Daten im Allgemeinen höher und schmaler sind. Bestimmte Elemente werden öfter wiederholt, hier z. B. `Hobbit`. Aus diesen Gründen lehnen wir __tidy__ Daten oft instinktiv als ineffizient oder hässlich ab. Aber, solange ihr nicht das Endprodukt für eine textuelle Präsentation von Daten erstellt, solltet ihr diesen Instinkt ignorieren.
 
 ## Vorteile von tidy data
 
-Wenn die Daten in ordentlicher Form vorliegen, ist es naheliegend, *einen Computer* zu holen, um weitere Zusammenfassungen zu machen oder eine Abbildung zu erstellen. 
+Wenn die Daten in aufgeräumter Form vorliegen, ist es naheliegend, *einen Computer* zu holen, um weitere Zusammenfassungen zu machen oder eine Abbildung zu erstellen. 
 
 In dieser Form können wir nun leicht folgende Fragen beantworten:
 
 
+:::: {.content-box-yellow}
 - Wie viele Wörter haben die männlichen Hobbits insgesamt gesprochen?
 
 - Dominiert eine bestimmte `Race` einen Film? Unterscheidet sich die dominierende `Race` in den Filmen?
+::::
 
 
 
+> __Wie viele Wörter haben die männlichen Hobbits insgesamt gesprochen?__
 
-#### Wie viele Wörter haben die männlichen Hobbits insgesamt gesprochen?
+Nun braucht es nur noch ein kleines bisschen Code, um die Gesamtwortzahl für beide Geschlechter aller Kategorien über alle Filme hinweg zu berechnen. Wir nutzen dazu die Komfortfunktion `count()`.
 
 
 ```r
@@ -288,11 +294,13 @@ lotr_tidy %>%
 ## 6 Male   Man     8043
 ```
 
-Nun braucht es nur noch ein kleines bisschen Code, um die Gesamtwortzahl für beide Geschlechter aller Kategorien über alle Filme hinweg zu berechnen. Die Gesamtzahl der von männlichen Hobbits gesprochenen Wörter ist 8780. Hier war es wichtig, alle Wortzählungen in einer einzigen Variable zu haben, innerhalb eines Data Frames, der auch eine Variable für Geschlecht und Kategorie enthielt.
+ Die Gesamtzahl der von männlichen Hobbits gesprochenen Wörter ist 8780. Hier war es wichtig, dass alle Wortzählungen in einer einer Variable eines  Data Frames zusammengefasst sind und zugehöriger Variablen für Geschlecht und Kategorie.
+ 
+ 
+ 
+> __Dominiert eine bestimmte Kategorie einen Film? Unterscheidet sich die dominierende Kategorie in den Filmen?__
 
-#### Dominiert eine bestimmte Kategorie einen Film? Unterscheidet sich die dominierende Kategorie in den Filmen?
-
-Zunächst summieren wir über die Geschlechter hinweg, um die Wortzahlen für die verschiedenen Kategorien nach Film zu erhalten.
+Zunächst summieren wir über die Geschlechter hinweg, um die Wortzahlen für die verschiedenen Kategorien pro Film zu erhalten.
 
 
 ```r
@@ -321,7 +329,7 @@ Zunächst summieren wir über die Geschlechter hinweg, um die Wortzahlen für di
 ## 9 The Two Towers             Man     3990
 ```
 
-Wir können ganz genau auf diese Zahlen starren, um die Frage zu beantworten. Aber noch schöner ist es, die gerade berechneten Wortzahlen in einem Balkendiagramm darzustellen. 
+Wir können jetzt entweder die Zahlen ein bisschen  anstarren, um die Frage zu beantworten, oder besser, die gerade berechneten Wortzahlen in einem Balkendiagramm darstellen. 
 
 
 ```r
@@ -334,20 +342,21 @@ ggplot(by_race_film, aes(x = Film, y = Words, fill = Race)) +
 <img src="09_tidy_files/figure-html/barchart-lotr-words-by-film-race-1.png" width="672" />
 
 
-Hobbits sind in "The Fellowhip of the Ring" stark vertreten, während die Menschen in "The Two Towers" viel mehr Leinwandzeit hatten. Ebenso prominent waren sie im letzten Film, "The Return of the King".
+Hobbits sind in "The Fellowhip of the Ring" stark vertreten, während die Menschen in "The Two Towers" viel mehr Leinwandzeit hatten. Im letzten Film, "The Return of the King", war die Anzahl von Menschen gesprochener Wörter nur noch leicht höher als die Anzahl von Worten, die von Hobbits gesprochen wurden.
 
 
 Auch hier war es wichtig, alle Daten in einem einzigen Data Frame zu haben, alle Wortzählungen in einer einzigen Variable und zugehörige Variablen für Film und Kategorie.
 
 
-> Im nächsten Schritt schauen wir uns nun an, wie man aus den obigen drei Tabellen eine sauberen Datensatz erzeugt.
-
+:::: {.content-box-grey}
+Im nächsten Schritt schauen wir uns nun an, wie man aus den obigen drei Tabellen eine sauberen Datensatz erzeugt.
+::::
 
 
 
 ## Untidy Lord of the Rings data
 
-Wir importieren nun die Daten, die in den drei filmspezifischen Wortzählungstabellen dargestellt wurden.
+Wir importieren nun die Daten, die in den drei Tabellen dargestellt wurden.
 
 
 Für jede Tabelle existiert eine eigene csv Datei:
@@ -361,68 +370,8 @@ Für jede Tabelle existiert eine eigene csv Datei:
 
 ```r
 fship <- read_csv(file.path("data", "The_Fellowship_Of_The_Ring.csv"))
-```
-
-```
-## Rows: 3 Columns: 4
-```
-
-```
-## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: ","
-## chr (2): Film, Race
-## dbl (2): Female, Male
-```
-
-```
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-```
-
-```r
 ttow <- read_csv(file.path("data", "The_Two_Towers.csv"))
-```
-
-```
-## Rows: 3 Columns: 4
-```
-
-```
-## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: ","
-## chr (2): Film, Race
-## dbl (2): Female, Male
-```
-
-```
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-```
-
-```r
 rking <- read_csv(file.path("data", "The_Return_Of_The_King.csv")) 
-```
-
-```
-## Rows: 3 Columns: 4
-```
-
-```
-## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: ","
-## chr (2): Film, Race
-## dbl (2): Female, Male
-```
-
-```
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-```
-
-```r
 rking
 ```
 
@@ -435,7 +384,6 @@ rking
 ## 3 The Return Of The King Man       268  2459
 ```
 
-## Und nun alles zusammen
 
 Wir haben jetzt ein Data Frame pro Film, jeweils mit den vier Variablen
 
@@ -472,14 +420,18 @@ lotr_untidy
 ## 9 The Return Of The King     Man       268  2459
 ```
 
-Das Zusammensetzen eines großen Datenobjekts aus vielen kleinen ist eine relativ übliche Aufgabe bei der Datenaufbereitung. Wenn die Teile so ähnlich sind wie hier, ist es schön, sie gleich zu einem Objekt zusammenzusetzen. In anderen Szenarien müsst du  möglicherweise einige Nacharbeiten an den einzelnen Objekten vornehmen, bevor sie gut zusammengefügt werden können.
+Das Zusammensetzen eines großen Datenobjekts aus vielen kleinen ist eine relativ übliche Aufgabe bei der Datenaufbereitung. Wenn die Teile so ähnlich sind wie hier, ist es schön, sie gleich zu einem Objekt zusammenzusetzen. In anderen Szenarien müsst ihr  möglicherweise einige Nacharbeiten an den einzelnen Objekten vornehmen, bevor sie gut zusammengefügt werden können.
 
 Wenn möglich, sollte man die einzelnen Stücke so früh wie möglich 
-zusammensetzen, denn es ist einfacher und effizienter, ein einzelnes Objekt aufzuräumen als 20 oder 1000.
+zusammensetzen, denn es ist einfacher und effizienter, ein einzelnes Objekt aufzuräumen als 20 oder 1000 oder ...
 
-## Nun können wir aufräumen
+### Nun können wir aufräumen
 
-Wir verletzen immer noch eines der Grundprinzipien von __tidy data__. Die Anzahl an gesprochenen Wörtern ist eine grundlegende Variable in unserem Datensatz und sie ist derzeit auf zwei Variablen verteilt, `Female` und `Male`. Konzeptionell müssen wir die Wortanzahl in einer einzigen Variable zusammenfassen und eine neue Variable `Gender` erstellen, um zu verfolgen, ob die jeweilige Anzahl an Worten von Frauen oder Männern gesprochen wurde. Dies Aufgabe können wir mit der Funktion `tidyr::pivot_longer()` bearbeiten.
+Das Objekt `lotr_untidy` verletzt immer noch eines der Grundprinzipien von __tidy data__. 
+
+>Die Anzahl an gesprochenen Wörtern ist eine grundlegende Variable in unserem Datensatz und sie ist derzeit auf zwei Variablen verteilt, `Female` und `Male`.
+
+Konzeptionell müssen wir die Wortanzahl in einer einzigen Variable zusammenfassen und eine neue Variable `Gender` erstellen, um zu verfolgen, ob die jeweilige Anzahl an Worten von Frauen oder Männern gesprochen wurde. Diese Aufgabe können wir mit der Funktion `tidyr::pivot_longer()` bearbeiten.
 
 
 
@@ -515,7 +467,11 @@ lotr_tidy
 ```
 
 
-Um unseren obigen Aufruf von `pivot_longer()` zu erklären, lesen wir ihn links nach rechts: Nach der Auswahl des Datensatzes `lotr_untidy` haben wird die Spalten `Female` und `Male` genommen und ihre *Werte* in eine einzige neue Variable `Words` zusammengefasst. Dies erzwang die Erstellung einer neuen Variable `Gender`, die angibt, ob ein bestimmter Wert von `Words` von `Female` oder `Male` stammt. Alle anderen Variablen, wie `Film`, bleiben unverändert und werden einfach nach Bedarf repliziert. Die Dokumentation für `pivot_longer()` gibt weitere Beispiele und dokumentiert zusätzliche Argumente.
+Um unseren obigen Aufruf von `pivot_longer()` zu erklären, lesen wir ihn mal von links nach rechts: 
+
+Nach der Auswahl des Datensatzes `lotr_untidy` haben wird die Spalten `Female` und `Male` genommen und ihre __Werte__ in eine neue Variable `Words` zusammengefasst. Dies erzwingt die Erstellung einer neuen Variable `Gender`, die angibt, ob ein bestimmter Wert von `Words` von `Female` oder `Male` stammt.
+
+Alle anderen Variablen, wie `Film`, bleiben unverändert und werden einfach nach Bedarf repliziert. Die Dokumentation für `pivot_longer()` gibt weitere Beispiele und dokumentiert zusätzliche Argumente.
 
 
 Wenn man sich diese Arbeit gemacht hat, dann macht es schon Sinn sich auch das Ergebnis abzuspeichern
@@ -532,7 +488,7 @@ write_csv(lotr_tidy, path = file.path("data", "lotr_tidy.csv"))
 ```
 
 
-Trotzdem solltet ihr auch bei/nach der Datenaufbereitung auch die Skripte zur Datenaufbereitung wie auch die Originaldaten abspeichern.
+Trotzdem solltet ihr natürlich auch die Skripte zur  Datenaufbereitung sowie die Originaldaten abspeichern.
 
 
 ## Und jetzt noch ein bisschen "schmutzig" machen
@@ -584,7 +540,7 @@ lotr_tidy %>%
 ```
 
 
-Das erste Beispiel hat immer noch 6 Beobachtungen, zwei pro Film. Nehmen wir mal an, dass wir aber nur eine Beobachtung pro Film haben wollen. Dazu müssten wir die möglichen Kombinationen aus `Race` und `Gender` in neuen/weiteren Variablen zusammenfassen. Dies können wir über die Funktion `tidyr::unite()` erreichen.
+Das erste Beispiel hat immer noch 6 Beobachtungen, zwei pro Film. Nehmen wir mal an, dass wir aber nur eine Beobachtung pro Film haben wollen. Dazu müssten wir die möglichen Kombinationen aus `Race` und `Gender` in einer neuen/weiteren Variablen zusammenfassen. Dies können wir über die Funktion `tidyr::unite()` erreichen.
 
 
 
@@ -617,6 +573,7 @@ lotr_tidy %>%
 ## 17 The Return Of The King     Man_Female      268
 ## 18 The Return Of The King     Man_Male       2459
 ```
+
 In Kombination mit `pivot_wider()` ergibt sich so
 
 
@@ -679,7 +636,7 @@ drei Datensätze vom Anfang wiederherstellen
 ## 3 The Two Towers Man       401  3589
 ```
 
-Wir erhalten eine Liste mit drei Elemente, die deren Inhalt den drei Tabellen vom Anfang entspricht. Die Daten zu "The Return of the King" sind beispielsweise im zweiten Element enthalten.
+Wir erhalten eine Liste mit drei Elemente, deren Inhalt den drei Tabellen vom Anfang entspricht. Die Daten zu "The Return of the King" sind beispielsweise im zweiten Element enthalten.
 
 
 ```r

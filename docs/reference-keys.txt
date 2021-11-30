@@ -59,10 +59,7 @@ tidy
 lord-of-the-rings
 tidy-lord-of-the-rings-data
 vorteile-von-tidy-data
-wie-viele-wörter-haben-die-männlichen-hobbits-insgesamt-gesprochen
-dominiert-eine-bestimmte-kategorie-einen-film-unterscheidet-sich-die-dominierende-kategorie-in-den-filmen
 untidy-lord-of-the-rings-data
-und-nun-alles-zusammen
 nun-können-wir-aufräumen
 und-jetzt-noch-ein-bisschen-schmutzig-machen
 literatur-1
