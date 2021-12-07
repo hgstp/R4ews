@@ -146,9 +146,9 @@ Lizenz, Titel, Abhängigkeiten, …)</li>
 <span class="header-section-number">12.3</span> R Code<a class="anchor" aria-label="anchor" href="#r-code"><i class="fas fa-link"></i></a>
 </h2>
 <p>Das Verzeichnis <code>R/</code> ist der wichtigste Bestandteil eines Pakets, da dort der komplette R Code liegt.
-Dieses Verzeichnis (wie auch andere Teile) erzeugt man mit der Funktion <code><a href="https://devtools.r-lib.org//reference/create.html">devtools::create()</a></code>, z.B.</p>
+Dieses Verzeichnis (wie auch andere Teile) erzeugt man mit der Funktion <code><a href="https://devtools.r-lib.org/reference/create.html">devtools::create()</a></code>, z.B.</p>
 <div class="sourceCode" id="cb171"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://devtools.r-lib.org//reference/create.html">create</a></span><span class="op">(</span><span class="st">"Pfad_zum_Paket/Paketname"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://devtools.r-lib.org/reference/create.html">create</a></span><span class="op">(</span><span class="st">"Pfad_zum_Paket/Paketname"</span><span class="op">)</span></code></pre></div>
 <p>Dieser Befehl erzeugt das Verzeichnis <code>Pfad_zum_Paket/Paketname</code>, welches</p>
 <ol style="list-style-type: decimal">
 <li>eine RStudio Projektdatei, <code>Paketname.Rproj</code>
@@ -161,7 +161,7 @@ Dieses Verzeichnis (wie auch andere Teile) erzeugt man mit der Funktion <code><a
 <p>Innerhalb eines Pakets ist es nun einfach den kompletten R Code (nach Änderungen) neu zu laden.</p>
 <ul>
 <li>
-<code><a href="https://devtools.r-lib.org//reference/load_all.html">devtools::load_all()</a></code> lädt allen R Code neu. In RStudio auch über <strong>Strg + Shift + L</strong> möglich.</li>
+<code><a href="https://devtools.r-lib.org/reference/load_all.html">devtools::load_all()</a></code> lädt allen R Code neu. In RStudio auch über <strong>Strg + Shift + L</strong> möglich.</li>
 <li>In RStudio kann man mit <strong>Strg + Shift + B</strong> das Paket installieren, R neu starten und anschließend das Paket über <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> neu laden.</li>
 </ul>
 <p>Dadurch ergibt sich der folgende Arbeitsablauf</p>
@@ -179,8 +179,8 @@ Dieses Verzeichnis (wie auch andere Teile) erzeugt man mit der Funktion <code><a
 <p>Man unterscheidet fünf verschiedene Typen: <em>source, bundled, binary, installed</em> und <em>in memory</em>.</p>
 <ul>
 <li><p><strong>source</strong>: Die source Version eines Pakets besteht aus dem Verzeichnis <code>Paketname</code></p></li>
-<li><p><strong>bundled</strong>: Komprimiert man das Verzeichnis in eine <code>.tar.gz</code> Datei so spricht man von einem “gebündelten” Paket. Dieser Typ stellt eher einen Zwischenschritt dar. Mit <code><a href="https://devtools.r-lib.org//reference/build.html">devtools::build()</a></code> kann aber eine solche Version erzeugt werden. Weitere Unterschiede zu einer source Version sind für uns erst mal nicht von Interesse.</p></li>
-<li><p><strong>binary</strong>: Ein gebündeltes Paket kann von anderen R Nutzern nur installiert werden, wenn sie selbst über die entsprechenden “Werkzeuge” (Rtools, …) verfügen. Binary Pakete bestehen auch nur aus einer Datei, können aber von anderen R Nutzern auch ohne weitere “Werkzeuge” installiert werden. Allerdings sind binary Pakete plattformspezifisch. Ein Windows binary Paket kann also z.B. nicht auf einem Mac installiert werden. Erzeugt wird eine binary Version z.B. mit <code><a href="https://devtools.r-lib.org//reference/build.html">devtools::build(binary = TRUE)</a></code>.</p></li>
+<li><p><strong>bundled</strong>: Komprimiert man das Verzeichnis in eine <code>.tar.gz</code> Datei so spricht man von einem “gebündelten” Paket. Dieser Typ stellt eher einen Zwischenschritt dar. Mit <code><a href="https://devtools.r-lib.org/reference/build.html">devtools::build()</a></code> kann aber eine solche Version erzeugt werden. Weitere Unterschiede zu einer source Version sind für uns erst mal nicht von Interesse.</p></li>
+<li><p><strong>binary</strong>: Ein gebündeltes Paket kann von anderen R Nutzern nur installiert werden, wenn sie selbst über die entsprechenden “Werkzeuge” (Rtools, …) verfügen. Binary Pakete bestehen auch nur aus einer Datei, können aber von anderen R Nutzern auch ohne weitere “Werkzeuge” installiert werden. Allerdings sind binary Pakete plattformspezifisch. Ein Windows binary Paket kann also z.B. nicht auf einem Mac installiert werden. Erzeugt wird eine binary Version z.B. mit <code><a href="https://devtools.r-lib.org/reference/build.html">devtools::build(binary = TRUE)</a></code>.</p></li>
 <li>
 <p><strong>installed</strong>: Ein installiertes Paket ist ein in eine R Library entpacktes binary Paket. Zu diesem Zustand kann man über mehrere Wege gelangen, z.B.</p>
 <ul>
@@ -189,14 +189,14 @@ Dieses Verzeichnis (wie auch andere Teile) erzeugt man mit der Funktion <code><a
 <li>
 <code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages(type = source)</a></code>: CRAN source -&gt; bundled -&gt; installed</li>
 <li>
-<code><a href="https://devtools.r-lib.org//reference/install.html">install()</a></code>: source -&gt; installed</li>
+<code><a href="https://devtools.r-lib.org/reference/install.html">install()</a></code>: source -&gt; installed</li>
 </ul>
 </li>
 </ul>
-<p>Mit <code><a href="https://devtools.r-lib.org//reference/remote-reexports.html">devtools::install_github()</a></code> können source Pakete aus eine <a href="https://github.com/">GitHub</a> Projekt installiert werden.</p>
+<p>Mit <code><a href="https://devtools.r-lib.org/reference/remote-reexports.html">devtools::install_github()</a></code> können source Pakete aus eine <a href="https://github.com/">GitHub</a> Projekt installiert werden.</p>
 <ul>
 <li>
-<strong>in memory</strong>: Um mit einem Paket zu arbeiten muss es in den Speicher geladen werden. Dies geschieht mit <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> (installierte Pakete) oder <code><a href="https://devtools.r-lib.org//reference/load_all.html">load_all()</a></code> (beim Entwickeln von Paketen).</li>
+<strong>in memory</strong>: Um mit einem Paket zu arbeiten muss es in den Speicher geladen werden. Dies geschieht mit <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> (installierte Pakete) oder <code><a href="https://devtools.r-lib.org/reference/load_all.html">load_all()</a></code> (beim Entwickeln von Paketen).</li>
 </ul>
 </div>
 <div id="description" class="section level2" number="12.5">
@@ -279,7 +279,7 @@ in der DESCRIPTION Datei R Code verwendet werden um die nötigen Informationen</
 <h3>
 <span class="header-section-number">12.5.3</span> Version<a class="anchor" aria-label="anchor" href="#version"><i class="fas fa-link"></i></a>
 </h3>
-<p><code><a href="https://devtools.r-lib.org//reference/create.html">devtools::create()</a></code> legt die Default-Version auf <code>0.1.0</code> fest. Generell sollte die Versionsnummer aber aus drei Teilen bestehen und die Form <code>x.y.z</code> haben, wobei <code>x</code> die Nummer für größere Updates, <code>y</code> die Nummer für kleinere Updates und <code>z</code> die Nummer für Korrekturen ist.</p>
+<p><code><a href="https://devtools.r-lib.org/reference/create.html">devtools::create()</a></code> legt die Default-Version auf <code>0.1.0</code> fest. Generell sollte die Versionsnummer aber aus drei Teilen bestehen und die Form <code>x.y.z</code> haben, wobei <code>x</code> die Nummer für größere Updates, <code>y</code> die Nummer für kleinere Updates und <code>z</code> die Nummer für Korrekturen ist.</p>
 <p>Die aktuelle Version von <code>ggplot2</code> ist z.B.</p>
 <div class="sourceCode" id="cb178"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/packageDescription.html">packageVersion</a></span><span class="op">(</span><span class="st">"ggplot2"</span><span class="op">)</span>
@@ -314,7 +314,7 @@ Imports:
 <ol style="list-style-type: decimal">
 <li>roxygen Kommentare in die <code>.R</code> Datei einfügen</li>
 <li>
-<code><a href="https://devtools.r-lib.org//reference/document.html">devtools::document()</a></code> ausführen um Kommentare in <code>.Rd</code> Datei zu konvertieren</li>
+<code><a href="https://devtools.r-lib.org/reference/document.html">devtools::document()</a></code> ausführen um Kommentare in <code>.Rd</code> Datei zu konvertieren</li>
 <li>Dokumentation mit <code><a href="https://rdrr.io/r/utils/Question.html">?</a></code> betrachten</li>
 <li>gegebenenfalls alles wiederholen</li>
 </ol>
@@ -332,7 +332,7 @@ add_2 &lt;- function(x, y) {
   x + y
 }</code></pre>
 <p>dem Verzeichnis <code>meinR4EWSpckg/R</code> hinzu.</p>
-<p>Der Befehl <code><a href="https://devtools.r-lib.org//reference/document.html">devtools::document()</a></code> (ausgeführt im Verzeichnis <code>meinR4EWSpckg</code> - source Paket) erzeugt dann die Datei <code>meinR4EWSpckg/man/add_2.Rd</code></p>
+<p>Der Befehl <code><a href="https://devtools.r-lib.org/reference/document.html">devtools::document()</a></code> (ausgeführt im Verzeichnis <code>meinR4EWSpckg</code> - source Paket) erzeugt dann die Datei <code>meinR4EWSpckg/man/add_2.Rd</code></p>
 <pre><code>% Generated by roxygen2 (4.0.2): do not edit by hand
 \name{add_2}
 \alias{add_2}
@@ -371,7 +371,7 @@ Weitere Tags sind im Abschnitt <a href="http://r-pkgs.had.co.nz/man.html#man-fun
 <li>
 <code>\code{\link{function}}</code>: Funktion <code>function</code> im eigenen Paket</li>
 <li>
-<code>\code{\link[devtools]{load_all}}</code>: Funktionen aus anderen Paketen, hier <code><a href="https://devtools.r-lib.org//reference/load_all.html">devtools::load_all</a></code>
+<code>\code{\link[devtools]{load_all}}</code>: Funktionen aus anderen Paketen, hier <code><a href="https://devtools.r-lib.org/reference/load_all.html">devtools::load_all</a></code>
 </li>
 </ul>
 <p>oder dem Netz</p>
@@ -393,7 +393,7 @@ Weitere Tags sind im Abschnitt <a href="http://r-pkgs.had.co.nz/man.html#man-fun
 <code class="sourceCode R"><span class="va">nrow</span>
 <span class="co">## function (x) </span>
 <span class="co">## dim(x)[1L]</span>
-<span class="co">## &lt;bytecode: 0x7f8e5ad858c8&gt;</span>
+<span class="co">## &lt;bytecode: 0x7fac1d5a40c8&gt;</span>
 <span class="co">## &lt;environment: namespace:base&gt;</span></code></pre></div>
 <p>Diese Funktion ist definiert in Abhängigkeit von <code><a href="https://rdrr.io/r/base/dim.html">dim()</a></code> aus dem <code>base</code> Paket.</p>
 <p>Auch wenn wir die Funktion</p>
@@ -501,7 +501,7 @@ git push -u origin master</code></pre>
 <pre><code>git clone https://gitlab.lrz.de/vw99xyz/paketName.git</code></pre>
 <p>Danach existiert im Verzeichnis, in dem der Befehl ausgeführt wurde, das Unterverzeichnis <code>paketName</code>. In R kannst du anschließend den Befehl</p>
 <div class="sourceCode" id="cb194"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/create.html">create</a></span><span class="op">(</span><span class="st">"paketName"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/create.html">create</a></span><span class="op">(</span><span class="st">"paketName"</span><span class="op">)</span></code></pre></div>
 <p>ausführen (im Verzeichnis, welches das Git repository <code>paketName</code> enthält). Danach kannst du die Änderungen speichern über einen commit Befehl</p>
 <pre><code>git add -A
 git commit -m "paket struktur angelegt"</code></pre>

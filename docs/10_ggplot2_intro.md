@@ -4,19 +4,27 @@
 
 
 
-Das Paket `ggplot2` verwendet eine Grammatik beim Erzeugen von Grafiken. Diese basiert auf 
+Das Paket `ggplot2` verwendet eine speziell Systematik beim Erzeugen von Grafiken. Diese basiert auf 
 
 > [Wilkinson (2005): *The Grammar of Graphics*, Springer.](http://link.springer.com/book/10.1007%2F0-387-28695-0)
 
-Dadurch
 
-- ist eine starke Abstraktion bei der Definition einer Grafik möglich
-- steht ein sehr flexibles Grafiksystem zur Verfügung.
+:::: {.content-box-green}
+Kurz gesagt, ist die zugrunde liegende Idee, dass eine statistische Grafik eine Abbildung von Daten auf ästhetische Attribute (Farbe, Form, Größe) von geometrischen Objekten (Punkte, Linien, Balken) ist.
+::::
+Ferner kann eine Grafik auch noch statistische Transformationen der Daten enthalten. Über die Verwendung verschiedener Facetten ist es möglich dieselbe Darstellung für verschiedene Untergruppen des Datensatzes zu erzeugen. 
+
+Am Ende ist es eine Kombination dieser unabhängigen Komponenten, die eine Grafik ausmacht.
 
 
-## `ggplot2` laden
 
-Wie zuvor auch, laden wir stets das komplette `tidyverse`. Man weiß ja vorher nie so genau was man alles so braucht.
+
+:::: {.content-box-grey}
+__Wie immer, laden wir zu Beginn__ 
+<img src="img/tidyverse.png" width="30%" style="display: block; margin: auto 0 auto auto;" />
+::::
+
+Man weiß ja vorher nie so genau was man alles so braucht.
 
 
 ```r
@@ -34,23 +42,28 @@ library(tidyverse)
 
 ## Idee
 
-Die grundlegende Idee des ggplot2 Ansatzes zum Erstellen von Grafiken, besteht darin die Bausteine eines Plots unabhängig voneinander zu definieren. Ein Plot besteht immer aus:
+Die grundlegende Idee des ggplot2 Ansatzes zum Erstellen von Grafiken, besteht darin die Bausteine (verschiedene Layer) eines Plots unabhängig voneinander zu definieren und diese dann zu einer Grafik zusammenzufügen. Eine Grafik besteht immer aus:
 
-- Daten (als `data.frame` oder `tibble`)
-- Koordinatensystem
-- Skala
-- geometrisches Objekt zur Darstellung (`geom`)
+- den __Daten__ (als `data.frame` oder `tibble`), die ihr visualisieren möchtet, und eine Reihe von Zuordnungen, die beschreiben, wie Variablen aus dem Datensatz auf ästhetische Attribute abgebildet werden
 
-Zusätzlich kann er aber auch noch
+- __geometrischen Objekten__ (`geom`s), die beschreiben was man am Ende wirklich sieht, also z.B. Punkte, Linien, ...
+
+- einem __Koordinatensystem__, das beschreibt, wie die Koordinaten der Daten auf die Ebene der Grafik abgebildet werden. Außerdem stellt es Achsen und Gitternetzlinien zur Verfügung, die das Lesen der Grafik ermöglichen. Normalerweise verwenden wir ein kartesisches Koordinatensystem, aber es gibt natürlich auch noch eine Reihe anderer Optionen.
+
+- __Skalen__ (`scales`), die Werte der Daten abbilden auf Werte in einem ästhetischen Raum, sei es in Farbe, Größe oder Form. 
 
 
-- statistische Transformationen (`stat`)
-- verschiedene Facetten
+Zusätzlich kann die Grafik aber auch noch
+
+
+- __statistische Transformationen__ (`stat`), die eine Zusammenfassung der Daten visualisieren,
+- __Facetten__, die es ermöglichen dieselbe Darstellung für verschiedene Untergruppen des Datensatzes zu erzeugen, 
+
 - ...
 
 enthalten.
 
-Die einzelnen Teile eines Plots werden dann mit dem `+` Operator zusammengefügt.Initialisiert wird ein Plot mit `ggplot()`. Ohne weitere Bestandteile wird aber nur eine leere Grafik erzeugt
+Die einzelnen Teile eines Plots werden dann mit dem `+` Operator zusammengefügt. Initialisiert wird ein Plot mit `ggplot()`. Ohne weitere Bestandteile wird aber nur eine leere Grafik erzeugt
 
 
 ```r
@@ -58,7 +71,7 @@ library(gapminder)
 ggplot(gapminder) 
 ```
 
-<img src="10_ggplot2_intro_files/figure-html/unnamed-chunk-3-1.png" width="80%" style="display: block; margin: auto;" />
+<img src="10_ggplot2_intro_files/figure-html/unnamed-chunk-4-1.png" width="80%" style="display: block; margin: auto;" />
 
 In den folgenden Abschnitten lernen wir daher wie weitere Bestandteile zum Plot hinzugefügt werden.
 
@@ -71,13 +84,30 @@ Wir schauen uns zum Start einfach mal für Deutschland den Verlauf des `gdpPerca
 ```r
 gapminder %>%
   filter(country == "Germany") %>% # auswählen der Daten 
-  ggplot(aes(x = year, y = gdpPercap)) +  # plot initialisieren
-  geom_point() # punkte zum Darstellen der Daten verwenden
+  ggplot(aes(x = year, y = gdpPercap)) +  # Plot initialisieren
+  geom_point() # Punkte zum Darstellen der Daten verwenden
 ```
 
-<img src="10_ggplot2_intro_files/figure-html/unnamed-chunk-4-1.png" width="80%" style="display: block; margin: auto;" />
+<img src="10_ggplot2_intro_files/figure-html/unnamed-chunk-5-1.png" width="80%" style="display: block; margin: auto;" />
 
-In diesem einfachen Beispiel haben wir bereits gesehen, dass `ggplot()` über den Pipe-Operator verknüpft werden kann.
+
+In dieser Grafik haben wir über `geom_point()` die Art des geometrischen Objekts gewählt. In diesem Fall Punkte. Wenn uns die Form (`shape`) der Punkte nicht gefällt, so können wir diese natürlich ändern, z.B. in Dreiecke
+
+
+
+```r
+gapminder %>%
+  filter(country == "Germany") %>% 
+  ggplot(aes(x = year, y = gdpPercap)) +  
+  geom_point(shape = 2) # shape auf festen Wert 2 gesetzt
+```
+
+<img src="10_ggplot2_intro_files/figure-html/unnamed-chunk-6-1.png" width="80%" style="display: block; margin: auto;" />
+
+
+Aber dazu mehr im Abschnitt [Scales](#scales).
+
+__Bemerkung:__ In diesem einfachen Beispiel haben wir bereits gesehen, dass `ggplot()` über den Pipe-Operator verknüpft werden kann.
 
 
 

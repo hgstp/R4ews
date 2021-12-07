@@ -64,7 +64,6 @@ nun-können-wir-aufräumen
 und-jetzt-noch-ein-bisschen-schmutzig-machen
 literatur-1
 graphics-overview
-ggplot2-laden
 idee
 ein-einfacher-scatterplot
 bausteine

@@ -9,9 +9,12 @@ library(gapminder)
 ```
 
 
+In den nächsten Abschnitten schauen wir uns die verschiedene Bausteine einer `ggplot2` Grafik genauer an. Dabei sehen wir auch eine Reihe von Beispielen, die uns zeigen, wie man die verschiedenen Bausteine miteinander verknüpft.
+
+
 ##  Aesthetics {#aes}
 
-Mit der Funktion `aes()` lässt sich das **Aussehen** der Grafik regeln (nicht der Inhalt). Wir können z.B.
+Mit der Funktion `aes()` lässt sich das __Aussehen__ der Grafik regeln (nicht der Inhalt). Wir können z.B.
 
 - die Position: `x` und `y`
 - die Farbe: `color` und `fill`
@@ -19,7 +22,10 @@ Mit der Funktion `aes()` lässt sich das **Aussehen** der Grafik regeln (nicht d
 - den Linientyp: `linetype`
 - die Größe der Symbol: `size`
 
-festlegen. Nicht jedes aesthetic kann allerdings mit allen verfügbaren geoms kombiniert werden. So macht z.B. der `linetype` ja wenig Sinn in `geom_point()`. Ein Übersicht der möglichen aesthetics findet man in der Hilfe jeder geom-Funktion
+festlegen. Die jeweiligen Werte dieser aesthetics können entweder fix oder in _Abhängigkeit von Variablen aus dem verwendeten Datensatz_ gewählt werden. 
+
+
+Nicht jedes aesthetic kann allerdings mit allen verfügbaren geoms kombiniert werden. So macht z.B. der `linetype` ja wenig Sinn in `geom_point()`. Eine Übersicht der möglichen aesthetics findet man in der Hilfe jeder geom-Funktion. In der Hilfe von `geom_point()` findet man z.B. 
 
 ```
 geom_point {ggplot2}	R Documentation
@@ -42,7 +48,8 @@ geom_point(
 ...
 
 Aesthetics
-geom_point() understands the following aesthetics (required aesthetics are in bold):
+geom_point() understands the following aesthetics (required aesthetics 
+are in bold):
 
 x
 
@@ -66,91 +73,96 @@ Learn more about setting these aesthetics in vignette("ggplot2-specs").
 
 ```
 
-In der `aes()` Funktion sollten die Daten den Wert der Argumente bestimmen. Werden Argumente auf fixe Werte gesetzt, so sind sie außerhalb der `aes()` Funktion zu setzen. 
+Will man über die Daten die Wert für die verschiedenen aesthetics definieren, so muss dies innerhalb der `aes()` Funktion geschehen.  Werden Argumente auf fixe Werte gesetzt, so sind sie außerhalb der `aes()` Funktion zu setzen. 
 
 
-In einem Plot der `gdpPercap` Daten für Deutschland und Frankreich wollen wir anhand von unterschiedlichen Farben die Daten der beiden Länder unterscheiden. Dazu müssen wir nur `colour` innerhalb von `aes()` den Wert `country` zuweisen. 
+In einem Plot der `gdpPercap` Daten für Deutschland und Frankreich wollen wir anhand von unterschiedlichen Farben die Daten der beiden Länder unterscheiden. Dazu müssen wir nur `colour` innerhalb von `aes()` den Wert `country` zuweisen.
+Auf der anderen Seite wollen wir die Größe der zu zeichnenden Punkte etwas erhöhen. Aber die Größe soll für beide Länder gleich sein. Daher definieren wir `size` außerhalb der `aes()` Funktion.
 
 
 ```{r}
 gapminder %>%
-  filter(country %in% c("Germany","France")) %>% # auswählen der Daten 
-  ggplot(aes(x = year, y = gdpPercap, colour = country)) +  
-  geom_point(size = 3) # size wird auf einen fixen Wert gesetzt (außerhalb von aes())
+  filter(country %in% c("Germany","France")) %>%  
+  ggplot(mapping = aes(x = year, y = gdpPercap, colour = country)) +  
+  geom_point(size = 3) 
 ```
 
 
 
 ## Geoms {#geoms}
 
-Mit den `geom_xx()` Funktionen stellen wir die Daten als geometrische Formen in einer Grafik dar. Jede `ggplot2` Grafik benötigt daher mindestens ein `geom`. Beispiele sind
+Mithilfe der  `geom_xxx()` Funktionen können wir die Daten als geometrische Formen (Punkte, Linien, ...) in einer Grafik darstellen. Jede `ggplot2` Grafik benötigt daher mindestens ein `geom`. Beispiele sind
 
 - `geom_point()`
 - `geom_line()`
 - `geom_histogram()`
 
-Da wir nicht alle verfügbaren `geoms` auflisten können, sei an dieser Stelle auf die [ggplot2] Seite verwiesen.
+Da wir nicht alle verfügbaren `geoms` auflisten können/wollen, sei an dieser Stelle auf die [ggplot2] Seite verwiesen.
 
 
-
+Im nächsten Beispiel stellen wir die gleichen Daten/Variablen über zwei verschiedene `geoms` dar.
 
 ```{r, fig.align='default', fig.show='hold', out.width="50%"}
 gapminder %>%
-  ggplot(aes(x = year, y = gdpPercap)) +  
+  ggplot(mapping = aes(x = year, y = gdpPercap)) +  
   geom_point() 
 
 
 gapminder %>%
-  ggplot(aes(x = year, y = gdpPercap)) +  
+  ggplot(mapping = aes(x = year, y = gdpPercap)) +  
   geom_smooth() 
 ```
 
 
-Wir haben hier die gleichen Daten visualisiert. Allerdings ist das Ergebnis doch recht unterschiedlich. Der Scatterplot zeigt alle (abgesehen von überzeichnen) Daten, wohingegen mit `geom_smooth()` eine geglätteter Zusammenhang dargestellt wird.
+Obwohl die gleichen Daten visualisiert wurden, ist das Ergebnis doch recht unterschiedlich. Der Scatterplot zeigt alle (abgesehen von überzeichnen) Daten, wohingegen mit `geom_smooth()` eine geglätteter Zusammenhang dargestellt wird.
 
 
-Interessant sind hier natürlich die wenigen großen `gdpPercap` Werte
+Interessant sind hier natürlich die wenigen großen `gdpPercap` Werte in der linken Grafik
 
 ```{r}
 gapminder %>%
   filter(gdpPercap > 50000)
 ```
 
-Kuwait hat über den gesamten Zeitraum hohe GDP Werte. Aber zu Beginn der Aufzeichnungen waren die Werte in Bezug auf die damals noch recht kleine Populationsgröße außergewöhnlich hoch.
+Kuwait hat über den gesamten Zeitraum sehr hohe GDP Werte. Aber zu Beginn der Aufzeichnungen waren die Werte in Bezug auf die damals noch recht kleine Populationsgröße sogar außergewöhnlich hoch.
 
 
 
-Einem `ggplot` Objekt können wir nicht nur ein `geom` zuordnen. Prinzipiell können wir beliebig viele weitere `geoms` hinzufügen. Wir können also die gerade durchgeführte Glättung der Daten auch
-direkt zum Scatterplot hinzufügen
+Einem `ggplot` Objekt können wir nicht nur ein `geom` zuordnen. Prinzipiell können wir beliebig viele weitere `geoms` hinzufügen. Wir können also die gerade durchgeführte Glättung der Daten auch direkt zum Scatterplot hinzufügen
 
 
 ```{r, fig12}
 gapminder %>%
-  ggplot(aes(x = year, y = gdpPercap)) +  
+  ggplot(mapping = aes(x = year, y = gdpPercap)) +  
   geom_point() +
   geom_smooth() 
 ```
 
 
 
-Wählen wir die Farbe der geometrischen Objekte anhand einer Faktorvariable, so erhalten wir automatisch eine entsprechende Legende
+Wählen wir die Farbe eines geometrischen Objekts (oder mehrerer)  anhand einer Faktorvariable, so erhalten wir automatisch eine entsprechende Legende
 
 ```{r, fig13}
 gapminder %>%
-  ggplot(aes(x = year, y = gdpPercap)) +  
-  geom_point(aes(colour = continent)) +
+  ggplot(mapping = aes(x = year, y = gdpPercap)) +  
+  geom_point(mapping = aes(colour = continent)) +
   geom_smooth() 
 ```
-Beachte auch, dass wir `colour` nur für `geom_point()` gewählt haben. Die Glättung erfolgt weiterhin über alle Daten und nicht separat für jeden Kontinent. Aber das wäre natürlich auch möglich. Dazu können wir `colour` wieder global in `ggplot()` definieren.
+
+Beachtet dabei, dass wir `colour` nur für `geom_point()` gewählt haben. Die Glättung erfolgt weiterhin über alle Daten und nicht separat für jeden Kontinent. In diesem Fall haben wir in `geom_point()` ein lokales `mapping` definiert.
+
+Aber natürlich hätten wir auch zusätzlich die Glättung pro Kontinent durchführen können. Dazu schreiben wir dann einfach `colour` in das globale `mapping`  und löschen das lokale wieder (es wird ja jetzt lokal nichts anders gemacht als global definiert wurde).
 
 ```{r}
 gapminder %>%
-  ggplot(aes(x = year, y = gdpPercap, colour = continent)) +  
+  ggplot(mapping = aes(x = year, y = gdpPercap, colour = continent)) +  
   geom_point() +
   geom_smooth() 
 ```
 
-Die Punkte sind mir etwas zu groß und der Linientyp gefällt mir auch nicht in diesem Plot. Aber das lässt sich schnell ändern.
+
+
+Nehmen wir mal an, dass uns nun aber die Punkte etwas zu groß sind und wir in diesem Plot kein durchgezogenen Linien verwenden wollen.  D.h. wir würden gerne andere (aber fixe, nicht von Variablen abhängende) aesthetic Werte setzen. Linientyp gefällt mir auch nicht in diesem Plot. Das lässt sich schnell ändern.
 
 ```{r}
 gapminder %>%
@@ -162,27 +174,31 @@ gapminder %>%
 
 ## Statistische Transformationen {#stat-trans}
 
-Jede `geom_xx()` Funktion besitzt eine Default Statistik, die berechnet wird.
+Jede `geom_xxx()` Funktion besitzt eine _"Standard-Statistik"_, die beim Aufruf der Funktion berechnet wird.
 
 ```{r, echo=-1}
 options(width=50)
 args(geom_point)
 ```
 
-Bei einem Scatterplot ist dies nur die Identität. 
+Bei einem Scatterplot ist die Statistik einfach nur die Identität. 
 
-Ein Balkendiagramm verwendet anderseits
+Ein Balkendiagramm verwendet aber z.B. 
 
 
 ```{r}
 args(geom_bar)
 ```
 
-die Transformation `count`, was Sinn macht, da ja gezählt werden muss/soll wie viele Beobachtungen in die jeweilige Kategorie fallen.
+die Transformation `count`. Das macht durchaus Sinn, da ja gezählt werden muss/soll wie viele Beobachtungen in die jeweilige Kategorie fallen.
 
-Der Aufruf der `stat_xx()` Funktion ist oftmals einfacher über die entsprechende `geom_xx()` Funktion, aber natürlich kann die `stat_xx()` Funktion auch direkt aufgerufen werden.
 
-```{r, message=FALSE}
+Die jeweiligen Statistiken könnten über die entsprechenden `stat_xxx()` Funktionen geplottet werden. Da aber jede `geom_xxx()` Funktion mit mindestens einer dieser `stat_xxx()` Funktionen verbunden ist, ist es oftmals einfacher direkt die entsprechende `geom_xxx()` Funktion zu verwenden. Aber natürlich könnte die `stat_xxx()` Funktion auch direkt aufgerufen werden.
+
+
+Daher liefern die beiden nachfolgenden Befehle auch die exakt gleiche Grafik
+
+```{r, message=FALSE, fig.align='default', fig.show='hold', out.width="50%"}
 ggplot(gapminder, aes(x = continent)) + 
   geom_bar()
 
@@ -191,7 +207,7 @@ ggplot(gapminder, aes(x = continent)) +
 ```
 
 
-Jedes `geom` hat zwar ein Default-Transformation, aber natürlich können oftmals noch weitere Transformationen berechnet/genutzt werden. Im Abschnitt __Computed variables__  der Hilfe zu einem `geom` sieht man alle verfügbaren Transformationen
+Jedes `geom` hat zwar ein Standard-Transformation, aber natürlich können oftmals noch weitere Transformationen berechnet/genutzt werden. Im Abschnitt __Computed variables__  der Hilfe zu einem `geom` sieht man alle verfügbaren Transformationen
 
 Für `geom_bar()` sind dies
 
@@ -220,7 +236,7 @@ ggplot(gapminder, aes(x = continent, y = ..prop..)) +
   geom_bar()
 ```
 
-Das sieht jetzt noch nicht so wie wir das erwartet haben. Die 
+Der Befehl hat jetzt zwar eine Grafik erzeugt, aber die sieht noch nicht so aus, wie wir das erwartet haben. Die 
 relativen Häufigkeiten wurden innerhalb der fünf Gruppen berechnet und nicht über alle Beobachtungen. D.h. wir müssen der Funktion noch sagen, dass es nur eine Gruppe geben soll.
 
 
@@ -233,12 +249,17 @@ ggplot(gapminder, aes(x = continent, y = ..prop..)) +
 
 
 
-## scales
+## Scales {#scales}
 
 
-Scales steuern die Zuordnung von Daten zu aesthetics. Sie nehmen deine Daten und bestimmen damit Größe, Farbe, Position oder Form von Objekten. Sie erlauben dir auch die Achsen und die Legend nach deinen Vorstellungen anzupassen. Du kannst sicher mit `ggplot2` Grafiken erstellen, ohne zu wissen, wie `scales` funktionieren, aber wenn du `scales` verstehst und lernst, wie du sie einstellen kannst, wirst du viel mehr Kontrolle über deine Grafiken bekommen.
+Scales steuern die Zuordnung von Daten zu aesthetics. Sie nehmen die Daten und bestimmen damit Größe, Farbe, Position oder Form von Objekten. Sie erlauben euch auch die Achsen und die Legend nach euren Vorstellungen anzupassen. 
 
-Neben weiteren Möglichkeiten können wir über `scales` also
+:::: {.content-box-gray}
+Man kann sicherlich mit `ggplot2` Grafiken erstellen, ohne zu wissen, wie `scales` funktionieren. Aber wenn ihr versteht wie  `scales` funktionieren und lernt, wie ihr sie einstellen könnt, werdet ihr viel mehr Kontrolle über eure Grafiken bekommen.
+::::
+
+
+Über `scale` Funktionen der Form `scale_"aesthetic"_"type"` können wir aesthetics  wie
 
 - `color` und `fill`
 - `position`
@@ -246,10 +267,10 @@ Neben weiteren Möglichkeiten können wir über `scales` also
 - `shape`
 - `line type`
 
-durch Verwendung der `scale_"aesthetic"_"type"` Funktionen modifizieren. Argumente dieser Funktionen sind z.B. `name`, `limits`, `breaks` oder `labels`.
+modifizieren. Argumente dieser Funktionen sind z.B. `name`, `limits`, `breaks` oder `labels`.
 
 
-Zuerst spielen wir etwas mit Farben. Dazu plotten wir erneut `year` gegen `gdpPercap` und wählen für jeden Kontinent eine eigene Farbe. Da wir die Farben über `colour` definieren, verwenden wir danach die Funktionen `scale_colour_xxx()` (im Vergleich zu z.B. `scale_fill_brewer()`).
+Zuerst spielen wir etwas mit Farben. Dazu plotten wir erneut `year` gegen `gdpPercap` und wählen für jeden Kontinent eine eigene Farbe. Da wir die Farben über `colour` definieren, verwenden wir danach Funktionen aus der Klasse `scale_colour_xxx()`. Hätten wir beispielsweise Flächen über das aesthetic `fill` mit Farbe gefüllt, so würden wir Funktionen aus der Klasse `scale_fill_xxx()` verwenden um die Farben anzupassen.
 
 ```{r, fig.align='default', fig.show='hold', out.width="50%"}
 (p <- gapminder %>%
@@ -257,21 +278,26 @@ Zuerst spielen wir etwas mit Farben. Dazu plotten wir erneut `year` gegen `gdpPe
   geom_point(size = 0.9) +
   geom_smooth(linetype = 2) )
 
-p + scale_colour_brewer(palette = "Set1") # Farbpaletten von http://colorbrewer2.org/
+p + scale_colour_brewer(palette = "Set1") 
+# Farbpaletten von http://colorbrewer2.org/
 
 p + scale_colour_grey(start = 0.1, end = 0.9) # keine so gute Wahl
 
-p + scale_colour_manual(values = c("blue", "gold", "sienna1", "sienna4", "hotpink1", "hotpink4"), name = "Kontinent")
+p + scale_colour_manual(
+  values = c("blue", "gold", "sienna1", "sienna4", "hotpink1", "hotpink4"),
+  name = "Kontinent")
 
 ```
 
-In diesem Beispiel haben wir also die Farbe über eine vorgegebene Palette, in Grau-Stufen bzw. manuell gewählt. Im letzten Beispiel haben wir zusätzlich noch den Titel der Legende geändert über das `name` Argument.
+In diesem Beispiel haben wir also die Farbe nachträglich über eine vorgegebene Palette, in Grau-Stufen bzw. manuell gewählt. Im letzten Beispiel haben wir zusätzlich noch den Titel der Legende geändert über das `name` Argument.
 
 
 Die Achsenbeschriftung der y-Achse ist nicht wirklich schön, weil nicht unbedingt selbsterklärend. Daher ändern wir im nächsten Schritt die Achsenbeschriftung.
 
 ```{r}
-p <- p + scale_colour_manual(values = c("blue", "gold", "sienna1", "sienna4", "hotpink1", "hotpink4"))
+p <- p + 
+  scale_colour_manual(
+    values = c("blue", "gold", "sienna1", "sienna4", "hotpink1", "hotpink4"))
 
 p + scale_y_continuous("GDP pro Kopf")
 
@@ -282,22 +308,26 @@ Da es sich bei `gdpPercap` um eine stetige Variable handelt, haben wir `scale_y_
 ```{r}
 (p <- p + labs(x = "Jahr", y = "GDP pro Kopf",
          title = "Monoton steigendes GDP pro Kopf",
-         subtitle = "Gestrichelte Linie zeigt Durchschnittswerte über alle Länder pro Kontinent"))
+         subtitle = "Gestrichelte Linie zeigt Durchschnittswerte über alle
+         Länder pro Kontinent"))
 ```
 
 
 
-Die frühen Kuwait-Beobachtungen ziehen die y-Achse stark auseinander. Daher könnte man etwas in den Plot hinein zoomen wollen. Dazu kann man das Koordinatensystem anpassen über`coord_cartasian()`. Alternativ könnte man auch mit der Funktion `ylim()` arbeiten (analog existiert natürlich auch `xlmin()`). Verwendet man `xlim()` bzw. `ylim()`, so werden alle Datenpunkte, die nicht im zu plottenden Bereich liegen, aber nicht nur nicht gezeichnet, sondern auch aus dem Datensatz (für diesen einen Plot) entfernt. Dies hat Auswirkungen auf Teile des Plots, die auf statistische Transformationen basieren, die mithilfe der vorhanden Daten berechnet wurden.
+Die frühen Kuwait-Beobachtungen ziehen die y-Achse stark auseinander. Daher könnte man vielleicht etwas in den Plot hinein zoomen wollen. Dazu kann man das Koordinatensystem anpassen über `coord_cartasian()`. Alternativ könnte man auch mit der Funktion `ylim()` arbeiten (analog existiert natürlich auch `xlmin()`). 
+
+Verwendet man aber `xlim()` bzw. `ylim()`, so werden alle Datenpunkte, die nicht im zu plottenden Bereich liegen, aber nicht nur nicht gezeichnet, sondern auch aus dem Datensatz (für diesen einen Plot) entfernt. Dies hat dann aber
+Auswirkungen auf Teile des Plots, die auf statistische Transformationen basieren, die mithilfe der vorhanden Daten berechnet wurden.
 
 ```{r, fig.align='default', fig.show='hold', out.width="50%"}
 p + ylim(0,55000)
 (p <- p + coord_cartesian(ylim = c(0, 55000)))
 ```
 
-In der rechten Grafik ist der Verlauf der Kurven unverändert. In der linken Grafik hingegen liegt die Kurve für Asien nun deutlich unter der Kurve für Amerika bis Mitte der 80er Jahre.
+In der rechten Grafik ist der Verlauf der Kurven unverändert. In der linken Grafik hingegen liegt die Kurve für Asien nun bis Mitte der 80er Jahre deutlich unter der Kurve für Amerika.
 
 
-Andere mögliche Positionsänderungen ergeben sich durch Skalierungen der Achsen wie `scale_x_log10()`, `scale_y_sqrt()` oder
+Weitere (mögliche) Positionsänderungen ergeben sich durch Skalierungen der Achsen wie `scale_x_log10()`, `scale_y_sqrt()` oder
 
 ```{r}
 p + scale_x_reverse()
@@ -308,9 +338,9 @@ Für weitere Optionen sei hier auf die [online Version](https://ggplot2-book.org
 
 
 
-## facets
+## Facets
 
-Datensätze lassen sich oftmals bzgl. vorhandener Variablen gruppieren. Dann will man Zusammenhänge weiterer Variablen innerhalb dieser Gruppen darstellen. Entsteht die Gruppierung aufgrund einer Variable, so kannst du mit `facet_wrap()` arbeiten
+Datensätze lassen sich oftmals bzgl. vorhandener Variablen gruppieren und oft  will man dann Zusammenhänge weiterer Variablen innerhalb dieser Gruppen darstellen. Entsteht die Gruppierung basierend auf den Ausprägungen einer Variable, so kann man mit `facet_wrap()` arbeiten
 
 
 ```{r}
@@ -318,11 +348,14 @@ gapminder %>%
   ggplot(aes(x = year, y = gdpPercap )) +  
   geom_point(size = 0.9) +
   geom_smooth(linetype = 2) +
-  facet_wrap(~ continent, ncol = 2)
+  facet_wrap(~ continent, ncol = 5)
   
 ```
 
-In der letzten Grafik verwenden alle fünf Plots die gleiche Skala auf der y-Achse um die Vergleichbarkeit der Werte zu erhöhen. In manchen Fällen mag dies aber störend sein. Mit dem Argument `scale` kannst du die Skala "befreien".
+
+
+
+In der letzten Grafik verwenden alle fünf Plots die gleiche Skala auf der y-Achse um die Vergleichbarkeit der Werte zu erhöhen. In manchen Fällen mag dies aber störend sein. Mit dem Argument `scales` könnt ihr die Skala "befreien".
 
 ```{r}
 gapminder %>%
@@ -332,7 +365,7 @@ gapminder %>%
   facet_wrap(~ continent, ncol = 2, scales = "free")
 ```
 
-Erfolgt die Gruppierung anhand von zwei Variablen, so bietet `facet_grid()` eine passende Aufteilung des Grafikfensters. Neben dem Kontinent betrachten wir nun auch noch ob die Populationsgröße des Landes im entsprechenden Jahr größer als 5000000 ist, oder eben nicht.
+Erfolgt die Gruppierung anhand von zwei Variablen, so bietet `facet_grid()` eine passende Aufteilung des Grafikfensters in Zeilen und Spalten. Neben dem Kontinent berücksichtigen wir jetzt auch noch die Populationsgröße des Landes. Konkret fragen wir ob die Population im entsprechenden Jahr größer als 5000000 ist, oder eben nicht.
 
 ```{r}
 gapminder %>%
@@ -346,16 +379,16 @@ gapminder %>%
 
 Für Ozeanien erhalten wir so z.B. eine Unterteilung in Australien (`TRUE`) und Neuseeland (`FALSE`).
 
-## themes
+## Themes
 
-Abschließend wollen wir noch über verschiedene `themes` sprechen. Über `themes` kann man das Aussehen der nicht datenbezogenen Elemente einer Grafik verändern, wie z.B.
+Abschließend wollen wir noch über verschiedene `themes` sprechen. Über `themes` kann man das Aussehen der nicht datenbezogenen Elemente einer Grafik, wie z.B.
 
 - die Beschriftungen
 - den Hintergrund
 - die Legende
 - ....
 
-Eine Reihe von `themes` sind bereits vorhanden, wobei `theme_gray()` das Default `theme` ist. Siehe auch `?theme_gray()`.
+verändern. Eine Reihe von `themes` sind bereits vorhanden, wobei `theme_gray()` das Default `theme` ist. Siehe auch `?theme_gray()`.
 
 
 
@@ -380,15 +413,17 @@ Die meisten dieser Änderungen können wir mit `theme()` durchführen.
 
 
 ```{r}
+p <- p + scale_colour_brewer(palette = "Set1") 
 p +
   theme(
     axis.text = element_text(size = 14),
-    legend.key = element_rect(fill = "navy"),
-    legend.background = element_rect(fill = "green"),
+    legend.key = element_rect(fill = "gold"),
+    legend.background = element_rect(fill = "#0065BD"),
     legend.position = "bottom",
+    legend.text = element_text(colour = "white"),
     panel.grid.major = element_line(colour = "grey40"),
     panel.grid.minor = element_blank(),
-    panel.background = element_rect(fill = "navy")
+    panel.background = element_rect(fill = "gold")
   )
 ```
 

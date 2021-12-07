@@ -6,14 +6,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Kapitel 10 Einführung | R4ews MA0009</title>
 <meta name="author" content="Stephan Haug">
-<meta name="description" content="Das Paket ggplot2 verwendet eine Grammatik beim Erzeugen von Grafiken. Diese basiert auf Wilkinson (2005): The Grammar of Graphics, Springer. Dadurch ist eine starke Abstraktion bei der Definition...">
+<meta name="description" content="Das Paket ggplot2 verwendet eine speziell Systematik beim Erzeugen von Grafiken. Diese basiert auf Wilkinson (2005): The Grammar of Graphics, Springer.  Kurz gesagt, ist die zugrunde liegende...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
 <meta property="og:title" content="Kapitel 10 Einführung | R4ews MA0009">
 <meta property="og:type" content="book">
-<meta property="og:description" content="Das Paket ggplot2 verwendet eine Grammatik beim Erzeugen von Grafiken. Diese basiert auf Wilkinson (2005): The Grammar of Graphics, Springer. Dadurch ist eine starke Abstraktion bei der Definition...">
+<meta property="og:description" content="Das Paket ggplot2 verwendet eine speziell Systematik beim Erzeugen von Grafiken. Diese basiert auf Wilkinson (2005): The Grammar of Graphics, Springer.  Kurz gesagt, ist die zugrunde liegende...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kapitel 10 Einführung | R4ews MA0009">
-<meta name="twitter:description" content="Das Paket ggplot2 verwendet eine Grammatik beim Erzeugen von Grafiken. Diese basiert auf Wilkinson (2005): The Grammar of Graphics, Springer. Dadurch ist eine starke Abstraktion bei der Definition...">
+<meta name="twitter:description" content="Das Paket ggplot2 verwendet eine speziell Systematik beim Erzeugen von Grafiken. Diese basiert auf Wilkinson (2005): The Grammar of Graphics, Springer.  Kurz gesagt, ist die zugrunde liegende...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/_Lato-0.4.0/font.css" rel="stylesheet">
@@ -83,20 +83,20 @@
 <h1>
 <span class="header-section-number">Kapitel 10</span> Einführung<a class="anchor" aria-label="anchor" href="#graphics-overview"><i class="fas fa-link"></i></a>
 </h1>
-<p>Das Paket <code>ggplot2</code> verwendet eine Grammatik beim Erzeugen von Grafiken. Diese basiert auf</p>
+<p>Das Paket <code>ggplot2</code> verwendet eine speziell Systematik beim Erzeugen von Grafiken. Diese basiert auf</p>
 <blockquote>
 <p><a href="http://link.springer.com/book/10.1007%2F0-387-28695-0">Wilkinson (2005): <em>The Grammar of Graphics</em>, Springer.</a></p>
 </blockquote>
-<p>Dadurch</p>
-<ul>
-<li>ist eine starke Abstraktion bei der Definition einer Grafik möglich</li>
-<li>steht ein sehr flexibles Grafiksystem zur Verfügung.</li>
-</ul>
-<div id="ggplot2-laden" class="section level2" number="10.1">
-<h2>
-<span class="header-section-number">10.1</span> <code>ggplot2</code> laden<a class="anchor" aria-label="anchor" href="#ggplot2-laden"><i class="fas fa-link"></i></a>
-</h2>
-<p>Wie zuvor auch, laden wir stets das komplette <code>tidyverse</code>. Man weiß ja vorher nie so genau was man alles so braucht.</p>
+<div class="content-box-green">
+<p>Kurz gesagt, ist die zugrunde liegende Idee, dass eine statistische Grafik eine Abbildung von Daten auf ästhetische Attribute (Farbe, Form, Größe) von geometrischen Objekten (Punkte, Linien, Balken) ist.</p>
+</div>
+<p>Ferner kann eine Grafik auch noch statistische Transformationen der Daten enthalten. Über die Verwendung verschiedener Facetten ist es möglich dieselbe Darstellung für verschiedene Untergruppen des Datensatzes zu erzeugen.</p>
+<p>Am Ende ist es eine Kombination dieser unabhängigen Komponenten, die eine Grafik ausmacht.</p>
+<div class="content-box-grey">
+<p><strong>Wie immer, laden wir zu Beginn</strong>
+<img src="img/tidyverse.png" width="30%" style="display: block; margin: auto 0 auto auto;"></p>
+</div>
+<p>Man weiß ja vorher nie so genau was man alles so braucht.</p>
 <div class="sourceCode" id="cb137"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
 <span class="co">## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</span>
@@ -107,44 +107,51 @@
 <span class="co">## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──</span>
 <span class="co">## x dplyr::filter() masks stats::filter()</span>
 <span class="co">## x dplyr::lag()    masks stats::lag()</span></code></pre></div>
-</div>
-<div id="idee" class="section level2" number="10.2">
+<div id="idee" class="section level2" number="10.1">
 <h2>
-<span class="header-section-number">10.2</span> Idee<a class="anchor" aria-label="anchor" href="#idee"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.1</span> Idee<a class="anchor" aria-label="anchor" href="#idee"><i class="fas fa-link"></i></a>
 </h2>
-<p>Die grundlegende Idee des ggplot2 Ansatzes zum Erstellen von Grafiken, besteht darin die Bausteine eines Plots unabhängig voneinander zu definieren. Ein Plot besteht immer aus:</p>
+<p>Die grundlegende Idee des ggplot2 Ansatzes zum Erstellen von Grafiken, besteht darin die Bausteine (verschiedene Layer) eines Plots unabhängig voneinander zu definieren und diese dann zu einer Grafik zusammenzufügen. Eine Grafik besteht immer aus:</p>
 <ul>
-<li>Daten (als <code>data.frame</code> oder <code>tibble</code>)</li>
-<li>Koordinatensystem</li>
-<li>Skala</li>
-<li>geometrisches Objekt zur Darstellung (<code>geom</code>)</li>
+<li><p>den <strong>Daten</strong> (als <code>data.frame</code> oder <code>tibble</code>), die ihr visualisieren möchtet, und eine Reihe von Zuordnungen, die beschreiben, wie Variablen aus dem Datensatz auf ästhetische Attribute abgebildet werden</p></li>
+<li><p><strong>geometrischen Objekten</strong> (<code>geom</code>s), die beschreiben was man am Ende wirklich sieht, also z.B. Punkte, Linien, …</p></li>
+<li><p>einem <strong>Koordinatensystem</strong>, das beschreibt, wie die Koordinaten der Daten auf die Ebene der Grafik abgebildet werden. Außerdem stellt es Achsen und Gitternetzlinien zur Verfügung, die das Lesen der Grafik ermöglichen. Normalerweise verwenden wir ein kartesisches Koordinatensystem, aber es gibt natürlich auch noch eine Reihe anderer Optionen.</p></li>
+<li><p><strong>Skalen</strong> (<code>scales</code>), die Werte der Daten abbilden auf Werte in einem ästhetischen Raum, sei es in Farbe, Größe oder Form.</p></li>
 </ul>
-<p>Zusätzlich kann er aber auch noch</p>
+<p>Zusätzlich kann die Grafik aber auch noch</p>
 <ul>
-<li>statistische Transformationen (<code>stat</code>)</li>
-<li>verschiedene Facetten</li>
-<li>…</li>
+<li><p><strong>statistische Transformationen</strong> (<code>stat</code>), die eine Zusammenfassung der Daten visualisieren,</p></li>
+<li><p><strong>Facetten</strong>, die es ermöglichen dieselbe Darstellung für verschiedene Untergruppen des Datensatzes zu erzeugen,</p></li>
+<li><p>…</p></li>
 </ul>
 <p>enthalten.</p>
-<p>Die einzelnen Teile eines Plots werden dann mit dem <code><a href="https://rdrr.io/r/base/Arithmetic.html">+</a></code> Operator zusammengefügt.Initialisiert wird ein Plot mit <code>ggplot()</code>. Ohne weitere Bestandteile wird aber nur eine leere Grafik erzeugt</p>
+<p>Die einzelnen Teile eines Plots werden dann mit dem <code><a href="https://rdrr.io/r/base/Arithmetic.html">+</a></code> Operator zusammengefügt. Initialisiert wird ein Plot mit <code>ggplot()</code>. Ohne weitere Bestandteile wird aber nur eine leere Grafik erzeugt</p>
 <div class="sourceCode" id="cb138"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jennybc/gapminder">gapminder</a></span><span class="op">)</span>
 <span class="fu">ggplot</span><span class="op">(</span><span class="va">gapminder</span><span class="op">)</span> </code></pre></div>
-<div class="inline-figure"><img src="10_ggplot2_intro_files/figure-html/unnamed-chunk-3-1.png" width="80%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="10_ggplot2_intro_files/figure-html/unnamed-chunk-4-1.png" width="80%" style="display: block; margin: auto;"></div>
 <p>In den folgenden Abschnitten lernen wir daher wie weitere Bestandteile zum Plot hinzugefügt werden.</p>
 </div>
-<div id="ein-einfacher-scatterplot" class="section level2" number="10.3">
+<div id="ein-einfacher-scatterplot" class="section level2" number="10.2">
 <h2>
-<span class="header-section-number">10.3</span> Ein einfacher Scatterplot<a class="anchor" aria-label="anchor" href="#ein-einfacher-scatterplot"><i class="fas fa-link"></i></a>
+<span class="header-section-number">10.2</span> Ein einfacher Scatterplot<a class="anchor" aria-label="anchor" href="#ein-einfacher-scatterplot"><i class="fas fa-link"></i></a>
 </h2>
 <p>Wir schauen uns zum Start einfach mal für Deutschland den Verlauf des <code>gdpPercap</code> über die Zeit an.</p>
 <div class="sourceCode" id="cb139"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gapminder</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op">==</span> <span class="st">"Germany"</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="co"># auswählen der Daten </span>
-  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">gdpPercap</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>  <span class="co"># plot initialisieren</span>
-  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="co"># punkte zum Darstellen der Daten verwenden</span></code></pre></div>
-<div class="inline-figure"><img src="10_ggplot2_intro_files/figure-html/unnamed-chunk-4-1.png" width="80%" style="display: block; margin: auto;"></div>
-<p>In diesem einfachen Beispiel haben wir bereits gesehen, dass <code>ggplot()</code> über den Pipe-Operator verknüpft werden kann.</p>
+  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">gdpPercap</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>  <span class="co"># Plot initialisieren</span>
+  <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span> <span class="co"># Punkte zum Darstellen der Daten verwenden</span></code></pre></div>
+<div class="inline-figure"><img src="10_ggplot2_intro_files/figure-html/unnamed-chunk-5-1.png" width="80%" style="display: block; margin: auto;"></div>
+<p>In dieser Grafik haben wir über <code>geom_point()</code> die Art des geometrischen Objekts gewählt. In diesem Fall Punkte. Wenn uns die Form (<code>shape</code>) der Punkte nicht gefällt, so können wir diese natürlich ändern, z.B. in Dreiecke</p>
+<div class="sourceCode" id="cb140"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">gapminder</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op">==</span> <span class="st">"Germany"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">gdpPercap</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>  
+  <span class="fu">geom_point</span><span class="op">(</span>shape <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="co"># shape auf festen Wert 2 gesetzt</span></code></pre></div>
+<div class="inline-figure"><img src="10_ggplot2_intro_files/figure-html/unnamed-chunk-6-1.png" width="80%" style="display: block; margin: auto;"></div>
+<p>Aber dazu mehr im Abschnitt <a href="bausteine.html#scales">Scales</a>.</p>
+<p><strong>Bemerkung:</strong> In diesem einfachen Beispiel haben wir bereits gesehen, dass <code>ggplot()</code> über den Pipe-Operator verknüpft werden kann.</p>
 <!--Packages: main link-->
 <!--Packages: vignettes & CRAN/GitHub links-->
 <!--Bookdowns: main link-->
@@ -163,9 +170,8 @@
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#graphics-overview"><span class="header-section-number">10</span> Einführung</a></li>
-<li><a class="nav-link" href="#ggplot2-laden"><span class="header-section-number">10.1</span> ggplot2 laden</a></li>
-<li><a class="nav-link" href="#idee"><span class="header-section-number">10.2</span> Idee</a></li>
-<li><a class="nav-link" href="#ein-einfacher-scatterplot"><span class="header-section-number">10.3</span> Ein einfacher Scatterplot</a></li>
+<li><a class="nav-link" href="#idee"><span class="header-section-number">10.1</span> Idee</a></li>
+<li><a class="nav-link" href="#ein-einfacher-scatterplot"><span class="header-section-number">10.2</span> Ein einfacher Scatterplot</a></li>
 </ul>
 
       <div class="book-extra">
