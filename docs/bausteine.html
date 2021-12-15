@@ -393,6 +393,22 @@ Auswirkungen auf Teile des Plots, die auf statistische Transformationen basieren
 <span class="co">## `geom_smooth()` using method = 'loess' and formula 'y ~ x'</span></code></pre></div>
 <div class="inline-figure"><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-20-1.png" width="80%" style="display: block; margin: auto;"></div>
 <p>Für Ozeanien erhalten wir so z.B. eine Unterteilung in Australien (<code>TRUE</code>) und Neuseeland (<code>FALSE</code>).</p>
+<p>Die Beschriftung der Spalten sieht so natürlich nicht besonders schön aus. Ohne den Code ist die Beschriftung auch nicht zu verstehen, “Was ist wahr??”.</p>
+<p>Daher versuchen wir die Beschriftung über das Argument <code>labeller</code> der <code>facet_grid()</code> Funktion zu ändern. Zulässige Werte für das Argument <code>labeller</code> können über die <code>labeller()</code> Funktion definiert werden. Hier hat man neben weiteren Optionen die Möglichkeit für jede Ausprägung der Variable, die eine Spalten- (oder Zeilen-) Aufteilung definiert, ein Label zu setzen. Dazu muss
+die Variable über ihren Namen aufgerufen werden. Nun scheint es so, dass ein Aufruf über “Sondernamen” wie <code>pop &gt; 5000000</code> nicht funktioniert. Um trotzdem die Verwendung von <code>labeller</code> zu illustrieren, definieren wir zuerst mit <code>mutate</code> eine neue Variable <code>pop5</code> und setzen anschließend die Labels über das Argument <code>labeller</code>.</p>
+<div class="sourceCode" id="cb164"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">gapminder</span> <span class="op">%&gt;%</span>
+  <span class="fu">mutate</span><span class="op">(</span>pop5 <span class="op">=</span> <span class="va">pop</span> <span class="op">&gt;</span> <span class="fl">5000000</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">group_by</span><span class="op">(</span><span class="va">continent</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">gdpPercap</span> <span class="op">)</span><span class="op">)</span> <span class="op">+</span>  
+  <span class="fu">geom_point</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">geom_smooth</span><span class="op">(</span>linetype <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">facet_grid</span><span class="op">(</span><span class="va">continent</span> <span class="op">~</span> <span class="va">pop5</span>, scales <span class="op">=</span> <span class="st">"free"</span>,
+             labeller <span class="op">=</span> <span class="fu">labeller</span><span class="op">(</span>
+               pop5 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>`TRUE` <span class="op">=</span> <span class="st">"pop large than 5 MM"</span>, 
+                        `FALSE` <span class="op">=</span> <span class="st">"pop at most 5 MM"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
+<span class="co">## `geom_smooth()` using method = 'loess' and formula 'y ~ x'</span></code></pre></div>
+<div class="inline-figure"><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-21-1.png" width="80%" style="display: block; margin: auto;"></div>
 </div>
 <div id="themes" class="section level2" number="11.6">
 <h2>
@@ -406,7 +422,7 @@ Auswirkungen auf Teile des Plots, die auf statistische Transformationen basieren
 <li>….</li>
 </ul>
 <p>verändern. Eine Reihe von <code>themes</code> sind bereits vorhanden, wobei <code>theme_gray()</code> das Default <code>theme</code> ist. Siehe auch <code>?theme_gray()</code>.</p>
-<div class="sourceCode" id="cb164"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb165"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p</span>
 <span class="co">## `geom_smooth()` using method = 'loess' and formula 'y ~ x'</span>
 <span class="va">p</span> <span class="op">+</span> <span class="fu">theme_bw</span><span class="op">(</span><span class="op">)</span>
@@ -415,7 +431,7 @@ Auswirkungen auf Teile des Plots, die auf statistische Transformationen basieren
 <span class="co">## `geom_smooth()` using method = 'loess' and formula 'y ~ x'</span>
 <span class="va">p</span> <span class="op">+</span> <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span>
 <span class="co">## `geom_smooth()` using method = 'loess' and formula 'y ~ x'</span></code></pre></div>
-<p><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-21-1.png" width="50%"><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-21-2.png" width="50%"><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-21-3.png" width="50%"><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-21-4.png" width="50%"></p>
+<p><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-22-1.png" width="50%"><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-22-2.png" width="50%"><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-22-3.png" width="50%"><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-22-4.png" width="50%"></p>
 <p>Wir möchten nun gerne folgende Änderungen an der Grafik vornehmen:</p>
 <ul>
 <li>die Größe der Achsenbeschriftung ändern</li>
@@ -425,7 +441,7 @@ Auswirkungen auf Teile des Plots, die auf statistische Transformationen basieren
 <li>die Hintergrundfarbe der Grafik und der Legende ändern</li>
 </ul>
 <p>Die meisten dieser Änderungen können wir mit <code>theme()</code> durchführen.</p>
-<div class="sourceCode" id="cb165"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb166"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p</span> <span class="op">&lt;-</span> <span class="va">p</span> <span class="op">+</span> <span class="fu">scale_colour_brewer</span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Set1"</span><span class="op">)</span> 
 <span class="co">## Scale for 'colour' is already present. Adding</span>
 <span class="co">## another scale for 'colour', which will replace</span>
@@ -442,10 +458,10 @@ Auswirkungen auf Teile des Plots, die auf statistische Transformationen basieren
     panel.background <span class="op">=</span> <span class="fu">element_rect</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"gold"</span><span class="op">)</span>
   <span class="op">)</span>
 <span class="co">## `geom_smooth()` using method = 'loess' and formula 'y ~ x'</span></code></pre></div>
-<div class="inline-figure"><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-22-1.png" width="80%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-23-1.png" width="80%" style="display: block; margin: auto;"></div>
 <p>Ob das nun alles schön aussieht, sei dahingestellt, aber es zeigt durchaus die vorhandenen Möglichkeiten.</p>
 <p>Will man gewisse Einstellung öfter verwenden, so kann man diese auch in einem <code>theme</code> Objekt speichern und wiederverwenden.</p>
-<div class="sourceCode" id="cb166"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb167"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">mein_theme</span> <span class="op">&lt;-</span> <span class="fu">theme</span><span class="op">(</span>
     axis.text <span class="op">=</span> <span class="fu">element_text</span><span class="op">(</span>size <span class="op">=</span> <span class="fl">14</span><span class="op">)</span>,
     legend.key <span class="op">=</span> <span class="fu">element_rect</span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"hotpink3"</span><span class="op">)</span>,
@@ -455,10 +471,10 @@ Auswirkungen auf Teile des Plots, die auf statistische Transformationen basieren
   <span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">mein_theme</span><span class="op">)</span>
 <span class="co">## [1] "theme" "gg"</span></code></pre></div>
-<div class="sourceCode" id="cb167"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb168"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p</span> <span class="op">+</span> <span class="va">mein_theme</span>
 <span class="co">## `geom_smooth()` using method = 'loess' and formula 'y ~ x'</span></code></pre></div>
-<div class="inline-figure"><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-24-1.png" width="80%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-25-1.png" width="80%" style="display: block; margin: auto;"></div>
 </div>
 <div id="buch-zum-paket" class="section level2" number="11.7">
 <h2>

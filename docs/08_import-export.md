@@ -256,10 +256,10 @@ Schauen wir uns einmal an, wie die Variable jdata in der R-Konsole aussieht:
 ```r
 jdata
 ## Response [http://api.open-notify.org/astros.json]
-##   Date: 2021-12-07 22:11
+##   Date: 2021-12-15 09:56
 ##   Status: 200
 ##   Content-Type: application/json
-##   Size: 497 B
+##   Size: 630 B
 ```
 
 Als erstes fällt auf, dass die URL enthalten ist, an die die GET-Anfrage gesendet wurde. Außerdem erkennen wir das Datum und die Uhrzeit, zu der die Anfrage gestellt wurde, sowie die Größe der Antwort.
@@ -292,7 +292,7 @@ Dazu müssen wir zunächst den rohen Unicode in character Daten konvertieren, di
 
 ```r
 rawToChar(jdata$content)
-## [1] "{\"message\": \"success\", \"people\": [{\"name\": \"Mark Vande Hei\", \"craft\": \"ISS\"}, {\"name\": \"Pyotr Dubrov\", \"craft\": \"ISS\"}, {\"name\": \"Anton Shkaplerov\", \"craft\": \"ISS\"}, {\"name\": \"Zhai Zhigang\", \"craft\": \"Shenzhou 13\"}, {\"name\": \"Wang Yaping\", \"craft\": \"Shenzhou 13\"}, {\"name\": \"Ye Guangfu\", \"craft\": \"Shenzhou 13\"}, {\"name\": \"Raja Chari\", \"craft\": \"ISS\"}, {\"name\": \"Tom Marshburn\", \"craft\": \"ISS\"}, {\"name\": \"Kayla Barron\", \"craft\": \"ISS\"}, {\"name\": \"Matthias Maurer\", \"craft\": \"ISS\"}], \"number\": 10}"
+## [1] "{\"message\": \"success\", \"people\": [{\"craft\": \"ISS\", \"name\": \"Mark Vande Hei\"}, {\"craft\": \"ISS\", \"name\": \"Pyotr Dubrov\"}, {\"craft\": \"ISS\", \"name\": \"Anton Shkaplerov\"}, {\"craft\": \"Shenzhou 13\", \"name\": \"Zhai Zhigang\"}, {\"craft\": \"Shenzhou 13\", \"name\": \"Wang Yaping\"}, {\"craft\": \"Shenzhou 13\", \"name\": \"Ye Guangfu\"}, {\"craft\": \"ISS\", \"name\": \"Raja Chari\"}, {\"craft\": \"ISS\", \"name\": \"Tom Marshburn\"}, {\"craft\": \"ISS\", \"name\": \"Kayla Barron\"}, {\"craft\": \"ISS\", \"name\": \"Matthias Maurer\"}, {\"craft\": \"ISS\", \"name\": \"Alexander Misurkin\"}, {\"craft\": \"ISS\", \"name\": \"Yusaku Maezawa\"}, {\"craft\": \"ISS\", \"name\": \"Yozo Hirano\"}], \"number\": 13}"
 ```
 
 
@@ -308,10 +308,10 @@ data <-  fromJSON(rawToChar(jdata$content))
 glimpse(data)
 ## List of 3
 ##  $ message: chr "success"
-##  $ people :'data.frame':	10 obs. of  2 variables:
-##   ..$ name : chr [1:10] "Mark Vande Hei" "Pyotr Dubrov" "Anton Shkaplerov" "Z"..
-##   ..$ craft: chr [1:10] "ISS" "ISS" "ISS" "Shenzhou 13" ...
-##  $ number : int 10
+##  $ people :'data.frame':	13 obs. of  2 variables:
+##   ..$ craft: chr [1:13] "ISS" "ISS" "ISS" "Shenzhou 13" ...
+##   ..$ name : chr [1:13] "Mark Vande Hei" "Pyotr Dubrov" "Anton Shkaplerov" "Z"..
+##  $ number : int 13
 ```
 
 Die Liste `data` hat drei Elemente. Uns interessiert in erster Linie das Data Frame `people`.
@@ -319,21 +319,24 @@ Die Liste `data` hat drei Elemente. Uns interessiert in erster Linie das Data Fr
 
 ```r
 data$people
-##                name       craft
-## 1    Mark Vande Hei         ISS
-## 2      Pyotr Dubrov         ISS
-## 3  Anton Shkaplerov         ISS
-## 4      Zhai Zhigang Shenzhou 13
-## 5       Wang Yaping Shenzhou 13
-## 6        Ye Guangfu Shenzhou 13
-## 7        Raja Chari         ISS
-## 8     Tom Marshburn         ISS
-## 9      Kayla Barron         ISS
-## 10  Matthias Maurer         ISS
+##          craft               name
+## 1          ISS     Mark Vande Hei
+## 2          ISS       Pyotr Dubrov
+## 3          ISS   Anton Shkaplerov
+## 4  Shenzhou 13       Zhai Zhigang
+## 5  Shenzhou 13        Wang Yaping
+## 6  Shenzhou 13         Ye Guangfu
+## 7          ISS         Raja Chari
+## 8          ISS      Tom Marshburn
+## 9          ISS       Kayla Barron
+## 10         ISS    Matthias Maurer
+## 11         ISS Alexander Misurkin
+## 12         ISS     Yusaku Maezawa
+## 13         ISS        Yozo Hirano
 ```
 
 
-Also, da haben wir unsere Antwort: Zum Zeitpunkt des letzten Updates Dec 07, 2021 von R4ews befanden sich 10 Personen im Weltraum. Aber wenn ihr den Code zu einem späteren Zeitpunkt ausprobiert, könnten es auch schon wieder andere Namen und eine andere Anzahl sein. Das ist einer der Vorteile von APIs - im Gegensatz zu Datensätzen, die man im Spreadsheet Format herunterladen kann, werden sie in der Regel in Echtzeit oder nahezu in Echtzeit aktualisiert. APIs bieten somit die Möglichkeit leicht auf sehr aktuellen Daten zuzugreifen.
+Also, da haben wir unsere Antwort: Zum Zeitpunkt des letzten Updates Dec 15, 2021 von R4ews befanden sich 13 Personen im Weltraum. Aber wenn ihr den Code zu einem späteren Zeitpunkt ausprobiert, könnten es auch schon wieder andere Namen und eine andere Anzahl sein. Das ist einer der Vorteile von APIs - im Gegensatz zu Datensätzen, die man im Spreadsheet Format herunterladen kann, werden sie in der Regel in Echtzeit oder nahezu in Echtzeit aktualisiert. APIs bieten somit die Möglichkeit leicht auf sehr aktuellen Daten zuzugreifen.
 
 
 In diesem Beispiel haben wir einen sehr unkomplizierten API-Workflow durchlaufen. Die meisten APIs fordern, dass man demselben allgemeinen Muster folgt, aber dabei können die jeweilgen Aufrufe/Befehle durchaus deutlich komplexer sein.
@@ -365,11 +368,10 @@ Wie auch immer, jetzt, da wir unsere Anfrage einschließlich der Standortparamet
 data <- fromJSON(rawToChar(jdata$content))
 data$response
 ##   duration   risetime
-## 1      456 1638954002
-## 2      642 1638959671
-## 3      657 1638965469
-## 4      653 1638971299
-## 5      657 1638977115
+## 1      650 1639573623
+## 2      511 1639579463
+## 3      459 1639634062
+## 4      641 1639639734
 ```
 
 
@@ -379,9 +381,8 @@ Diese API gibt uns die Zeit in Form von [Unixzeit](https://de.wikipedia.org/wiki
 
 ```r
 lubridate::as_datetime(data$response$risetime)
-## [1] "2021-12-08 09:00:02 UTC" "2021-12-08 10:34:31 UTC"
-## [3] "2021-12-08 12:11:09 UTC" "2021-12-08 13:48:19 UTC"
-## [5] "2021-12-08 15:25:15 UTC"
+## [1] "2021-12-15 13:07:03 UTC" "2021-12-15 14:44:23 UTC"
+## [3] "2021-12-16 05:54:22 UTC" "2021-12-16 07:28:54 UTC"
 ```
 
 

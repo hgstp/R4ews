@@ -462,6 +462,34 @@ gapminder %>%
 
 Für Ozeanien erhalten wir so z.B. eine Unterteilung in Australien (`TRUE`) und Neuseeland (`FALSE`).
 
+
+Die Beschriftung der Spalten sieht so natürlich nicht besonders schön aus. Ohne den Code ist die Beschriftung auch nicht zu verstehen, "Was ist wahr??".
+
+Daher versuchen wir die Beschriftung über das Argument `labeller` der `facet_grid()` Funktion zu ändern. Zulässige Werte für das Argument `labeller` können über die `labeller()` Funktion definiert werden. Hier hat man neben weiteren Optionen die Möglichkeit für jede Ausprägung der Variable, die eine Spalten- (oder Zeilen-) Aufteilung definiert, ein Label zu setzen. Dazu muss
+die Variable über ihren Namen aufgerufen werden. Nun scheint es so, dass ein Aufruf über "Sondernamen" wie ``pop > 5000000`` nicht funktioniert. Um trotzdem die Verwendung von `labeller` zu illustrieren, definieren wir zuerst mit `mutate` eine neue Variable `pop5` und setzen anschließend die Labels über das Argument `labeller`.
+
+
+
+
+```r
+gapminder %>%
+  mutate(pop5 = pop > 5000000) %>%
+  group_by(continent) %>%
+  ggplot(aes(x = year, y = gdpPercap )) +  
+  geom_point(size = 0.9) +
+  geom_smooth(linetype = 2) +
+  facet_grid(continent ~ pop5, scales = "free",
+             labeller = labeller(
+               pop5 = c(`TRUE` = "pop large than 5 MM", 
+                        `FALSE` = "pop at most 5 MM")))
+## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
+```
+
+<img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-21-1.png" width="80%" style="display: block; margin: auto;" />
+
+
+
+
 ## Themes
 
 Abschließend wollen wir noch über verschiedene `themes` sprechen. Über `themes` kann man das Aussehen der nicht datenbezogenen Elemente einer Grafik, wie z.B.
@@ -487,7 +515,7 @@ p + theme_minimal()
 ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
-<img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-21-1.png" width="50%" /><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-21-2.png" width="50%" /><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-21-3.png" width="50%" /><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-21-4.png" width="50%" />
+<img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-22-1.png" width="50%" /><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-22-2.png" width="50%" /><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-22-3.png" width="50%" /><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-22-4.png" width="50%" />
 
 
 Wir möchten nun gerne folgende Änderungen an der Grafik vornehmen:
@@ -522,7 +550,7 @@ p +
 ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
-<img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-22-1.png" width="80%" style="display: block; margin: auto;" />
+<img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-23-1.png" width="80%" style="display: block; margin: auto;" />
 
 Ob das nun alles schön aussieht, sei dahingestellt, aber es zeigt durchaus die vorhandenen Möglichkeiten.
 
@@ -548,7 +576,7 @@ p + mein_theme
 ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
-<img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-24-1.png" width="80%" style="display: block; margin: auto;" />
+<img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-25-1.png" width="80%" style="display: block; margin: auto;" />
 
 ## Buch zum Paket
 
