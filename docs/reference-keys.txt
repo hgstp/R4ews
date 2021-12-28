@@ -74,7 +74,11 @@ scales
 facets
 themes
 buch-zum-paket
-packages
+sampling
+approximative-verteilung
+resampling
+fragen
+pakete
 struktur
 c-compiler
 r-code
@@ -106,6 +110,3 @@ environments
 scoping-rules
 static-scoping
 anwendungsbeispiel
-fragen
-quantilsfunktion
-qq-plot

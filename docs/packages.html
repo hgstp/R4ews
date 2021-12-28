@@ -4,15 +4,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Kapitel 12 Pakete | R4ews MA0009</title>
+<title>Kapitel 13 Pakete | R4ews MA0009</title>
 <meta name="author" content="Stephan Haug">
 <meta name="description" content="Bei einem Paket handelt es sich um eine strukturierte, standardisierte Einheit, welche aus R Code, Dokumentation, Daten und (möglicherweise) externem Quellcode besteht. Wie man ein Paket...">
 <meta name="generator" content="bookdown 0.24 with bs4_book()">
-<meta property="og:title" content="Kapitel 12 Pakete | R4ews MA0009">
+<meta property="og:title" content="Kapitel 13 Pakete | R4ews MA0009">
 <meta property="og:type" content="book">
 <meta property="og:description" content="Bei einem Paket handelt es sich um eine strukturierte, standardisierte Einheit, welche aus R Code, Dokumentation, Daten und (möglicherweise) externem Quellcode besteht. Wie man ein Paket...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Kapitel 12 Pakete | R4ews MA0009">
+<meta name="twitter:title" content="Kapitel 13 Pakete | R4ews MA0009">
 <meta name="twitter:description" content="Bei einem Paket handelt es sich um eine strukturierte, standardisierte Einheit, welche aus R Code, Dokumentation, Daten und (möglicherweise) externem Quellcode besteht. Wie man ein Paket...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -65,12 +65,12 @@
 <li class="book-part">ggplot2 Intro</li>
 <li><a class="" href="graphics-overview.html"><span class="header-section-number">10</span> Einführung</a></li>
 <li><a class="" href="bausteine.html"><span class="header-section-number">11</span> Bausteine</a></li>
-<li class="book-part">Noch viel mehr möglich</li>
-<li><a class="active" href="packages.html"><span class="header-section-number">12</span> Pakete</a></li>
-<li><a class="" href="funktionen.html"><span class="header-section-number">13</span> Funktionen</a></li>
-<li><a class="" href="envscop.html"><span class="header-section-number">14</span> Environments und Scoping</a></li>
 <li class="book-part">Appendix</li>
-<li><a class="" href="fragen.html"><span class="header-section-number">15</span> Fragen und Anregungen aus der Übung</a></li>
+<li><a class="" href="fragen.html"><span class="header-section-number">12</span> Fragen aus der Übung</a></li>
+<li class="book-part">Noch viel mehr möglich</li>
+<li><a class="active" href="packages.html"><span class="header-section-number">13</span> Pakete</a></li>
+<li><a class="" href="funktionen.html"><span class="header-section-number">14</span> Funktionen</a></li>
+<li><a class="" href="envscop.html"><span class="header-section-number">15</span> Environments und Scoping</a></li>
 <li><a class="" href="literatur-3.html">Literatur</a></li>
 </ul>
 
@@ -79,9 +79,9 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="packages" class="section level1" number="12">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="packages" class="section level1" number="13">
 <h1>
-<span class="header-section-number">Kapitel 12</span> Pakete<a class="anchor" aria-label="anchor" href="#packages"><i class="fas fa-link"></i></a>
+<span class="header-section-number">Kapitel 13</span> Pakete<a class="anchor" aria-label="anchor" href="#packages"><i class="fas fa-link"></i></a>
 </h1>
 <p>Bei einem Paket handelt es sich um</p>
 <blockquote>
@@ -100,9 +100,9 @@ Dokumentation und Installierbarkeit, sowie, falls man möchte,
 Überprüfung von Berechnungsergebnissen.</p></li>
 <li><p>einfache Verteilung der Software an Dritte; Beispieldatensätze können auch ins Paket!</p></li>
 </ul>
-<div id="struktur" class="section level2" number="12.1">
+<div id="struktur" class="section level2" number="13.1">
 <h2>
-<span class="header-section-number">12.1</span> Struktur<a class="anchor" aria-label="anchor" href="#struktur"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.1</span> Struktur<a class="anchor" aria-label="anchor" href="#struktur"><i class="fas fa-link"></i></a>
 </h2>
 <p>Ein Paket besteht aus einigen Standard–Dateien und Verzeichnissen:</p>
 <ul>
@@ -124,30 +124,30 @@ Lizenz, Titel, Abhängigkeiten, …)</li>
 </ul>
 <p>Bei der Erzeugung der Struktur (wie auch weiteren Schritten bei der Entwicklung) sollte man so viel wie möglich automatisieren. Wir verwenden dazu die von Hadley Wickham bereitgestellten Werkzeuge.</p>
 <p>Falls noch nicht geschehen, sollte man</p>
-<div class="sourceCode" id="cb169"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb179"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"devtools"</span>, <span class="st">"roxygen2"</span>, <span class="st">"testthat"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>ausführen. Diese Pakete erleichtern in Kombination mit RStudio das Erstellen von Paketen.</p>
 </div>
-<div id="c-compiler" class="section level2" number="12.2">
+<div id="c-compiler" class="section level2" number="13.2">
 <h2>
-<span class="header-section-number">12.2</span> C Compiler<a class="anchor" aria-label="anchor" href="#c-compiler"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.2</span> C Compiler<a class="anchor" aria-label="anchor" href="#c-compiler"><i class="fas fa-link"></i></a>
 </h2>
 <p>Um alle Möglichkeiten bei der Erstellung von R-Paketen ausnützen zu können, brauchst du außerdem einen Compiler und noch ein paar andere Werkzeuge. Dies ist aber vermutlich erst dann wirklich nötig, wenn du Pakete bauen willst, die C- oder C++-Code enthalten (nicht Teil des Kurses). RStudio sollte dich auch warnen und dir Unterstützung anbieten, sobald du versuchen solltest, etwas zu tun, das die Einrichtung einer Entwicklungsumgebung erfordert.</p>
 <p>Mit <code><a href="https://rdrr.io/pkg/pkgbuild/man/has_compiler.html">has_devel()</a></code> kannst du aber bereits auch jetzt mal überprüfen ob dein System vielleicht schon bereit ist</p>
-<div class="sourceCode" id="cb170"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb180"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/">devtools</a></span><span class="op">)</span></code></pre></div>
-<div class="sourceCode" id="cb171"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb181"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/pkgbuild/man/has_compiler.html">has_devel</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">## Your system is ready to build packages!</span></code></pre></div>
 <p>Dies scheint bei mir der Fall zu sein.</p>
 </div>
-<div id="r-code" class="section level2" number="12.3">
+<div id="r-code" class="section level2" number="13.3">
 <h2>
-<span class="header-section-number">12.3</span> R Code<a class="anchor" aria-label="anchor" href="#r-code"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.3</span> R Code<a class="anchor" aria-label="anchor" href="#r-code"><i class="fas fa-link"></i></a>
 </h2>
 <p>Das Verzeichnis <code>R/</code> ist der wichtigste Bestandteil eines Pakets, da dort der komplette R Code liegt.
 Dieses Verzeichnis (wie auch andere Teile) erzeugt man mit der Funktion <code><a href="https://devtools.r-lib.org/reference/create.html">devtools::create()</a></code>, z.B.</p>
-<div class="sourceCode" id="cb172"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb182"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://devtools.r-lib.org/reference/create.html">create</a></span><span class="op">(</span><span class="st">"Pfad_zum_Paket/Paketname"</span><span class="op">)</span></code></pre></div>
 <p>Dieser Befehl erzeugt das Verzeichnis <code>Pfad_zum_Paket/Paketname</code>, welches</p>
 <ol style="list-style-type: decimal">
@@ -172,9 +172,9 @@ Dieses Verzeichnis (wie auch andere Teile) erzeugt man mit der Funktion <code><a
 <li>Das Ganze (falls nötig) wiederholen</li>
 </ol>
 </div>
-<div id="verschiedene-typen" class="section level2" number="12.4">
+<div id="verschiedene-typen" class="section level2" number="13.4">
 <h2>
-<span class="header-section-number">12.4</span> Verschiedene Typen<a class="anchor" aria-label="anchor" href="#verschiedene-typen"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.4</span> Verschiedene Typen<a class="anchor" aria-label="anchor" href="#verschiedene-typen"><i class="fas fa-link"></i></a>
 </h2>
 <p>Man unterscheidet fünf verschiedene Typen: <em>source, bundled, binary, installed</em> und <em>in memory</em>.</p>
 <ul>
@@ -199,12 +199,12 @@ Dieses Verzeichnis (wie auch andere Teile) erzeugt man mit der Funktion <code><a
 <strong>in memory</strong>: Um mit einem Paket zu arbeiten muss es in den Speicher geladen werden. Dies geschieht mit <code><a href="https://rdrr.io/r/base/library.html">library()</a></code> (installierte Pakete) oder <code><a href="https://devtools.r-lib.org/reference/load_all.html">load_all()</a></code> (beim Entwickeln von Paketen).</li>
 </ul>
 </div>
-<div id="description" class="section level2" number="12.5">
+<div id="description" class="section level2" number="13.5">
 <h2>
-<span class="header-section-number">12.5</span> DESCRIPTION<a class="anchor" aria-label="anchor" href="#description"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.5</span> DESCRIPTION<a class="anchor" aria-label="anchor" href="#description"><i class="fas fa-link"></i></a>
 </h2>
 <p>Die DESCRIPTION Datei enthält Informationen über das Paket und ist ein essentieller Bestandteil jedes Pakets. Der Befehl</p>
-<div class="sourceCode" id="cb173"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb183"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/create_package.html">create_package</a></span><span class="op">(</span><span class="st">"meinR4EWSpckg"</span><span class="op">)</span></code></pre></div>
 <p>erzeugt die DESCRIPTION Datei</p>
 <pre><code>Package: meinR4EWSpckg
@@ -222,12 +222,12 @@ LazyData: true</code></pre>
 <p>Die wichtigsten Felder einer DESCRIPTION Datei sind dadurch vorhanden (und müssen gefüllt werden). Über die Punkte <code>Imports</code> und <code>Suggests</code> (nicht automatisch vorhanden) kann festgelegt werden welche anderen R Pakete zwingend notwendig bzw. hilfreich sind für das eigene Paket.</p>
 <p>Pakete in <code>Imports</code> werden beim Installieren des eigenen Pakets ebenfalls installiert, falls diese noch nicht vorhanden sind. Pakete in <code>Suggests</code> werden nicht automatisch installiert.</p>
 <p>Über</p>
-<div class="sourceCode" id="cb175"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb185"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_package.html">use_package</a></span><span class="op">(</span><span class="st">"dplyr"</span><span class="op">)</span></code></pre></div>
 <p>kann z.B. das Paket <code>dplyr</code> dem Punkt <code>Imports</code> hinzugefügt werden. <code><a href="https://usethis.r-lib.org/reference/use_package.html">usethis::use_package(type = "Suggests")</a></code> fügt <code>Suggests</code> weitere Pakete hinzu.</p>
-<div id="name-titel-beschreibung" class="section level3" number="12.5.1">
+<div id="name-titel-beschreibung" class="section level3" number="13.5.1">
 <h3>
-<span class="header-section-number">12.5.1</span> Name, Titel, Beschreibung<a class="anchor" aria-label="anchor" href="#name-titel-beschreibung"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.5.1</span> Name, Titel, Beschreibung<a class="anchor" aria-label="anchor" href="#name-titel-beschreibung"><i class="fas fa-link"></i></a>
 </h3>
 <p>Der Name (<code>Package</code>) eines Pakets darf Buchstaben, Zahlen und <code>.</code> enthalten und sollte mit dem Verzeichnisname übereinstimmen.</p>
 <p><code>Title</code> und <code>Description</code> sollten beschreiben was das Paket genau macht. <code>Description</code> ist dabei deutlich ausführlicher und enthält daher i.d.R. mehrere Zeilen. Nach einem Zeilenumbruch sollte 4 Leerzeichen eingerückt werden. Ein Beispiel wäre</p>
@@ -241,9 +241,9 @@ Description: An implementation of the grammar of graphics in R.
     to aesthetic attributes. See the ggplot2 website for more 
     information, documentation and examples.</code></pre>
 </div>
-<div id="autoren" class="section level3" number="12.5.2">
+<div id="autoren" class="section level3" number="13.5.2">
 <h3>
-<span class="header-section-number">12.5.2</span> Autoren<a class="anchor" aria-label="anchor" href="#autoren"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.5.2</span> Autoren<a class="anchor" aria-label="anchor" href="#autoren"><i class="fas fa-link"></i></a>
 </h3>
 <p>Über das Feld <code>Authors@R</code> können die Autoren des Pakets angegeben werden. An dieser Stelle kann
 in der DESCRIPTION Datei R Code verwendet werden um die nötigen Informationen</p>
@@ -269,19 +269,19 @@ in der DESCRIPTION Datei R Code verwendet werden um die nötigen Informationen</
                   email = "haug@tum.de", 
                   role = c("cre", "aut"))</code></pre>
 <p>Der Output von <code><a href="https://rdrr.io/r/utils/person.html">person()</a></code> sieht dann folgendermaßen aus</p>
-<div class="sourceCode" id="cb178"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb188"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/person.html">person</a></span><span class="op">(</span>given <span class="op">=</span> <span class="st">"Stephan"</span>, family <span class="op">=</span> <span class="st">"Haug"</span>, 
                   email <span class="op">=</span> <span class="st">"haug@tum.de"</span>, 
                   role <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"cre"</span>, <span class="st">"aut"</span><span class="op">)</span><span class="op">)</span>
 <span class="co">## [1] "Stephan Haug &lt;haug@tum.de&gt; [cre, aut]"</span></code></pre></div>
 </div>
-<div id="version" class="section level3" number="12.5.3">
+<div id="version" class="section level3" number="13.5.3">
 <h3>
-<span class="header-section-number">12.5.3</span> Version<a class="anchor" aria-label="anchor" href="#version"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.5.3</span> Version<a class="anchor" aria-label="anchor" href="#version"><i class="fas fa-link"></i></a>
 </h3>
 <p><code><a href="https://devtools.r-lib.org/reference/create.html">devtools::create()</a></code> legt die Default-Version auf <code>0.1.0</code> fest. Generell sollte die Versionsnummer aber aus drei Teilen bestehen und die Form <code>x.y.z</code> haben, wobei <code>x</code> die Nummer für größere Updates, <code>y</code> die Nummer für kleinere Updates und <code>z</code> die Nummer für Korrekturen ist.</p>
 <p>Die aktuelle Version von <code>ggplot2</code> ist z.B.</p>
-<div class="sourceCode" id="cb179"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb189"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/packageDescription.html">packageVersion</a></span><span class="op">(</span><span class="st">"ggplot2"</span><span class="op">)</span>
 <span class="co">## [1] '3.3.5'</span></code></pre></div>
 <p>Für Pakete, die sich in der Entwicklung befinden, bietet es sich an noch einen vierten Teil anzufügen und mit der Versionsnummer <code>0.0.0.9000</code> zu starten.</p>
@@ -305,9 +305,9 @@ Imports:
 </blockquote>
 </div>
 </div>
-<div id="pakete-dokumentation" class="section level2" number="12.6">
+<div id="pakete-dokumentation" class="section level2" number="13.6">
 <h2>
-<span class="header-section-number">12.6</span> Pakete: Dokumentation<a class="anchor" aria-label="anchor" href="#pakete-dokumentation"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.6</span> Pakete: Dokumentation<a class="anchor" aria-label="anchor" href="#pakete-dokumentation"><i class="fas fa-link"></i></a>
 </h2>
 <p>Ein wichtiger Teil eines Pakets ist die ausreichende Dokumentation (wichtiger) Funktionen. Dokumentationen werden als <code>.Rd</code> (LaTeX ähnliches Format) Dateien im Verzeichnis <code>man/</code> abgelegt. Das Paket <code>roxygen2</code> bietet eine komfortable Möglichkeit aus Funktionskommentaren (in einem speziellen Format) eine <code>.Rd</code> Datei zu erzeugen.</p>
 <p><em>Ablauf:</em></p>
@@ -383,32 +383,32 @@ Weitere Tags sind im Abschnitt <a href="http://r-pkgs.had.co.nz/man.html#man-fun
 </ul>
 <p>Weitere Möglichkeiten der Formatierung findest du im Abschnitt <a href="http://r-pkgs.had.co.nz/man.html#text-formatting">Text formatting</a> des Buch <a href="https://r-pkgs.org">R packages</a>.</p>
 </div>
-<div id="namespace" class="section level2" number="12.7">
+<div id="namespace" class="section level2" number="13.7">
 <h2>
-<span class="header-section-number">12.7</span> NAMESPACE<a class="anchor" aria-label="anchor" href="#namespace"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.7</span> NAMESPACE<a class="anchor" aria-label="anchor" href="#namespace"><i class="fas fa-link"></i></a>
 </h2>
 <p>Es ist nicht nur für das Erstellen von Paketen hilfreich das Konzept eines <code>NAMESPACE</code> verstanden zu haben, sondern auch für das generelle Arbeiten mit R. Man unterscheidet dabei <strong>Import</strong> <code>NAMESPACES</code> und <strong>Export</strong> <code>NAMESPACES</code>.</p>
 <p><strong>Import</strong> legt dabei fest wie die Funktion eines Pakets eine Funktion in einem anderen Paket findet. Betrachten wir z.B.</p>
-<div class="sourceCode" id="cb183"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb193"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">nrow</span>
 <span class="co">## function (x) </span>
 <span class="co">## dim(x)[1L]</span>
-<span class="co">## &lt;bytecode: 0x7fc4412726c8&gt;</span>
+<span class="co">## &lt;bytecode: 0x7fbc935101d8&gt;</span>
 <span class="co">## &lt;environment: namespace:base&gt;</span></code></pre></div>
 <p>Diese Funktion ist definiert in Abhängigkeit von <code><a href="https://rdrr.io/r/base/dim.html">dim()</a></code> aus dem <code>base</code> Paket.</p>
 <p>Auch wenn wir die Funktion</p>
-<div class="sourceCode" id="cb184"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb194"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">dim</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">1</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span>
 <span class="co">## [1] 1 1</span></code></pre></div>
 <p>definieren, findet <code><a href="https://rdrr.io/r/base/nrow.html">nrow()</a></code> trotzdem die “richtige” Funktion</p>
-<div class="sourceCode" id="cb185"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb195"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">mtcars</span><span class="op">)</span>
 <span class="co">## [1] 32</span></code></pre></div>
 <p>da sie den <code>NAMESPACE</code> des <code>base</code> Pakets verwendet.</p>
 <p><strong>Export</strong> legt fest welche Funktionen eines Pakets außerhalb des Pakets zur Verfügung stehen sollen. Dies müssen/sollten nicht alle Funktionen sein. Ein Paket kann also interne Funktionen haben, die nur intern verwendet werden können.</p>
 <p>Über den Operator <code><a href="https://rdrr.io/r/base/ns-dblcolon.html">::</a></code> wird explizit auf den NAMESPACE eines Pakets zugegriffen. Auf diese Art und Weise vermeidet man auch Konflikte zwischen Funktionen aus verschiedenen Paketen, die aber den gleichem Namen haben. In einem solchen Fall kommt es darauf an welches Paket zuletzt geladen wurde. Dieses findet man dann zuerst im Suchpfad</p>
-<div class="sourceCode" id="cb186"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb196"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/search.html">search</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">##  [1] ".GlobalEnv"        "package:devtools"  "package:usethis"  </span>
 <span class="co">##  [4] "package:stats"     "package:graphics"  "package:grDevices"</span>
@@ -444,12 +444,12 @@ export_function &lt;- function(...){
 <p>Dies erhöht die spätere Lesbarkeit der eigenen Programme und vermeidet potentielle Konflikte, die beim Importieren mehrerer Pakete - die dann wieder Funktionen mit gleichem Namen besitzen - auftreten können.</p>
 <p>Muss eine Funktion häufig verwendet werden - und man will nicht dauernd <code><a href="https://rdrr.io/r/base/ns-dblcolon.html">::</a></code> verwenden - so sollte man über <code>importFrom()</code> eher nur die Funktion und nicht das ganze Paket importieren.</p>
 </div>
-<div id="daten-einbinden" class="section level2" number="12.8">
+<div id="daten-einbinden" class="section level2" number="13.8">
 <h2>
-<span class="header-section-number">12.8</span> Daten einbinden<a class="anchor" aria-label="anchor" href="#daten-einbinden"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.8</span> Daten einbinden<a class="anchor" aria-label="anchor" href="#daten-einbinden"><i class="fas fa-link"></i></a>
 </h2>
 <p>Daten, die das Paket enthalten sollte, legt man im Verzeichnis <code>/data</code> ab. Als Format sollte man <code>.rda</code> wählen (ist aber kein Muss). Der einfachste Weg dies zu berücksichtigen ist die Funktion <code><a href="https://usethis.r-lib.org/reference/use_data.html">usethis::use_data()</a></code> zu verwenden.</p>
-<div class="sourceCode" id="cb188"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb198"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sample.html">sample</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">100</span>, <span class="fl">50</span>, replace <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 <span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_data.html">use_data</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">mtcars</span><span class="op">)</span></code></pre></div>
 <p>Dieser Befehl speichert die Objekte <code>x</code> und <code>mtcars</code> in den Dateien <code>data/x.rda</code> und <code>data/mtcars.rda</code> ab. Der Dateiname stimmt also mit dem Objektnamen überein.</p>
@@ -463,12 +463,12 @@ export_function &lt;- function(...){
 #' @format Ein Integer Vektor der Laenge 50
 "x"</code></pre>
 </div>
-<div id="c-special-topic" class="section level2" number="12.9">
+<div id="c-special-topic" class="section level2" number="13.9">
 <h2>
-<span class="header-section-number">12.9</span> C++ (Special Topic)<a class="anchor" aria-label="anchor" href="#c-special-topic"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.9</span> C++ (Special Topic)<a class="anchor" aria-label="anchor" href="#c-special-topic"><i class="fas fa-link"></i></a>
 </h2>
 <p>Will man in seinem Paket R Funktionen verwenden, die mithilfe von <code>Rcpp</code> aus kompiliertem C++ Code entstanden sind, so sollte man zur Vorbereitung</p>
-<div class="sourceCode" id="cb190"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb200"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_rcpp.html">use_rcpp</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>ausführen. Danach ist das das Verzeichnis <code>/src</code> angelegt und <code>Rcpp</code> zu den Feldern <code>LinkingTo</code> und <code>Imports</code> in der <code>DESCRIPTION</code> Datei hinzugefügt. Außerdem wird man aufgefordert die roxygen Tags</p>
 <pre><code>#' @useDynLib meinR4EWSpckg
@@ -487,9 +487,9 @@ int malZwei(int x) {
    return x * 2;
 }</code></pre>
 </div>
-<div id="git-und-githubgitlab" class="section level2" number="12.10">
+<div id="git-und-githubgitlab" class="section level2" number="13.10">
 <h2>
-<span class="header-section-number">12.10</span> Git und GitHub/GitLab<a class="anchor" aria-label="anchor" href="#git-und-githubgitlab"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.10</span> Git und GitHub/GitLab<a class="anchor" aria-label="anchor" href="#git-und-githubgitlab"><i class="fas fa-link"></i></a>
 </h2>
 <p>Benutze für jedes deiner Pakete (mag es auch noch so klein sein) Git. Beim Anlegen des Projekts (zur Erstellung des Pakets) über RStudio, kann leicht ein lokales Git repository initialisiert werden</p>
 <div class="inline-figure"><img src="img/package_git.png" width="80%" style="display: block; margin: auto;"></div>
@@ -500,7 +500,7 @@ git push -u origin master</code></pre>
 <p>Angenommen es existiert bereits ein remote repository und das Paket soll dort “verwaltet” werden. Dann kannst du einfach dieses repository klonen</p>
 <pre><code>git clone https://gitlab.lrz.de/vw99xyz/paketName.git</code></pre>
 <p>Danach existiert im Verzeichnis, in dem der Befehl ausgeführt wurde, das Unterverzeichnis <code>paketName</code>. In R kannst du anschließend den Befehl</p>
-<div class="sourceCode" id="cb195"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb205"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/create.html">create</a></span><span class="op">(</span><span class="st">"paketName"</span><span class="op">)</span></code></pre></div>
 <p>ausführen (im Verzeichnis, welches das Git repository <code>paketName</code> enthält). Danach kannst du die Änderungen speichern über einen commit Befehl</p>
 <pre><code>git add -A
@@ -508,38 +508,38 @@ git commit -m "paket struktur angelegt"</code></pre>
 <p>und pushen</p>
 <pre><code>git push</code></pre>
 </div>
-<div id="literatur-2" class="section level2" number="12.11">
+<div id="literatur-2" class="section level2" number="13.11">
 <h2>
-<span class="header-section-number">12.11</span> Literatur<a class="anchor" aria-label="anchor" href="#literatur-2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">13.11</span> Literatur<a class="anchor" aria-label="anchor" href="#literatur-2"><i class="fas fa-link"></i></a>
 </h2>
 <p>Diese Folien haben einen kleinen Einblick in das Erstellen eigener Pakete gegeben. Allerdings wurden viele weitere Aspekte nicht angesprochen. Weitere Informationen zu R Paketen findet man z.B. im Buch <a href="http://r-pkgs.had.co.nz/">R packages</a> von Hadley Wickham <span class="citation">(<a href="literatur-3.html#ref-wickham2015b" role="doc-biblioref">2015b</a>)</span>.</p>
 
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="bausteine.html"><span class="header-section-number">11</span> Bausteine</a></div>
-<div class="next"><a href="funktionen.html"><span class="header-section-number">13</span> Funktionen</a></div>
+<div class="prev"><a href="fragen.html"><span class="header-section-number">12</span> Fragen aus der Übung</a></div>
+<div class="next"><a href="funktionen.html"><span class="header-section-number">14</span> Funktionen</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#packages"><span class="header-section-number">12</span> Pakete</a></li>
-<li><a class="nav-link" href="#struktur"><span class="header-section-number">12.1</span> Struktur</a></li>
-<li><a class="nav-link" href="#c-compiler"><span class="header-section-number">12.2</span> C Compiler</a></li>
-<li><a class="nav-link" href="#r-code"><span class="header-section-number">12.3</span> R Code</a></li>
-<li><a class="nav-link" href="#verschiedene-typen"><span class="header-section-number">12.4</span> Verschiedene Typen</a></li>
+<li><a class="nav-link" href="#packages"><span class="header-section-number">13</span> Pakete</a></li>
+<li><a class="nav-link" href="#struktur"><span class="header-section-number">13.1</span> Struktur</a></li>
+<li><a class="nav-link" href="#c-compiler"><span class="header-section-number">13.2</span> C Compiler</a></li>
+<li><a class="nav-link" href="#r-code"><span class="header-section-number">13.3</span> R Code</a></li>
+<li><a class="nav-link" href="#verschiedene-typen"><span class="header-section-number">13.4</span> Verschiedene Typen</a></li>
 <li>
-<a class="nav-link" href="#description"><span class="header-section-number">12.5</span> DESCRIPTION</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#name-titel-beschreibung"><span class="header-section-number">12.5.1</span> Name, Titel, Beschreibung</a></li>
-<li><a class="nav-link" href="#autoren"><span class="header-section-number">12.5.2</span> Autoren</a></li>
-<li><a class="nav-link" href="#version"><span class="header-section-number">12.5.3</span> Version</a></li>
+<a class="nav-link" href="#description"><span class="header-section-number">13.5</span> DESCRIPTION</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#name-titel-beschreibung"><span class="header-section-number">13.5.1</span> Name, Titel, Beschreibung</a></li>
+<li><a class="nav-link" href="#autoren"><span class="header-section-number">13.5.2</span> Autoren</a></li>
+<li><a class="nav-link" href="#version"><span class="header-section-number">13.5.3</span> Version</a></li>
 </ul>
 </li>
-<li><a class="nav-link" href="#pakete-dokumentation"><span class="header-section-number">12.6</span> Pakete: Dokumentation</a></li>
-<li><a class="nav-link" href="#namespace"><span class="header-section-number">12.7</span> NAMESPACE</a></li>
-<li><a class="nav-link" href="#daten-einbinden"><span class="header-section-number">12.8</span> Daten einbinden</a></li>
-<li><a class="nav-link" href="#c-special-topic"><span class="header-section-number">12.9</span> C++ (Special Topic)</a></li>
-<li><a class="nav-link" href="#git-und-githubgitlab"><span class="header-section-number">12.10</span> Git und GitHub/GitLab</a></li>
-<li><a class="nav-link" href="#literatur-2"><span class="header-section-number">12.11</span> Literatur</a></li>
+<li><a class="nav-link" href="#pakete-dokumentation"><span class="header-section-number">13.6</span> Pakete: Dokumentation</a></li>
+<li><a class="nav-link" href="#namespace"><span class="header-section-number">13.7</span> NAMESPACE</a></li>
+<li><a class="nav-link" href="#daten-einbinden"><span class="header-section-number">13.8</span> Daten einbinden</a></li>
+<li><a class="nav-link" href="#c-special-topic"><span class="header-section-number">13.9</span> C++ (Special Topic)</a></li>
+<li><a class="nav-link" href="#git-und-githubgitlab"><span class="header-section-number">13.10</span> Git und GitHub/GitLab</a></li>
+<li><a class="nav-link" href="#literatur-2"><span class="header-section-number">13.11</span> Literatur</a></li>
 </ul>
 
       <div class="book-extra">

@@ -788,6 +788,7 @@ An dieser Stelle sei noch auf die [dplyr Webseite](https://dplyr.tidyverse.org/)
 [R Graphics Cookbook]: http://shop.oreilly.com/product/0636920023135.do
 [Cookbook for R]: http://www.cookbook-r.com 
 [ggplot2: Elegant Graphics for Data Analysis]: https://ggplot2-book.org/index.html
+[Statistical Inference via Data Science]: https://moderndive.com/index.html
 
 <!--Bookdowns: specific chapters-->
 [adv-r-fxn-args]: http://adv-r.had.co.nz/Functions.html#function-arguments

@@ -24,11 +24,11 @@ Daten aufbereiten, visualisieren und analysieren. 🚀
 
 All das wollen wir reproduzierbar und auch wiedervendbar machen. Und vor allem, wollen wir alles mit [__R__](www.r-project.org) machen.
 
-Auf dieser Website geht es um alles, was bei der Datenanalyse 
-auftaucht **außer um statistische Modellierung und Schlussfolgerungen**. Dieser Teil der statistischen Analyse erfolgt in der Vorlesung *Einführung in die Wahrscheinlichkeitstheorie und Statistik*. 
+Auf dieser Website geht es um verschiedene Aspekte der __Datenanalyse__. 
+Eine Einführung in die inferentielle Statistik erfolgt im Rahmen der Vorlesung *Einführung in die Wahrscheinlichkeitstheorie und Statistik*. Aber auch hier werden wir ein paar der dort vorgestellten Themen aufgreifen und mithilfe von R anwenden, illustrieren, ...
 
 
-Das Design von R4ews wurde durch die Notwendigkeit motiviert, mehr Ausgewogenheit in der angewandten statistischen Ausbildung zu schaffen. Datenanalysten verbringen viel Zeit mit der Projekt-Organisation, der Datenbereinigung und -aufbereitung sowie der Kommunikation. Diese Tätigkeiten können einen tiefgreifenden Einfluss auf die Qualität und Glaubwürdigkeit einer Analyse haben. Dennoch werden diese Fähigkeiten selten vermittelt, obwohl sie so wichtig und notwendig sind. R4ews versucht diese Lücke etwas zu verkleinern.
+Auf jeden Fall ist aber das Ziel von R4ews einen Fokus auf die __angewandte__ statistische Ausbildung zu setzen. Datenanalysten verbringen viel Zeit mit der Projekt-Organisation, der Datenbereinigung und -aufbereitung sowie der Kommunikation. Diese Tätigkeiten können einen tiefgreifenden Einfluss auf die Qualität und Glaubwürdigkeit einer Analyse haben. Dennoch werden diese Fähigkeiten selten vermittelt, obwohl sie so wichtig und notwendig sind. R4ews versucht diese Lücke etwas zu verkleinern.
 
 
 ::: {.content-box-red}
@@ -41,7 +41,7 @@ Das Material wird kontinuierlich über das Semester hinweg ergänzt/erweitert/ve
 
 ```r
 date()
-## [1] "Wed Dec 15 10:55:43 2021"
+## [1] "Tue Dec 28 16:03:39 2021"
 ```
 
 
@@ -71,7 +71,7 @@ Die aktuelle Version dieses Buchs wurde mit
 ##  collate  en_US.UTF-8                 
 ##  ctype    en_US.UTF-8                 
 ##  tz       Europe/Berlin               
-##  date     2021-12-15
+##  date     2021-12-28
 ```
 
 erstellt

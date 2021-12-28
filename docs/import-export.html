@@ -65,12 +65,13 @@
 <li class="book-part">ggplot2 Intro</li>
 <li><a class="" href="graphics-overview.html"><span class="header-section-number">10</span> Einführung</a></li>
 <li><a class="" href="bausteine.html"><span class="header-section-number">11</span> Bausteine</a></li>
-<li class="book-part">Noch viel mehr möglich</li>
-<li><a class="" href="packages.html"><span class="header-section-number">12</span> Pakete</a></li>
-<li><a class="" href="funktionen.html"><span class="header-section-number">13</span> Funktionen</a></li>
-<li><a class="" href="envscop.html"><span class="header-section-number">14</span> Environments und Scoping</a></li>
+<li class="book-part">Ein bisschen Statistik</li>
+<li><a class="" href="sampling.html"><span class="header-section-number">12</span> Sampling</a></li>
 <li class="book-part">Appendix</li>
-<li><a class="" href="fragen.html"><span class="header-section-number">15</span> Fragen und Anregungen aus der Übung</a></li>
+<li><a class="" href="fragen.html"><span class="header-section-number">13</span> Fragen aus der Übung</a></li>
+<li><a class="" href="pakete.html"><span class="header-section-number">14</span> Pakete</a></li>
+<li><a class="" href="funktionen.html"><span class="header-section-number">15</span> Funktionen</a></li>
+<li><a class="" href="envscop.html"><span class="header-section-number">16</span> Environments und Scoping</a></li>
 <li><a class="" href="literatur-3.html">Literatur</a></li>
 </ul>
 
@@ -280,10 +281,10 @@ Argentina,Americas,75.32</code></pre>
 <div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">jdata</span>
 <span class="co">## Response [http://api.open-notify.org/astros.json]</span>
-<span class="co">##   Date: 2021-12-15 09:56</span>
+<span class="co">##   Date: 2021-12-28 15:04</span>
 <span class="co">##   Status: 200</span>
 <span class="co">##   Content-Type: application/json</span>
-<span class="co">##   Size: 630 B</span></code></pre></div>
+<span class="co">##   Size: 497 B</span></code></pre></div>
 <p>Als erstes fällt auf, dass die URL enthalten ist, an die die GET-Anfrage gesendet wurde. Außerdem erkennen wir das Datum und die Uhrzeit, zu der die Anfrage gestellt wurde, sowie die Größe der Antwort.</p>
 <p>Die Information <code>Content-Type</code> gibt uns eine Vorstellung davon, welche Form die Daten haben. Diese spezielle Antwort besagt, dass die Daten ein JSON-Format annehmen, womit auch klar ist warum wir das Paket <code>jsonlite</code> geladen haben.</p>
 <p>Der Status verdient eine besondere Aufmerksamkeit. <code>Status</code> bezieht sich auf den Erfolg oder Misserfolg der API-Anfrage, und er wird in Form einer Zahl angegeben. Die zurückgegebene Nummer gibt Auskunft darüber, ob die Anfrage erfolgreich war oder nicht. Dort können auch Gründe für einen möglichen Misserfolg enthalten sein.</p>
@@ -303,7 +304,7 @@ Argentina,Americas,75.32</code></pre>
 <p>Dazu müssen wir zunächst den rohen Unicode in character Daten konvertieren, die dem oben gezeigten JSON-Format ähneln. Die Funktion <code><a href="https://rdrr.io/r/base/rawConversion.html">rawToChar()</a></code> führt genau diese Aufgabe aus:</p>
 <div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/rawConversion.html">rawToChar</a></span><span class="op">(</span><span class="va">jdata</span><span class="op">$</span><span class="va">content</span><span class="op">)</span>
-<span class="co">## [1] "{\"message\": \"success\", \"people\": [{\"craft\": \"ISS\", \"name\": \"Mark Vande Hei\"}, {\"craft\": \"ISS\", \"name\": \"Pyotr Dubrov\"}, {\"craft\": \"ISS\", \"name\": \"Anton Shkaplerov\"}, {\"craft\": \"Shenzhou 13\", \"name\": \"Zhai Zhigang\"}, {\"craft\": \"Shenzhou 13\", \"name\": \"Wang Yaping\"}, {\"craft\": \"Shenzhou 13\", \"name\": \"Ye Guangfu\"}, {\"craft\": \"ISS\", \"name\": \"Raja Chari\"}, {\"craft\": \"ISS\", \"name\": \"Tom Marshburn\"}, {\"craft\": \"ISS\", \"name\": \"Kayla Barron\"}, {\"craft\": \"ISS\", \"name\": \"Matthias Maurer\"}, {\"craft\": \"ISS\", \"name\": \"Alexander Misurkin\"}, {\"craft\": \"ISS\", \"name\": \"Yusaku Maezawa\"}, {\"craft\": \"ISS\", \"name\": \"Yozo Hirano\"}], \"number\": 13}"</span></code></pre></div>
+<span class="co">## [1] "{\"people\": [{\"craft\": \"ISS\", \"name\": \"Mark Vande Hei\"}, {\"craft\": \"ISS\", \"name\": \"Pyotr Dubrov\"}, {\"craft\": \"ISS\", \"name\": \"Anton Shkaplerov\"}, {\"craft\": \"Shenzhou 13\", \"name\": \"Zhai Zhigang\"}, {\"craft\": \"Shenzhou 13\", \"name\": \"Wang Yaping\"}, {\"craft\": \"Shenzhou 13\", \"name\": \"Ye Guangfu\"}, {\"craft\": \"ISS\", \"name\": \"Raja Chari\"}, {\"craft\": \"ISS\", \"name\": \"Tom Marshburn\"}, {\"craft\": \"ISS\", \"name\": \"Kayla Barron\"}, {\"craft\": \"ISS\", \"name\": \"Matthias Maurer\"}], \"message\": \"success\", \"number\": 10}"</span></code></pre></div>
 <p>Die resultierende Zeichenfolge sieht zwar recht unordentlich aus, aber es liegt wirklich die JSON-Struktur vor.</p>
 <p>Ausgehend von diesem character Vektor können wir nun mit <code><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html">fromJSON()</a></code>, aus dem <code>jsonlite</code> Paket, alles in ein Listenformat transformieren.</p>
 <p>Die <code><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html">fromJSON()</a></code> Funktion benötigt einen character Vektor, der die JSON-Struktur enthält, die wir aus der Ausgabe von <code><a href="https://rdrr.io/r/base/rawConversion.html">rawToChar()</a></code> erhalten haben. Wenn wir also diese beiden Funktionen nacheinander anwenden, erhalten wir die gewünschten Daten in einem Format, das wir in R leicht bearbeiten können.</p>
@@ -311,29 +312,26 @@ Argentina,Americas,75.32</code></pre>
 <code class="sourceCode R"><span class="va">data</span> <span class="op">&lt;-</span>  <span class="fu"><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html">fromJSON</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rawConversion.html">rawToChar</a></span><span class="op">(</span><span class="va">jdata</span><span class="op">$</span><span class="va">content</span><span class="op">)</span><span class="op">)</span>
 <span class="fu">glimpse</span><span class="op">(</span><span class="va">data</span><span class="op">)</span>
 <span class="co">## List of 3</span>
+<span class="co">##  $ people :'data.frame': 10 obs. of  2 variables:</span>
+<span class="co">##   ..$ craft: chr [1:10] "ISS" "ISS" "ISS" "Shenzhou 13" ...</span>
+<span class="co">##   ..$ name : chr [1:10] "Mark Vande Hei" "Pyotr Dubrov" "Anton Shkaplerov" "Z"..</span>
 <span class="co">##  $ message: chr "success"</span>
-<span class="co">##  $ people :'data.frame': 13 obs. of  2 variables:</span>
-<span class="co">##   ..$ craft: chr [1:13] "ISS" "ISS" "ISS" "Shenzhou 13" ...</span>
-<span class="co">##   ..$ name : chr [1:13] "Mark Vande Hei" "Pyotr Dubrov" "Anton Shkaplerov" "Z"..</span>
-<span class="co">##  $ number : int 13</span></code></pre></div>
+<span class="co">##  $ number : int 10</span></code></pre></div>
 <p>Die Liste <code>data</code> hat drei Elemente. Uns interessiert in erster Linie das Data Frame <code>people</code>.</p>
 <div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">data</span><span class="op">$</span><span class="va">people</span>
-<span class="co">##          craft               name</span>
-<span class="co">## 1          ISS     Mark Vande Hei</span>
-<span class="co">## 2          ISS       Pyotr Dubrov</span>
-<span class="co">## 3          ISS   Anton Shkaplerov</span>
-<span class="co">## 4  Shenzhou 13       Zhai Zhigang</span>
-<span class="co">## 5  Shenzhou 13        Wang Yaping</span>
-<span class="co">## 6  Shenzhou 13         Ye Guangfu</span>
-<span class="co">## 7          ISS         Raja Chari</span>
-<span class="co">## 8          ISS      Tom Marshburn</span>
-<span class="co">## 9          ISS       Kayla Barron</span>
-<span class="co">## 10         ISS    Matthias Maurer</span>
-<span class="co">## 11         ISS Alexander Misurkin</span>
-<span class="co">## 12         ISS     Yusaku Maezawa</span>
-<span class="co">## 13         ISS        Yozo Hirano</span></code></pre></div>
-<p>Also, da haben wir unsere Antwort: Zum Zeitpunkt des letzten Updates Dec 15, 2021 von R4ews befanden sich 13 Personen im Weltraum. Aber wenn ihr den Code zu einem späteren Zeitpunkt ausprobiert, könnten es auch schon wieder andere Namen und eine andere Anzahl sein. Das ist einer der Vorteile von APIs - im Gegensatz zu Datensätzen, die man im Spreadsheet Format herunterladen kann, werden sie in der Regel in Echtzeit oder nahezu in Echtzeit aktualisiert. APIs bieten somit die Möglichkeit leicht auf sehr aktuellen Daten zuzugreifen.</p>
+<span class="co">##          craft             name</span>
+<span class="co">## 1          ISS   Mark Vande Hei</span>
+<span class="co">## 2          ISS     Pyotr Dubrov</span>
+<span class="co">## 3          ISS Anton Shkaplerov</span>
+<span class="co">## 4  Shenzhou 13     Zhai Zhigang</span>
+<span class="co">## 5  Shenzhou 13      Wang Yaping</span>
+<span class="co">## 6  Shenzhou 13       Ye Guangfu</span>
+<span class="co">## 7          ISS       Raja Chari</span>
+<span class="co">## 8          ISS    Tom Marshburn</span>
+<span class="co">## 9          ISS     Kayla Barron</span>
+<span class="co">## 10         ISS  Matthias Maurer</span></code></pre></div>
+<p>Also, da haben wir unsere Antwort: Zum Zeitpunkt des letzten Updates Dec 28, 2021 von R4ews befanden sich 10 Personen im Weltraum. Aber wenn ihr den Code zu einem späteren Zeitpunkt ausprobiert, könnten es auch schon wieder andere Namen und eine andere Anzahl sein. Das ist einer der Vorteile von APIs - im Gegensatz zu Datensätzen, die man im Spreadsheet Format herunterladen kann, werden sie in der Regel in Echtzeit oder nahezu in Echtzeit aktualisiert. APIs bieten somit die Möglichkeit leicht auf sehr aktuellen Daten zuzugreifen.</p>
 <p>In diesem Beispiel haben wir einen sehr unkomplizierten API-Workflow durchlaufen. Die meisten APIs fordern, dass man demselben allgemeinen Muster folgt, aber dabei können die jeweilgen Aufrufe/Befehle durchaus deutlich komplexer sein.</p>
 <p>In unserem Beispiel war es ausreichen nur die URL anzugeben. Aber einige APIs verlangen mehr Informationen vom Benutzer. Im letzten Teil dieser Einführung gehen wir darauf ein, wie ihr der API in eurer Anfrage zusätzliche Informationen zur Verfügung stellen könnt.</p>
 </div>
@@ -353,15 +351,17 @@ Argentina,Americas,75.32</code></pre>
 <code class="sourceCode R"><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html">fromJSON</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rawConversion.html">rawToChar</a></span><span class="op">(</span><span class="va">jdata</span><span class="op">$</span><span class="va">content</span><span class="op">)</span><span class="op">)</span>
 <span class="va">data</span><span class="op">$</span><span class="va">response</span>
 <span class="co">##   duration   risetime</span>
-<span class="co">## 1      650 1639573623</span>
-<span class="co">## 2      511 1639579463</span>
-<span class="co">## 3      459 1639634062</span>
-<span class="co">## 4      641 1639639734</span></code></pre></div>
+<span class="co">## 1      305 1640737554</span>
+<span class="co">## 2      616 1640743146</span>
+<span class="co">## 3      655 1640748919</span>
+<span class="co">## 4      649 1640754743</span>
+<span class="co">## 5      656 1640760560</span></code></pre></div>
 <p>Diese API gibt uns die Zeit in Form von <a href="https://de.wikipedia.org/wiki/Unixzeit">Unixzeit</a> zurück. Unixzeit ist die Zeitspanne, die seit dem 1. Januar 1970 vergangen ist. Mithilfe der Funktion <code>as_datetime()</code> aus dem <a href="https://lubridate.tidyverse.org">lubridate</a> Paket können wir die Unixzeit aber leicht umrechnen</p>
 <div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">lubridate</span><span class="fu">::</span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/as_date.html">as_datetime</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">response</span><span class="op">$</span><span class="va">risetime</span><span class="op">)</span>
-<span class="co">## [1] "2021-12-15 13:07:03 UTC" "2021-12-15 14:44:23 UTC"</span>
-<span class="co">## [3] "2021-12-16 05:54:22 UTC" "2021-12-16 07:28:54 UTC"</span></code></pre></div>
+<span class="co">## [1] "2021-12-29 00:25:54 UTC" "2021-12-29 01:59:06 UTC"</span>
+<span class="co">## [3] "2021-12-29 03:35:19 UTC" "2021-12-29 05:12:23 UTC"</span>
+<span class="co">## [5] "2021-12-29 06:49:20 UTC"</span></code></pre></div>
 <p>Damit wollen wir den Abschnitt zu APIs beenden. Macht euch bewusst, dass wir hier wirklich nur die Basics in Bezug auf APIs eingeführt haben. Aber hoffentlich hat euch diese Einführung trotzdem ausreichend Vertrauen gegeben, sich mit einigen komplexeren und leistungsfähigeren APIs auseinanderzusetzen. Hoffentlich seid ihr nun in der Lage euch eine ganz neue Welt von Daten zu erschließen, die darauf warten erforscht zu werden!</p>
 </div>
 </div>

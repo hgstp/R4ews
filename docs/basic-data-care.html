@@ -65,12 +65,13 @@
 <li class="book-part">ggplot2 Intro</li>
 <li><a class="" href="graphics-overview.html"><span class="header-section-number">10</span> Einführung</a></li>
 <li><a class="" href="bausteine.html"><span class="header-section-number">11</span> Bausteine</a></li>
-<li class="book-part">Noch viel mehr möglich</li>
-<li><a class="" href="packages.html"><span class="header-section-number">12</span> Pakete</a></li>
-<li><a class="" href="funktionen.html"><span class="header-section-number">13</span> Funktionen</a></li>
-<li><a class="" href="envscop.html"><span class="header-section-number">14</span> Environments und Scoping</a></li>
+<li class="book-part">Ein bisschen Statistik</li>
+<li><a class="" href="sampling.html"><span class="header-section-number">12</span> Sampling</a></li>
 <li class="book-part">Appendix</li>
-<li><a class="" href="fragen.html"><span class="header-section-number">15</span> Fragen und Anregungen aus der Übung</a></li>
+<li><a class="" href="fragen.html"><span class="header-section-number">13</span> Fragen aus der Übung</a></li>
+<li><a class="" href="pakete.html"><span class="header-section-number">14</span> Pakete</a></li>
+<li><a class="" href="funktionen.html"><span class="header-section-number">15</span> Funktionen</a></li>
+<li><a class="" href="envscop.html"><span class="header-section-number">16</span> Environments und Scoping</a></li>
 <li><a class="" href="literatur-3.html">Literatur</a></li>
 </ul>
 
@@ -238,16 +239,16 @@ Alternativ können wir alle Befehle natürlich auch in eine R Markdown Datei sch
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">gapminder</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
          <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="05_data-care-feeding_files/figure-html/unnamed-chunk-14-1.png" width="80%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="05_ltzt-vrbrtng_files/figure-html/unnamed-chunk-14-1.png" width="80%" style="display: block; margin: auto;"></div>
 <p>oder der Zusammenhang zwischen dem GDP (<a href="https://de.wikipedia.org/wiki/Bruttoinlandsprodukt">gross domestic product</a>) und der Lebenserwartung</p>
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">gapminder</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">gdpPercap</span>, y <span class="op">=</span> <span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="05_data-care-feeding_files/figure-html/unnamed-chunk-15-1.png" width="80%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="05_ltzt-vrbrtng_files/figure-html/unnamed-chunk-15-1.png" width="80%" style="display: block; margin: auto;"></div>
 <div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">gapminder</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">gdpPercap</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu">geom_point</span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="05_data-care-feeding_files/figure-html/unnamed-chunk-15-2.png" width="80%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="05_ltzt-vrbrtng_files/figure-html/unnamed-chunk-15-2.png" width="80%" style="display: block; margin: auto;"></div>
 <p>Grafiken dieser Art werden wir zu einem späteren Zeitpunkt noch genauer behandeln. Dann sprechen wir natürlich auch intensiv über deren Inhalt.</p>
 <p><br></p>
 <p>Wir schauen uns nochmal die Ausgabe von <code><a href="https://rdrr.io/r/utils/str.html">str()</a></code> an, um darüber zu sprechen, was ein data frame genau ist.</p>
@@ -322,7 +323,7 @@ Alternativ können wir alle Befehle natürlich auch in eine R Markdown Datei sch
 <code class="sourceCode R"><span class="fu">ggplot</span><span class="op">(</span><span class="va">gapminder</span>, mapping <span class="op">=</span> <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
   <span class="fu">geom_histogram</span><span class="op">(</span><span class="op">)</span>
 <span class="co">## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span></code></pre></div>
-<div class="inline-figure"><img src="05_data-care-feeding_files/figure-html/unnamed-chunk-20-1.png" width="80%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="05_ltzt-vrbrtng_files/figure-html/unnamed-chunk-20-1.png" width="80%" style="display: block; margin: auto;"></div>
 <p>Alternativ können wir die Einträge eines data frames aber auch über die eckigen Klammern <code>[]</code> indizieren.</p>
 <div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">gapminder</span><span class="op">[</span>,<span class="st">"lifeExp"</span><span class="op">]</span><span class="op">)</span>
@@ -368,7 +369,7 @@ Alternativ können wir alle Befehle natürlich auch in eine R Markdown Datei sch
 <span class="co">##   Africa Americas     Asia   Europe  Oceania </span>
 <span class="co">##      624      300      396      360       24</span>
 <span class="fu">ggplot</span><span class="op">(</span><span class="va">gapminder</span>, <span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="fu">geom_bar</span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<div class="inline-figure"><img src="05_data-care-feeding_files/figure-html/tabulate-continent-1.png" width="80%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="05_ltzt-vrbrtng_files/figure-html/tabulate-continent-1.png" width="80%" style="display: block; margin: auto;"></div>
 <p>In den folgenden Abbildungen sehen wir, wie die kodierten Zahlenwerte einer Faktor Variable genutzt werden können. Der <code>continent</code>-Faktor lässt sich im <a href="https://ggplot2.tidyverse.org">ggplot2</a>-Paket leicht in “Facetten” oder Farben abbilden.</p>
 <div class="content-box-orange">
 <p>Die Erstellung von Grafiken mit ggplot2 werden wir noch genauer besprechen. Daher könnt ihr euch also ruhig zurücklehnen und die Plots einfach genießen oder blind kopieren/einfügen.</p>
@@ -396,7 +397,7 @@ Alternativ können wir alle Befehle natürlich auch in eine R Markdown Datei sch
   <span class="fu">facet_wrap</span><span class="op">(</span><span class="op">~</span> <span class="va">continent</span><span class="op">)</span> <span class="op">+</span> 
   <span class="fu">geom_smooth</span><span class="op">(</span>lwd <span class="op">=</span> <span class="fl">1.5</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 <span class="co">## `geom_smooth()` using method = 'loess' and formula 'y ~ x'</span></code></pre></div>
-<p><img src="05_data-care-feeding_files/figure-html/factors-nice-for-plots-1.png" width="49%"><img src="05_data-care-feeding_files/figure-html/factors-nice-for-plots-2.png" width="49%"><img src="05_data-care-feeding_files/figure-html/factors-nice-for-plots-3.png" width="49%"><img src="05_data-care-feeding_files/figure-html/factors-nice-for-plots-4.png" width="49%"></p>
+<p><img src="05_ltzt-vrbrtng_files/figure-html/factors-nice-for-plots-1.png" width="49%"><img src="05_ltzt-vrbrtng_files/figure-html/factors-nice-for-plots-2.png" width="49%"><img src="05_ltzt-vrbrtng_files/figure-html/factors-nice-for-plots-3.png" width="49%"><img src="05_ltzt-vrbrtng_files/figure-html/factors-nice-for-plots-4.png" width="49%"></p>
 </div>
 <div id="aufgabe-1" class="section level2" number="5.5">
 <h2>

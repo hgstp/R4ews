@@ -138,7 +138,7 @@ Nicht alle Funktionen haben (oder erfordern) Argumente:
 
 ```r
 date()
-## [1] "Wed Dec 15 10:55:46 2021"
+## [1] "Tue Dec 28 16:03:43 2021"
 ```
 
 Schaut euch nun euren Workspace an - unter Environment (vermutlich im Fenster rechts oben) seht ihr den Inhalt eures Workspace. Der Workspace ist der Ort, an dem sich benutzerdefinierte Objekte ansammeln. Eine Liste dieser Objekte könnt ihr auch mit diesen Befehlen erhalten:
@@ -269,7 +269,7 @@ sig_sq <- 0.5
 x <- runif(40)
 y <- a + b * x + rnorm(40, sd = sqrt(sig_sq))
 (x_n <- mean(x))
-## [1] 0.52
+## [1] 0.506
 write(x_n, "mittelwert_x.txt")
 plot(x, y)
 abline(a, b, col = "purple")
@@ -386,6 +386,7 @@ Ihr solltet vermeiden die Maus für Teile des Workflows zu verwenden, wie z.B. d
 [R Graphics Cookbook]: http://shop.oreilly.com/product/0636920023135.do
 [Cookbook for R]: http://www.cookbook-r.com 
 [ggplot2: Elegant Graphics for Data Analysis]: https://ggplot2-book.org/index.html
+[Statistical Inference via Data Science]: https://moderndive.com/index.html
 
 <!--Bookdowns: specific chapters-->
 [adv-r-fxn-args]: http://adv-r.had.co.nz/Functions.html#function-arguments

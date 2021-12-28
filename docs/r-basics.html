@@ -65,12 +65,13 @@
 <li class="book-part">ggplot2 Intro</li>
 <li><a class="" href="graphics-overview.html"><span class="header-section-number">10</span> Einführung</a></li>
 <li><a class="" href="bausteine.html"><span class="header-section-number">11</span> Bausteine</a></li>
-<li class="book-part">Noch viel mehr möglich</li>
-<li><a class="" href="packages.html"><span class="header-section-number">12</span> Pakete</a></li>
-<li><a class="" href="funktionen.html"><span class="header-section-number">13</span> Funktionen</a></li>
-<li><a class="" href="envscop.html"><span class="header-section-number">14</span> Environments und Scoping</a></li>
+<li class="book-part">Ein bisschen Statistik</li>
+<li><a class="" href="sampling.html"><span class="header-section-number">12</span> Sampling</a></li>
 <li class="book-part">Appendix</li>
-<li><a class="" href="fragen.html"><span class="header-section-number">15</span> Fragen und Anregungen aus der Übung</a></li>
+<li><a class="" href="fragen.html"><span class="header-section-number">13</span> Fragen aus der Übung</a></li>
+<li><a class="" href="pakete.html"><span class="header-section-number">14</span> Pakete</a></li>
+<li><a class="" href="funktionen.html"><span class="header-section-number">15</span> Funktionen</a></li>
+<li><a class="" href="envscop.html"><span class="header-section-number">16</span> Environments und Scoping</a></li>
 <li><a class="" href="literatur-3.html">Literatur</a></li>
 </ul>
 
@@ -158,7 +159,7 @@ evenOthersUseCamelCase</code></pre>
 <p>Nicht alle Funktionen haben (oder erfordern) Argumente:</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/date.html">date</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">## [1] "Wed Dec 15 10:55:46 2021"</span></code></pre></div>
+<span class="co">## [1] "Tue Dec 28 16:03:43 2021"</span></code></pre></div>
 <p>Schaut euch nun euren Workspace an - unter Environment (vermutlich im Fenster rechts oben) seht ihr den Inhalt eures Workspace. Der Workspace ist der Ort, an dem sich benutzerdefinierte Objekte ansammeln. Eine Liste dieser Objekte könnt ihr auch mit diesen Befehlen erhalten:</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/ls.html">objects</a></span><span class="op">(</span><span class="op">)</span>
@@ -240,7 +241,7 @@ Statt <a href="https://support.rstudio.com/hc/en-us/articles/200526217-Command-H
 <span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Uniform.html">runif</a></span><span class="op">(</span><span class="fl">40</span><span class="op">)</span>
 <span class="va">y</span> <span class="op">&lt;-</span> <span class="va">a</span> <span class="op">+</span> <span class="va">b</span> <span class="op">*</span> <span class="va">x</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">40</span>, sd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">sig_sq</span><span class="op">)</span><span class="op">)</span>
 <span class="op">(</span><span class="va">x_n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">)</span>
-<span class="co">## [1] 0.52</span>
+<span class="co">## [1] 0.506</span>
 <span class="fu"><a href="https://rdrr.io/r/base/write.html">write</a></span><span class="op">(</span><span class="va">x_n</span>, <span class="st">"mittelwert_x.txt"</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html">plot</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/graphics/abline.html">abline</a></span><span class="op">(</span><span class="va">a</span>, <span class="va">b</span>, col <span class="op">=</span> <span class="st">"purple"</span><span class="op">)</span></code></pre></div>

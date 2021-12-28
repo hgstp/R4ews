@@ -256,10 +256,10 @@ Schauen wir uns einmal an, wie die Variable jdata in der R-Konsole aussieht:
 ```r
 jdata
 ## Response [http://api.open-notify.org/astros.json]
-##   Date: 2021-12-15 09:56
+##   Date: 2021-12-28 15:04
 ##   Status: 200
 ##   Content-Type: application/json
-##   Size: 630 B
+##   Size: 497 B
 ```
 
 Als erstes fällt auf, dass die URL enthalten ist, an die die GET-Anfrage gesendet wurde. Außerdem erkennen wir das Datum und die Uhrzeit, zu der die Anfrage gestellt wurde, sowie die Größe der Antwort.
@@ -292,7 +292,7 @@ Dazu müssen wir zunächst den rohen Unicode in character Daten konvertieren, di
 
 ```r
 rawToChar(jdata$content)
-## [1] "{\"message\": \"success\", \"people\": [{\"craft\": \"ISS\", \"name\": \"Mark Vande Hei\"}, {\"craft\": \"ISS\", \"name\": \"Pyotr Dubrov\"}, {\"craft\": \"ISS\", \"name\": \"Anton Shkaplerov\"}, {\"craft\": \"Shenzhou 13\", \"name\": \"Zhai Zhigang\"}, {\"craft\": \"Shenzhou 13\", \"name\": \"Wang Yaping\"}, {\"craft\": \"Shenzhou 13\", \"name\": \"Ye Guangfu\"}, {\"craft\": \"ISS\", \"name\": \"Raja Chari\"}, {\"craft\": \"ISS\", \"name\": \"Tom Marshburn\"}, {\"craft\": \"ISS\", \"name\": \"Kayla Barron\"}, {\"craft\": \"ISS\", \"name\": \"Matthias Maurer\"}, {\"craft\": \"ISS\", \"name\": \"Alexander Misurkin\"}, {\"craft\": \"ISS\", \"name\": \"Yusaku Maezawa\"}, {\"craft\": \"ISS\", \"name\": \"Yozo Hirano\"}], \"number\": 13}"
+## [1] "{\"people\": [{\"craft\": \"ISS\", \"name\": \"Mark Vande Hei\"}, {\"craft\": \"ISS\", \"name\": \"Pyotr Dubrov\"}, {\"craft\": \"ISS\", \"name\": \"Anton Shkaplerov\"}, {\"craft\": \"Shenzhou 13\", \"name\": \"Zhai Zhigang\"}, {\"craft\": \"Shenzhou 13\", \"name\": \"Wang Yaping\"}, {\"craft\": \"Shenzhou 13\", \"name\": \"Ye Guangfu\"}, {\"craft\": \"ISS\", \"name\": \"Raja Chari\"}, {\"craft\": \"ISS\", \"name\": \"Tom Marshburn\"}, {\"craft\": \"ISS\", \"name\": \"Kayla Barron\"}, {\"craft\": \"ISS\", \"name\": \"Matthias Maurer\"}], \"message\": \"success\", \"number\": 10}"
 ```
 
 
@@ -307,11 +307,11 @@ Die `fromJSON()` Funktion benötigt einen character Vektor, der die JSON-Struktu
 data <-  fromJSON(rawToChar(jdata$content))
 glimpse(data)
 ## List of 3
+##  $ people :'data.frame':	10 obs. of  2 variables:
+##   ..$ craft: chr [1:10] "ISS" "ISS" "ISS" "Shenzhou 13" ...
+##   ..$ name : chr [1:10] "Mark Vande Hei" "Pyotr Dubrov" "Anton Shkaplerov" "Z"..
 ##  $ message: chr "success"
-##  $ people :'data.frame':	13 obs. of  2 variables:
-##   ..$ craft: chr [1:13] "ISS" "ISS" "ISS" "Shenzhou 13" ...
-##   ..$ name : chr [1:13] "Mark Vande Hei" "Pyotr Dubrov" "Anton Shkaplerov" "Z"..
-##  $ number : int 13
+##  $ number : int 10
 ```
 
 Die Liste `data` hat drei Elemente. Uns interessiert in erster Linie das Data Frame `people`.
@@ -319,24 +319,21 @@ Die Liste `data` hat drei Elemente. Uns interessiert in erster Linie das Data Fr
 
 ```r
 data$people
-##          craft               name
-## 1          ISS     Mark Vande Hei
-## 2          ISS       Pyotr Dubrov
-## 3          ISS   Anton Shkaplerov
-## 4  Shenzhou 13       Zhai Zhigang
-## 5  Shenzhou 13        Wang Yaping
-## 6  Shenzhou 13         Ye Guangfu
-## 7          ISS         Raja Chari
-## 8          ISS      Tom Marshburn
-## 9          ISS       Kayla Barron
-## 10         ISS    Matthias Maurer
-## 11         ISS Alexander Misurkin
-## 12         ISS     Yusaku Maezawa
-## 13         ISS        Yozo Hirano
+##          craft             name
+## 1          ISS   Mark Vande Hei
+## 2          ISS     Pyotr Dubrov
+## 3          ISS Anton Shkaplerov
+## 4  Shenzhou 13     Zhai Zhigang
+## 5  Shenzhou 13      Wang Yaping
+## 6  Shenzhou 13       Ye Guangfu
+## 7          ISS       Raja Chari
+## 8          ISS    Tom Marshburn
+## 9          ISS     Kayla Barron
+## 10         ISS  Matthias Maurer
 ```
 
 
-Also, da haben wir unsere Antwort: Zum Zeitpunkt des letzten Updates Dec 15, 2021 von R4ews befanden sich 13 Personen im Weltraum. Aber wenn ihr den Code zu einem späteren Zeitpunkt ausprobiert, könnten es auch schon wieder andere Namen und eine andere Anzahl sein. Das ist einer der Vorteile von APIs - im Gegensatz zu Datensätzen, die man im Spreadsheet Format herunterladen kann, werden sie in der Regel in Echtzeit oder nahezu in Echtzeit aktualisiert. APIs bieten somit die Möglichkeit leicht auf sehr aktuellen Daten zuzugreifen.
+Also, da haben wir unsere Antwort: Zum Zeitpunkt des letzten Updates Dec 28, 2021 von R4ews befanden sich 10 Personen im Weltraum. Aber wenn ihr den Code zu einem späteren Zeitpunkt ausprobiert, könnten es auch schon wieder andere Namen und eine andere Anzahl sein. Das ist einer der Vorteile von APIs - im Gegensatz zu Datensätzen, die man im Spreadsheet Format herunterladen kann, werden sie in der Regel in Echtzeit oder nahezu in Echtzeit aktualisiert. APIs bieten somit die Möglichkeit leicht auf sehr aktuellen Daten zuzugreifen.
 
 
 In diesem Beispiel haben wir einen sehr unkomplizierten API-Workflow durchlaufen. Die meisten APIs fordern, dass man demselben allgemeinen Muster folgt, aber dabei können die jeweilgen Aufrufe/Befehle durchaus deutlich komplexer sein.
@@ -368,10 +365,11 @@ Wie auch immer, jetzt, da wir unsere Anfrage einschließlich der Standortparamet
 data <- fromJSON(rawToChar(jdata$content))
 data$response
 ##   duration   risetime
-## 1      650 1639573623
-## 2      511 1639579463
-## 3      459 1639634062
-## 4      641 1639639734
+## 1      305 1640737554
+## 2      616 1640743146
+## 3      655 1640748919
+## 4      649 1640754743
+## 5      656 1640760560
 ```
 
 
@@ -381,8 +379,9 @@ Diese API gibt uns die Zeit in Form von [Unixzeit](https://de.wikipedia.org/wiki
 
 ```r
 lubridate::as_datetime(data$response$risetime)
-## [1] "2021-12-15 13:07:03 UTC" "2021-12-15 14:44:23 UTC"
-## [3] "2021-12-16 05:54:22 UTC" "2021-12-16 07:28:54 UTC"
+## [1] "2021-12-29 00:25:54 UTC" "2021-12-29 01:59:06 UTC"
+## [3] "2021-12-29 03:35:19 UTC" "2021-12-29 05:12:23 UTC"
+## [5] "2021-12-29 06:49:20 UTC"
 ```
 
 
@@ -465,6 +464,7 @@ Wer noch mehr zum Thema Daten Import lesen will, der soll einen Blick in das Kap
 [R Graphics Cookbook]: http://shop.oreilly.com/product/0636920023135.do
 [Cookbook for R]: http://www.cookbook-r.com 
 [ggplot2: Elegant Graphics for Data Analysis]: https://ggplot2-book.org/index.html
+[Statistical Inference via Data Science]: https://moderndive.com/index.html
 
 <!--Bookdowns: specific chapters-->
 [adv-r-fxn-args]: http://adv-r.had.co.nz/Functions.html#function-arguments
