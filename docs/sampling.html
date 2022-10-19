@@ -6,18 +6,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Kapitel 12 Sampling | R4ews MA0009</title>
 <meta name="author" content="Stephan Haug">
-<meta name="description" content="Im Statistikteil der Veranstaltung gehen wir fast immer davon aus, dass eine Stichprobe aus einem statistischen Modell vorliegt. Daher wollen wir hier ein bisschen darüber sprechen, was heißt eine...">
-<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta name="description" content="Im Statistikteil der Veranstaltung gehen wir fast immer davon aus, dass eine Stichprobe aus einem statistischen Modell vorliegt. Daher wollen wir hier ein bisschen darüber sprechen, was es heißt...">
+<meta name="generator" content="bookdown 0.28 with bs4_book()">
 <meta property="og:title" content="Kapitel 12 Sampling | R4ews MA0009">
 <meta property="og:type" content="book">
-<meta property="og:description" content="Im Statistikteil der Veranstaltung gehen wir fast immer davon aus, dass eine Stichprobe aus einem statistischen Modell vorliegt. Daher wollen wir hier ein bisschen darüber sprechen, was heißt eine...">
+<meta property="og:description" content="Im Statistikteil der Veranstaltung gehen wir fast immer davon aus, dass eine Stichprobe aus einem statistischen Modell vorliegt. Daher wollen wir hier ein bisschen darüber sprechen, was es heißt...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kapitel 12 Sampling | R4ews MA0009">
-<meta name="twitter:description" content="Im Statistikteil der Veranstaltung gehen wir fast immer davon aus, dass eine Stichprobe aus einem statistischen Modell vorliegt. Daher wollen wir hier ein bisschen darüber sprechen, was heißt eine...">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="twitter:description" content="Im Statistikteil der Veranstaltung gehen wir fast immer davon aus, dass eine Stichprobe aus einem statistischen Modell vorliegt. Daher wollen wir hier ein bisschen darüber sprechen, was es heißt...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/_Lato-0.4.0/font.css" rel="stylesheet">
-<script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/Lato-0.4.2/font.css" rel="stylesheet">
+<script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link href="libs/font-awesome-5.1.0/css/all.css" rel="stylesheet">
 <link href="libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet">
 <script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
@@ -27,7 +27,33 @@
       gtag('js', new Date());
 
       gtag('config', 'UA-68219208-1');
-      </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="r4ews.css">
+      </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="r4ews.css">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -86,14 +112,14 @@
 </h1>
 <p>Im Statistikteil der Veranstaltung gehen wir fast immer davon aus, dass eine Stichprobe aus
 einem <strong>statistischen Modell</strong> vorliegt. Daher wollen wir hier ein bisschen darüber sprechen, was
-heißt eine Stichprobe aus einer Grundgesamtheit/Population zu ziehen.</p>
+es heißt eine Stichprobe aus einer Grundgesamtheit/Population zu ziehen.</p>
 <p>Wir betrachten dazu als Beispiel das Ziehen aus einer Urne, wobei die Kugeln in der Urne eben die Population darstellen, die uns interessiert. Da wir die Stichprobe digital erzeugen wollen, genauer gesagt mit R, müssen wir uns nach einer digitalen Urne umschauen.</p>
 <p>Eine solche findet man im Paket <code>moderndive</code>. Die Autoren des Pakets haben auch gemeinsam das Buch <a href="https://moderndive.com/index.html">Statistical Inference via Data Science</a> <span class="citation">(<a href="literatur-3.html#ref-ismay_kim2019" role="doc-biblioref">Ismay and Kim 2019</a>)</span> geschrieben. Das Buch ist Grundlagen für diesen Abschnitt. Wer am Ende also noch mehr zu diesem Thema lesen will, sei an das Buch verwiesen.</p>
 <p>Nun aber zurück zur digitalen Urne</p>
 <div class="sourceCode" id="cb169"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/moderndive/moderndive/issues">moderndive</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://moderndive.github.io/moderndive/">moderndive</a></span><span class="op">)</span>
 <span class="va">bowl</span></code></pre></div>
-<pre><code>## # A tibble: 2,400 x 2
+<pre><code>## # A tibble: 2,400 × 2
 ##    ball_ID color
 ##      &lt;int&gt; &lt;chr&gt;
 ##  1       1 white
@@ -121,7 +147,7 @@ heißt eine Stichprobe aus einer Grundgesamtheit/Population zu ziehen.</p>
 <li>Wie hoch ist der Anteil roter Kugeln?</li>
 </ol>
 </blockquote>
-<p>Da es sich um eine digitale Urne handelt, ist das Zählen schnell geschehen und daher kein Problem für uns. Wir können also leicht eine <strong>Vollerhebung</strong> der Population durchführen. Den Anteil roter Kugeln berechnen wir mithilfe der Funktion <code>summarise()</code> (wir fassen den Inhalt der Urne zusammen, indem wir dir relative Häufigkeit roter Kugeln berechnen). Daher laden wir zunächst <code>tidyverse</code></p>
+<p>Da es sich um eine digitale Urne handelt, ist das Zählen schnell geschehen und daher kein Problem für uns. Wir können also leicht eine <strong>Vollerhebung</strong> der Population durchführen. Den Anteil roter Kugeln berechnen wir mithilfe der Funktion <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code> (wir fassen den Inhalt der Urne zusammen, indem wir dir relative Häufigkeit roter Kugeln berechnen). Daher laden wir zunächst <code>tidyverse</code></p>
 <div class="sourceCode" id="cb173"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></code></pre></div>
 <p>und berechnen anschließend den Anteil</p>
@@ -129,9 +155,9 @@ heißt eine Stichprobe aus einer Grundgesamtheit/Population zu ziehen.</p>
 <code class="sourceCode R"><span class="op">(</span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span><span class="op">(</span><span class="va">bowl</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 2400</code></pre>
 <div class="sourceCode" id="cb176"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">bowl</span> <span class="op">%&gt;%</span>
-  <span class="fu">summarise</span><span class="op">(</span>prop <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">color</span> <span class="op">==</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">/</span> <span class="va">n</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 1 x 1
+<code class="sourceCode R"><span class="va">bowl</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>prop <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">color</span> <span class="op">==</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">/</span> <span class="va">n</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 1
 ##    prop
 ##   &lt;dbl&gt;
 ## 1 0.375</code></pre>
@@ -143,34 +169,34 @@ Frage</p>
 </ol>
 </blockquote>
 <p>geben.</p>
-<p>Daher ist es nötig, dass wir den Anteil als Parameter eines <strong>statistisches (Produkt-)Modell</strong> definieren und Stichprobe dann als Stichprobe aus diesem Modell betrachten. Ein geeignetes statistischen Modell wäre</p>
+<p>Daher ist es nötig, dass wir den Anteil als Parameter eines <strong>statistisches (Produkt-)Modell</strong> definieren und die Stichprobe dann als Stichprobe aus diesem Modell betrachten. Ein geeignetes statistischen Modell wäre</p>
 <p><span class="math display">\[ (\{0,1\}^n, \mathcal{P}(\{0,1\})^n, Binomial(1,\theta)^{\otimes n}_{\theta\in(0,1)})\]</span></p>
-<p>Nun ziehen wir eine Stichprobe. Allerdings machen wir das gleich für verschiedene Stichprobenlängen <span class="math inline">\(n\in\{25, 50, 100\}\)</span>, um etwas den Einfluss der Stichprobenlänge analysieren zu können. Für jede der drei Stichproben berechnen wir anschließend die relative Häufigkeit roter Kugeln. Zum Ziehen der Stichprobe verwenden wir die Funktion <code>infer::rep_ample_n()</code>. Es ist nicht unbedingt nötig hier ein weiteres Paket zu laden, aber das <code>infer</code> Paket ist an dieser Stelle (auch noch später) sehr hilfreich und die enthaltenen Funktionen sind intutiv in der Handhabung.</p>
+<p>Nun ziehen wir eine Stichprobe. Allerdings machen wir das gleich für verschiedene Stichprobenlängen <span class="math inline">\(n\in\{25, 50, 100\}\)</span>, um etwas den Einfluss der Stichprobenlänge analysieren zu können. Für jede der drei Stichproben berechnen wir anschließend die relative Häufigkeit roter Kugeln. Zum Ziehen der Stichprobe verwenden wir die Funktion <code><a href="https://infer.tidymodels.org/reference/rep_sample_n.html">infer::rep_sample_n()</a></code>. Es ist nicht unbedingt nötig hier ein weiteres Paket zu laden, aber das <code>infer</code> Paket ist an dieser Stelle (auch noch später) sehr hilfreich und die enthaltenen Funktionen sind intutiv in der Handhabung.</p>
 <div class="sourceCode" id="cb178"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/tidymodels/infer">infer</a></span><span class="op">)</span>
-<span class="va">bowl</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://infer.tidymodels.org/reference/rep_sample_n.html">rep_sample_n</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">25</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">summarise</span><span class="op">(</span>prop <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">color</span> <span class="op">==</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">/</span> <span class="fl">25</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 1 x 2
+<span class="va">bowl</span> <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://infer.tidymodels.org/reference/rep_sample_n.html">rep_sample_n</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">25</span><span class="op">)</span> <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>prop <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">color</span> <span class="op">==</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">/</span> <span class="fl">25</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 2
 ##   replicate  prop
 ##       &lt;int&gt; &lt;dbl&gt;
-## 1         1  0.36</code></pre>
+## 1         1  0.44</code></pre>
 <div class="sourceCode" id="cb180"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">bowl</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://infer.tidymodels.org/reference/rep_sample_n.html">rep_sample_n</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">50</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">summarise</span><span class="op">(</span>prop <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">color</span> <span class="op">==</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">/</span> <span class="fl">50</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 1 x 2
+<code class="sourceCode R"><span class="va">bowl</span> <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://infer.tidymodels.org/reference/rep_sample_n.html">rep_sample_n</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">50</span><span class="op">)</span> <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>prop <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">color</span> <span class="op">==</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">/</span> <span class="fl">50</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 2
 ##   replicate  prop
 ##       &lt;int&gt; &lt;dbl&gt;
-## 1         1   0.4</code></pre>
+## 1         1   0.3</code></pre>
 <div class="sourceCode" id="cb182"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">bowl</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://infer.tidymodels.org/reference/rep_sample_n.html">rep_sample_n</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">100</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">summarise</span><span class="op">(</span>prop <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">color</span> <span class="op">==</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">/</span> <span class="fl">100</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 1 x 2
+<code class="sourceCode R"><span class="va">bowl</span> <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://infer.tidymodels.org/reference/rep_sample_n.html">rep_sample_n</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">100</span><span class="op">)</span> <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>prop <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">color</span> <span class="op">==</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">/</span> <span class="fl">100</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 2
 ##   replicate  prop
 ##       &lt;int&gt; &lt;dbl&gt;
-## 1         1  0.37</code></pre>
+## 1         1  0.45</code></pre>
 <p>Wir erkennen, dass alle drei Werte unterschiedlich zum wahren Wert sind. In der Praxis würden wir den wahren Wert nicht kennen. Daher überlegen wir weiter, wie wir die Qualität der berechneten Anteilswerte (unsere Schätzwerte) bewerten/einschätzen können.</p>
 <p>Eine Frage die wir uns diesbzgl. stellen sollten ist:</p>
 <div class="content-box-gray">
@@ -179,69 +205,69 @@ Frage</p>
 <p>Wenn wir in der Lage wären, dass wir nicht nur einen Schätzwert berechnen können, sondern <em>viele</em>, so könnten wir einfach die empirische Standardabweichung als Streuungsmaß berechnen. In der Realität ist das i.d.R. nicht möglich, da mit Kosten und/oder Zeit verbunden.</p>
 <p>Aber da wir ja nur am Computer unsere Stichproben erheben, ist es für uns kein Problem 1000 Stichproben der Länge <span class="math inline">\(n\in\{25, 50, 100\}\)</span> zu ziehen.</p>
 <div class="sourceCode" id="cb184"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">stp_25</span> <span class="op">&lt;-</span> <span class="va">bowl</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="va">stp_25</span> <span class="op">&lt;-</span> <span class="va">bowl</span> <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://infer.tidymodels.org/reference/rep_sample_n.html">rep_sample_n</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">25</span>, reps <span class="op">=</span> <span class="fl">1000</span><span class="op">)</span> 
 
-<span class="va">stp_50</span> <span class="op">&lt;-</span> <span class="va">bowl</span> <span class="op">%&gt;%</span>
+<span class="va">stp_50</span> <span class="op">&lt;-</span> <span class="va">bowl</span> <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://infer.tidymodels.org/reference/rep_sample_n.html">rep_sample_n</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">50</span>, reps <span class="op">=</span> <span class="fl">1000</span><span class="op">)</span> 
 
-<span class="va">stp_100</span><span class="op">&lt;-</span> <span class="va">bowl</span> <span class="op">%&gt;%</span>
+<span class="va">stp_100</span><span class="op">&lt;-</span> <span class="va">bowl</span> <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://infer.tidymodels.org/reference/rep_sample_n.html">rep_sample_n</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">100</span>, reps <span class="op">=</span> <span class="fl">1000</span><span class="op">)</span> </code></pre></div>
 <p>Nun sind wir in der Lage für jede der 1000 Stichproben den empirischen Schätzwert</p>
 <p><span class="math display">\[\hat \theta = \overline x_n = \frac{1}{n}\sum_{i=1}^n x_i,\]</span></p>
 <p>mit <span class="math inline">\(x_i =\begin{cases} 1, \text{Kugel ist rot}\\0, \text{sonst}\end{cases}\)</span>, zu berechnen. Anschließend können in jedem der drei Fälle (unterschiedleich Stichprobenlänge) die empirische Standardabweichung der 1000 berechneten Schätzwerte
 berechnen</p>
 <div class="sourceCode" id="cb185"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">stp_25</span> <span class="op">%&gt;%</span>
-  <span class="fu">summarise</span><span class="op">(</span>prop <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">color</span> <span class="op">==</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">/</span> <span class="fl">25</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">summarise</span><span class="op">(</span>sd_prop <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">prop</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 1 x 1
+<code class="sourceCode R"><span class="va">stp_25</span> <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>prop <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">color</span> <span class="op">==</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">/</span> <span class="fl">25</span><span class="op">)</span> <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>sd_prop <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">prop</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 1
 ##   sd_prop
 ##     &lt;dbl&gt;
-## 1  0.0954</code></pre>
+## 1  0.0969</code></pre>
 <div class="sourceCode" id="cb187"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">stp_50</span> <span class="op">%&gt;%</span>
-  <span class="fu">summarise</span><span class="op">(</span>prop <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">color</span> <span class="op">==</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">/</span> <span class="fl">50</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">summarise</span><span class="op">(</span>sd_prop <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">prop</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 1 x 1
+<code class="sourceCode R"><span class="va">stp_50</span> <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>prop <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">color</span> <span class="op">==</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">/</span> <span class="fl">50</span><span class="op">)</span> <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>sd_prop <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">prop</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 1
 ##   sd_prop
 ##     &lt;dbl&gt;
-## 1  0.0682</code></pre>
+## 1  0.0711</code></pre>
 <div class="sourceCode" id="cb189"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">stp_100</span> <span class="op">%&gt;%</span>
-  <span class="fu">summarise</span><span class="op">(</span>prop <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">color</span> <span class="op">==</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">/</span> <span class="fl">100</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">summarise</span><span class="op">(</span>sd_prop <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">prop</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 1 x 1
+<code class="sourceCode R"><span class="va">stp_100</span> <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>prop <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">color</span> <span class="op">==</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">/</span> <span class="fl">100</span><span class="op">)</span> <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>sd_prop <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">prop</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 1
 ##   sd_prop
 ##     &lt;dbl&gt;
-## 1  0.0480</code></pre>
+## 1  0.0470</code></pre>
 <p>sowie ein Histogramm von <span class="math inline">\(\overline x_n^1, \dots, \overline x_n^{1000}\)</span></p>
 <div class="sourceCode" id="cb191"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">stp_25</span> <span class="op">%&gt;%</span>
-  <span class="fu">summarise</span><span class="op">(</span>prop <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">color</span> <span class="op">==</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">/</span> <span class="fl">25</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">prop</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu">geom_histogram</span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">0.05</span>, color <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.window.html">xlim</a></span><span class="op">(</span><span class="fl">0.01</span>, <span class="fl">0.8</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">geom_vline</span><span class="op">(</span>xintercept <span class="op">=</span> <span class="fl">0.375</span>, color <span class="op">=</span> <span class="st">"red"</span>,
+<code class="sourceCode R"><span class="va">stp_25</span> <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>prop <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">color</span> <span class="op">==</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">/</span> <span class="fl">25</span><span class="op">)</span> <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">prop</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">0.05</span>, color <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html">xlim</a></span><span class="op">(</span><span class="fl">0.01</span>, <span class="fl">0.8</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_vline</a></span><span class="op">(</span>xintercept <span class="op">=</span> <span class="fl">0.375</span>, color <span class="op">=</span> <span class="st">"red"</span>,
              size <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
 
   
-<span class="va">stp_50</span> <span class="op">%&gt;%</span>
-  <span class="fu">summarise</span><span class="op">(</span>prop <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">color</span> <span class="op">==</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">/</span> <span class="fl">50</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">prop</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu">geom_histogram</span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">0.05</span>, color <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span><span class="op">+</span>
-  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.window.html">xlim</a></span><span class="op">(</span><span class="fl">0.01</span>, <span class="fl">0.8</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">geom_vline</span><span class="op">(</span>xintercept <span class="op">=</span> <span class="fl">0.375</span>, color <span class="op">=</span> <span class="st">"red"</span>,
+<span class="va">stp_50</span> <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>prop <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">color</span> <span class="op">==</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">/</span> <span class="fl">50</span><span class="op">)</span> <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">prop</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">0.05</span>, color <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html">xlim</a></span><span class="op">(</span><span class="fl">0.01</span>, <span class="fl">0.8</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_vline</a></span><span class="op">(</span>xintercept <span class="op">=</span> <span class="fl">0.375</span>, color <span class="op">=</span> <span class="st">"red"</span>,
              size <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
 
 
 
-<span class="va">stp_100</span> <span class="op">%&gt;%</span>
-  <span class="fu">summarise</span><span class="op">(</span>prop <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">color</span> <span class="op">==</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">/</span> <span class="fl">100</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">prop</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu">geom_histogram</span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">0.05</span>, color <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span><span class="op">+</span>
-  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.window.html">xlim</a></span><span class="op">(</span><span class="fl">0.01</span>, <span class="fl">0.8</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">geom_vline</span><span class="op">(</span>xintercept <span class="op">=</span> <span class="fl">0.375</span>, color <span class="op">=</span> <span class="st">"red"</span>,
+<span class="va">stp_100</span> <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>prop <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">color</span> <span class="op">==</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">/</span> <span class="fl">100</span><span class="op">)</span> <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">prop</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">0.05</span>, color <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span><span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html">xlim</a></span><span class="op">(</span><span class="fl">0.01</span>, <span class="fl">0.8</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_vline</a></span><span class="op">(</span>xintercept <span class="op">=</span> <span class="fl">0.375</span>, color <span class="op">=</span> <span class="st">"red"</span>,
              size <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
 <p><img src="12_sampling_files/figure-html/unnamed-chunk-8-1.png" width="33%"><img src="12_sampling_files/figure-html/unnamed-chunk-8-2.png" width="33%"><img src="12_sampling_files/figure-html/unnamed-chunk-8-3.png" width="33%"></p>
 <p>Wir erkennen eine Reduktion der Streuung mit wachsendem Stichproben Umfang. Zudem sehen wir, dass wir die empirischen Verteilung symmetrisch um den wahren Parameter 0.375 verteilt sind, wobei die Verteilung umso konzentrierter ist, je hoher der Stichprobenumfang ist.</p>
@@ -280,21 +306,21 @@ wobei <span class="math inline">\(\Phi\)</span> die Verteilungsfunktion der N(0,
 <p><span class="math display">\[P\left(\overline X_n  \leq x\right) \approx \Phi_{\widehat \theta,\frac{\widehat \theta(1-\widehat \theta)}{n}}(x)\]</span></p>
 <p>Für die Stichprobenlänge 100 versuchen wir diesen Zusammenhang mal noch zu visualisieren</p>
 <div class="sourceCode" id="cb192"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sample</span> <span class="op">&lt;-</span> <span class="va">stp_100</span> <span class="op">%&gt;%</span>
-  <span class="fu">summarise</span><span class="op">(</span>prop <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">color</span> <span class="op">==</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">/</span> <span class="fl">100</span><span class="op">)</span> 
+<code class="sourceCode R"><span class="va">sample</span> <span class="op">&lt;-</span> <span class="va">stp_100</span> <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>prop <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">color</span> <span class="op">==</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">/</span> <span class="fl">100</span><span class="op">)</span> 
 <span class="va">theta_hat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">sample</span><span class="op">$</span><span class="va">prop</span><span class="op">)</span>
 
 
-<span class="va">stp_100</span> <span class="op">%&gt;%</span>
-  <span class="fu">summarise</span><span class="op">(</span>prop <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">color</span> <span class="op">==</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">/</span> <span class="fl">100</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">ggplot</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu">geom_histogram</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">prop</span>, y <span class="op">=</span> <span class="va">..density..</span><span class="op">)</span>, binwidth <span class="op">=</span> <span class="fl">0.05</span>, color <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://rdrr.io/r/graphics/plot.window.html">xlim</a></span><span class="op">(</span><span class="fl">0.01</span>, <span class="fl">0.8</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">stat_function</span><span class="op">(</span>fun <span class="op">=</span> <span class="st">"dnorm"</span>, 
+<span class="va">stp_100</span> <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>prop <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">color</span> <span class="op">==</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">/</span> <span class="fl">100</span><span class="op">)</span> <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">prop</span>, y <span class="op">=</span> <span class="va">..density..</span><span class="op">)</span>, binwidth <span class="op">=</span> <span class="fl">0.05</span>, color <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html">xlim</a></span><span class="op">(</span><span class="fl">0.01</span>, <span class="fl">0.8</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_function.html">stat_function</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="st">"dnorm"</span>, 
                 args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="va">theta_hat</span>, 
                             sd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">theta_hat</span> <span class="op">*</span> <span class="op">(</span><span class="fl">1</span><span class="op">-</span><span class="va">theta_hat</span><span class="op">)</span> <span class="op">/</span> <span class="fl">100</span><span class="op">)</span><span class="op">)</span>,
                 colour <span class="op">=</span> <span class="st">"blue"</span>, size <span class="op">=</span> <span class="fl">1.3</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <pre><code>## Warning: Removed 2 rows containing missing values (geom_bar).</code></pre>
 <div class="inline-figure"><img src="12_sampling_files/figure-html/unnamed-chunk-9-1.png" width="672"></div>
 <p>Wir erkennen eine rechte gute Übereinstimmung zwischen der <strong>Sampling Verteilung</strong> und der approximativen Normalverteilung.</p>
@@ -307,7 +333,7 @@ wobei <span class="math inline">\(\Phi\)</span> die Verteilungsfunktion der N(0,
 <p>Wir starten mit <strong>einer</strong> Stichprobe der Länge 100</p>
 <div class="sourceCode" id="cb194"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span> <span class="co"># zur reproduzierbarkeit</span>
-<span class="va">x</span> <span class="op">&lt;-</span> <span class="va">bowl</span> <span class="op">%&gt;%</span>
+<span class="va">x</span> <span class="op">&lt;-</span> <span class="va">bowl</span> <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://infer.tidymodels.org/reference/rep_sample_n.html">rep_sample_n</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">100</span><span class="op">)</span> </code></pre></div>
 <p>Unser Ziel ist es nun, basierend auf diesen 100 Beobachtungen, die Verteilung von <span class="math inline">\(\overline X_n\)</span> zu approximieren. Dazu benötigen wir sicherlich mehrere berechnete Werte des empirischen Mittels. Natürlich könnten wir die ursprüngliche Stichprobe in 50 Paare zerlege und so 50 empirische Mittelwerte <span class="math inline">\(\overline x_2^1,\dots,\overline x_2^{50}\)</span> berechnen. Damit könnten wir dann aber nur die Verteilung von <span class="math inline">\(\overline X_2\)</span> approximieren und nicht von <span class="math inline">\(\overline X_{100}\)</span>. D.h. wir wollen mehrere empirische Mittelwerte basierend auf 100 Inputwerten berechnen.</p>
 <p>Dieses Ziel werden wir nur erreichen, wenn wir die ursprünglichen 100 Werte <span class="math inline">\(x_1,\dots, x_n\)</span> in “schlauer” Form mehrfach nutzen. Wir stellen uns auf den Standpunkt, dass die 100 Werte Realisierungen von unabhängigen und identisch verteilten Zufallsvariablen sind (das ist auch die Annahme in unserem statistischen Modell). Unsere Stichprobe ist somit eine gute Approximation der Gesamtpopulation - auf jeden Fall die beste, die wir haben - und daher würde es Sinn machen wiederholt aus dieser Näherung zu ziehen und dabei die Aufteilung in rote und weiße Kugeln nicht zu verändern. Wir ziehen somit <strong>mit Zurücklegen</strong> und erzeugen so <span class="math inline">\(B\)</span> Stichprobenwiederholungen</p>
@@ -315,11 +341,11 @@ wobei <span class="math inline">\(\Phi\)</span> die Verteilungsfunktion der N(0,
 wobei <span class="math inline">\(x_i^b\in\{x_1,\dots, x_n\}\)</span>.</p>
 <div class="sourceCode" id="cb195"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">B</span> <span class="op">&lt;-</span> <span class="fl">1000</span>
-<span class="va">x_B</span> <span class="op">&lt;-</span> <span class="va">x</span> <span class="op">%&gt;%</span>
+<span class="va">x_B</span> <span class="op">&lt;-</span> <span class="va">x</span> <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://infer.tidymodels.org/reference/rep_sample_n.html">rep_sample_n</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">100</span>, replace <span class="op">=</span> <span class="cn">TRUE</span>, reps <span class="op">=</span> <span class="va">B</span><span class="op">)</span> 
 
 <span class="va">x_B</span></code></pre></div>
-<pre><code>## # A tibble: 100,000 x 3
+<pre><code>## # A tibble: 100,000 × 3
 ## # Groups:   replicate [1,000]
 ##    replicate ball_ID color
 ##        &lt;int&gt;   &lt;int&gt; &lt;chr&gt;
@@ -337,10 +363,10 @@ wobei <span class="math inline">\(x_i^b\in\{x_1,\dots, x_n\}\)</span>.</p>
 <p>Für jede dieser <span class="math inline">\(B\)</span> Stichprobenwiederholungen berechnen wir nun das empirische Mittel</p>
 <p><span class="math display">\[\overline x_n^b = \frac{1}{n}\sum_{i=1}^n x_i^b\,,\qquad b=1, \dots, B\]</span></p>
 <div class="sourceCode" id="cb197"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">mean_x_B</span> <span class="op">&lt;-</span> <span class="va">x_B</span> <span class="op">%&gt;%</span>
-  <span class="fu">summarise</span><span class="op">(</span>prop <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">color</span> <span class="op">==</span> <span class="st">"red"</span><span class="op">)</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">mean_x_B</span> <span class="op">&lt;-</span> <span class="va">x_B</span> <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>prop <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">color</span> <span class="op">==</span> <span class="st">"red"</span><span class="op">)</span><span class="op">)</span>
 <span class="va">mean_x_B</span></code></pre></div>
-<pre><code>## # A tibble: 1,000 x 2
+<pre><code>## # A tibble: 1,000 × 2
 ##    replicate  prop
 ##        &lt;int&gt; &lt;dbl&gt;
 ##  1         1  0.32
@@ -358,15 +384,15 @@ wobei <span class="math inline">\(x_i^b\in\{x_1,\dots, x_n\}\)</span>.</p>
 <p>Das beschriebene Verfahren kennt man in der Literatur unter dem Namen <a href="https://de.wikipedia.org/wiki/Bootstrapping-Verfahren"><strong>Bootstrap-Verfahren</strong></a>. Konkret handelt es sich hierbei um die einfachste Form, einen i.i.d. (<em>independent identically distributed</em>) Bootstrap. Die daraus resultierende Approximation der Verteilung der Statistik, nennt man <strong>Bootstrap Verteilung</strong>.</p>
 </div>
 <div class="sourceCode" id="cb199"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">mean_x_B</span> <span class="op">%&gt;%</span>
-  <span class="fu">ggplot</span><span class="op">(</span><span class="fu">aes</span><span class="op">(</span>x <span class="op">=</span> <span class="va">prop</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu">geom_histogram</span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">0.01</span>, color <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">mean_x_B</span> <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">prop</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">0.01</span>, color <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="12_sampling_files/figure-html/unnamed-chunk-13-1.png" width="672"></div>
 <p>Wir erkennen erneut eine symmetrische Verteilung, die um den empirischen Mittelwert der Stichprobe <span class="math inline">\(x\)</span></p>
 <div class="sourceCode" id="cb200"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">%&gt;%</span>
-  <span class="fu">summarise</span><span class="op">(</span>prop <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">color</span> <span class="op">==</span> <span class="st">"red"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 1 x 2
+<code class="sourceCode R"><span class="va">x</span> <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>prop <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">color</span> <span class="op">==</span> <span class="st">"red"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<pre><code>## # A tibble: 1 × 2
 ##   replicate  prop
 ##       &lt;int&gt; &lt;dbl&gt;
 ## 1         1  0.36</code></pre>
@@ -384,21 +410,21 @@ wobei <span class="math inline">\(x_i^b\in\{x_1,\dots, x_n\}\)</span>.</p>
 <code><a href="https://infer.tidymodels.org/reference/visualize.html">visualise()</a></code>: visualisiert die Bootstrap Verteilung der in <code><a href="https://infer.tidymodels.org/reference/calculate.html">calculate()</a></code> berechneten Statistik</li>
 </ul>
 <div class="sourceCode" id="cb202"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">boot_vert</span> <span class="op">&lt;-</span> <span class="va">x</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://infer.tidymodels.org/reference/specify.html">specify</a></span><span class="op">(</span>response <span class="op">=</span> <span class="va">color</span>, success <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://infer.tidymodels.org/reference/generate.html">generate</a></span><span class="op">(</span>reps <span class="op">=</span> <span class="fl">1000</span>, type <span class="op">=</span> <span class="st">"bootstrap"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="va">boot_vert</span> <span class="op">&lt;-</span> <span class="va">x</span> <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://infer.tidymodels.org/reference/specify.html">specify</a></span><span class="op">(</span>response <span class="op">=</span> <span class="va">color</span>, success <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span> <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://infer.tidymodels.org/reference/generate.html">generate</a></span><span class="op">(</span>reps <span class="op">=</span> <span class="fl">1000</span>, type <span class="op">=</span> <span class="st">"bootstrap"</span><span class="op">)</span> <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://infer.tidymodels.org/reference/calculate.html">calculate</a></span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"prop"</span><span class="op">)</span> 
 
-<span class="va">boot_vert</span> <span class="op">%&gt;%</span>
+<span class="va">boot_vert</span> <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://infer.tidymodels.org/reference/visualize.html">visualise</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="12_sampling_files/figure-html/unnamed-chunk-15-1.png" width="672"></div>
 <p>Um nun beispielsweise ein Intervall zu konstruieren, welches die unbekannte Wahrscheinlichkeit <span class="math inline">\(\theta\)</span> näherungsweise mit einer Wahrscheinlichkeit von <span class="math inline">\(0.95\)</span> überdeckt, betrachten wir einfach die <strong>mittleren 95%</strong>, der berechneten empirischen Mittelwerte. Das entsprechende Intervall bezeichnen wir dann als approximatives 95% Konfidenzintervall für <span class="math inline">\(\theta\)</span> - mehr zu Konfidenzintervallen in Kapitel 6.8 der Vorlesung.</p>
 <div class="sourceCode" id="cb203"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">boot_ki</span> <span class="op">&lt;-</span> <span class="va">boot_vert</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="va">boot_ki</span> <span class="op">&lt;-</span> <span class="va">boot_vert</span> <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://infer.tidymodels.org/reference/get_confidence_interval.html">get_confidence_interval</a></span><span class="op">(</span>level <span class="op">=</span> <span class="fl">0.95</span>, type <span class="op">=</span> <span class="st">"percentile"</span><span class="op">)</span>
 
 <span class="va">boot_ki</span></code></pre></div>
-<pre><code>## # A tibble: 1 x 2
+<pre><code>## # A tibble: 1 × 2
 ##   lower_ci upper_ci
 ##      &lt;dbl&gt;    &lt;dbl&gt;
 ## 1     0.27     0.45</code></pre>
@@ -406,7 +432,7 @@ wobei <span class="math inline">\(x_i^b\in\{x_1,\dots, x_n\}\)</span>.</p>
 <div class="sourceCode" id="cb205"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://infer.tidymodels.org/reference/visualize.html">visualise</a></span><span class="op">(</span><span class="va">boot_vert</span>, fill <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://infer.tidymodels.org/reference/shade_confidence_interval.html">shade_confidence_interval</a></span><span class="op">(</span>endpoints <span class="op">=</span> <span class="va">boot_ki</span>, color <span class="op">=</span> <span class="st">"gold"</span>, fill <span class="op">=</span> <span class="st">"gold"</span><span class="op">)</span> <span class="op">+</span> 
-  <span class="fu">theme_minimal</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="12_sampling_files/figure-html/unnamed-chunk-17-1.png" width="672"></div>
 <p><strong>Literatur:</strong></p>
 <p>Wer mehr über Bootstrap Verfahren lernen will, kann einen Blick in die Bücher <span class="citation">(<a href="literatur-3.html#ref-ismay_kim2019" role="doc-biblioref">Ismay and Kim 2019</a>)</span> (Web-Version: <a href="https://moderndive.com/index.html">Statistical Inference via Data Science</a> <span class="citation">(<a href="literatur-3.html#ref-ismay_kim2019" role="doc-biblioref">Ismay and Kim 2019</a>)</span>), <span class="citation">(<a href="literatur-3.html#ref-davison_hinkley1997" role="doc-biblioref">Davison and Hinkley 1997</a>)</span> oder <span class="citation">(<a href="literatur-3.html#ref-dikta_scheer2021" role="doc-biblioref">Dikta and Scheer 2021</a>)</span>.</p>
@@ -458,7 +484,7 @@ wobei <span class="math inline">\(x_i^b\in\{x_1,\dots, x_n\}\)</span>.</p>
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

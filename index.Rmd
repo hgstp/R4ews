@@ -21,7 +21,7 @@ library(devtools)
 library(DT)
 ```
 
-Willkommen zur __R Ergänzung zur Einführung in die Wahrscheinlichkeitstheorie und Statistik__. Im Rahmen dieser Ergänzung lernen wir erste Schritte, wie wir
+Willkommen zu __R für EWS__ (Einführung in die Wahrscheinlichkeitstheorie und Statistik). Im Rahmen dieser Veranstaltung lernen wir erste Schritte, wie wir
 
 :::: {.content-box-orange}
 Daten aufbereiten, visualisieren und analysieren. `r emo::ji("rocket")`

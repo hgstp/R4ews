@@ -56,7 +56,7 @@ library(gapminder)
 Gapminder wurde von Hans, Anna und Ola Rosling gegründet. Auf der Webseite des Projekts findet man nicht nur viel Informatives, sondern auch sehr Unterhaltsames
 
 
-<iframe src="https://www.youtube.com/embed/Sm5xF-UYgdg" width="80%" height="400px"></iframe>
+<iframe src="https://www.youtube.com/embed/Sm5xF-UYgdg" width="80%" height="400px" data-external="1"></iframe>
 
 
 Leider ist Hans Rosling bereits 2017 verstorben.
@@ -106,7 +106,7 @@ Wenn wir nun `gapminder` einfach auf den Bildschirm ausgeben, sehen wir, dass di
 
 ```r
 gapminder
-## # A tibble: 1,704 x 6
+## # A tibble: 1,704 × 6
 ##    country     continent  year lifeExp      pop gdpPercap
 ##    <fct>       <fct>     <int>   <dbl>    <int>     <dbl>
 ##  1 Afghanistan Asia       1952    28.8  8425333      779.
@@ -131,7 +131,7 @@ Wenn ihr mit einem reinen data frame arbeitet - und dieses Feature gefällt euch
 ```r
 library(tidyverse)
 as_tibble(iris)
-## # A tibble: 150 x 5
+## # A tibble: 150 × 5
 ##    Sepal.Length Sepal.Width Petal.Length Petal.Width Species
 ##           <dbl>       <dbl>        <dbl>       <dbl> <fct>  
 ##  1          5.1         3.5          1.4         0.2 setosa 
@@ -192,28 +192,30 @@ summary(gapminder)
 
 ```r
 methods(summary)
-##  [1] summary,ANY-method             summary,DBIObject-method      
-##  [3] summary.aov                    summary.aovlist*              
-##  [5] summary.aspell*                summary.check_packages_in_dir*
-##  [7] summary.connection             summary.data.frame            
-##  [9] summary.Date                   summary.default               
-## [11] summary.Duration*              summary.ecdf*                 
-## [13] summary.factor                 summary.ggplot*               
-## [15] summary.glm                    summary.haven_labelled*       
-## [17] summary.hcl_palettes*          summary.infl*                 
-## [19] summary.Interval*              summary.lm                    
-## [21] summary.loess*                 summary.manova                
-## [23] summary.matrix                 summary.mlm*                  
-## [25] summary.nls*                   summary.packageStatus*        
-## [27] summary.Period*                summary.POSIXct               
-## [29] summary.POSIXlt                summary.ppr*                  
-## [31] summary.prcomp*                summary.princomp*             
-## [33] summary.proc_time              summary.rlang_error*          
-## [35] summary.rlang_trace*           summary.srcfile               
-## [37] summary.srcref                 summary.stepfun               
-## [39] summary.stl*                   summary.table                 
-## [41] summary.tukeysmooth*           summary.vctrs_sclr*           
-## [43] summary.vctrs_vctr*            summary.warnings              
+##  [1] summary,ANY-method                  summary,DBIObject-method           
+##  [3] summary.aov                         summary.aovlist*                   
+##  [5] summary.aspell*                     summary.check_packages_in_dir*     
+##  [7] summary.connection                  summary.data.frame                 
+##  [9] summary.Date                        summary.default                    
+## [11] summary.Duration*                   summary.ecdf*                      
+## [13] summary.factor                      summary.ggplot*                    
+## [15] summary.glm                         summary.haven_labelled*            
+## [17] summary.hcl_palettes*               summary.infl*                      
+## [19] summary.Interval*                   summary.lm                         
+## [21] summary.loess*                      summary.manova                     
+## [23] summary.matrix                      summary.mlm*                       
+## [25] summary.nls*                        summary.packageStatus*             
+## [27] summary.Period*                     summary.POSIXct                    
+## [29] summary.POSIXlt                     summary.ppr*                       
+## [31] summary.prcomp*                     summary.princomp*                  
+## [33] summary.proc_time                   summary.rlang_error*               
+## [35] summary.rlang_message*              summary.rlang_trace*               
+## [37] summary.rlang_warning*              summary.rlang:::list_of_conditions*
+## [39] summary.srcfile                     summary.srcref                     
+## [41] summary.stepfun                     summary.stl*                       
+## [43] summary.table                       summary.tukeysmooth*               
+## [45] summary.vctrs_sclr*                 summary.vctrs_vctr*                
+## [47] summary.warnings                   
 ## see '?methods' for accessing help and source code
 ```
 :::
@@ -289,7 +291,7 @@ zusammen mit den Daten abspeichern wollen. Dazu könnten wir ein tibble
                         "ranges from 1952 to 2007 in increments of 5 years",
                         "life expectancy at birth, in years",
                         "population","GDP per capita (US$, inflation-adjusted)")))
-## # A tibble: 6 x 2
+## # A tibble: 6 × 2
 ##   variables desc                                             
 ##   <chr>     <chr>                                            
 ## 1 country   factor with 142 levels                           

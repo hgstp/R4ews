@@ -7,17 +7,17 @@
 <title>Kapitel 6 Einführung in dplyr | R4ews MA0009</title>
 <meta name="author" content="Stephan Haug">
 <meta name="description" content="6.1 Einstieg dplyr ist ein Paket zur Datenmanipulation, entwickelt von Hadley Wickham und Romain Francois. Das Paket ist Teil des tidyverse und gehört als Kernpaket zu den Paketen, die über...">
-<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta name="generator" content="bookdown 0.28 with bs4_book()">
 <meta property="og:title" content="Kapitel 6 Einführung in dplyr | R4ews MA0009">
 <meta property="og:type" content="book">
 <meta property="og:description" content="6.1 Einstieg dplyr ist ein Paket zur Datenmanipulation, entwickelt von Hadley Wickham und Romain Francois. Das Paket ist Teil des tidyverse und gehört als Kernpaket zu den Paketen, die über...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Kapitel 6 Einführung in dplyr | R4ews MA0009">
 <meta name="twitter:description" content="6.1 Einstieg dplyr ist ein Paket zur Datenmanipulation, entwickelt von Hadley Wickham und Romain Francois. Das Paket ist Teil des tidyverse und gehört als Kernpaket zu den Paketen, die über...">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/_Lato-0.4.0/font.css" rel="stylesheet">
-<script src="libs/bs3compat-0.2.5.1/tabs.js"></script><script src="libs/bs3compat-0.2.5.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/Lato-0.4.2/font.css" rel="stylesheet">
+<script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link href="libs/font-awesome-5.1.0/css/all.css" rel="stylesheet">
 <link href="libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet">
 <script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
@@ -27,7 +27,33 @@
       gtag('js', new Date());
 
       gtag('config', 'UA-68219208-1');
-      </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="r4ews.css">
+      </script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<style type="text/css">
+    /* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+        }
+    .hanging div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }
+  </style>
+<link rel="stylesheet" href="r4ews.css">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -91,11 +117,11 @@
 <p><a href="https://dplyr.tidyverse.org">dplyr</a> ist ein Paket zur Datenmanipulation, entwickelt von Hadley Wickham und Romain Francois. Das Paket ist Teil des <a href="https://tidyverse.tidyverse.org">tidyverse</a> und gehört als Kernpaket zu den Paketen, die über <code><a href="https://tidyverse.tidyverse.org">library(tidyverse)</a></code> geladen werden.</p>
 <p>Die Autoren des Pakets verstehen <code>dplyr</code> als eine <em>Grammatik</em> der Datenmanipulation. Daher werden die wichtigsten <code>dplyr</code> Funktionen auch oft als Verben bezeichnet. Diese Verben sollen euch helfen, die häufigsten Herausforderungen bei der Datenmanipulation zu lösen:</p>
 <ul>
-<li><p><code>mutate()</code>: fügt neue Variablen zum Datensatz hinzu, die Funktionen von bestehenden Variablen sind</p></li>
-<li><p><code>select()</code>: wählt Variablen (Spalten) basierend auf ihren Namen aus</p></li>
-<li><p><code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code>: wählt Zeilen basierend auf anzugebenden Bedingungen aus</p></li>
-<li><p><code>summarise()</code>: reduziert mehrere Werte auf eine einzige Zusammenfassung</p></li>
-<li><p><code>arrange()</code>: ändert die Reihenfolge der Zeilen</p></li>
+<li><p><code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code>: fügt neue Variablen zum Datensatz hinzu, die Funktionen von bestehenden Variablen sind</p></li>
+<li><p><code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code>: wählt Variablen (Spalten) basierend auf ihren Namen aus</p></li>
+<li><p><code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code>: wählt Zeilen basierend auf anzugebenden Bedingungen aus</p></li>
+<li><p><code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code>: reduziert mehrere Werte auf eine einzige Zusammenfassung</p></li>
+<li><p><code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code>: ändert die Reihenfolge der Zeilen</p></li>
 </ul>
 <p>Der Ursprung von <code>dplyr</code> liegt in einem früheren Paket mit dem Namen <a href="http://plyr.had.co.nz">plyr</a>, das zum Ziel hat die <a href="https://www.jstatsoft.org/article/view/v040i01">“split-apply-combine”-Strategie der Datenanalyse</a> <span class="citation">(<a href="literatur-3.html#ref-wickham2011a" role="doc-biblioref">Wickham 2011</a>)</span> umzusetzen. Wo <code>plyr</code> noch einen vielfältigen Satz von Ein- und Ausgabetypen abdeckt (z.B. Arrays, data frames, Listen), hat <code>dplyr</code> einen klaren Fokus auf data frames oder <strong>tibbles</strong>, wenn man sich im tidyverse befindet.</p>
 <p><code>dplyr</code> bietet schnelle Alternativen zu den R Standardfunktionen:</p>
@@ -115,11 +141,11 @@
 <p>Der Fokus liegt in diesem Abschnitt auf <code>dplyr</code>. Aber da wir immer wieder auch Funktionen aus anderen “tidyverse-Paketen” nutzen, laden wir stets <code>tidyverse</code>.</p>
 <div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
-<span class="co">## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</span>
+<span class="co">## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──</span>
 <span class="co">## ✓ ggplot2 3.3.5     ✓ purrr   0.3.4</span>
-<span class="co">## ✓ tibble  3.1.2     ✓ dplyr   1.0.7</span>
-<span class="co">## ✓ tidyr   1.1.3     ✓ stringr 1.4.0</span>
-<span class="co">## ✓ readr   2.0.1     ✓ forcats 0.5.1</span>
+<span class="co">## ✓ tibble  3.1.6     ✓ dplyr   1.0.8</span>
+<span class="co">## ✓ tidyr   1.2.0     ✓ stringr 1.4.0</span>
+<span class="co">## ✓ readr   2.1.2     ✓ forcats 0.5.1</span>
 <span class="co">## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──</span>
 <span class="co">## x dplyr::filter() masks stats::filter()</span>
 <span class="co">## x dplyr::lag()    masks stats::lag()</span></code></pre></div>
@@ -131,16 +157,16 @@
 <h2>
 <span class="header-section-number">6.2</span> <code>filter()</code>: Indizieren von Zeilen<a class="anchor" aria-label="anchor" href="#filter-indizieren-von-zeilen"><i class="fas fa-link"></i></a>
 </h2>
-<p>Die Funktion <code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code> erwartet logische Ausdrücke als Input und gibt die Zeilen zurück, für die die Kombination der verwendeten logischen Ausdrücke ein <code>TRUE</code> ergibt.</p>
+<p>Die Funktion <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> erwartet logische Ausdrücke als Input und gibt die Zeilen zurück, für die die Kombination der verwendeten logischen Ausdrücke ein <code>TRUE</code> ergibt.</p>
 <div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">gapminder</span>, <span class="va">lifeExp</span> <span class="op">&lt;</span> <span class="fl">29</span><span class="op">)</span>
-<span class="co">## # A tibble: 2 x 6</span>
+<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">gapminder</span>, <span class="va">lifeExp</span> <span class="op">&lt;</span> <span class="fl">29</span><span class="op">)</span>
+<span class="co">## # A tibble: 2 × 6</span>
 <span class="co">##   country     continent  year lifeExp     pop gdpPercap</span>
 <span class="co">##   &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;   &lt;int&gt;     &lt;dbl&gt;</span>
 <span class="co">## 1 Afghanistan Asia       1952    28.8 8425333      779.</span>
 <span class="co">## 2 Rwanda      Africa     1992    23.6 7290203      737.</span>
-<span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">gapminder</span>, <span class="va">country</span> <span class="op">==</span> <span class="st">"Rwanda"</span>, <span class="va">year</span> <span class="op">&gt;</span> <span class="fl">1979</span><span class="op">)</span>
-<span class="co">## # A tibble: 6 x 6</span>
+<span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">gapminder</span>, <span class="va">country</span> <span class="op">==</span> <span class="st">"Rwanda"</span>, <span class="va">year</span> <span class="op">&gt;</span> <span class="fl">1979</span><span class="op">)</span>
+<span class="co">## # A tibble: 6 × 6</span>
 <span class="co">##   country continent  year lifeExp     pop gdpPercap</span>
 <span class="co">##   &lt;fct&gt;   &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;   &lt;int&gt;     &lt;dbl&gt;</span>
 <span class="co">## 1 Rwanda  Africa     1982    46.2 5507565      882.</span>
@@ -149,8 +175,8 @@
 <span class="co">## 4 Rwanda  Africa     1997    36.1 7212583      590.</span>
 <span class="co">## 5 Rwanda  Africa     2002    43.4 7852401      786.</span>
 <span class="co">## 6 Rwanda  Africa     2007    46.2 8860588      863.</span>
-<span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">gapminder</span>, <span class="va">country</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Rwanda"</span>, <span class="st">"Afghanistan"</span><span class="op">)</span><span class="op">)</span>
-<span class="co">## # A tibble: 24 x 6</span>
+<span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">gapminder</span>, <span class="va">country</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Rwanda"</span>, <span class="st">"Afghanistan"</span><span class="op">)</span><span class="op">)</span>
+<span class="co">## # A tibble: 24 × 6</span>
 <span class="co">##    country     continent  year lifeExp      pop gdpPercap</span>
 <span class="co">##    &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;</span>
 <span class="co">##  1 Afghanistan Asia       1952    28.8  8425333      779.</span>
@@ -169,7 +195,7 @@
 <code class="sourceCode R"><span class="va">gapminder</span><span class="op">[</span><span class="va">gapminder</span><span class="op">$</span><span class="va">lifeExp</span> <span class="op">&lt;</span> <span class="fl">29</span>, <span class="op">]</span> 
 <span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">gapminder</span>, <span class="va">country</span> <span class="op">==</span> <span class="st">"Rwanda"</span> <span class="op">&amp;</span> <span class="va">year</span> <span class="op">&gt;</span> <span class="fl">1979</span><span class="op">)</span> 
 <span class="co">## subset funktioniert ähnlich wie filter</span>
-<span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">gapminder</span>, <span class="va">country</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Rwanda"</span>, <span class="st">"Afghanistan"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<span class="fu"><a href="https://rdrr.io/r/base/subset.html">subset</a></span><span class="op">(</span><span class="va">gapminder</span>, <span class="va">country</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Rwanda"</span>, <span class="st">"Afghanistan"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>Wir erkennen sofort, dass wir mithilfe von <code>dplyr</code> sehr leicht den Datensatz aufteilen können, basierend auf der Tatsache ob Bedingungen erfüllt werden oder eben nicht.</p>
 <p>Daher solltet ihr unter keinen Umständen eure Daten so unterteilen, wie hier:</p>
 <div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
@@ -181,7 +207,7 @@
 </ul>
 <p>Ganz anders verhält es sich mit diesem Beispiel:</p>
 <div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">gapminder</span>, <span class="va">country</span> <span class="op">==</span> <span class="st">"Canada"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">gapminder</span>, <span class="va">country</span> <span class="op">==</span> <span class="st">"Canada"</span><span class="op">)</span></code></pre></div>
 <p>Der Befehl erklärt sich von selbst und ist ziemlich robust.</p>
 </div>
 <div id="der-pipe-operator" class="section level2" number="6.3">
@@ -195,8 +221,8 @@
 <p>Das entsprechende RStudio Tastenkürzel lautet: Ctrl+Shift+M (Windows), Cmd+Shift+M (Mac).</p>
 <p>Erstmal ein Beispiel</p>
 <div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">gapminder</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">## # A tibble: 6 x 6</span>
+<code class="sourceCode R"><span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">## # A tibble: 6 × 6</span>
 <span class="co">##   country     continent  year lifeExp      pop gdpPercap</span>
 <span class="co">##   &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;</span>
 <span class="co">## 1 Afghanistan Asia       1952    28.8  8425333      779.</span>
@@ -205,11 +231,11 @@
 <span class="co">## 4 Afghanistan Asia       1967    34.0 11537966      836.</span>
 <span class="co">## 5 Afghanistan Asia       1972    36.1 13079460      740.</span>
 <span class="co">## 6 Afghanistan Asia       1977    38.4 14880372      786.</span></code></pre></div>
-<p>Man erkennt sofort, der Befehl ist äquivalent zu <code><a href="https://rdrr.io/r/utils/head.html">head(gapminder)</a></code>. Der Pipe-Operator nimmt das Objekt auf der linken Seite und leitet es in den Funktionsaufruf auf der rechten Seite weiter - er gibt es buchstäblich als erstes Argument ein.</p>
-<p>Und natürlich kann man immer noch weitere Argumente für die Funktion auf der rechten Seite angeben. Um die ersten 3 Reihen von <code>gapminder</code> zu sehen, könnte man sagen: <code><a href="https://rdrr.io/r/utils/head.html">head(gapminder, 3)</a></code> oder:</p>
+<p>Man erkennt sofort, der Befehl ist äquivalent zu <code>head(gapminder)</code>. Der Pipe-Operator nimmt das Objekt auf der linken Seite und leitet es in den Funktionsaufruf auf der rechten Seite weiter - er gibt es buchstäblich als erstes Argument ein.</p>
+<p>Und natürlich kann man immer noch weitere Argumente für die Funktion auf der rechten Seite angeben. Um die ersten 3 Reihen von <code>gapminder</code> zu sehen, könnte man sagen: <code>head(gapminder, 3)</code> oder:</p>
 <div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">gapminder</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span>
-<span class="co">## # A tibble: 3 x 6</span>
+<code class="sourceCode R"><span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span>
+<span class="co">## # A tibble: 3 × 6</span>
 <span class="co">##   country     continent  year lifeExp      pop gdpPercap</span>
 <span class="co">##   &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;</span>
 <span class="co">## 1 Afghanistan Asia       1952    28.8  8425333      779.</span>
@@ -221,10 +247,10 @@
 <h2>
 <span class="header-section-number">6.4</span> Mit <code>select()</code> Variablen auswählen<a class="anchor" aria-label="anchor" href="#mit-select-variablen-ausw%C3%A4hlen"><i class="fas fa-link"></i></a>
 </h2>
-<p>Verwendet <code>select()</code>, um aus den Daten verschiedene Variablen (Spalten) auszuwählen. Hier kommt eine typische Verwendung von <code>select()</code>:</p>
+<p>Verwendet <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code>, um aus den Daten verschiedene Variablen (Spalten) auszuwählen. Hier kommt eine typische Verwendung von <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code>:</p>
 <div class="sourceCode" id="cb59"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">select</span><span class="op">(</span><span class="va">gapminder</span>, <span class="va">year</span>, <span class="va">lifeExp</span><span class="op">)</span>
-<span class="co">## # A tibble: 1,704 x 2</span>
+<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">gapminder</span>, <span class="va">year</span>, <span class="va">lifeExp</span><span class="op">)</span>
+<span class="co">## # A tibble: 1,704 × 2</span>
 <span class="co">##     year lifeExp</span>
 <span class="co">##    &lt;int&gt;   &lt;dbl&gt;</span>
 <span class="co">##  1  1952    28.8</span>
@@ -240,10 +266,10 @@
 <span class="co">## # … with 1,694 more rows</span></code></pre></div>
 <p>Und nun noch kombiniert mit <code><a href="https://rdrr.io/r/utils/head.html">head()</a></code> über den Pipe-Operator:</p>
 <div class="sourceCode" id="cb60"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">gapminder</span> <span class="op">%&gt;%</span>
-  <span class="fu">select</span><span class="op">(</span><span class="va">year</span>, <span class="va">lifeExp</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">lifeExp</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span>
-<span class="co">## # A tibble: 4 x 2</span>
+<span class="co">## # A tibble: 4 × 2</span>
 <span class="co">##    year lifeExp</span>
 <span class="co">##   &lt;int&gt;   &lt;dbl&gt;</span>
 <span class="co">## 1  1952    28.8</span>
@@ -258,10 +284,10 @@
 </h3>
 <p>Hier sind die Daten für Kambodscha, allerdings nur die Variablen <code>year</code> und <code>lifeExp</code>:</p>
 <div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">gapminder</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op">==</span> <span class="st">"Cambodia"</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu">select</span><span class="op">(</span><span class="va">year</span>, <span class="va">lifeExp</span><span class="op">)</span>
-<span class="co">## # A tibble: 12 x 2</span>
+<code class="sourceCode R"><span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op">==</span> <span class="st">"Cambodia"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">lifeExp</span><span class="op">)</span>
+<span class="co">## # A tibble: 12 × 2</span>
 <span class="co">##     year lifeExp</span>
 <span class="co">##    &lt;int&gt;   &lt;dbl&gt;</span>
 <span class="co">##  1  1952    39.4</span>
@@ -279,7 +305,7 @@
 <p>Das gleiche Ergebnis würde man mit diesem R Standardbefehl erhalten:</p>
 <div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gapminder</span><span class="op">[</span><span class="va">gapminder</span><span class="op">$</span><span class="va">country</span> <span class="op">==</span> <span class="st">"Cambodia"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"year"</span>, <span class="st">"lifeExp"</span><span class="op">)</span><span class="op">]</span>
-<span class="co">## # A tibble: 12 x 2</span>
+<span class="co">## # A tibble: 12 × 2</span>
 <span class="co">##     year lifeExp</span>
 <span class="co">##    &lt;int&gt;   &lt;dbl&gt;</span>
 <span class="co">##  1  1952    39.4</span>
@@ -302,7 +328,7 @@
 <span class="header-section-number">6.5</span> Pure, predictable, pipeable<a class="anchor" aria-label="anchor" href="#pure-predictable-pipeable"><i class="fas fa-link"></i></a>
 </h2>
 <p>Bisher haben wir nur etwas an der Oberfläche von <code>dplyr</code> gekratzt, trotzdem möchten wir auf ein Schlüsselprinzip hinweisen, das du vielleicht langsam zu schätzen lernen wirst.</p>
-<p>Die Verben (Hauptfunktionen) von dplyr, wie z.B. <code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code> und <code>select()</code>, sind <a href="https://en.wikipedia.org/wiki/Pure_function">pure functions</a>. Dazu schreibt Hadley Wickham im Kapitel <a href="https://adv-r.hadley.nz/functions.html">Functions</a> in seinem <a href="https://adv-r.hadley.nz/">Advanced R</a> Buch <span class="citation">(<a href="literatur-3.html#ref-wickham2019" role="doc-biblioref">2019</a>)</span>:</p>
+<p>Die Verben (Hauptfunktionen) von dplyr, wie z.B. <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> und <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code>, sind <a href="https://en.wikipedia.org/wiki/Pure_function">pure functions</a>. Dazu schreibt Hadley Wickham im Kapitel <a href="https://adv-r.hadley.nz/functions.html">Functions</a> in seinem <a href="https://adv-r.hadley.nz/">Advanced R</a> Buch <span class="citation">(<a href="literatur-3.html#ref-wickham2019" role="doc-biblioref">2019</a>)</span>:</p>
 <blockquote>
 <p>The functions that are the easiest to understand and reason about are pure functions: functions that always map the same input to the same output and have no other impact on the workspace. In other words, pure functions have no side effects: they don’t affect the state of the world in any way apart from the value they return.</p>
 </blockquote>
@@ -370,7 +396,7 @@
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

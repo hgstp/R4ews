@@ -50,11 +50,11 @@ Zur Einlesen und Ausgeben von Datensätzen verwenden wir das [readr] Paket, welc
 
 ```r
 library(tidyverse)
-## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
+## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
 ## ✓ ggplot2 3.3.5     ✓ purrr   0.3.4
-## ✓ tibble  3.1.2     ✓ dplyr   1.0.7
-## ✓ tidyr   1.1.3     ✓ stringr 1.4.0
-## ✓ readr   2.0.1     ✓ forcats 0.5.1
+## ✓ tibble  3.1.6     ✓ dplyr   1.0.8
+## ✓ tidyr   1.2.0     ✓ stringr 1.4.0
+## ✓ readr   2.1.2     ✓ forcats 0.5.1
 ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()
@@ -68,7 +68,7 @@ Die Gapminder Daten könnten wir natürlich wie zuvor über das Laden des `gapmi
 ```r
 library(fs)
 (gap_tsv <- path_package("gapminder", "extdata", "gapminder.tsv"))
-## /Library/Frameworks/R.framework/Versions/4.0/Resources/library/gapminder/extdata/gapminder.tsv
+## /Library/Frameworks/R.framework/Versions/4.1/Resources/library/gapminder/extdata/gapminder.tsv
 ```
 
 Nachdem wir jetzt den Speicherort der Datei kennen, können wir versuchen sie einzulesen.
@@ -134,9 +134,10 @@ gap_life_exp <- gapminder %>%
   group_by(country, continent) %>% 
   summarise(life_exp = max(lifeExp)) %>% 
   ungroup()
-## `summarise()` has grouped output by 'country'. You can override using the `.groups` argument.
+## `summarise()` has grouped output by 'country'. You can override using the
+## `.groups` argument.
 gap_life_exp
-## # A tibble: 142 x 3
+## # A tibble: 142 × 3
 ##    country     continent life_exp
 ##    <chr>       <chr>        <dbl>
 ##  1 Afghanistan Asia          43.8
@@ -256,10 +257,10 @@ Schauen wir uns einmal an, wie die Variable jdata in der R-Konsole aussieht:
 ```r
 jdata
 ## Response [http://api.open-notify.org/astros.json]
-##   Date: 2021-12-28 15:04
+##   Date: 2022-10-19 14:08
 ##   Status: 200
 ##   Content-Type: application/json
-##   Size: 497 B
+##   Size: 477 B
 ```
 
 Als erstes fällt auf, dass die URL enthalten ist, an die die GET-Anfrage gesendet wurde. Außerdem erkennen wir das Datum und die Uhrzeit, zu der die Anfrage gestellt wurde, sowie die Größe der Antwort.
@@ -292,7 +293,7 @@ Dazu müssen wir zunächst den rohen Unicode in character Daten konvertieren, di
 
 ```r
 rawToChar(jdata$content)
-## [1] "{\"people\": [{\"craft\": \"ISS\", \"name\": \"Mark Vande Hei\"}, {\"craft\": \"ISS\", \"name\": \"Pyotr Dubrov\"}, {\"craft\": \"ISS\", \"name\": \"Anton Shkaplerov\"}, {\"craft\": \"Shenzhou 13\", \"name\": \"Zhai Zhigang\"}, {\"craft\": \"Shenzhou 13\", \"name\": \"Wang Yaping\"}, {\"craft\": \"Shenzhou 13\", \"name\": \"Ye Guangfu\"}, {\"craft\": \"ISS\", \"name\": \"Raja Chari\"}, {\"craft\": \"ISS\", \"name\": \"Tom Marshburn\"}, {\"craft\": \"ISS\", \"name\": \"Kayla Barron\"}, {\"craft\": \"ISS\", \"name\": \"Matthias Maurer\"}], \"message\": \"success\", \"number\": 10}"
+## [1] "{\"message\": \"success\", \"people\": [{\"name\": \"Cai Xuzhe\", \"craft\": \"Tiangong\"}, {\"name\": \"Chen Dong\", \"craft\": \"Tiangong\"}, {\"name\": \"Liu Yang\", \"craft\": \"Tiangong\"}, {\"name\": \"Sergey Prokopyev\", \"craft\": \"ISS\"}, {\"name\": \"Dmitry Petelin\", \"craft\": \"ISS\"}, {\"name\": \"Frank Rubio\", \"craft\": \"ISS\"}, {\"name\": \"Nicole Mann\", \"craft\": \"ISS\"}, {\"name\": \"Josh Cassada\", \"craft\": \"ISS\"}, {\"name\": \"Koichi Wakata\", \"craft\": \"ISS\"}, {\"name\": \"Anna Kikina\", \"craft\": \"ISS\"}], \"number\": 10}"
 ```
 
 
@@ -307,10 +308,10 @@ Die `fromJSON()` Funktion benötigt einen character Vektor, der die JSON-Struktu
 data <-  fromJSON(rawToChar(jdata$content))
 glimpse(data)
 ## List of 3
-##  $ people :'data.frame':	10 obs. of  2 variables:
-##   ..$ craft: chr [1:10] "ISS" "ISS" "ISS" "Shenzhou 13" ...
-##   ..$ name : chr [1:10] "Mark Vande Hei" "Pyotr Dubrov" "Anton Shkaplerov" "Z"..
 ##  $ message: chr "success"
+##  $ people :'data.frame':	10 obs. of  2 variables:
+##   ..$ name : chr [1:10] "Cai Xuzhe" "Chen Dong" "Liu Yang" "Sergey Prokopyev" ..
+##   ..$ craft: chr [1:10] "Tiangong" "Tiangong" "Tiangong" "ISS" ...
 ##  $ number : int 10
 ```
 
@@ -319,75 +320,59 @@ Die Liste `data` hat drei Elemente. Uns interessiert in erster Linie das Data Fr
 
 ```r
 data$people
-##          craft             name
-## 1          ISS   Mark Vande Hei
-## 2          ISS     Pyotr Dubrov
-## 3          ISS Anton Shkaplerov
-## 4  Shenzhou 13     Zhai Zhigang
-## 5  Shenzhou 13      Wang Yaping
-## 6  Shenzhou 13       Ye Guangfu
-## 7          ISS       Raja Chari
-## 8          ISS    Tom Marshburn
-## 9          ISS     Kayla Barron
-## 10         ISS  Matthias Maurer
+##                name    craft
+## 1         Cai Xuzhe Tiangong
+## 2         Chen Dong Tiangong
+## 3          Liu Yang Tiangong
+## 4  Sergey Prokopyev      ISS
+## 5    Dmitry Petelin      ISS
+## 6       Frank Rubio      ISS
+## 7       Nicole Mann      ISS
+## 8      Josh Cassada      ISS
+## 9     Koichi Wakata      ISS
+## 10      Anna Kikina      ISS
 ```
 
 
-Also, da haben wir unsere Antwort: Zum Zeitpunkt des letzten Updates Dec 28, 2021 von R4ews befanden sich 10 Personen im Weltraum. Aber wenn ihr den Code zu einem späteren Zeitpunkt ausprobiert, könnten es auch schon wieder andere Namen und eine andere Anzahl sein. Das ist einer der Vorteile von APIs - im Gegensatz zu Datensätzen, die man im Spreadsheet Format herunterladen kann, werden sie in der Regel in Echtzeit oder nahezu in Echtzeit aktualisiert. APIs bieten somit die Möglichkeit leicht auf sehr aktuellen Daten zuzugreifen.
+Also, da haben wir unsere Antwort: Zum Zeitpunkt des letzten Updates Oct 19, 2022 von R4ews befanden sich 10 Personen im Weltraum. Aber wenn ihr den Code zu einem späteren Zeitpunkt ausprobiert, könnten es auch schon wieder andere Namen und eine andere Anzahl sein. Das ist einer der Vorteile von APIs - im Gegensatz zu Datensätzen, die man im Spreadsheet Format herunterladen kann, werden sie in der Regel in Echtzeit oder nahezu in Echtzeit aktualisiert. APIs bieten somit die Möglichkeit leicht auf sehr aktuellen Daten zuzugreifen.
 
 
 In diesem Beispiel haben wir einen sehr unkomplizierten API-Workflow durchlaufen. Die meisten APIs fordern, dass man demselben allgemeinen Muster folgt, aber dabei können die jeweilgen Aufrufe/Befehle durchaus deutlich komplexer sein.
 
-In unserem Beispiel war es ausreichen nur die URL anzugeben. Aber einige APIs verlangen mehr Informationen vom Benutzer. Im letzten Teil dieser Einführung gehen wir darauf ein, wie ihr der API in eurer Anfrage zusätzliche Informationen zur Verfügung stellen könnt.
-
-### APIs und Abfrageparameter
-
-Was wäre, wenn wir wissen wollten, wann die ISS einen bestimmten Ort auf der Erde überfliegen würde? Die ISS Pass Times API von Open Notify verlangt von uns, dass wir zusätzliche Parameter angeben, bevor sie die gewünschten Daten zurückgeben kann.
-
-Wir müssen den Längen- und Breitengrad des Ortes angeben, nach dem wir im Rahmen unserer `GET()` Anfrage fragen. Sobald ein Längen- und Breitengrad angegeben ist, werden sie als Abfrageparameter mit der ursprünglichen URL kombiniert.
-
-Lasst uns die API verwenden, um herauszufinden, wann die ISS Garching (auf 48.24896 Breiten- und  11.65101 Längengrad) passieren wird:
+In unserem Beispiel war es ausreichen nur die URL anzugeben. Aber einige APIs verlangen mehr Informationen vom Benutzer. Darauf gehen wir aber erstmal nicht weiter ein. Stattdessen fragen wir noch nach dem Ort der ISS im Moment der Abfrage
 
 
 ```r
-jdata <-  GET("http://api.open-notify.org/iss-pass.json",
-    query = list(lat = 48.24896, lon = 11.65101))
+jdata <-  GET("http://api.open-notify.org/iss-now.json",)
 ```
 
-
-Man muss in der Dokumentation für die API, mit der man arbeiten will, nachsehen, ob es erforderliche Abfrageparameter gibt. Für die überwiegende Mehrheit der APIs, auf die ihr möglicherweise zugreifen möchtet, existiert eine Dokumentation, die beschreibt welche Parameter in der Anfrage enthalten sein müssen, um ein gewünschtes Ergebnis zurückzugeben. 
-
-Wie auch immer, jetzt, da wir unsere Anfrage einschließlich der Standortparameter gestellt haben, können wir die Antwort mit den gleichen Funktionen überprüfen, die wir zuvor verwendet haben. Lasst uns die Daten aus der Antwort extrahieren:
 
 
 
 ```r
 data <- fromJSON(rawToChar(jdata$content))
-data$response
-##   duration   risetime
-## 1      305 1640737554
-## 2      616 1640743146
-## 3      655 1640748919
-## 4      649 1640754743
-## 5      656 1640760560
+data$iss_position
+## $longitude
+## [1] "46.0087"
+## 
+## $latitude
+## [1] "-28.7945"
+data$timestamp
+## [1] 1666188487
 ```
-
 
 
 Diese API gibt uns die Zeit in Form von [Unixzeit](https://de.wikipedia.org/wiki/Unixzeit) zurück. Unixzeit ist die Zeitspanne, die seit dem 1. Januar 1970 vergangen ist. Mithilfe der Funktion `as_datetime()` aus dem [lubridate] Paket können wir die Unixzeit aber leicht umrechnen
 
 
 ```r
-lubridate::as_datetime(data$response$risetime)
-## [1] "2021-12-29 00:25:54 UTC" "2021-12-29 01:59:06 UTC"
-## [3] "2021-12-29 03:35:19 UTC" "2021-12-29 05:12:23 UTC"
-## [5] "2021-12-29 06:49:20 UTC"
+lubridate::as_datetime(data$response$timestamp)
+## POSIXct of length 0
 ```
 
 
 
-Damit wollen wir den Abschnitt zu APIs beenden. Macht euch bewusst, dass wir hier wirklich nur die Basics in Bezug auf APIs eingeführt haben. Aber hoffentlich hat euch diese Einführung trotzdem ausreichend Vertrauen gegeben, sich mit einigen komplexeren und leistungsfähigeren APIs auseinanderzusetzen. Hoffentlich seid ihr nun in der Lage euch eine ganz neue Welt von Daten zu erschließen, die darauf warten erforscht zu werden!
-
+Damit wollen wir den Abschnitt zu APIs beenden. Macht euch bewusst, dass wir hier wirklich nur die Basics in Bezug auf APIs eingeführt haben. Aber hoffentlich hat euch diese Einführung trotzdem ausreichend Vertrauen gegeben, sich mit einigen komplexeren und leistungsfähigeren APIs auseinanderzusetzen. 
 
 
 ## Weiteres Material

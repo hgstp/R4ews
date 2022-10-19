@@ -283,7 +283,7 @@ lotr_tidy %>%
 ```
 
 ```
-## # A tibble: 6 x 3
+## # A tibble: 6 × 3
 ##   Gender Race       n
 ##   <chr>  <chr>  <dbl>
 ## 1 Female Elf     1743
@@ -310,11 +310,12 @@ Zunächst summieren wir über die Geschlechter hinweg, um die Wortzahlen für di
 ```
 
 ```
-## `summarise()` has grouped output by 'Film'. You can override using the `.groups` argument.
+## `summarise()` has grouped output by 'Film'. You can override using the
+## `.groups` argument.
 ```
 
 ```
-## # A tibble: 9 x 3
+## # A tibble: 9 × 3
 ## # Groups:   Film [3]
 ##   Film                       Race   Words
 ##   <chr>                      <chr>  <dbl>
@@ -376,7 +377,7 @@ rking
 ```
 
 ```
-## # A tibble: 3 x 4
+## # A tibble: 3 × 4
 ##   Film                   Race   Female  Male
 ##   <chr>                  <chr>   <dbl> <dbl>
 ## 1 The Return Of The King Elf       183   510
@@ -406,7 +407,7 @@ lotr_untidy
 ```
 
 ```
-## # A tibble: 9 x 4
+## # A tibble: 9 × 4
 ##   Film                       Race   Female  Male
 ##   <chr>                      <chr>   <dbl> <dbl>
 ## 1 The Fellowship Of The Ring Elf      1229   971
@@ -443,7 +444,7 @@ lotr_tidy
 ```
 
 ```
-## # A tibble: 18 x 4
+## # A tibble: 18 × 4
 ##    Film                       Race   Gender Words
 ##    <chr>                      <chr>  <chr>  <dbl>
 ##  1 The Fellowship Of The Ring Elf    Female  1229
@@ -485,6 +486,8 @@ write_csv(lotr_tidy, path = file.path("data", "lotr_tidy.csv"))
 ```
 ## Warning: The `path` argument of `write_csv()` is deprecated as of readr 1.4.0.
 ## Please use the `file` argument instead.
+## This warning is displayed once every 8 hours.
+## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
 ```
 
 
@@ -507,7 +510,7 @@ lotr_tidy %>%
 ```
 
 ```
-## # A tibble: 6 x 5
+## # A tibble: 6 × 5
 ##   Film                       Gender   Elf Hobbit   Man
 ##   <chr>                      <chr>  <dbl>  <dbl> <dbl>
 ## 1 The Fellowship Of The Ring Female  1229     14     0
@@ -525,7 +528,7 @@ lotr_tidy %>%
 ```
 
 ```
-## # A tibble: 9 x 4
+## # A tibble: 9 × 4
 ##   Film                       Race   Female  Male
 ##   <chr>                      <chr>   <dbl> <dbl>
 ## 1 The Fellowship Of The Ring Elf      1229   971
@@ -551,7 +554,7 @@ lotr_tidy %>%
 ```
 
 ```
-## # A tibble: 18 x 3
+## # A tibble: 18 × 3
 ##    Film                       Race_Gender   Words
 ##    <chr>                      <chr>         <dbl>
 ##  1 The Fellowship Of The Ring Elf_Female     1229
@@ -584,7 +587,7 @@ lotr_tidy %>%
 ```
 
 ```
-## # A tibble: 3 x 7
+## # A tibble: 3 × 7
 ##   Film         Elf_Female Elf_Male Hobbit_Female Hobbit_Male Man_Female Man_Male
 ##   <chr>             <dbl>    <dbl>         <dbl>       <dbl>      <dbl>    <dbl>
 ## 1 The Fellows…       1229      971            14        3644          0     1995
@@ -612,7 +615,7 @@ drei Datensätze vom Anfang wiederherstellen
 ##   >
 ## >[3]>
 ## [[1]]
-## # A tibble: 3 x 4
+## # A tibble: 3 × 4
 ##   Film                       Race   Female  Male
 ##   <chr>                      <chr>   <dbl> <dbl>
 ## 1 The Fellowship Of The Ring Elf      1229   971
@@ -620,7 +623,7 @@ drei Datensätze vom Anfang wiederherstellen
 ## 3 The Fellowship Of The Ring Man         0  1995
 ## 
 ## [[2]]
-## # A tibble: 3 x 4
+## # A tibble: 3 × 4
 ##   Film                   Race   Female  Male
 ##   <chr>                  <chr>   <dbl> <dbl>
 ## 1 The Return Of The King Elf       183   510
@@ -628,7 +631,7 @@ drei Datensätze vom Anfang wiederherstellen
 ## 3 The Return Of The King Man       268  2459
 ## 
 ## [[3]]
-## # A tibble: 3 x 4
+## # A tibble: 3 × 4
 ##   Film           Race   Female  Male
 ##   <chr>          <chr>   <dbl> <dbl>
 ## 1 The Two Towers Elf       331   513
@@ -644,7 +647,7 @@ sep_list[[2]]
 ```
 
 ```
-## # A tibble: 3 x 4
+## # A tibble: 3 × 4
 ##   Film                   Race   Female  Male
 ##   <chr>                  <chr>   <dbl> <dbl>
 ## 1 The Return Of The King Elf       183   510

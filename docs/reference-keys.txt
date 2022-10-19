@@ -53,7 +53,6 @@ erstellen-von-api-anforderungen-in-r
 unsere-erste-api-anfrage-stellen
 get-ausgabe
 handling-json-data
-apis-und-abfrageparameter
 weiteres-material
 tidy
 lord-of-the-rings

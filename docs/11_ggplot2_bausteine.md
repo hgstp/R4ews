@@ -126,7 +126,7 @@ Interessant sind hier natürlich die wenigen großen `gdpPercap` Werte in der li
 ```r
 gapminder %>%
   filter(gdpPercap > 50000)
-## # A tibble: 6 x 6
+## # A tibble: 6 × 6
 ##   country continent  year lifeExp     pop gdpPercap
 ##   <fct>   <fct>     <int>   <dbl>   <int>     <dbl>
 ## 1 Kuwait  Asia       1952    55.6  160000   108382.

@@ -257,44 +257,30 @@ Also, da haben wir unsere Antwort: Zum Zeitpunkt des letzten Updates `r format(S
 
 In diesem Beispiel haben wir einen sehr unkomplizierten API-Workflow durchlaufen. Die meisten APIs fordern, dass man demselben allgemeinen Muster folgt, aber dabei können die jeweilgen Aufrufe/Befehle durchaus deutlich komplexer sein.
 
-In unserem Beispiel war es ausreichen nur die URL anzugeben. Aber einige APIs verlangen mehr Informationen vom Benutzer. Im letzten Teil dieser Einführung gehen wir darauf ein, wie ihr der API in eurer Anfrage zusätzliche Informationen zur Verfügung stellen könnt.
-
-### APIs und Abfrageparameter
-
-Was wäre, wenn wir wissen wollten, wann die ISS einen bestimmten Ort auf der Erde überfliegen würde? Die ISS Pass Times API von Open Notify verlangt von uns, dass wir zusätzliche Parameter angeben, bevor sie die gewünschten Daten zurückgeben kann.
-
-Wir müssen den Längen- und Breitengrad des Ortes angeben, nach dem wir im Rahmen unserer `GET()` Anfrage fragen. Sobald ein Längen- und Breitengrad angegeben ist, werden sie als Abfrageparameter mit der ursprünglichen URL kombiniert.
-
-Lasst uns die API verwenden, um herauszufinden, wann die ISS Garching (auf 48.24896 Breiten- und  11.65101 Längengrad) passieren wird:
+In unserem Beispiel war es ausreichen nur die URL anzugeben. Aber einige APIs verlangen mehr Informationen vom Benutzer. Darauf gehen wir aber erstmal nicht weiter ein. Stattdessen fragen wir noch nach dem Ort der ISS im Moment der Abfrage
 
 ```{r}
-jdata <-  GET("http://api.open-notify.org/iss-pass.json",
-    query = list(lat = 48.24896, lon = 11.65101))
+jdata <-  GET("http://api.open-notify.org/iss-now.json",)
 ```
 
-
-Man muss in der Dokumentation für die API, mit der man arbeiten will, nachsehen, ob es erforderliche Abfrageparameter gibt. Für die überwiegende Mehrheit der APIs, auf die ihr möglicherweise zugreifen möchtet, existiert eine Dokumentation, die beschreibt welche Parameter in der Anfrage enthalten sein müssen, um ein gewünschtes Ergebnis zurückzugeben. 
-
-Wie auch immer, jetzt, da wir unsere Anfrage einschließlich der Standortparameter gestellt haben, können wir die Antwort mit den gleichen Funktionen überprüfen, die wir zuvor verwendet haben. Lasst uns die Daten aus der Antwort extrahieren:
 
 
 ```{r}
 data <- fromJSON(rawToChar(jdata$content))
-data$response
+data$iss_position
+data$timestamp
 ```
-
 
 
 Diese API gibt uns die Zeit in Form von [Unixzeit](https://de.wikipedia.org/wiki/Unixzeit) zurück. Unixzeit ist die Zeitspanne, die seit dem 1. Januar 1970 vergangen ist. Mithilfe der Funktion `as_datetime()` aus dem [lubridate] Paket können wir die Unixzeit aber leicht umrechnen
 
 ```{r}
-lubridate::as_datetime(data$response$risetime)
+lubridate::as_datetime(data$response$timestamp)
 ```
 
 
 
-Damit wollen wir den Abschnitt zu APIs beenden. Macht euch bewusst, dass wir hier wirklich nur die Basics in Bezug auf APIs eingeführt haben. Aber hoffentlich hat euch diese Einführung trotzdem ausreichend Vertrauen gegeben, sich mit einigen komplexeren und leistungsfähigeren APIs auseinanderzusetzen. Hoffentlich seid ihr nun in der Lage euch eine ganz neue Welt von Daten zu erschließen, die darauf warten erforscht zu werden!
-
+Damit wollen wir den Abschnitt zu APIs beenden. Macht euch bewusst, dass wir hier wirklich nur die Basics in Bezug auf APIs eingeführt haben. Aber hoffentlich hat euch diese Einführung trotzdem ausreichend Vertrauen gegeben, sich mit einigen komplexeren und leistungsfähigeren APIs auseinanderzusetzen. 
 
 
 ## Weiteres Material

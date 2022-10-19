@@ -7,7 +7,7 @@
 
 Im Statistikteil der Veranstaltung gehen wir fast immer davon aus, dass eine Stichprobe aus 
 einem __statistischen Modell__ vorliegt. Daher wollen wir hier ein bisschen darüber sprechen, was 
-heißt eine Stichprobe aus einer Grundgesamtheit/Population zu ziehen.
+es heißt eine Stichprobe aus einer Grundgesamtheit/Population zu ziehen.
 
 
 Wir betrachten dazu als Beispiel das Ziehen aus einer Urne, wobei die Kugeln in der Urne eben die Population darstellen, die uns interessiert. Da wir die Stichprobe digital erzeugen wollen, genauer gesagt mit R, müssen wir uns nach einer digitalen Urne umschauen.
@@ -23,7 +23,7 @@ bowl
 ```
 
 ```
-## # A tibble: 2,400 x 2
+## # A tibble: 2,400 × 2
 ##    ball_ID color
 ##      <int> <chr>
 ##  1       1 white
@@ -80,7 +80,7 @@ bowl %>%
 ```
 
 ```
-## # A tibble: 1 x 1
+## # A tibble: 1 × 1
 ##    prop
 ##   <dbl>
 ## 1 0.375
@@ -95,7 +95,7 @@ Frage
 geben. 
 
 
-Daher ist es nötig, dass wir den Anteil als Parameter eines  __statistisches (Produkt-)Modell__ definieren und Stichprobe dann als Stichprobe aus diesem Modell betrachten. Ein geeignetes statistischen Modell wäre
+Daher ist es nötig, dass wir den Anteil als Parameter eines  __statistisches (Produkt-)Modell__ definieren und die Stichprobe dann als Stichprobe aus diesem Modell betrachten. Ein geeignetes statistischen Modell wäre
 
 
 $$ (\{0,1\}^n, \mathcal{P}(\{0,1\})^n, Binomial(1,\theta)^{\otimes n}_{\theta\in(0,1)})$$
@@ -103,7 +103,7 @@ $$ (\{0,1\}^n, \mathcal{P}(\{0,1\})^n, Binomial(1,\theta)^{\otimes n}_{\theta\in
 
 
 
-Nun ziehen wir eine Stichprobe. Allerdings machen wir das gleich für verschiedene Stichprobenlängen  $n\in\{25, 50, 100\}$, um etwas den Einfluss der Stichprobenlänge analysieren zu können. Für jede der drei Stichproben berechnen wir anschließend die relative Häufigkeit roter Kugeln. Zum Ziehen der Stichprobe verwenden wir die Funktion `infer::rep_ample_n()`. Es ist nicht unbedingt nötig hier ein weiteres Paket zu laden, aber das `infer` Paket ist an dieser Stelle (auch noch später) sehr hilfreich und die enthaltenen Funktionen sind intutiv in der Handhabung.
+Nun ziehen wir eine Stichprobe. Allerdings machen wir das gleich für verschiedene Stichprobenlängen  $n\in\{25, 50, 100\}$, um etwas den Einfluss der Stichprobenlänge analysieren zu können. Für jede der drei Stichproben berechnen wir anschließend die relative Häufigkeit roter Kugeln. Zum Ziehen der Stichprobe verwenden wir die Funktion `infer::rep_sample_n()`. Es ist nicht unbedingt nötig hier ein weiteres Paket zu laden, aber das `infer` Paket ist an dieser Stelle (auch noch später) sehr hilfreich und die enthaltenen Funktionen sind intutiv in der Handhabung.
 
 
 ```r
@@ -114,10 +114,10 @@ bowl %>%
 ```
 
 ```
-## # A tibble: 1 x 2
+## # A tibble: 1 × 2
 ##   replicate  prop
 ##       <int> <dbl>
-## 1         1  0.36
+## 1         1  0.44
 ```
 
 ```r
@@ -127,10 +127,10 @@ bowl %>%
 ```
 
 ```
-## # A tibble: 1 x 2
+## # A tibble: 1 × 2
 ##   replicate  prop
 ##       <int> <dbl>
-## 1         1   0.4
+## 1         1   0.3
 ```
 
 ```r
@@ -140,10 +140,10 @@ bowl %>%
 ```
 
 ```
-## # A tibble: 1 x 2
+## # A tibble: 1 × 2
 ##   replicate  prop
 ##       <int> <dbl>
-## 1         1  0.37
+## 1         1  0.45
 ```
 
 
@@ -189,10 +189,10 @@ stp_25 %>%
 ```
 
 ```
-## # A tibble: 1 x 1
+## # A tibble: 1 × 1
 ##   sd_prop
 ##     <dbl>
-## 1  0.0954
+## 1  0.0969
 ```
 
 ```r
@@ -202,10 +202,10 @@ stp_50 %>%
 ```
 
 ```
-## # A tibble: 1 x 1
+## # A tibble: 1 × 1
 ##   sd_prop
 ##     <dbl>
-## 1  0.0682
+## 1  0.0711
 ```
 
 ```r
@@ -215,10 +215,10 @@ stp_100 %>%
 ```
 
 ```
-## # A tibble: 1 x 1
+## # A tibble: 1 × 1
 ##   sd_prop
 ##     <dbl>
-## 1  0.0480
+## 1  0.0470
 ```
 
 
@@ -389,7 +389,7 @@ x_B
 ```
 
 ```
-## # A tibble: 100,000 x 3
+## # A tibble: 100,000 × 3
 ## # Groups:   replicate [1,000]
 ##    replicate ball_ID color
 ##        <int>   <int> <chr>
@@ -420,7 +420,7 @@ mean_x_B
 ```
 
 ```
-## # A tibble: 1,000 x 2
+## # A tibble: 1,000 × 2
 ##    replicate  prop
 ##        <int> <dbl>
 ##  1         1  0.32
@@ -463,7 +463,7 @@ x %>%
 ```
 
 ```
-## # A tibble: 1 x 2
+## # A tibble: 1 × 2
 ##   replicate  prop
 ##       <int> <dbl>
 ## 1         1  0.36
@@ -508,7 +508,7 @@ boot_ki
 ```
 
 ```
-## # A tibble: 1 x 2
+## # A tibble: 1 × 2
 ##   lower_ci upper_ci
 ##      <dbl>    <dbl>
 ## 1     0.27     0.45

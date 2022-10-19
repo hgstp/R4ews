@@ -23,11 +23,11 @@ Wir starten wieder mit dem Laden von `dplyr` (über `tidyverse`)
 
 ```r
 library(tidyverse)
-## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
+## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
 ## ✓ ggplot2 3.3.5     ✓ purrr   0.3.4
-## ✓ tibble  3.1.2     ✓ dplyr   1.0.7
-## ✓ tidyr   1.1.3     ✓ stringr 1.4.0
-## ✓ readr   2.0.1     ✓ forcats 0.5.1
+## ✓ tibble  3.1.6     ✓ dplyr   1.0.8
+## ✓ tidyr   1.2.0     ✓ stringr 1.4.0
+## ✓ readr   2.1.2     ✓ forcats 0.5.1
 ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()
@@ -60,7 +60,7 @@ Unser __Ziel__ ist es, dass GDP pro Land anzugeben. Das sollte machbar sein, da 
 ```r
 my_gap %>%
   mutate(gdp = pop * gdpPercap)
-## # A tibble: 1,704 x 7
+## # A tibble: 1,704 × 7
 ##    country     continent  year lifeExp      pop gdpPercap          gdp
 ##    <fct>       <fct>     <int>   <dbl>    <int>     <dbl>        <dbl>
 ##  1 Afghanistan Asia       1952    28.8  8425333      779.  6567086330.
@@ -113,7 +113,7 @@ Bleibt die Frage ob das so funktioniert hat. Um diese Frage zu beantworten, kön
 my_gap %>% 
   filter(country == "Germany") %>% 
   select(country, year, gdpPercapRel)
-## # A tibble: 12 x 3
+## # A tibble: 12 × 3
 ##    country  year gdpPercapRel
 ##    <fct>   <int>        <dbl>
 ##  1 Germany  1952            1
@@ -153,7 +153,7 @@ __Tipp:__ Vertraut niemandem - einschließlich (besonders?) euch selbst. Versuch
 ```r
 my_gap %>%
   arrange(year, country)
-## # A tibble: 1,704 x 7
+## # A tibble: 1,704 × 7
 ##    country     continent  year lifeExp      pop gdpPercap gdpPercapRel
 ##    <fct>       <fct>     <int>   <dbl>    <int>     <dbl>        <dbl>
 ##  1 Afghanistan Asia       1952    28.8  8425333      779.       0.109 
@@ -176,19 +176,19 @@ Oder vielleicht interessieren euch nur die Daten aus 2007, angeordnet entspreche
 my_gap %>%
   filter(year == 2007) %>%
   arrange(lifeExp)
-## # A tibble: 142 x 7
-##    country                continent  year lifeExp     pop gdpPercap gdpPercapRel
-##    <fct>                  <fct>     <int>   <dbl>   <int>     <dbl>        <dbl>
-##  1 Swaziland              Africa     2007    39.6  1.13e6     4513.       0.140 
-##  2 Mozambique             Africa     2007    42.1  2.00e7      824.       0.0256
-##  3 Zambia                 Africa     2007    42.4  1.17e7     1271.       0.0395
-##  4 Sierra Leone           Africa     2007    42.6  6.14e6      863.       0.0268
-##  5 Lesotho                Africa     2007    42.6  2.01e6     1569.       0.0488
-##  6 Angola                 Africa     2007    42.7  1.24e7     4797.       0.149 
-##  7 Zimbabwe               Africa     2007    43.5  1.23e7      470.       0.0146
-##  8 Afghanistan            Asia       2007    43.8  3.19e7      975.       0.0303
-##  9 Central African Repub… Africa     2007    44.7  4.37e6      706.       0.0219
-## 10 Liberia                Africa     2007    45.7  3.19e6      415.       0.0129
+## # A tibble: 142 × 7
+##    country                 continent  year lifeExp    pop gdpPercap gdpPercapRel
+##    <fct>                   <fct>     <int>   <dbl>  <int>     <dbl>        <dbl>
+##  1 Swaziland               Africa     2007    39.6 1.13e6     4513.       0.140 
+##  2 Mozambique              Africa     2007    42.1 2.00e7      824.       0.0256
+##  3 Zambia                  Africa     2007    42.4 1.17e7     1271.       0.0395
+##  4 Sierra Leone            Africa     2007    42.6 6.14e6      863.       0.0268
+##  5 Lesotho                 Africa     2007    42.6 2.01e6     1569.       0.0488
+##  6 Angola                  Africa     2007    42.7 1.24e7     4797.       0.149 
+##  7 Zimbabwe                Africa     2007    43.5 1.23e7      470.       0.0146
+##  8 Afghanistan             Asia       2007    43.8 3.19e7      975.       0.0303
+##  9 Central African Republ… Africa     2007    44.7 4.37e6      706.       0.0219
+## 10 Liberia                 Africa     2007    45.7 3.19e6      415.       0.0129
 ## # … with 132 more rows
 ```
 
@@ -199,7 +199,7 @@ Das war nun aber nicht das Ergebnis, welches ihr sehen wolltet. Ihr wolltet eige
 my_gap %>%
   filter(year == 2007) %>%
   arrange(desc(lifeExp))
-## # A tibble: 142 x 7
+## # A tibble: 142 × 7
 ##    country          continent  year lifeExp       pop gdpPercap gdpPercapRel
 ##    <fct>            <fct>     <int>   <dbl>     <int>     <dbl>        <dbl>
 ##  1 Japan            Asia       2007    82.6 127467972    31656.        0.984
@@ -230,7 +230,7 @@ my_gap %>%
   rename(life_exp = lifeExp,
          gdp_percap = gdpPercap,
          gdp_percap_rel = gdpPercapRel)
-## # A tibble: 1,704 x 7
+## # A tibble: 1,704 × 7
 ##    country     continent  year life_exp      pop gdp_percap gdp_percap_rel
 ##    <fct>       <fct>     <int>    <dbl>    <int>      <dbl>          <dbl>
 ##  1 Afghanistan Asia       1952     28.8  8425333       779.         0.109 
@@ -257,7 +257,7 @@ my_gap %>%
   filter(country == "Burundi", year > 1996) %>% 
   select(yr = year, lifeExp, gdpPercap) %>% 
   select(gdpPercap, everything())
-## # A tibble: 3 x 3
+## # A tibble: 3 × 3
 ##   gdpPercap    yr lifeExp
 ##       <dbl> <int>   <dbl>
 ## 1      463.  1997    45.3
@@ -297,7 +297,7 @@ Beginnen wir mit dem einfachen Zählen.  Wie viele Beobachtungen haben wir pro K
 my_gap %>%
   group_by(continent) %>%
   summarise(n = n())
-## # A tibble: 5 x 2
+## # A tibble: 5 × 2
 ##   continent     n
 ##   <fct>     <int>
 ## 1 Africa      624
@@ -330,7 +330,7 @@ Die `tally()` Funktion ist eine Komfortfunktion, die weiß, wie man Zeilen zähl
 my_gap %>%
   group_by(continent) %>%
   tally()
-## # A tibble: 5 x 2
+## # A tibble: 5 × 2
 ##   continent     n
 ##   <fct>     <int>
 ## 1 Africa      624
@@ -346,7 +346,7 @@ Die Funktion `count()` bietet noch mehr Komfort. Sie kann sowohl gruppieren als 
 ```r
 my_gap %>% 
   count(continent)
-## # A tibble: 5 x 2
+## # A tibble: 5 × 2
 ##   continent     n
 ##   <fct>     <int>
 ## 1 Africa      624
@@ -364,7 +364,7 @@ my_gap %>%
   group_by(continent) %>%
   summarise(n = n(),
             n_countries = n_distinct(country))
-## # A tibble: 5 x 3
+## # A tibble: 5 × 3
 ##   continent     n n_countries
 ##   <fct>     <int>       <int>
 ## 1 Africa      624          52
@@ -413,7 +413,7 @@ Auch wenn dies statistisch gesehen unklug sein mag, lasst uns die durchschnittli
 my_gap %>%
   group_by(continent) %>%
   summarise(avg_lifeExp = mean(lifeExp))
-## # A tibble: 5 x 2
+## # A tibble: 5 × 2
 ##   continent avg_lifeExp
 ##   <fct>           <dbl>
 ## 1 Africa           48.9
@@ -432,7 +432,7 @@ my_gap %>%
   filter(year %in% c(1952, 2007)) %>%
   group_by(continent, year) %>%
   summarise_at(vars(lifeExp, gdpPercap), list(mean, median))
-## # A tibble: 10 x 6
+## # A tibble: 10 × 6
 ## # Groups:   continent [5]
 ##    continent  year lifeExp_fn1 gdpPercap_fn1 lifeExp_fn2 gdpPercap_fn2
 ##    <fct>     <int>       <dbl>         <dbl>       <dbl>         <dbl>
@@ -456,7 +456,7 @@ my_gap %>%
   filter(continent == "Asia") %>%
   group_by(year) %>%
   summarise(min_lifeExp = min(lifeExp), max_lifeExp = max(lifeExp))
-## # A tibble: 12 x 3
+## # A tibble: 12 × 3
 ##     year min_lifeExp max_lifeExp
 ##    <int>       <dbl>       <dbl>
 ##  1  1952        28.8        65.4
@@ -490,7 +490,7 @@ my_gap %>%
   select(country, year, lifeExp) %>% 
   mutate(lifeExp_gain = lifeExp - first(lifeExp)) %>% 
   filter(year < 1963)
-## # A tibble: 426 x 4
+## # A tibble: 426 × 4
 ## # Groups:   country [142]
 ##    country      year lifeExp lifeExp_gain
 ##    <fct>       <int>   <dbl>        <dbl>
@@ -525,7 +525,7 @@ my_gap %>%
   filter(min_rank(desc(lifeExp)) < 2 | min_rank(lifeExp) < 2) %>% 
   arrange(year) %>%
   print(n = Inf)  # erzwingt eine Ausgabe aller Zeilen
-## # A tibble: 24 x 3
+## # A tibble: 24 × 3
 ## # Groups:   year [12]
 ##     year country     lifeExp
 ##    <int> <fct>         <dbl>
@@ -568,7 +568,7 @@ Zuerst sollten wir uns aber vielleicht nochmal fragen wie das eigentlich funktio
   filter(continent == "Asia") %>%
   select(year, country, lifeExp) %>%
   group_by(year))
-## # A tibble: 396 x 3
+## # A tibble: 396 × 3
 ## # Groups:   year [12]
 ##     year country     lifeExp
 ##    <int> <fct>         <dbl>
@@ -620,7 +620,7 @@ asia %>%
   mutate(le_rank = min_rank(lifeExp),
          le_desc_rank = min_rank(desc(lifeExp))) %>% 
   filter(country %in% c("Afghanistan", "Japan", "Thailand"), year > 1995)
-## # A tibble: 9 x 5
+## # A tibble: 9 × 5
 ## # Groups:   year [3]
 ##    year country     lifeExp le_rank le_desc_rank
 ##   <int> <fct>         <dbl>   <int>        <int>
@@ -659,7 +659,7 @@ my_gap %>%
   group_by(year) %>%
 # slice_min(lifeExp, n = 1)        ## für das Minimum
   slice_max(lifeExp, n = 1) ## bzw. das Maximum
-## # A tibble: 12 x 3
+## # A tibble: 12 × 3
 ## # Groups:   year [12]
 ##     year country lifeExp
 ##    <int> <fct>     <dbl>
@@ -700,8 +700,9 @@ my_gap %>%
   ## nun wird noch pro Kontinent, die Zeile mit dem kleinsten Wert ausgegeben
   slice_min(worst_delta, n = 1) %>% 
   arrange(worst_delta)
-## `summarise()` has grouped output by 'continent'. You can override using the `.groups` argument.
-## # A tibble: 5 x 3
+## `summarise()` has grouped output by 'continent'. You can override using the
+## `.groups` argument.
+## # A tibble: 5 × 3
 ## # Groups:   continent [5]
 ##   continent country     worst_delta
 ##   <fct>     <fct>             <dbl>

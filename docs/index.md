@@ -15,7 +15,7 @@ always_allow_html: true
 
 
 
-Willkommen zur __R Ergänzung zur Einführung in die Wahrscheinlichkeitstheorie und Statistik__. Im Rahmen dieser Ergänzung lernen wir erste Schritte, wie wir
+Willkommen zu __R für EWS__ (Einführung in die Wahrscheinlichkeitstheorie und Statistik). Im Rahmen dieser Veranstaltung lernen wir erste Schritte, wie wir
 
 :::: {.content-box-orange}
 Daten aufbereiten, visualisieren und analysieren. 🚀
@@ -41,7 +41,7 @@ Das Material wird kontinuierlich über das Semester hinweg ergänzt/erweitert/ve
 
 ```r
 date()
-## [1] "Tue Dec 28 16:03:39 2021"
+## [1] "Wed Oct 19 16:07:44 2022"
 ```
 
 
@@ -62,16 +62,17 @@ Die aktuelle Version dieses Buchs wurde mit
 
 ```
 ## Finding R package dependencies ... Done!
-##  setting  value                       
-##  version  R version 4.0.3 (2020-10-10)
-##  os       macOS Big Sur 10.16         
-##  system   x86_64, darwin17.0          
-##  ui       X11                         
-##  language (EN)                        
-##  collate  en_US.UTF-8                 
-##  ctype    en_US.UTF-8                 
-##  tz       Europe/Berlin               
-##  date     2021-12-28
+##  setting  value
+##  version  R version 4.1.2 (2021-11-01)
+##  os       macOS Big Sur 10.16
+##  system   x86_64, darwin17.0
+##  ui       X11
+##  language (EN)
+##  collate  en_US.UTF-8
+##  ctype    en_US.UTF-8
+##  tz       Europe/Berlin
+##  date     2022-10-19
+##  pandoc   2.18 @ /Applications/RStudio.app/Contents/MacOS/quarto/bin/tools/ (via rmarkdown)
 ```
 
 erstellt

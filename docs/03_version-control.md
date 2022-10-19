@@ -6,7 +6,7 @@
 # Git, GitHub, and RStudio {#version-control}
 
 
-Versionskontrolle sollte nach dem Besuch der [Einführung in die Programmierung](https://campus.tum.de/tumonline/pl/ui/$ctx;design=pl;header=max;lang=de/wbModHBReport.wbGenHTMLForBeschr?pKnotenNr=1542104&pSemesterNr=191&pLangCode=DE) bereits kein unbekanntes Thema mehr sein. Falls doch, solltet ihr mit ein [paar Worten zu Git und GitHub](https://happygitwithr.com/big-picture.html) von *Jenny Byran* (Autorin von STAT 545) starten.
+Versionskontrolle sollte nach dem Besuch der [Einführung in die Programmierung](https://campus.tum.de/tumonline/pl/ui/$ctx;design=pl;header=max;lang=de/wbModHBReport.wbGenHTMLForBeschr?pKnotenNr=1542104&pSemesterNr=191&pLangCode=DE) (nicht zutreffend in diesem Jahr) bereits kein unbekanntes Thema mehr sein. Falls doch, solltet ihr mit ein [paar Worten zu Git und GitHub](https://happygitwithr.com/big-picture.html) von *Jenny Byran* (Autorin von STAT 545) starten.
 
 Ziel dieses Abschnitts wird es sein, dass ihr
 
