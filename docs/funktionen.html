@@ -4,15 +4,15 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Kapitel 15 Funktionen | R4ews MA0009</title>
+<title>Kapitel 14 Funktionen | R4ews MA0009</title>
 <meta name="author" content="Stephan Haug">
 <meta name="description" content="Wie in jeder anderen Programmierumgebung, besteht auch in R die Möglichkeit eigene Funktionen zu definieren. Eine der wichtigsten Erkenntnisse dabei ist die Tatsache, dass auch Funktionen Objekte...">
 <meta name="generator" content="bookdown 0.28 with bs4_book()">
-<meta property="og:title" content="Kapitel 15 Funktionen | R4ews MA0009">
+<meta property="og:title" content="Kapitel 14 Funktionen | R4ews MA0009">
 <meta property="og:type" content="book">
 <meta property="og:description" content="Wie in jeder anderen Programmierumgebung, besteht auch in R die Möglichkeit eigene Funktionen zu definieren. Eine der wichtigsten Erkenntnisse dabei ist die Tatsache, dass auch Funktionen Objekte...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Kapitel 15 Funktionen | R4ews MA0009">
+<meta name="twitter:title" content="Kapitel 14 Funktionen | R4ews MA0009">
 <meta name="twitter:description" content="Wie in jeder anderen Programmierumgebung, besteht auch in R die Möglichkeit eigene Funktionen zu definieren. Eine der wichtigsten Erkenntnisse dabei ist die Tatsache, dass auch Funktionen Objekte...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
@@ -93,11 +93,11 @@
 <li><a class="" href="bausteine.html"><span class="header-section-number">11</span> Bausteine</a></li>
 <li class="book-part">Ein bisschen Statistik</li>
 <li><a class="" href="sampling.html"><span class="header-section-number">12</span> Sampling</a></li>
+<li class="book-part">Wir schreiben ein Paket</li>
+<li><a class="" href="pakete.html"><span class="header-section-number">13</span> Pakete</a></li>
 <li class="book-part">Appendix</li>
-<li><a class="" href="fragen.html"><span class="header-section-number">13</span> Fragen aus der Übung</a></li>
-<li><a class="" href="pakete.html"><span class="header-section-number">14</span> Pakete</a></li>
-<li><a class="active" href="funktionen.html"><span class="header-section-number">15</span> Funktionen</a></li>
-<li><a class="" href="envscop.html"><span class="header-section-number">16</span> Environments und Scoping</a></li>
+<li><a class="active" href="funktionen.html"><span class="header-section-number">14</span> Funktionen</a></li>
+<li><a class="" href="envscop.html"><span class="header-section-number">15</span> Environments und Scoping</a></li>
 <li><a class="" href="literatur-3.html">Literatur</a></li>
 </ul>
 
@@ -106,16 +106,16 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="funktionen" class="section level1" number="15">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="funktionen" class="section level1" number="14">
 <h1>
-<span class="header-section-number">Kapitel 15</span> Funktionen<a class="anchor" aria-label="anchor" href="#funktionen"><i class="fas fa-link"></i></a>
+<span class="header-section-number">Kapitel 14</span> Funktionen<a class="anchor" aria-label="anchor" href="#funktionen"><i class="fas fa-link"></i></a>
 </h1>
 <p>Wie in jeder anderen Programmierumgebung, besteht auch in R die Möglichkeit eigene Funktionen zu definieren.</p>
 <p>Eine der wichtigsten Erkenntnisse dabei ist die Tatsache, dass auch Funktionen Objekte sind. Generell ist in R alles ein Objekt.</p>
 <p>Neue Funktionen werden mit der Funktion <code>function()</code> erzeugt.</p>
-<div id="bestandteile-von-funktionen" class="section level2" number="15.1">
+<div id="bestandteile-von-funktionen" class="section level2" number="14.1">
 <h2>
-<span class="header-section-number">15.1</span> Bestandteile von Funktionen<a class="anchor" aria-label="anchor" href="#bestandteile-von-funktionen"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.1</span> Bestandteile von Funktionen<a class="anchor" aria-label="anchor" href="#bestandteile-von-funktionen"><i class="fas fa-link"></i></a>
 </h2>
 <p>Alle R Funktionen bestehen aus den drei Teilen:</p>
 <ul>
@@ -126,23 +126,23 @@
 <li>
 <code><a href="https://rdrr.io/r/base/environment.html">environment()</a></code>, Verweis auf die Funktionseingabe</li>
 </ul>
-<div class="sourceCode" id="cb245"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb235"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">f</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/Trig.html">sin</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/formals.html">formals</a></span><span class="op">(</span><span class="va">f</span><span class="op">)</span></code></pre></div>
 <pre><code>## $x</code></pre>
-<div class="sourceCode" id="cb247"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb237"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/body.html">body</a></span><span class="op">(</span><span class="va">f</span><span class="op">)</span></code></pre></div>
 <pre><code>## x + sin(x)</code></pre>
-<div class="sourceCode" id="cb249"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb239"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/environment.html">environment</a></span><span class="op">(</span><span class="va">f</span><span class="op">)</span></code></pre></div>
 <pre><code>## &lt;environment: R_GlobalEnv&gt;</code></pre>
 </div>
-<div id="body" class="section level2" number="15.2">
+<div id="body" class="section level2" number="14.2">
 <h2>
-<span class="header-section-number">15.2</span> <code>body()</code><a class="anchor" aria-label="anchor" href="#body"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.2</span> <code>body()</code><a class="anchor" aria-label="anchor" href="#body"><i class="fas fa-link"></i></a>
 </h2>
 <p>Wie alle Objekte in R, besitzen auch Funktionen Attribute. Ein data frame besitzt z.B. die Attribute <code>names</code>, <code>class</code> und <code>row.names</code></p>
-<div class="sourceCode" id="cb251"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb241"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/attributes.html">attributes</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span></code></pre></div>
 <pre><code>## $names
 ## [1] "Sepal.Length" "Sepal.Width"  "Petal.Length" "Petal.Width"  "Species"     
@@ -161,12 +161,12 @@
 ## [127] 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144
 ## [145] 145 146 147 148 149 150</code></pre>
 <p>Eine Funktion besitzt hingegen die Attribute</p>
-<div class="sourceCode" id="cb253"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb243"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/attributes.html">attributes</a></span><span class="op">(</span><span class="va">f</span><span class="op">)</span></code></pre></div>
 <pre><code>## $srcref
 ## function(x) x + sin(x)</code></pre>
 <p>Den Unterschied zu <code><a href="https://rdrr.io/r/base/body.html">body()</a></code> sehen wir im folgenden Beispiel.</p>
-<div class="sourceCode" id="cb255"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb245"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">f</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">{</span>
   <span class="co"># Summe von x und sin(x)#</span>
   <span class="va">x</span> <span class="op">+</span> <span class="fu"><a href="https://rdrr.io/r/base/Trig.html">sin</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
@@ -175,31 +175,31 @@
 <pre><code>## {
 ##     x + sin(x)
 ## }</code></pre>
-<div class="sourceCode" id="cb257"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb247"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/attr.html">attr</a></span><span class="op">(</span><span class="va">f</span>, <span class="st">"srcref"</span><span class="op">)</span></code></pre></div>
 <pre><code>## function(x){
 ##   # Summe von x und sin(x)#
 ##   x + sin(x)
 ## }</code></pre>
 </div>
-<div id="einfache-funktionen" class="section level2" number="15.3">
+<div id="einfache-funktionen" class="section level2" number="14.3">
 <h2>
-<span class="header-section-number">15.3</span> “Einfache” Funktionen<a class="anchor" aria-label="anchor" href="#einfache-funktionen"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.3</span> “Einfache” Funktionen<a class="anchor" aria-label="anchor" href="#einfache-funktionen"><i class="fas fa-link"></i></a>
 </h2>
 <p>Es gibt eine Ausnahme von der obigen Regel, dass Funktionen aus drei Teilen bestehen. Die primitive functions wie <code>sum(), sin()</code> oder <code><a href="https://rdrr.io/r/base/Log.html">exp()</a></code> rufen direkt über die Funktion <code><a href="https://rdrr.io/r/base/Primitive.html">.Primitive()</a></code> C Code auf, enthalten somit keinen R Code und daher sind alle drei Teile gleich <code>NULL</code>.</p>
-<div class="sourceCode" id="cb259"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb249"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/formals.html">formals</a></span><span class="op">(</span><span class="va">sin</span><span class="op">)</span></code></pre></div>
 <pre><code>## NULL</code></pre>
-<div class="sourceCode" id="cb261"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb251"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/body.html">body</a></span><span class="op">(</span><span class="va">sin</span><span class="op">)</span></code></pre></div>
 <pre><code>## NULL</code></pre>
-<div class="sourceCode" id="cb263"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb253"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/environment.html">environment</a></span><span class="op">(</span><span class="va">sin</span><span class="op">)</span></code></pre></div>
 <pre><code>## NULL</code></pre>
 </div>
-<div id="jede-operation-ist-ein-funktionsaufruf" class="section level2" number="15.4">
+<div id="jede-operation-ist-ein-funktionsaufruf" class="section level2" number="14.4">
 <h2>
-<span class="header-section-number">15.4</span> Jede Operation ist ein Funktionsaufruf<a class="anchor" aria-label="anchor" href="#jede-operation-ist-ein-funktionsaufruf"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.4</span> Jede Operation ist ein Funktionsaufruf<a class="anchor" aria-label="anchor" href="#jede-operation-ist-ein-funktionsaufruf"><i class="fas fa-link"></i></a>
 </h2>
 <blockquote>
 <p>“To understand computations in R, two slogans are helpful:
@@ -208,45 +208,45 @@ Everything that happens is a function call.”
 — John Chambers</p>
 </blockquote>
 <p>Alle Operationen bestehen aus Funktionsaufrufen. Somit auch <code>+, -, /,:, for, if, while</code> oder <code>[]</code>und <code>$</code>. Dies sieht man z.B. an diesem Beispiel</p>
-<div class="sourceCode" id="cb265"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb255"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">10</span> 
 <span class="va">y</span> <span class="op">&lt;-</span> <span class="fl">5</span>
 <span class="va">x</span> <span class="op">+</span> <span class="va">y</span></code></pre></div>
 <pre><code>## [1] 15</code></pre>
-<div class="sourceCode" id="cb267"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb257"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">`+`</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 15</code></pre>
 <p>oder auch an diesem Beispielen</p>
-<div class="sourceCode" id="cb269"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb259"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw">for</span> <span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">i</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 1
 ## [1] 2</code></pre>
-<div class="sourceCode" id="cb271"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb261"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">`for`</span><span class="op">(</span><span class="va">i</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">2</span>, <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">i</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 1
 ## [1] 2</code></pre>
-<div class="sourceCode" id="cb273"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb263"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span></code></pre></div>
 <pre><code>## [1] NA</code></pre>
-<div class="sourceCode" id="cb275"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb265"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">`[`</span><span class="op">(</span><span class="va">x</span>, <span class="fl">3</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] NA</code></pre>
 <p>Die Verwendung von ` erlaubt den Zugriff auf reservierte Ausdrücke.</p>
 <p>Eine sinnvolle Anwendung dieser Zugriffsmethode liegt in der Kombination mit den apply Funktionen (<code>apply(), lapply(), sapply, mapply(), tapply()</code>). Diese wenden eine zu übergebende Funktion auf weitere Inputgrößen wie Listen oder Data Frames an.</p>
-<div class="sourceCode" id="cb277"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb267"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="fl">4</span><span class="op">:</span><span class="fl">9</span>, <span class="fl">10</span><span class="op">:</span><span class="fl">12</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">`[`</span>, <span class="fl">2</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1]  2  5 11</code></pre>
-<div class="sourceCode" id="cb279"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb269"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">x</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1]  2  5 11</code></pre>
 </div>
-<div id="lapply-sapply" class="section level2" number="15.5">
+<div id="lapply-sapply" class="section level2" number="14.5">
 <h2>
-<span class="header-section-number">15.5</span> lapply, sapply<a class="anchor" aria-label="anchor" href="#lapply-sapply"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.5</span> lapply, sapply<a class="anchor" aria-label="anchor" href="#lapply-sapply"><i class="fas fa-link"></i></a>
 </h2>
 <p><code><a href="https://rdrr.io/r/base/lapply.html">sapply()</a></code> ist eine Version von <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code>, die - wenn möglich - eine “vereinfachte” Ausgabe liefert.</p>
-<div class="sourceCode" id="cb281"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb271"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="fl">4</span><span class="op">:</span><span class="fl">6</span>, <span class="fl">7</span><span class="op">:</span><span class="fl">9</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">`+`</span>, <span class="fl">3</span><span class="op">)</span></code></pre></div>
 <pre><code>## [[1]]
@@ -257,57 +257,57 @@ Everything that happens is a function call.”
 ## 
 ## [[3]]
 ## [1] 10 11 12</code></pre>
-<div class="sourceCode" id="cb283"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb273"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">is.matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">`+`</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 </div>
-<div id="funktionsargumente" class="section level2" number="15.6">
+<div id="funktionsargumente" class="section level2" number="14.6">
 <h2>
-<span class="header-section-number">15.6</span> Funktionsargumente<a class="anchor" aria-label="anchor" href="#funktionsargumente"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.6</span> Funktionsargumente<a class="anchor" aria-label="anchor" href="#funktionsargumente"><i class="fas fa-link"></i></a>
 </h2>
 <p>Funktionen besitzen formelle Argumente, denen beim Funktionsaufruf (oder per Default) Werte zugewiesen werden. Beim Aufruf können die Argumente durch ihre Position, den vollen oder teilweisen Namen ausgewählt werden.</p>
-<div class="sourceCode" id="cb285"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb275"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">f</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">abc</span>, <span class="va">bcd</span>, <span class="va">bdc</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">abc</span>, <span class="va">bcd</span>, <span class="va">bdc</span><span class="op">)</span>
 <span class="fu">f</span><span class="op">(</span><span class="fl">3</span>, <span class="fl">2</span>, <span class="fl">1</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 3 2 1</code></pre>
-<div class="sourceCode" id="cb287"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb277"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">f</span><span class="op">(</span><span class="fl">2</span>, <span class="fl">1</span>, abc<span class="op">=</span><span class="fl">3</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 3 2 1</code></pre>
-<div class="sourceCode" id="cb289"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb279"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">f</span><span class="op">(</span><span class="fl">2</span>, <span class="fl">1</span>, a<span class="op">=</span><span class="fl">3</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 3 2 1</code></pre>
 <p>Der folgende Aufruf kann aber nicht funktionieren.</p>
-<div class="sourceCode" id="cb291"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb281"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">f</span><span class="op">(</span><span class="fl">3</span>, b<span class="op">=</span><span class="fl">2</span>, <span class="fl">1</span><span class="op">)</span></code></pre></div>
 <pre><code>## Error in f(3, b = 2, 1): argument 2 matches multiple formal arguments</code></pre>
 <p>Generell sollte man die zwei, drei wichtigsten Inputgrößen an den Beginn stellen. Alle anderen sollten eher nicht durch die Position ausgewählt werden. Dabei ist der vollständige Namen sicherlich zu bevorzugen.</p>
 <p>Funktionsargumenten können Default-Werte zugeordnet werden. Dabei können Default-Werte auch in Abhängigkeit anderer Argumente definiert werden.</p>
-<div class="sourceCode" id="cb293"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb283"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">f</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">a</span> <span class="op">=</span> <span class="fl">1</span>, <span class="va">b</span> <span class="op">=</span> <span class="fl">2</span><span class="op">)</span> <span class="op">{</span>
   <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">a</span>, <span class="va">b</span><span class="op">)</span>
 <span class="op">}</span>
 <span class="fu">f</span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 1 2</code></pre>
-<div class="sourceCode" id="cb295"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb285"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">g</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">a</span> <span class="op">=</span> <span class="fl">1</span>, <span class="va">b</span> <span class="op">=</span> <span class="va">a</span> <span class="op">*</span> <span class="fl">2</span><span class="op">)</span> <span class="op">{</span>
   <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">a</span>, <span class="va">b</span><span class="op">)</span>
 <span class="op">}</span>
 <span class="fu">g</span><span class="op">(</span>a<span class="op">=</span><span class="fl">10</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 10 20</code></pre>
 </div>
-<div id="funktionsargumente-lazy-evaluation" class="section level2" number="15.7">
+<div id="funktionsargumente-lazy-evaluation" class="section level2" number="14.7">
 <h2>
-<span class="header-section-number">15.7</span> Funktionsargumente: Lazy Evaluation<a class="anchor" aria-label="anchor" href="#funktionsargumente-lazy-evaluation"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.7</span> Funktionsargumente: Lazy Evaluation<a class="anchor" aria-label="anchor" href="#funktionsargumente-lazy-evaluation"><i class="fas fa-link"></i></a>
 </h2>
 <p>R wertet Funktionsargumente nur aus, wenn diese tatsächlich benützt werden. Dies entspricht der Idee der <em>Lazy Evaluation</em>.</p>
-<div class="sourceCode" id="cb297"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb287"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">f</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span>
   <span class="fl">10</span>
 <span class="op">}</span>
 <span class="fu">f</span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/stop.html">stop</a></span><span class="op">(</span><span class="st">"x ist nicht 10"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 10</code></pre>
 <p>Mit <code><a href="https://rdrr.io/r/base/force.html">force()</a></code> kann man die Auswertung eines Arguments <em>erzwingen</em>.</p>
-<div class="sourceCode" id="cb299"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb289"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">f</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span>
   <span class="fu"><a href="https://rdrr.io/r/base/force.html">force</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
   <span class="fl">10</span>
@@ -315,18 +315,18 @@ Everything that happens is a function call.”
 <span class="fu">f</span><span class="op">(</span><span class="kw"><a href="https://rdrr.io/r/base/stop.html">stop</a></span><span class="op">(</span><span class="st">"x ist nicht 10"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## Error in force(x): x ist nicht 10</code></pre>
 <p>Benutzt man eine verschachtelte Funktion in Kombination mit <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code> oder einer Schleife, so kann die Lazy Evaluation entscheidend sein.</p>
-<div class="sourceCode" id="cb301"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb291"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">addiere_x</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">{</span>
   <span class="kw">function</span><span class="op">(</span><span class="va">y</span><span class="op">)</span> <span class="va">x</span><span class="op">+</span><span class="va">y</span>
 <span class="op">}</span>
 <span class="va">addiere_zu_1bis10</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="va">addiere_x</span><span class="op">)</span>
 <span class="va">addiere_zu_1bis10</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 11</code></pre>
-<div class="sourceCode" id="cb303"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb293"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">addiere_zu_1bis10</span><span class="op">[[</span><span class="fl">5</span><span class="op">]</span><span class="op">]</span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 15</code></pre>
 <p><code>x</code> wird beim ersten Aufruf von <code>addiere_zu_1bis10()</code> ausgewertet. Bis dahin ist <code>x</code> aber bereits von 1 bis 10 “gelaufen” und hat damit den Wert 10. Somit wird stets 10 zum Input addiert.</p>
-<div class="sourceCode" id="cb305"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb295"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">addiere_x</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span><span class="op">{</span>
   <span class="fu"><a href="https://rdrr.io/r/base/force.html">force</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
   <span class="kw">function</span><span class="op">(</span><span class="va">y</span><span class="op">)</span> <span class="va">x</span><span class="op">+</span><span class="va">y</span>
@@ -334,12 +334,12 @@ Everything that happens is a function call.”
 <span class="va">addiere_zu_1bis10</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="va">addiere_x</span><span class="op">)</span>
 <span class="va">addiere_zu_1bis10</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 11</code></pre>
-<div class="sourceCode" id="cb307"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb297"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">addiere_zu_1bis10</span><span class="op">[[</span><span class="fl">5</span><span class="op">]</span><span class="op">]</span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 15</code></pre>
 <p>Erzwingt man die Auswertung, so erhält man das gewünschte Ergebnis.</p>
 <p>Bisher schien die Lazy Evaluation eher nachteilig. Sie kann aber auch Vorteile haben. Die Befehle</p>
-<div class="sourceCode" id="cb309"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb299"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="cn">NULL</span>
 <span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NULL.html">is.null</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">&amp;&amp;</span> <span class="va">x</span> <span class="op">&gt;</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span>
 
@@ -349,35 +349,35 @@ Everything that happens is a function call.”
 <p>Hauptvorteil ist aber die Effizienz. Nur notwendige Ausdrücke werden ausgewertet.</p>
 </blockquote>
 </div>
-<div id="funktionsargumente-..." class="section level2" number="15.8">
+<div id="funktionsargumente-..." class="section level2" number="14.8">
 <h2>
-<span class="header-section-number">15.8</span> Funktionsargumente: <code>...</code><a class="anchor" aria-label="anchor" href="#funktionsargumente-..."><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.8</span> Funktionsargumente: <code>...</code><a class="anchor" aria-label="anchor" href="#funktionsargumente-..."><i class="fas fa-link"></i></a>
 </h2>
 <p>Für eine Funktion kann das formale <code>...</code> Drei-Punkte Argument verwendet werden. Alle nicht über Position und/oder Name zugeordneten Argumente werden durch <code>...</code> aufgenommen. In der Regel werden über <code>...</code> Argumente übergeben, die innerhalb der Funktion an andere Funktionen weitergegeben werden.</p>
-<div class="sourceCode" id="cb310"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb300"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">summe_plus2</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span><span class="op">{</span>
   <span class="va">x</span> <span class="op">&lt;-</span> <span class="va">x</span><span class="op">+</span><span class="fl">2</span>
   <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">...</span><span class="op">)</span>
 <span class="op">}</span>
 <span class="fu">summe_plus2</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, <span class="fl">5</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 15</code></pre>
-<div class="sourceCode" id="cb312"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb302"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">summe_plus2</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">3</span>, <span class="cn">NA</span><span class="op">)</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 8</code></pre>
 <p><code>...</code> erhöht also offensichtlich die Flexibilität. Ein Nachteil ist, dass falsch geschriebene Argumente keinen Fehler erzeugen und alle Argumente nach <code>...</code> voll ausgeschrieben werden müssen.</p>
-<div class="sourceCode" id="cb314"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb304"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="cn">NA</span>, rm.na <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] NA</code></pre>
-<div class="sourceCode" id="cb316"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb306"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="cn">NA</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 </div>
-<div id="funktionsrückgabe" class="section level2" number="15.9">
+<div id="funktionsrückgabe" class="section level2" number="14.9">
 <h2>
-<span class="header-section-number">15.9</span> Funktionsrückgabe<a class="anchor" aria-label="anchor" href="#funktionsr%C3%BCckgabe"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.9</span> Funktionsrückgabe<a class="anchor" aria-label="anchor" href="#funktionsr%C3%BCckgabe"><i class="fas fa-link"></i></a>
 </h2>
 <p>Wir haben in den Beispielen bereits gesehen wie die Rückgabe funktioniert. Der letzte Ausdruck, der ausgewertet wird, bildet die Rückgabe.</p>
-<div class="sourceCode" id="cb318"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb308"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">f</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span>
   <span class="kw">if</span> <span class="op">(</span><span class="va">x</span> <span class="op">&lt;</span> <span class="fl">10</span><span class="op">)</span> <span class="op">{</span>
     <span class="fl">0</span>
@@ -387,12 +387,12 @@ Everything that happens is a function call.”
 <span class="op">}</span>
 <span class="fu">f</span><span class="op">(</span><span class="fl">5</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 0</code></pre>
-<div class="sourceCode" id="cb320"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb310"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">f</span><span class="op">(</span><span class="fl">15</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 10</code></pre>
 <p>Falls bereits zu einem früheren Zeitpunkte eine Rückgabe erfolgen soll (z.B. STOP Kriterium erfüllt) und diese speziell gekennzeichnet werden soll, kann die Funktion <code><a href="https://rdrr.io/r/base/function.html">return()</a></code> verwendet werden.</p>
 <p>Funktionen können nur ein Objekt zurückgeben. Soll die Ausgabe einer Funktion aus mehreren Objekten bestehen, so schreibt man diese einfach in eine Liste und gibt die Liste zurück.</p>
-<div class="sourceCode" id="cb322"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb312"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">f</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">{</span>
   <span class="kw">if</span> <span class="op">(</span><span class="va">x</span> <span class="op">&lt;</span> <span class="fl">10</span><span class="op">)</span> <span class="op">{</span>
     <span class="va">n_output</span> <span class="op">&lt;-</span> <span class="fl">0</span>
@@ -412,7 +412,7 @@ Everything that happens is a function call.”
 ## 
 ## [[2]]
 ## [1] "eingabe war kleiner 10"</code></pre>
-<div class="sourceCode" id="cb324"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb314"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">f</span><span class="op">(</span><span class="fl">15</span><span class="op">)</span></code></pre></div>
 <pre><code>## [[1]]
 ## [1] 10
@@ -420,9 +420,9 @@ Everything that happens is a function call.”
 ## [[2]]
 ## [1] "eingabe war größer oder gleich 10"</code></pre>
 </div>
-<div id="mehr-zu" class="section level2" number="15.10">
+<div id="mehr-zu" class="section level2" number="14.10">
 <h2>
-<span class="header-section-number">15.10</span> mehr zu …<a class="anchor" aria-label="anchor" href="#mehr-zu"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.10</span> mehr zu …<a class="anchor" aria-label="anchor" href="#mehr-zu"><i class="fas fa-link"></i></a>
 </h2>
 <p>Wenn ihr mehr zu</p>
 <ul>
@@ -437,22 +437,22 @@ Everything that happens is a function call.”
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="pakete.html"><span class="header-section-number">14</span> Pakete</a></div>
-<div class="next"><a href="envscop.html"><span class="header-section-number">16</span> Environments und Scoping</a></div>
+<div class="prev"><a href="pakete.html"><span class="header-section-number">13</span> Pakete</a></div>
+<div class="next"><a href="envscop.html"><span class="header-section-number">15</span> Environments und Scoping</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#funktionen"><span class="header-section-number">15</span> Funktionen</a></li>
-<li><a class="nav-link" href="#bestandteile-von-funktionen"><span class="header-section-number">15.1</span> Bestandteile von Funktionen</a></li>
-<li><a class="nav-link" href="#body"><span class="header-section-number">15.2</span> body()</a></li>
-<li><a class="nav-link" href="#einfache-funktionen"><span class="header-section-number">15.3</span> “Einfache” Funktionen</a></li>
-<li><a class="nav-link" href="#jede-operation-ist-ein-funktionsaufruf"><span class="header-section-number">15.4</span> Jede Operation ist ein Funktionsaufruf</a></li>
-<li><a class="nav-link" href="#lapply-sapply"><span class="header-section-number">15.5</span> lapply, sapply</a></li>
-<li><a class="nav-link" href="#funktionsargumente"><span class="header-section-number">15.6</span> Funktionsargumente</a></li>
-<li><a class="nav-link" href="#funktionsargumente-lazy-evaluation"><span class="header-section-number">15.7</span> Funktionsargumente: Lazy Evaluation</a></li>
-<li><a class="nav-link" href="#funktionsargumente-..."><span class="header-section-number">15.8</span> Funktionsargumente: ...</a></li>
-<li><a class="nav-link" href="#funktionsr%C3%BCckgabe"><span class="header-section-number">15.9</span> Funktionsrückgabe</a></li>
-<li><a class="nav-link" href="#mehr-zu"><span class="header-section-number">15.10</span> mehr zu …</a></li>
+<li><a class="nav-link" href="#funktionen"><span class="header-section-number">14</span> Funktionen</a></li>
+<li><a class="nav-link" href="#bestandteile-von-funktionen"><span class="header-section-number">14.1</span> Bestandteile von Funktionen</a></li>
+<li><a class="nav-link" href="#body"><span class="header-section-number">14.2</span> body()</a></li>
+<li><a class="nav-link" href="#einfache-funktionen"><span class="header-section-number">14.3</span> “Einfache” Funktionen</a></li>
+<li><a class="nav-link" href="#jede-operation-ist-ein-funktionsaufruf"><span class="header-section-number">14.4</span> Jede Operation ist ein Funktionsaufruf</a></li>
+<li><a class="nav-link" href="#lapply-sapply"><span class="header-section-number">14.5</span> lapply, sapply</a></li>
+<li><a class="nav-link" href="#funktionsargumente"><span class="header-section-number">14.6</span> Funktionsargumente</a></li>
+<li><a class="nav-link" href="#funktionsargumente-lazy-evaluation"><span class="header-section-number">14.7</span> Funktionsargumente: Lazy Evaluation</a></li>
+<li><a class="nav-link" href="#funktionsargumente-..."><span class="header-section-number">14.8</span> Funktionsargumente: ...</a></li>
+<li><a class="nav-link" href="#funktionsr%C3%BCckgabe"><span class="header-section-number">14.9</span> Funktionsrückgabe</a></li>
+<li><a class="nav-link" href="#mehr-zu"><span class="header-section-number">14.10</span> mehr zu …</a></li>
 </ul>
 
       <div class="book-extra">

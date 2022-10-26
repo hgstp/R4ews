@@ -1,3 +1,5 @@
+# (PART) Wir schreiben ein Paket {-} 
+
 
 # Pakete {#pakete}
 
@@ -355,7 +357,7 @@ Es ist nicht nur für das Erstellen von Paketen hilfreich das Konzept eines `NAM
 nrow
 ## function (x) 
 ## dim(x)[1L]
-## <bytecode: 0x7f824d56a808>
+## <bytecode: 0x7fa65cbeb608>
 ## <environment: namespace:base>
 ```
 Diese Funktion ist definiert in Abhängigkeit von `dim()` aus dem `base` Paket.

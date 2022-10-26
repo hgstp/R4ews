@@ -76,7 +76,6 @@ buch-zum-paket
 sampling
 approximative-verteilung
 resampling
-fragen
 pakete
 struktur
 c-compiler

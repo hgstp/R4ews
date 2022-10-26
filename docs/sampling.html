@@ -93,11 +93,11 @@
 <li><a class="" href="bausteine.html"><span class="header-section-number">11</span> Bausteine</a></li>
 <li class="book-part">Ein bisschen Statistik</li>
 <li><a class="active" href="sampling.html"><span class="header-section-number">12</span> Sampling</a></li>
+<li class="book-part">Wir schreiben ein Paket</li>
+<li><a class="" href="pakete.html"><span class="header-section-number">13</span> Pakete</a></li>
 <li class="book-part">Appendix</li>
-<li><a class="" href="fragen.html"><span class="header-section-number">13</span> Fragen aus der Übung</a></li>
-<li><a class="" href="pakete.html"><span class="header-section-number">14</span> Pakete</a></li>
-<li><a class="" href="funktionen.html"><span class="header-section-number">15</span> Funktionen</a></li>
-<li><a class="" href="envscop.html"><span class="header-section-number">16</span> Environments und Scoping</a></li>
+<li><a class="" href="funktionen.html"><span class="header-section-number">14</span> Funktionen</a></li>
+<li><a class="" href="envscop.html"><span class="header-section-number">15</span> Environments und Scoping</a></li>
 <li><a class="" href="literatur-3.html">Literatur</a></li>
 </ul>
 
@@ -180,7 +180,7 @@ Frage</p>
 <pre><code>## # A tibble: 1 × 2
 ##   replicate  prop
 ##       &lt;int&gt; &lt;dbl&gt;
-## 1         1  0.44</code></pre>
+## 1         1  0.32</code></pre>
 <div class="sourceCode" id="cb180"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">bowl</span> <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://infer.tidymodels.org/reference/rep_sample_n.html">rep_sample_n</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">50</span><span class="op">)</span> <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span>
@@ -188,7 +188,7 @@ Frage</p>
 <pre><code>## # A tibble: 1 × 2
 ##   replicate  prop
 ##       &lt;int&gt; &lt;dbl&gt;
-## 1         1   0.3</code></pre>
+## 1         1  0.36</code></pre>
 <div class="sourceCode" id="cb182"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">bowl</span> <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://infer.tidymodels.org/reference/rep_sample_n.html">rep_sample_n</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">100</span><span class="op">)</span> <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span>
@@ -196,7 +196,7 @@ Frage</p>
 <pre><code>## # A tibble: 1 × 2
 ##   replicate  prop
 ##       &lt;int&gt; &lt;dbl&gt;
-## 1         1  0.45</code></pre>
+## 1         1  0.44</code></pre>
 <p>Wir erkennen, dass alle drei Werte unterschiedlich zum wahren Wert sind. In der Praxis würden wir den wahren Wert nicht kennen. Daher überlegen wir weiter, wie wir die Qualität der berechneten Anteilswerte (unsere Schätzwerte) bewerten/einschätzen können.</p>
 <p>Eine Frage die wir uns diesbzgl. stellen sollten ist:</p>
 <div class="content-box-gray">
@@ -224,7 +224,7 @@ berechnen</p>
 <pre><code>## # A tibble: 1 × 1
 ##   sd_prop
 ##     &lt;dbl&gt;
-## 1  0.0969</code></pre>
+## 1  0.0931</code></pre>
 <div class="sourceCode" id="cb187"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">stp_50</span> <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>prop <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">color</span> <span class="op">==</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">/</span> <span class="fl">50</span><span class="op">)</span> <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span>
@@ -232,7 +232,7 @@ berechnen</p>
 <pre><code>## # A tibble: 1 × 1
 ##   sd_prop
 ##     &lt;dbl&gt;
-## 1  0.0711</code></pre>
+## 1  0.0698</code></pre>
 <div class="sourceCode" id="cb189"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">stp_100</span> <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>prop <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">color</span> <span class="op">==</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">/</span> <span class="fl">100</span><span class="op">)</span> <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span>
@@ -240,7 +240,7 @@ berechnen</p>
 <pre><code>## # A tibble: 1 × 1
 ##   sd_prop
 ##     &lt;dbl&gt;
-## 1  0.0470</code></pre>
+## 1  0.0472</code></pre>
 <p>sowie ein Histogramm von <span class="math inline">\(\overline x_n^1, \dots, \overline x_n^{1000}\)</span></p>
 <div class="sourceCode" id="cb191"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">stp_25</span> <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span>
@@ -442,9 +442,9 @@ wobei <span class="math inline">\(x_i^b\in\{x_1,\dots, x_n\}\)</span>.</p>
 
 
 
-<div class="chapter-nav">
+  <div class="chapter-nav">
 <div class="prev"><a href="bausteine.html"><span class="header-section-number">11</span> Bausteine</a></div>
-<div class="next"><a href="fragen.html"><span class="header-section-number">13</span> Fragen aus der Übung</a></div>
+<div class="next"><a href="pakete.html"><span class="header-section-number">13</span> Pakete</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
@@ -460,13 +460,9 @@ wobei <span class="math inline">\(x_i^b\in\{x_1,\dots, x_n\}\)</span>.</p>
 </div>
     </nav>
 </div>
-</div>
-  
-
-  
 
 </div>
- <!-- .container -->
+</div> <!-- .container -->
 
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 

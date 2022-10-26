@@ -93,11 +93,11 @@
 <li><a class="" href="bausteine.html"><span class="header-section-number">11</span> Bausteine</a></li>
 <li class="book-part">Ein bisschen Statistik</li>
 <li><a class="" href="sampling.html"><span class="header-section-number">12</span> Sampling</a></li>
+<li class="book-part">Wir schreiben ein Paket</li>
+<li><a class="" href="pakete.html"><span class="header-section-number">13</span> Pakete</a></li>
 <li class="book-part">Appendix</li>
-<li><a class="" href="fragen.html"><span class="header-section-number">13</span> Fragen aus der Übung</a></li>
-<li><a class="" href="pakete.html"><span class="header-section-number">14</span> Pakete</a></li>
-<li><a class="" href="funktionen.html"><span class="header-section-number">15</span> Funktionen</a></li>
-<li><a class="" href="envscop.html"><span class="header-section-number">16</span> Environments und Scoping</a></li>
+<li><a class="" href="funktionen.html"><span class="header-section-number">14</span> Funktionen</a></li>
+<li><a class="" href="envscop.html"><span class="header-section-number">15</span> Environments und Scoping</a></li>
 <li><a class="" href="literatur-3.html">Literatur</a></li>
 </ul>
 
@@ -308,7 +308,7 @@ Argentina,Americas,75.32</code></pre>
 <div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">jdata</span>
 <span class="co">## Response [http://api.open-notify.org/astros.json]</span>
-<span class="co">##   Date: 2022-10-19 14:08</span>
+<span class="co">##   Date: 2022-10-26 21:08</span>
 <span class="co">##   Status: 200</span>
 <span class="co">##   Content-Type: application/json</span>
 <span class="co">##   Size: 477 B</span></code></pre></div>
@@ -358,7 +358,7 @@ Argentina,Americas,75.32</code></pre>
 <span class="co">## 8      Josh Cassada      ISS</span>
 <span class="co">## 9     Koichi Wakata      ISS</span>
 <span class="co">## 10      Anna Kikina      ISS</span></code></pre></div>
-<p>Also, da haben wir unsere Antwort: Zum Zeitpunkt des letzten Updates Oct 19, 2022 von R4ews befanden sich 10 Personen im Weltraum. Aber wenn ihr den Code zu einem späteren Zeitpunkt ausprobiert, könnten es auch schon wieder andere Namen und eine andere Anzahl sein. Das ist einer der Vorteile von APIs - im Gegensatz zu Datensätzen, die man im Spreadsheet Format herunterladen kann, werden sie in der Regel in Echtzeit oder nahezu in Echtzeit aktualisiert. APIs bieten somit die Möglichkeit leicht auf sehr aktuellen Daten zuzugreifen.</p>
+<p>Also, da haben wir unsere Antwort: Zum Zeitpunkt des letzten Updates Oct 26, 2022 von R4ews befanden sich 10 Personen im Weltraum. Aber wenn ihr den Code zu einem späteren Zeitpunkt ausprobiert, könnten es auch schon wieder andere Namen und eine andere Anzahl sein. Das ist einer der Vorteile von APIs - im Gegensatz zu Datensätzen, die man im Spreadsheet Format herunterladen kann, werden sie in der Regel in Echtzeit oder nahezu in Echtzeit aktualisiert. APIs bieten somit die Möglichkeit leicht auf sehr aktuellen Daten zuzugreifen.</p>
 <p>In diesem Beispiel haben wir einen sehr unkomplizierten API-Workflow durchlaufen. Die meisten APIs fordern, dass man demselben allgemeinen Muster folgt, aber dabei können die jeweilgen Aufrufe/Befehle durchaus deutlich komplexer sein.</p>
 <p>In unserem Beispiel war es ausreichen nur die URL anzugeben. Aber einige APIs verlangen mehr Informationen vom Benutzer. Darauf gehen wir aber erstmal nicht weiter ein. Stattdessen fragen wir noch nach dem Ort der ISS im Moment der Abfrage</p>
 <div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
@@ -366,13 +366,13 @@ Argentina,Americas,75.32</code></pre>
 <div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html">fromJSON</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rawConversion.html">rawToChar</a></span><span class="op">(</span><span class="va">jdata</span><span class="op">$</span><span class="va">content</span><span class="op">)</span><span class="op">)</span>
 <span class="va">data</span><span class="op">$</span><span class="va">iss_position</span>
-<span class="co">## $longitude</span>
-<span class="co">## [1] "46.0087"</span>
-<span class="co">## </span>
 <span class="co">## $latitude</span>
-<span class="co">## [1] "-28.7945"</span>
+<span class="co">## [1] "-43.1980"</span>
+<span class="co">## </span>
+<span class="co">## $longitude</span>
+<span class="co">## [1] "-80.0163"</span>
 <span class="va">data</span><span class="op">$</span><span class="va">timestamp</span>
-<span class="co">## [1] 1666188487</span></code></pre></div>
+<span class="co">## [1] 1666818480</span></code></pre></div>
 <p>Diese API gibt uns die Zeit in Form von <a href="https://de.wikipedia.org/wiki/Unixzeit">Unixzeit</a> zurück. Unixzeit ist die Zeitspanne, die seit dem 1. Januar 1970 vergangen ist. Mithilfe der Funktion <code>as_datetime()</code> aus dem <a href="https://lubridate.tidyverse.org">lubridate</a> Paket können wir die Unixzeit aber leicht umrechnen</p>
 <div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">lubridate</span><span class="fu">::</span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/as_date.html">as_datetime</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">response</span><span class="op">$</span><span class="va">timestamp</span><span class="op">)</span>
