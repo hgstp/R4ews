@@ -257,7 +257,7 @@ Schauen wir uns einmal an, wie die Variable jdata in der R-Konsole aussieht:
 ```r
 jdata
 ## Response [http://api.open-notify.org/astros.json]
-##   Date: 2022-10-26 21:08
+##   Date: 2022-10-27 06:55
 ##   Status: 200
 ##   Content-Type: application/json
 ##   Size: 477 B
@@ -334,7 +334,7 @@ data$people
 ```
 
 
-Also, da haben wir unsere Antwort: Zum Zeitpunkt des letzten Updates Oct 26, 2022 von R4ews befanden sich 10 Personen im Weltraum. Aber wenn ihr den Code zu einem späteren Zeitpunkt ausprobiert, könnten es auch schon wieder andere Namen und eine andere Anzahl sein. Das ist einer der Vorteile von APIs - im Gegensatz zu Datensätzen, die man im Spreadsheet Format herunterladen kann, werden sie in der Regel in Echtzeit oder nahezu in Echtzeit aktualisiert. APIs bieten somit die Möglichkeit leicht auf sehr aktuellen Daten zuzugreifen.
+Also, da haben wir unsere Antwort: Zum Zeitpunkt des letzten Updates Oct 27, 2022 von R4ews befanden sich 10 Personen im Weltraum. Aber wenn ihr den Code zu einem späteren Zeitpunkt ausprobiert, könnten es auch schon wieder andere Namen und eine andere Anzahl sein. Das ist einer der Vorteile von APIs - im Gegensatz zu Datensätzen, die man im Spreadsheet Format herunterladen kann, werden sie in der Regel in Echtzeit oder nahezu in Echtzeit aktualisiert. APIs bieten somit die Möglichkeit leicht auf sehr aktuellen Daten zuzugreifen.
 
 
 In diesem Beispiel haben wir einen sehr unkomplizierten API-Workflow durchlaufen. Die meisten APIs fordern, dass man demselben allgemeinen Muster folgt, aber dabei können die jeweilgen Aufrufe/Befehle durchaus deutlich komplexer sein.
@@ -352,13 +352,13 @@ jdata <-  GET("http://api.open-notify.org/iss-now.json",)
 ```r
 data <- fromJSON(rawToChar(jdata$content))
 data$iss_position
-## $latitude
-## [1] "-43.1980"
-## 
 ## $longitude
-## [1] "-80.0163"
+## [1] "-97.6091"
+## 
+## $latitude
+## [1] "-0.1748"
 data$timestamp
-## [1] 1666818480
+## [1] 1666853758
 ```
 
 

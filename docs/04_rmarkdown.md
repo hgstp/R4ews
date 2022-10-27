@@ -10,6 +10,3 @@ Ein möglicher R Markdown Workflow, der eine Interaktion mit Git, GitHub, und RS
 
 vorgestellt.
 
-:::{.content-box-yellow}
-Wir werden versuchen diesen Workflow im Rahmen des R Projekts umzusetzen.
-:::

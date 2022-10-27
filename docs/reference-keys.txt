@@ -96,7 +96,6 @@ bestandteile-von-funktionen
 body
 einfache-funktionen
 jede-operation-ist-ein-funktionsaufruf
-lapply-sapply
 funktionsargumente
 funktionsargumente-lazy-evaluation
 funktionsargumente-...

@@ -108,7 +108,6 @@ sapply(x, function(x) x[2])
 ```
 
 
-## lapply, sapply
 
 `sapply()` ist eine Version von `lapply()`, die - wenn möglich - eine "vereinfachte" Ausgabe liefert.
 

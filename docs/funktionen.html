@@ -240,11 +240,6 @@ Everything that happens is a function call.”
 <div class="sourceCode" id="cb269"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">x</span>, <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1]  2  5 11</code></pre>
-</div>
-<div id="lapply-sapply" class="section level2" number="14.5">
-<h2>
-<span class="header-section-number">14.5</span> lapply, sapply<a class="anchor" aria-label="anchor" href="#lapply-sapply"><i class="fas fa-link"></i></a>
-</h2>
 <p><code><a href="https://rdrr.io/r/base/lapply.html">sapply()</a></code> ist eine Version von <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code>, die - wenn möglich - eine “vereinfachte” Ausgabe liefert.</p>
 <div class="sourceCode" id="cb271"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">3</span>, <span class="fl">4</span><span class="op">:</span><span class="fl">6</span>, <span class="fl">7</span><span class="op">:</span><span class="fl">9</span><span class="op">)</span>
@@ -261,9 +256,9 @@ Everything that happens is a function call.”
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/matrix.html">is.matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">`+`</span>, <span class="fl">3</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 </div>
-<div id="funktionsargumente" class="section level2" number="14.6">
+<div id="funktionsargumente" class="section level2" number="14.5">
 <h2>
-<span class="header-section-number">14.6</span> Funktionsargumente<a class="anchor" aria-label="anchor" href="#funktionsargumente"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.5</span> Funktionsargumente<a class="anchor" aria-label="anchor" href="#funktionsargumente"><i class="fas fa-link"></i></a>
 </h2>
 <p>Funktionen besitzen formelle Argumente, denen beim Funktionsaufruf (oder per Default) Werte zugewiesen werden. Beim Aufruf können die Argumente durch ihre Position, den vollen oder teilweisen Namen ausgewählt werden.</p>
 <div class="sourceCode" id="cb275"><pre class="downlit sourceCode r">
@@ -295,9 +290,9 @@ Everything that happens is a function call.”
 <span class="fu">g</span><span class="op">(</span>a<span class="op">=</span><span class="fl">10</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 10 20</code></pre>
 </div>
-<div id="funktionsargumente-lazy-evaluation" class="section level2" number="14.7">
+<div id="funktionsargumente-lazy-evaluation" class="section level2" number="14.6">
 <h2>
-<span class="header-section-number">14.7</span> Funktionsargumente: Lazy Evaluation<a class="anchor" aria-label="anchor" href="#funktionsargumente-lazy-evaluation"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.6</span> Funktionsargumente: Lazy Evaluation<a class="anchor" aria-label="anchor" href="#funktionsargumente-lazy-evaluation"><i class="fas fa-link"></i></a>
 </h2>
 <p>R wertet Funktionsargumente nur aus, wenn diese tatsächlich benützt werden. Dies entspricht der Idee der <em>Lazy Evaluation</em>.</p>
 <div class="sourceCode" id="cb287"><pre class="downlit sourceCode r">
@@ -349,9 +344,9 @@ Everything that happens is a function call.”
 <p>Hauptvorteil ist aber die Effizienz. Nur notwendige Ausdrücke werden ausgewertet.</p>
 </blockquote>
 </div>
-<div id="funktionsargumente-..." class="section level2" number="14.8">
+<div id="funktionsargumente-..." class="section level2" number="14.7">
 <h2>
-<span class="header-section-number">14.8</span> Funktionsargumente: <code>...</code><a class="anchor" aria-label="anchor" href="#funktionsargumente-..."><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.7</span> Funktionsargumente: <code>...</code><a class="anchor" aria-label="anchor" href="#funktionsargumente-..."><i class="fas fa-link"></i></a>
 </h2>
 <p>Für eine Funktion kann das formale <code>...</code> Drei-Punkte Argument verwendet werden. Alle nicht über Position und/oder Name zugeordneten Argumente werden durch <code>...</code> aufgenommen. In der Regel werden über <code>...</code> Argumente übergeben, die innerhalb der Funktion an andere Funktionen weitergegeben werden.</p>
 <div class="sourceCode" id="cb300"><pre class="downlit sourceCode r">
@@ -372,9 +367,9 @@ Everything that happens is a function call.”
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span>, <span class="cn">NA</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 </div>
-<div id="funktionsrückgabe" class="section level2" number="14.9">
+<div id="funktionsrückgabe" class="section level2" number="14.8">
 <h2>
-<span class="header-section-number">14.9</span> Funktionsrückgabe<a class="anchor" aria-label="anchor" href="#funktionsr%C3%BCckgabe"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.8</span> Funktionsrückgabe<a class="anchor" aria-label="anchor" href="#funktionsr%C3%BCckgabe"><i class="fas fa-link"></i></a>
 </h2>
 <p>Wir haben in den Beispielen bereits gesehen wie die Rückgabe funktioniert. Der letzte Ausdruck, der ausgewertet wird, bildet die Rückgabe.</p>
 <div class="sourceCode" id="cb308"><pre class="downlit sourceCode r">
@@ -420,9 +415,9 @@ Everything that happens is a function call.”
 ## [[2]]
 ## [1] "eingabe war größer oder gleich 10"</code></pre>
 </div>
-<div id="mehr-zu" class="section level2" number="14.10">
+<div id="mehr-zu" class="section level2" number="14.9">
 <h2>
-<span class="header-section-number">14.10</span> mehr zu …<a class="anchor" aria-label="anchor" href="#mehr-zu"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.9</span> mehr zu …<a class="anchor" aria-label="anchor" href="#mehr-zu"><i class="fas fa-link"></i></a>
 </h2>
 <p>Wenn ihr mehr zu</p>
 <ul>
@@ -447,12 +442,11 @@ Everything that happens is a function call.”
 <li><a class="nav-link" href="#body"><span class="header-section-number">14.2</span> body()</a></li>
 <li><a class="nav-link" href="#einfache-funktionen"><span class="header-section-number">14.3</span> “Einfache” Funktionen</a></li>
 <li><a class="nav-link" href="#jede-operation-ist-ein-funktionsaufruf"><span class="header-section-number">14.4</span> Jede Operation ist ein Funktionsaufruf</a></li>
-<li><a class="nav-link" href="#lapply-sapply"><span class="header-section-number">14.5</span> lapply, sapply</a></li>
-<li><a class="nav-link" href="#funktionsargumente"><span class="header-section-number">14.6</span> Funktionsargumente</a></li>
-<li><a class="nav-link" href="#funktionsargumente-lazy-evaluation"><span class="header-section-number">14.7</span> Funktionsargumente: Lazy Evaluation</a></li>
-<li><a class="nav-link" href="#funktionsargumente-..."><span class="header-section-number">14.8</span> Funktionsargumente: ...</a></li>
-<li><a class="nav-link" href="#funktionsr%C3%BCckgabe"><span class="header-section-number">14.9</span> Funktionsrückgabe</a></li>
-<li><a class="nav-link" href="#mehr-zu"><span class="header-section-number">14.10</span> mehr zu …</a></li>
+<li><a class="nav-link" href="#funktionsargumente"><span class="header-section-number">14.5</span> Funktionsargumente</a></li>
+<li><a class="nav-link" href="#funktionsargumente-lazy-evaluation"><span class="header-section-number">14.6</span> Funktionsargumente: Lazy Evaluation</a></li>
+<li><a class="nav-link" href="#funktionsargumente-..."><span class="header-section-number">14.7</span> Funktionsargumente: ...</a></li>
+<li><a class="nav-link" href="#funktionsr%C3%BCckgabe"><span class="header-section-number">14.8</span> Funktionsrückgabe</a></li>
+<li><a class="nav-link" href="#mehr-zu"><span class="header-section-number">14.9</span> mehr zu …</a></li>
 </ul>
 
       <div class="book-extra">
