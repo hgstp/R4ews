@@ -138,7 +138,7 @@ Nicht alle Funktionen haben (oder erfordern) Argumente:
 
 ```r
 date()
-## [1] "Thu Oct 27 08:55:40 2022"
+## [1] "Thu Oct 27 09:48:23 2022"
 ```
 
 Schaut euch nun euren Workspace an - unter Environment (vermutlich im Fenster rechts oben) seht ihr den Inhalt eures Workspace. Der Workspace ist der Ort, an dem sich benutzerdefinierte Objekte ansammeln. Eine Liste dieser Objekte könnt ihr auch mit diesen Befehlen erhalten:
@@ -269,7 +269,7 @@ sig_sq <- 0.5
 x <- runif(40)
 y <- a + b * x + rnorm(40, sd = sqrt(sig_sq))
 (x_n <- mean(x))
-## [1] 0.486
+## [1] 0.531
 write(x_n, "mittelwert_x.txt")
 plot(x, y)
 abline(a, b, col = "purple")
@@ -420,3 +420,5 @@ Ihr solltet vermeiden die Maus für Teile des Workflows zu verwenden, wie z.B. d
 
 <!--Misc.-->
 [rOpenSci]: https://ropensci.org
+
+[wiki-snake-case]: https://en.wikipedia.org/wiki/Snake_case

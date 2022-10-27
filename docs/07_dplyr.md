@@ -823,3 +823,5 @@ An dieser Stelle sei noch auf die [dplyr Webseite](https://dplyr.tidyverse.org/)
 
 <!--Misc.-->
 [rOpenSci]: https://ropensci.org
+
+[wiki-snake-case]: https://en.wikipedia.org/wiki/Snake_case

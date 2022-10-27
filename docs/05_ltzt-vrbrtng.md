@@ -602,3 +602,5 @@ Im nächsten Abschnitt starten wir mit dem `dplyr` Paket. Bearbeitet daher zur V
 
 <!--Misc.-->
 [rOpenSci]: https://ropensci.org
+
+[wiki-snake-case]: https://en.wikipedia.org/wiki/Snake_case

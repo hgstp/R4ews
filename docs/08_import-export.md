@@ -257,7 +257,7 @@ Schauen wir uns einmal an, wie die Variable jdata in der R-Konsole aussieht:
 ```r
 jdata
 ## Response [http://api.open-notify.org/astros.json]
-##   Date: 2022-10-27 06:55
+##   Date: 2022-10-27 07:48
 ##   Status: 200
 ##   Content-Type: application/json
 ##   Size: 477 B
@@ -353,12 +353,12 @@ jdata <-  GET("http://api.open-notify.org/iss-now.json",)
 data <- fromJSON(rawToChar(jdata$content))
 data$iss_position
 ## $longitude
-## [1] "-97.6091"
+## [1] "84.7629"
 ## 
 ## $latitude
-## [1] "-0.1748"
+## [1] "-18.7859"
 data$timestamp
-## [1] 1666853758
+## [1] 1666856920
 ```
 
 
@@ -483,6 +483,8 @@ Wer noch mehr zum Thema Daten Import lesen will, der soll einen Blick in das Kap
 
 <!--Misc.-->
 [rOpenSci]: https://ropensci.org
+
+[wiki-snake-case]: https://en.wikipedia.org/wiki/Snake_case
 
 
 

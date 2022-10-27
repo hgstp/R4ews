@@ -211,3 +211,5 @@ __Bemerkung:__ In diesem einfachen Beispiel haben wir bereits gesehen, dass `ggp
 
 <!--Misc.-->
 [rOpenSci]: https://ropensci.org
+
+[wiki-snake-case]: https://en.wikipedia.org/wiki/Snake_case

@@ -308,7 +308,7 @@ Argentina,Americas,75.32</code></pre>
 <div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">jdata</span>
 <span class="co">## Response [http://api.open-notify.org/astros.json]</span>
-<span class="co">##   Date: 2022-10-27 06:55</span>
+<span class="co">##   Date: 2022-10-27 07:48</span>
 <span class="co">##   Status: 200</span>
 <span class="co">##   Content-Type: application/json</span>
 <span class="co">##   Size: 477 B</span></code></pre></div>
@@ -367,12 +367,12 @@ Argentina,Americas,75.32</code></pre>
 <code class="sourceCode R"><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html">fromJSON</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rawConversion.html">rawToChar</a></span><span class="op">(</span><span class="va">jdata</span><span class="op">$</span><span class="va">content</span><span class="op">)</span><span class="op">)</span>
 <span class="va">data</span><span class="op">$</span><span class="va">iss_position</span>
 <span class="co">## $longitude</span>
-<span class="co">## [1] "-97.6091"</span>
+<span class="co">## [1] "84.7629"</span>
 <span class="co">## </span>
 <span class="co">## $latitude</span>
-<span class="co">## [1] "-0.1748"</span>
+<span class="co">## [1] "-18.7859"</span>
 <span class="va">data</span><span class="op">$</span><span class="va">timestamp</span>
-<span class="co">## [1] 1666853758</span></code></pre></div>
+<span class="co">## [1] 1666856920</span></code></pre></div>
 <p>Diese API gibt uns die Zeit in Form von <a href="https://de.wikipedia.org/wiki/Unixzeit">Unixzeit</a> zurück. Unixzeit ist die Zeitspanne, die seit dem 1. Januar 1970 vergangen ist. Mithilfe der Funktion <code>as_datetime()</code> aus dem <a href="https://lubridate.tidyverse.org">lubridate</a> Paket können wir die Unixzeit aber leicht umrechnen</p>
 <div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">lubridate</span><span class="fu">::</span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/as_date.html">as_datetime</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">response</span><span class="op">$</span><span class="va">timestamp</span><span class="op">)</span>
