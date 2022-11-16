@@ -1,3 +1,4 @@
+fig:unnamed-chunk-10
 install
 r-und-rstudio
 funktioniert-alles-am-besten-ausprobieren
@@ -24,7 +25,7 @@ einstieg
 filter-indizieren-von-zeilen
 der-pipe-operator
 mit-select-variablen-auswählen
-jetzt-nochmal-ein-vergleich-zu-r-standardbefehlen
+select-hilfsfunktionen
 pure-predictable-pipeable
 aufgabe-2
 dplyr-single

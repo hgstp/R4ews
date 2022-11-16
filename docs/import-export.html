@@ -154,7 +154,7 @@
 <span class="header-section-number">8.2</span> <code>readr</code><a class="anchor" aria-label="anchor" href="#readr"><i class="fas fa-link"></i></a>
 </h2>
 <p>Zur Einlesen und Ausgeben von Datensätzen verwenden wir das <a href="https://readr.tidyverse.org">readr</a> Paket, welches Alternativen zu den Standardfunktionen <code><a href="https://rdrr.io/r/utils/read.table.html">read.table()</a></code> und <code><a href="https://rdrr.io/r/utils/write.table.html">write.table()</a></code> bietet. <code>readr</code> ist Teil des <a href="https://tidyverse.tidyverse.org">tidyverse</a> und daher laden wir standardmäßig einfach wieder</p>
-<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
 <span class="co">## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──</span>
 <span class="co">## ✓ ggplot2 3.3.5     ✓ purrr   0.3.4</span>
@@ -166,7 +166,7 @@
 <span class="co">## x dplyr::lag()    masks stats::lag()</span></code></pre></div>
 <p><strong>Einlesen der Gapminder Daten</strong></p>
 <p>Die Gapminder Daten könnten wir natürlich wie zuvor über das Laden des <code>gapminder</code> Pakets verfügbar machen. Da es in diesem Abschnitt aber um das Einlesen von Daten geht, versuchen wir die Daten als <code>.tsv</code> Datei (Tab getrennte Werte - so sind die Daten im Paket gespeichert) einzulesen. Aber dies bedeutet natürlich, dass wir die entsprechende <code>.tsv</code> Datei erst mal finden müssen. Dabei hilft uns glücklicherweise das <a href="https://fs.r-lib.org/index.html">fs</a> Paket.</p>
-<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://fs.r-lib.org">fs</a></span><span class="op">)</span>
 <span class="op">(</span><span class="va">gap_tsv</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://fs.r-lib.org/reference/path_package.html">path_package</a></span><span class="op">(</span><span class="st">"gapminder"</span>, <span class="st">"extdata"</span>, <span class="st">"gapminder.tsv"</span><span class="op">)</span><span class="op">)</span>
 <span class="co">## /Library/Frameworks/R.framework/Versions/4.1/Resources/library/gapminder/extdata/gapminder.tsv</span></code></pre></div>
@@ -177,7 +177,7 @@
 <span class="header-section-number">8.3</span> Einlesen von Daten in Tabellenform<a class="anchor" aria-label="anchor" href="#einlesen-von-daten-in-tabellenform"><i class="fas fa-link"></i></a>
 </h2>
 <p>Die Haupt-Funktion zum Einlesen von Daten in readr ist <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_delim()</a></code>. Hier verwenden wir eine Variante, <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_tsv()</a></code>, für Tab getrennte Daten:</p>
-<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gapminder</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_tsv</a></span><span class="op">(</span><span class="va">gap_tsv</span><span class="op">)</span>
 <span class="co">## Rows: 1704 Columns: 6</span>
 <span class="co">## ── Column specification ────────────────────────────────────────────────────────</span>
@@ -215,7 +215,7 @@
 <span class="header-section-number">8.4</span> Daten exportieren<a class="anchor" aria-label="anchor" href="#daten-exportieren"><i class="fas fa-link"></i></a>
 </h2>
 <p>Bevor wir etwas exportieren können, müssen wir natürlich (was so sicher nicht richtig ist - niemand zwingt uns dazu 😉) etwas berechnen, das es wert ist, exportiert zu werden. Lasst uns doch eine Zusammenfassung der maximalen Lebenserwartung auf Länderebene erstellen.</p>
-<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">gap_life_exp</span> <span class="op">&lt;-</span> <span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">country</span>, <span class="va">continent</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>life_exp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
@@ -239,7 +239,7 @@
 <span class="co">## # … with 132 more rows</span></code></pre></div>
 <p>Das Objekt <code>gap_life_exp</code> ist nun ein Beispiel für ein Zwischenergebnis, das wir für die Zukunft und für nachgelagerte Analysen oder Visualisierungen speichern wollen.</p>
 <p>Die Haupt-Exportfunktion in readr ist <code><a href="https://readr.tidyverse.org/reference/write_delim.html">write_delim()</a></code>. Für verschiedene Dateiformate gibt es auch hier wieder verschiedene Komfortfunktionen. Mithilfe von <code><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv()</a></code> können wir den Inhalt von <code>gap_life_exp</code> in einer kommagetrennten Datei abspeichern.</p>
-<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">gap_life_exp</span>, <span class="st">"data/gap_life_exp.csv"</span><span class="op">)</span></code></pre></div>
 <p>Schauen wir uns die ersten paar Zeilen von <code>gap_life_exp.csv</code> an. Dazu können wir entweder die Datei öffnen oder, im Terminal, <code>head</code> darauf anwenden.</p>
 <pre><code>country,continent,life_exp
@@ -274,10 +274,10 @@ Argentina,Americas,75.32</code></pre>
 </h3>
 <p>Um mit APIs in R zu arbeiten, müssen wir ein paar neue Pakete laden (und vorher natürlich installieren). Konkret werden wir mit den Paketen <code>httr</code> und <code>jsonlite</code> arbeiten. Sie spielen bei der Einbindung der APIs unterschiedliche Rollen, aber beide sind unverzichtbar.</p>
 <p>Vermutlich habt ihr die beiden Pakete bisher nicht installiert. Dahersstarten wir mit dem Installieren dieser beiden Pakete</p>
-<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"httr"</span>, <span class="st">"jsonlite"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>und laden sie anschließend</p>
-<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://httr.r-lib.org/">httr</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://arxiv.org/abs/1403.2805">jsonlite</a></span><span class="op">)</span>
 <span class="co">## </span>
@@ -296,7 +296,7 @@ Argentina,Americas,75.32</code></pre>
 <p>Um eine GET-Anfrage zu erstellen, müssen wir die <code><a href="https://httr.r-lib.org/reference/GET.html">GET()</a></code> Funktion aus dem <code>httr</code> Paket verwenden. Die <code><a href="https://httr.r-lib.org/reference/GET.html">GET()</a></code> Funktion benötigt als Input eine URL, die die Adresse des Servers angibt, an den die Anforderung gesendet werden soll.</p>
 <p>Als Beispiel werden wir mit der <a href="http://open-notify.org/">Open Notify</a> API arbeiten, die Daten zu verschiedenen NASA-Projekten enthält. Mithilfe der Open Notify API können wir uns über den Standort der Internationalen Raumstation informieren und erfahren, wie viele Personen sich derzeit im Weltraum aufhalten.</p>
 <p>Wir beginnen damit, dass wir unsere Anfrage mit der <code><a href="https://httr.r-lib.org/reference/GET.html">GET()</a></code> Funktion stellen und die URL der API angeben:</p>
-<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">jdata</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://httr.r-lib.org/reference/GET.html">GET</a></span><span class="op">(</span><span class="st">"http://api.open-notify.org/astros.json"</span><span class="op">)</span></code></pre></div>
 <p>Die Ausgabe der Funktion <code><a href="https://httr.r-lib.org/reference/GET.html">GET()</a></code> ist eine Liste, die alle Informationen enthält, die vom API-Server zurückgegeben werden.</p>
 </div>
@@ -305,10 +305,10 @@ Argentina,Americas,75.32</code></pre>
 <span class="header-section-number">8.5.4</span> <code>GET()</code> Ausgabe<a class="anchor" aria-label="anchor" href="#get-ausgabe"><i class="fas fa-link"></i></a>
 </h3>
 <p>Schauen wir uns einmal an, wie die Variable jdata in der R-Konsole aussieht:</p>
-<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">jdata</span>
 <span class="co">## Response [http://api.open-notify.org/astros.json]</span>
-<span class="co">##   Date: 2022-10-27 07:48</span>
+<span class="co">##   Date: 2022-11-16 11:44</span>
 <span class="co">##   Status: 200</span>
 <span class="co">##   Content-Type: application/json</span>
 <span class="co">##   Size: 477 B</span></code></pre></div>
@@ -329,13 +329,13 @@ Argentina,Americas,75.32</code></pre>
 }</code></pre>
 <p>In ihrem aktuellen Zustand sind die Daten in der Variablen <code>jdata</code> nicht verwendbar. Die Daten sind als Unicode-Rohdaten in <code>jdata</code> enthalten, und müssen in das JSON-Format konvertiert werden.</p>
 <p>Dazu müssen wir zunächst den rohen Unicode in character Daten konvertieren, die dem oben gezeigten JSON-Format ähneln. Die Funktion <code><a href="https://rdrr.io/r/base/rawConversion.html">rawToChar()</a></code> führt genau diese Aufgabe aus:</p>
-<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/rawConversion.html">rawToChar</a></span><span class="op">(</span><span class="va">jdata</span><span class="op">$</span><span class="va">content</span><span class="op">)</span>
 <span class="co">## [1] "{\"message\": \"success\", \"people\": [{\"name\": \"Cai Xuzhe\", \"craft\": \"Tiangong\"}, {\"name\": \"Chen Dong\", \"craft\": \"Tiangong\"}, {\"name\": \"Liu Yang\", \"craft\": \"Tiangong\"}, {\"name\": \"Sergey Prokopyev\", \"craft\": \"ISS\"}, {\"name\": \"Dmitry Petelin\", \"craft\": \"ISS\"}, {\"name\": \"Frank Rubio\", \"craft\": \"ISS\"}, {\"name\": \"Nicole Mann\", \"craft\": \"ISS\"}, {\"name\": \"Josh Cassada\", \"craft\": \"ISS\"}, {\"name\": \"Koichi Wakata\", \"craft\": \"ISS\"}, {\"name\": \"Anna Kikina\", \"craft\": \"ISS\"}], \"number\": 10}"</span></code></pre></div>
 <p>Die resultierende Zeichenfolge sieht zwar recht unordentlich aus, aber es liegt wirklich die JSON-Struktur vor.</p>
 <p>Ausgehend von diesem character Vektor können wir nun mit <code><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html">fromJSON()</a></code>, aus dem <code>jsonlite</code> Paket, alles in ein Listenformat transformieren.</p>
 <p>Die <code><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html">fromJSON()</a></code> Funktion benötigt einen character Vektor, der die JSON-Struktur enthält, die wir aus der Ausgabe von <code><a href="https://rdrr.io/r/base/rawConversion.html">rawToChar()</a></code> erhalten haben. Wenn wir also diese beiden Funktionen nacheinander anwenden, erhalten wir die gewünschten Daten in einem Format, das wir in R leicht bearbeiten können.</p>
-<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">data</span> <span class="op">&lt;-</span>  <span class="fu"><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html">fromJSON</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rawConversion.html">rawToChar</a></span><span class="op">(</span><span class="va">jdata</span><span class="op">$</span><span class="va">content</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span>
 <span class="co">## List of 3</span>
@@ -345,7 +345,7 @@ Argentina,Americas,75.32</code></pre>
 <span class="co">##   ..$ craft: chr [1:10] "Tiangong" "Tiangong" "Tiangong" "ISS" ...</span>
 <span class="co">##  $ number : int 10</span></code></pre></div>
 <p>Die Liste <code>data</code> hat drei Elemente. Uns interessiert in erster Linie das Data Frame <code>people</code>.</p>
-<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">data</span><span class="op">$</span><span class="va">people</span>
 <span class="co">##                name    craft</span>
 <span class="co">## 1         Cai Xuzhe Tiangong</span>
@@ -358,23 +358,23 @@ Argentina,Americas,75.32</code></pre>
 <span class="co">## 8      Josh Cassada      ISS</span>
 <span class="co">## 9     Koichi Wakata      ISS</span>
 <span class="co">## 10      Anna Kikina      ISS</span></code></pre></div>
-<p>Also, da haben wir unsere Antwort: Zum Zeitpunkt des letzten Updates Oct 27, 2022 von R4ews befanden sich 10 Personen im Weltraum. Aber wenn ihr den Code zu einem späteren Zeitpunkt ausprobiert, könnten es auch schon wieder andere Namen und eine andere Anzahl sein. Das ist einer der Vorteile von APIs - im Gegensatz zu Datensätzen, die man im Spreadsheet Format herunterladen kann, werden sie in der Regel in Echtzeit oder nahezu in Echtzeit aktualisiert. APIs bieten somit die Möglichkeit leicht auf sehr aktuellen Daten zuzugreifen.</p>
+<p>Also, da haben wir unsere Antwort: Zum Zeitpunkt des letzten Updates Nov 16, 2022 von R4ews befanden sich 10 Personen im Weltraum. Aber wenn ihr den Code zu einem späteren Zeitpunkt ausprobiert, könnten es auch schon wieder andere Namen und eine andere Anzahl sein. Das ist einer der Vorteile von APIs - im Gegensatz zu Datensätzen, die man im Spreadsheet Format herunterladen kann, werden sie in der Regel in Echtzeit oder nahezu in Echtzeit aktualisiert. APIs bieten somit die Möglichkeit leicht auf sehr aktuellen Daten zuzugreifen.</p>
 <p>In diesem Beispiel haben wir einen sehr unkomplizierten API-Workflow durchlaufen. Die meisten APIs fordern, dass man demselben allgemeinen Muster folgt, aber dabei können die jeweilgen Aufrufe/Befehle durchaus deutlich komplexer sein.</p>
 <p>In unserem Beispiel war es ausreichen nur die URL anzugeben. Aber einige APIs verlangen mehr Informationen vom Benutzer. Darauf gehen wir aber erstmal nicht weiter ein. Stattdessen fragen wir noch nach dem Ort der ISS im Moment der Abfrage</p>
-<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">jdata</span> <span class="op">&lt;-</span>  <span class="fu"><a href="https://httr.r-lib.org/reference/GET.html">GET</a></span><span class="op">(</span><span class="st">"http://api.open-notify.org/iss-now.json"</span>,<span class="op">)</span></code></pre></div>
-<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html">fromJSON</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rawConversion.html">rawToChar</a></span><span class="op">(</span><span class="va">jdata</span><span class="op">$</span><span class="va">content</span><span class="op">)</span><span class="op">)</span>
 <span class="va">data</span><span class="op">$</span><span class="va">iss_position</span>
 <span class="co">## $longitude</span>
-<span class="co">## [1] "84.7629"</span>
+<span class="co">## [1] "170.7728"</span>
 <span class="co">## </span>
 <span class="co">## $latitude</span>
-<span class="co">## [1] "-18.7859"</span>
+<span class="co">## [1] "51.1667"</span>
 <span class="va">data</span><span class="op">$</span><span class="va">timestamp</span>
-<span class="co">## [1] 1666856920</span></code></pre></div>
+<span class="co">## [1] 1668599072</span></code></pre></div>
 <p>Diese API gibt uns die Zeit in Form von <a href="https://de.wikipedia.org/wiki/Unixzeit">Unixzeit</a> zurück. Unixzeit ist die Zeitspanne, die seit dem 1. Januar 1970 vergangen ist. Mithilfe der Funktion <code>as_datetime()</code> aus dem <a href="https://lubridate.tidyverse.org">lubridate</a> Paket können wir die Unixzeit aber leicht umrechnen</p>
-<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">lubridate</span><span class="fu">::</span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/as_date.html">as_datetime</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">response</span><span class="op">$</span><span class="va">timestamp</span><span class="op">)</span>
 <span class="co">## POSIXct of length 0</span></code></pre></div>
 <p>Damit wollen wir den Abschnitt zu APIs beenden. Macht euch bewusst, dass wir hier wirklich nur die Basics in Bezug auf APIs eingeführt haben. Aber hoffentlich hat euch diese Einführung trotzdem ausreichend Vertrauen gegeben, sich mit einigen komplexeren und leistungsfähigeren APIs auseinanderzusetzen.</p>

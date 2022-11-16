@@ -23,7 +23,7 @@ Die Autoren des Pakets verstehen `dplyr`  als eine _Grammatik_ der Datenmanipula
 
 
 
-Der Ursprung von `dplyr` liegt in einem früheren Paket mit dem Namen [plyr], das zum Ziel hat die ["split-apply-combine"-Strategie der Datenanalyse](https://www.jstatsoft.org/article/view/v040i01) [@wickham2011a] umzusetzen. Wo `plyr` noch einen vielfältigen Satz von Ein- und Ausgabetypen abdeckt (z.B. Arrays, data frames, Listen), hat `dplyr` einen klaren Fokus auf data frames oder __tibbles__, wenn man sich im tidyverse befindet. 
+Der Ursprung von `dplyr` liegt in einem früheren Paket mit dem Namen [plyr], das zum Ziel hat die ["split-apply-combine"-Strategie der Datenanalyse](https://www.jstatsoft.org/article/view/v040i01) [@wickham2011a] umzusetzen. Wo `plyr` noch einen vielfältigen Satz von Ein- und Ausgabetypen abdeckt (z.B. Arrays, data frames, Listen), hat `dplyr` einen klaren Fokus auf data frames oder __tibbles__ (wenn man sich im tidyverse befindet). 
 
 `dplyr` bietet schnelle Alternativen zu den R Standardfunktionen:
 
@@ -62,7 +62,7 @@ library(tidyverse)
 ## x dplyr::lag()    masks stats::lag()
 ```
 
-Zusätzlich wollen wir auch noch das Paket [gapminder] laden, da wir erneut mit dem `gapminder` Datensatz arbeiten wollen.
+Zusätzlich laden wir auch noch wieder das [gapminder] Paket, da wir erneut mit dem `gapminder` Datensatz arbeiten wollen.
 
 
 ```r
@@ -73,16 +73,22 @@ library(gapminder)
 
 ## `filter()`: Indizieren von Zeilen
 
-Die Funktion `filter()` erwartet logische Ausdrücke als Input und gibt die Zeilen zurück, für die die Kombination der verwendeten logischen Ausdrücke ein `TRUE` ergibt.
+Die Funktion `filter()` erwartet neben dem Datensatz logische Ausdrücke als Input und gibt die Zeilen des Datensatzes zurück, für die die Kombination der verwendeten logischen Ausdrücke ein `TRUE` ergibt.
 
 
 ```r
+# beobachtungen mit einer lebenserwartung unter 29 jahren
 filter(gapminder, lifeExp < 29)
 ## # A tibble: 2 × 6
 ##   country     continent  year lifeExp     pop gdpPercap
 ##   <fct>       <fct>     <int>   <dbl>   <int>     <dbl>
 ## 1 Afghanistan Asia       1952    28.8 8425333      779.
 ## 2 Rwanda      Africa     1992    23.6 7290203      737.
+```
+
+
+```r
+# beobachtungen aus ruanda nach dem jahr 1979
 filter(gapminder, country == "Rwanda", year > 1979)
 ## # A tibble: 6 × 6
 ##   country continent  year lifeExp     pop gdpPercap
@@ -93,6 +99,36 @@ filter(gapminder, country == "Rwanda", year > 1979)
 ## 4 Rwanda  Africa     1997    36.1 7212583      590.
 ## 5 Rwanda  Africa     2002    43.4 7852401      786.
 ## 6 Rwanda  Africa     2007    46.2 8860588      863.
+```
+
+
+Am letzten Befehlt erkennt man, dass die verschiedenen logischen Ausdrücke mit einem `& ` verknüpft werden. Will man einen "oder Abfrage" gestallten, so muss diese in einem logischen Ausdruck enthalten sein. So kann man mit nachfolgendem Befehl beispielsweise nach allen Beobachtungen aus Ruanda oder Beobachachtungen nach 1979 fragen:
+
+
+```r
+filter(gapminder, country == "Rwanda" | year > 1979)
+## # A tibble: 858 × 6
+##    country     continent  year lifeExp      pop gdpPercap
+##    <fct>       <fct>     <int>   <dbl>    <int>     <dbl>
+##  1 Afghanistan Asia       1982    39.9 12881816      978.
+##  2 Afghanistan Asia       1987    40.8 13867957      852.
+##  3 Afghanistan Asia       1992    41.7 16317921      649.
+##  4 Afghanistan Asia       1997    41.8 22227415      635.
+##  5 Afghanistan Asia       2002    42.1 25268405      727.
+##  6 Afghanistan Asia       2007    43.8 31889923      975.
+##  7 Albania     Europe     1982    70.4  2780097     3631.
+##  8 Albania     Europe     1987    72    3075321     3739.
+##  9 Albania     Europe     1992    71.6  3326498     2497.
+## 10 Albania     Europe     1997    73.0  3428038     3193.
+## # … with 848 more rows
+```
+
+
+Will man einen Vergleich mit mehr als einem Wert durchführen, so kann man natürlich alle Abfragen mit einem `|` verknüpfen, oder gleich den `%in%` Operator verwenden.
+
+
+```r
+# beobachtungen aus ruanda und afghanistan
 filter(gapminder, country %in% c("Rwanda", "Afghanistan"))
 ## # A tibble: 24 × 6
 ##    country     continent  year lifeExp      pop gdpPercap
@@ -110,46 +146,57 @@ filter(gapminder, country %in% c("Rwanda", "Afghanistan"))
 ## # … with 14 more rows
 ```
 
-Zum Vergleich kann man sich einen R Standardbefehl anschauen, der zum gleichen Ergebnis führt:
-
-
-```r
-gapminder[gapminder$lifeExp < 29, ] 
-subset(gapminder, country == "Rwanda" & year > 1979) 
-## subset funktioniert ähnlich wie filter
-subset(gapminder, country %in% c("Rwanda", "Afghanistan"))
-```
 
 Wir erkennen sofort, dass wir mithilfe von `dplyr` sehr leicht den Datensatz aufteilen können, basierend auf der Tatsache ob Bedingungen erfüllt werden oder eben nicht.    
 
-Daher solltet ihr unter keinen Umständen eure Daten so unterteilen, wie hier:
+Daher solltet ihr unter keinen Umständen mit Befehlen wie diesem
 
 
 ```r
 auswahl <- gapminder[241:252, ]
 ```
 
-Warum ist das eine blöde Idee?
+arbeiten.
+
+
+Warum ist das eine __blöde Idee__?
 
 * Der Befehl dokumentiert sich nicht selbst. Was ist das Besondere an den Zeilen 241 bis 252?
 
 * Der Befehl ist fehleranfällig. Diese Codezeile wird zu anderen Ergebnissen führen, wenn jemand die Zeilenreihenfolge von `gapminder` ändert, z.B. die Daten vor diesem Befehl erst sortiert.
 
-Ganz anders verhält es sich mit diesem Beispiel:
+Ganz anders verhält es sich mit diesem Befehl
+
 
 ```r
 filter(gapminder, country == "Canada")
 ```
 
-Der Befehl erklärt sich von selbst und ist ziemlich robust.
+Er erklärt sich von selbst und ist ziemlich robust.
+
+
 
 ## Der Pipe-Operator
 
-Bevor es weitergeht, wollen wir aber den Pipe-Operator, den das Tidyverse aus dem [magrittr]-Paket von Stefan Bache importiert, vorstellen. Mithilfe des Pipe-Operators ist man in der Lage Befehle für mehrere Operationen auszuführen, ohne sie ineinander zu verschachteln. Diese neue Syntax führt zu Code, der viel einfacher zu schreiben und zu lesen ist.
+Bevor es weitergeht, wollen wir aber den Pipe-Operator, den das Tidyverse aus dem [magrittr]-Paket von Stefan Bache importiert, vorstellen.
+
+
+<div class="figure" style="text-align: center">
+<img src="https://upload.wikimedia.org/wikipedia/en/b/b9/MagrittePipe.jpg" alt="Quelle https://en.wikipedia.org/wiki/The_Treachery_of_Images" width="80%" />
+<p class="caption">(\#fig:unnamed-chunk-10)Quelle https://en.wikipedia.org/wiki/The_Treachery_of_Images</p>
+</div>
+
+
+Mithilfe des __Pipe-Operators__ ist man in der Lage aufeinanderfolgende Befehle einer DAten-Operationen strukturiert anzugeben, ohne sie ineinander zu verschachteln. Diese neue Syntax führt zu Code, der viel einfacher zu schreiben und zu lesen ist.
 
 >Und so sieht er aus: `%>%`. 
 
-Das entsprechende RStudio Tastenkürzel lautet: Ctrl+Shift+M (Windows), Cmd+Shift+M (Mac).
+:::: {.content-box-blue}
+
+Das entsprechende RStudio Tastenkürzel lautet:     
+Ctrl+Shift+M (Windows), Cmd+Shift+M (Mac).
+
+::::
 
 Erstmal ein Beispiel
 
@@ -169,7 +216,7 @@ gapminder %>% head()
 
 Man erkennt sofort, der Befehl ist äquivalent zu `head(gapminder)`. Der Pipe-Operator nimmt das Objekt auf der linken Seite und leitet es in den Funktionsaufruf auf der rechten Seite weiter - er gibt es buchstäblich als erstes Argument ein.
 
-Und natürlich kann man immer noch weitere Argumente für die Funktion auf der rechten Seite angeben. Um die ersten 3 Reihen von `gapminder` zu sehen, könnte man sagen: `head(gapminder, 3)` oder:
+Und natürlich kann man der Funktion auf der rechten Seite auch noch weitere Argumente übergeben. Um die ersten 3 Zeilen von `gapminder` auszugeben, könnte man  `head(gapminder, 3)` nutzen oder:
 
 
 ```r
@@ -183,7 +230,7 @@ gapminder %>% head(3)
 ```
 
 
-Wahrscheinlich seid ihr aufgrund dieses Beispiels noch nicht besonders beeindruckt vom Pipe-Operator `%>%`, aber das sollte sich noch ändern.
+Der bisherige Einsatz des Pipe-Operators `%>%` war sicherlich noch nicht sehr beeindruckend, aber das sollte sich noch ändern.
 
 
 ## Mit `select()` Variablen auswählen
@@ -210,7 +257,7 @@ select(gapminder, year, lifeExp)
 ## # … with 1,694 more rows
 ```
 
-Und nun noch kombiniert mit `head()` über den Pipe-Operator:
+und nun noch kombiniert mit `head()` über den Pipe-Operator:
 
 
 
@@ -229,11 +276,13 @@ gapminder %>%
 
 Der letzte Befehl nochmal in Worten: 
 
-"Nimm `gapminder`, wähle die Variablen `year` und `lifeExp` und zeige dann die ersten 4 Zeilen an."
+_"Nimm `gapminder`, wähle die Variablen `year` und `lifeExp` und zeige dann die ersten 4 Zeilen an."_
 
-### Jetzt nochmal ein Vergleich zu R Standardbefehlen
 
-Hier sind die Daten für Kambodscha, allerdings nur die Variablen `year` und `lifeExp`:
+
+Natürlich kann man all diese Operationen auch mir R StandardbefehlenJetzt noch ein Vergleich zu R Standardbefehlen durchführen. Die `dplyr` Befehle haen aber klare Vorteile bei der Lesbarkeit des Codes, wie man im nächsten Beispiel sieht.
+
+Wir wahlen aus dem `gapminder` Datensatz die Variablen  `year` und `lifeExp` der Kambodscha Beobachtungen
 
 
 ```r
@@ -281,9 +330,62 @@ gapminder[gapminder$country == "Cambodia", c("year", "lifeExp")]
 
 Ich hoffe, ihr stimmt mir zu,  dass der `dplyr` Befehl deutlich leichter zu lesen ist.
 
+## select() Hilfsfunktionen
+
+Der `gapminder` Datensatz ist klein und damit leicht überschaubar. Daher ist eine strukturierte Auswahl von Variablen hier nicht notwendig. In größeren Datensätzen kann dies aber ganz anders sein. Dort bietet es sich an mit __Hilfsfunktionen__ wie
+
+- `:` wählt einen Bereich von Spalten aus
+
+- `-` wählt alle Spalten außer  ...
+
+- `starts_with()` wählt alle Spalten, die mit ... starten
+
+- `ends_with()` wählt alle Spalten, die mit ... enden
+
+
+- `contains()` wählt alle Spalten, die  ... enthalten
+
+
+- `matches()` wählte alle Spalten, die den regulären Ausdruck ... enthalten
+
+
+- ...
+
+
+zu arbeiten.
+
+
+
+```r
+select(gapminder, 
+       matches(        # von beginn ^
+         "^.{4}$"      # bis ende $
+         )             # enthält der namen irgendwelche . character
+       )
+## # A tibble: 1,704 × 1
+##     year
+##    <int>
+##  1  1952
+##  2  1957
+##  3  1962
+##  4  1967
+##  5  1972
+##  6  1977
+##  7  1982
+##  8  1987
+##  9  1992
+## 10  1997
+## # … with 1,694 more rows
+```
+
+
+
+
+
+
 ## Pure, predictable, pipeable
 
-Bisher haben wir nur etwas an der Oberfläche von `dplyr` gekratzt, trotzdem möchten wir auf ein Schlüsselprinzip hinweisen, das du vielleicht langsam zu schätzen lernen wirst. 
+Bisher haben wir nur etwas an der Oberfläche von `dplyr` gekratzt, trotzdem möchten wir auf ein Schlüsselprinzip hinweisen, das du mit der Zeit schätzen lernen wirst. 
 
 Die Verben (Hauptfunktionen) von dplyr, wie z.B. `filter()` und `select()`, sind [pure functions](https://en.wikipedia.org/wiki/Pure_function). Dazu schreibt Hadley Wickham im Kapitel [Functions](https://adv-r.hadley.nz/functions.html) in seinem [Advanced R] Buch [-@wickham2019]:
 

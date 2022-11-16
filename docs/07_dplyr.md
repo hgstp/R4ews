@@ -4,11 +4,11 @@
 
 ## Wo stehen wir?
 
-In Kapitel \@ref(dplyr-intro), _Einführung in `dplyr`_, haben wir bereits zwei sehr wichtige Verben sowie einen Operator vorgestellt und verwendet:
+In Kapitel \@ref(dplyr-intro)  haben wir bereits zwei sehr wichtige Verben und den Pipe Operator kennengelernt  und verwendet:
 
 * `filter()` zur Auswahl spezieller Zeilen eines Datensatzes
 * `select()` zur Auswahl spezieller Variablen eines Datensatzes
-* den Pipe-Operator `%>%`, der das Objekt auf der linken Seite überführt in das  erste Funktionsargument der Funktion auf der rechten Seite des Aufrufs
+* der Pipe-Operator `%>%` überführt das Objekt auf der linken Seite des Operators in das  erste Funktionsargument der Funktion auf der rechten Seite des Aufrufs
   
 Wir haben zudem auch noch die Rolle von `dplyr` innerhalb des tidyverse besprochen:
 
@@ -89,7 +89,7 @@ __Wie können wir das schaffen?__
 1. Beobachtungen für Deutschland in einem Objekt `ger_gap` speichern
 1. Erstellen einer neue _temporären_ Variable `tmp` in `my_gap`, die definiert wird durch:
     i) die `gdpPercap`-Variable aus `ger_gap` aufrufen
-    i) mit `rep()` die `gdpPerap` Wert aus `ger_gap` einmal pro Land im `my_gap` reproduzieren, damit ein Vektor entsteht, der die gleiche Anzahl an Beobachtungen wie `my_gap` hat
+    i) mit `rep()` die `gdpPercap` Wert aus `ger_gap` einmal pro Land im `my_gap` reproduzieren, damit ein Vektor entsteht, der die gleiche Anzahl an Beobachtungen wie `my_gap` hat
 1. Dividieren der `gdpPercap` Werte durch die deutschen Zahlen
 1. Löschen der  temporären Variable `tmp` in `my_gap`
 
@@ -106,7 +106,7 @@ my_gap <- my_gap %>%
 
 Beachte, dass `mutate()` neue Variablen sequentiell erstellt, so dass man auf frühere Variablen (wie `tmp`) verweisen kann um spätere Variablen (wie `gdpPercapRel`) zu definieren. Nachdem eine Variable nicht mehr benötigt wird, kann man sie einfach auf `NULL` setzen.
 
-Bleibt die Frage ob das so funktioniert hat. Um diese Frage zu beantworten, können wir uns aber einfach mal die Werte von `gdpPercapRel` für Deutschland anschauen. Die sollten besser alle 1 sein!
+Bleibt die Frage ob das alles so richtig war. Um diese Frage zu beantworten, können wir uns aber einfach mal die Werte von `gdpPercapRel` für Deutschland anschauen. Die sollten besser alle 1 sein!
 
 
 ```r
@@ -250,6 +250,8 @@ my_gap %>%
 Die Änderungen haben wir jetzt aber nicht abgespeichert (auch wenn sie schön waren), da wir den nachfolgenden Code auch weiterhin ausführen möchten, ohne die Variablennamen entsprechend zu ändern.
 
 
+:::: {.content-box-grey}
+
 __Bemerkung:__ Mit `select()` könnten wir bei der Auswahl von Variablen auch deren Namen ändern 
 
 ```r
@@ -267,16 +269,22 @@ my_gap %>%
 
 `everything()` wählt alle übrigen (außer `gdpPercap`) Variablen. Da `gdpPercap` an erster Stelle gewählt wurde, wird die Variable auch zur ersten Spalte. 
 
+::::
+
 ## `summarise()` in Kombination mit `group_by()` 
 
 Nehmen wir mal an, dass uns die Antwort auf die Frage 
 
+:::: {.content-box-green}
+
 "In welchem Land ist die Lebenserwartung innerhalb von 5 Jahren am stärksten gesunken?" 
+::::
+
 
 interessiert.
 
 
-`dplyr` bietet uns mächtige Hilfsmittel um diese Frage zu beantworten:
+`dplyr` bietet uns mächtige Hilfsmittel zur Beantwortung der Frage:
 
 * `group_by()` fügt dem Datensatz eine zusätzliche Struktur hinzu -- Gruppierungsinformationen -- die die Grundlage für Berechnungen innerhalb der Gruppen bilden.
 
@@ -321,7 +329,8 @@ str(table(gapminder$continent))
 ##   ..$ : chr [1:5] "Africa" "Americas" "Asia" "Europe" ...
 ```
 
-Das Ergebnis ist ein Objekt der Klasse `table`. Dies macht die nachfolgenden Berechnungen leider etwas kniffliger, als es euch lieb ist. Zum Beispiel ist es  schade, dass die Namen der Kontinente nur als *Namen* und nicht als richtiger Faktor zusammen mit den berechneten Werten zurückgegeben werden. Dies ist ein Beispiel dafür, wie das tidyverse Übergänge glättet, bei denen die Ausgabe von Schritt `i` die Eingabe von Schritt `i + 1` werden soll.
+Das Ergebnis ist ein Objekt der Klasse `table`. Dies macht nachfolgende Berechnungen leider etwas kniffliger, als es euch lieb ist. Zum Beispiel ist es  schade, dass die Namen der Kontinente nur als *Attribute* und nicht als richtiger Faktor zusammen mit den berechneten Werten zurückgegeben werden.     
+Dies ist ein Beispiel dafür, wie das tidyverse Übergänge glättet, bei denen die Ausgabe von Schritt `i` die Eingabe von Schritt `i + 1` werden soll.
 
 Die `tally()` Funktion ist eine Komfortfunktion, die weiß, wie man Zeilen zählt und dabei Gruppen berücksichtigt.
 
@@ -356,7 +365,7 @@ my_gap %>%
 ## 5 Oceania      24
 ```
 
-Was wäre, wenn uns nicht nur die Anzahl an Beobachtungen pro Kontinent interessiert, sondern auch die Anzahl an unterschiedlichen Ländern pro Kontinent. Da wir mehrere Zusammenfassungen innerhalb von `summarise()` berechnen. Verwenden Sie die Funktion `n_distinct()`, um die Anzahl der einzelnen Länder innerhalb jedes Kontinents zu zählen.
+Was wäre, wenn uns nicht nur die Anzahl an Beobachtungen pro Kontinent interessiert, sondern auch die Anzahl an unterschiedlichen Ländern pro Kontinent. Dazu bestimmen wir einfach mehrere Zusammenfassungen innerhalb von `summarise()`. Dabei verwenden wir die Funktion `n_distinct()`, um die Anzahl der einzelnen Länder innerhalb jedes Kontinents zu zählen.
 
 
 ```r
@@ -555,10 +564,10 @@ my_gap %>%
 ## 24  2007 Japan          82.6
 ```
 
-Wir sehen, dass (min = Afghanistan, max = Japan) das häufigste Ergebnis ist, aber Kambodscha und Israel tauchen jeweils mindestens einmal als min bzw. max auf. 
+Wir sehen, dass (min = Afghanistan, max = Japan) das häufigste Ergebnis ist, aber Kambodscha und Israel tauchen auch jeweils mindestens einmal als min bzw. max auf. 
 
 
-> Aber wäre es nicht schön, eine Zeile pro Jahr zu haben?
+> Aber wäre es nicht schön eine Zeile pro Jahr zu haben?
 
 Zuerst sollten wir uns aber vielleicht nochmal fragen wie das eigentlich funktioniert hat? Dazu schauen wir uns die Beobachtungen aus Asien mal direkt an.
 
@@ -585,12 +594,12 @@ Zuerst sollten wir uns aber vielleicht nochmal fragen wie das eigentlich funktio
 ## # … with 386 more rows
 ```
 
-Jetzt wenden wir die Window Funktion `min_rank()` an. Da `asia` nach Jahren gruppiert ist, operiert `min_rank()` innerhalb von Mini-Datensätzen. Auf die Variable `LifeExp` angewandt, liefert `min_rank()` den Rang der beobachteten Lebenserwartung jedes Landes. 
+Jetzt wenden wir die Window Funktion `min_rank()` an. Da `asia` nach Jahren gruppiert ist, operiert `min_rank()` innerhalb von Mini-Datensätzen. Auf die Variable `lifeExp` angewandt, liefert `min_rank()` den Rang der beobachteten Lebenserwartung jedes Landes. 
 
 
 :::: {.content-box-gray}
 
-__Bemerkung:__ Der `min`-Teil gibt nur an, wie die Verbindungen unterbrochen werden.
+__Bemerkung:__ Der `min`-Teil im Funktionsnamen `min_rank()` gibt nur an, wie im Fall von gleichen Beobachtungswerten die Ränge bestimmt werden.
 
 
 ```r
@@ -598,7 +607,7 @@ rank(c(1,3,3,5), ties.method = "min")
 ## [1] 1 2 2 4
 ```
 
-Neben dem Minimum gibt es aber auch noch eine Reihe weiterer Alternative, wie z.B. den Durchschnitt
+Neben dem Minimum gibt es aber auch noch eine Reihe weiterer Alternativen, wie z.B. den Durchschnitt
 
 
 ```r
@@ -610,7 +619,7 @@ rank(c(1,3,3,5))
 
 
 
-Im nächsten Schritt schauen wir uns die Ränge der Lebenserwartung innerhalb eines Jahres mal explizit für ein paar Länder (Afghanistan, Japan undThailand) an - sowohl in der (Standard-) aufsteigenden als auch in der absteigenden Reihenfolge.
+Im nächsten Schritt schauen wir uns die Ränge der Lebenserwartung innerhalb eines Jahres mal explizit für ein paar Länder (Afghanistan, Japan und Thailand) an - sowohl in der (Standard-) aufsteigenden als auch in der absteigenden Reihenfolge.
 
 
 
@@ -681,20 +690,22 @@ my_gap %>%
 
 Beantworten wir also die Frage: 
 
-> Welches Land hat den stärksten Rückgang der Lebenserwartung innerhalb von 5 Jahre erlebt?
+:::: {.content-box-green}
+
+"In welchem Land ist die Lebenserwartung innerhalb von 5 Jahren am stärksten gesunken?" 
+::::
 
 
-Die Beobachtungsfrequenz im Datensatz ist fünf Jahre, d.h. wir haben Daten für 1952, 1957 usw. Dies bedeutet also, dass die Veränderungen der Lebenserwartung zwischen benachbarten Zeitpunkten betrachtet werden müssen.
+Die Beobachtungsfrequenz im Datensatz ist fünf Jahre, d.h. wir haben Daten für 1952, 1957 usw. Dies bedeutet also, dass die Veränderungen der Lebenserwartung zwischen benachbarten Zeitpunkten betrachtet werden müssen. Dazu verwenden wir die `lag()` Funktion. Diese veschiebt die Einträge des Inputvektors um ein Lag `k`.
 
-Zum jetzigen Zeitpunkt ist die Beantwortung der Frage einfach zu einfach. Daher lasst uns die Frage pro  Kontinenten beantworten.
+Wir können aber noch mehr erreichen. Lasst uns die Frage pro  Kontinenten beantworten.
 
 
 ```r
 my_gap %>%
-  select(country, year, continent, lifeExp) %>%
   group_by(continent, country) %>%
   # für jedes Land werden die Unterschiede berechnet
-  mutate(delta = lifeExp - lag(lifeExp)) %>% 
+  mutate(delta = lifeExp - lag(lifeExp, k = 1)) %>% 
   ## für jedes Land wird nur der kleinste Wert behalten
   summarise(worst_delta = min(delta, na.rm = TRUE)) %>% 
   ## nun wird noch pro Kontinent, die Zeile mit dem kleinsten Wert ausgegeben
@@ -715,7 +726,7 @@ my_gap %>%
 
 Denkt ruhig eine Weile über das Ergebnis nach. Hier sieht man in trockenen Statistiken über die durchschnittliche Lebenserwartung, wie Völkermord aussieht.
 
-Um den Code besser zu verstehen, unterteilt ihn, beginnend von oben, in Stücke und überprüft die einzelnen Zwischenergebnisse. So wurde der Code auch geschrieben/entwickelt, mit vielen Fehlern und Verfeinerungen auf dem Weg. 
+Um den Code besser zu verstehen, unterteilt ihn, beginnend von oben, in Stücke und überprüft die einzelnen Zwischenergebnisse. So wurde der Code auch geschrieben/entwickelt, mit Fehlern und Verfeinerungen auf dem Weg. 
 
 
 ## Literatur
