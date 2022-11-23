@@ -50,7 +50,7 @@ einlesen-von-daten-in-tabellenform
 daten-exportieren
 daten-über-eine-api
 einführung
-erstellen-von-api-anforderungen-in-r
+erstellen-von-api-abfragen-in-r
 unsere-erste-api-anfrage-stellen
 get-ausgabe
 handling-json-data
@@ -60,7 +60,6 @@ lord-of-the-rings
 tidy-lord-of-the-rings-data
 vorteile-von-tidy-data
 untidy-lord-of-the-rings-data
-nun-können-wir-aufräumen
 und-jetzt-noch-ein-bisschen-schmutzig-machen
 literatur-1
 graphics-overview

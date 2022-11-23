@@ -7,17 +7,17 @@
 
 
 
-Idealerweise liegt ein Datensatz so vor, dass er __gut__ von einem Computer gelesen werden kann. In der Regel sind die Datensätze, mit denen wir uns beschäftigen, ja umfangreich, d.h. der Mensch will den Datensatz ja gar nicht (ein-)lesen. Trotzdem sind Datensätze oft anders angelegt (der Mensch, und nicht der Computer 💻, trifft die Entscheidung über das Layout).
+Idealerweise liegt ein Datensatz so vor, dass er __gut__ von einem Computer gelesen werden kann. In der Regel sind die Datensätze, mit denen wir uns beschäftigen, ja umfangreich, d.h. der Mensch will den Datensatz gar nicht (ein-)lesen. Trotzdem sind Datensätze oft anders angelegt (der Mensch, und nicht der Computer 💻, trifft die Entscheidung über das Layout).
 
 :::: {.content-box-gray}
-Der Computer kann einen Datensatz gut *verarbeiten*, wenn wir den Datensatz als __tidy__ bezeichnen können. Hauptmerkmal von einem __tidy__ Datensatz:
+Der Computer kann einen Datensatz gut *verarbeiten*, wenn wir den Datensatz als __tidy__ bezeichnen können. Hauptmerkmale von einem __tidy__ Datensatz sind:
 
-  * Jede Spalte ist eine Variable
-  * Jede Zeile ist eine Beobachtung
+  * jede Spalte ist eine Variable
+  * jede Zeile ist eine Beobachtung
 :::: 
 
 
-Liegt untidy data vor, so verlängert sich (fast) immer die Zeit bis man mit den interessanten Schritten,  z.B. Erstellen einer Grafik, starten kann. Daher lohnt es sich immer mal inne zu halten um zu überlegen, ob die Daten __tidy__ sind. Unordnung im Datensatz ist eine häufige, aber oft übersehene, Ursache für unnötige Qualen bei der Datenanalyse und -visualisierung.
+Liegen untidy Daten vor, so verlängert sich (fast) immer die Zeit bis man mit den interessanten Schritten,  z.B. Erstellen einer Grafik, starten kann. Daher lohnt es sich immer mal inne zu halten um zu überlegen, ob die Daten __tidy__ sind. Unordnung im Datensatz ist eine häufige, aber oft übersehene, Ursache für unnötige Qualen bei der Datenanalyse und -visualisierung.
 
 ## Lord of the Rings 
 
@@ -121,11 +121,11 @@ Von [Jenny Byran](https://github.com/jennybc) (Autorin von STAT 545) haben wir f
 
 Wir haben eine Tabelle pro Film. In jeder Tabelle haben wir die Gesamtzahl der gesprochenen Wörter, von Charakteren verschiedener Kategorien und Geschlechter.
 
-Stellt euch vor, diese drei Tabellen als separate Arbeitsblätter in einer Excel-Datei zu finden. Oder in einigen Zellen am Rande eines Arbeitsblatts, das die zugrunde liegenden Rohdaten enthält. Oder als Tabellen auf einer Webseite oder in einem Word-Dokument.
+Stellt euch vor, diese drei Tabellen als separate Arbeitsblätter in einer Excel-Datei zu finden.  Oder als Tabellen auf einer Webseite oder in einem Word-Dokument.
 
-Das Format der Tabellen macht es für *Menschen* einfach, die Anzahl der in "The Two Towers" von weiblichen Elfen  gesprochenen Wörter nachzuschlagen. Aber dieses Format macht es für einen *Computer* ziemlich schwer, solche Zahlen zu extrahieren  und, was noch wichtiger ist, damit zu rechnen oder sie grafisch darzustellen.
+Das Format der Tabellen macht es für *Menschen* einfach, die Anzahl der in "The Two Towers" von weiblichen Elfen  gesprochenen Wörter zu lesen. Aber dieses Format macht es für einen *Computer* ziemlich schwer, solche Zahlen zu extrahieren  und, was noch wichtiger ist, damit zu rechnen oder sie grafisch darzustellen.
 
-Diese Aufgabe ist nicht so einfach, da die Daten __untidy__ sind. So enthalten z.B. die  Spalten `Female` und `Male`  nicht die Information über das Geschlecht. Auf der anderen Seite sind Wert der Variable (noch nicht vorhanden) `Words` auf zwei Spalten verteilt.
+Die Aufgabe ist schwer, da die Daten __untidy__ sind. So enthalten z.B. die  Spalten `Female` und `Male`  nicht die Information über das Geschlecht, sondern jeweils die Anzahl der gesprochenen Worte. Auf der anderen Seite gibt es keine Variable  `Words`, deren Inhalt diese Anzahl eigentlich sein sollte..
 
 
 ## Tidy Lord of the Rings data
@@ -264,14 +264,14 @@ In dieser Form können wir nun leicht folgende Fragen beantworten:
 
 
 :::: {.content-box-yellow}
-- Wie viele Wörter haben die männlichen Hobbits insgesamt gesprochen?
+1. Wie viele Wörter haben die männlichen Hobbits insgesamt gesprochen?
 
-- Dominiert eine bestimmte `Race` einen Film? Unterscheidet sich die dominierende `Race` in den Filmen?
+2. Dominiert eine bestimmte `Race` einen Film? Unterscheidet sich die dominierende `Race` in den Filmen?
 ::::
 
 
 
-> __Wie viele Wörter haben die männlichen Hobbits insgesamt gesprochen?__
+> __1. Wie viele Wörter haben die männlichen Hobbits insgesamt gesprochen?__
 
 Nun braucht es nur noch ein kleines bisschen Code, um die Gesamtwortzahl für beide Geschlechter aller Kategorien über alle Filme hinweg zu berechnen. Wir nutzen dazu die Komfortfunktion `count()`.
 
@@ -294,11 +294,11 @@ lotr_tidy %>%
 ## 6 Male   Man     8043
 ```
 
- Die Gesamtzahl der von männlichen Hobbits gesprochenen Wörter ist 8780. Hier war es wichtig, dass alle Wortzählungen in einer einer Variable eines  Data Frames zusammengefasst sind und zugehöriger Variablen für Geschlecht und Kategorie.
+ Die Gesamtzahl der von männlichen Hobbits gesprochenen Wörter ist 8780. Hier war es wichtig, dass alle Wortzählungen in einer Variable des  Data Frames zusammengefasst sind und zugehörige Variablen für Geschlecht und Kategorie existieren.
  
  
  
-> __Dominiert eine bestimmte Kategorie einen Film? Unterscheidet sich die dominierende Kategorie in den Filmen?__
+> __2. Dominiert eine bestimmte Kategorie einen Film? Unterscheidet sich die dominierende Kategorie in den Filmen?__
 
 Zunächst summieren wir über die Geschlechter hinweg, um die Wortzahlen für die verschiedenen Kategorien pro Film zu erhalten.
 
@@ -426,7 +426,7 @@ Das Zusammensetzen eines großen Datenobjekts aus vielen kleinen ist eine relati
 Wenn möglich, sollte man die einzelnen Stücke so früh wie möglich 
 zusammensetzen, denn es ist einfacher und effizienter, ein einzelnes Objekt aufzuräumen als 20 oder 1000 oder ...
 
-### Nun können wir aufräumen
+__Nun können wir aufräumen__
 
 Das Objekt `lotr_untidy` verletzt immer noch eines der Grundprinzipien von __tidy data__. 
 
@@ -438,7 +438,8 @@ Konzeptionell müssen wir die Wortanzahl in einer einzigen Variable zusammenfass
 
 ```r
 lotr_tidy <-
-  pivot_longer(lotr_untidy, cols = c("Female", "Male"), names_to = 'Gender', 
+  pivot_longer(lotr_untidy, cols = c("Female", "Male"), 
+               names_to = 'Gender', 
                values_to = 'Words')
 lotr_tidy
 ```
@@ -475,19 +476,12 @@ Nach der Auswahl des Datensatzes `lotr_untidy` haben wird die Spalten `Female` u
 Alle anderen Variablen, wie `Film`, bleiben unverändert und werden einfach nach Bedarf repliziert. Die Dokumentation für `pivot_longer()` gibt weitere Beispiele und dokumentiert zusätzliche Argumente.
 
 
-Wenn man sich diese Arbeit gemacht hat, dann macht es schon Sinn sich auch das Ergebnis abzuspeichern
+Wenn man sich diese Arbeit gemacht hat, macht es Sinn sich auch das Ergebnis abzuspeichern
 
 
 
 ```r
-write_csv(lotr_tidy, path = file.path("data", "lotr_tidy.csv"))
-```
-
-```
-## Warning: The `path` argument of `write_csv()` is deprecated as of readr 1.4.0.
-## Please use the `file` argument instead.
-## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
+write_csv(lotr_tidy, file = file.path("data", "lotr_tidy.csv"))
 ```
 
 
@@ -497,7 +491,7 @@ Trotzdem solltet ihr natürlich auch die Skripte zur  Datenaufbereitung sowie di
 ## Und jetzt noch ein bisschen "schmutzig" machen
 
 
-Manchmal (aber nicht so häufig) ist es doch nötig die Daten im [Wide Format](https://de.wikipedia.org/wiki/Wide-Format_und_Long-Format) zu haben. Daher wollen wir zum Schluss die gerade gesäuberten LOTR Daten nochmal ein bisschen untidy machen. 
+Manchmal (aber nicht so häufig) ist es nötig die Daten im [Wide Format](https://de.wikipedia.org/wiki/Wide-Format_und_Long-Format) zu haben. Daher wollen wir zum Schluss die gerade gesäuberten LOTR Daten nochmal ein bisschen untidy machen. 
 
 Dazu arbeiten wir mit den Funktion `tidyr::pivot_wider()`. Wir nehmen nun die Ausprägungen der Variable `Race` (anschließend dann `Gender`) als Variablennamen der neu zu bildenden Variablen. Die Werte dieser neuen Variablen sind durch die Variable `Words` festgelegt. 
 
@@ -595,7 +589,7 @@ lotr_tidy %>%
 ## 3 The Return …        183      510             2        2673        268     2459
 ```
 
-Zum Schluss könnten wir jetzt auch noch alles zurück auf Anfang stellen und die
+Zum Schluss könnten wir auch noch alles zurück auf Anfang stellen und die
 drei Datensätze vom Anfang wiederherstellen
 
 
