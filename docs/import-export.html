@@ -337,10 +337,10 @@
 <div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">jdata</span>
 <span class="co">## Response [http://api.open-notify.org/astros.json]</span>
-<span class="co">##   Date: 2022-11-23 19:29</span>
+<span class="co">##   Date: 2022-12-07 14:38</span>
 <span class="co">##   Status: 200</span>
 <span class="co">##   Content-Type: application/json</span>
-<span class="co">##   Size: 477 B</span></code></pre></div>
+<span class="co">##   Size: 623 B</span></code></pre></div>
 <p>Als erstes fällt auf, dass die URL enthalten ist, an die die GET-Anfrage gesendet wurde. Außerdem erkennen wir das Datum und die Uhrzeit, zu der die Anfrage gestellt wurde, sowie die Größe der Antwort.</p>
 <p>Die Information <code>Content-Type</code> gibt uns eine Vorstellung davon, welche Form die Daten haben. Diese spezielle Antwort besagt, dass die Daten ein JSON-Format annehmen, womit auch klar ist warum wir das Paket <code>jsonlite</code> geladen haben.</p>
 <p>Der Status verdient eine besondere Aufmerksamkeit. <code>Status</code> bezieht sich auf den Erfolg oder Misserfolg der API-Anfrage, und er wird in Form einer Zahl angegeben. Die zurückgegebene Nummer gibt Auskunft darüber, ob die Anfrage erfolgreich war oder nicht. Dort können auch Gründe für einen möglichen Misserfolg enthalten sein.</p>
@@ -360,7 +360,7 @@
 <p>Dazu müssen wir zunächst den rohen Unicode in character Daten konvertieren, die dem oben gezeigten JSON-Format ähneln. Die Funktion <code><a href="https://rdrr.io/r/base/rawConversion.html">rawToChar()</a></code> führt genau diese Aufgabe aus:</p>
 <div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/rawConversion.html">rawToChar</a></span><span class="op">(</span><span class="va">jdata</span><span class="op">$</span><span class="va">content</span><span class="op">)</span>
-<span class="co">## [1] "{\"message\": \"success\", \"people\": [{\"name\": \"Cai Xuzhe\", \"craft\": \"Tiangong\"}, {\"name\": \"Chen Dong\", \"craft\": \"Tiangong\"}, {\"name\": \"Liu Yang\", \"craft\": \"Tiangong\"}, {\"name\": \"Sergey Prokopyev\", \"craft\": \"ISS\"}, {\"name\": \"Dmitry Petelin\", \"craft\": \"ISS\"}, {\"name\": \"Frank Rubio\", \"craft\": \"ISS\"}, {\"name\": \"Nicole Mann\", \"craft\": \"ISS\"}, {\"name\": \"Josh Cassada\", \"craft\": \"ISS\"}, {\"name\": \"Koichi Wakata\", \"craft\": \"ISS\"}, {\"name\": \"Anna Kikina\", \"craft\": \"ISS\"}], \"number\": 10}"</span></code></pre></div>
+<span class="co">## [1] "{\"people\": [{\"craft\": \"Tiangong\", \"name\": \"Cai Xuzhe\"}, {\"craft\": \"Tiangong\", \"name\": \"Chen Dong\"}, {\"craft\": \"Tiangong\", \"name\": \"Liu Yang\"}, {\"craft\": \"ISS\", \"name\": \"Sergey Prokopyev\"}, {\"craft\": \"ISS\", \"name\": \"Dmitry Petelin\"}, {\"craft\": \"ISS\", \"name\": \"Frank Rubio\"}, {\"craft\": \"ISS\", \"name\": \"Nicole Mann\"}, {\"craft\": \"ISS\", \"name\": \"Josh Cassada\"}, {\"craft\": \"ISS\", \"name\": \"Koichi Wakata\"}, {\"craft\": \"ISS\", \"name\": \"Anna Kikina\"}, {\"craft\": \"Shenzhou 15\", \"name\": \"Fei Junlong\"}, {\"craft\": \"Shenzhou 15\", \"name\": \"Deng Qingming\"}, {\"craft\": \"Shenzhou 15\", \"name\": \"Zhang Lu\"}], \"number\": 13, \"message\": \"success\"}"</span></code></pre></div>
 <p>Die resultierende Zeichenfolge sieht zwar recht unordentlich aus, aber es liegt wirklich die JSON-Struktur vor.</p>
 <p>Ausgehend von diesem character Vektor können wir nun mit <code><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html">fromJSON()</a></code>, aus dem <code>jsonlite</code> Paket, alles in ein Listenformat transformieren.</p>
 <p>Die <code><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html">fromJSON()</a></code> Funktion benötigt einen character Vektor, der die JSON-Struktur enthält, die wir aus der Ausgabe von <code><a href="https://rdrr.io/r/base/rawConversion.html">rawToChar()</a></code> erhalten haben. Wenn wir also diese beiden Funktionen nacheinander anwenden, erhalten wir die gewünschten Daten in einem Format, das wir in R leicht bearbeiten können.</p>
@@ -368,26 +368,29 @@
 <code class="sourceCode R"><span class="va">data</span> <span class="op">&lt;-</span>  <span class="fu"><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html">fromJSON</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rawConversion.html">rawToChar</a></span><span class="op">(</span><span class="va">jdata</span><span class="op">$</span><span class="va">content</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span>
 <span class="co">## List of 3</span>
-<span class="co">##  $ message: chr "success"</span>
-<span class="co">##  $ people :'data.frame': 10 obs. of  2 variables:</span>
-<span class="co">##   ..$ name : chr [1:10] "Cai Xuzhe" "Chen Dong" "Liu Yang" "Sergey Prokopyev" ..</span>
-<span class="co">##   ..$ craft: chr [1:10] "Tiangong" "Tiangong" "Tiangong" "ISS" ...</span>
-<span class="co">##  $ number : int 10</span></code></pre></div>
+<span class="co">##  $ people :'data.frame': 13 obs. of  2 variables:</span>
+<span class="co">##   ..$ craft: chr [1:13] "Tiangong" "Tiangong" "Tiangong" "ISS" ...</span>
+<span class="co">##   ..$ name : chr [1:13] "Cai Xuzhe" "Chen Dong" "Liu Yang" "Sergey Prokopyev" ..</span>
+<span class="co">##  $ number : int 13</span>
+<span class="co">##  $ message: chr "success"</span></code></pre></div>
 <p>Die Liste <code>data</code> hat drei Elemente. Uns interessiert in erster Linie das Data Frame <code>people</code>.</p>
 <div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">data</span><span class="op">$</span><span class="va">people</span>
-<span class="co">##                name    craft</span>
-<span class="co">## 1         Cai Xuzhe Tiangong</span>
-<span class="co">## 2         Chen Dong Tiangong</span>
-<span class="co">## 3          Liu Yang Tiangong</span>
-<span class="co">## 4  Sergey Prokopyev      ISS</span>
-<span class="co">## 5    Dmitry Petelin      ISS</span>
-<span class="co">## 6       Frank Rubio      ISS</span>
-<span class="co">## 7       Nicole Mann      ISS</span>
-<span class="co">## 8      Josh Cassada      ISS</span>
-<span class="co">## 9     Koichi Wakata      ISS</span>
-<span class="co">## 10      Anna Kikina      ISS</span></code></pre></div>
-<p>Also, da haben wir unsere Antwort: Zum Zeitpunkt des letzten Updates Nov 23, 2022 von R4ews befanden sich 10 Personen im Weltraum. Aber wenn ihr den Code zu einem späteren Zeitpunkt ausprobiert, könnten es auch schon wieder andere Namen und eine andere Anzahl sein. Das ist einer der Vorteile von APIs - im Gegensatz zu Datensätzen, die man im Spreadsheet Format herunterladen kann, werden sie in der Regel in Echtzeit oder nahezu in Echtzeit aktualisiert. APIs bieten somit die Möglichkeit leicht auf sehr aktuelle Daten zuzugreifen.</p>
+<span class="co">##          craft             name</span>
+<span class="co">## 1     Tiangong        Cai Xuzhe</span>
+<span class="co">## 2     Tiangong        Chen Dong</span>
+<span class="co">## 3     Tiangong         Liu Yang</span>
+<span class="co">## 4          ISS Sergey Prokopyev</span>
+<span class="co">## 5          ISS   Dmitry Petelin</span>
+<span class="co">## 6          ISS      Frank Rubio</span>
+<span class="co">## 7          ISS      Nicole Mann</span>
+<span class="co">## 8          ISS     Josh Cassada</span>
+<span class="co">## 9          ISS    Koichi Wakata</span>
+<span class="co">## 10         ISS      Anna Kikina</span>
+<span class="co">## 11 Shenzhou 15      Fei Junlong</span>
+<span class="co">## 12 Shenzhou 15    Deng Qingming</span>
+<span class="co">## 13 Shenzhou 15         Zhang Lu</span></code></pre></div>
+<p>Also, da haben wir unsere Antwort: Zum Zeitpunkt des letzten Updates Dec 07, 2022 von R4ews befanden sich 13 Personen im Weltraum. Aber wenn ihr den Code zu einem späteren Zeitpunkt ausprobiert, könnten es auch schon wieder andere Namen und eine andere Anzahl sein. Das ist einer der Vorteile von APIs - im Gegensatz zu Datensätzen, die man im Spreadsheet Format herunterladen kann, werden sie in der Regel in Echtzeit oder nahezu in Echtzeit aktualisiert. APIs bieten somit die Möglichkeit leicht auf sehr aktuelle Daten zuzugreifen.</p>
 <p>In diesem Beispiel haben wir einen sehr unkomplizierten API-Workflow durchlaufen. Die meisten APIs fordern, dass man demselben allgemeinen Muster folgt, aber dabei können die jeweilgen Aufrufe/Befehle durchaus deutlich komplexer sein.</p>
 <p>In unserem Beispiel war es ausreichen nur die URL anzugeben. Aber einige APIs verlangen mehr Informationen vom Benutzer. Darauf gehen wir aber erstmal nicht weiter ein. Stattdessen fragen wir noch nach dem Ort der ISS im Moment der Abfrage</p>
 <div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
@@ -396,16 +399,16 @@
 <code class="sourceCode R"><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html">fromJSON</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rawConversion.html">rawToChar</a></span><span class="op">(</span><span class="va">jdata</span><span class="op">$</span><span class="va">content</span><span class="op">)</span><span class="op">)</span>
 <span class="va">data</span><span class="op">$</span><span class="va">iss_position</span>
 <span class="co">## $latitude</span>
-<span class="co">## [1] "-38.1772"</span>
+<span class="co">## [1] "-37.5441"</span>
 <span class="co">## </span>
 <span class="co">## $longitude</span>
-<span class="co">## [1] "-127.8395"</span>
+<span class="co">## [1] "-135.9224"</span>
 <span class="va">data</span><span class="op">$</span><span class="va">timestamp</span>
-<span class="co">## [1] 1669231775</span></code></pre></div>
+<span class="co">## [1] 1670423892</span></code></pre></div>
 <p>Diese API gibt uns die Zeit in Form von <a href="https://de.wikipedia.org/wiki/Unixzeit">Unixzeit</a> zurück. Unixzeit ist die Zeitspanne, die seit dem 1. Januar 1970 vergangen ist. Mithilfe der Funktion <code>as_datetime()</code> aus dem <a href="https://lubridate.tidyverse.org">lubridate</a> Paket können wir die Unixzeit aber leicht umrechnen</p>
 <div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">lubridate</span><span class="fu">::</span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/as_date.html">as_datetime</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">timestamp</span><span class="op">)</span>
-<span class="co">## [1] "2022-11-23 19:29:35 UTC"</span></code></pre></div>
+<span class="co">## [1] "2022-12-07 14:38:12 UTC"</span></code></pre></div>
 <p>Damit wollen wir den Abschnitt zu APIs beenden. Macht euch bewusst, dass wir hier wirklich nur die Basics in Bezug auf APIs eingeführt haben. Aber hoffentlich hat euch diese Einführung trotzdem ausreichend Vertrauen gegeben, sich mit einigen komplexeren und leistungsfähigeren APIs auseinanderzusetzen.</p>
 </div>
 </div>

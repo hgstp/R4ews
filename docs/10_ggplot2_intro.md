@@ -44,7 +44,9 @@ library(tidyverse)
 
 Die grundlegende Idee des ggplot2 Ansatzes zum Erstellen von Grafiken, besteht darin die Bausteine (verschiedene Layer) eines Plots unabhängig voneinander zu definieren und diese dann zu einer Grafik zusammenzufügen. Eine Grafik besteht immer aus:
 
-- den __Daten__ (als `data.frame` oder `tibble`), die ihr visualisieren möchtet, und eine Reihe von Zuordnungen, die beschreiben, wie Variablen aus dem Datensatz auf ästhetische Attribute abgebildet werden
+- den __Daten__ (als `data.frame` oder `tibble`), die ihr visualisieren möchtet
+
+- einer Reihe von Zuordnungen (einem __mapping__), die beschreiben, wie Variablen aus dem Datensatz auf ästhetische Attribute abgebildet werden
 
 - __geometrischen Objekten__ (`geom`s), die beschreiben was man am Ende wirklich sieht, also z.B. Punkte, Linien, ...
 
@@ -63,7 +65,7 @@ Zusätzlich kann die Grafik aber auch noch
 
 enthalten.
 
-Die einzelnen Teile eines Plots werden dann mit dem `+` Operator zusammengefügt. Initialisiert wird ein Plot mit `ggplot()`. Ohne weitere Bestandteile wird aber nur eine leere Grafik erzeugt
+Die einzelnen Teile eines Plots werden mit dem `+` Operator zusammengefügt. Initialisiert wird ein Plot mit `ggplot()`. Ohne weitere Bestandteile wird aber nur eine leere Grafik erzeugt
 
 
 ```r

@@ -18,7 +18,8 @@ Mit der Funktion `aes()` lässt sich das __Aussehen__ der Grafik regeln (nicht d
 - den Linientyp: `linetype`
 - die Größe der Symbol: `size`
 
-festlegen. Die jeweiligen Werte dieser aesthetics können entweder fix oder in _Abhängigkeit von Variablen aus dem verwendeten Datensatz_ gewählt werden. 
+festlegen. Die jeweiligen Werte dieser aesthetics können entweder fix oder in _Abhängigkeit von Variablen aus dem verwendeten Datensatz_ gewählt werden.
+Werden die Werte in Abhängigkeit der Daten gewählt, so definiert die Funktion `aes()` ein __mapping__ zwischen den Daten und den aesthetics der Grafik.
 
 
 Nicht jedes aesthetic kann allerdings mit allen verfügbaren geoms kombiniert werden. So macht z.B. der `linetype` ja wenig Sinn in `geom_point()`. Eine Übersicht der möglichen aesthetics findet man in der Hilfe jeder geom-Funktion. In der Hilfe von `geom_point()` findet man z.B. 
@@ -69,11 +70,10 @@ Learn more about setting these aesthetics in vignette("ggplot2-specs").
 
 ```
 
-Will man über die Daten die Wert für die verschiedenen aesthetics definieren, so muss dies innerhalb der `aes()` Funktion geschehen.  Werden Argumente auf fixe Werte gesetzt, so sind sie außerhalb der `aes()` Funktion zu setzen. 
+Will man über die Daten Werte für die verschiedenen aesthetics definieren, so muss dies innerhalb der `aes()` Funktion geschehen.  Werden Argumente auf fixe Werte gesetzt, so sind sie außerhalb der `aes()` Funktion zu setzen. 
 
 
-In einem Plot der `gdpPercap` Daten für Deutschland und Frankreich wollen wir anhand von unterschiedlichen Farben die Daten der beiden Länder unterscheiden. Dazu müssen wir nur `colour` innerhalb von `aes()` den Wert `country` zuweisen.
-Auf der anderen Seite wollen wir die Größe der zu zeichnenden Punkte etwas erhöhen. Aber die Größe soll für beide Länder gleich sein. Daher definieren wir `size` außerhalb der `aes()` Funktion.
+In einem Plot der `gdpPercap` Daten für Deutschland und Frankreich wollen wir anhand von unterschiedlichen Farben die Daten der beiden Länder unterscheiden. Dazu müssen wir nur `colour` innerhalb von `aes()` den Wert `country` zuweisen. Zusätzlich wollen wir die Größe der zu zeichnenden Punkte etwas erhöhen. Aber die Größe soll für beide Länder gleich sein. Daher definieren wir `size` außerhalb der `aes()` Funktion.
 
 
 
@@ -117,7 +117,7 @@ gapminder %>%
 <img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-3-1.png" width="50%" /><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-3-2.png" width="50%" />
 
 
-Obwohl die gleichen Daten visualisiert wurden, ist das Ergebnis doch recht unterschiedlich. Der Scatterplot zeigt alle (abgesehen von überzeichnen) Daten, wohingegen mit `geom_smooth()` eine geglätteter Zusammenhang dargestellt wird.
+Obwohl die gleichen Daten visualisiert wurden, ist das Ergebnis doch recht unterschiedlich. Der Scatterplot zeigt alle (abgesehen von Overplotting) Daten, wohingegen mit `geom_smooth()` eine geglätteter Zusammenhang dargestellt wird.
 
 
 Interessant sind hier natürlich die wenigen großen `gdpPercap` Werte in der linken Grafik
@@ -141,7 +141,7 @@ Kuwait hat über den gesamten Zeitraum sehr hohe GDP Werte. Aber zu Beginn der A
 
 
 
-Einem `ggplot` Objekt können wir nicht nur ein `geom` zuordnen. Prinzipiell können wir beliebig viele weitere `geoms` hinzufügen. Wir können also die gerade durchgeführte Glättung der Daten auch direkt zum Scatterplot hinzufügen
+Einem `ggplot` Objekt können wir nicht nur __ein__ `geom` zuordnen. Prinzipiell können wir beliebig viele weitere `geoms` hinzufügen. Wir können also die gerade durchgeführte Glättung der Daten auch direkt zum Scatterplot hinzufügen
 
 
 
@@ -172,7 +172,7 @@ gapminder %>%
 
 Beachtet dabei, dass wir `colour` nur für `geom_point()` gewählt haben. Die Glättung erfolgt weiterhin über alle Daten und nicht separat für jeden Kontinent. In diesem Fall haben wir in `geom_point()` ein lokales `mapping` definiert.
 
-Aber natürlich hätten wir auch zusätzlich die Glättung pro Kontinent durchführen können. Dazu schreiben wir dann einfach `colour` in das globale `mapping`  und löschen das lokale wieder (es wird ja jetzt lokal nichts anders gemacht als global definiert wurde).
+Aber natürlich hätten wir die Glättung auch pro Kontinent durchführen können. Dazu schreiben wir einfach `colour` in das __globale__ `mapping`  und löschen das lokale mapping in `geom_point()` wieder.
 
 
 ```r
@@ -187,7 +187,7 @@ gapminder %>%
 
 
 
-Nehmen wir mal an, dass uns nun aber die Punkte etwas zu groß sind und wir in diesem Plot kein durchgezogenen Linien verwenden wollen.  D.h. wir würden gerne andere (aber fixe, nicht von Variablen abhängende) aesthetic Werte setzen. Linientyp gefällt mir auch nicht in diesem Plot. Das lässt sich schnell ändern.
+Nehmen wir mal an, dass uns nun aber die Punkte etwas zu groß sind und die Linien sollten nicht durchgezogen sein.  D.h. wir würden gerne andere (aber fixe, nicht von Variablen abhängende) aesthetic Werte setzen.  Das lässt sich schnell ändern.
 
 
 ```r
@@ -230,7 +230,7 @@ args(geom_bar)
 die Transformation `count`. Das macht durchaus Sinn, da ja gezählt werden muss/soll wie viele Beobachtungen in die jeweilige Kategorie fallen.
 
 
-Die jeweiligen Statistiken könnten über die entsprechenden `stat_xxx()` Funktionen geplottet werden. Da aber jede `geom_xxx()` Funktion mit mindestens einer dieser `stat_xxx()` Funktionen verbunden ist, ist es oftmals einfacher direkt die entsprechende `geom_xxx()` Funktion zu verwenden. Aber natürlich könnte die `stat_xxx()` Funktion auch direkt aufgerufen werden.
+Die jeweiligen Statistiken könnten über die entsprechenden `stat_xxx()` Funktionen geplottet werden. Da aber jede `geom_xxx()` Funktion mit mindestens einer dieser `stat_xxx()` Funktionen verbunden ist, ist es oftmals einfacher direkt die entsprechende `geom_xxx()` Funktion zu verwenden. Aber generell könnte die jeweilige `stat_xxx()` Funktion auch direkt aufgerufen werden.
 
 
 Daher liefern die beiden nachfolgenden Befehle auch die exakt gleiche Grafik
@@ -247,7 +247,7 @@ ggplot(gapminder, aes(x = continent)) +
 <img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-9-1.png" width="50%" /><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-9-2.png" width="50%" />
 
 
-Jedes `geom` hat zwar ein Standard-Transformation, aber natürlich können oftmals noch weitere Transformationen berechnet/genutzt werden. Im Abschnitt __Computed variables__  der Hilfe zu einem `geom` sieht man alle verfügbaren Transformationen
+Jedes `geom` hat zwar ein Standard-Transformation, aber natürlich können oftmals noch weitere Transformationen berechnet/genutzt werden. Im Abschnitt __Computed variables__  der Hilfe zu einem `geom` sieht man alle verfügbaren Transformationen.
 
 Für `geom_bar()` sind dies
 
@@ -281,7 +281,7 @@ ggplot(gapminder, aes(x = continent, y = ..prop..)) +
 <img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-11-1.png" width="80%" style="display: block; margin: auto;" />
 
 Der Befehl hat jetzt zwar eine Grafik erzeugt, aber die sieht noch nicht so aus, wie wir das erwartet haben. Die 
-relativen Häufigkeiten wurden innerhalb der fünf Gruppen berechnet und nicht über alle Beobachtungen. D.h. wir müssen der Funktion noch sagen, dass es nur eine Gruppe geben soll.
+relativen Häufigkeiten wurden innerhalb der fünf Gruppen berechnet und nicht über alle Beobachtungen. D.h. wir müssen der Funktion noch sagen, dass die relativen Häufigkeiten der fünf verschiedenen Ausprägungen (Kontinente) in eine Gruppe berechnet werden sollen. Dies geschieht über das `group` aesthetic.
 
 
 
@@ -317,7 +317,7 @@ Man kann sicherlich mit `ggplot2` Grafiken erstellen, ohne zu wissen, wie `scale
 modifizieren. Argumente dieser Funktionen sind z.B. `name`, `limits`, `breaks` oder `labels`.
 
 
-Zuerst spielen wir etwas mit Farben. Dazu plotten wir erneut `year` gegen `gdpPercap` und wählen für jeden Kontinent eine eigene Farbe. Da wir die Farben über `colour` definieren, verwenden wir danach Funktionen aus der Klasse `scale_colour_xxx()`. Hätten wir beispielsweise Flächen über das aesthetic `fill` mit Farbe gefüllt, so würden wir Funktionen aus der Klasse `scale_fill_xxx()` verwenden um die Farben anzupassen.
+Zuerst spielen wir etwas mit Farben. Dazu plotten wir erneut `year` gegen `gdpPercap` und wählen für jeden Kontinent eine eigene Farbe. Da wir die Farben über `colour` definieren, verwenden wir Funktionen aus der Klasse `scale_colour_xxx()`. Hätten wir beispielsweise Flächen über das aesthetic `fill` mit Farbe gefüllt, so würden wir Funktionen aus der Klasse `scale_fill_xxx()` verwenden um die Farben anzupassen.
 
 
 ```r
@@ -335,7 +335,7 @@ p + scale_colour_grey(start = 0.1, end = 0.9) # keine so gute Wahl
 ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 
 p + scale_colour_manual(
-  values = c("blue", "gold", "sienna1", "sienna4", "hotpink1", "hotpink4"),
+  values = c("palevioletred3", "seagreen", "sienna1", "sienna4", "yellow"),
   name = "Kontinent")
 ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
@@ -351,7 +351,7 @@ Die Achsenbeschriftung der y-Achse ist nicht wirklich schön, weil nicht unbedin
 ```r
 p <- p + 
   scale_colour_manual(
-    values = c("blue", "gold", "sienna1", "sienna4", "hotpink1", "hotpink4"))
+  values = c("palevioletred3", "seagreen", "sienna1", "sienna4", "yellow"))
 
 p + scale_y_continuous("GDP pro Kopf")
 ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
@@ -374,10 +374,9 @@ Da es sich bei `gdpPercap` um eine stetige Variable handelt, haben wir `scale_y_
 
 
 
-Die frühen Kuwait-Beobachtungen ziehen die y-Achse stark auseinander. Daher könnte man vielleicht etwas in den Plot hinein zoomen wollen. Dazu kann man das Koordinatensystem anpassen über `coord_cartasian()`. Alternativ könnte man auch mit der Funktion `ylim()` arbeiten (analog existiert natürlich auch `xlmin()`). 
+Die frühen Kuwait-Beobachtungen ziehen die y-Achse stark auseinander. Daher könnte man vielleicht etwas in den Plot hinein zoomen wollen. Dazu kann man das Koordinatensystem anpassen über `coord_cartasian()`. Alternativ könnte man auch mit der Funktion `ylim()` arbeiten (analog existiert natürlich auch `xlim()`). 
 
-Verwendet man aber `xlim()` bzw. `ylim()`, so werden alle Datenpunkte, die nicht im zu plottenden Bereich liegen, aber nicht nur nicht gezeichnet, sondern auch aus dem Datensatz (für diesen einen Plot) entfernt. Dies hat dann aber
-Auswirkungen auf Teile des Plots, die auf statistische Transformationen basieren, die mithilfe der vorhanden Daten berechnet wurden.
+Verwendet man aber `xlim()` bzw. `ylim()`, so werden alle Datenpunkte, die nicht im zu plottenden Bereich liegen, aber nicht nur nicht gezeichnet, sondern auch aus dem Datensatz (für diesen einen Plot) entfernt. Dies hat dann Auswirkungen auf Teile des Plots, die auf statistische Transformationen basieren, welche mithilfe der vorhanden Daten berechnet werden.
 
 
 ```r
@@ -407,13 +406,81 @@ p + scale_x_reverse()
 <img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-17-1.png" width="80%" style="display: block; margin: auto;" />
 
 
+Am Ende von diesem Abschnitt wollen wir nochmal ein Blick auf die Häufigkeitsverteilung bzgl. der verschiedenen Kontinente werfen. Diesmal wollen wir aber zusätzlich noch die GDP pro Kopf Werte berücksichtigen. Dazu teilen wir die GDP Werte in __niedrig__ (kleiner als das 0.25 Quantil aller Beobachtungen), __mittel__ (zwischen dem 0.25 und 0.75 Quantil aller Beobachtungen) und __hoch__ (über dem 0.75 Quantil aller Beobachtungen) ein. Diese Information nutzen wir dann zum Einfärben der Balken
+
+
+```r
+ggplot(gapminder, 
+       aes(x = continent,
+           fill = cut(gdpPercap, 
+                      breaks = c(0, quantile(gdpPercap,0.25),
+                                 quantile(gdpPercap, 0.75),
+                                 max(gdpPercap))
+                      )
+           )) + 
+  geom_bar()
+```
+
+<img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-18-1.png" width="80%" style="display: block; margin: auto;" />
+
+
+Wir erkennen, dass die notwendige Klassifizierung der GDP Werte im Plot Befehl erfolgen kann. Das produzierte Ergebnis ist aber natürlich nicht so überzeugend. Die Überschrift, wie die Beschriftungen der Legende müssen angepasst werden. Dazu verwenden wir die Funktion `scale_fill_discrete()`.
+
+
+
+```r
+p <- ggplot(gapminder, 
+       aes(x = continent,
+           fill = cut(gdpPercap, 
+                      breaks = c(0, quantile(gdpPercap,0.25),
+                                 quantile(gdpPercap, 0.75),
+                                 max(gdpPercap))
+                      )
+           )) 
+p + 
+  geom_bar() +
+  scale_fill_discrete(name = "GDP\nKlassifizierung",
+                      labels = c("niedrig", "mittel", "hoch"))
+```
+
+<img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-19-1.png" width="80%" style="display: block; margin: auto;" />
+
+In dieser Darstellung bleibt es bei einem Balken pro Kontinent. Würden wir aber gerne (bis zu) drei Balken pro Kontinent sehen, müssen die Positionierung ändern.
+
+
+```r
+p + 
+  geom_bar(position = "dodge") +
+  scale_fill_discrete(name = "GDP\nKlassifizierung",
+                      labels = c("niedrig", "mittel", "hoch")) 
+```
+
+<img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-20-1.png" width="80%" style="display: block; margin: auto;" />
+
+Gefällt einem das kartesische Koordinatensystem nicht, könnte man beispielsweise mit Polarkoordinaten arbeiten.
+
+
+
+
+```r
+p + 
+  geom_bar(position = "dodge") +
+  scale_fill_discrete(name = "GDP\nKlassifizierung",
+                      labels = c("niedrig", "mittel", "hoch")) +
+  coord_polar()
+```
+
+<img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-21-1.png" width="80%" style="display: block; margin: auto;" />
+
+
+
 Für weitere Optionen sei hier auf die [online Version](https://ggplot2-book.org/index.html) der neuesten Auflage von [ggplot2] [@wickham2009] verwiesen.
 
 
 
 ## Facets
 
-Datensätze lassen sich oftmals bzgl. vorhandener Variablen gruppieren und oft  will man dann Zusammenhänge weiterer Variablen innerhalb dieser Gruppen darstellen. Entsteht die Gruppierung basierend auf den Ausprägungen einer Variable, so kann man mit `facet_wrap()` arbeiten
+Datensätze lassen sich oftmals bzgl. vorhandener Variablen gruppieren. Die zu untersuchenden Zusammenhänge zwischen weiteren Variablen sollten dann innerhalb dieser Gruppen dargestellt werden. Entsteht die Gruppierung basierend auf den Ausprägungen einer Variable, so kann man z.B.  mit `facet_wrap()` arbeiten
 
 
 
@@ -426,7 +493,7 @@ gapminder %>%
 ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
-<img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-18-1.png" width="80%" style="display: block; margin: auto;" />
+<img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-22-1.png" width="80%" style="display: block; margin: auto;" />
 
 
 
@@ -443,7 +510,7 @@ gapminder %>%
 ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
-<img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-19-1.png" width="80%" style="display: block; margin: auto;" />
+<img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-23-1.png" width="80%" style="display: block; margin: auto;" />
 
 Erfolgt die Gruppierung anhand von zwei Variablen, so bietet `facet_grid()` eine passende Aufteilung des Grafikfensters in Zeilen und Spalten. Neben dem Kontinent berücksichtigen wir jetzt auch noch die Populationsgröße des Landes. Konkret fragen wir ob die Population im entsprechenden Jahr größer als 5000000 ist, oder eben nicht.
 
@@ -458,7 +525,7 @@ gapminder %>%
 ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
-<img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-20-1.png" width="80%" style="display: block; margin: auto;" />
+<img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-24-1.png" width="80%" style="display: block; margin: auto;" />
 
 Für Ozeanien erhalten wir so z.B. eine Unterteilung in Australien (`TRUE`) und Neuseeland (`FALSE`).
 
@@ -485,7 +552,7 @@ gapminder %>%
 ## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
-<img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-21-1.png" width="80%" style="display: block; margin: auto;" />
+<img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-25-1.png" width="80%" style="display: block; margin: auto;" />
 
 
 
@@ -506,23 +573,18 @@ verändern. Eine Reihe von `themes` sind bereits vorhanden, wobei `theme_gray()`
 
 ```r
 p
-## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 p + theme_bw()
-## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 p + theme_dark()
-## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 p + theme_minimal()
-## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
-<img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-22-1.png" width="50%" /><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-22-2.png" width="50%" /><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-22-3.png" width="50%" /><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-22-4.png" width="50%" />
+<img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-26-1.png" width="50%" /><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-26-2.png" width="50%" /><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-26-3.png" width="50%" /><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-26-4.png" width="50%" />
 
 
 Wir möchten nun gerne folgende Änderungen an der Grafik vornehmen:
 
 - die Größe der Achsenbeschriftung ändern
 - die Gitterlinien ohne Beschriftung entfernen
-- eine Überschrift hinzufügen
 - die Legende in die Grafik verschieben
 - die Hintergrundfarbe der Grafik und der Legende ändern
 
@@ -533,9 +595,6 @@ Die meisten dieser Änderungen können wir mit `theme()` durchführen.
 
 ```r
 p <- p + scale_colour_brewer(palette = "Set1") 
-## Scale for 'colour' is already present. Adding
-## another scale for 'colour', which will replace
-## the existing scale.
 p +
   theme(
     axis.text = element_text(size = 14),
@@ -547,10 +606,9 @@ p +
     panel.grid.minor = element_blank(),
     panel.background = element_rect(fill = "gold")
   )
-## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
-<img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-23-1.png" width="80%" style="display: block; margin: auto;" />
+<img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-27-1.png" width="80%" style="display: block; margin: auto;" />
 
 Ob das nun alles schön aussieht, sei dahingestellt, aber es zeigt durchaus die vorhandenen Möglichkeiten.
 
@@ -573,13 +631,15 @@ class(mein_theme)
 
 ```r
 p + mein_theme
-## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
-<img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-25-1.png" width="80%" style="display: block; margin: auto;" />
+<img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-29-1.png" width="80%" style="display: block; margin: auto;" />
 
 ## Buch zum Paket
 
 Dieser Abschnitt konnte nur einen kleinen Einblick in die Möglichkeiten des `ggplot2` Pakets geben. Eine ausführliche Beschreibung findet man im [Buch](https://ggplot2-book.org) zum Paket.
+
+
+Findet man dort noch nicht die Funktionalität, die man sucht, sollte man einen Blick auf die [ggplot2 extensions](https://exts.ggplot2.tidyverse.org/) werfen. Oder vielleicht direkt dort starten.
 
 

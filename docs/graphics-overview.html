@@ -140,7 +140,8 @@
 </h2>
 <p>Die grundlegende Idee des ggplot2 Ansatzes zum Erstellen von Grafiken, besteht darin die Bausteine (verschiedene Layer) eines Plots unabhängig voneinander zu definieren und diese dann zu einer Grafik zusammenzufügen. Eine Grafik besteht immer aus:</p>
 <ul>
-<li><p>den <strong>Daten</strong> (als <code>data.frame</code> oder <code>tibble</code>), die ihr visualisieren möchtet, und eine Reihe von Zuordnungen, die beschreiben, wie Variablen aus dem Datensatz auf ästhetische Attribute abgebildet werden</p></li>
+<li><p>den <strong>Daten</strong> (als <code>data.frame</code> oder <code>tibble</code>), die ihr visualisieren möchtet</p></li>
+<li><p>einer Reihe von Zuordnungen (einem <strong>mapping</strong>), die beschreiben, wie Variablen aus dem Datensatz auf ästhetische Attribute abgebildet werden</p></li>
 <li><p><strong>geometrischen Objekten</strong> (<code>geom</code>s), die beschreiben was man am Ende wirklich sieht, also z.B. Punkte, Linien, …</p></li>
 <li><p>einem <strong>Koordinatensystem</strong>, das beschreibt, wie die Koordinaten der Daten auf die Ebene der Grafik abgebildet werden. Außerdem stellt es Achsen und Gitternetzlinien zur Verfügung, die das Lesen der Grafik ermöglichen. Normalerweise verwenden wir ein kartesisches Koordinatensystem, aber es gibt natürlich auch noch eine Reihe anderer Optionen.</p></li>
 <li><p><strong>Skalen</strong> (<code>scales</code>), die Werte der Daten abbilden auf Werte in einem ästhetischen Raum, sei es in Farbe, Größe oder Form.</p></li>
@@ -152,7 +153,7 @@
 <li><p>…</p></li>
 </ul>
 <p>enthalten.</p>
-<p>Die einzelnen Teile eines Plots werden dann mit dem <code>+</code> Operator zusammengefügt. Initialisiert wird ein Plot mit <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code>. Ohne weitere Bestandteile wird aber nur eine leere Grafik erzeugt</p>
+<p>Die einzelnen Teile eines Plots werden mit dem <code>+</code> Operator zusammengefügt. Initialisiert wird ein Plot mit <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code>. Ohne weitere Bestandteile wird aber nur eine leere Grafik erzeugt</p>
 <div class="sourceCode" id="cb141"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jennybc/gapminder">gapminder</a></span><span class="op">)</span>
 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gapminder</span><span class="op">)</span> </code></pre></div>
