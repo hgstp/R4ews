@@ -398,7 +398,7 @@ relativen Häufigkeiten wurden innerhalb der fünf Gruppen berechnet und nicht �
 <div class="inline-figure"><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-18-1.png" width="80%" style="display: block; margin: auto;"></div>
 <p>Wir erkennen, dass die notwendige Klassifizierung der GDP Werte im Plot Befehl erfolgen kann. Das produzierte Ergebnis ist aber natürlich nicht so überzeugend. Die Überschrift, wie die Beschriftungen der Legende müssen angepasst werden. Dazu verwenden wir die Funktion <code><a href="https://ggplot2.tidyverse.org/reference/scale_colour_discrete.html">scale_fill_discrete()</a></code>.</p>
 <div class="sourceCode" id="cb165"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gapminder</span>, 
+<code class="sourceCode R"><span class="va">q</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gapminder</span>, 
        <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">continent</span>,
            fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span><span class="op">(</span><span class="va">gdpPercap</span>, 
                       breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fu"><a href="https://rdrr.io/r/stats/quantile.html">quantile</a></span><span class="op">(</span><span class="va">gdpPercap</span>,<span class="fl">0.25</span><span class="op">)</span>,
@@ -406,21 +406,21 @@ relativen Häufigkeiten wurden innerhalb der fünf Gruppen berechnet und nicht �
                                  <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">gdpPercap</span><span class="op">)</span><span class="op">)</span>
                       <span class="op">)</span>
            <span class="op">)</span><span class="op">)</span> 
-<span class="va">p</span> <span class="op">+</span> 
+<span class="va">q</span> <span class="op">+</span> 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_colour_discrete.html">scale_fill_discrete</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"GDP\nKlassifizierung"</span>,
                       labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"niedrig"</span>, <span class="st">"mittel"</span>, <span class="st">"hoch"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <div class="inline-figure"><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-19-1.png" width="80%" style="display: block; margin: auto;"></div>
 <p>In dieser Darstellung bleibt es bei einem Balken pro Kontinent. Würden wir aber gerne (bis zu) drei Balken pro Kontinent sehen, müssen die Positionierung ändern.</p>
 <div class="sourceCode" id="cb166"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">p</span> <span class="op">+</span> 
+<code class="sourceCode R"><span class="va">q</span> <span class="op">+</span> 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"dodge"</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_colour_discrete.html">scale_fill_discrete</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"GDP\nKlassifizierung"</span>,
                       labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"niedrig"</span>, <span class="st">"mittel"</span>, <span class="st">"hoch"</span><span class="op">)</span><span class="op">)</span> </code></pre></div>
 <div class="inline-figure"><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-20-1.png" width="80%" style="display: block; margin: auto;"></div>
 <p>Gefällt einem das kartesische Koordinatensystem nicht, könnte man beispielsweise mit Polarkoordinaten arbeiten.</p>
 <div class="sourceCode" id="cb167"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">p</span> <span class="op">+</span> 
+<code class="sourceCode R"><span class="va">q</span> <span class="op">+</span> 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"dodge"</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_colour_discrete.html">scale_fill_discrete</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"GDP\nKlassifizierung"</span>,
                       labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"niedrig"</span>, <span class="st">"mittel"</span>, <span class="st">"hoch"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
@@ -492,9 +492,13 @@ die Variable über ihren Namen aufgerufen werden. Nun scheint es so, dass ein Au
 <p>verändern. Eine Reihe von <code>themes</code> sind bereits vorhanden, wobei <code><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_gray()</a></code> das Default <code>theme</code> ist. Siehe auch <code>?theme_gray()</code>.</p>
 <div class="sourceCode" id="cb172"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p</span>
+<span class="co">## `geom_smooth()` using method = 'loess' and formula 'y ~ x'</span>
 <span class="va">p</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">## `geom_smooth()` using method = 'loess' and formula 'y ~ x'</span>
 <span class="va">p</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_dark</a></span><span class="op">(</span><span class="op">)</span>
-<span class="va">p</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<span class="co">## `geom_smooth()` using method = 'loess' and formula 'y ~ x'</span>
+<span class="va">p</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">## `geom_smooth()` using method = 'loess' and formula 'y ~ x'</span></code></pre></div>
 <p><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-26-1.png" width="50%"><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-26-2.png" width="50%"><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-26-3.png" width="50%"><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-26-4.png" width="50%"></p>
 <p>Wir möchten nun gerne folgende Änderungen an der Grafik vornehmen:</p>
 <ul>
@@ -506,6 +510,9 @@ die Variable über ihren Namen aufgerufen werden. Nun scheint es so, dass ein Au
 <p>Die meisten dieser Änderungen können wir mit <code><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme()</a></code> durchführen.</p>
 <div class="sourceCode" id="cb173"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">p</span> <span class="op">&lt;-</span> <span class="va">p</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_colour_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Set1"</span><span class="op">)</span> 
+<span class="co">## Scale for 'colour' is already present. Adding</span>
+<span class="co">## another scale for 'colour', which will replace</span>
+<span class="co">## the existing scale.</span>
 <span class="va">p</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>
     axis.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">14</span><span class="op">)</span>,
@@ -516,7 +523,8 @@ die Variable über ihren Namen aufgerufen werden. Nun scheint es so, dass ein Au
     panel.grid.major <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_line</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="st">"grey40"</span><span class="op">)</span>,
     panel.grid.minor <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span>,
     panel.background <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_rect</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"gold"</span><span class="op">)</span>
-  <span class="op">)</span></code></pre></div>
+  <span class="op">)</span>
+<span class="co">## `geom_smooth()` using method = 'loess' and formula 'y ~ x'</span></code></pre></div>
 <div class="inline-figure"><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-27-1.png" width="80%" style="display: block; margin: auto;"></div>
 <p>Ob das nun alles schön aussieht, sei dahingestellt, aber es zeigt durchaus die vorhandenen Möglichkeiten.</p>
 <p>Will man gewisse Einstellung öfter verwenden, so kann man diese auch in einem <code>theme</code> Objekt speichern und wiederverwenden.</p>
@@ -531,7 +539,8 @@ die Variable über ihren Namen aufgerufen werden. Nun scheint es so, dass ein Au
 <span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">mein_theme</span><span class="op">)</span>
 <span class="co">## [1] "theme" "gg"</span></code></pre></div>
 <div class="sourceCode" id="cb175"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">p</span> <span class="op">+</span> <span class="va">mein_theme</span></code></pre></div>
+<code class="sourceCode R"><span class="va">p</span> <span class="op">+</span> <span class="va">mein_theme</span>
+<span class="co">## `geom_smooth()` using method = 'loess' and formula 'y ~ x'</span></code></pre></div>
 <div class="inline-figure"><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-29-1.png" width="80%" style="display: block; margin: auto;"></div>
 </div>
 <div id="buch-zum-paket" class="section level2" number="11.7">

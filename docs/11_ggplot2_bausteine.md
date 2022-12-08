@@ -429,7 +429,7 @@ Wir erkennen, dass die notwendige Klassifizierung der GDP Werte im Plot Befehl e
 
 
 ```r
-p <- ggplot(gapminder, 
+q <- ggplot(gapminder, 
        aes(x = continent,
            fill = cut(gdpPercap, 
                       breaks = c(0, quantile(gdpPercap,0.25),
@@ -437,7 +437,7 @@ p <- ggplot(gapminder,
                                  max(gdpPercap))
                       )
            )) 
-p + 
+q + 
   geom_bar() +
   scale_fill_discrete(name = "GDP\nKlassifizierung",
                       labels = c("niedrig", "mittel", "hoch"))
@@ -449,7 +449,7 @@ In dieser Darstellung bleibt es bei einem Balken pro Kontinent. Würden wir aber
 
 
 ```r
-p + 
+q + 
   geom_bar(position = "dodge") +
   scale_fill_discrete(name = "GDP\nKlassifizierung",
                       labels = c("niedrig", "mittel", "hoch")) 
@@ -463,7 +463,7 @@ Gefällt einem das kartesische Koordinatensystem nicht, könnte man beispielswei
 
 
 ```r
-p + 
+q + 
   geom_bar(position = "dodge") +
   scale_fill_discrete(name = "GDP\nKlassifizierung",
                       labels = c("niedrig", "mittel", "hoch")) +
@@ -573,9 +573,13 @@ verändern. Eine Reihe von `themes` sind bereits vorhanden, wobei `theme_gray()`
 
 ```r
 p
+## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 p + theme_bw()
+## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 p + theme_dark()
+## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 p + theme_minimal()
+## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
 <img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-26-1.png" width="50%" /><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-26-2.png" width="50%" /><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-26-3.png" width="50%" /><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-26-4.png" width="50%" />
@@ -595,6 +599,9 @@ Die meisten dieser Änderungen können wir mit `theme()` durchführen.
 
 ```r
 p <- p + scale_colour_brewer(palette = "Set1") 
+## Scale for 'colour' is already present. Adding
+## another scale for 'colour', which will replace
+## the existing scale.
 p +
   theme(
     axis.text = element_text(size = 14),
@@ -606,6 +613,7 @@ p +
     panel.grid.minor = element_blank(),
     panel.background = element_rect(fill = "gold")
   )
+## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
 <img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-27-1.png" width="80%" style="display: block; margin: auto;" />
@@ -631,6 +639,7 @@ class(mein_theme)
 
 ```r
 p + mein_theme
+## `geom_smooth()` using method = 'loess' and formula 'y ~ x'
 ```
 
 <img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-29-1.png" width="80%" style="display: block; margin: auto;" />

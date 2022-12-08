@@ -337,7 +337,7 @@
 <div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">jdata</span>
 <span class="co">## Response [http://api.open-notify.org/astros.json]</span>
-<span class="co">##   Date: 2022-12-07 14:38</span>
+<span class="co">##   Date: 2022-12-08 12:12</span>
 <span class="co">##   Status: 200</span>
 <span class="co">##   Content-Type: application/json</span>
 <span class="co">##   Size: 623 B</span></code></pre></div>
@@ -390,7 +390,7 @@
 <span class="co">## 11 Shenzhou 15      Fei Junlong</span>
 <span class="co">## 12 Shenzhou 15    Deng Qingming</span>
 <span class="co">## 13 Shenzhou 15         Zhang Lu</span></code></pre></div>
-<p>Also, da haben wir unsere Antwort: Zum Zeitpunkt des letzten Updates Dec 07, 2022 von R4ews befanden sich 13 Personen im Weltraum. Aber wenn ihr den Code zu einem späteren Zeitpunkt ausprobiert, könnten es auch schon wieder andere Namen und eine andere Anzahl sein. Das ist einer der Vorteile von APIs - im Gegensatz zu Datensätzen, die man im Spreadsheet Format herunterladen kann, werden sie in der Regel in Echtzeit oder nahezu in Echtzeit aktualisiert. APIs bieten somit die Möglichkeit leicht auf sehr aktuelle Daten zuzugreifen.</p>
+<p>Also, da haben wir unsere Antwort: Zum Zeitpunkt des letzten Updates Dec 08, 2022 von R4ews befanden sich 13 Personen im Weltraum. Aber wenn ihr den Code zu einem späteren Zeitpunkt ausprobiert, könnten es auch schon wieder andere Namen und eine andere Anzahl sein. Das ist einer der Vorteile von APIs - im Gegensatz zu Datensätzen, die man im Spreadsheet Format herunterladen kann, werden sie in der Regel in Echtzeit oder nahezu in Echtzeit aktualisiert. APIs bieten somit die Möglichkeit leicht auf sehr aktuelle Daten zuzugreifen.</p>
 <p>In diesem Beispiel haben wir einen sehr unkomplizierten API-Workflow durchlaufen. Die meisten APIs fordern, dass man demselben allgemeinen Muster folgt, aber dabei können die jeweilgen Aufrufe/Befehle durchaus deutlich komplexer sein.</p>
 <p>In unserem Beispiel war es ausreichen nur die URL anzugeben. Aber einige APIs verlangen mehr Informationen vom Benutzer. Darauf gehen wir aber erstmal nicht weiter ein. Stattdessen fragen wir noch nach dem Ort der ISS im Moment der Abfrage</p>
 <div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
@@ -398,17 +398,17 @@
 <div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html">fromJSON</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rawConversion.html">rawToChar</a></span><span class="op">(</span><span class="va">jdata</span><span class="op">$</span><span class="va">content</span><span class="op">)</span><span class="op">)</span>
 <span class="va">data</span><span class="op">$</span><span class="va">iss_position</span>
-<span class="co">## $latitude</span>
-<span class="co">## [1] "-37.5441"</span>
-<span class="co">## </span>
 <span class="co">## $longitude</span>
-<span class="co">## [1] "-135.9224"</span>
+<span class="co">## [1] "-132.0330"</span>
+<span class="co">## </span>
+<span class="co">## $latitude</span>
+<span class="co">## [1] "-48.7942"</span>
 <span class="va">data</span><span class="op">$</span><span class="va">timestamp</span>
-<span class="co">## [1] 1670423892</span></code></pre></div>
+<span class="co">## [1] 1670501538</span></code></pre></div>
 <p>Diese API gibt uns die Zeit in Form von <a href="https://de.wikipedia.org/wiki/Unixzeit">Unixzeit</a> zurück. Unixzeit ist die Zeitspanne, die seit dem 1. Januar 1970 vergangen ist. Mithilfe der Funktion <code>as_datetime()</code> aus dem <a href="https://lubridate.tidyverse.org">lubridate</a> Paket können wir die Unixzeit aber leicht umrechnen</p>
 <div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">lubridate</span><span class="fu">::</span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/as_date.html">as_datetime</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">timestamp</span><span class="op">)</span>
-<span class="co">## [1] "2022-12-07 14:38:12 UTC"</span></code></pre></div>
+<span class="co">## [1] "2022-12-08 12:12:18 UTC"</span></code></pre></div>
 <p>Damit wollen wir den Abschnitt zu APIs beenden. Macht euch bewusst, dass wir hier wirklich nur die Basics in Bezug auf APIs eingeführt haben. Aber hoffentlich hat euch diese Einführung trotzdem ausreichend Vertrauen gegeben, sich mit einigen komplexeren und leistungsfähigeren APIs auseinanderzusetzen.</p>
 </div>
 </div>

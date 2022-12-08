@@ -352,7 +352,7 @@ Wir erkennen, dass die notwendige Klassifizierung der GDP Werte im Plot Befehl e
 
 
 ```{r}
-p <- ggplot(gapminder, 
+q <- ggplot(gapminder, 
        aes(x = continent,
            fill = cut(gdpPercap, 
                       breaks = c(0, quantile(gdpPercap,0.25),
@@ -360,7 +360,7 @@ p <- ggplot(gapminder,
                                  max(gdpPercap))
                       )
            )) 
-p + 
+q + 
   geom_bar() +
   scale_fill_discrete(name = "GDP\nKlassifizierung",
                       labels = c("niedrig", "mittel", "hoch"))
@@ -369,7 +369,7 @@ p +
 In dieser Darstellung bleibt es bei einem Balken pro Kontinent. Würden wir aber gerne (bis zu) drei Balken pro Kontinent sehen, müssen die Positionierung ändern.
 
 ```{r}
-p + 
+q + 
   geom_bar(position = "dodge") +
   scale_fill_discrete(name = "GDP\nKlassifizierung",
                       labels = c("niedrig", "mittel", "hoch")) 
@@ -380,7 +380,7 @@ Gefällt einem das kartesische Koordinatensystem nicht, könnte man beispielswei
 
 
 ```{r}
-p + 
+q + 
   geom_bar(position = "dodge") +
   scale_fill_discrete(name = "GDP\nKlassifizierung",
                       labels = c("niedrig", "mittel", "hoch")) +
