@@ -41,7 +41,7 @@ Das Material wird kontinuierlich über das Semester hinweg ergänzt/erweitert/ve
 
 ```r
 date()
-## [1] "Thu Dec  8 13:11:51 2022"
+## [1] "Wed Dec 14 22:46:49 2022"
 ```
 
 
@@ -71,7 +71,7 @@ Die aktuelle Version dieses Buchs wurde mit
 ##  collate  en_US.UTF-8
 ##  ctype    en_US.UTF-8
 ##  tz       Europe/Berlin
-##  date     2022-12-08
+##  date     2022-12-14
 ##  pandoc   2.19.2 @ /Applications/RStudio.app/Contents/MacOS/quarto/bin/tools/ (via rmarkdown)
 ```
 

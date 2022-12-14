@@ -3,7 +3,7 @@
 
 
 
-# Sampling
+# Sampling {#sampling}
 
 Im Statistikteil der Veranstaltung gehen wir fast immer davon aus, dass eine Stichprobe aus 
 einem __statistischen Modell__ vorliegt. Daher wollen wir hier ein bisschen darüber sprechen, was 

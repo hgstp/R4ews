@@ -3,7 +3,7 @@
 
 
 
-# Sampling
+# Sampling {#sampling}
 
 Im Statistikteil der Veranstaltung gehen wir fast immer davon aus, dass eine Stichprobe aus 
 einem __statistischen Modell__ vorliegt. Daher wollen wir hier ein bisschen darüber sprechen, was 
@@ -117,7 +117,7 @@ bowl %>%
 ## # A tibble: 1 × 2
 ##   replicate  prop
 ##       <int> <dbl>
-## 1         1  0.64
+## 1         1  0.36
 ```
 
 ```r
@@ -130,7 +130,7 @@ bowl %>%
 ## # A tibble: 1 × 2
 ##   replicate  prop
 ##       <int> <dbl>
-## 1         1   0.4
+## 1         1  0.36
 ```
 
 ```r
@@ -192,7 +192,7 @@ stp_25 %>%
 ## # A tibble: 1 × 1
 ##   sd_prop
 ##     <dbl>
-## 1  0.0964
+## 1  0.0996
 ```
 
 ```r
@@ -205,7 +205,7 @@ stp_50 %>%
 ## # A tibble: 1 × 1
 ##   sd_prop
 ##     <dbl>
-## 1  0.0674
+## 1  0.0683
 ```
 
 ```r
@@ -218,7 +218,7 @@ stp_100 %>%
 ## # A tibble: 1 × 1
 ##   sd_prop
 ##     <dbl>
-## 1  0.0487
+## 1  0.0470
 ```
 
 

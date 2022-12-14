@@ -1,6 +1,6 @@
 # (PART) ggplot2 Intro {-} 
 
-# Einführung {#graphics-overview}
+# Einführung {#einfuehrung-ggplot2}
 
 
 

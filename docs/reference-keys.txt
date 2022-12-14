@@ -14,7 +14,7 @@ rprojs
 zu-guter-letzt
 version-control
 r-markdown
-basic-data-care
+data-intro
 data-frames-sind-fantastisch
 gapminder-data
 die-gapminder-daten-sind-ein-tibble
@@ -62,7 +62,7 @@ vorteile-von-tidy-data
 untidy-lord-of-the-rings-data
 und-jetzt-noch-ein-bisschen-schmutzig-machen
 literatur-1
-graphics-overview
+einfuehrung-ggplot2
 idee
 ein-einfacher-scatterplot
 bausteine
@@ -73,9 +73,6 @@ scales
 facets
 themes
 buch-zum-paket
-sampling
-approximative-verteilung
-resampling
 pakete
 struktur
 c-compiler
@@ -91,6 +88,9 @@ daten-einbinden
 c-special-topic
 git-und-githubgitlab
 literatur-2
+sampling
+approximative-verteilung
+resampling
 funktionen
 bestandteile-von-funktionen
 body

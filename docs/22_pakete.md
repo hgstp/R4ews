@@ -3,11 +3,12 @@
 
 # Pakete {#pakete}
 
+Bei einem Paket 📦 handelt es sich um
 
+::: {.content-box-blue}
+eine strukturierte, standardisierte Einheit, welche aus R Code, Dokumentation,  Daten und (möglicherweise) externem Quellcode besteht.
+:::
 
-Bei einem Paket handelt es sich um
-
-> eine strukturierte, standardisierte Einheit, welche aus R Code, Dokumentation,  Daten und (möglicherweise) externem Quellcode besteht.
 
 Wie man ein Paket installiert und lädt, ist uns mittlerweile bekannt. Jetzt wollen wir eigene Pakete erstellen.
 
@@ -16,15 +17,18 @@ Gute Gründe für die Verwendung von Paketen:
 
 - dynamisches Laden und Entladen des Pakets (Speicherplatz
 sparend)
-- einfache Installation und Update von lokalen Datenträgern oder über
-das Web, innerhalb von R oder über die Kommandozeile des
-Betriebssystems
+- einfache Installation und Update von lokalen Datenträgern über
+das Web (innerhalb von R oder über die Kommandozeile des
+Betriebssystems)
 
 - Validierung: R bietet Befehle zur groben Überprüfung von Code,
 Dokumentation und Installierbarkeit, sowie, falls man möchte,
-Überprüfung von Berechnungsergebnissen.
+Überprüfung von Berechnungsergebnissen
 
-- einfache Verteilung der Software an Dritte; Beispieldatensätze können auch ins Paket!
+- einfache Verteilung der Software an Dritte 
+
+- Beispieldatensätze können in das Paket integriert werden
+
 
 ## Struktur
 
@@ -42,20 +46,20 @@ Lizenz, Titel, Abhängigkeiten, ...)
 
 Bei der Erzeugung der Struktur (wie auch weiteren Schritten bei der Entwicklung) sollte man so viel wie möglich automatisieren. Wir verwenden dazu die von Hadley Wickham bereitgestellten Werkzeuge.
 
-Falls noch nicht geschehen, sollte man
+Falls noch nicht geschehen, solltet ihr die Pakete `devtools`, `roxygen2` und `testthat` installieren
 
 
 ```r
 install.packages(c("devtools", "roxygen2", "testthat"))
 ```
-ausführen. Diese Pakete erleichtern in Kombination mit RStudio das Erstellen von Paketen. 
+Diese Pakete erleichtern in Kombination mit RStudio das Erstellen von Paketen. 
 
 ## C Compiler
 
-Um alle Möglichkeiten bei der Erstellung von R-Paketen ausnützen zu können, brauchst du außerdem einen Compiler und noch ein paar andere Werkzeuge. Dies ist aber vermutlich erst dann wirklich nötig, wenn du Pakete bauen willst, die C- oder C++-Code enthalten (nicht Teil des Kurses). RStudio sollte dich auch warnen und dir Unterstützung anbieten, sobald du versuchen solltest, etwas zu tun, das die Einrichtung einer Entwicklungsumgebung erfordert. 
+Um alle Möglichkeiten bei der Erstellung von R-Paketen ausnützen zu können, benötigt man zusätzlich noch einen C Compiler und ein paar andere Werkzeuge. Dies ist aber vermutlich erst dann wirklich nötig, wenn ihr Pakete bauen wollt, die C- oder C++-Code enthalten (nicht Teil des Kurses). RStudio sollte dich auch warnen und dir Unterstützung anbieten, sobald du versuchen solltest, etwas zu tun, das die Einrichtung einer Entwicklungsumgebung erfordert. 
 
 
-Mit `has_devel()` kannst du aber bereits auch jetzt mal überprüfen ob dein System vielleicht schon bereit ist
+Mit `has_devel()` könnt ihr aber auch schon jetzt überprüfen ob euer System vielleicht schon bereit dazu wäre
 
 
 ```r
@@ -66,6 +70,9 @@ library(devtools)
 
 ```r
 has_devel()
+```
+
+```
 ## Your system is ready to build packages!
 ```
 
@@ -89,6 +96,7 @@ Dieser Befehl erzeugt das Verzeichnis `Pfad_zum_Paket/Paketname`, welches
 4. eine `NAMESPACE` Datei
 
 enthält. Allen R Code, der im Paket enthalten sein soll, kopiert man anschließend in das Verzeichnis `Pfad_zum_Paket/Paketname/R`.
+
 
 
 Innerhalb eines Pakets ist es nun einfach den kompletten R Code (nach Änderungen) neu zu laden.
@@ -121,9 +129,9 @@ Man unterscheidet fünf verschiedene Typen: *source, bundled, binary, installed*
     + `install.packages(type = source)`: CRAN source -> bundled -> installed 
     + `install()`: source -> installed
     
-Mit `devtools::install_github()` können source Pakete aus eine [GitHub](https://github.com/) Projekt installiert werden.
+Mit `devtools::install_github()` können source Pakete aus eine [GitHub](https://github.com/) Projekt installiert werden, und mit `devtools::_install_gitlab()` aus einem GitLab Projekt.
 
-- **in memory**: Um mit einem Paket zu arbeiten muss es in den Speicher geladen werden. Dies geschieht mit `library()` (installierte Pakete) oder `load_all()` (beim Entwickeln von Paketen).    
+- **in memory**: Will man mit mehreren Funktionen eines Paket arbeiten, sollte es in den Speicher geladen werden. Dies geschieht mit `library()` (installierte Pakete) oder `load_all()` (beim Entwickeln von Paketen).    
 
 
 ## DESCRIPTION
@@ -212,23 +220,29 @@ Der Output von `person()` sieht dann folgendermaßen aus
 person(given = "Stephan", family = "Haug", 
                   email = "haug@tum.de", 
                   role = c("cre", "aut"))
+```
+
+```
 ## [1] "Stephan Haug <haug@tum.de> [cre, aut]"
 ```
 
 
 ### Version
 
-`devtools::create()` legt die Default-Version auf `0.1.0` fest. Generell sollte die Versionsnummer aber aus drei Teilen bestehen und die Form `x.y.z` haben, wobei `x` die Nummer für größere Updates, `y` die Nummer für kleinere Updates und `z` die Nummer für Korrekturen ist. 
+`devtools::create()` legt die Default-Version auf `0.1.0` fest. Generell sollte die Versionsnummer aus drei Teilen bestehen und die Form `x.y.z` haben, wobei `x` die Nummer für größere Updates, `y` die Nummer für kleinere Updates und `z` die Nummer für Korrekturen ist. 
 
 Die aktuelle Version von `ggplot2` ist z.B.
 
 
 ```r
 packageVersion("ggplot2")
+```
+
+```
 ## [1] '3.3.5'
 ```
 
-Für Pakete, die sich in der Entwicklung befinden, bietet es sich an noch einen vierten Teil anzufügen und mit der Versionsnummer `0.0.0.9000` zu starten.
+Für Pakete, die sich in der __Entwicklung__ befinden, bietet es sich an noch einen vierten Teil anzufügen und mit der Versionsnummer `0.0.0.9000` zu starten.
 
 Nach diesen Anpassung könnte die DESCRIPTION Datei also so aussehen
 
@@ -343,7 +357,7 @@ oder dem Netz
 * `\email{haug@@tum.de}` (`@@` ist nötig, da `@` für die Tags reserviert ist)
 
 
-Weitere Möglichkeiten der Formatierung findest du im Abschnitt [Text formatting](http://r-pkgs.had.co.nz/man.html#text-formatting) des Buch [R packages](https://r-pkgs.org).
+Weitere Möglichkeiten der Formatierung findet man im Abschnitt [Text formatting](http://r-pkgs.had.co.nz/man.html#text-formatting) des Buch [R packages](https://r-pkgs.org).
 
 
 ## NAMESPACE
@@ -355,9 +369,12 @@ Es ist nicht nur für das Erstellen von Paketen hilfreich das Konzept eines `NAM
 
 ```r
 nrow
+```
+
+```
 ## function (x) 
 ## dim(x)[1L]
-## <bytecode: 0x7fd7fe9e5008>
+## <bytecode: 0x7fd2d3710c08>
 ## <environment: namespace:base>
 ```
 Diese Funktion ist definiert in Abhängigkeit von `dim()` aus dem `base` Paket.
@@ -368,6 +385,9 @@ Auch wenn wir die Funktion
 ```r
 dim <- function(x) c(1,1)
 dim(mtcars)
+```
+
+```
 ## [1] 1 1
 ```
 
@@ -375,6 +395,9 @@ definieren, findet `nrow()` trotzdem die "richtige" Funktion
 
 ```r
 nrow(mtcars)
+```
+
+```
 ## [1] 32
 ```
 da sie den `NAMESPACE` des `base` Pakets verwendet.
@@ -388,6 +411,9 @@ da sie den `NAMESPACE` des `base` Pakets verwendet.
 
 ```r
 search()
+```
+
+```
 ##  [1] ".GlobalEnv"        "package:devtools"  "package:usethis"  
 ##  [4] "package:stats"     "package:graphics"  "package:grDevices"
 ##  [7] "package:utils"     "package:datasets"  "package:methods"  
@@ -494,11 +520,11 @@ int malZwei(int x) {
 
 ## Git und GitHub/GitLab
 
-Benutze für jedes deiner Pakete (mag es auch noch so klein sein) Git. Beim Anlegen des Projekts (zur Erstellung des Pakets) über RStudio, kann leicht ein lokales Git repository initialisiert werden
+Jedes  Pakete (mag es auch noch so klein sein) sollte unter Verwendung von Git erstellt werden. Beim Anlegen des Projekts (zur Erstellung des Pakets) über RStudio, kann leicht ein lokales Git repository initialisiert werden
 
-<img src="img/package_git.png" width="80%" style="display: block; margin: auto;" />
+<img src="img/package_git.png" width="589" />
 
-Soll zusätzlich ein remote repository verwendet werden, so kann man (im Standardfall) ein neues repository auf GitLab (oder GitHub) anlegen. Es sollte den gleichen Namen bekommen wie das Paket (lokales Git repository). Danach kannst du im Terminal Befehle der Form
+Soll zusätzlich ein remote repository verwendet werden, so kann man (im Standardfall) ein neues repository auf GitLab (oder GitHub) anlegen. Es sollte den gleichen Namen bekommen wie das Paket (lokales Git repository). Danach kann man im Terminal Befehle der Form
 
 ```{}
 git remote add origin https://gitlab.lrz.de/vw99xyz/paketName.git
@@ -508,27 +534,27 @@ git push -u origin master
 ausführen. 
 
 
-Angenommen es existiert bereits ein remote repository und das Paket soll dort "verwaltet" werden. Dann kannst du einfach dieses repository klonen
+Angenommen es existiert bereits ein remote repository und das Paket soll dort "verwaltet" werden, kann einfach dieses repository geklont werden
 
 ```{}
 git clone https://gitlab.lrz.de/vw99xyz/paketName.git
 ```
 
-Danach existiert im Verzeichnis, in dem der Befehl ausgeführt wurde, das Unterverzeichnis `paketName`. In R kannst du anschließend den Befehl
+Danach existiert im Verzeichnis, in dem der Befehl ausgeführt wurde, das Unterverzeichnis `paketName`. In R kann anschließend den Befehl
 
 
 ```r
 devtools::create("paketName")
 ```
 
-ausführen (im Verzeichnis, welches das Git repository `paketName` enthält). Danach kannst du die Änderungen speichern über einen commit Befehl
+ausgeführt werden (im Verzeichnis, welches das Git repository `paketName` enthält). Danach sichert man alle Änderungen s über einen commit Befehl
 
 ```{}
-git add -A
+git add .
 git commit -m "paket struktur angelegt"
 ```
 
-und pushen
+und pusht
 
 ```{}
 git push
@@ -541,5 +567,5 @@ git push
 
 ## Literatur
 
-Diese Folien haben einen kleinen Einblick in das Erstellen eigener Pakete gegeben. Allerdings wurden viele weitere Aspekte nicht angesprochen. Weitere Informationen zu R Paketen findet man z.B. im Buch [R packages](http://r-pkgs.had.co.nz/) von Hadley Wickham [-@wickham2015b]. 
+Dieser Abschnitt hat einen kleinen Einblick in das Erstellen eigener Pakete gegeben. Allerdings wurden viele weitere Aspekte nicht angesprochen. Weitere Informationen zu R Paketen findet man z.B. im Buch [R packages](http://r-pkgs.had.co.nz/) von Hadley Wickham [-@wickham2015b]. 
 
