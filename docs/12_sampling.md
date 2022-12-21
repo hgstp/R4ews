@@ -12,7 +12,7 @@ es heißt eine Stichprobe aus einer Grundgesamtheit/Population zu ziehen.
 
 Wir betrachten dazu als Beispiel das Ziehen aus einer Urne, wobei die Kugeln in der Urne eben die Population darstellen, die uns interessiert. Da wir die Stichprobe digital erzeugen wollen, genauer gesagt mit R, müssen wir uns nach einer digitalen Urne umschauen.
 
-Eine solche findet man im Paket `moderndive`. Die Autoren des Pakets haben auch gemeinsam das Buch [Statistical Inference via Data Science] [@ismay_kim2019] geschrieben. Das Buch ist Grundlagen für diesen Abschnitt. Wer am Ende also noch mehr zu diesem Thema lesen will, sei an das Buch verwiesen.
+Eine solche findet man im Paket `moderndive`. Die Autoren des Pakets haben auch gemeinsam das Buch [@ismay_kim2019] geschrieben. Das Buch ist Grundlagen für diesen Abschnitt. Wer am Ende also noch mehr zu diesem Thema lesen will, sei an das Buch verwiesen.
 
 Nun aber zurück zur digitalen Urne
 
@@ -43,7 +43,9 @@ Nach einem ersten Blick auf die Urne, entstehen eine Reihe von Fragen
 
 
 
-> 1. Wie viele Farben gibt es in der Urne?
+::: {.content-box-blue}
+
+Wie viele Farben gibt es in der Urne?
 
 
 ```r
@@ -54,7 +56,10 @@ unique(bowl$color)
 ## [1] "white" "red"
 ```
 
-> 2. Wie hoch ist der Anteil roter Kugeln?
+Wie hoch ist der Anteil roter Kugeln?
+
+:::
+
 
 Da es sich um eine digitale Urne handelt, ist das Zählen schnell geschehen und daher kein Problem für uns. Wir können also leicht eine __Vollerhebung__ der Population durchführen. Den Anteil roter Kugeln berechnen wir mithilfe der Funktion `summarise()` (wir fassen den Inhalt der Urne zusammen, indem wir dir relative Häufigkeit roter Kugeln berechnen). Daher laden wir zunächst `tidyverse`
 
@@ -90,7 +95,12 @@ bowl %>%
 In Realität würde aber wohl niemand gerne alle 2400 Kugeln bzgl. ihrer Farbe überprüfen. Daher ist vermutlich nur eine _Stichprobe_ eine realistische Option. Mithilfe dieser Stichprobe wollen wir aber weiterhin eine sinnvolle Antwort auf die 
 Frage
 
-> 2. Wie hoch ist der Anteil roter Kugeln?
+
+::: {.content-box-blue}
+
+Wie hoch ist der Anteil roter Kugeln?
+
+:::
 
 geben. 
 
@@ -130,7 +140,7 @@ bowl %>%
 ## # A tibble: 1 × 2
 ##   replicate  prop
 ##       <int> <dbl>
-## 1         1  0.36
+## 1         1  0.34
 ```
 
 ```r
@@ -143,7 +153,7 @@ bowl %>%
 ## # A tibble: 1 × 2
 ##   replicate  prop
 ##       <int> <dbl>
-## 1         1  0.36
+## 1         1   0.4
 ```
 
 
@@ -178,7 +188,7 @@ Nun sind wir in der Lage für jede der 1000 Stichproben den  empirischen Schätz
 
 $$\hat \theta = \overline x_n = \frac{1}{n}\sum_{i=1}^n x_i,$$
 
-mit $x_i =\begin{cases} 1, \text{Kugel ist rot}\\0, \text{sonst}\end{cases}$, zu berechnen. Anschließend können in jedem der drei Fälle (unterschiedleich Stichprobenlänge) die empirische Standardabweichung der 1000 berechneten Schätzwerte
+mit $x_i =\begin{cases} 1, \text{Kugel ist rot}\\0, \text{sonst}\end{cases}$, zu berechnen. Anschließend können in jedem der drei Fälle (unterschiedliche Stichprobenlänge) die empirische Standardabweichung der 1000 berechneten Schätzwerte
 berechnen
 
 
@@ -192,7 +202,7 @@ stp_25 %>%
 ## # A tibble: 1 × 1
 ##   sd_prop
 ##     <dbl>
-## 1  0.0996
+## 1  0.0954
 ```
 
 ```r
@@ -205,7 +215,7 @@ stp_50 %>%
 ## # A tibble: 1 × 1
 ##   sd_prop
 ##     <dbl>
-## 1  0.0683
+## 1  0.0672
 ```
 
 ```r
@@ -218,7 +228,7 @@ stp_100 %>%
 ## # A tibble: 1 × 1
 ##   sd_prop
 ##     <dbl>
-## 1  0.0470
+## 1  0.0486
 ```
 
 
@@ -259,9 +269,9 @@ stp_100 %>%
 
 <img src="12_sampling_files/figure-html/unnamed-chunk-8-1.png" width="33%" /><img src="12_sampling_files/figure-html/unnamed-chunk-8-2.png" width="33%" /><img src="12_sampling_files/figure-html/unnamed-chunk-8-3.png" width="33%" />
 
-Wir erkennen eine Reduktion der Streuung mit wachsendem Stichproben Umfang. Zudem sehen wir, dass wir die empirischen Verteilung symmetrisch um den wahren Parameter 0.375 verteilt sind, wobei die Verteilung umso konzentrierter ist, je hoher der Stichprobenumfang ist. 
+Wir erkennen eine Reduktion der Streuung mit wachsendem Stichproben Umfang. Zudem sehen wir, dass die empirischen Verteilungen symmetrisch um den wahren Parameter 0.375 verteilt sind, wobei die Verteilung umso konzentrierter ist, je hoher der Stichprobenumfang ist. 
 
-Diese empirischen Verteilungen sind eine Annährung an die Verteilung des Schätzers
+Diese empirischen Verteilungen sind eine Annäherung an die Verteilung des Schätzers
 
 $$\overline X_n = \frac{1}{n} \sum_{i=1}^n X_i\,,$$
 
@@ -290,7 +300,7 @@ Dazu benötigen wir aber sicherlich die Verteilung - wir wollen ja eine Aussage 
 :::
 
 
-In der Vorlesung werden wir uns mit Statistik beschäftigen, deren exakte Verteilung wir bestimmen können. In den nächsten zwei Abschnitten werden wir approximative Verteilungen betrachten. Zunächst in einem theoretischen Ansatz basierend auf dem zentralen Grenzwertsatz und anschließend über ein computerintensives Verfahren.
+In der Vorlesung werden wir uns mit Statistiken beschäftigen, deren exakte Verteilung wir bestimmen können. In den nächsten zwei Abschnitten werden wir approximative Verteilungen betrachten. Zunächst in einem theoretischen Ansatz basierend auf dem zentralen Grenzwertsatz und anschließend über ein computerintensives Verfahren.
 
 
 ## Approximative Verteilung
@@ -323,8 +333,7 @@ $$P\left(n \frac{\overline X_n - \theta}{\sqrt{\theta(1-\theta)n }} \leq x\right
 
 $$P\left(\overline X_n  \leq x\right) \approx \Phi_{\widehat \theta,\frac{\widehat \theta(1-\widehat \theta)}{n}}(x)$$
 
-Für die Stichprobenlänge 100 versuchen wir diesen Zusammenhang mal noch zu visualisieren
-
+Für die Stichprobenlänge 100 visualisieren wir diesen Zusammenhang 
 
 ```r
 sample <- stp_100 %>%
@@ -335,17 +344,14 @@ theta_hat <- mean(sample$prop)
 stp_100 %>%
   summarise(prop = sum(color == "red") / 100) %>%
   ggplot() + 
-  geom_histogram(aes(x = prop, y = ..density..), binwidth = 0.05, color = "white") +
+  geom_histogram(aes(x = prop, y = ..density..), binwidth = 0.02,
+                 color = "white") +
   xlim(0.01, 0.8) +
   stat_function(fun = "dnorm", 
                 args = list(mean = theta_hat, 
                             sd = sqrt(theta_hat * (1-theta_hat) / 100)),
                 colour = "blue", size = 1.3) +
   theme_minimal()
-```
-
-```
-## Warning: Removed 2 rows containing missing values (geom_bar).
 ```
 
 <img src="12_sampling_files/figure-html/unnamed-chunk-9-1.png" width="672" />
@@ -357,7 +363,7 @@ Wir erkennen eine rechte gute Übereinstimmung zwischen der __Sampling Verteilun
 
 ## Resampling
 
-Nun wollen wir die Verteilung der Statistik (immer noch das empirische Mittel $\overline X_n$) über ein resampling Verfahren approximieren. Dabei ist es allerdings nicht entscheidend, dass es sich bei der betrachteten Statistik um das empirische Mittel handelt. Das Verfahren funktioniert auch für weitere Statistik.
+Nun wollen wir die Verteilung der Statistik (immer noch das empirische Mittel $\overline X_n$) über ein resampling Verfahren approximieren. Dabei ist es allerdings nicht entscheidend, dass es sich bei der betrachteten Statistik um das empirische Mittel handelt. Das Verfahren funktioniert auch für weitere Statistiken.
 
 
 Wir starten mit __einer__ Stichprobe der Länge 100
@@ -372,7 +378,8 @@ x <- bowl %>%
 
 Unser Ziel ist es nun, basierend auf diesen 100 Beobachtungen, die Verteilung von $\overline X_n$ zu approximieren. Dazu benötigen wir sicherlich mehrere berechnete Werte des empirischen Mittels. Natürlich könnten wir die ursprüngliche Stichprobe in 50 Paare zerlege und so 50 empirische Mittelwerte $\overline x_2^1,\dots,\overline x_2^{50}$ berechnen. Damit könnten wir dann aber nur die Verteilung von $\overline X_2$ approximieren und nicht von $\overline X_{100}$. D.h. wir wollen mehrere empirische Mittelwerte basierend auf 100 Inputwerten berechnen. 
 
-Dieses Ziel werden wir nur erreichen, wenn wir die ursprünglichen 100 Werte $x_1,\dots, x_n$ in "schlauer" Form mehrfach nutzen. Wir stellen uns auf den Standpunkt, dass die 100 Werte Realisierungen von unabhängigen und identisch verteilten Zufallsvariablen sind (das ist auch die Annahme in unserem statistischen Modell). Unsere Stichprobe ist somit eine gute Approximation der Gesamtpopulation - auf jeden Fall die beste, die wir haben - und daher würde es Sinn machen wiederholt aus dieser Näherung zu ziehen und dabei die Aufteilung in rote und weiße Kugeln nicht zu verändern. Wir ziehen somit __mit Zurücklegen__ und erzeugen so $B$ Stichprobenwiederholungen
+Dieses Ziel werden wir nur erreichen, wenn wir die ursprünglichen 100 Werte $x_1,\dots, x_n$ in "schlauer" Form mehrfach nutzen. Wir stellen uns auf den Standpunkt, dass die 100 Werte Realisierungen von unabhängigen und identisch verteilten Zufallsvariablen sind. _Das ist auch die Annahme in unserem statistischen Modell_. 
+Unsere Stichprobe ist somit eine gute Approximation der Gesamtpopulation - auf jeden Fall die beste, die wir haben - und daher würde es Sinn machen wiederholt aus dieser Näherung zu ziehen und dabei die Aufteilung in rote und weiße Kugeln nicht zu verändern. Wir ziehen somit __mit Zurücklegen__ und erzeugen so $B$ Stichprobenwiederholungen
 
 $$x_1^b,\dots,x_n^b,\qquad b = 1,\dots, B\,,$$
 wobei $x_i^b\in\{x_1,\dots, x_n\}$. 
@@ -438,7 +445,7 @@ mean_x_B
 
 
 ::: {.content-box-orange}
-Das beschriebene Verfahren kennt man in der Literatur unter dem Namen [__Bootstrap-Verfahren__](https://de.wikipedia.org/wiki/Bootstrapping-Verfahren). Konkret handelt es sich hierbei um die einfachste Form, einen i.i.d. (_independent identically distributed_) Bootstrap. Die daraus resultierende Approximation der Verteilung der Statistik, nennt man __Bootstrap Verteilung__.
+Das beschriebene Verfahren kennt man in der Literatur unter dem Namen [__Bootstrap-Verfahren__](https://de.wikipedia.org/wiki/Bootstrapping-Verfahren) 👢. Konkret handelt es sich hierbei um die einfachste Form, einen i.i.d. (_independent identically distributed_) Bootstrap. Die daraus resultierende Approximation der Verteilung der Statistik, nennt man __Bootstrap Verteilung__.
 
 :::
 
@@ -491,7 +498,7 @@ boot_vert <- x %>%
   calculate(stat = "prop") 
 
 boot_vert %>%
-  visualise()
+  visualise(bins = 30)
 ```
 
 <img src="12_sampling_files/figure-html/unnamed-chunk-15-1.png" width="672" />
@@ -511,7 +518,7 @@ boot_ki
 ## # A tibble: 1 × 2
 ##   lower_ci upper_ci
 ##      <dbl>    <dbl>
-## 1     0.27     0.45
+## 1     0.27     0.46
 ```
 
 
@@ -519,15 +526,185 @@ Das Intervall können wir dann noch zusammen mit der Bootstrap Verteilung visual
 
 
 ```r
-visualise(boot_vert, fill = "red") +
-  shade_confidence_interval(endpoints = boot_ki, color = "gold", fill = "gold") + 
+visualise(boot_vert, bins =30) +
+  shade_confidence_interval(endpoints = boot_ki, color = "gold",
+                            fill = "gold") + 
   theme_minimal()
 ```
 
 <img src="12_sampling_files/figure-html/unnamed-chunk-17-1.png" width="672" />
 
 
+## Hypothesentest
+
+Bisher haben wir eine Punkt- und Intervallschätzung für den __unbekannten__ (wir nehmen mal an, dass wir nicht die komplette Urne abgezählt haben) Anteil $\theta$ an roten Kugeln in der Urne berechnet.
+
+
+Zum Schluss wollen wir uns noch fragen, ob wir die Annahme
+
+::: {.content-box-blue}
+Der Anteil roter Kugeln in der Urne ist größer als $\frac{1}{3}$.
+:::
+
+statistisch belegen können. Das entsprechende Werkzeug wäre ein geeigneter Hypothesentest. Konkret würden wir mit einem solchen Test gerne folgendes Testproblem
+
+$$H_0: \theta\leq \theta_0\qquad H_1: \theta>\theta_0\,,$$
+mit $\theta_0=\frac{1}{3}$.
+
+Zur Konstruktion von geeigneten Tests kann man verschiedene Ansätze wählen. Eine Möglichkeit stellt die approximative Verteilung der Statistik $\overline X_n$ dar. Unter der Annahme, dass die Nullhypothese $H_0$ korrekt ist (die wird für jeden Hypothesentest angenommen), gilt in diesem Fall 
+
+$$P_{\theta_0}\left(\overline X_n  \leq x\right) \approx \Phi_{\theta_0,\frac{\theta_0(1-\theta_0)}{n}}(x)$$
+::: {.content-box-orange}
+__Bemerkung:__ Warum wir die Grenze $\theta_0$ als wahren Wert wählen, wenn wir annehmen, dass $H_0$ korrekt ist, wird genauer in Kapitel 7 von EWS besprochen.
+:::
+
+
+Für unsere Stichprobe haben wir einen Anteil von
+
+
+```r
+x  %>%
+  summarise(prop = sum(color == "red") / 100)  
+```
+
+```
+## # A tibble: 1 × 2
+##   replicate  prop
+##       <int> <dbl>
+## 1         1  0.36
+```
+
+erhalten. Dementsprechend wäre die Frage wie groß die Wahrscheinlichkeit 
+$$P_{\theta_0}\left(\overline X_n  \geq 0.36\right)$$
+ist, also die Wahrscheinlichkeit einen Wert so groß wie den beobachteten Stichprobenwert oder noch größer zu sehen. Diese Wahrscheinllichkeit können wir annähern durch
+
+
+```r
+pnorm(0.36, mean = 1/3, sd = sqrt(2/9 / 100), lower.tail = FALSE)
+```
+
+```
+## [1] 0.2858038
+```
+
+
+Mit einer berechneten Wahrscheinlichkeit von 0.2858038 scheint ein beobachteter Wert von 0.36 gar nicht so unwahrscheinlich zu sein unter der Annahme, dass der wahre Anteil der Gesamtpopulation $\frac{1}{3}$ ist. Daher gibt die Stichprobe keinen Hinweis darauf, dass die Nullhypothese verworfen werden sollte.
+
+
+Diesen Test hätten wir auch mit der Funktion `prop.test()` durchführen können.
+
+
+```r
+prop.test(x = sum(x$color == "red"), n = 100, p = 1/3, 
+          alternative = "greater", correct = FALSE)
+```
+
+```
+## 
+## 	1-sample proportions test without continuity correction
+## 
+## data:  sum(x$color == "red") out of 100, null probability 1/3
+## X-squared = 0.32, df = 1, p-value = 0.2858
+## alternative hypothesis: true p is greater than 0.3333333
+## 95 percent confidence interval:
+##  0.2856946 1.0000000
+## sample estimates:
+##    p 
+## 0.36
+```
+
+
+Diesen Test konnten wir nur durchführen, da wir eine approximative Verteilung der Teststatistik $\overline X_n$ kannten. Dies ist nicht immer der Fall. Manchmal kennt man:
+
+- die exakte Verteilung  (noch besser 😀)
+- eine approximative Verteilung, nur unter starken Annahmen an die Verteilung der Stichprobenvariablen
+- keine "theoretische" Verteilung (weder exakt noch approximativ) 
+
+der Teststatistik. In den letzten beiden Fällen bieten Resampling Methoden eine Möglichkeit die Verteilung der Teststatistik zu approximieren.
+
+Diesen Ansatz wollen wir nun noch anhand des vorliegende Testproblem illustrieren. Dazu verwenden wir wieder das `infer` Paket. Neben den bereits bekannten Funktionen benötigen wir noch zusätzlich die `hypothesise()` Funktion, zur Definition der zu testenden Hypothese.
+
+
+
+```r
+null_vert <- x %>% 
+  specify(response = color, success = "red") %>% 
+  hypothesise(null = "point", p = 1/3) %>% 
+  generate(reps = 1000, type = "draw") %>% 
+  calculate(stat = "prop")
+```
+
+::: {.content-box-gray}
+__Bemerkung:__ In diesem Fall wurden die Resamples nicht durch Ziehen mit Zurücklegen erzeugt. Vielmehr wurde 1000 Stichproben aus dem Modell 
+
+$$ \left(\{0,1\}^{100}, \mathcal{P}(\{0,1\})^{100}, Binomial\Big(1,\frac{1}{3}\Big)^{\otimes 100}\right)$$
+
+:::
+
+Die Wahrscheinlichkeit $P_{\theta_0}\left(\overline X_n  \geq 0.36\right)$ können wir visuell darstellen
+
+
+
+```r
+null_vert %>%
+  visualise(bins = 30) +
+  shade_p_value(obs_stat = 0.36, direction = "greater")
+```
+
+<img src="12_sampling_files/figure-html/unnamed-chunk-22-1.png" width="672" />
+
+
+und numerisch ausgeben
+
+
+```r
+null_vert %>% 
+  get_p_value(obs_stat = 0.36, direction = "greater")
+```
+
+```
+## # A tibble: 1 × 1
+##   p_value
+##     <dbl>
+## 1   0.333
+```
+
+
+Der berechnete p-Wert variiert mit jedem Durchlauf. 
+Wiederholt man den ganzen Durchlauf 100 Mal, so erhält man stets unterschiedliche p-Werte, aber stets vergleichbare Werte.
+
+
+```r
+df <- data.frame(p_values = numeric(length = 100L))
+for(i in 1:100){
+  null_vert <- x %>% 
+  specify(response = color, success = "red") %>% 
+  hypothesise(null = "point", p = 1/3) %>% 
+  generate(reps = 1000, type = "draw") %>% 
+  calculate(stat = "prop")
+  
+  df$p_values[i] <- null_vert %>% 
+  get_p_value(obs_stat = 0.36, direction = "greater")
+}
+```
+
+Die simulierten p-Wert sind in der nachfolgenden Grafik visualisiert.
+
+
+```r
+df %>% 
+  ggplot(aes(x = seq_along(p_values), y = p_values)) +
+  geom_bar(stat = "identity") + 
+  labs(x = "Durchlauf", y = "p-Wert", title = "Simulationsbasierte p-Werte")
+```
+
+<img src="12_sampling_files/figure-html/unnamed-chunk-25-1.png" width="672" />
+
+Dies illustriert zudem, dass der p-Wert eine Realisierung eines Zufallsexperiments ist. Dazu mehr in den Übungen zu EWS.
+
+
+
 __Literatur:__
 
-Wer mehr über Bootstrap Verfahren lernen will, kann einen Blick in die Bücher  [@ismay_kim2019] (Web-Version: [Statistical Inference via Data Science] [@ismay_kim2019]), [@davison_hinkley1997] oder [@dikta_scheer2021].
+Wer mehr über Bootstrap Verfahren lernen will, kann einen Blick in die Bücher [@ismay_kim2019] (Web-Version: [Statistical Inference via Data Science](https://moderndive.com/)), [@davison_hinkley1997] oder [@dikta_scheer2021] werfen.
 

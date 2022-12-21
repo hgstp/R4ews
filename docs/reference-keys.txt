@@ -91,6 +91,7 @@ literatur-2
 sampling
 approximative-verteilung
 resampling
+hypothesentest
 funktionen
 bestandteile-von-funktionen
 body
