@@ -127,7 +127,7 @@ bowl %>%
 ## # A tibble: 1 × 2
 ##   replicate  prop
 ##       <int> <dbl>
-## 1         1  0.36
+## 1         1  0.24
 ```
 
 ```r
@@ -140,7 +140,7 @@ bowl %>%
 ## # A tibble: 1 × 2
 ##   replicate  prop
 ##       <int> <dbl>
-## 1         1  0.34
+## 1         1  0.36
 ```
 
 ```r
@@ -153,7 +153,7 @@ bowl %>%
 ## # A tibble: 1 × 2
 ##   replicate  prop
 ##       <int> <dbl>
-## 1         1   0.4
+## 1         1  0.38
 ```
 
 
@@ -202,7 +202,7 @@ stp_25 %>%
 ## # A tibble: 1 × 1
 ##   sd_prop
 ##     <dbl>
-## 1  0.0954
+## 1  0.0983
 ```
 
 ```r
@@ -215,7 +215,7 @@ stp_50 %>%
 ## # A tibble: 1 × 1
 ##   sd_prop
 ##     <dbl>
-## 1  0.0672
+## 1  0.0674
 ```
 
 ```r
@@ -228,7 +228,7 @@ stp_100 %>%
 ## # A tibble: 1 × 1
 ##   sd_prop
 ##     <dbl>
-## 1  0.0486
+## 1  0.0467
 ```
 
 
@@ -554,8 +554,12 @@ mit $\theta_0=\frac{1}{3}$.
 Zur Konstruktion von geeigneten Tests kann man verschiedene Ansätze wählen. Eine Möglichkeit stellt die approximative Verteilung der Statistik $\overline X_n$ dar. Unter der Annahme, dass die Nullhypothese $H_0$ korrekt ist (die wird für jeden Hypothesentest angenommen), gilt in diesem Fall 
 
 $$P_{\theta_0}\left(\overline X_n  \leq x\right) \approx \Phi_{\theta_0,\frac{\theta_0(1-\theta_0)}{n}}(x)$$
+
+
 ::: {.content-box-orange}
+
 __Bemerkung:__ Warum wir die Grenze $\theta_0$ als wahren Wert wählen, wenn wir annehmen, dass $H_0$ korrekt ist, wird genauer in Kapitel 7 von EWS besprochen.
+
 :::
 
 

@@ -172,7 +172,7 @@ Frage</p>
 <pre><code>## # A tibble: 1 × 2
 ##   replicate  prop
 ##       &lt;int&gt; &lt;dbl&gt;
-## 1         1  0.36</code></pre>
+## 1         1  0.24</code></pre>
 <div class="sourceCode" id="cb223"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">bowl</span> <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://infer.tidymodels.org/reference/rep_sample_n.html">rep_sample_n</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">50</span><span class="op">)</span> <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span>
@@ -180,7 +180,7 @@ Frage</p>
 <pre><code>## # A tibble: 1 × 2
 ##   replicate  prop
 ##       &lt;int&gt; &lt;dbl&gt;
-## 1         1  0.34</code></pre>
+## 1         1  0.36</code></pre>
 <div class="sourceCode" id="cb225"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">bowl</span> <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://infer.tidymodels.org/reference/rep_sample_n.html">rep_sample_n</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">100</span><span class="op">)</span> <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span>
@@ -188,7 +188,7 @@ Frage</p>
 <pre><code>## # A tibble: 1 × 2
 ##   replicate  prop
 ##       &lt;int&gt; &lt;dbl&gt;
-## 1         1   0.4</code></pre>
+## 1         1  0.38</code></pre>
 <p>Wir erkennen, dass alle drei Werte unterschiedlich zum wahren Wert sind. In der Praxis würden wir den wahren Wert nicht kennen. Daher überlegen wir weiter, wie wir die Qualität der berechneten Anteilswerte (unsere Schätzwerte) bewerten/einschätzen können.</p>
 <p>Eine Frage die wir uns diesbzgl. stellen sollten ist:</p>
 <div class="content-box-gray">
@@ -216,7 +216,7 @@ berechnen</p>
 <pre><code>## # A tibble: 1 × 1
 ##   sd_prop
 ##     &lt;dbl&gt;
-## 1  0.0954</code></pre>
+## 1  0.0983</code></pre>
 <div class="sourceCode" id="cb230"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">stp_50</span> <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>prop <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">color</span> <span class="op">==</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">/</span> <span class="fl">50</span><span class="op">)</span> <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span>
@@ -224,7 +224,7 @@ berechnen</p>
 <pre><code>## # A tibble: 1 × 1
 ##   sd_prop
 ##     &lt;dbl&gt;
-## 1  0.0672</code></pre>
+## 1  0.0674</code></pre>
 <div class="sourceCode" id="cb232"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">stp_100</span> <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>prop <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">color</span> <span class="op">==</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">/</span> <span class="fl">100</span><span class="op">)</span> <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span>
@@ -232,7 +232,7 @@ berechnen</p>
 <pre><code>## # A tibble: 1 × 1
 ##   sd_prop
 ##     &lt;dbl&gt;
-## 1  0.0486</code></pre>
+## 1  0.0467</code></pre>
 <p>sowie ein Histogramm von <span class="math inline">\(\overline x_n^1, \dots, \overline x_n^{1000}\)</span></p>
 <div class="sourceCode" id="cb234"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">stp_25</span> <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span>
@@ -442,10 +442,10 @@ wobei <span class="math inline">\(x_i^b\in\{x_1,\dots, x_n\}\)</span>.</p>
 <p><span class="math display">\[H_0: \theta\leq \theta_0\qquad H_1: \theta&gt;\theta_0\,,\]</span>
 mit <span class="math inline">\(\theta_0=\frac{1}{3}\)</span>.</p>
 <p>Zur Konstruktion von geeigneten Tests kann man verschiedene Ansätze wählen. Eine Möglichkeit stellt die approximative Verteilung der Statistik <span class="math inline">\(\overline X_n\)</span> dar. Unter der Annahme, dass die Nullhypothese <span class="math inline">\(H_0\)</span> korrekt ist (die wird für jeden Hypothesentest angenommen), gilt in diesem Fall</p>
-<p><span class="math display">\[P_{\theta_0}\left(\overline X_n  \leq x\right) \approx \Phi_{\theta_0,\frac{\theta_0(1-\theta_0)}{n}}(x)\]</span>
-::: {.content-box-orange}
-<strong>Bemerkung:</strong> Warum wir die Grenze <span class="math inline">\(\theta_0\)</span> als wahren Wert wählen, wenn wir annehmen, dass <span class="math inline">\(H_0\)</span> korrekt ist, wird genauer in Kapitel 7 von EWS besprochen.
-:::</p>
+<p><span class="math display">\[P_{\theta_0}\left(\overline X_n  \leq x\right) \approx \Phi_{\theta_0,\frac{\theta_0(1-\theta_0)}{n}}(x)\]</span></p>
+<div class="content-box-orange">
+<p><strong>Bemerkung:</strong> Warum wir die Grenze <span class="math inline">\(\theta_0\)</span> als wahren Wert wählen, wenn wir annehmen, dass <span class="math inline">\(H_0\)</span> korrekt ist, wird genauer in Kapitel 7 von EWS besprochen.</p>
+</div>
 <p>Für unsere Stichprobe haben wir einen Anteil von</p>
 <div class="sourceCode" id="cb248"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">x</span>  <span class="op"><a href="https://infer.tidymodels.org/reference/pipe.html">%&gt;%</a></span>
