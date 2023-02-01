@@ -87,7 +87,7 @@ str(gapminder)
 
 Auf der anderen Seite hätten wir durch direkten Aufruf von `gapminder` den Inhalt auch direkt auf den Bildschirm schreiben können. Aber vielleicht habt ihr schon mal einen größeren Datensatz aufgerufen und zögert nun etwas, da große Datensätze tendenziell einfach die Konsole füllen und nur sehr wenig Einblick bieten.
 
-Tidyverse bietet eine spezielle data frame Variante an: ein __tibble__. `gapminder` ist ein ein tibble. Das sieht man auch, wenn man sich die Klasse dieses Objekts anzeigen lässt
+Tidyverse bietet eine spezielle data frame Variante an: ein __tibble__. `gapminder` ist ein tibble. Das sieht man auch, wenn man sich die Klasse dieses Objekts anzeigen lässt
 
 
 
@@ -224,7 +224,7 @@ Die `summary()` Funktion berechnet, neben dem empirischen Mittel, das [Five-numb
 
 Zusätzlich wollen wir noch die Verteilung von `lifeExp` visualisieren und plotten dazu ein Histogramm. Dazu verwenden wir wieder `ggplot()`. 
 
-Beachtet, dass ihr inerhalb der `ggplot2` Funktionen Variablen eines data frames direkt ansprechen könnt. Es ist hier also nicht nötig mit dem `$` Operator zu arbeiten.
+Beachtet, dass ihr innerhalb der `ggplot2` Funktionen Variablen eines data frames direkt ansprechen könnt. Es ist hier also nicht nötig mit dem `$` Operator zu arbeiten.
 
 ```{r, warning=FALSE, tidy=FALSE}
 ggplot(gapminder, mapping = aes(x = lifeExp)) + 
@@ -292,7 +292,7 @@ Die Erstellung von Grafiken mit ggplot2 werden wir noch genauer besprechen. Dahe
 
 :::
 
-Zunächst initialisieren wir eine Grafik ohne Inhalt, da nicht gesagt wird, wie die Daten geplottete werden sollen.
+Zunächst initialisieren wir eine Grafik ohne Inhalt, da nicht gesagt wird, wie die Daten geplottet werden sollen.
 ```{r}
 p <- ggplot(filter(gapminder, 
                    continent != "Oceania"), # Daten aus Oceania werden "herausgefiltert"
