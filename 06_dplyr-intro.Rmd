@@ -260,7 +260,7 @@ Die Daten sind für all diese Funktionen auch __stets__ das erste Inputargument.
 Die `dplyr` Einführung geht weiter im Kapitel [Mehr zu `dplyr`](#dplyr-single). Bearbeitet aber vorher den letzten Abschnitte des [Work with Data](https://rstudio.cloud/learn/primers/2) Primers:
 
 
-[Deriving Information with dplyr](https://rstudio.cloud/learn/primers/2.3) zeigt euch wie ihr über bestehenden Variablen neue Variablen definiert und leicht zusammenfassende Statistiken innerhalb vorab definierterter Gruppen berechnet.
+[Deriving Information with dplyr](https://rstudio.cloud/learn/primers/2.3) zeigt euch wie ihr über bestehenden Variablen neue Variablen definiert und leicht zusammenfassende Statistiken innerhalb vorab definierter Gruppen berechnet.
 
 
 ```{r links, child="links.md"}
