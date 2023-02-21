@@ -237,7 +237,8 @@ In Kombination mit `summarise()` können wir eine Vielzahl an verschiedenen Funk
 In allen betrachteten Fällen seien $x_1,\dots,x_n$ numerische Beobachtungen.
 
 
-+  `mean()` berechnet das arithmetische Mittel der Beo$$\overline x_n = \frac{1}{n} \sum_{i=1}^n x_i\,.$$
++  `mean()` berechnet das arithmetische Mittel der Beobachtungen
+$$\overline x_n = \frac{1}{n} \sum_{i=1}^n x_i\,.$$
 
 + `median()` berechnet den Median
 $$x_{0.5} = \begin{cases}
@@ -261,7 +262,7 @@ $$x_{(1)} = \min(x_1,\dots,x_n)\,.$$
 $$x_{(n)} = \max(x_1,\dots,x_n)\,.$$
 
 
-Auch wenn dies statistisch gesehen unklug sein mag, lasst uns die durchschnittliche Lebenserwartung pro Kontinenten berechnen.
+Auch wenn dies statistisch gesehen unklug sein mag, lasst uns die durchschnittliche Lebenserwartung pro Kontinent berechnen.
 
 ```{r}
 my_gap %>%

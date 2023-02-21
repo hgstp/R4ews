@@ -80,7 +80,7 @@ filter(gapminder, country == "Rwanda", year > 1979)
 ```
 
 
-Am letzten Befehlt erkennt man, dass die verschiedenen logischen Ausdrücke mit einem `& ` verknüpft werden. Will man einen "oder Abfrage" gestallten, so muss diese in einem logischen Ausdruck enthalten sein. So kann man mit nachfolgendem Befehl beispielsweise nach allen Beobachtungen aus Ruanda oder Beobachachtungen nach 1979 fragen:
+Am letzten Befehl erkennt man, dass die verschiedenen logischen Ausdrücke mit einem `& ` verknüpft werden. Will man eine "oder Abfrage" gestalten, so muss diese in einem logischen Ausdruck enthalten sein. So kann man mit nachfolgendem Befehl beispielsweise nach allen Beobachtungen aus Ruanda oder Beobachachtungen nach 1979 fragen:
 
 ```{r}
 filter(gapminder, country == "Rwanda" | year > 1979)
@@ -132,7 +132,7 @@ knitr::include_graphics("https://upload.wikimedia.org/wikipedia/en/b/b9/Magritte
 ```
 
 
-Mithilfe des __Pipe-Operators__ ist man in der Lage aufeinanderfolgende Befehle einer DAten-Operationen strukturiert anzugeben, ohne sie ineinander zu verschachteln. Diese neue Syntax führt zu Code, der viel einfacher zu schreiben und zu lesen ist.
+Mithilfe des __Pipe-Operators__ ist man in der Lage aufeinanderfolgende Befehle von Daten-Operationen strukturiert anzugeben, ohne sie ineinander zu verschachteln. Diese neue Syntax führt zu Code, der viel einfacher zu schreiben und zu lesen ist.
 
 >Und so sieht er aus: `%>%`. 
 
@@ -185,9 +185,9 @@ _"Nimm `gapminder`, wähle die Variablen `year` und `lifeExp` und zeige dann die
 
 
 
-Natürlich kann man all diese Operationen auch mir R StandardbefehlenJetzt noch ein Vergleich zu R Standardbefehlen durchführen. Die `dplyr` Befehle haen aber klare Vorteile bei der Lesbarkeit des Codes, wie man im nächsten Beispiel sieht.
+Natürlich kann man all diese Operationen auch mit R Standardbefehlen ausführen. Die `dplyr` Befehle haben aber klare Vorteile bei der Lesbarkeit des Codes, wie man im nächsten Beispiel sieht.
 
-Wir wahlen aus dem `gapminder` Datensatz die Variablen  `year` und `lifeExp` der Kambodscha Beobachtungen
+Wir wählen aus dem `gapminder` Datensatz die Variablen  `year` und `lifeExp` der Kambodscha Beobachtungen
 
 ```{r}
 gapminder %>%
@@ -260,7 +260,7 @@ Die Daten sind für all diese Funktionen auch __stets__ das erste Inputargument.
 Die `dplyr` Einführung geht weiter im Kapitel [Mehr zu `dplyr`](#dplyr-single). Bearbeitet aber vorher den letzten Abschnitte des [Work with Data](https://rstudio.cloud/learn/primers/2) Primers:
 
 
-[Deriving Information with dplyr](https://rstudio.cloud/learn/primers/2.3) zeigt euch wie ihr über bestehenden Variablen neue Variablen definiert und leicht zusammenfassende Statistiken innerhalb vorab definiertert Gruppen berechnet.
+[Deriving Information with dplyr](https://rstudio.cloud/learn/primers/2.3) zeigt euch wie ihr über bestehenden Variablen neue Variablen definiert und leicht zusammenfassende Statistiken innerhalb vorab definierter Gruppen berechnet.
 
 
 ```{r links, child="links.md"}
