@@ -58,7 +58,14 @@ Mit der Option `dependencies = TRUE` achten wir darauf, dass alle für `tidyvers
 ## RStudio Primers
 
 
-Ein guter Startpunkt für verschiedene R Themen sind die [RStudio primers](https://rstudio.cloud/learn/primers).
+Ein guter Startpunkt für verschiedene R Themen sind die __RStudio primers__, die aktuell nur als Paket verfügbar sind. Dafür kann man folgenden Befehl verwenden, um Pakete, die nicht auf CRAN verfügbar sind, zu installieren.
+
+```{r}
+install.packages("remotes")
+remotes::install_github("hgstp/idsst.rtutorials")
+```
+
+
 
 
 ```{r, echo=FALSE, out.width="100%"}
