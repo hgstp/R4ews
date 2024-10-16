@@ -17,7 +17,7 @@ Alle R Funktionen bestehen aus den drei Teilen:
 * `environment()`, Verweis auf die Funktionseingabe
 
 
-```r
+``` r
 f <- function(x) x + sin(x)
 formals(f)
 ```
@@ -26,7 +26,7 @@ formals(f)
 ## $x
 ```
 
-```r
+``` r
 body(f)
 ```
 
@@ -34,7 +34,7 @@ body(f)
 ## x + sin(x)
 ```
 
-```r
+``` r
 environment(f)
 ```
 
@@ -47,7 +47,7 @@ environment(f)
 Wie alle Objekte in R, besitzen auch Funktionen Attribute. Ein data frame besitzt z.B. die Attribute `names`, `class` und `row.names`
 
 
-```r
+``` r
 attributes(iris)
 ```
 
@@ -74,20 +74,19 @@ Eine Funktion besitzt hingegen die Attribute
 
 
 
-```r
+``` r
 attributes(f)
 ```
 
 ```
-## $srcref
-## function(x) x + sin(x)
+## NULL
 ```
 
 Den Unterschied zu `body()` sehen wir im folgenden Beispiel.
 
 
 
-```r
+``` r
 f <- function(x){
   # Summe von x und sin(x)#
   x + sin(x)
@@ -101,15 +100,12 @@ body(f)
 ## }
 ```
 
-```r
+``` r
 attr(f, "srcref")
 ```
 
 ```
-## function(x){
-##   # Summe von x und sin(x)#
-##   x + sin(x)
-## }
+## NULL
 ```
 
 ## "Einfache" Funktionen
@@ -117,7 +113,7 @@ attr(f, "srcref")
 Es gibt eine Ausnahme von der obigen Regel, dass Funktionen aus drei Teilen bestehen. Die primitive functions wie `sum(), sin()` oder `exp()` rufen direkt über die Funktion `.Primitive()` C Code auf, enthalten somit keinen R Code und daher sind alle drei Teile gleich `NULL`.
 
 
-```r
+``` r
 formals(sin)
 ```
 
@@ -125,7 +121,7 @@ formals(sin)
 ## NULL
 ```
 
-```r
+``` r
 body(sin)
 ```
 
@@ -133,7 +129,7 @@ body(sin)
 ## NULL
 ```
 
-```r
+``` r
 environment(sin)
 ```
 
@@ -156,7 +152,7 @@ environment(sin)
 Alle Operationen bestehen aus Funktionsaufrufen. Somit auch `+, -, /,:, for, if, while` oder `[]`und `$`. Dies sieht man z.B. an diesem Beispiel
 
 
-```r
+``` r
 x <- 10 
 y <- 5
 x + y
@@ -166,7 +162,7 @@ x + y
 ## [1] 15
 ```
 
-```r
+``` r
 `+`(x, y)
 ```
 
@@ -178,7 +174,7 @@ x + y
 oder auch an diesem Beispielen
 
 
-```r
+``` r
 for (i in 1:2) print(i)
 ```
 
@@ -187,7 +183,7 @@ for (i in 1:2) print(i)
 ## [1] 2
 ```
 
-```r
+``` r
 `for`(i, 1:2, print(i))
 ```
 
@@ -196,7 +192,7 @@ for (i in 1:2) print(i)
 ## [1] 2
 ```
 
-```r
+``` r
 x[3]
 ```
 
@@ -204,7 +200,7 @@ x[3]
 ## [1] NA
 ```
 
-```r
+``` r
 `[`(x, 3)
 ```
 
@@ -220,7 +216,7 @@ Die Verwendung von `  erlaubt den Zugriff auf reservierte Ausdrücke.
 Eine sinnvolle Anwendung dieser Zugriffsmethode liegt in der Kombination mit den apply Funktionen (`apply(), lapply(), sapply, mapply(), tapply()`). Diese wenden eine zu übergebende Funktion auf weitere Inputgrößen wie Listen oder Data Frames an.
 
 
-```r
+``` r
 x <- list(1:3, 4:9, 10:12)
 sapply(x, `[`, 2)
 ```
@@ -229,7 +225,7 @@ sapply(x, `[`, 2)
 ## [1]  2  5 11
 ```
 
-```r
+``` r
 sapply(x, function(x) x[2])
 ```
 
@@ -242,7 +238,7 @@ sapply(x, function(x) x[2])
 `sapply()` ist eine Version von `lapply()`, die - wenn möglich - eine "vereinfachte" Ausgabe liefert.
 
 
-```r
+``` r
 x <- list(1:3, 4:6, 7:9)
 lapply(x, `+`, 3)
 ```
@@ -258,7 +254,7 @@ lapply(x, `+`, 3)
 ## [1] 10 11 12
 ```
 
-```r
+``` r
 is.matrix(sapply(x, `+`, 3))
 ```
 
@@ -272,7 +268,7 @@ is.matrix(sapply(x, `+`, 3))
 Funktionen besitzen formelle Argumente, denen beim Funktionsaufruf (oder per Default) Werte zugewiesen werden. Beim Aufruf können die Argumente durch ihre Position, den vollen oder teilweisen Namen ausgewählt werden.
 
 
-```r
+``` r
 f <- function(abc, bcd, bdc) c(abc, bcd, bdc)
 f(3, 2, 1)
 ```
@@ -281,7 +277,7 @@ f(3, 2, 1)
 ## [1] 3 2 1
 ```
 
-```r
+``` r
 f(2, 1, abc=3)
 ```
 
@@ -289,7 +285,7 @@ f(2, 1, abc=3)
 ## [1] 3 2 1
 ```
 
-```r
+``` r
 f(2, 1, a=3)
 ```
 
@@ -301,7 +297,7 @@ f(2, 1, a=3)
 Der folgende Aufruf kann aber nicht funktionieren.
 
 
-```r
+``` r
 f(3, b=2, 1)
 ```
 
@@ -316,7 +312,7 @@ Generell sollte man die zwei, drei wichtigsten Inputgrößen an den Beginn stell
 Funktionsargumenten können Default-Werte zugeordnet werden. Dabei können Default-Werte auch in Abhängigkeit anderer Argumente definiert werden.
 
 
-```r
+``` r
 f <- function(a = 1, b = 2) {
   c(a, b)
 }
@@ -327,7 +323,7 @@ f()
 ## [1] 1 2
 ```
 
-```r
+``` r
 g <- function(a = 1, b = a * 2) {
   c(a, b)
 }
@@ -343,7 +339,7 @@ g(a=10)
 R wertet Funktionsargumente nur aus, wenn diese tatsächlich benützt werden. Dies entspricht der Idee der *Lazy Evaluation*.
 
 
-```r
+``` r
 f <- function(x) {
   10
 }
@@ -355,7 +351,7 @@ f(stop("x ist nicht 10"))
 ```
 Mit `force()` kann man die Auswertung eines Arguments *erzwingen*.
 
-```r
+``` r
 f <- function(x) {
   force(x)
   10
@@ -372,7 +368,7 @@ f(stop("x ist nicht 10"))
 Benutzt man eine verschachtelte Funktion in Kombination mit `lapply()` oder einer Schleife, so kann die Lazy Evaluation entscheidend sein.
 
 
-```r
+``` r
 addiere_x <- function(x){
   function(y) x+y
 }
@@ -384,7 +380,7 @@ addiere_zu_1bis10[[1]](10)
 ## [1] 11
 ```
 
-```r
+``` r
 addiere_zu_1bis10[[5]](10)
 ```
 
@@ -395,7 +391,7 @@ addiere_zu_1bis10[[5]](10)
 
 
 
-```r
+``` r
 addiere_x <- function(x){
   force(x)
   function(y) x+y
@@ -408,7 +404,7 @@ addiere_zu_1bis10[[1]](10)
 ## [1] 11
 ```
 
-```r
+``` r
 addiere_zu_1bis10[[5]](10)
 ```
 
@@ -422,7 +418,7 @@ Erzwingt man die Auswertung, so erhält man das gewünschte Ergebnis.
 Bisher schien die Lazy Evaluation eher nachteilig. Sie kann aber auch Vorteile haben. Die Befehle
 
 
-```r
+``` r
 x <- NULL
 if (!is.null(x) && x > 0) {
 
@@ -438,7 +434,7 @@ erzeugen keinen Fehler, obwohl `NULL>0` keinen zulässigen Input für `if` darst
 Für eine Funktion kann das formale `...` Drei-Punkte Argument verwendet werden. Alle nicht über Position und/oder Name zugeordneten Argumente werden durch `...` aufgenommen. In der Regel werden über `...` Argumente übergeben, die innerhalb der Funktion an andere Funktionen weitergegeben werden.
 
 
-```r
+``` r
 summe_plus2 <- function(x, ...){
   x <- x+2
   sum(x, ...)
@@ -450,7 +446,7 @@ summe_plus2(c(1, 3, 5))
 ## [1] 15
 ```
 
-```r
+``` r
 summe_plus2(c(1, 3, NA), na.rm = TRUE)
 ```
 
@@ -463,7 +459,7 @@ summe_plus2(c(1, 3, NA), na.rm = TRUE)
 `...` erhöht also offensichtlich die Flexibilität. Ein Nachteil ist, dass falsch geschriebene Argumente keinen Fehler erzeugen und alle Argumente nach `...` voll ausgeschrieben werden müssen.
 
 
-```r
+``` r
 sum(1, 2, NA, rm.na = TRUE)
 ```
 
@@ -471,7 +467,7 @@ sum(1, 2, NA, rm.na = TRUE)
 ## [1] NA
 ```
 
-```r
+``` r
 sum(1, 2, NA, na.rm = TRUE)
 ```
 
@@ -485,7 +481,7 @@ sum(1, 2, NA, na.rm = TRUE)
 Wir haben in den Beispielen bereits gesehen wie die Rückgabe funktioniert. Der letzte Ausdruck, der ausgewertet wird, bildet die Rückgabe. 
 
 
-```r
+``` r
 f <- function(x) {
   if (x < 10) {
     0
@@ -500,7 +496,7 @@ f(5)
 ## [1] 0
 ```
 
-```r
+``` r
 f(15)
 ```
 
@@ -516,7 +512,7 @@ Funktionen können nur ein Objekt zurückgeben. Soll die Ausgabe einer Funktion 
 
 
 
-```r
+``` r
 f <- function(x) {
   if (x < 10) {
     n_output <- 0
@@ -541,7 +537,7 @@ f(5)
 ## [1] "eingabe war kleiner 10"
 ```
 
-```r
+``` r
 f(15)
 ```
 

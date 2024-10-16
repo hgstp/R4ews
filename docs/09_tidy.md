@@ -276,7 +276,7 @@ In dieser Form können wir nun leicht folgende Fragen beantworten:
 Nun braucht es nur noch ein kleines bisschen Code, um die Gesamtwortzahl für beide Geschlechter aller Kategorien über alle Filme hinweg zu berechnen. Wir nutzen dazu die Komfortfunktion `count()`.
 
 
-```r
+``` r
 library(tidyverse)
 lotr_tidy %>% 
   count(Gender, Race, wt = Words)
@@ -303,7 +303,7 @@ lotr_tidy %>%
 Zunächst summieren wir über die Geschlechter hinweg, um die Wortzahlen für die verschiedenen Kategorien pro Film zu erhalten.
 
 
-```r
+``` r
 (by_race_film <- lotr_tidy %>% 
    group_by(Film, Race) %>% 
    summarize(Words = sum(Words)))
@@ -333,7 +333,7 @@ Zunächst summieren wir über die Geschlechter hinweg, um die Wortzahlen für di
 Wir können jetzt entweder die Zahlen ein bisschen  anstarren, um die Frage zu beantworten, oder besser, die gerade berechneten Wortzahlen in einem Balkendiagramm darstellen. 
 
 
-```r
+``` r
 ggplot(by_race_film, aes(x = Film, y = Words, fill = Race)) + 
   geom_bar(stat = "identity", position = "dodge") +
   coord_flip() + guides(fill = guide_legend(reverse = TRUE)) + 
@@ -369,7 +369,7 @@ Für jede Tabelle existiert eine eigene csv Datei:
 
 
 
-```r
+``` r
 fship <- read_csv(file.path("data", "The_Fellowship_Of_The_Ring.csv"))
 ttow <- read_csv(file.path("data", "The_Two_Towers.csv"))
 rking <- read_csv(file.path("data", "The_Return_Of_The_King.csv")) 
@@ -390,7 +390,7 @@ Wir haben jetzt ein Data Frame pro Film, jeweils mit den vier Variablen
 
 
 
-```r
+``` r
 names(rking)
 ```
 
@@ -401,7 +401,7 @@ names(rking)
 Der erste Schritt beim Aufräumen dieser Daten besteht darin, sie zu einem Data Frame zusammenzufügen, indem wir die drei Data Frames zeilenweise stapeln. Dazu können wir die Funktion `dplyr::bind_rows()` verwenden.
 
 
-```r
+``` r
 lotr_untidy <- bind_rows(fship, ttow, rking)
 lotr_untidy
 ```
@@ -436,7 +436,7 @@ Konzeptionell müssen wir die Wortanzahl in einer einzigen Variable zusammenfass
 
 
 
-```r
+``` r
 lotr_tidy <-
   pivot_longer(lotr_untidy, cols = c("Female", "Male"), 
                names_to = 'Gender', 
@@ -480,7 +480,7 @@ Wenn man sich diese Arbeit gemacht hat, macht es Sinn sich auch das Ergebnis abz
 
 
 
-```r
+``` r
 write_csv(lotr_tidy, file = file.path("data", "lotr_tidy.csv"))
 ```
 
@@ -497,7 +497,7 @@ Dazu arbeiten wir mit den Funktion `tidyr::pivot_wider()`. Wir nehmen nun die Au
 
 
 
-```r
+``` r
 ## Race
 lotr_tidy %>% 
   pivot_wider(names_from = Race, values_from = Words)
@@ -515,7 +515,7 @@ lotr_tidy %>%
 ## 6 The Return Of The King     Male     510   2673  2459
 ```
 
-```r
+``` r
 ## Gender
 lotr_tidy %>% 
   pivot_wider(names_from = Gender, values_from = Words)
@@ -542,7 +542,7 @@ Das erste Beispiel hat immer noch 6 Beobachtungen, zwei pro Film. Nehmen wir mal
 
 
 
-```r
+``` r
 lotr_tidy %>% 
   unite(Race_Gender, Race, Gender)
 ```
@@ -574,7 +574,7 @@ lotr_tidy %>%
 In Kombination mit `pivot_wider()` ergibt sich so
 
 
-```r
+``` r
 lotr_tidy %>% 
   unite(Race_Gender, Race, Gender) %>% 
   pivot_wider(names_from = Race_Gender, values_from = Words)
@@ -593,7 +593,7 @@ Zum Schluss könnten wir auch noch alles zurück auf Anfang stellen und die
 drei Datensätze vom Anfang wiederherstellen
 
 
-```r
+``` r
 (sep_list <- lotr_tidy %>% 
   pivot_wider(names_from = Gender, values_from = Words) %>%
    group_split(Film))
@@ -636,7 +636,7 @@ drei Datensätze vom Anfang wiederherstellen
 Wir erhalten eine Liste mit drei Elemente, deren Inhalt den drei Tabellen vom Anfang entspricht. Die Daten zu "The Return of the King" sind beispielsweise im zweiten Element enthalten.
 
 
-```r
+``` r
 sep_list[[2]]
 ```
 

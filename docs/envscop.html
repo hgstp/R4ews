@@ -4,22 +4,22 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Kapitel 15 Environments und Scoping | R4ews MA0009</title>
+<title>Kapitel 14 Environments und Scoping | R4ews MA0009</title>
 <meta name="author" content="Stephan Haug">
-<meta name="description" content="15.1 Zuordnungen Wie weiß R welchen Wert es welchem Symbol zuordnen soll? sqrt(2) ## [1] 1.414214 sqrt &lt;- function(x) x^2 sqrt(2) ## [1] 4 Warum wählt R nicht die Standardfunktion sqrt() aus dem...">
-<meta name="generator" content="bookdown 0.28 with bs4_book()">
-<meta property="og:title" content="Kapitel 15 Environments und Scoping | R4ews MA0009">
+<meta name="description" content="14.1 Zuordnungen Wie weiß R welchen Wert es welchem Symbol zuordnen soll? sqrt(2) ## [1] 1.414214 sqrt &lt;- function(x) x^2 sqrt(2) ## [1] 4 Warum wählt R nicht die Standardfunktion sqrt() aus dem...">
+<meta name="generator" content="bookdown 0.41 with bs4_book()">
+<meta property="og:title" content="Kapitel 14 Environments und Scoping | R4ews MA0009">
 <meta property="og:type" content="book">
-<meta property="og:description" content="15.1 Zuordnungen Wie weiß R welchen Wert es welchem Symbol zuordnen soll? sqrt(2) ## [1] 1.414214 sqrt &lt;- function(x) x^2 sqrt(2) ## [1] 4 Warum wählt R nicht die Standardfunktion sqrt() aus dem...">
+<meta property="og:description" content="14.1 Zuordnungen Wie weiß R welchen Wert es welchem Symbol zuordnen soll? sqrt(2) ## [1] 1.414214 sqrt &lt;- function(x) x^2 sqrt(2) ## [1] 4 Warum wählt R nicht die Standardfunktion sqrt() aus dem...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Kapitel 15 Environments und Scoping | R4ews MA0009">
-<meta name="twitter:description" content="15.1 Zuordnungen Wie weiß R welchen Wert es welchem Symbol zuordnen soll? sqrt(2) ## [1] 1.414214 sqrt &lt;- function(x) x^2 sqrt(2) ## [1] 4 Warum wählt R nicht die Standardfunktion sqrt() aus dem...">
+<meta name="twitter:title" content="Kapitel 14 Environments und Scoping | R4ews MA0009">
+<meta name="twitter:description" content="14.1 Zuordnungen Wie weiß R welchen Wert es welchem Symbol zuordnen soll? sqrt(2) ## [1] 1.414214 sqrt &lt;- function(x) x^2 sqrt(2) ## [1] 4 Warum wählt R nicht die Standardfunktion sqrt() aus dem...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/Lato-0.4.2/font.css" rel="stylesheet">
-<script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link href="libs/font-awesome-5.1.0/css/all.css" rel="stylesheet">
-<link href="libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/Lato-0.4.9/font.css" rel="stylesheet">
+<script src="libs/bs3compat-0.8.0/transition.js"></script><script src="libs/bs3compat-0.8.0/tabs.js"></script><script src="libs/bs3compat-0.8.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link href="libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
+<link href="libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <script src="anchor-links.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-68219208-1"></script><script>
       window.dataLayer = window.dataLayer || [];
@@ -36,6 +36,7 @@
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
+          margin-bottom: 0em;
         }
     .hanging div.csl-entry {
       margin-left:2em;
@@ -93,11 +94,9 @@
 <li><a class="" href="bausteine.html"><span class="header-section-number">11</span> Bausteine</a></li>
 <li class="book-part">Wir schreiben ein Paket</li>
 <li><a class="" href="pakete.html"><span class="header-section-number">12</span> Pakete</a></li>
-<li class="book-part">Ein bisschen Statistik</li>
-<li><a class="" href="sampling.html"><span class="header-section-number">13</span> Sampling</a></li>
 <li class="book-part">Appendix</li>
-<li><a class="" href="funktionen.html"><span class="header-section-number">14</span> Funktionen</a></li>
-<li><a class="active" href="envscop.html"><span class="header-section-number">15</span> Environments und Scoping</a></li>
+<li><a class="" href="funktionen.html"><span class="header-section-number">13</span> Funktionen</a></li>
+<li><a class="active" href="envscop.html"><span class="header-section-number">14</span> Environments und Scoping</a></li>
 <li><a class="" href="literatur-3.html">Literatur</a></li>
 </ul>
 
@@ -106,21 +105,21 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="envscop" class="section level1" number="15">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="envscop" class="section level1" number="14">
 <h1>
-<span class="header-section-number">Kapitel 15</span> Environments und Scoping<a class="anchor" aria-label="anchor" href="#envscop"><i class="fas fa-link"></i></a>
+<span class="header-section-number">Kapitel 14</span> Environments und Scoping<a class="anchor" aria-label="anchor" href="#envscop"><i class="fas fa-link"></i></a>
 </h1>
-<div id="zuordnungen" class="section level2" number="15.1">
+<div id="zuordnungen" class="section level2" number="14.1">
 <h2>
-<span class="header-section-number">15.1</span> Zuordnungen<a class="anchor" aria-label="anchor" href="#zuordnungen"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.1</span> Zuordnungen<a class="anchor" aria-label="anchor" href="#zuordnungen"><i class="fas fa-link"></i></a>
 </h2>
 <p>Wie weiß R welchen Wert es welchem Symbol zuordnen soll?</p>
-<div class="sourceCode" id="cb341"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb296"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 1.414214</code></pre>
-<div class="sourceCode" id="cb343"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sqrt</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span><span class="op">^</span><span class="fl">2</span>
-<span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb298"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">sqrt</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span><span class="op">^</span><span class="fl">2</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 4</code></pre>
 <p>Warum wählt R nicht die Standardfunktion <code><a href="https://rdrr.io/r/base/MathFun.html">sqrt()</a></code> aus dem <code>base</code> Paket?</p>
 <p>Wenn R einem Symbol einen Wert zuordnet, dann durchsucht R eine Reihe von <code>environments</code> (bereits im Abschnitt Funktionen gesehen) nach dem passenden Wert. Gesucht wird in folgender Reihenfolge</p>
@@ -128,31 +127,31 @@
 <li>Das <code>Global Environment</code> wird durchsucht.</li>
 <li>Die <code>namespaces</code> (dazu später mehr) der Pakete auf der <code>search</code> Liste werden durchsucht.</li>
 </ol>
-<div class="sourceCode" id="cb345"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/search.html">search</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb300"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/search.html">search</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] ".GlobalEnv"        "package:stats"     "package:graphics" 
 ## [4] "package:grDevices" "package:utils"     "package:datasets" 
 ## [7] "package:methods"   "Autoloads"         "package:base"</code></pre>
 <p>Das <code>global environment</code> (der Workspace) wird immer zuerst und <code>base</code> immer zuletzt durchsucht.</p>
 <p>Die <code>search</code> Liste wird also beeinflusst durch die von uns geladenen Pakete.</p>
-<div class="sourceCode" id="cb347"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/search.html">search</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb302"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/search.html">search</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code>##  [1] ".GlobalEnv"        "package:ggplot2"   "package:stats"    
 ##  [4] "package:graphics"  "package:grDevices" "package:utils"    
 ##  [7] "package:datasets"  "package:methods"   "Autoloads"        
 ## [10] "package:base"</code></pre>
 <p>Man beachte, dass R die Namen von Daten- und Funktionsobjekten unterscheiden kann.</p>
-<div class="sourceCode" id="cb349"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="op">(</span><span class="va">sqrt</span> <span class="op">&lt;-</span> <span class="fl">2</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb304"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">sqrt</span> <span class="op">&lt;-</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
-<div class="sourceCode" id="cb351"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb306"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 1.414214</code></pre>
 </div>
-<div id="environments" class="section level2" number="15.2">
+<div id="environments" class="section level2" number="14.2">
 <h2>
-<span class="header-section-number">15.2</span> Environments<a class="anchor" aria-label="anchor" href="#environments"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.2</span> Environments<a class="anchor" aria-label="anchor" href="#environments"><i class="fas fa-link"></i></a>
 </h2>
 <p>Ein Environment verbindet eine Menge von Namen mit einer entsprechenden Menge von Werten. Environments sind ähnlich zu einer Liste, aber es gibt entscheidende Unterschiede</p>
 <ul>
@@ -162,74 +161,74 @@
 </li>
 </ul>
 <p>Die Einträge von <code><a href="https://rdrr.io/r/base/search.html">search()</a></code> sind die Eltern des <code>Global Environment</code>. Mit <code><a href="https://rdrr.io/r/base/environment.html">new.env()</a></code> kann auch ein neues Environment erzeugt werden.</p>
-<div class="sourceCode" id="cb353"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">neues_env</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/environment.html">new.env</a></span><span class="op">(</span><span class="op">)</span>
-<span class="va">neues_env</span><span class="op">$</span><span class="va">eins</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span>
-<span class="va">neues_env</span><span class="op">$</span><span class="va">zwei</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span><span class="va">neues_env</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb308"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">neues_env</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/environment.html">new.env</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">neues_env</span><span class="op">$</span><span class="va">eins</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="va">neues_env</span><span class="op">$</span><span class="va">zwei</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span><span class="va">neues_env</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] "eins" "zwei"</code></pre>
-<div class="sourceCode" id="cb355"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/environment.html">parent.env</a></span><span class="op">(</span><span class="va">neues_env</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb310"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/environment.html">parent.env</a></span><span class="op">(</span><span class="va">neues_env</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## &lt;environment: R_GlobalEnv&gt;</code></pre>
 <p><em>Bemerkung:</em> Die meisten Environments erzeugt man durch die Verwendung von Funktionen.</p>
 </div>
-<div id="scoping-rules" class="section level2" number="15.3">
+<div id="scoping-rules" class="section level2" number="14.3">
 <h2>
-<span class="header-section-number">15.3</span> Scoping Rules<a class="anchor" aria-label="anchor" href="#scoping-rules"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.3</span> Scoping Rules<a class="anchor" aria-label="anchor" href="#scoping-rules"><i class="fas fa-link"></i></a>
 </h2>
 <p>Der Sichtbarkeitsbereich von Variablen (Scope) wird über <em>Scoping Rules</em> festgelegt. R verwendet <em>static scoping</em> oder auch <em>lexical scoping</em> genannt (eine Alternative ist das <em>dynamic scoping</em>).</p>
-<div class="sourceCode" id="cb357"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">f</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span><span class="op">{</span>
-  <span class="va">x</span> <span class="op">+</span> <span class="va">y</span><span class="op">/</span><span class="va">z</span>
-<span class="op">}</span></code></pre></div>
+<div class="sourceCode" id="cb312"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">f</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="va">x</span> <span class="op">+</span> <span class="va">y</span><span class="op">/</span><span class="va">z</span></span>
+<span><span class="op">}</span></span></code></pre></div>
 <p><code>f</code> hat die formellen Argumente <code>x</code> und <code>y</code> sowie die freie Variable <code>z</code>. Die Scoping Rule bestimmt wie Werte freien Variablen zugeordnet werden. In R bedeutet dies</p>
 <blockquote>
 <p>Der Wert freier Variablen (in einer Funktion) wird in dem Environment gesucht, in dem die Funktion definiert wurde.</p>
 </blockquote>
 </div>
-<div id="static-scoping" class="section level2" number="15.4">
+<div id="static-scoping" class="section level2" number="14.4">
 <h2>
-<span class="header-section-number">15.4</span> Static scoping<a class="anchor" aria-label="anchor" href="#static-scoping"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.4</span> Static scoping<a class="anchor" aria-label="anchor" href="#static-scoping"><i class="fas fa-link"></i></a>
 </h2>
 <p>Oftmals werden Funktionen im Globalen Environment definiert. Die Werte freier Variablen sollten dann im Workspace zu finden sein. Dieses “Verhalten” wird von den meisten “Nutzern” erwartet und als sinnvoll angesehen.</p>
 <p>Allerdings können Funktionen auch innerhalb von Funktionen definiert werden. In diesem Fall ist das Environment der <code>body</code> einer anderen Funktion.</p>
-<div class="sourceCode" id="cb358"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">bilde_potenz</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">{</span>
-  <span class="va">potenz</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-    <span class="va">x</span><span class="op">^</span><span class="va">n</span>
-<span class="op">}</span></code></pre></div>
+<div class="sourceCode" id="cb313"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">bilde_potenz</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="va">potenz</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span>    <span class="va">x</span><span class="op">^</span><span class="va">n</span></span>
+<span><span class="op">}</span></span></code></pre></div>
 <p><code>bilde_potenz()</code> liefert somit eine Funktion als Ausgabe.</p>
-<div class="sourceCode" id="cb359"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">zweite_potenz</span> <span class="op">&lt;-</span> <span class="fu">bilde_potenz</span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>
-<span class="va">dritte_potenz</span> <span class="op">&lt;-</span> <span class="fu">bilde_potenz</span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb314"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">zweite_potenz</span> <span class="op">&lt;-</span> <span class="fu">bilde_potenz</span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></span>
+<span><span class="va">dritte_potenz</span> <span class="op">&lt;-</span> <span class="fu">bilde_potenz</span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span></code></pre></div>
 <p>Sucht man nach einer Variable und/oder möchte man ihren Wert ausgeben, so kann man mit den Funktionen <code><a href="https://rdrr.io/r/base/exists.html">exists()</a></code> und <code><a href="https://rdrr.io/r/base/get.html">get()</a></code> arbeiten. Beide verwenden static scoping.</p>
-<div class="sourceCode" id="cb360"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span><span class="op">(</span><span class="st">"eins"</span>, envir <span class="op">=</span> <span class="va">neues_env</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb315"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span><span class="op">(</span><span class="st">"eins"</span>, envir <span class="op">=</span> <span class="va">neues_env</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 1 2</code></pre>
-<div class="sourceCode" id="cb362"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span>
-<span class="fu"><a href="https://rdrr.io/r/base/exists.html">exists</a></span><span class="op">(</span><span class="st">"x"</span>, envir <span class="op">=</span> <span class="va">neues_env</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb317"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">1</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/exists.html">exists</a></span><span class="op">(</span><span class="st">"x"</span>, envir <span class="op">=</span> <span class="va">neues_env</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb364"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/exists.html">exists</a></span><span class="op">(</span><span class="st">"x"</span>, envir <span class="op">=</span> <span class="va">neues_env</span>, inherits <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb319"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/exists.html">exists</a></span><span class="op">(</span><span class="st">"x"</span>, envir <span class="op">=</span> <span class="va">neues_env</span>, inherits <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] FALSE</code></pre>
 <p>Schauen wir uns nun den <code>closure</code> (Funktion + zugehöriges Environment) von <code>zweite_potenz()</code> und <code>dritte_potenz()</code> genauer an.</p>
-<div class="sourceCode" id="cb366"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/environment.html">environment</a></span><span class="op">(</span><span class="va">zweite_potenz</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb321"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/environment.html">environment</a></span><span class="op">(</span><span class="va">zweite_potenz</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] "n"      "potenz"</code></pre>
-<div class="sourceCode" id="cb368"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span><span class="op">(</span><span class="st">"n"</span>, envir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/environment.html">environment</a></span><span class="op">(</span><span class="va">zweite_potenz</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb323"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span><span class="op">(</span><span class="st">"n"</span>, envir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/environment.html">environment</a></span><span class="op">(</span><span class="va">zweite_potenz</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 2</code></pre>
-<div class="sourceCode" id="cb370"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/environment.html">environment</a></span><span class="op">(</span><span class="va">dritte_potenz</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb325"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/environment.html">environment</a></span><span class="op">(</span><span class="va">dritte_potenz</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] "n"      "potenz"</code></pre>
-<div class="sourceCode" id="cb372"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span><span class="op">(</span><span class="st">"n"</span>, envir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/environment.html">environment</a></span><span class="op">(</span><span class="va">dritte_potenz</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb327"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/get.html">get</a></span><span class="op">(</span><span class="st">"n"</span>, envir <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/environment.html">environment</a></span><span class="op">(</span><span class="va">dritte_potenz</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] 3</code></pre>
 </div>
-<div id="anwendungsbeispiel" class="section level2" number="15.5">
+<div id="anwendungsbeispiel" class="section level2" number="14.5">
 <h2>
-<span class="header-section-number">15.5</span> Anwendungsbeispiel<a class="anchor" aria-label="anchor" href="#anwendungsbeispiel"><i class="fas fa-link"></i></a>
+<span class="header-section-number">14.5</span> Anwendungsbeispiel<a class="anchor" aria-label="anchor" href="#anwendungsbeispiel"><i class="fas fa-link"></i></a>
 </h2>
 <p>Wir betrachten als Anwendungsbeispiel die Minimierung der Funktion</p>
 <p><span class="math display">\[
@@ -238,71 +237,72 @@
 wobei <span class="math inline">\(x_i, i=1,\dots,n,\)</span> bekannte Größen sind. Die obigen Funktion ist der negative log-Likelihood einer Normalverteilung mit Parametern <span class="math inline">\(\mu\)</span> und <span class="math inline">\(\sigma^2\)</span>, aber das spielt hier keine Rolle.</p>
 <p>Optimierungsroutinen wie <code>optim(), nlm()</code> oder <code><a href="https://rdrr.io/r/stats/optimize.html">optimize()</a></code> erwarten als Eingabe eine
 Funktion, deren Argumente die zu optimierenden Parameterwerte sind. Oftmals (wie im obigen Beispiel) hängen Funktionen aber von weiteren Werten ab.</p>
-<div class="sourceCode" id="cb374"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">negLogLik</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span>, <span class="va">fix</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">FALSE</span>, <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span><span class="op">{</span>
-  <span class="va">param</span> <span class="op">&lt;-</span> <span class="va">fix</span>
-  <span class="kw">function</span><span class="op">(</span><span class="va">theta</span><span class="op">)</span><span class="op">{</span>
-    <span class="va">param</span><span class="op">[</span><span class="op">!</span><span class="va">fix</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">theta</span>
-    <span class="va">mu</span> <span class="op">&lt;-</span> <span class="va">param</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span>
-    <span class="va">sigma_2</span> <span class="op">&lt;-</span> <span class="va">param</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span>
-    <span class="va">l_x</span> <span class="op">&lt;-</span> <span class="op">-</span><span class="op">(</span> <span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span><span class="op">/</span><span class="fl">2</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="fl">2</span> <span class="op">*</span> <span class="va">pi</span> <span class="op">*</span> <span class="va">sigma_2</span> <span class="op">)</span>
-              <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">(</span><span class="va">data</span><span class="op">-</span><span class="va">mu</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="fl">2</span><span class="op">*</span><span class="va">sigma_2</span><span class="op">)</span><span class="op">)</span>
-    <span class="va">l_x</span>
-  <span class="op">}</span>
-<span class="op">}</span></code></pre></div>
+<div class="sourceCode" id="cb329"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">negLogLik</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span>, <span class="va">fix</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="cn">FALSE</span>, <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="va">param</span> <span class="op">&lt;-</span> <span class="va">fix</span></span>
+<span>  <span class="kw">function</span><span class="op">(</span><span class="va">theta</span><span class="op">)</span><span class="op">{</span></span>
+<span>    <span class="va">param</span><span class="op">[</span><span class="op">!</span><span class="va">fix</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">theta</span></span>
+<span>    <span class="va">mu</span> <span class="op">&lt;-</span> <span class="va">param</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span></span>
+<span>    <span class="va">sigma_2</span> <span class="op">&lt;-</span> <span class="va">param</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span></span>
+<span>    <span class="va">l_x</span> <span class="op">&lt;-</span> <span class="op">-</span><span class="op">(</span> <span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span><span class="op">/</span><span class="fl">2</span> <span class="op">*</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="fl">2</span> <span class="op">*</span> <span class="va">pi</span> <span class="op">*</span> <span class="va">sigma_2</span> <span class="op">)</span></span>
+<span>              <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="op">(</span><span class="va">data</span><span class="op">-</span><span class="va">mu</span><span class="op">)</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="op">/</span> <span class="op">(</span><span class="fl">2</span><span class="op">*</span><span class="va">sigma_2</span><span class="op">)</span><span class="op">)</span></span>
+<span>    <span class="va">l_x</span></span>
+<span>  <span class="op">}</span></span>
+<span><span class="op">}</span></span></code></pre></div>
 <p>Die Funktion ist so geschrieben, dass einer der beiden Parameter fixiert werden kann.</p>
-<div class="sourceCode" id="cb375"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1234</span><span class="op">)</span>
-<span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">1000</span>, mean <span class="op">=</span> <span class="fl">1</span>, sd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
-<span class="va">l_x</span> <span class="op">&lt;-</span> <span class="fu">negLogLik</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-<span class="va">l_x</span></code></pre></div>
-<pre><code>## function(theta){
+<div class="sourceCode" id="cb330"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">1234</span><span class="op">)</span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html">rnorm</a></span><span class="op">(</span><span class="fl">1000</span>, mean <span class="op">=</span> <span class="fl">1</span>, sd <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="va">l_x</span> <span class="op">&lt;-</span> <span class="fu">negLogLik</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span><span class="va">l_x</span></span></code></pre></div>
+<pre><code>## function (theta) 
+## {
 ##     param[!fix] &lt;- theta
 ##     mu &lt;- param[1]
 ##     sigma_2 &lt;- param[2]
-##     l_x &lt;- -( -length(data)/2 * log(2 * pi * sigma_2 )
-##               - sum((data-mu)^2) / (2*sigma_2))
+##     l_x &lt;- -(-length(data)/2 * log(2 * pi * sigma_2) - sum((data - 
+##         mu)^2)/(2 * sigma_2))
 ##     l_x
-##   }
-## &lt;bytecode: 0x7fd0c3a9c200&gt;
-## &lt;environment: 0x7fd0c1dd4be0&gt;</code></pre>
-<div class="sourceCode" id="cb377"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/environment.html">environment</a></span><span class="op">(</span><span class="va">l_x</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+## }
+## &lt;bytecode: 0x114da2e48&gt;
+## &lt;environment: 0x114877740&gt;</code></pre>
+<div class="sourceCode" id="cb332"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/environment.html">environment</a></span><span class="op">(</span><span class="va">l_x</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] "data"  "fix"   "param"</code></pre>
-<div class="sourceCode" id="cb379"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/optim.html">optim</a></span><span class="op">(</span>par <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>, fn <span class="op">=</span> <span class="va">l_x</span><span class="op">)</span><span class="op">$</span><span class="va">par</span></code></pre></div>
+<div class="sourceCode" id="cb334"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/optim.html">optim</a></span><span class="op">(</span>par <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">1</span><span class="op">)</span>, fn <span class="op">=</span> <span class="va">l_x</span><span class="op">)</span><span class="op">$</span><span class="va">par</span></span></code></pre></div>
 <pre><code>## [1] 0.9465684 3.9744817</code></pre>
 <p>Fixieren wir nun <span class="math inline">\(\mu\)</span> gleich 1, so erhält man</p>
-<div class="sourceCode" id="cb381"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">l_x</span> <span class="op">&lt;-</span> <span class="fu">negLogLik</span><span class="op">(</span><span class="va">x</span>, fix <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/stats/optimize.html">optimize</a></span><span class="op">(</span>f <span class="op">=</span> <span class="va">l_x</span>, interval <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1e-6</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span><span class="op">$</span><span class="va">minimum</span></code></pre></div>
+<div class="sourceCode" id="cb336"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">l_x</span> <span class="op">&lt;-</span> <span class="fu">negLogLik</span><span class="op">(</span><span class="va">x</span>, fix <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="cn">FALSE</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/optimize.html">optimize</a></span><span class="op">(</span>f <span class="op">=</span> <span class="va">l_x</span>, interval <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1e-6</span>, <span class="fl">10</span><span class="op">)</span><span class="op">)</span><span class="op">$</span><span class="va">minimum</span></span></code></pre></div>
 <pre><code>## [1] 3.97759</code></pre>
 <p><em>Bemerkung:</em> Wir verwenden <code><a href="https://rdrr.io/r/stats/optimize.html">optimize()</a></code> anstatt <code><a href="https://rdrr.io/r/stats/optim.html">optim()</a></code>, da letztere nicht für eindimensionale Optimierung geeignet ist.</p>
 <p>Durch Übergabe aller weiteren Größen im Environment</p>
-<div class="sourceCode" id="cb383"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/environment.html">environment</a></span><span class="op">(</span><span class="va">l_x</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb338"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/ls.html">ls</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/environment.html">environment</a></span><span class="op">(</span><span class="va">l_x</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## [1] "data"  "fix"   "param"</code></pre>
 <p>konnte die Funktion <code>l_x()</code> nur als Funktion der unbekannten Parameter im
 <code>.GlobalEnv</code> definiert werden.</p>
-<div class="sourceCode" id="cb385"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/environment.html">parent.env</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/environment.html">environment</a></span><span class="op">(</span><span class="va">l_x</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb340"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/environment.html">parent.env</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/environment.html">environment</a></span><span class="op">(</span><span class="va">l_x</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <pre><code>## &lt;environment: R_GlobalEnv&gt;</code></pre>
 <p>Es muss also keine Liste weiterer Argumente der Optimierungs- funktion übergeben werden.</p>
 
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="funktionen.html"><span class="header-section-number">14</span> Funktionen</a></div>
+<div class="prev"><a href="funktionen.html"><span class="header-section-number">13</span> Funktionen</a></div>
 <div class="next"><a href="literatur-3.html">Literatur</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#envscop"><span class="header-section-number">15</span> Environments und Scoping</a></li>
-<li><a class="nav-link" href="#zuordnungen"><span class="header-section-number">15.1</span> Zuordnungen</a></li>
-<li><a class="nav-link" href="#environments"><span class="header-section-number">15.2</span> Environments</a></li>
-<li><a class="nav-link" href="#scoping-rules"><span class="header-section-number">15.3</span> Scoping Rules</a></li>
-<li><a class="nav-link" href="#static-scoping"><span class="header-section-number">15.4</span> Static scoping</a></li>
-<li><a class="nav-link" href="#anwendungsbeispiel"><span class="header-section-number">15.5</span> Anwendungsbeispiel</a></li>
+<li><a class="nav-link" href="#envscop"><span class="header-section-number">14</span> Environments und Scoping</a></li>
+<li><a class="nav-link" href="#zuordnungen"><span class="header-section-number">14.1</span> Zuordnungen</a></li>
+<li><a class="nav-link" href="#environments"><span class="header-section-number">14.2</span> Environments</a></li>
+<li><a class="nav-link" href="#scoping-rules"><span class="header-section-number">14.3</span> Scoping Rules</a></li>
+<li><a class="nav-link" href="#static-scoping"><span class="header-section-number">14.4</span> Static scoping</a></li>
+<li><a class="nav-link" href="#anwendungsbeispiel"><span class="header-section-number">14.5</span> Anwendungsbeispiel</a></li>
 </ul>
 
       <div class="book-extra">

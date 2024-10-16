@@ -6,7 +6,7 @@
 Wie weiß R welchen Wert es welchem Symbol zuordnen soll? 
 
 
-```r
+``` r
 sqrt(2)
 ```
 
@@ -14,7 +14,7 @@ sqrt(2)
 ## [1] 1.414214
 ```
 
-```r
+``` r
 sqrt <- function(x) x^2
 sqrt(2)
 ```
@@ -32,7 +32,7 @@ Wenn R einem Symbol einen Wert zuordnet, dann durchsucht R eine Reihe von  `envi
 
 
 
-```r
+``` r
 search()
 ```
 
@@ -49,7 +49,7 @@ Die `search` Liste wird also beeinflusst durch die von uns geladenen Pakete.
 
 
 
-```r
+``` r
 library(ggplot2)
 search()
 ```
@@ -64,7 +64,7 @@ search()
 Man beachte, dass R die Namen von Daten- und Funktionsobjekten unterscheiden kann.
 
 
-```r
+``` r
 (sqrt <- 2)
 ```
 
@@ -72,7 +72,7 @@ Man beachte, dass R die Namen von Daten- und Funktionsobjekten unterscheiden kan
 ## [1] 2
 ```
 
-```r
+``` r
 sqrt(2)
 ```
 
@@ -94,7 +94,7 @@ Ein Environment verbindet eine Menge von Namen mit einer entsprechenden Menge vo
 Die Einträge von `search()` sind die Eltern des `Global Environment`. Mit `new.env()` kann auch ein neues Environment erzeugt werden.
 
 
-```r
+``` r
 neues_env <- new.env()
 neues_env$eins <- c(1, 2)
 neues_env$zwei <- c("a", "b")
@@ -105,7 +105,7 @@ ls(neues_env)
 ## [1] "eins" "zwei"
 ```
 
-```r
+``` r
 parent.env(neues_env)
 ```
 
@@ -123,7 +123,7 @@ parent.env(neues_env)
 Der Sichtbarkeitsbereich von Variablen (Scope) wird über *Scoping Rules* festgelegt. R verwendet *static scoping* oder auch *lexical scoping* genannt (eine Alternative ist das *dynamic scoping*). 
 
 
-```r
+``` r
 f <- function(x, y){
   x + y/z
 }
@@ -143,7 +143,7 @@ Allerdings können Funktionen auch innerhalb von Funktionen definiert werden. In
 
 
 
-```r
+``` r
 bilde_potenz <- function(n){
   potenz <- function(x)
     x^n
@@ -152,7 +152,7 @@ bilde_potenz <- function(n){
 `bilde_potenz()` liefert somit eine Funktion als Ausgabe.
 
 
-```r
+``` r
 zweite_potenz <- bilde_potenz(2)
 dritte_potenz <- bilde_potenz(3)
 ```
@@ -162,7 +162,7 @@ dritte_potenz <- bilde_potenz(3)
 Sucht man nach einer Variable und/oder möchte man ihren Wert ausgeben, so kann man mit den Funktionen `exists()` und `get()` arbeiten. Beide verwenden static scoping.
 
 
-```r
+``` r
 get("eins", envir = neues_env)
 ```
 
@@ -170,7 +170,7 @@ get("eins", envir = neues_env)
 ## [1] 1 2
 ```
 
-```r
+``` r
 x <- 1
 exists("x", envir = neues_env)
 ```
@@ -179,7 +179,7 @@ exists("x", envir = neues_env)
 ## [1] TRUE
 ```
 
-```r
+``` r
 exists("x", envir = neues_env, inherits = FALSE)
 ```
 
@@ -192,7 +192,7 @@ exists("x", envir = neues_env, inherits = FALSE)
 Schauen wir uns nun den `closure` (Funktion + zugehöriges Environment) von `zweite_potenz()` und `dritte_potenz()` genauer an.
 
 
-```r
+``` r
 ls(environment(zweite_potenz))
 ```
 
@@ -200,7 +200,7 @@ ls(environment(zweite_potenz))
 ## [1] "n"      "potenz"
 ```
 
-```r
+``` r
 get("n", envir = environment(zweite_potenz))
 ```
 
@@ -208,7 +208,7 @@ get("n", envir = environment(zweite_potenz))
 ## [1] 2
 ```
 
-```r
+``` r
 ls(environment(dritte_potenz))
 ```
 
@@ -216,7 +216,7 @@ ls(environment(dritte_potenz))
 ## [1] "n"      "potenz"
 ```
 
-```r
+``` r
 get("n", envir = environment(dritte_potenz))
 ```
 
@@ -239,7 +239,7 @@ Funktion, deren Argumente die zu optimierenden Parameterwerte sind. Oftmals (wie
 
 
 
-```r
+``` r
 negLogLik <- function(data, fix = c(FALSE, FALSE)){
   param <- fix
   function(theta){
@@ -257,7 +257,7 @@ Die Funktion ist so geschrieben, dass einer der beiden Parameter fixiert werden 
 
 
 
-```r
+``` r
 set.seed(1234)
 x <- rnorm(1000, mean = 1, sd = 2)
 l_x <- negLogLik(x)
@@ -265,19 +265,20 @@ l_x
 ```
 
 ```
-## function(theta){
+## function (theta) 
+## {
 ##     param[!fix] <- theta
 ##     mu <- param[1]
 ##     sigma_2 <- param[2]
-##     l_x <- -( -length(data)/2 * log(2 * pi * sigma_2 )
-##               - sum((data-mu)^2) / (2*sigma_2))
+##     l_x <- -(-length(data)/2 * log(2 * pi * sigma_2) - sum((data - 
+##         mu)^2)/(2 * sigma_2))
 ##     l_x
-##   }
-## <bytecode: 0x7fd0c3a9c200>
-## <environment: 0x7fd0c1dd4be0>
+## }
+## <bytecode: 0x114da2e48>
+## <environment: 0x114877740>
 ```
 
-```r
+``` r
 ls(environment(l_x))
 ```
 
@@ -288,7 +289,7 @@ ls(environment(l_x))
 
 
 
-```r
+``` r
 optim(par = c(0, 1), fn = l_x)$par
 ```
 
@@ -298,7 +299,7 @@ optim(par = c(0, 1), fn = l_x)$par
 Fixieren wir nun $\mu$ gleich 1, so erhält man
 
 
-```r
+``` r
 l_x <- negLogLik(x, fix = c(1, FALSE))
 optimize(f = l_x, interval = c(1e-6, 10))$minimum
 ```
@@ -313,7 +314,7 @@ optimize(f = l_x, interval = c(1e-6, 10))$minimum
 
 Durch Übergabe aller weiteren Größen im Environment
 
-```r
+``` r
 ls(environment(l_x))
 ```
 
@@ -324,7 +325,7 @@ konnte die Funktion `l_x()` nur als Funktion der unbekannten Parameter im
 `.GlobalEnv` definiert werden. 
 
 
-```r
+``` r
 parent.env(environment(l_x))
 ```
 

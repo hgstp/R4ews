@@ -7,7 +7,7 @@
 <title>R4ews | R4ews MA0009</title>
 <meta name="author" content="Stephan Haug">
 <meta name="description" content="R4ews: R Ergänzung zum Modul MA009.">
-<meta name="generator" content="bookdown 0.28 with bs4_book()">
+<meta name="generator" content="bookdown 0.41 with bs4_book()">
 <meta property="og:title" content="R4ews | R4ews MA0009">
 <meta property="og:type" content="book">
 <meta property="og:description" content="R4ews: R Ergänzung zum Modul MA009.">
@@ -16,10 +16,10 @@
 <meta name="twitter:description" content="R4ews: R Ergänzung zum Modul MA009.">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/Lato-0.4.2/font.css" rel="stylesheet">
-<script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link href="libs/font-awesome-5.1.0/css/all.css" rel="stylesheet">
-<link href="libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/Lato-0.4.9/font.css" rel="stylesheet">
+<script src="libs/bs3compat-0.8.0/transition.js"></script><script src="libs/bs3compat-0.8.0/tabs.js"></script><script src="libs/bs3compat-0.8.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link href="libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
+<link href="libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <script src="anchor-links.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-68219208-1"></script><script>
       window.dataLayer = window.dataLayer || [];
@@ -36,6 +36,7 @@
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
+          margin-bottom: 0em;
         }
     .hanging div.csl-entry {
       margin-left:2em;
@@ -93,11 +94,9 @@
 <li><a class="" href="bausteine.html"><span class="header-section-number">11</span> Bausteine</a></li>
 <li class="book-part">Wir schreiben ein Paket</li>
 <li><a class="" href="pakete.html"><span class="header-section-number">12</span> Pakete</a></li>
-<li class="book-part">Ein bisschen Statistik</li>
-<li><a class="" href="sampling.html"><span class="header-section-number">13</span> Sampling</a></li>
 <li class="book-part">Appendix</li>
-<li><a class="" href="funktionen.html"><span class="header-section-number">14</span> Funktionen</a></li>
-<li><a class="" href="envscop.html"><span class="header-section-number">15</span> Environments und Scoping</a></li>
+<li><a class="" href="funktionen.html"><span class="header-section-number">13</span> Funktionen</a></li>
+<li><a class="" href="envscop.html"><span class="header-section-number">14</span> Environments und Scoping</a></li>
 <li><a class="" href="literatur-3.html">Literatur</a></li>
 </ul>
 
@@ -122,8 +121,8 @@ Eine Einführung in die inferentielle Statistik erfolgt im Rahmen der Vorlesung 
 </div>
 <p><strong>Letzte Änderung:</strong></p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/date.html">date</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">## [1] "Fri Dec 23 09:13:23 2022"</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/date.html">date</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">## [1] "Wed Oct 16 23:35:38 2024"</span></span></code></pre></div>
 <div id="beteiligte-personen" class="section level2 unnumbered">
 <h2>Beteiligte Personen<a class="anchor" aria-label="anchor" href="#beteiligte-personen"><i class="fas fa-link"></i></a>
 </h2>
@@ -137,16 +136,16 @@ Eine Einführung in die inferentielle Statistik erfolgt im Rahmen der Vorlesung 
 <p>Die aktuelle Version dieses Buchs wurde mit</p>
 <pre><code>## Finding R package dependencies ... Done!
 ##  setting  value
-##  version  R version 4.1.2 (2021-11-01)
-##  os       macOS Big Sur 10.16
-##  system   x86_64, darwin17.0
+##  version  R version 4.4.0 (2024-04-24)
+##  os       macOS 15.0.1
+##  system   aarch64, darwin20
 ##  ui       X11
 ##  language (EN)
 ##  collate  en_US.UTF-8
 ##  ctype    en_US.UTF-8
 ##  tz       Europe/Berlin
-##  date     2022-12-23
-##  pandoc   2.19.2 @ /Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/ (via rmarkdown)</code></pre>
+##  date     2024-10-16
+##  pandoc   3.2 @ /Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/aarch64/ (via rmarkdown)</code></pre>
 <p>erstellt</p>
 <!-- , wobei die folgenden Pakete verwendet -->
 <!-- werden. -->

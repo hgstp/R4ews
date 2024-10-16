@@ -49,7 +49,7 @@ Bei der Erzeugung der Struktur (wie auch weiteren Schritten bei der Entwicklung)
 Falls noch nicht geschehen, solltet ihr die Pakete `devtools`, `roxygen2` und `testthat` installieren
 
 
-```r
+``` r
 install.packages(c("devtools", "roxygen2", "testthat"))
 ```
 Diese Pakete erleichtern in Kombination mit RStudio das Erstellen von Paketen. 
@@ -62,13 +62,13 @@ Um alle Möglichkeiten bei der Erstellung von R-Paketen ausnützen zu können, b
 Mit `has_devel()` könnt ihr aber auch schon jetzt überprüfen ob euer System vielleicht schon bereit dazu wäre
 
 
-```r
+``` r
 library(devtools)
 ```
 
 
 
-```r
+``` r
 has_devel()
 ```
 
@@ -84,7 +84,7 @@ Das Verzeichnis `R/` ist der wichtigste Bestandteil eines Pakets, da dort der ko
 Dieses Verzeichnis (wie auch andere Teile) erzeugt man mit der Funktion `devtools::create()`, z.B.
 
 
-```r
+``` r
 create("Pfad_zum_Paket/Paketname")
 ```
 
@@ -139,7 +139,7 @@ Mit `devtools::install_github()` können source Pakete aus eine [GitHub](https:/
 Die DESCRIPTION Datei enthält Informationen über das Paket und ist ein essentieller Bestandteil jedes Pakets. Der Befehl
 
 
-```r
+``` r
 usethis::create_package("meinR4EWSpckg")
 ```
 erzeugt die DESCRIPTION Datei
@@ -169,7 +169,7 @@ Pakete in `Imports` werden beim Installieren des eigenen Pakets ebenfalls instal
 Über
 
 
-```r
+``` r
 usethis::use_package("dplyr")
 ```
 kann z.B. das Paket `dplyr` dem Punkt `Imports` hinzugefügt werden. `usethis::use_package(type = "Suggests")` fügt `Suggests` weitere Pakete hinzu.
@@ -216,7 +216,7 @@ Authors@R: person(given = "Stephan", family = "Haug",
 Der Output von `person()` sieht dann folgendermaßen aus
 
 
-```r
+``` r
 person(given = "Stephan", family = "Haug", 
                   email = "haug@tum.de", 
                   role = c("cre", "aut"))
@@ -234,12 +234,12 @@ person(given = "Stephan", family = "Haug",
 Die aktuelle Version von `ggplot2` ist z.B.
 
 
-```r
+``` r
 packageVersion("ggplot2")
 ```
 
 ```
-## [1] '3.3.5'
+## [1] '3.5.1'
 ```
 
 Für Pakete, die sich in der __Entwicklung__ befinden, bietet es sich an noch einen vierten Teil anzufügen und mit der Versionsnummer `0.0.0.9000` zu starten.
@@ -367,14 +367,14 @@ Es ist nicht nur für das Erstellen von Paketen hilfreich das Konzept eines `NAM
 **Import** legt dabei fest wie die Funktion eines Pakets eine Funktion in einem anderen Paket findet. Betrachten wir z.B.
 
 
-```r
+``` r
 nrow
 ```
 
 ```
 ## function (x) 
 ## dim(x)[1L]
-## <bytecode: 0x7f9136162208>
+## <bytecode: 0x1305ba388>
 ## <environment: namespace:base>
 ```
 Diese Funktion ist definiert in Abhängigkeit von `dim()` aus dem `base` Paket.
@@ -382,7 +382,7 @@ Diese Funktion ist definiert in Abhängigkeit von `dim()` aus dem `base` Paket.
 
 Auch wenn wir die Funktion
 
-```r
+``` r
 dim <- function(x) c(1,1)
 dim(mtcars)
 ```
@@ -393,7 +393,7 @@ dim(mtcars)
 
 definieren, findet `nrow()` trotzdem die "richtige" Funktion
 
-```r
+``` r
 nrow(mtcars)
 ```
 
@@ -409,7 +409,7 @@ da sie den `NAMESPACE` des `base` Pakets verwendet.
 
 
 
-```r
+``` r
 search()
 ```
 
@@ -462,7 +462,7 @@ Muss eine Funktion häufig verwendet werden - und man will nicht dauernd `::` ve
 Daten, die das Paket enthalten sollte, legt man im Verzeichnis `/data` ab. Als Format sollte man `.rda` wählen (ist aber kein Muss). Der einfachste Weg dies zu berücksichtigen ist die Funktion `usethis::use_data()` zu verwenden.
 
 
-```r
+``` r
 x <- sample(1:100, 50, replace = TRUE)
 usethis::use_data(x, mtcars)
 ```
@@ -489,7 +489,7 @@ Die Beschreibung des Datensatzes `x` könnte also z.B. so aussehen
 Will man in seinem Paket R Funktionen verwenden, die mithilfe von `Rcpp` aus kompiliertem C++ Code entstanden sind, so sollte man zur Vorbereitung
 
 
-```r
+``` r
 usethis::use_rcpp()
 ```
 ausführen. Danach ist das das Verzeichnis `/src` angelegt und `Rcpp` zu den Feldern `LinkingTo` und `Imports` in der `DESCRIPTION` Datei hinzugefügt. Außerdem wird man aufgefordert die roxygen Tags
@@ -522,7 +522,7 @@ int malZwei(int x) {
 
 Jedes  Pakete (mag es auch noch so klein sein) sollte unter Verwendung von Git erstellt werden. Beim Anlegen des Projekts (zur Erstellung des Pakets) über RStudio, kann leicht ein lokales Git repository initialisiert werden
 
-<img src="img/package_git.png" width="589" />
+![](img/package_git.png)<!-- -->
 
 Soll zusätzlich ein remote repository verwendet werden, so kann man (im Standardfall) ein neues repository auf GitLab (oder GitHub) anlegen. Es sollte den gleichen Namen bekommen wie das Paket (lokales Git repository). Danach kann man im Terminal Befehle der Form
 
@@ -543,7 +543,7 @@ git clone https://gitlab.lrz.de/vw99xyz/paketName.git
 Danach existiert im Verzeichnis, in dem der Befehl ausgeführt wurde, das Unterverzeichnis `paketName`. In R kann anschließend den Befehl
 
 
-```r
+``` r
 devtools::create("paketName")
 ```
 

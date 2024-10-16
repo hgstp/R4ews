@@ -34,7 +34,7 @@ erhalten. Vermutlich ist euer Fenster nicht so dunkel. Aber wer es gerne dunkel 
 Setzt den Cursor in das Fenster mit der Bezeichnung Console. Über die Konsole seid ihr in der Lage mit R zu interagieren. Erstellt ein einfaches Objekt mit einem Code wie 
 
 
-```r
+``` r
 x <- 2 * 4
 ```
 
@@ -57,30 +57,51 @@ Mit der Option `dependencies = TRUE` achten wir darauf, dass alle für `tidyvers
 ## RStudio Primers
 
 
-Ein guter Startpunkt für verschiedene R Themen sind die [RStudio primers](https://rstudio.cloud/learn/primers).
+Ein guter Startpunkt für verschiedene R Themen sind die __RStudio primers__, die aktuell nur als Paket zur lokallen Installation verfügbar sind. Dafür kann man folgenden Befehl verwenden, um Pakete, die nicht auf CRAN verfügbar sind, zu installieren.
 
 
-<img src="img/rstudio_primers.png" width="100%" />
+``` r
+install.packages("remotes")
+remotes::install_github("hgstp/idsst.rtutorials")
+```
+
+Um die Tutorials aufzurufen muss man auch das Paket "learnr" installieren.
 
 
-Im Laufe des Kurses werdet ihr die Primers
+``` r
+install.packages("lernr")
+library("learnr")
+```
 
-- [The Basics](https://rstudio.cloud/learn/primers/1)
-- [Work with Data](https://rstudio.cloud/learn/primers/2)
-- [Visualize Data](https://rstudio.cloud/learn/primers/3)
 
-durcharbeiten.
+#```{r, echo=FALSE, out.width="100%"}
+#knitr::include_graphics("img/rstudio_primers.png")
+#```
+
+
+#Im Laufe des Kurses werdet ihr die Primers
+
+#- [The Basics](https://rstudio.cloud/learn/primers/1)
+#- [Work with Data](https://rstudio.cloud/learn/primers/2)
+#- [Visualize Data](https://rstudio.cloud/learn/primers/3)
+
+#durcharbeiten.
 
 
 ## Aufgabe
 
-Wir beginnen mit [The Basics](https://rstudio.cloud/learn/primers/1). Hier wird unterschieden in *Programming* und *Visualization* Basics. 
+Wir beginnen mit den Grundlagen. Hier wird unterschieden in *Programming* und *Visualization* Basics. 
 
-[Programming Basics](https://rstudio.cloud/learn/primers/1.2) beinhaltet Grundlagen zu Objekttypen, Funktionen und deren Argumente, Listen (eigentlich sind alle Objekte Listen, nur unterschiedlich speziell) und Paketen.
+__Programming Basics__ beinhaltet Grundlagen zu Objekttypen, Funktionen und deren Argumente, Listen (eigentlich sind alle Objekte Listen, nur unterschiedlich speziell) und Paketen.
 
-[Visualization Basics](https://rstudio.cloud/learn/primers/1.1) erklärt erste Schritte in der Verwendung des `ggplot2` Pakets, mit dem wir uns später noch eingehend beschäftigen werden.
+__Visualization Basics__ erklärt erste Schritte in der Verwendung des `ggplot2` Pakets, mit dem wir uns später noch eingehend beschäftigen werden.
 
-Bearbeitet eigenständig den Basics Primer.
+Bearbeitet eigenständig den Basics Primer. Dafür verwenden wir den Befehl
+
+``` r
+learnr::run_tutorial("programming-basics", package = "idsst.rtutorials")
+```
+
 
 
 

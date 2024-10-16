@@ -50,22 +50,24 @@ __Wie immer, laden wir zu Beginn__
 Der Fokus liegt in diesem Abschnitt auf `dplyr`. Aber da wir immer wieder auch Funktionen aus anderen "tidyverse-Paketen" nutzen, laden wir stets `tidyverse`.
 
 
-```r
+``` r
 library(tidyverse)
-## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
-## ✓ ggplot2 3.3.5     ✓ purrr   0.3.4
-## ✓ tibble  3.1.6     ✓ dplyr   1.0.8
-## ✓ tidyr   1.2.0     ✓ stringr 1.4.0
-## ✓ readr   2.1.2     ✓ forcats 0.5.1
+## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+## ✔ dplyr     1.1.4     ✔ readr     2.1.5
+## ✔ forcats   1.0.0     ✔ stringr   1.5.1
+## ✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+## ✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+## ✔ purrr     1.0.2     
 ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-## x dplyr::filter() masks stats::filter()
-## x dplyr::lag()    masks stats::lag()
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+## ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
 ```
 
 Zusätzlich laden wir auch noch wieder das [gapminder] Paket, da wir erneut mit dem `gapminder` Datensatz arbeiten wollen.
 
 
-```r
+``` r
 library(gapminder)
 ```
 
@@ -76,7 +78,7 @@ library(gapminder)
 Die Funktion `filter()` erwartet neben dem Datensatz logische Ausdrücke als Input und gibt die Zeilen des Datensatzes zurück, für die die Kombination der verwendeten logischen Ausdrücke ein `TRUE` ergibt.
 
 
-```r
+``` r
 # beobachtungen mit einer lebenserwartung unter 29 jahren
 filter(gapminder, lifeExp < 29)
 ## # A tibble: 2 × 6
@@ -87,7 +89,7 @@ filter(gapminder, lifeExp < 29)
 ```
 
 
-```r
+``` r
 # beobachtungen aus ruanda nach dem jahr 1979
 filter(gapminder, country == "Rwanda", year > 1979)
 ## # A tibble: 6 × 6
@@ -102,10 +104,10 @@ filter(gapminder, country == "Rwanda", year > 1979)
 ```
 
 
-Am letzten Befehlt erkennt man, dass die verschiedenen logischen Ausdrücke mit einem `& ` verknüpft werden. Will man einen "oder Abfrage" gestallten, so muss diese in einem logischen Ausdruck enthalten sein. So kann man mit nachfolgendem Befehl beispielsweise nach allen Beobachtungen aus Ruanda oder Beobachachtungen nach 1979 fragen:
+Am letzten Befehl erkennt man, dass die verschiedenen logischen Ausdrücke mit einem `& ` verknüpft werden. Will man eine "oder Abfrage" gestalten, so muss diese in einem logischen Ausdruck enthalten sein. So kann man mit nachfolgendem Befehl beispielsweise nach allen Beobachtungen aus Ruanda oder Beobachachtungen nach 1979 fragen:
 
 
-```r
+``` r
 filter(gapminder, country == "Rwanda" | year > 1979)
 ## # A tibble: 858 × 6
 ##    country     continent  year lifeExp      pop gdpPercap
@@ -120,14 +122,14 @@ filter(gapminder, country == "Rwanda" | year > 1979)
 ##  8 Albania     Europe     1987    72    3075321     3739.
 ##  9 Albania     Europe     1992    71.6  3326498     2497.
 ## 10 Albania     Europe     1997    73.0  3428038     3193.
-## # … with 848 more rows
+## # ℹ 848 more rows
 ```
 
 
 Will man einen Vergleich mit mehr als einem Wert durchführen, so kann man natürlich alle Abfragen mit einem `|` verknüpfen, oder gleich den `%in%` Operator verwenden.
 
 
-```r
+``` r
 # beobachtungen aus ruanda und afghanistan
 filter(gapminder, country %in% c("Rwanda", "Afghanistan"))
 ## # A tibble: 24 × 6
@@ -143,7 +145,7 @@ filter(gapminder, country %in% c("Rwanda", "Afghanistan"))
 ##  8 Afghanistan Asia       1987    40.8 13867957      852.
 ##  9 Afghanistan Asia       1992    41.7 16317921      649.
 ## 10 Afghanistan Asia       1997    41.8 22227415      635.
-## # … with 14 more rows
+## # ℹ 14 more rows
 ```
 
 
@@ -152,7 +154,7 @@ Wir erkennen sofort, dass wir mithilfe von `dplyr` sehr leicht den Datensatz auf
 Daher solltet ihr unter keinen Umständen mit Befehlen wie diesem
 
 
-```r
+``` r
 auswahl <- gapminder[241:252, ]
 ```
 
@@ -168,7 +170,7 @@ Warum ist das eine __blöde Idee__?
 Ganz anders verhält es sich mit diesem Befehl
 
 
-```r
+``` r
 filter(gapminder, country == "Canada")
 ```
 
@@ -187,7 +189,7 @@ Bevor es weitergeht, wollen wir aber den Pipe-Operator, den das Tidyverse aus de
 </div>
 
 
-Mithilfe des __Pipe-Operators__ ist man in der Lage aufeinanderfolgende Befehle einer DAten-Operationen strukturiert anzugeben, ohne sie ineinander zu verschachteln. Diese neue Syntax führt zu Code, der viel einfacher zu schreiben und zu lesen ist.
+Mithilfe des __Pipe-Operators__ ist man in der Lage aufeinanderfolgende Befehle von Daten-Operationen strukturiert anzugeben, ohne sie ineinander zu verschachteln. Diese neue Syntax führt zu Code, der viel einfacher zu schreiben und zu lesen ist.
 
 >Und so sieht er aus: `%>%`. 
 
@@ -201,7 +203,7 @@ Ctrl+Shift+M (Windows), Cmd+Shift+M (Mac).
 Erstmal ein Beispiel
 
 
-```r
+``` r
 gapminder %>% head()
 ## # A tibble: 6 × 6
 ##   country     continent  year lifeExp      pop gdpPercap
@@ -219,7 +221,7 @@ Man erkennt sofort, der Befehl ist äquivalent zu `head(gapminder)`. Der Pipe-Op
 Und natürlich kann man der Funktion auf der rechten Seite auch noch weitere Argumente übergeben. Um die ersten 3 Zeilen von `gapminder` auszugeben, könnte man  `head(gapminder, 3)` nutzen oder:
 
 
-```r
+``` r
 gapminder %>% head(3)
 ## # A tibble: 3 × 6
 ##   country     continent  year lifeExp      pop gdpPercap
@@ -239,7 +241,7 @@ Der bisherige Einsatz des Pipe-Operators `%>%` war sicherlich noch nicht sehr be
 Verwendet  `select()`, um aus den Daten verschiedene Variablen (Spalten) auszuwählen. Hier kommt eine typische Verwendung von `select()`:
 
 
-```r
+``` r
 select(gapminder, year, lifeExp)
 ## # A tibble: 1,704 × 2
 ##     year lifeExp
@@ -254,14 +256,14 @@ select(gapminder, year, lifeExp)
 ##  8  1987    40.8
 ##  9  1992    41.7
 ## 10  1997    41.8
-## # … with 1,694 more rows
+## # ℹ 1,694 more rows
 ```
 
 und nun noch kombiniert mit `head()` über den Pipe-Operator:
 
 
 
-```r
+``` r
 gapminder %>%
   select(year, lifeExp) %>%
   head(4)
@@ -280,12 +282,12 @@ _"Nimm `gapminder`, wähle die Variablen `year` und `lifeExp` und zeige dann die
 
 
 
-Natürlich kann man all diese Operationen auch mir R StandardbefehlenJetzt noch ein Vergleich zu R Standardbefehlen durchführen. Die `dplyr` Befehle haen aber klare Vorteile bei der Lesbarkeit des Codes, wie man im nächsten Beispiel sieht.
+Natürlich kann man all diese Operationen auch mit R Standardbefehlen ausführen. Die `dplyr` Befehle haben aber klare Vorteile bei der Lesbarkeit des Codes, wie man im nächsten Beispiel sieht.
 
-Wir wahlen aus dem `gapminder` Datensatz die Variablen  `year` und `lifeExp` der Kambodscha Beobachtungen
+Wir wählen aus dem `gapminder` Datensatz die Variablen  `year` und `lifeExp` der Kambodscha Beobachtungen
 
 
-```r
+``` r
 gapminder %>%
   filter(country == "Cambodia") %>%
   select(year, lifeExp)
@@ -309,7 +311,7 @@ gapminder %>%
 Das gleiche Ergebnis würde man mit diesem R Standardbefehl erhalten:
 
 
-```r
+``` r
 gapminder[gapminder$country == "Cambodia", c("year", "lifeExp")]
 ## # A tibble: 12 × 2
 ##     year lifeExp
@@ -356,7 +358,7 @@ zu arbeiten.
 
 
 
-```r
+``` r
 select(gapminder, 
        matches(        # von beginn ^
          "^.{4}$"      # bis ende $
@@ -375,7 +377,7 @@ select(gapminder,
 ##  8  1987
 ##  9  1992
 ## 10  1997
-## # … with 1,694 more rows
+## # ℹ 1,694 more rows
 ```
 
 
@@ -402,7 +404,7 @@ Die Daten sind für all diese Funktionen auch __stets__ das erste Inputargument.
 Die `dplyr` Einführung geht weiter im Kapitel [Mehr zu `dplyr`](#dplyr-single). Bearbeitet aber vorher den letzten Abschnitte des [Work with Data](https://rstudio.cloud/learn/primers/2) Primers:
 
 
-[Deriving Information with dplyr](https://rstudio.cloud/learn/primers/2.3) zeigt euch wie ihr über bestehenden Variablen neue Variablen definiert und leicht zusammenfassende Statistiken innerhalb vorab definiertert Gruppen berechnet.
+[Deriving Information with dplyr](https://rstudio.cloud/learn/primers/2.3) zeigt euch wie ihr über bestehenden Variablen neue Variablen definiert und leicht zusammenfassende Statistiken innerhalb vorab definierter Gruppen berechnet.
 
 
 

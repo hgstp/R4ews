@@ -27,16 +27,18 @@ __Wie immer, laden wir zu Beginn__
 Man weiß ja vorher nie so genau was man alles so braucht.
 
 
-```r
+``` r
 library(tidyverse)
-## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
-## ✓ ggplot2 3.3.5     ✓ purrr   0.3.4
-## ✓ tibble  3.1.6     ✓ dplyr   1.0.8
-## ✓ tidyr   1.2.0     ✓ stringr 1.4.0
-## ✓ readr   2.1.2     ✓ forcats 0.5.1
+## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+## ✔ dplyr     1.1.4     ✔ readr     2.1.5
+## ✔ forcats   1.0.0     ✔ stringr   1.5.1
+## ✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+## ✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+## ✔ purrr     1.0.2     
 ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-## x dplyr::filter() masks stats::filter()
-## x dplyr::lag()    masks stats::lag()
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+## ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
 ```
 
 
@@ -68,7 +70,7 @@ enthalten.
 Die einzelnen Teile eines Plots werden mit dem `+` Operator zusammengefügt. Initialisiert wird ein Plot mit `ggplot()`. Ohne weitere Bestandteile wird aber nur eine leere Grafik erzeugt
 
 
-```r
+``` r
 library(gapminder)
 ggplot(gapminder) 
 ```
@@ -83,7 +85,7 @@ In den folgenden Abschnitten lernen wir daher wie weitere Bestandteile zum Plot 
 Wir schauen uns zum Start einfach mal für Deutschland den Verlauf des `gdpPercap` über die Zeit an.
 
 
-```r
+``` r
 gapminder %>%
   filter(country == "Germany") %>% # auswählen der Daten 
   ggplot(aes(x = year, y = gdpPercap)) +  # Plot initialisieren
@@ -97,7 +99,7 @@ In dieser Grafik haben wir über `geom_point()` die Art des geometrischen Objekt
 
 
 
-```r
+``` r
 gapminder %>%
   filter(country == "Germany") %>% 
   ggplot(aes(x = year, y = gdpPercap)) +  

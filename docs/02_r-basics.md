@@ -21,7 +21,7 @@ Es geht los indem ihr RStudio startet. Beachtet dabei die Standardfensterbereich
 Geht nun in die Konsole um mit R zu interagieren. Erstellt die nachfolgende Zuordnung  und schau euch das erstellte Objekt genauer an:
 
 
-```r
+``` r
 x <- 3 * 4
 x
 ## [1] 12
@@ -30,7 +30,7 @@ x
 Alle R Befehle, die ein Objekte erstellen ("Zuweisungen"), haben die Form:
 
 
-```r
+``` r
 objectName <- value
 ```
 
@@ -54,7 +54,7 @@ Wir werden stets die erste Variante verwenden.
 Führt nun nachfolgenden Befehl aus
 
 
-```r
+``` r
 this_is_a_really_long_name <- 2.5
 ```
 
@@ -66,18 +66,18 @@ Gib die ersten paar Zeichen ein, drücke anschließend die TAB Taste, fügen wei
 
 Führt nun den Befehl 
 
-```r
+``` r
 zwei_hoch_drei <- 2 ^ 3
 ```
 
 aus, um anschließend den Inhalt des Objekts anzuzeigen.
 
 
-```r
+``` r
 zwei.hoch.drei
-## Error in eval(expr, envir, enclos): object 'zwei.hoch.drei' not found
+## Error: object 'zwei.hoch.drei' not found
 zwei_Hoch_drei
-## Error in eval(expr, envir, enclos): object 'zwei_Hoch_drei' not found
+## Error: object 'zwei_Hoch_drei' not found
 ```
 
 Die Objekte `zwei.hoch.drei` und `zwei_Hoch_drei` sind natürlich nicht vorhanden und somit führen beide Befehle zu einer Fehlermeldung. Man muss also absolut exakt sein mit seinen Befehlen.
@@ -86,7 +86,7 @@ Die Objekte `zwei.hoch.drei` und `zwei_Hoch_drei` sind natürlich nicht vorhande
 R verfügt über eine überwältigende Sammlung eingebauter Funktionen, die nach folgendem Schema aufgerufen werden:
 
 
-```r
+``` r
 functionName(arg1 = val1, arg2 = val2, ...)
 ```
 
@@ -99,7 +99,7 @@ Tippt `se` und drücke dann die TAB Taste. In einem Pop-Up Fenster werden dir m�
 Fügt man jetzt die öffnende runde Klammer hinzu, so wird die zugehörige schließende runde Klammer automatisch hinzugefügt. Tippe anschließend `1, 10` (das geschieht automatisch innerhalb der runden Klammern) und Return. RStudio beendet auch den Klammerausdruck für dich. RStudio 🚀
 
 
-```r
+``` r
 seq(1, 10)
 ##  [1]  1  2  3  4  5  6  7  8  9 10
 ```
@@ -112,14 +112,14 @@ Bei Funktionen, die man oft aufruft, kann man gut diese Auflösung nach Position
 Analog zur Unterstützung mit den runden Klammern, werden auch schließende  Anführungszeichen automatisch ergänzt, wie man in folgendem Beispiel sieht. 
 
 
-```r
+``` r
 yo <- "hello world"
 ```
 
 Nach einer Zuweisung wird der entsprechende Wert des Objekts nicht angezeigt. Daher ist man vielleicht dazu geneigt das Objekt gleich erneut aufzurufen
 
 
-```r
+``` r
 y <- seq(1, 10)
 y
 ##  [1]  1  2  3  4  5  6  7  8  9 10
@@ -128,7 +128,7 @@ y
 Diese typische Aktion kann verkürzt werden, indem die Zuweisung in Klammern gesetzt wird, wodurch die Zuweisung und ein Befehl "Drucke auf den Bildschirm" erfolgen.
 
 
-```r
+``` r
 (y <- seq(1, 10))
 ##  [1]  1  2  3  4  5  6  7  8  9 10
 ```
@@ -136,15 +136,15 @@ Diese typische Aktion kann verkürzt werden, indem die Zuweisung in Klammern ges
 Nicht alle Funktionen haben (oder erfordern) Argumente:
 
 
-```r
+``` r
 date()
-## [1] "Fri Dec 23 09:13:29 2022"
+## [1] "Wed Oct 16 23:35:39 2024"
 ```
 
 Schaut euch nun euren Workspace an - unter Environment (vermutlich im Fenster rechts oben) seht ihr den Inhalt eures Workspace. Der Workspace ist der Ort, an dem sich benutzerdefinierte Objekte ansammeln. Eine Liste dieser Objekte könnt ihr auch mit diesen Befehlen erhalten:
 
 
-```r
+``` r
 objects()
 ## [1] "this_is_a_really_long_name" "x"                         
 ## [3] "y"                          "yo"                        
@@ -158,14 +158,14 @@ ls()
 Wenn ihr nun das Objekt mit dem Namen `y` entfernen möchtet, könnt ihr das wie folgt machen:
 
 
-```r
+``` r
 rm(y)
 ```
 
 Alles löschen kann man mit dem Befehl
 
 
-```r
+``` r
 rm(list = ls())
 ```
 
@@ -235,7 +235,7 @@ Jeder Prozess, der auf einem Computer läuft, hat einen Bezug zu seinem "Arbeits
 Das aktuelle Arbeitsverzeichnis könnt ihr euch anzeigen lassen mit dem Befehl
 
 
-```r
+``` r
 getwd()
 ```
 
@@ -262,14 +262,14 @@ Wir nehmen nun an, dass ihr ein RStudio Projekt angelegt und auch geöffnet habt
 
 
 
-```r
+``` r
 a <- 2
 b <- -3
 sig_sq <- 0.5
 x <- runif(40)
 y <- a + b * x + rnorm(40, sd = sqrt(sig_sq))
 (x_n <- mean(x))
-## [1] 0.468
+## [1] 0.413
 write(x_n, "mittelwert_x.txt")
 plot(x, y)
 abline(a, b, col = "purple")
@@ -277,7 +277,7 @@ abline(a, b, col = "purple")
 
 <img src="02_r-basics_files/figure-html/toy-line-1.png" width="80%" style="display: block; margin: auto;" />
 
-```r
+``` r
 dev.print(pdf, "scatterplot.pdf")
 ## quartz_off_screen 
 ##                 2

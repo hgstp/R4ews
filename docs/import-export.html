@@ -7,7 +7,7 @@
 <title>Kapitel 8 Daten I/O | R4ews MA0009</title>
 <meta name="author" content="Stephan Haug">
 <meta name="description" content="8.1 Überblick Im letzten Abschnitt haben wir die Gapminder-Daten als tibble aus dem gapminder Paket geladen. Dabei haben wir dann weder Daten, noch abgeleitete Ergebnisse, explizit in eine Datei...">
-<meta name="generator" content="bookdown 0.28 with bs4_book()">
+<meta name="generator" content="bookdown 0.41 with bs4_book()">
 <meta property="og:title" content="Kapitel 8 Daten I/O | R4ews MA0009">
 <meta property="og:type" content="book">
 <meta property="og:description" content="8.1 Überblick Im letzten Abschnitt haben wir die Gapminder-Daten als tibble aus dem gapminder Paket geladen. Dabei haben wir dann weder Daten, noch abgeleitete Ergebnisse, explizit in eine Datei...">
@@ -16,10 +16,10 @@
 <meta name="twitter:description" content="8.1 Überblick Im letzten Abschnitt haben wir die Gapminder-Daten als tibble aus dem gapminder Paket geladen. Dabei haben wir dann weder Daten, noch abgeleitete Ergebnisse, explizit in eine Datei...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/Lato-0.4.2/font.css" rel="stylesheet">
-<script src="libs/bs3compat-0.4.0/transition.js"></script><script src="libs/bs3compat-0.4.0/tabs.js"></script><script src="libs/bs3compat-0.4.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link href="libs/font-awesome-5.1.0/css/all.css" rel="stylesheet">
-<link href="libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/Lato-0.4.9/font.css" rel="stylesheet">
+<script src="libs/bs3compat-0.8.0/transition.js"></script><script src="libs/bs3compat-0.8.0/tabs.js"></script><script src="libs/bs3compat-0.8.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link href="libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
+<link href="libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <script src="anchor-links.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-68219208-1"></script><script>
       window.dataLayer = window.dataLayer || [];
@@ -36,6 +36,7 @@
     div.csl-bib-body { }
     div.csl-entry {
       clear: both;
+          margin-bottom: 0em;
         }
     .hanging div.csl-entry {
       margin-left:2em;
@@ -93,11 +94,9 @@
 <li><a class="" href="bausteine.html"><span class="header-section-number">11</span> Bausteine</a></li>
 <li class="book-part">Wir schreiben ein Paket</li>
 <li><a class="" href="pakete.html"><span class="header-section-number">12</span> Pakete</a></li>
-<li class="book-part">Ein bisschen Statistik</li>
-<li><a class="" href="sampling.html"><span class="header-section-number">13</span> Sampling</a></li>
 <li class="book-part">Appendix</li>
-<li><a class="" href="funktionen.html"><span class="header-section-number">14</span> Funktionen</a></li>
-<li><a class="" href="envscop.html"><span class="header-section-number">15</span> Environments und Scoping</a></li>
+<li><a class="" href="funktionen.html"><span class="header-section-number">13</span> Funktionen</a></li>
+<li><a class="" href="envscop.html"><span class="header-section-number">14</span> Environments und Scoping</a></li>
 <li><a class="" href="literatur-3.html">Literatur</a></li>
 </ul>
 
@@ -154,23 +153,25 @@
 <span class="header-section-number">8.2</span> <code>readr</code><a class="anchor" aria-label="anchor" href="#readr"><i class="fas fa-link"></i></a>
 </h2>
 <p>Zur Einlesen und Ausgeben von Datensätzen verwenden wir das <a href="https://readr.tidyverse.org">readr</a> Paket, welches Alternativen zu den Standardfunktionen <code><a href="https://rdrr.io/r/utils/read.table.html">read.table()</a></code> und <code><a href="https://rdrr.io/r/utils/write.table.html">write.table()</a></code> bietet. <code>readr</code> ist Teil des <a href="https://tidyverse.tidyverse.org">tidyverse</a> und daher führen wir standardmäßig einfach wieder</p>
-<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
-<span class="co">## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──</span>
-<span class="co">## ✓ ggplot2 3.3.5     ✓ purrr   0.3.4</span>
-<span class="co">## ✓ tibble  3.1.6     ✓ dplyr   1.0.8</span>
-<span class="co">## ✓ tidyr   1.2.0     ✓ stringr 1.4.0</span>
-<span class="co">## ✓ readr   2.1.2     ✓ forcats 0.5.1</span>
-<span class="co">## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──</span>
-<span class="co">## x dplyr::filter() masks stats::filter()</span>
-<span class="co">## x dplyr::lag()    masks stats::lag()</span></code></pre></div>
+<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
+<span><span class="co">## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──</span></span>
+<span><span class="co">## ✔ dplyr     1.1.4     ✔ readr     2.1.5</span></span>
+<span><span class="co">## ✔ forcats   1.0.0     ✔ stringr   1.5.1</span></span>
+<span><span class="co">## ✔ ggplot2   3.5.1     ✔ tibble    3.2.1</span></span>
+<span><span class="co">## ✔ lubridate 1.9.3     ✔ tidyr     1.3.1</span></span>
+<span><span class="co">## ✔ purrr     1.0.2     </span></span>
+<span><span class="co">## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──</span></span>
+<span><span class="co">## ✖ dplyr::filter() masks stats::filter()</span></span>
+<span><span class="co">## ✖ dplyr::lag()    masks stats::lag()</span></span>
+<span><span class="co">## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</span></span></code></pre></div>
 <p>aus.</p>
 <p><strong>Einlesen der Gapminder Daten</strong></p>
 <p>Die Gapminder Daten könnten wir natürlich wie zuvor über das Laden des <code>gapminder</code> Pakets verfügbar machen. Da es in diesem Abschnitt aber um das Einlesen von Daten geht, versuchen wir die Daten als <code>.tsv</code> Datei (Tab getrennte Werte - so sind die Daten im Paket gespeichert) einzulesen. Aber dies bedeutet natürlich, dass wir die entsprechende <code>.tsv</code> Datei erst mal finden müssen. Dabei hilft uns glücklicherweise das <a href="https://fs.r-lib.org/index.html">fs</a> Paket.</p>
-<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://fs.r-lib.org">fs</a></span><span class="op">)</span>
-<span class="op">(</span><span class="va">gap_tsv</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://fs.r-lib.org/reference/path_package.html">path_package</a></span><span class="op">(</span><span class="st">"gapminder"</span>, <span class="st">"extdata"</span>, <span class="st">"gapminder.tsv"</span><span class="op">)</span><span class="op">)</span>
-<span class="co">## /Library/Frameworks/R.framework/Versions/4.1/Resources/library/gapminder/extdata/gapminder.tsv</span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://fs.r-lib.org">fs</a></span><span class="op">)</span></span>
+<span><span class="op">(</span><span class="va">gap_tsv</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://fs.r-lib.org/reference/path_package.html">path_package</a></span><span class="op">(</span><span class="st">"gapminder"</span>, <span class="st">"extdata"</span>, <span class="st">"gapminder.tsv"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">## /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library/gapminder/extdata/gapminder.tsv</span></span></code></pre></div>
 <p>Nachdem wir jetzt den Speicherort der Datei kennen, können wir versuchen sie einzulesen.</p>
 </div>
 <div id="einlesen-von-daten-in-tabellenform" class="section level2" number="8.3">
@@ -178,58 +179,58 @@
 <span class="header-section-number">8.3</span> Einlesen von Daten in Tabellenform<a class="anchor" aria-label="anchor" href="#einlesen-von-daten-in-tabellenform"><i class="fas fa-link"></i></a>
 </h2>
 <p>Die Haupt-Funktion zum Einlesen von Daten in readr ist <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_delim()</a></code>. Hier verwenden wir eine Variante, <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_tsv()</a></code>, für Tab getrennte Daten:</p>
-<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">gapminder</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_tsv</a></span><span class="op">(</span><span class="va">gap_tsv</span><span class="op">)</span>
-<span class="co">## Rows: 1704 Columns: 6</span>
-<span class="co">## ── Column specification ────────────────────────────────────────────────────────</span>
-<span class="co">## Delimiter: "\t"</span>
-<span class="co">## chr (2): country, continent</span>
-<span class="co">## dbl (4): year, lifeExp, pop, gdpPercap</span>
-<span class="co">## </span>
-<span class="co">## ℹ Use `spec()` to retrieve the full column specification for this data.</span>
-<span class="co">## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</span>
-<span class="va">gapminder</span>
-<span class="co">## # A tibble: 1,704 × 6</span>
-<span class="co">##    country     continent  year lifeExp      pop gdpPercap</span>
-<span class="co">##    &lt;chr&gt;       &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">##  1 Afghanistan Asia       1952    28.8  8425333      779.</span>
-<span class="co">##  2 Afghanistan Asia       1957    30.3  9240934      821.</span>
-<span class="co">##  3 Afghanistan Asia       1962    32.0 10267083      853.</span>
-<span class="co">##  4 Afghanistan Asia       1967    34.0 11537966      836.</span>
-<span class="co">##  5 Afghanistan Asia       1972    36.1 13079460      740.</span>
-<span class="co">##  6 Afghanistan Asia       1977    38.4 14880372      786.</span>
-<span class="co">##  7 Afghanistan Asia       1982    39.9 12881816      978.</span>
-<span class="co">##  8 Afghanistan Asia       1987    40.8 13867957      852.</span>
-<span class="co">##  9 Afghanistan Asia       1992    41.7 16317921      649.</span>
-<span class="co">## 10 Afghanistan Asia       1997    41.8 22227415      635.</span>
-<span class="co">## # … with 1,694 more rows</span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">gapminder</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_tsv</a></span><span class="op">(</span><span class="va">gap_tsv</span><span class="op">)</span></span>
+<span><span class="co">## Rows: 1704 Columns: 6</span></span>
+<span><span class="co">## ── Column specification ────────────────────────────────────────────────────────</span></span>
+<span><span class="co">## Delimiter: "\t"</span></span>
+<span><span class="co">## chr (2): country, continent</span></span>
+<span><span class="co">## dbl (4): year, lifeExp, pop, gdpPercap</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## ℹ Use `spec()` to retrieve the full column specification for this data.</span></span>
+<span><span class="co">## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</span></span>
+<span><span class="va">gapminder</span></span>
+<span><span class="co">## # A tibble: 1,704 × 6</span></span>
+<span><span class="co">##    country     continent  year lifeExp      pop gdpPercap</span></span>
+<span><span class="co">##    &lt;chr&gt;       &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span></span>
+<span><span class="co">##  1 Afghanistan Asia       1952    28.8  8425333      779.</span></span>
+<span><span class="co">##  2 Afghanistan Asia       1957    30.3  9240934      821.</span></span>
+<span><span class="co">##  3 Afghanistan Asia       1962    32.0 10267083      853.</span></span>
+<span><span class="co">##  4 Afghanistan Asia       1967    34.0 11537966      836.</span></span>
+<span><span class="co">##  5 Afghanistan Asia       1972    36.1 13079460      740.</span></span>
+<span><span class="co">##  6 Afghanistan Asia       1977    38.4 14880372      786.</span></span>
+<span><span class="co">##  7 Afghanistan Asia       1982    39.9 12881816      978.</span></span>
+<span><span class="co">##  8 Afghanistan Asia       1987    40.8 13867957      852.</span></span>
+<span><span class="co">##  9 Afghanistan Asia       1992    41.7 16317921      649.</span></span>
+<span><span class="co">## 10 Afghanistan Asia       1997    41.8 22227415      635.</span></span>
+<span><span class="co">## # ℹ 1,694 more rows</span></span></code></pre></div>
 <p>Wie wir sehen, wurde standardmäßig der komplette Datensatz eingelesen. Sind aber nur Teile eines Datensatzes relevant für die angestrebte Analyse, so besteht auch keine Notwendigkeit den kompletten Datensatz zu laden. In solchen Fällen kann man mit dem <code>col_types</code> Argument arbeiten</p>
-<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">gapminder_short</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_tsv</a></span><span class="op">(</span><span class="va">gap_tsv</span>, col_types <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/cols.html">cols_only</a></span><span class="op">(</span>
-  country <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_atomic.html">col_character</a></span><span class="op">(</span><span class="op">)</span>,
-  continent <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_factor.html">col_factor</a></span><span class="op">(</span><span class="op">)</span>,
-  year <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_atomic.html">col_double</a></span><span class="op">(</span><span class="op">)</span>,
-  lifeExp <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_atomic.html">col_double</a></span><span class="op">(</span><span class="op">)</span>
-<span class="op">)</span><span class="op">)</span>
-<span class="va">gapminder_short</span>
-<span class="co">## # A tibble: 1,704 × 4</span>
-<span class="co">##    country     continent  year lifeExp</span>
-<span class="co">##    &lt;chr&gt;       &lt;fct&gt;     &lt;dbl&gt;   &lt;dbl&gt;</span>
-<span class="co">##  1 Afghanistan Asia       1952    28.8</span>
-<span class="co">##  2 Afghanistan Asia       1957    30.3</span>
-<span class="co">##  3 Afghanistan Asia       1962    32.0</span>
-<span class="co">##  4 Afghanistan Asia       1967    34.0</span>
-<span class="co">##  5 Afghanistan Asia       1972    36.1</span>
-<span class="co">##  6 Afghanistan Asia       1977    38.4</span>
-<span class="co">##  7 Afghanistan Asia       1982    39.9</span>
-<span class="co">##  8 Afghanistan Asia       1987    40.8</span>
-<span class="co">##  9 Afghanistan Asia       1992    41.7</span>
-<span class="co">## 10 Afghanistan Asia       1997    41.8</span>
-<span class="co">## # … with 1,694 more rows</span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">gapminder_short</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_tsv</a></span><span class="op">(</span><span class="va">gap_tsv</span>, col_types <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/cols.html">cols_only</a></span><span class="op">(</span></span>
+<span>  country <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_atomic.html">col_character</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  continent <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_factor.html">col_factor</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  year <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_atomic.html">col_double</a></span><span class="op">(</span><span class="op">)</span>,</span>
+<span>  lifeExp <span class="op">=</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/parse_atomic.html">col_double</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">gapminder_short</span></span>
+<span><span class="co">## # A tibble: 1,704 × 4</span></span>
+<span><span class="co">##    country     continent  year lifeExp</span></span>
+<span><span class="co">##    &lt;chr&gt;       &lt;fct&gt;     &lt;dbl&gt;   &lt;dbl&gt;</span></span>
+<span><span class="co">##  1 Afghanistan Asia       1952    28.8</span></span>
+<span><span class="co">##  2 Afghanistan Asia       1957    30.3</span></span>
+<span><span class="co">##  3 Afghanistan Asia       1962    32.0</span></span>
+<span><span class="co">##  4 Afghanistan Asia       1967    34.0</span></span>
+<span><span class="co">##  5 Afghanistan Asia       1972    36.1</span></span>
+<span><span class="co">##  6 Afghanistan Asia       1977    38.4</span></span>
+<span><span class="co">##  7 Afghanistan Asia       1982    39.9</span></span>
+<span><span class="co">##  8 Afghanistan Asia       1987    40.8</span></span>
+<span><span class="co">##  9 Afghanistan Asia       1992    41.7</span></span>
+<span><span class="co">## 10 Afghanistan Asia       1997    41.8</span></span>
+<span><span class="co">## # ℹ 1,694 more rows</span></span></code></pre></div>
 <p>Zur Auswahl eines Teils der Variablen haben wir <code><a href="https://readr.tidyverse.org/reference/cols.html">cols_only()</a></code> verwendet. Diese Funktion erwartet bei der Auswahl der Variablen die Definition des Typs. In diesem Beispiel haben wir <code>continten</code> (anders als im Standardfall) zu einer <a href="https://r4ds.had.co.nz/factors.html">Faktorvariable</a> transformiert. Dadurch enthält die Variable zusätzlich die Information über die verschiedenen Ausprägungen der Variable</p>
-<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">gapminder_short</span><span class="op">$</span><span class="va">continent</span><span class="op">)</span>
-<span class="co">## [1] "Asia"     "Europe"   "Africa"   "Americas" "Oceania"</span></code></pre></div>
+<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/levels.html">levels</a></span><span class="op">(</span><span class="va">gapminder_short</span><span class="op">$</span><span class="va">continent</span><span class="op">)</span></span>
+<span><span class="co">## [1] "Asia"     "Europe"   "Africa"   "Americas" "Oceania"</span></span></code></pre></div>
 <p>Über den Tabulator Spalten in einer Datentabelle zu trennen, ist natürlich nur eine Möglichkeit von vielen. Weitere Alternativen sind:</p>
 <ul>
 <li><p>Komma: <code><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv()</a></code></p></li>
@@ -249,32 +250,32 @@
 <span class="header-section-number">8.4</span> Daten exportieren<a class="anchor" aria-label="anchor" href="#daten-exportieren"><i class="fas fa-link"></i></a>
 </h2>
 <p>Bevor wir etwas exportieren können, müssen wir natürlich (was so sicher nicht richtig ist - niemand zwingt uns dazu 😉) etwas berechnen, das es wert ist, exportiert zu werden. Lasst uns daher eine Zusammenfassung der maximalen Lebenserwartung auf Länderebene erstellen.</p>
-<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">gap_life_exp</span> <span class="op">&lt;-</span> <span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">country</span>, <span class="va">continent</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>life_exp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span>
-<span class="co">## `summarise()` has grouped output by 'country'. You can override using the</span>
-<span class="co">## `.groups` argument.</span>
-<span class="va">gap_life_exp</span>
-<span class="co">## # A tibble: 142 × 3</span>
-<span class="co">##    country     continent life_exp</span>
-<span class="co">##    &lt;chr&gt;       &lt;chr&gt;        &lt;dbl&gt;</span>
-<span class="co">##  1 Afghanistan Asia          43.8</span>
-<span class="co">##  2 Albania     Europe        76.4</span>
-<span class="co">##  3 Algeria     Africa        72.3</span>
-<span class="co">##  4 Angola      Africa        42.7</span>
-<span class="co">##  5 Argentina   Americas      75.3</span>
-<span class="co">##  6 Australia   Oceania       81.2</span>
-<span class="co">##  7 Austria     Europe        79.8</span>
-<span class="co">##  8 Bahrain     Asia          75.6</span>
-<span class="co">##  9 Bangladesh  Asia          64.1</span>
-<span class="co">## 10 Belgium     Europe        79.4</span>
-<span class="co">## # … with 132 more rows</span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">gap_life_exp</span> <span class="op">&lt;-</span> <span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">country</span>, <span class="va">continent</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>life_exp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">## `summarise()` has grouped output by 'country'. You can override using the</span></span>
+<span><span class="co">## `.groups` argument.</span></span>
+<span><span class="va">gap_life_exp</span></span>
+<span><span class="co">## # A tibble: 142 × 3</span></span>
+<span><span class="co">##    country     continent life_exp</span></span>
+<span><span class="co">##    &lt;chr&gt;       &lt;chr&gt;        &lt;dbl&gt;</span></span>
+<span><span class="co">##  1 Afghanistan Asia          43.8</span></span>
+<span><span class="co">##  2 Albania     Europe        76.4</span></span>
+<span><span class="co">##  3 Algeria     Africa        72.3</span></span>
+<span><span class="co">##  4 Angola      Africa        42.7</span></span>
+<span><span class="co">##  5 Argentina   Americas      75.3</span></span>
+<span><span class="co">##  6 Australia   Oceania       81.2</span></span>
+<span><span class="co">##  7 Austria     Europe        79.8</span></span>
+<span><span class="co">##  8 Bahrain     Asia          75.6</span></span>
+<span><span class="co">##  9 Bangladesh  Asia          64.1</span></span>
+<span><span class="co">## 10 Belgium     Europe        79.4</span></span>
+<span><span class="co">## # ℹ 132 more rows</span></span></code></pre></div>
 <p>Das Objekt <code>gap_life_exp</code> betrachten wir nun als Zwischenergebnis, das wir für die Zukunft und für nachgelagerte Analysen oder Visualisierungen speichern wollen.</p>
 <p>Die Haupt-Exportfunktion in <a href="https://readr.tidyverse.org">readr</a> ist <code><a href="https://readr.tidyverse.org/reference/write_delim.html">write_delim()</a></code>. Für verschiedene Dateiformate gibt es auch hier wieder verschiedene Komfortfunktionen. Mithilfe von <code><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv()</a></code> können wir den Inhalt von <code>gap_life_exp</code> in einer kommagetrennten Datei abspeichern.</p>
-<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">gap_life_exp</span>, <span class="st">"data/gap_life_exp.csv"</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html">write_csv</a></span><span class="op">(</span><span class="va">gap_life_exp</span>, <span class="st">"data/gap_life_exp.csv"</span><span class="op">)</span></span></code></pre></div>
 <p>Schauen wir uns die ersten paar Zeilen von <code>gap_life_exp.csv</code> an. Dazu können wir entweder die Datei öffnen oder z.B. im Terminal <code>head</code> verwenden</p>
 <div class="inline-figure"><img src="img/head_csv.png" width="100%" style="display: block; margin: auto;"></div>
 <p>Das sieht recht ordentlich aus, obwohl es keine sichtbare Ausrichtung oder Trennung in Spalten gibt. Hätten wir die Basisfunktion <code><a href="https://rdrr.io/r/utils/read.table.html">read.csv()</a></code> benutzt, würden wir Zeilennamen und viele Anführungszeichen sehen, es sei denn, wir hätten diese Features explizit abgeschaltet. Das schönere Standardverhalten ist daher der Hauptgrund, warum wir <code><a href="https://readr.tidyverse.org/reference/write_delim.html">readr::write_csv()</a></code> gegenüber <code><a href="https://rdrr.io/r/utils/write.table.html">write.csv()</a></code> bevorzugen.</p>
@@ -303,17 +304,18 @@
 </h3>
 <p>Um mit APIs in R zu arbeiten, müssen wir ein paar neue Pakete laden (und vorher natürlich installieren). Konkret werden wir mit den Paketen <code>httr</code> und <code>jsonlite</code> arbeiten. Sie spielen bei der Einbindung der APIs unterschiedliche Rollen, aber beide sind unverzichtbar.</p>
 <p>Vermutlich habt ihr die beiden Pakete bisher nicht installiert. Daher starten wir mit dem Installieren dieser beiden Pakete</p>
-<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"httr"</span>, <span class="st">"jsonlite"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"httr"</span>, <span class="st">"jsonlite"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>und laden sie anschließend</p>
-<div class="sourceCode" id="cb103"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://httr.r-lib.org/">httr</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://arxiv.org/abs/1403.2805">jsonlite</a></span><span class="op">)</span>
-<span class="co">## </span>
-<span class="co">## Attaching package: 'jsonlite'</span>
-<span class="co">## The following object is masked from 'package:purrr':</span>
-<span class="co">## </span>
-<span class="co">##     flatten</span></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://httr.r-lib.org/">httr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://jeroen.r-universe.dev/jsonlite">jsonlite</a></span><span class="op">)</span></span>
+<span><span class="co">## Warning: package 'jsonlite' was built under R version 4.4.1</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## Attaching package: 'jsonlite'</span></span>
+<span><span class="co">## The following object is masked from 'package:purrr':</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">##     flatten</span></span></code></pre></div>
 </div>
 <div id="unsere-erste-api-anfrage-stellen" class="section level3" number="8.5.3">
 <h3>
@@ -325,8 +327,8 @@
 <p>Um eine GET-Anfrage zu erstellen, müssen wir die <code><a href="https://httr.r-lib.org/reference/GET.html">GET()</a></code> Funktion aus dem <code>httr</code> Paket verwenden. Die <code><a href="https://httr.r-lib.org/reference/GET.html">GET()</a></code> Funktion benötigt als Input eine URL, die die Adresse des Servers angibt, an den die Anforderung gesendet werden soll.</p>
 <p>Als Beispiel werden wir mit der <a href="http://open-notify.org/">Open Notify</a> API arbeiten, die Daten zu verschiedenen NASA-Projekten enthält. Mithilfe der Open Notify API können wir uns über den Standort der Internationalen Raumstation informieren und erfahren, wie viele Personen sich derzeit im Weltraum aufhalten.</p>
 <p>Wir beginnen damit, dass wir unsere Anfrage mit der <code><a href="https://httr.r-lib.org/reference/GET.html">GET()</a></code> Funktion stellen und die URL der API angeben:</p>
-<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">jdata</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://httr.r-lib.org/reference/GET.html">GET</a></span><span class="op">(</span><span class="st">"http://api.open-notify.org/astros.json"</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">jdata</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://httr.r-lib.org/reference/GET.html">GET</a></span><span class="op">(</span><span class="st">"http://api.open-notify.org/astros.json"</span><span class="op">)</span></span></code></pre></div>
 <p>Die Ausgabe der Funktion <code><a href="https://httr.r-lib.org/reference/GET.html">GET()</a></code> ist eine Liste, die alle Informationen enthält, die vom API-Server zurückgegeben werden.</p>
 </div>
 <div id="get-ausgabe" class="section level3" number="8.5.4">
@@ -334,13 +336,13 @@
 <span class="header-section-number">8.5.4</span> <code>GET()</code> Ausgabe<a class="anchor" aria-label="anchor" href="#get-ausgabe"><i class="fas fa-link"></i></a>
 </h3>
 <p>Schauen wir uns an, wie die Variable <code>jdata</code> in der R-Konsole aussieht:</p>
-<div class="sourceCode" id="cb105"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">jdata</span>
-<span class="co">## Response [http://api.open-notify.org/astros.json]</span>
-<span class="co">##   Date: 2022-12-23 08:13</span>
-<span class="co">##   Status: 200</span>
-<span class="co">##   Content-Type: application/json</span>
-<span class="co">##   Size: 492 B</span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">jdata</span></span>
+<span><span class="co">## Response [http://api.open-notify.org/astros.json]</span></span>
+<span><span class="co">##   Date: 2024-10-16 21:35</span></span>
+<span><span class="co">##   Status: 200</span></span>
+<span><span class="co">##   Content-Type: application/json</span></span>
+<span><span class="co">##   Size: 587 B</span></span></code></pre></div>
 <p>Als erstes fällt auf, dass die URL enthalten ist, an die die GET-Anfrage gesendet wurde. Außerdem erkennen wir das Datum und die Uhrzeit, zu der die Anfrage gestellt wurde, sowie die Größe der Antwort.</p>
 <p>Die Information <code>Content-Type</code> gibt uns eine Vorstellung davon, welche Form die Daten haben. Diese spezielle Antwort besagt, dass die Daten ein JSON-Format annehmen, womit auch klar ist warum wir das Paket <code>jsonlite</code> geladen haben.</p>
 <p>Der Status verdient eine besondere Aufmerksamkeit. <code>Status</code> bezieht sich auf den Erfolg oder Misserfolg der API-Anfrage, und er wird in Form einer Zahl angegeben. Die zurückgegebene Nummer gibt Auskunft darüber, ob die Anfrage erfolgreich war oder nicht. Dort können auch Gründe für einen möglichen Misserfolg enthalten sein.</p>
@@ -358,54 +360,56 @@
 }</code></pre>
 <p>In ihrem aktuellen Zustand sind die Daten in der Variablen <code>jdata</code> nicht verwendbar. Die Daten sind als Unicode-Rohdaten in <code>jdata</code> enthalten, und müssen in das JSON-Format konvertiert werden.</p>
 <p>Dazu müssen wir zunächst den rohen Unicode in character Daten konvertieren, die dem oben gezeigten JSON-Format ähneln. Die Funktion <code><a href="https://rdrr.io/r/base/rawConversion.html">rawToChar()</a></code> führt genau diese Aufgabe aus:</p>
-<div class="sourceCode" id="cb107"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/rawConversion.html">rawToChar</a></span><span class="op">(</span><span class="va">jdata</span><span class="op">$</span><span class="va">content</span><span class="op">)</span>
-<span class="co">## [1] "{\"message\": \"success\", \"people\": [{\"name\": \"Sergey Prokopyev\", \"craft\": \"ISS\"}, {\"name\": \"Dmitry Petelin\", \"craft\": \"ISS\"}, {\"name\": \"Frank Rubio\", \"craft\": \"ISS\"}, {\"name\": \"Nicole Mann\", \"craft\": \"ISS\"}, {\"name\": \"Josh Cassada\", \"craft\": \"ISS\"}, {\"name\": \"Koichi Wakata\", \"craft\": \"ISS\"}, {\"name\": \"Anna Kikina\", \"craft\": \"ISS\"}, {\"name\": \"Fei Junlong\", \"craft\": \"Shenzhou 15\"}, {\"name\": \"Deng Qingming\", \"craft\": \"Shenzhou 15\"}, {\"name\": \"Zhang Lu\", \"craft\": \"Shenzhou 15\"}], \"number\": 10}"</span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/rawConversion.html">rawToChar</a></span><span class="op">(</span><span class="va">jdata</span><span class="op">$</span><span class="va">content</span><span class="op">)</span></span>
+<span><span class="co">## [1] "{\"people\": [{\"craft\": \"ISS\", \"name\": \"Oleg Kononenko\"}, {\"craft\": \"ISS\", \"name\": \"Nikolai Chub\"}, {\"craft\": \"ISS\", \"name\": \"Tracy Caldwell Dyson\"}, {\"craft\": \"ISS\", \"name\": \"Matthew Dominick\"}, {\"craft\": \"ISS\", \"name\": \"Michael Barratt\"}, {\"craft\": \"ISS\", \"name\": \"Jeanette Epps\"}, {\"craft\": \"ISS\", \"name\": \"Alexander Grebenkin\"}, {\"craft\": \"ISS\", \"name\": \"Butch Wilmore\"}, {\"craft\": \"ISS\", \"name\": \"Sunita Williams\"}, {\"craft\": \"Tiangong\", \"name\": \"Li Guangsu\"}, {\"craft\": \"Tiangong\", \"name\": \"Li Cong\"}, {\"craft\": \"Tiangong\", \"name\": \"Ye Guangfu\"}], \"number\": 12, \"message\": \"success\"}"</span></span></code></pre></div>
 <p>Die resultierende Zeichenfolge sieht zwar recht unordentlich aus, aber es liegt wirklich die JSON-Struktur vor.</p>
 <p>Ausgehend von diesem character Vektor können wir nun mit <code><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html">fromJSON()</a></code>, aus dem <code>jsonlite</code> Paket, alles in ein Listenformat transformieren.</p>
 <p>Die <code><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html">fromJSON()</a></code> Funktion benötigt einen character Vektor, der die JSON-Struktur enthält, die wir aus der Ausgabe von <code><a href="https://rdrr.io/r/base/rawConversion.html">rawToChar()</a></code> erhalten haben. Wenn wir also diese beiden Funktionen nacheinander anwenden, erhalten wir die gewünschten Daten in einem Format, das wir in R leicht bearbeiten können.</p>
-<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">data</span> <span class="op">&lt;-</span>  <span class="fu"><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html">fromJSON</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rawConversion.html">rawToChar</a></span><span class="op">(</span><span class="va">jdata</span><span class="op">$</span><span class="va">content</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span>
-<span class="co">## List of 3</span>
-<span class="co">##  $ message: chr "success"</span>
-<span class="co">##  $ people :'data.frame': 10 obs. of  2 variables:</span>
-<span class="co">##   ..$ name : chr [1:10] "Sergey Prokopyev" "Dmitry Petelin" "Frank Rubio" "Ni"..</span>
-<span class="co">##   ..$ craft: chr [1:10] "ISS" "ISS" "ISS" "ISS" ...</span>
-<span class="co">##  $ number : int 10</span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span>  <span class="fu"><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html">fromJSON</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rawConversion.html">rawToChar</a></span><span class="op">(</span><span class="va">jdata</span><span class="op">$</span><span class="va">content</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span>
+<span><span class="co">## List of 3</span></span>
+<span><span class="co">##  $ people :'data.frame': 12 obs. of  2 variables:</span></span>
+<span><span class="co">##   ..$ craft: chr [1:12] "ISS" "ISS" "ISS" "ISS" ...</span></span>
+<span><span class="co">##   ..$ name : chr [1:12] "Oleg Kononenko" "Nikolai Chub" "Tracy Caldwell Dyson"..</span></span>
+<span><span class="co">##  $ number : int 12</span></span>
+<span><span class="co">##  $ message: chr "success"</span></span></code></pre></div>
 <p>Die Liste <code>data</code> hat drei Elemente. Uns interessiert in erster Linie das Data Frame <code>people</code>.</p>
-<div class="sourceCode" id="cb109"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">data</span><span class="op">$</span><span class="va">people</span>
-<span class="co">##                name       craft</span>
-<span class="co">## 1  Sergey Prokopyev         ISS</span>
-<span class="co">## 2    Dmitry Petelin         ISS</span>
-<span class="co">## 3       Frank Rubio         ISS</span>
-<span class="co">## 4       Nicole Mann         ISS</span>
-<span class="co">## 5      Josh Cassada         ISS</span>
-<span class="co">## 6     Koichi Wakata         ISS</span>
-<span class="co">## 7       Anna Kikina         ISS</span>
-<span class="co">## 8       Fei Junlong Shenzhou 15</span>
-<span class="co">## 9     Deng Qingming Shenzhou 15</span>
-<span class="co">## 10         Zhang Lu Shenzhou 15</span></code></pre></div>
-<p>Also, da haben wir unsere Antwort: Zum Zeitpunkt des letzten Updates Dec 23, 2022 von R4ews befanden sich 10 Personen im Weltraum. Aber wenn ihr den Code zu einem späteren Zeitpunkt ausprobiert, könnten es auch schon wieder andere Namen und eine andere Anzahl sein. Das ist einer der Vorteile von APIs - im Gegensatz zu Datensätzen, die man im Spreadsheet Format herunterladen kann, werden sie in der Regel in Echtzeit oder nahezu in Echtzeit aktualisiert. APIs bieten somit die Möglichkeit leicht auf sehr aktuelle Daten zuzugreifen.</p>
+<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">data</span><span class="op">$</span><span class="va">people</span></span>
+<span><span class="co">##       craft                 name</span></span>
+<span><span class="co">## 1       ISS       Oleg Kononenko</span></span>
+<span><span class="co">## 2       ISS         Nikolai Chub</span></span>
+<span><span class="co">## 3       ISS Tracy Caldwell Dyson</span></span>
+<span><span class="co">## 4       ISS     Matthew Dominick</span></span>
+<span><span class="co">## 5       ISS      Michael Barratt</span></span>
+<span><span class="co">## 6       ISS        Jeanette Epps</span></span>
+<span><span class="co">## 7       ISS  Alexander Grebenkin</span></span>
+<span><span class="co">## 8       ISS        Butch Wilmore</span></span>
+<span><span class="co">## 9       ISS      Sunita Williams</span></span>
+<span><span class="co">## 10 Tiangong           Li Guangsu</span></span>
+<span><span class="co">## 11 Tiangong              Li Cong</span></span>
+<span><span class="co">## 12 Tiangong           Ye Guangfu</span></span></code></pre></div>
+<p>Also, da haben wir unsere Antwort: Zum Zeitpunkt des letzten Updates Oct 16, 2024 von R4ews befanden sich 12 Personen im Weltraum. Aber wenn ihr den Code zu einem späteren Zeitpunkt ausprobiert, könnten es auch schon wieder andere Namen und eine andere Anzahl sein. Das ist einer der Vorteile von APIs - im Gegensatz zu Datensätzen, die man im Spreadsheet Format herunterladen kann, werden sie in der Regel in Echtzeit oder nahezu in Echtzeit aktualisiert. APIs bieten somit die Möglichkeit leicht auf sehr aktuelle Daten zuzugreifen.</p>
 <p>In diesem Beispiel haben wir einen sehr unkomplizierten API-Workflow durchlaufen. Die meisten APIs fordern, dass man demselben allgemeinen Muster folgt, aber dabei können die jeweilgen Aufrufe/Befehle durchaus deutlich komplexer sein.</p>
 <p>In unserem Beispiel war es ausreichen nur die URL anzugeben. Aber einige APIs verlangen mehr Informationen vom Benutzer. Darauf gehen wir aber erstmal nicht weiter ein. Stattdessen fragen wir noch nach dem Ort der ISS im Moment der Abfrage</p>
-<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">jdata</span> <span class="op">&lt;-</span>  <span class="fu"><a href="https://httr.r-lib.org/reference/GET.html">GET</a></span><span class="op">(</span><span class="st">"http://api.open-notify.org/iss-now.json"</span>,<span class="op">)</span></code></pre></div>
-<div class="sourceCode" id="cb111"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html">fromJSON</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rawConversion.html">rawToChar</a></span><span class="op">(</span><span class="va">jdata</span><span class="op">$</span><span class="va">content</span><span class="op">)</span><span class="op">)</span>
-<span class="va">data</span><span class="op">$</span><span class="va">iss_position</span>
-<span class="co">## $longitude</span>
-<span class="co">## [1] "-130.2733"</span>
-<span class="co">## </span>
-<span class="co">## $latitude</span>
-<span class="co">## [1] "-35.5641"</span>
-<span class="va">data</span><span class="op">$</span><span class="va">timestamp</span>
-<span class="co">## [1] 1671783232</span></code></pre></div>
-<p>Diese API gibt uns die Zeit in Form von <a href="https://de.wikipedia.org/wiki/Unixzeit">Unixzeit</a> zurück. Unixzeit ist die Zeitspanne, die seit dem 1. Januar 1970 vergangen ist. Mithilfe der Funktion <code>as_datetime()</code> aus dem <a href="https://lubridate.tidyverse.org">lubridate</a> Paket können wir die Unixzeit aber leicht umrechnen</p>
-<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">lubridate</span><span class="fu">::</span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/as_date.html">as_datetime</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">timestamp</span><span class="op">)</span>
-<span class="co">## [1] "2022-12-23 08:13:52 UTC"</span></code></pre></div>
+<div class="sourceCode" id="cb113"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">jdata</span> <span class="op">&lt;-</span>  <span class="fu"><a href="https://httr.r-lib.org/reference/GET.html">GET</a></span><span class="op">(</span><span class="st">"http://api.open-notify.org/iss-now.json"</span>,<span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html">fromJSON</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rawConversion.html">rawToChar</a></span><span class="op">(</span><span class="va">jdata</span><span class="op">$</span><span class="va">content</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">data</span><span class="op">$</span><span class="va">iss_position</span></span>
+<span><span class="co">## $latitude</span></span>
+<span><span class="co">## [1] "51.6040"</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $longitude</span></span>
+<span><span class="co">## [1] "170.8210"</span></span>
+<span><span class="va">data</span><span class="op">$</span><span class="va">timestamp</span></span>
+<span><span class="co">## [1] 1729114546</span></span></code></pre></div>
+<p>Diese API gibt uns die Zeit in Form von <a href="https://de.wikipedia.org/wiki/Unixzeit">Unixzeit</a> zurück. Unixzeit ist die Zeitspanne, die seit dem 1. Januar 1970 vergangen ist. Mithilfe der Funktion <code><a href="https://lubridate.tidyverse.org/reference/as_date.html">as_datetime()</a></code> aus dem <a href="https://lubridate.tidyverse.org">lubridate</a> Paket können wir die Unixzeit aber leicht umrechnen</p>
+<div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">lubridate</span><span class="fu">::</span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/as_date.html">as_datetime</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">timestamp</span><span class="op">)</span></span>
+<span><span class="co">## [1] "2024-10-16 21:35:46 UTC"</span></span></code></pre></div>
 <p>Damit wollen wir den Abschnitt zu APIs beenden. Macht euch bewusst, dass wir hier wirklich nur die Basics in Bezug auf APIs eingeführt haben. Aber hoffentlich hat euch diese Einführung trotzdem ausreichend Vertrauen gegeben, sich mit einigen komplexeren und leistungsfähigeren APIs auseinanderzusetzen.</p>
 </div>
 </div>
@@ -413,7 +417,7 @@
 <h2>
 <span class="header-section-number">8.6</span> Weiteres Material<a class="anchor" aria-label="anchor" href="#weiteres-material"><i class="fas fa-link"></i></a>
 </h2>
-<p>Wer noch mehr zum Thema Daten Import lesen will, der soll einen Blick in das Kapitel <a href="http://r4ds.had.co.nz/data-import.html">Data import</a> im Buch <a href="https://r4ds.had.co.nz">R for Data Science</a> von Hadley Wickham und Garrett Grolemund <span class="citation">(<a href="literatur-3.html#ref-wickham2016" role="doc-biblioref">2016</a>)</span> werfen.</p>
+<p>Wer noch mehr zum Thema Daten Import lesen will, der soll einen Blick in das Kapitel <a href="http://r4ds.had.co.nz/data-import.html">Data import</a> im Buch <a href="https://r4ds.had.co.nz">R for Data Science</a> von Hadley Wickham und Garrett Grolemund <span class="citation">(<a href="literatur-3.html#ref-wickham2016">2016</a>)</span> werfen.</p>
 <!--Packages: main link-->
 <!--Packages: vignettes & CRAN/GitHub links-->
 <!--Bookdowns: main link-->

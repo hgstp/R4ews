@@ -414,7 +414,7 @@ Wir können aber noch mehr erreichen. Lasst uns die Frage pro  Kontinenten beant
 my_gap %>%
   group_by(continent, country) %>%
   # für jedes Land werden die Unterschiede berechnet
-  mutate(delta = lifeExp - lag(lifeExp, k = 1)) %>% 
+  mutate(delta = lifeExp - lag(lifeExp, n = 1)) %>% 
   ## für jedes Land wird nur der kleinste Wert behalten
   summarise(worst_delta = min(delta, na.rm = TRUE)) %>% 
   ## nun wird noch pro Kontinent, die Zeile mit dem kleinsten Wert ausgegeben

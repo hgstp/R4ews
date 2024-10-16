@@ -21,22 +21,24 @@ Wir haben zudem auch noch die Rolle von `dplyr` innerhalb des tidyverse besproch
 Wir starten wieder mit dem Laden von `dplyr` (über `tidyverse`)
 
 
-```r
+``` r
 library(tidyverse)
-## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
-## ✓ ggplot2 3.3.5     ✓ purrr   0.3.4
-## ✓ tibble  3.1.6     ✓ dplyr   1.0.8
-## ✓ tidyr   1.2.0     ✓ stringr 1.4.0
-## ✓ readr   2.1.2     ✓ forcats 0.5.1
+## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+## ✔ dplyr     1.1.4     ✔ readr     2.1.5
+## ✔ forcats   1.0.0     ✔ stringr   1.5.1
+## ✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+## ✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+## ✔ purrr     1.0.2     
 ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-## x dplyr::filter() masks stats::filter()
-## x dplyr::lag()    masks stats::lag()
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+## ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
 ```
 
 und `gapminder`
 
 
-```r
+``` r
 library(gapminder)
 ```
 
@@ -48,7 +50,7 @@ library(gapminder)
 Wir starten mit dem Anlegen einer Kopie von `gapminder`, die wir dann nach unseren Vorstellungen verändern (es wäre aber auch nichts passiert, wenn wir alles mit `gapminder` durchführen würden; mit dem Befehl `gapminder::gapminder` können wir immer auf die Originalversion zurückgreifen).
 
 
-```r
+``` r
 my_gap <- gapminder
 ```
 
@@ -57,7 +59,7 @@ Unser __Ziel__ ist es, dass GDP pro Land anzugeben. Das sollte machbar sein, da 
 `mutate()` ist eine Funktion, die neue Variablen definiert und in ein tibble einfügt. Dabei können wir auf bestehende Variablen einfach über ihren Namen zugreifen.
 
 
-```r
+``` r
 my_gap %>%
   mutate(gdp = pop * gdpPercap)
 ## # A tibble: 1,704 × 7
@@ -73,7 +75,7 @@ my_gap %>%
 ##  8 Afghanistan Asia       1987    40.8 13867957      852. 11820990309.
 ##  9 Afghanistan Asia       1992    41.7 16317921      649. 10595901589.
 ## 10 Afghanistan Asia       1997    41.8 22227415      635. 14121995875.
-## # … with 1,694 more rows
+## # ℹ 1,694 more rows
 ```
 
 Hmmmm ... diese GDP-Zahlen sind ziemlich groß und abstrakt. In dem Zusammenhang, bedenke den Ratschlag von [Randall Munroe](https://fivethirtyeight.com/features/xkcd-randall-munroe-qanda-what-if/):
@@ -94,7 +96,7 @@ __Wie können wir das schaffen?__
 1. Löschen der  temporären Variable `tmp` in `my_gap`
 
 
-```r
+``` r
 ger_gap <- my_gap %>%
   filter(country == "Germany")
 
@@ -109,7 +111,7 @@ Beachte, dass `mutate()` neue Variablen sequentiell erstellt, so dass man auf fr
 Bleibt die Frage ob das alles so richtig war. Um diese Frage zu beantworten, können wir uns aber einfach mal die Werte von `gdpPercapRel` für Deutschland anschauen. Die sollten besser alle 1 sein!
 
 
-```r
+``` r
 my_gap %>% 
   filter(country == "Germany") %>% 
   select(country, year, gdpPercapRel)
@@ -133,7 +135,7 @@ my_gap %>%
 Ich glaube, wir können annehmen, dass Deutschland ein Land mit einem "hohen GDP" pro Kopf ist. Daher sollte die Verteilung von `gdpPercapRel` auf Werten unter 1 konzentriert sein, möglicherweise sogar weit darunter. Aber besser mal nachschauen ob dem so ist:
 
 
-```r
+``` r
 summary(my_gap$gdpPercapRel)
 ##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##    0.01    0.07    0.19    0.37    0.51   15.17
@@ -150,7 +152,7 @@ __Tipp:__ Vertraut niemandem - einschließlich (besonders?) euch selbst. Versuch
 `arrange()` ordnet die Zeilen in einem data frame neu an. Stellen wir uns mal vor, dass wir die Daten nach Jahr und Land und nicht nach Land und Jahr ordnen wollen.
 
 
-```r
+``` r
 my_gap %>%
   arrange(year, country)
 ## # A tibble: 1,704 × 7
@@ -166,13 +168,13 @@ my_gap %>%
 ##  8 Bahrain     Asia       1952    50.9   120447     9867.       1.38  
 ##  9 Bangladesh  Asia       1952    37.5 46886859      684.       0.0958
 ## 10 Belgium     Europe     1952    68    8730405     8343.       1.17  
-## # … with 1,694 more rows
+## # ℹ 1,694 more rows
 ```
 
 Oder vielleicht interessieren euch nur die Daten aus 2007, angeordnet entsprechend der Lebenserwartung.
 
 
-```r
+``` r
 my_gap %>%
   filter(year == 2007) %>%
   arrange(lifeExp)
@@ -189,13 +191,13 @@ my_gap %>%
 ##  8 Afghanistan             Asia       2007    43.8 3.19e7      975.       0.0303
 ##  9 Central African Republ… Africa     2007    44.7 4.37e6      706.       0.0219
 ## 10 Liberia                 Africa     2007    45.7 3.19e6      415.       0.0129
-## # … with 132 more rows
+## # ℹ 132 more rows
 ```
 
 Das war nun aber nicht das Ergebnis, welches ihr sehen wolltet. Ihr wolltet eigentlich nach absteigender Lebenserwartung sortieren. Dazu müsst ihr  `desc()` verwenden.
 
 
-```r
+``` r
 my_gap %>%
   filter(year == 2007) %>%
   arrange(desc(lifeExp))
@@ -212,7 +214,7 @@ my_gap %>%
 ##  8 Israel           Asia       2007    80.7   6426679    25523.        0.793
 ##  9 France           Europe     2007    80.7  61083916    30470.        0.947
 ## 10 Canada           Americas   2007    80.7  33390141    36319.        1.13 
-## # … with 132 more rows
+## # ℹ 132 more rows
 ```
 
 
@@ -225,7 +227,7 @@ __Tipp:__ Verlasst euch  NIEMALS darauf, dass Zeilen oder Variablen in einer bes
 Ein paar der Namen in `gapminder` sind nicht besonders hübsch, wie z.B. `lifeExp`. life expectancy wären ja schließlich zwei Worte und daher finde ich (persönliche Meinung) es schöner, dies auch im Variablennamen zu sehen
 
 
-```r
+``` r
 my_gap %>%
   rename(life_exp = lifeExp,
          gdp_percap = gdpPercap,
@@ -243,7 +245,7 @@ my_gap %>%
 ##  8 Afghanistan Asia       1987     40.8 13867957       852.         0.0346
 ##  9 Afghanistan Asia       1992     41.7 16317921       649.         0.0245
 ## 10 Afghanistan Asia       1997     41.8 22227415       635.         0.0229
-## # … with 1,694 more rows
+## # ℹ 1,694 more rows
 ```
 
 
@@ -254,7 +256,7 @@ Die Änderungen haben wir jetzt aber nicht abgespeichert (auch wenn sie schön w
 
 __Bemerkung:__ Mit `select()` könnten wir bei der Auswahl von Variablen auch deren Namen ändern 
 
-```r
+``` r
 my_gap %>%
   filter(country == "Burundi", year > 1996) %>% 
   select(yr = year, lifeExp, gdpPercap) %>% 
@@ -301,7 +303,7 @@ Kombiniert mit den Verben, die wir bereits kennen, könnt ihr mit diesen neuen W
 Beginnen wir mit dem einfachen Zählen.  Wie viele Beobachtungen haben wir pro Kontinent?
 
 
-```r
+``` r
 my_gap %>%
   group_by(continent) %>%
   summarise(n = n())
@@ -318,7 +320,7 @@ my_gap %>%
 Lasst uns hier kurz innehalten und über das tidyverse nachdenken. Ihr könntet  die gleichen absoluten Häufigkeiten natürlich auch mit `table()` berechnen.
 
 
-```r
+``` r
 table(gapminder$continent)
 ## 
 ##   Africa Americas     Asia   Europe  Oceania 
@@ -335,7 +337,7 @@ Dies ist ein Beispiel dafür, wie das tidyverse Übergänge glättet, bei denen 
 Die `tally()` Funktion ist eine Komfortfunktion, die weiß, wie man Zeilen zählt und dabei Gruppen berücksichtigt.
 
 
-```r
+``` r
 my_gap %>%
   group_by(continent) %>%
   tally()
@@ -352,7 +354,7 @@ my_gap %>%
 Die Funktion `count()` bietet noch mehr Komfort. Sie kann sowohl gruppieren als auch zählen.
 
 
-```r
+``` r
 my_gap %>% 
   count(continent)
 ## # A tibble: 5 × 2
@@ -368,7 +370,7 @@ my_gap %>%
 Was wäre, wenn uns nicht nur die Anzahl an Beobachtungen pro Kontinent interessiert, sondern auch die Anzahl an unterschiedlichen Ländern pro Kontinent. Dazu bestimmen wir einfach mehrere Zusammenfassungen innerhalb von `summarise()`. Dabei verwenden wir die Funktion `n_distinct()`, um die Anzahl der einzelnen Länder innerhalb jedes Kontinents zu zählen.
 
 
-```r
+``` r
 my_gap %>%
   group_by(continent) %>%
   summarise(n = n(),
@@ -391,7 +393,8 @@ In Kombination mit `summarise()` können wir eine Vielzahl an verschiedenen Funk
 In allen betrachteten Fällen seien $x_1,\dots,x_n$ numerische Beobachtungen.
 
 
-+  `mean()` berechnet das arithmetische Mittel der Beo$$\overline x_n = \frac{1}{n} \sum_{i=1}^n x_i\,.$$
++  `mean()` berechnet das arithmetische Mittel der Beobachtungen
+$$\overline x_n = \frac{1}{n} \sum_{i=1}^n x_i\,.$$
 
 + `median()` berechnet den Median
 $$x_{0.5} = \begin{cases}
@@ -415,10 +418,10 @@ $$x_{(1)} = \min(x_1,\dots,x_n)\,.$$
 $$x_{(n)} = \max(x_1,\dots,x_n)\,.$$
 
 
-Auch wenn dies statistisch gesehen unklug sein mag, lasst uns die durchschnittliche Lebenserwartung pro Kontinenten berechnen.
+Auch wenn dies statistisch gesehen unklug sein mag, lasst uns die durchschnittliche Lebenserwartung pro Kontinent berechnen.
 
 
-```r
+``` r
 my_gap %>%
   group_by(continent) %>%
   summarise(avg_lifeExp = mean(lifeExp))
@@ -436,7 +439,7 @@ my_gap %>%
 `summarise_at()` wendet die gleiche(n) Zusammenfassungs-Funktion(en) auf mehrere Variablen an. Lasst uns die durchschnittliche  Lebenserwartung sowie den Median und das Pro-Kopf-GDP nach Kontinenten pro Jahr berechnen... aber nur für 1952 und 2007.
 
 
-```r
+``` r
 my_gap %>%
   filter(year %in% c(1952, 2007)) %>%
   group_by(continent, year) %>%
@@ -460,7 +463,7 @@ my_gap %>%
 Im nächsten Schritt konzentrieren wir uns nur auf Asien. Wie hoch ist die minimale und maximale Lebenserwartung pro Jahr?
 
 
-```r
+``` r
 my_gap %>%
   filter(continent == "Asia") %>%
   group_by(year) %>%
@@ -493,7 +496,7 @@ Manchmal möchte man die $n$-Zeilen für jede Gruppe nicht zu einer Zeile zusamm
 Lasst uns eine neue Variable definieren, die die gewonnenen (verlorenen) Lebenserwartungsjahre im Vergleich zu 1952 für jedes einzelne Land angibt. Wir gruppieren nach Ländern und verwenden `mutate()`, um eine neue Variable zu erstellen. Die Funktion `first()` extrahiert dabei den ersten Wert aus einem Vektor. Beachtet, dass `first()` mit dem Vektor der Lebenserwartungen *in jeder Ländergruppe* arbeitet.
 
 
-```r
+``` r
 my_gap %>% 
   group_by(country) %>% 
   select(country, year, lifeExp) %>% 
@@ -513,7 +516,7 @@ my_gap %>%
 ##  8 Algeria      1957    45.7         2.61
 ##  9 Algeria      1962    48.3         5.23
 ## 10 Angola       1952    30.0         0   
-## # … with 416 more rows
+## # ℹ 416 more rows
 ```
 
 Innerhalb eines Landes nehmen wir die Differenz zwischen der Lebenserwartung im Jahr $i$ und der Lebenserwartung im Jahr 1952. Daher sehen wir für 1952 immer Nullen und für die meisten Länder eine Folge von positiven und steigenden Zahlen.
@@ -526,7 +529,7 @@ Window Funktionen nehmen eine Eingabe der Länge $n$ und berechnen eine Ausgabe 
 Betrachten wir noch einmal die schlechtesten und besten Lebenserwartungen in Asien im Laufe der Zeit, behalten aber Informationen darüber bei, *welches* Land diese Extremwerte beisteuert.
 
 
-```r
+``` r
 my_gap %>%
   filter(continent == "Asia") %>%
   select(year, country, lifeExp) %>%
@@ -572,7 +575,7 @@ Wir sehen, dass (min = Afghanistan, max = Japan) das häufigste Ergebnis ist, ab
 Zuerst sollten wir uns aber vielleicht nochmal fragen wie das eigentlich funktioniert hat? Dazu schauen wir uns die Beobachtungen aus Asien mal direkt an.
 
 
-```r
+``` r
 (asia <- my_gap %>%
   filter(continent == "Asia") %>%
   select(year, country, lifeExp) %>%
@@ -591,7 +594,7 @@ Zuerst sollten wir uns aber vielleicht nochmal fragen wie das eigentlich funktio
 ##  8  1987 Afghanistan    40.8
 ##  9  1992 Afghanistan    41.7
 ## 10  1997 Afghanistan    41.8
-## # … with 386 more rows
+## # ℹ 386 more rows
 ```
 
 Jetzt wenden wir die Window Funktion `min_rank()` an. Da `asia` nach Jahren gruppiert ist, operiert `min_rank()` innerhalb von Mini-Datensätzen. Auf die Variable `lifeExp` angewandt, liefert `min_rank()` den Rang der beobachteten Lebenserwartung jedes Landes. 
@@ -602,7 +605,7 @@ Jetzt wenden wir die Window Funktion `min_rank()` an. Da `asia` nach Jahren grup
 __Bemerkung:__ Der `min`-Teil im Funktionsnamen `min_rank()` gibt nur an, wie im Fall von gleichen Beobachtungswerten die Ränge bestimmt werden.
 
 
-```r
+``` r
 rank(c(1,3,3,5), ties.method = "min")
 ## [1] 1 2 2 4
 ```
@@ -610,7 +613,7 @@ rank(c(1,3,3,5), ties.method = "min")
 Neben dem Minimum gibt es aber auch noch eine Reihe weiterer Alternativen, wie z.B. den Durchschnitt
 
 
-```r
+``` r
 rank(c(1,3,3,5))
 ## [1] 1.0 2.5 2.5 4.0
 ```
@@ -624,7 +627,7 @@ Im nächsten Schritt schauen wir uns die Ränge der Lebenserwartung innerhalb ei
 
 
 
-```r
+``` r
 asia %>%
   mutate(le_rank = min_rank(lifeExp),
          le_desc_rank = min_rank(desc(lifeExp))) %>% 
@@ -649,7 +652,7 @@ Afghanistan neigt dazu, 1 in der `le_rank`-Variablen zu haben, Japan neigt dazu,
 Damit sollte der ursprüngliche `filter()` Befehl
 
 
-```r
+``` r
 filter(min_rank(desc(lifeExp)) < 2 | min_rank(lifeExp) < 2)
 ```
 
@@ -660,7 +663,7 @@ Diese beiden Sätze von Rängen werden on-the-fly, innerhalb der Jahresgruppe, g
 Wenn wir nur das Minimum ODER das Maximum gewollt hätten, hätte auch ein alternativer Ansatz mit `slice_min()` bzw. `slice_max()` funktioniert.
 
 
-```r
+``` r
 my_gap %>%
   filter(continent == "Asia") %>%
   select(year, country, lifeExp) %>%
@@ -701,11 +704,11 @@ Die Beobachtungsfrequenz im Datensatz ist fünf Jahre, d.h. wir haben Daten für
 Wir können aber noch mehr erreichen. Lasst uns die Frage pro  Kontinenten beantworten.
 
 
-```r
+``` r
 my_gap %>%
   group_by(continent, country) %>%
   # für jedes Land werden die Unterschiede berechnet
-  mutate(delta = lifeExp - lag(lifeExp, k = 1)) %>% 
+  mutate(delta = lifeExp - lag(lifeExp, n = 1)) %>% 
   ## für jedes Land wird nur der kleinste Wert behalten
   summarise(worst_delta = min(delta, na.rm = TRUE)) %>% 
   ## nun wird noch pro Kontinent, die Zeile mit dem kleinsten Wert ausgegeben

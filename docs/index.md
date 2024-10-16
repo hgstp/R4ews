@@ -39,9 +39,9 @@ Das Material wird kontinuierlich über das Semester hinweg ergänzt/erweitert/ve
 **Letzte Änderung:**
 
 
-```r
+``` r
 date()
-## [1] "Fri Dec 23 09:13:23 2022"
+## [1] "Wed Oct 16 23:35:38 2024"
 ```
 
 
@@ -63,16 +63,16 @@ Die aktuelle Version dieses Buchs wurde mit
 ```
 ## Finding R package dependencies ... Done!
 ##  setting  value
-##  version  R version 4.1.2 (2021-11-01)
-##  os       macOS Big Sur 10.16
-##  system   x86_64, darwin17.0
+##  version  R version 4.4.0 (2024-04-24)
+##  os       macOS 15.0.1
+##  system   aarch64, darwin20
 ##  ui       X11
 ##  language (EN)
 ##  collate  en_US.UTF-8
 ##  ctype    en_US.UTF-8
 ##  tz       Europe/Berlin
-##  date     2022-12-23
-##  pandoc   2.19.2 @ /Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/ (via rmarkdown)
+##  date     2024-10-16
+##  pandoc   3.2 @ /Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/aarch64/ (via rmarkdown)
 ```
 
 erstellt

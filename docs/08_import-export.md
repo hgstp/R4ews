@@ -48,16 +48,18 @@ Denkt zudem daran, dass es natürlich auch noch andere Werkzeuge und Arbeitsabl�
 Zur Einlesen und Ausgeben von Datensätzen verwenden wir das [readr] Paket, welches Alternativen zu den Standardfunktionen `read.table()` und `write.table()` bietet. `readr` ist Teil des [tidyverse] und daher führen wir standardmäßig einfach wieder 
 
 
-```r
+``` r
 library(tidyverse)
-## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
-## ✓ ggplot2 3.3.5     ✓ purrr   0.3.4
-## ✓ tibble  3.1.6     ✓ dplyr   1.0.8
-## ✓ tidyr   1.2.0     ✓ stringr 1.4.0
-## ✓ readr   2.1.2     ✓ forcats 0.5.1
+## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+## ✔ dplyr     1.1.4     ✔ readr     2.1.5
+## ✔ forcats   1.0.0     ✔ stringr   1.5.1
+## ✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+## ✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+## ✔ purrr     1.0.2     
 ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-## x dplyr::filter() masks stats::filter()
-## x dplyr::lag()    masks stats::lag()
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+## ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
 ```
 
 aus.
@@ -67,10 +69,10 @@ __Einlesen der Gapminder Daten__
 Die Gapminder Daten könnten wir natürlich wie zuvor über das Laden des `gapminder` Pakets verfügbar machen. Da es in diesem Abschnitt aber um das Einlesen von Daten geht, versuchen wir die Daten als `.tsv` Datei (Tab getrennte Werte - so sind die Daten im Paket gespeichert) einzulesen. Aber dies bedeutet natürlich, dass wir die entsprechende `.tsv` Datei erst mal finden müssen. Dabei hilft uns glücklicherweise das [fs] Paket.
 
 
-```r
+``` r
 library(fs)
 (gap_tsv <- path_package("gapminder", "extdata", "gapminder.tsv"))
-## /Library/Frameworks/R.framework/Versions/4.1/Resources/library/gapminder/extdata/gapminder.tsv
+## /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library/gapminder/extdata/gapminder.tsv
 ```
 
 Nachdem wir jetzt den Speicherort der Datei kennen, können wir versuchen sie einzulesen.
@@ -81,7 +83,7 @@ Nachdem wir jetzt den Speicherort der Datei kennen, können wir versuchen sie ei
 Die Haupt-Funktion zum Einlesen von Daten in readr ist `read_delim()`. Hier verwenden wir eine Variante, `read_tsv()`, für Tab getrennte Daten:
 
 
-```r
+``` r
 gapminder <- read_tsv(gap_tsv)
 ## Rows: 1704 Columns: 6
 ## ── Column specification ────────────────────────────────────────────────────────
@@ -105,14 +107,14 @@ gapminder
 ##  8 Afghanistan Asia       1987    40.8 13867957      852.
 ##  9 Afghanistan Asia       1992    41.7 16317921      649.
 ## 10 Afghanistan Asia       1997    41.8 22227415      635.
-## # … with 1,694 more rows
+## # ℹ 1,694 more rows
 ```
 
 
 Wie wir sehen, wurde standardmäßig der komplette Datensatz eingelesen. Sind aber nur Teile eines Datensatzes relevant für die angestrebte Analyse, so besteht auch keine Notwendigkeit den kompletten Datensatz zu laden. In solchen Fällen kann man mit dem `col_types` Argument arbeiten
 
 
-```r
+``` r
 gapminder_short <- read_tsv(gap_tsv, col_types = cols_only(
   country = col_character(),
   continent = col_factor(),
@@ -133,13 +135,13 @@ gapminder_short
 ##  8 Afghanistan Asia       1987    40.8
 ##  9 Afghanistan Asia       1992    41.7
 ## 10 Afghanistan Asia       1997    41.8
-## # … with 1,694 more rows
+## # ℹ 1,694 more rows
 ```
 
 Zur Auswahl eines Teils der Variablen haben wir `cols_only()` verwendet. Diese Funktion erwartet bei der Auswahl der Variablen die Definition des Typs. In diesem Beispiel haben wir `continten` (anders als im Standardfall) zu einer [Faktorvariable](https://r4ds.had.co.nz/factors.html) transformiert. Dadurch enthält die Variable zusätzlich die Information über die verschiedenen Ausprägungen der Variable
 
 
-```r
+``` r
 levels(gapminder_short$continent)
 ## [1] "Asia"     "Europe"   "Africa"   "Americas" "Oceania"
 ```
@@ -176,7 +178,7 @@ Die Gapminder-Daten sind zu sauber und einfach, um die großartigen Funktionen v
 Bevor wir etwas exportieren können, müssen wir natürlich (was so sicher nicht richtig ist - niemand zwingt uns dazu 😉) etwas berechnen, das es wert ist,  exportiert zu werden. Lasst uns daher eine Zusammenfassung der maximalen Lebenserwartung auf Länderebene erstellen.
 
 
-```r
+``` r
 gap_life_exp <- gapminder %>%
   group_by(country, continent) %>% 
   summarise(life_exp = max(lifeExp)) %>% 
@@ -197,7 +199,7 @@ gap_life_exp
 ##  8 Bahrain     Asia          75.6
 ##  9 Bangladesh  Asia          64.1
 ## 10 Belgium     Europe        79.4
-## # … with 132 more rows
+## # ℹ 132 more rows
 ```
 
 Das Objekt `gap_life_exp` betrachten wir nun als Zwischenergebnis, das wir für die Zukunft und für nachgelagerte Analysen oder Visualisierungen speichern wollen.
@@ -206,7 +208,7 @@ Die Haupt-Exportfunktion in [readr] ist `write_delim()`. Für verschiedene Datei
 
 
 
-```r
+``` r
 write_csv(gap_life_exp, "data/gap_life_exp.csv")
 ```
 
@@ -247,7 +249,7 @@ Um mit APIs in R zu arbeiten, müssen wir ein paar neue Pakete laden (und vorher
 Vermutlich habt ihr die beiden Pakete bisher nicht installiert. Daher starten wir mit dem Installieren dieser beiden Pakete
 
 
-```r
+``` r
 install.packages(c("httr", "jsonlite"))
 
 ```
@@ -255,9 +257,10 @@ install.packages(c("httr", "jsonlite"))
 und laden sie anschließend 
 
 
-```r
+``` r
 library(httr)
 library(jsonlite)
+## Warning: package 'jsonlite' was built under R version 4.4.1
 ## 
 ## Attaching package: 'jsonlite'
 ## The following object is masked from 'package:purrr':
@@ -283,7 +286,7 @@ Als Beispiel werden wir mit der [Open Notify](http://open-notify.org/) API arbei
 Wir beginnen damit, dass wir unsere Anfrage mit der `GET()` Funktion stellen und die URL der API angeben:
 
 
-```r
+``` r
 jdata <- GET("http://api.open-notify.org/astros.json")
 ```
 
@@ -295,13 +298,13 @@ Die Ausgabe der Funktion `GET()` ist eine Liste, die alle Informationen enthält
 Schauen wir uns an, wie die Variable `jdata` in der R-Konsole aussieht:
 
 
-```r
+``` r
 jdata
 ## Response [http://api.open-notify.org/astros.json]
-##   Date: 2022-12-23 08:13
+##   Date: 2024-10-16 21:35
 ##   Status: 200
 ##   Content-Type: application/json
-##   Size: 492 B
+##   Size: 587 B
 ```
 
 Als erstes fällt auf, dass die URL enthalten ist, an die die GET-Anfrage gesendet wurde. Außerdem erkennen wir das Datum und die Uhrzeit, zu der die Anfrage gestellt wurde, sowie die Größe der Antwort.
@@ -332,9 +335,9 @@ Dazu müssen wir zunächst den rohen Unicode in character Daten konvertieren, di
 
 
 
-```r
+``` r
 rawToChar(jdata$content)
-## [1] "{\"message\": \"success\", \"people\": [{\"name\": \"Sergey Prokopyev\", \"craft\": \"ISS\"}, {\"name\": \"Dmitry Petelin\", \"craft\": \"ISS\"}, {\"name\": \"Frank Rubio\", \"craft\": \"ISS\"}, {\"name\": \"Nicole Mann\", \"craft\": \"ISS\"}, {\"name\": \"Josh Cassada\", \"craft\": \"ISS\"}, {\"name\": \"Koichi Wakata\", \"craft\": \"ISS\"}, {\"name\": \"Anna Kikina\", \"craft\": \"ISS\"}, {\"name\": \"Fei Junlong\", \"craft\": \"Shenzhou 15\"}, {\"name\": \"Deng Qingming\", \"craft\": \"Shenzhou 15\"}, {\"name\": \"Zhang Lu\", \"craft\": \"Shenzhou 15\"}], \"number\": 10}"
+## [1] "{\"people\": [{\"craft\": \"ISS\", \"name\": \"Oleg Kononenko\"}, {\"craft\": \"ISS\", \"name\": \"Nikolai Chub\"}, {\"craft\": \"ISS\", \"name\": \"Tracy Caldwell Dyson\"}, {\"craft\": \"ISS\", \"name\": \"Matthew Dominick\"}, {\"craft\": \"ISS\", \"name\": \"Michael Barratt\"}, {\"craft\": \"ISS\", \"name\": \"Jeanette Epps\"}, {\"craft\": \"ISS\", \"name\": \"Alexander Grebenkin\"}, {\"craft\": \"ISS\", \"name\": \"Butch Wilmore\"}, {\"craft\": \"ISS\", \"name\": \"Sunita Williams\"}, {\"craft\": \"Tiangong\", \"name\": \"Li Guangsu\"}, {\"craft\": \"Tiangong\", \"name\": \"Li Cong\"}, {\"craft\": \"Tiangong\", \"name\": \"Ye Guangfu\"}], \"number\": 12, \"message\": \"success\"}"
 ```
 
 
@@ -345,37 +348,39 @@ Ausgehend von diesem character Vektor können wir nun mit `fromJSON()`, aus dem 
 Die `fromJSON()` Funktion benötigt einen character Vektor, der die JSON-Struktur enthält, die wir aus der Ausgabe von `rawToChar()` erhalten haben. Wenn wir also diese beiden Funktionen nacheinander anwenden, erhalten wir die gewünschten Daten in einem Format, das wir in R leicht bearbeiten können.
 
 
-```r
+``` r
 data <-  fromJSON(rawToChar(jdata$content))
 glimpse(data)
 ## List of 3
+##  $ people :'data.frame':	12 obs. of  2 variables:
+##   ..$ craft: chr [1:12] "ISS" "ISS" "ISS" "ISS" ...
+##   ..$ name : chr [1:12] "Oleg Kononenko" "Nikolai Chub" "Tracy Caldwell Dyson"..
+##  $ number : int 12
 ##  $ message: chr "success"
-##  $ people :'data.frame':	10 obs. of  2 variables:
-##   ..$ name : chr [1:10] "Sergey Prokopyev" "Dmitry Petelin" "Frank Rubio" "Ni"..
-##   ..$ craft: chr [1:10] "ISS" "ISS" "ISS" "ISS" ...
-##  $ number : int 10
 ```
 
 Die Liste `data` hat drei Elemente. Uns interessiert in erster Linie das Data Frame `people`.
 
 
-```r
+``` r
 data$people
-##                name       craft
-## 1  Sergey Prokopyev         ISS
-## 2    Dmitry Petelin         ISS
-## 3       Frank Rubio         ISS
-## 4       Nicole Mann         ISS
-## 5      Josh Cassada         ISS
-## 6     Koichi Wakata         ISS
-## 7       Anna Kikina         ISS
-## 8       Fei Junlong Shenzhou 15
-## 9     Deng Qingming Shenzhou 15
-## 10         Zhang Lu Shenzhou 15
+##       craft                 name
+## 1       ISS       Oleg Kononenko
+## 2       ISS         Nikolai Chub
+## 3       ISS Tracy Caldwell Dyson
+## 4       ISS     Matthew Dominick
+## 5       ISS      Michael Barratt
+## 6       ISS        Jeanette Epps
+## 7       ISS  Alexander Grebenkin
+## 8       ISS        Butch Wilmore
+## 9       ISS      Sunita Williams
+## 10 Tiangong           Li Guangsu
+## 11 Tiangong              Li Cong
+## 12 Tiangong           Ye Guangfu
 ```
 
 
-Also, da haben wir unsere Antwort: Zum Zeitpunkt des letzten Updates Dec 23, 2022 von R4ews befanden sich 10 Personen im Weltraum. Aber wenn ihr den Code zu einem späteren Zeitpunkt ausprobiert, könnten es auch schon wieder andere Namen und eine andere Anzahl sein. Das ist einer der Vorteile von APIs - im Gegensatz zu Datensätzen, die man im Spreadsheet Format herunterladen kann, werden sie in der Regel in Echtzeit oder nahezu in Echtzeit aktualisiert. APIs bieten somit die Möglichkeit leicht auf sehr aktuelle Daten zuzugreifen.
+Also, da haben wir unsere Antwort: Zum Zeitpunkt des letzten Updates Oct 16, 2024 von R4ews befanden sich 12 Personen im Weltraum. Aber wenn ihr den Code zu einem späteren Zeitpunkt ausprobiert, könnten es auch schon wieder andere Namen und eine andere Anzahl sein. Das ist einer der Vorteile von APIs - im Gegensatz zu Datensätzen, die man im Spreadsheet Format herunterladen kann, werden sie in der Regel in Echtzeit oder nahezu in Echtzeit aktualisiert. APIs bieten somit die Möglichkeit leicht auf sehr aktuelle Daten zuzugreifen.
 
 
 In diesem Beispiel haben wir einen sehr unkomplizierten API-Workflow durchlaufen. Die meisten APIs fordern, dass man demselben allgemeinen Muster folgt, aber dabei können die jeweilgen Aufrufe/Befehle durchaus deutlich komplexer sein.
@@ -383,7 +388,7 @@ In diesem Beispiel haben wir einen sehr unkomplizierten API-Workflow durchlaufen
 In unserem Beispiel war es ausreichen nur die URL anzugeben. Aber einige APIs verlangen mehr Informationen vom Benutzer. Darauf gehen wir aber erstmal nicht weiter ein. Stattdessen fragen wir noch nach dem Ort der ISS im Moment der Abfrage
 
 
-```r
+``` r
 jdata <-  GET("http://api.open-notify.org/iss-now.json",)
 ```
 
@@ -391,16 +396,16 @@ jdata <-  GET("http://api.open-notify.org/iss-now.json",)
 
 
 
-```r
+``` r
 data <- fromJSON(rawToChar(jdata$content))
 data$iss_position
-## $longitude
-## [1] "-130.2733"
-## 
 ## $latitude
-## [1] "-35.5641"
+## [1] "51.6040"
+## 
+## $longitude
+## [1] "170.8210"
 data$timestamp
-## [1] 1671783232
+## [1] 1729114546
 ```
 
 
@@ -408,9 +413,9 @@ data$timestamp
 Diese API gibt uns die Zeit in Form von [Unixzeit](https://de.wikipedia.org/wiki/Unixzeit) zurück. Unixzeit ist die Zeitspanne, die seit dem 1. Januar 1970 vergangen ist. Mithilfe der Funktion `as_datetime()` aus dem [lubridate] Paket können wir die Unixzeit aber leicht umrechnen
 
 
-```r
+``` r
 lubridate::as_datetime(data$timestamp)
-## [1] "2022-12-23 08:13:52 UTC"
+## [1] "2024-10-16 21:35:46 UTC"
 ```
 
 
