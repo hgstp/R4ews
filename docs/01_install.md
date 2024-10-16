@@ -74,20 +74,6 @@ library("learnr")
 ```
 
 
-#```{r, echo=FALSE, out.width="100%"}
-#knitr::include_graphics("img/rstudio_primers.png")
-#```
-
-
-#Im Laufe des Kurses werdet ihr die Primers
-
-#- [The Basics](https://rstudio.cloud/learn/primers/1)
-#- [Work with Data](https://rstudio.cloud/learn/primers/2)
-#- [Visualize Data](https://rstudio.cloud/learn/primers/3)
-
-#durcharbeiten.
-
-
 ## Aufgabe
 
 Wir beginnen mit den Grundlagen. Hier wird unterschieden in *Programming* und *Visualization* Basics. 
