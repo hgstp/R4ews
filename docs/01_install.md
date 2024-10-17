@@ -82,7 +82,7 @@ __Programming Basics__ beinhaltet Grundlagen zu Objekttypen, Funktionen und dere
 
 __Visualization Basics__ erklärt erste Schritte in der Verwendung des `ggplot2` Pakets, mit dem wir uns später noch eingehend beschäftigen werden.
 
-Bearbeitet eigenständig den Basics Primer. Dafür verwenden wir den Befehl
+Bearbeitet eigenständig den Programming-Basics Primer. Dafür verwenden wir den Befehl
 
 ``` r
 learnr::run_tutorial("programming-basics", package = "idsst.rtutorials")

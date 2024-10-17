@@ -41,7 +41,7 @@ Das Material wird kontinuierlich über das Semester hinweg ergänzt/erweitert/ve
 
 ``` r
 date()
-## [1] "Wed Oct 16 23:45:12 2024"
+## [1] "Thu Oct 17 08:56:26 2024"
 ```
 
 
@@ -71,7 +71,7 @@ Die aktuelle Version dieses Buchs wurde mit
 ##  collate  en_US.UTF-8
 ##  ctype    en_US.UTF-8
 ##  tz       Europe/Berlin
-##  date     2024-10-16
+##  date     2024-10-17
 ##  pandoc   3.2 @ /Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/aarch64/ (via rmarkdown)
 ```
 
