@@ -69,7 +69,7 @@ Um die Tutorials aufzurufen muss man auch das Paket "learnr" installieren.
 
 
 ``` r
-install.packages("lernr")
+install.packages("learnr")
 library("learnr")
 ```
 

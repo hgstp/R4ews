@@ -301,7 +301,7 @@ Schauen wir uns an, wie die Variable `jdata` in der R-Konsole aussieht:
 ``` r
 jdata
 ## Response [http://api.open-notify.org/astros.json]
-##   Date: 2024-10-17 06:56
+##   Date: 2024-10-17 14:37
 ##   Status: 200
 ##   Content-Type: application/json
 ##   Size: 587 B
@@ -400,12 +400,12 @@ jdata <-  GET("http://api.open-notify.org/iss-now.json",)
 data <- fromJSON(rawToChar(jdata$content))
 data$iss_position
 ## $longitude
-## [1] "51.3447"
+## [1] "-85.3972"
 ## 
 ## $latitude
-## [1] "49.6558"
+## [1] "51.6076"
 data$timestamp
-## [1] 1729148197
+## [1] 1729175856
 ```
 
 
@@ -415,7 +415,7 @@ Diese API gibt uns die Zeit in Form von [Unixzeit](https://de.wikipedia.org/wiki
 
 ``` r
 lubridate::as_datetime(data$timestamp)
-## [1] "2024-10-17 06:56:37 UTC"
+## [1] "2024-10-17 14:37:36 UTC"
 ```
 
 

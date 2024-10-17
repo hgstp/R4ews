@@ -339,7 +339,7 @@
 <div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">jdata</span></span>
 <span><span class="co">## Response [http://api.open-notify.org/astros.json]</span></span>
-<span><span class="co">##   Date: 2024-10-17 06:56</span></span>
+<span><span class="co">##   Date: 2024-10-17 14:37</span></span>
 <span><span class="co">##   Status: 200</span></span>
 <span><span class="co">##   Content-Type: application/json</span></span>
 <span><span class="co">##   Size: 587 B</span></span></code></pre></div>
@@ -400,16 +400,16 @@
 <code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/jsonlite/man/fromJSON.html">fromJSON</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rawConversion.html">rawToChar</a></span><span class="op">(</span><span class="va">jdata</span><span class="op">$</span><span class="va">content</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">data</span><span class="op">$</span><span class="va">iss_position</span></span>
 <span><span class="co">## $longitude</span></span>
-<span><span class="co">## [1] "51.3447"</span></span>
+<span><span class="co">## [1] "-85.3972"</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $latitude</span></span>
-<span><span class="co">## [1] "49.6558"</span></span>
+<span><span class="co">## [1] "51.6076"</span></span>
 <span><span class="va">data</span><span class="op">$</span><span class="va">timestamp</span></span>
-<span><span class="co">## [1] 1729148197</span></span></code></pre></div>
+<span><span class="co">## [1] 1729175856</span></span></code></pre></div>
 <p>Diese API gibt uns die Zeit in Form von <a href="https://de.wikipedia.org/wiki/Unixzeit">Unixzeit</a> zurück. Unixzeit ist die Zeitspanne, die seit dem 1. Januar 1970 vergangen ist. Mithilfe der Funktion <code><a href="https://lubridate.tidyverse.org/reference/as_date.html">as_datetime()</a></code> aus dem <a href="https://lubridate.tidyverse.org">lubridate</a> Paket können wir die Unixzeit aber leicht umrechnen</p>
 <div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">lubridate</span><span class="fu">::</span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/as_date.html">as_datetime</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">timestamp</span><span class="op">)</span></span>
-<span><span class="co">## [1] "2024-10-17 06:56:37 UTC"</span></span></code></pre></div>
+<span><span class="co">## [1] "2024-10-17 14:37:36 UTC"</span></span></code></pre></div>
 <p>Damit wollen wir den Abschnitt zu APIs beenden. Macht euch bewusst, dass wir hier wirklich nur die Basics in Bezug auf APIs eingeführt haben. Aber hoffentlich hat euch diese Einführung trotzdem ausreichend Vertrauen gegeben, sich mit einigen komplexeren und leistungsfähigeren APIs auseinanderzusetzen.</p>
 </div>
 </div>

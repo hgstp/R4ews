@@ -68,7 +68,7 @@ remotes::install_github("hgstp/idsst.rtutorials")
 Um die Tutorials aufzurufen muss man auch das Paket "learnr" installieren.
 
 ```{r, eval=FALSE}
-install.packages("lernr")
+install.packages("learnr")
 library("learnr")
 ```
 
