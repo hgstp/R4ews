@@ -18,7 +18,7 @@ Alle nachfolgenden Code Beispiele wollen wir in einer `.R` Datei abspeichern, di
 Alternativ können wir alle Befehle natürlich auch in eine R Markdown Datei schreiben, siehe [Test drive R Markdown](#r-markdown).
 
 
-Prinzipiell geht es in den folgenden Abschnitten um Datenmanagement. Es werden aber auch immer wieder ein paar Grafiken zu sehen sein. Dies ist aber kein Problem, da ihr ja bereits den [Data Visualization Basics Primer](https://rstudio.cloud/learn/primers/1.1)
+Prinzipiell geht es in den folgenden Abschnitten um Datenmanagement. Es werden aber auch immer wieder ein paar Grafiken zu sehen sein. Dies ist aber kein Problem, da ihr ja bereits den Data Visualization Basics Primer.
 
 ```{r, echo=FALSE, out.width="100%"}
 knitr::include_graphics("img/data_vis_basics.png")
@@ -326,14 +326,20 @@ p + geom_point(alpha = (1/3), size = 3) +
 
 ## Aufgabe
 
-Im nächsten Abschnitt starten wir mit dem `dplyr` Paket. Bearbeitet daher zur Vorbereitung die ersten beiden Abschnitte des [Work with Data](https://rstudio.cloud/learn/primers/2) Primers:
+Im nächsten Abschnitt starten wir mit dem `dplyr` Paket. Bearbeitet daher zur Vorbereitung die ersten beiden Abschnitte des _Work with Data_
 
 
-[Working with Tibbbles](https://rstudio.cloud/learn/primers/2.1) zeigt die Verwendung von Tibbles sowie die Verwaltung von `tidyverse`-Paketen. 
+_Working with Tibbbles_ zeigt die Verwendung von Tibbles sowie die Verwaltung von `tidyverse`-Paketen. 
 
-[Isolating Data with dplyr](https://rstudio.cloud/learn/primers/2.2) zeigt wie ihr Variablen auswählt, Beobachtungen filtert und Werte neu anordnet. Zudem wird der Pipe-Operator von R, `%>%`, eingeführt.
+```{r, eval=FALSE}
+learnr::run_tutorial("tibbles", package = "idsst.rtutorials")
+```
 
+_Isolating Data with dplyr_ zeigt wie ihr Variablen auswählt, Beobachtungen filtert und Werte neu anordnet. Zudem wird der Pipe-Operator von R, `%>%`, eingeführt.
 
+```{r, eval=FALSE}
+learnr::run_tutorial("isolating", package = "idsst.rtutorials")
+```
 
 
 ```{r links, child="links.md"}

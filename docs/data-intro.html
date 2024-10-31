@@ -112,7 +112,7 @@
 <p>Jetzt ist es an der Zeit, sich zu vergewissern in welchem Verzeichnis ihr auf eurem Computer ihr euch befindet. Falls ihr ein <a href="r-basics.html#rprojs">RStudio Projekt</a> nutzt, sollte diese Frage leicht zu beantworten sein. Falls ihr trotzdem unsicher seid, gebt <code><a href="https://rdrr.io/r/base/getwd.html">getwd()</a></code> in der Konsole ein, um das aktuelle Arbeitsverzeichnis zu sehen.</p>
 <p>Alle nachfolgenden Code Beispiele wollen wir in einer <code>.R</code> Datei abspeichern, die dann im aktuellen Arbeitsverzeichnis gespeichert werden soll. Idealerweise geben wir dieser Datei noch einen Namen, wie etwa <code>datenanalyse_teil_1.R</code>, der uns schon viel über den möglichen Inhalt erzählt.
 Alternativ können wir alle Befehle natürlich auch in eine R Markdown Datei schreiben, siehe <a href="r-markdown.html#r-markdown">Test drive R Markdown</a>.</p>
-<p>Prinzipiell geht es in den folgenden Abschnitten um Datenmanagement. Es werden aber auch immer wieder ein paar Grafiken zu sehen sein. Dies ist aber kein Problem, da ihr ja bereits den <a href="https://rstudio.cloud/learn/primers/1.1">Data Visualization Basics Primer</a></p>
+<p>Prinzipiell geht es in den folgenden Abschnitten um Datenmanagement. Es werden aber auch immer wieder ein paar Grafiken zu sehen sein. Dies ist aber kein Problem, da ihr ja bereits den Data Visualization Basics Primer.</p>
 <div class="inline-figure"><img src="img/data_vis_basics.png" width="100%" style="display: block; margin: auto;"></div>
 <p>besucht habt und somit den nötigen Background besitzt.</p>
 <div id="data-frames-sind-fantastisch" class="section level2" number="5.1">
@@ -428,9 +428,13 @@ Alternativ können wir alle Befehle natürlich auch in eine R Markdown Datei sch
 <h2>
 <span class="header-section-number">5.5</span> Aufgabe<a class="anchor" aria-label="anchor" href="#aufgabe-1"><i class="fas fa-link"></i></a>
 </h2>
-<p>Im nächsten Abschnitt starten wir mit dem <code>dplyr</code> Paket. Bearbeitet daher zur Vorbereitung die ersten beiden Abschnitte des <a href="https://rstudio.cloud/learn/primers/2">Work with Data</a> Primers:</p>
-<p><a href="https://rstudio.cloud/learn/primers/2.1">Working with Tibbbles</a> zeigt die Verwendung von Tibbles sowie die Verwaltung von <code>tidyverse</code>-Paketen.</p>
-<p><a href="https://rstudio.cloud/learn/primers/2.2">Isolating Data with dplyr</a> zeigt wie ihr Variablen auswählt, Beobachtungen filtert und Werte neu anordnet. Zudem wird der Pipe-Operator von R, <code>%&gt;%</code>, eingeführt.</p>
+<p>Im nächsten Abschnitt starten wir mit dem <code>dplyr</code> Paket. Bearbeitet daher zur Vorbereitung die ersten beiden Abschnitte des <em>Work with Data</em></p>
+<p><em>Working with Tibbbles</em> zeigt die Verwendung von Tibbles sowie die Verwaltung von <code>tidyverse</code>-Paketen.</p>
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">learnr</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/learnr/reference/run_tutorial.html">run_tutorial</a></span><span class="op">(</span><span class="st">"tibbles"</span>, package <span class="op">=</span> <span class="st">"idsst.rtutorials"</span><span class="op">)</span></span></code></pre></div>
+<p><em>Isolating Data with dplyr</em> zeigt wie ihr Variablen auswählt, Beobachtungen filtert und Werte neu anordnet. Zudem wird der Pipe-Operator von R, <code>%&gt;%</code>, eingeführt.</p>
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">learnr</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/learnr/reference/run_tutorial.html">run_tutorial</a></span><span class="op">(</span><span class="st">"isolating"</span>, package <span class="op">=</span> <span class="st">"idsst.rtutorials"</span><span class="op">)</span></span></code></pre></div>
 <!--Packages: main link-->
 <!--Packages: vignettes & CRAN/GitHub links-->
 <!--Bookdowns: main link-->
