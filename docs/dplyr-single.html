@@ -119,14 +119,14 @@
 <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> zur Auswahl spezieller Zeilen eines Datensatzes</li>
 <li>
 <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> zur Auswahl spezieller Variablen eines Datensatzes</li>
-<li>der Pipe-Operator <code>%&gt;%</code> überführt das Objekt auf der linken Seite des Operators in das erste Funktionsargument der Funktion auf der rechten Seite des Aufrufs</li>
+<li>der Pipe-Operator <code>|&gt;</code> bzw. <code>%&gt;%</code> überführt das Objekt auf der linken Seite des Operators in das erste Funktionsargument der Funktion auf der rechten Seite des Aufrufs</li>
 </ul>
 <p>Wir haben zudem auch noch die Rolle von <code>dplyr</code> innerhalb des tidyverse besprochen:</p>
 <div class="content-box-gray">
 <p><a href="https://dplyr.tidyverse.org">dplyr</a> ist ein Kernpaket der <a href="https://tidyverse.tidyverse.org">tidyverse</a> Kollektion von Paketen. Da wir die anderen oft beiläufig benutzen, werden wir stets dplyr und die anderen über <code><a href="https://tidyverse.tidyverse.org">library(tidyverse)</a></code> laden.</p>
 </div>
 <p>Wir starten wieder mit dem Laden von <code>dplyr</code> (über <code>tidyverse</code>)</p>
-<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
 <span><span class="co">## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──</span></span>
 <span><span class="co">## ✔ dplyr     1.1.4     ✔ readr     2.1.5</span></span>
@@ -139,7 +139,7 @@
 <span><span class="co">## ✖ dplyr::lag()    masks stats::lag()</span></span>
 <span><span class="co">## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</span></span></code></pre></div>
 <p>und <code>gapminder</code></p>
-<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/jennybc/gapminder">gapminder</a></span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="mit-mutate-neue-variablen-erstellen" class="section level2" number="7.2">
@@ -147,12 +147,12 @@
 <span class="header-section-number">7.2</span> Mit <code>mutate()</code> neue Variablen erstellen<a class="anchor" aria-label="anchor" href="#mit-mutate-neue-variablen-erstellen"><i class="fas fa-link"></i></a>
 </h2>
 <p>Wir starten mit dem Anlegen einer Kopie von <code>gapminder</code>, die wir dann nach unseren Vorstellungen verändern (es wäre aber auch nichts passiert, wenn wir alles mit <code>gapminder</code> durchführen würden; mit dem Befehl <code><a href="https://jennybc.github.io/gapminder/reference/gapminder.html">gapminder::gapminder</a></code> können wir immer auf die Originalversion zurückgreifen).</p>
-<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">my_gap</span> <span class="op">&lt;-</span> <span class="va">gapminder</span></span></code></pre></div>
 <p>Unser <strong>Ziel</strong> ist es, dass GDP pro Land anzugeben. Das sollte machbar sein, da schließlich das Pro-Kopf-GDP wie auch die Bevölkerungszahl im Datensatz enthalten sind. Multiplizieren beider Variablen liefert uns das gewünschte Ergebnis.</p>
 <p><code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> ist eine Funktion, die neue Variablen definiert und in ein tibble einfügt. Dabei können wir auf bestehende Variablen einfach über ihren Namen zugreifen.</p>
-<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">my_gap</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my_gap</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>gdp <span class="op">=</span> <span class="va">pop</span> <span class="op">*</span> <span class="va">gdpPercap</span><span class="op">)</span></span>
 <span><span class="co">## # A tibble: 1,704 × 7</span></span>
 <span><span class="co">##    country     continent  year lifeExp      pop gdpPercap          gdp</span></span>
@@ -187,19 +187,19 @@
 <li>Löschen der temporären Variable <code>tmp</code> in <code>my_gap</code>
 </li>
 </ol>
-<div class="sourceCode" id="cb75"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">ger_gap</span> <span class="op">&lt;-</span> <span class="va">my_gap</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">ger_gap</span> <span class="op">&lt;-</span> <span class="va">my_gap</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op">==</span> <span class="st">"Germany"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">my_gap</span> <span class="op">&lt;-</span> <span class="va">my_gap</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span><span class="va">my_gap</span> <span class="op">&lt;-</span> <span class="va">my_gap</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>tmp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="va">ger_gap</span><span class="op">$</span><span class="va">gdpPercap</span>, <span class="fu"><a href="https://rdrr.io/r/base/nlevels.html">nlevels</a></span><span class="op">(</span><span class="va">country</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>         gdpPercapRel <span class="op">=</span> <span class="va">gdpPercap</span> <span class="op">/</span> <span class="va">tmp</span>,</span>
 <span>         tmp <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
 <p>Beachte, dass <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> neue Variablen sequentiell erstellt, so dass man auf frühere Variablen (wie <code>tmp</code>) verweisen kann um spätere Variablen (wie <code>gdpPercapRel</code>) zu definieren. Nachdem eine Variable nicht mehr benötigt wird, kann man sie einfach auf <code>NULL</code> setzen.</p>
 <p>Bleibt die Frage ob das alles so richtig war. Um diese Frage zu beantworten, können wir uns aber einfach mal die Werte von <code>gdpPercapRel</code> für Deutschland anschauen. Die sollten besser alle 1 sein!</p>
-<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">my_gap</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op">==</span> <span class="st">"Germany"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my_gap</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op">==</span> <span class="st">"Germany"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">country</span>, <span class="va">year</span>, <span class="va">gdpPercapRel</span><span class="op">)</span></span>
 <span><span class="co">## # A tibble: 12 × 3</span></span>
 <span><span class="co">##    country  year gdpPercapRel</span></span>
@@ -217,7 +217,7 @@
 <span><span class="co">## 11 Germany  2002            1</span></span>
 <span><span class="co">## 12 Germany  2007            1</span></span></code></pre></div>
 <p>Ich glaube, wir können annehmen, dass Deutschland ein Land mit einem “hohen GDP” pro Kopf ist. Daher sollte die Verteilung von <code>gdpPercapRel</code> auf Werten unter 1 konzentriert sein, möglicherweise sogar weit darunter. Aber besser mal nachschauen ob dem so ist:</p>
-<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">my_gap</span><span class="op">$</span><span class="va">gdpPercapRel</span><span class="op">)</span></span>
 <span><span class="co">##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. </span></span>
 <span><span class="co">##    0.01    0.07    0.19    0.37    0.51   15.17</span></span></code></pre></div>
@@ -231,8 +231,8 @@
 <span class="header-section-number">7.3</span> Mit <code>arrange()</code> die Zeilenreihenfolge ändern<a class="anchor" aria-label="anchor" href="#mit-arrange-die-zeilenreihenfolge-%C3%A4ndern"><i class="fas fa-link"></i></a>
 </h2>
 <p><code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code> ordnet die Zeilen in einem data frame neu an. Stellen wir uns mal vor, dass wir die Daten nach Jahr und Land und nicht nach Land und Jahr ordnen wollen.</p>
-<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">my_gap</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my_gap</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">country</span><span class="op">)</span></span>
 <span><span class="co">## # A tibble: 1,704 × 7</span></span>
 <span><span class="co">##    country     continent  year lifeExp      pop gdpPercap gdpPercapRel</span></span>
@@ -249,9 +249,9 @@
 <span><span class="co">## 10 Belgium     Europe     1952    68    8730405     8343.       1.17  </span></span>
 <span><span class="co">## # ℹ 1,694 more rows</span></span></code></pre></div>
 <p>Oder vielleicht interessieren euch nur die Daten aus 2007, angeordnet entsprechend der Lebenserwartung.</p>
-<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">my_gap</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">==</span> <span class="fl">2007</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my_gap</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">==</span> <span class="fl">2007</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">lifeExp</span><span class="op">)</span></span>
 <span><span class="co">## # A tibble: 142 × 7</span></span>
 <span><span class="co">##    country                 continent  year lifeExp    pop gdpPercap gdpPercapRel</span></span>
@@ -268,9 +268,9 @@
 <span><span class="co">## 10 Liberia                 Africa     2007    45.7 3.19e6      415.       0.0129</span></span>
 <span><span class="co">## # ℹ 132 more rows</span></span></code></pre></div>
 <p>Das war nun aber nicht das Ergebnis, welches ihr sehen wolltet. Ihr wolltet eigentlich nach absteigender Lebenserwartung sortieren. Dazu müsst ihr <code><a href="https://dplyr.tidyverse.org/reference/desc.html">desc()</a></code> verwenden.</p>
-<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">my_gap</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">==</span> <span class="fl">2007</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my_gap</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">==</span> <span class="fl">2007</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">## # A tibble: 142 × 7</span></span>
 <span><span class="co">##    country          continent  year lifeExp       pop gdpPercap gdpPercapRel</span></span>
@@ -295,8 +295,8 @@
 <span class="header-section-number">7.4</span> Mit <code>rename()</code> “schöne” Namen vergeben<a class="anchor" aria-label="anchor" href="#mit-rename-sch%C3%B6ne-namen-vergeben"><i class="fas fa-link"></i></a>
 </h2>
 <p>Ein paar der Namen in <code>gapminder</code> sind nicht besonders hübsch, wie z.B. <code>lifeExp</code>. life expectancy wären ja schließlich zwei Worte und daher finde ich (persönliche Meinung) es schöner, dies auch im Variablennamen zu sehen</p>
-<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">my_gap</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my_gap</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>life_exp <span class="op">=</span> <span class="va">lifeExp</span>,</span>
 <span>         gdp_percap <span class="op">=</span> <span class="va">gdpPercap</span>,</span>
 <span>         gdp_percap_rel <span class="op">=</span> <span class="va">gdpPercapRel</span><span class="op">)</span></span>
@@ -317,10 +317,10 @@
 <p>Die Änderungen haben wir jetzt aber nicht abgespeichert (auch wenn sie schön waren), da wir den nachfolgenden Code auch weiterhin ausführen möchten, ohne die Variablennamen entsprechend zu ändern.</p>
 <div class="content-box-grey">
 <p><strong>Bemerkung:</strong> Mit <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> könnten wir bei der Auswahl von Variablen auch deren Namen ändern</p>
-<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">my_gap</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op">==</span> <span class="st">"Burundi"</span>, <span class="va">year</span> <span class="op">&gt;</span> <span class="fl">1996</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span>yr <span class="op">=</span> <span class="va">year</span>, <span class="va">lifeExp</span>, <span class="va">gdpPercap</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my_gap</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op">==</span> <span class="st">"Burundi"</span>, <span class="va">year</span> <span class="op">&gt;</span> <span class="fl">1996</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span>yr <span class="op">=</span> <span class="va">year</span>, <span class="va">lifeExp</span>, <span class="va">gdpPercap</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">gdpPercap</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/everything.html">everything</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">## # A tibble: 3 × 3</span></span>
 <span><span class="co">##   gdpPercap    yr lifeExp</span></span>
@@ -352,9 +352,9 @@
 <span class="header-section-number">7.5.1</span> Dinge aufzählen<a class="anchor" aria-label="anchor" href="#dinge-aufz%C3%A4hlen"><i class="fas fa-link"></i></a>
 </h3>
 <p>Beginnen wir mit dem einfachen Zählen. Wie viele Beobachtungen haben wir pro Kontinent?</p>
-<div class="sourceCode" id="cb83"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">my_gap</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">continent</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my_gap</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">continent</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">## # A tibble: 5 × 2</span></span>
 <span><span class="co">##   continent     n</span></span>
@@ -365,7 +365,7 @@
 <span><span class="co">## 4 Europe      360</span></span>
 <span><span class="co">## 5 Oceania      24</span></span></code></pre></div>
 <p>Lasst uns hier kurz innehalten und über das tidyverse nachdenken. Ihr könntet die gleichen absoluten Häufigkeiten natürlich auch mit <code><a href="https://rdrr.io/r/base/table.html">table()</a></code> berechnen.</p>
-<div class="sourceCode" id="cb84"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">gapminder</span><span class="op">$</span><span class="va">continent</span><span class="op">)</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">##   Africa Americas     Asia   Europe  Oceania </span></span>
@@ -377,9 +377,9 @@
 <p>Das Ergebnis ist ein Objekt der Klasse <code>table</code>. Dies macht nachfolgende Berechnungen leider etwas kniffliger, als es euch lieb ist. Zum Beispiel ist es schade, dass die Namen der Kontinente nur als <em>Attribute</em> und nicht als richtiger Faktor zusammen mit den berechneten Werten zurückgegeben werden.<br>
 Dies ist ein Beispiel dafür, wie das tidyverse Übergänge glättet, bei denen die Ausgabe von Schritt <code>i</code> die Eingabe von Schritt <code>i + 1</code> werden soll.</p>
 <p>Die <code><a href="https://dplyr.tidyverse.org/reference/count.html">tally()</a></code> Funktion ist eine Komfortfunktion, die weiß, wie man Zeilen zählt und dabei Gruppen berücksichtigt.</p>
-<div class="sourceCode" id="cb85"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">my_gap</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">continent</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my_gap</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">continent</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">tally</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">## # A tibble: 5 × 2</span></span>
 <span><span class="co">##   continent     n</span></span>
@@ -390,8 +390,8 @@ Dies ist ein Beispiel dafür, wie das tidyverse Übergänge glättet, bei denen 
 <span><span class="co">## 4 Europe      360</span></span>
 <span><span class="co">## 5 Oceania      24</span></span></code></pre></div>
 <p>Die Funktion <code><a href="https://dplyr.tidyverse.org/reference/count.html">count()</a></code> bietet noch mehr Komfort. Sie kann sowohl gruppieren als auch zählen.</p>
-<div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">my_gap</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my_gap</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">continent</span><span class="op">)</span></span>
 <span><span class="co">## # A tibble: 5 × 2</span></span>
 <span><span class="co">##   continent     n</span></span>
@@ -402,9 +402,9 @@ Dies ist ein Beispiel dafür, wie das tidyverse Übergänge glättet, bei denen 
 <span><span class="co">## 4 Europe      360</span></span>
 <span><span class="co">## 5 Oceania      24</span></span></code></pre></div>
 <p>Was wäre, wenn uns nicht nur die Anzahl an Beobachtungen pro Kontinent interessiert, sondern auch die Anzahl an unterschiedlichen Ländern pro Kontinent. Dazu bestimmen wir einfach mehrere Zusammenfassungen innerhalb von <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code>. Dabei verwenden wir die Funktion <code><a href="https://dplyr.tidyverse.org/reference/n_distinct.html">n_distinct()</a></code>, um die Anzahl der einzelnen Länder innerhalb jedes Kontinents zu zählen.</p>
-<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">my_gap</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">continent</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my_gap</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">continent</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>            n_countries <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/n_distinct.html">n_distinct</a></span><span class="op">(</span><span class="va">country</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">## # A tibble: 5 × 3</span></span>
@@ -443,9 +443,9 @@ wobei <span class="math inline">\(x_{0.25}\)</span> und <span class="math inline
 <span class="math display">\[x_{(n)} = \max(x_1,\dots,x_n)\,.\]</span></p></li>
 </ul>
 <p>Auch wenn dies statistisch gesehen unklug sein mag, lasst uns die durchschnittliche Lebenserwartung pro Kontinent berechnen.</p>
-<div class="sourceCode" id="cb88"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">my_gap</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">continent</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my_gap</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">continent</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>avg_lifeExp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">## # A tibble: 5 × 2</span></span>
 <span><span class="co">##   continent avg_lifeExp</span></span>
@@ -456,10 +456,10 @@ wobei <span class="math inline">\(x_{0.25}\)</span> und <span class="math inline
 <span><span class="co">## 4 Europe           71.9</span></span>
 <span><span class="co">## 5 Oceania          74.3</span></span></code></pre></div>
 <p><code><a href="https://dplyr.tidyverse.org/reference/summarise_all.html">summarise_at()</a></code> wendet die gleiche(n) Zusammenfassungs-Funktion(en) auf mehrere Variablen an. Lasst uns die durchschnittliche Lebenserwartung sowie den Median und das Pro-Kopf-GDP nach Kontinenten pro Jahr berechnen… aber nur für 1952 und 2007.</p>
-<div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">my_gap</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1952</span>, <span class="fl">2007</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">continent</span>, <span class="va">year</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my_gap</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1952</span>, <span class="fl">2007</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">continent</span>, <span class="va">year</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise_all.html">summarise_at</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html">vars</a></span><span class="op">(</span><span class="va">lifeExp</span>, <span class="va">gdpPercap</span><span class="op">)</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span><span class="va">mean</span>, <span class="va">median</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">## # A tibble: 10 × 6</span></span>
 <span><span class="co">## # Groups:   continent [5]</span></span>
@@ -476,10 +476,10 @@ wobei <span class="math inline">\(x_{0.25}\)</span> und <span class="math inline
 <span><span class="co">##  9 Oceania    1952        69.3        10298.        69.3        10298.</span></span>
 <span><span class="co">## 10 Oceania    2007        80.7        29810.        80.7        29810.</span></span></code></pre></div>
 <p>Im nächsten Schritt konzentrieren wir uns nur auf Asien. Wie hoch ist die minimale und maximale Lebenserwartung pro Jahr?</p>
-<div class="sourceCode" id="cb90"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">my_gap</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">continent</span> <span class="op">==</span> <span class="st">"Asia"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my_gap</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">continent</span> <span class="op">==</span> <span class="st">"Asia"</span><span class="op">)</span>  <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>min_lifeExp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">lifeExp</span><span class="op">)</span>, max_lifeExp <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">## # A tibble: 12 × 3</span></span>
 <span><span class="co">##     year min_lifeExp max_lifeExp</span></span>
@@ -509,11 +509,11 @@ wobei <span class="math inline">\(x_{0.25}\)</span> und <span class="math inline
 <span class="header-section-number">7.6.1</span> Berechnungen innerhalb der Gruppen<a class="anchor" aria-label="anchor" href="#berechnungen-innerhalb-der-gruppen"><i class="fas fa-link"></i></a>
 </h3>
 <p>Lasst uns eine neue Variable definieren, die die gewonnenen (verlorenen) Lebenserwartungsjahre im Vergleich zu 1952 für jedes einzelne Land angibt. Wir gruppieren nach Ländern und verwenden <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code>, um eine neue Variable zu erstellen. Die Funktion <code><a href="https://dplyr.tidyverse.org/reference/nth.html">first()</a></code> extrahiert dabei den ersten Wert aus einem Vektor. Beachtet, dass <code><a href="https://dplyr.tidyverse.org/reference/nth.html">first()</a></code> mit dem Vektor der Lebenserwartungen <em>in jeder Ländergruppe</em> arbeitet.</p>
-<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">my_gap</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">country</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">country</span>, <span class="va">year</span>, <span class="va">lifeExp</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>lifeExp_gain <span class="op">=</span> <span class="va">lifeExp</span> <span class="op">-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/nth.html">first</a></span><span class="op">(</span><span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my_gap</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">country</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">country</span>, <span class="va">year</span>, <span class="va">lifeExp</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>lifeExp_gain <span class="op">=</span> <span class="va">lifeExp</span> <span class="op">-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/nth.html">first</a></span><span class="op">(</span><span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">&lt;</span> <span class="fl">1963</span><span class="op">)</span></span>
 <span><span class="co">## # A tibble: 426 × 4</span></span>
 <span><span class="co">## # Groups:   country [142]</span></span>
@@ -538,13 +538,13 @@ wobei <span class="math inline">\(x_{0.25}\)</span> und <span class="math inline
 </h3>
 <p>Window Funktionen nehmen eine Eingabe der Länge <span class="math inline">\(n\)</span> und berechnen eine Ausgabe derselben Länge. Diese Ausgabewerte hängen dabei von allen Eingabewerten ab. So ist z.B. <code><a href="https://rdrr.io/r/base/rank.html">rank()</a></code> eine Window Funktion, aber <code><a href="https://rdrr.io/r/base/Log.html">log()</a></code> ist es nicht.</p>
 <p>Betrachten wir noch einmal die schlechtesten und besten Lebenserwartungen in Asien im Laufe der Zeit, behalten aber Informationen darüber bei, <em>welches</em> Land diese Extremwerte beisteuert.</p>
-<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">my_gap</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">continent</span> <span class="op">==</span> <span class="st">"Asia"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">country</span>, <span class="va">lifeExp</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/row_number.html">min_rank</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op">&lt;</span> <span class="fl">2</span> <span class="op">|</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/row_number.html">min_rank</a></span><span class="op">(</span><span class="va">lifeExp</span><span class="op">)</span> <span class="op">&lt;</span> <span class="fl">2</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my_gap</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">continent</span> <span class="op">==</span> <span class="st">"Asia"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">country</span>, <span class="va">lifeExp</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/row_number.html">min_rank</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op">&lt;</span> <span class="fl">2</span> <span class="op">|</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/row_number.html">min_rank</a></span><span class="op">(</span><span class="va">lifeExp</span><span class="op">)</span> <span class="op">&lt;</span> <span class="fl">2</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span>n <span class="op">=</span> <span class="cn">Inf</span><span class="op">)</span>  <span class="co"># erzwingt eine Ausgabe aller Zeilen</span></span>
 <span><span class="co">## # A tibble: 24 × 3</span></span>
 <span><span class="co">## # Groups:   year [12]</span></span>
@@ -579,10 +579,10 @@ wobei <span class="math inline">\(x_{0.25}\)</span> und <span class="math inline
 <p>Aber wäre es nicht schön eine Zeile pro Jahr zu haben?</p>
 </blockquote>
 <p>Zuerst sollten wir uns aber vielleicht nochmal fragen wie das eigentlich funktioniert hat? Dazu schauen wir uns die Beobachtungen aus Asien mal direkt an.</p>
-<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="op">(</span><span class="va">asia</span> <span class="op">&lt;-</span> <span class="va">my_gap</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">continent</span> <span class="op">==</span> <span class="st">"Asia"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">country</span>, <span class="va">lifeExp</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="op">(</span><span class="va">asia</span> <span class="op">&lt;-</span> <span class="va">my_gap</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">continent</span> <span class="op">==</span> <span class="st">"Asia"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">country</span>, <span class="va">lifeExp</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">## # A tibble: 396 × 3</span></span>
 <span><span class="co">## # Groups:   year [12]</span></span>
@@ -602,19 +602,19 @@ wobei <span class="math inline">\(x_{0.25}\)</span> und <span class="math inline
 <p>Jetzt wenden wir die Window Funktion <code><a href="https://dplyr.tidyverse.org/reference/row_number.html">min_rank()</a></code> an. Da <code>asia</code> nach Jahren gruppiert ist, operiert <code><a href="https://dplyr.tidyverse.org/reference/row_number.html">min_rank()</a></code> innerhalb von Mini-Datensätzen. Auf die Variable <code>lifeExp</code> angewandt, liefert <code><a href="https://dplyr.tidyverse.org/reference/row_number.html">min_rank()</a></code> den Rang der beobachteten Lebenserwartung jedes Landes.</p>
 <div class="content-box-gray">
 <p><strong>Bemerkung:</strong> Der <code>min</code>-Teil im Funktionsnamen <code><a href="https://dplyr.tidyverse.org/reference/row_number.html">min_rank()</a></code> gibt nur an, wie im Fall von gleichen Beobachtungswerten die Ränge bestimmt werden.</p>
-<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/rank.html">rank</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">3</span>,<span class="fl">3</span>,<span class="fl">5</span><span class="op">)</span>, ties.method <span class="op">=</span> <span class="st">"min"</span><span class="op">)</span></span>
 <span><span class="co">## [1] 1 2 2 4</span></span></code></pre></div>
 <p>Neben dem Minimum gibt es aber auch noch eine Reihe weiterer Alternativen, wie z.B. den Durchschnitt</p>
-<div class="sourceCode" id="cb95"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/rank.html">rank</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">3</span>,<span class="fl">3</span>,<span class="fl">5</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">## [1] 1.0 2.5 2.5 4.0</span></span></code></pre></div>
 </div>
 <p>Im nächsten Schritt schauen wir uns die Ränge der Lebenserwartung innerhalb eines Jahres mal explizit für ein paar Länder (Afghanistan, Japan und Thailand) an - sowohl in der (Standard-) aufsteigenden als auch in der absteigenden Reihenfolge.</p>
-<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">asia</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">asia</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>le_rank <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/row_number.html">min_rank</a></span><span class="op">(</span><span class="va">lifeExp</span><span class="op">)</span>,</span>
-<span>         le_desc_rank <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/row_number.html">min_rank</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>         le_desc_rank <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/row_number.html">min_rank</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Afghanistan"</span>, <span class="st">"Japan"</span>, <span class="st">"Thailand"</span><span class="op">)</span>, <span class="va">year</span> <span class="op">&gt;</span> <span class="fl">1995</span><span class="op">)</span></span>
 <span><span class="co">## # A tibble: 9 × 5</span></span>
 <span><span class="co">## # Groups:   year [3]</span></span>
@@ -631,17 +631,17 @@ wobei <span class="math inline">\(x_{0.25}\)</span> und <span class="math inline
 <span><span class="co">## 9  2007 Thailand       70.6      12           22</span></span></code></pre></div>
 <p>Afghanistan neigt dazu, 1 in der <code>le_rank</code>-Variablen zu haben, Japan neigt dazu, 1 in der <code>le_desc_rank</code>-Variablen zu haben und andere Länder, wie Thailand, zeigen deutlich weniger extreme Ränge.</p>
 <p>Damit sollte der ursprüngliche <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> Befehl</p>
-<div class="sourceCode" id="cb97"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/row_number.html">min_rank</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">lifeExp</span><span class="op">)</span><span class="op">)</span> <span class="op">&lt;</span> <span class="fl">2</span> <span class="op">|</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/row_number.html">min_rank</a></span><span class="op">(</span><span class="va">lifeExp</span><span class="op">)</span> <span class="op">&lt;</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
 <p>auch klar sein.</p>
 <p>Diese beiden Sätze von Rängen werden on-the-fly, innerhalb der Jahresgruppe, gebildet, und <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> behält alle Zeilen, die einen Rangwert kleiner als 2 haben. Da wir dies für aufsteigende und absteigende Ränge machen, erhalten wir sowohl die Beobachtungen mit dem minimalen als auch dem maximalen Rang.</p>
 <p>Wenn wir nur das Minimum ODER das Maximum gewollt hätten, hätte auch ein alternativer Ansatz mit <code><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_min()</a></code> bzw. <code><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_max()</a></code> funktioniert.</p>
-<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">my_gap</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">continent</span> <span class="op">==</span> <span class="st">"Asia"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">country</span>, <span class="va">lifeExp</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my_gap</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">continent</span> <span class="op">==</span> <span class="st">"Asia"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">country</span>, <span class="va">lifeExp</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span><span class="co"># slice_min(lifeExp, n = 1)        ## für das Minimum</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_max</a></span><span class="op">(</span><span class="va">lifeExp</span>, n <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="co">## bzw. das Maximum</span></span>
 <span><span class="co">## # A tibble: 12 × 3</span></span>
@@ -672,15 +672,15 @@ wobei <span class="math inline">\(x_{0.25}\)</span> und <span class="math inline
 </div>
 <p>Die Beobachtungsfrequenz im Datensatz ist fünf Jahre, d.h. wir haben Daten für 1952, 1957 usw. Dies bedeutet also, dass die Veränderungen der Lebenserwartung zwischen benachbarten Zeitpunkten betrachtet werden müssen. Dazu verwenden wir die <code><a href="https://dplyr.tidyverse.org/reference/lead-lag.html">lag()</a></code> Funktion. Diese veschiebt die Einträge des Inputvektors um ein Lag <code>k</code>.</p>
 <p>Wir können aber noch mehr erreichen. Lasst uns die Frage pro Kontinenten beantworten.</p>
-<div class="sourceCode" id="cb99"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">my_gap</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">continent</span>, <span class="va">country</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my_gap</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">continent</span>, <span class="va">country</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="co"># für jedes Land werden die Unterschiede berechnet</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>delta <span class="op">=</span> <span class="va">lifeExp</span> <span class="op">-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/lead-lag.html">lag</a></span><span class="op">(</span><span class="va">lifeExp</span>, n <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>delta <span class="op">=</span> <span class="va">lifeExp</span> <span class="op">-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/lead-lag.html">lag</a></span><span class="op">(</span><span class="va">lifeExp</span>, n <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="co">## für jedes Land wird nur der kleinste Wert behalten</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>worst_delta <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">delta</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>worst_delta <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">delta</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="co">## nun wird noch pro Kontinent, die Zeile mit dem kleinsten Wert ausgegeben</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_min</a></span><span class="op">(</span><span class="va">worst_delta</span>, n <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_min</a></span><span class="op">(</span><span class="va">worst_delta</span>, n <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">worst_delta</span><span class="op">)</span></span>
 <span><span class="co">## `summarise()` has grouped output by 'continent'. You can override using the</span></span>
 <span><span class="co">## `.groups` argument.</span></span>

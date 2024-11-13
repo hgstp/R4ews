@@ -180,7 +180,7 @@ Er erklärt sich von selbst und ist ziemlich robust.
 
 ## Der Pipe-Operator
 
-Bevor es weitergeht, wollen wir aber den Pipe-Operator, den das Tidyverse aus dem [magrittr]-Paket von Stefan Bache importiert, vorstellen.
+Bevor es weitergeht, wollen wir aber den Pipe-Operator vorstellen. Dafür gibt es zwei Optionen. Zuerst wurde der Pipe-Operator `%>%` eingeführt, den das Tidyverse aus dem [magrittr]-Paket von Stefan Bache importiert. In der Version 4.1 von R wurde auch der native Pipe-Operator `|>` eingeführt.
 
 
 <div class="figure" style="text-align: center">
@@ -191,7 +191,6 @@ Bevor es weitergeht, wollen wir aber den Pipe-Operator, den das Tidyverse aus de
 
 Mithilfe des __Pipe-Operators__ ist man in der Lage aufeinanderfolgende Befehle von Daten-Operationen strukturiert anzugeben, ohne sie ineinander zu verschachteln. Diese neue Syntax führt zu Code, der viel einfacher zu schreiben und zu lesen ist.
 
->Und so sieht er aus: `%>%`. 
 
 :::: {.content-box-blue}
 
@@ -200,11 +199,13 @@ Ctrl+Shift+M (Windows), Cmd+Shift+M (Mac).
 
 ::::
 
+Die Standardeinstellung in RStudio ist, dass man mit der obigen Tastenkürzel den Operator `%>%` bekommt. Um den neuen Operator `|>` zu bekommen, kann man die Tastenkürzel unter `Global Options -> Code` umstellen.
+
 Erstmal ein Beispiel
 
 
 ``` r
-gapminder %>% head()
+gapminder |>  head()
 ## # A tibble: 6 × 6
 ##   country     continent  year lifeExp      pop gdpPercap
 ##   <fct>       <fct>     <int>   <dbl>    <int>     <dbl>
@@ -222,7 +223,7 @@ Und natürlich kann man der Funktion auf der rechten Seite auch noch weitere Arg
 
 
 ``` r
-gapminder %>% head(3)
+gapminder |>  head(3)
 ## # A tibble: 3 × 6
 ##   country     continent  year lifeExp      pop gdpPercap
 ##   <fct>       <fct>     <int>   <dbl>    <int>     <dbl>
@@ -232,7 +233,7 @@ gapminder %>% head(3)
 ```
 
 
-Der bisherige Einsatz des Pipe-Operators `%>%` war sicherlich noch nicht sehr beeindruckend, aber das sollte sich noch ändern.
+Der bisherige Einsatz des Pipe-Operators `|>` war sicherlich noch nicht sehr beeindruckend, aber das sollte sich noch ändern.
 
 
 ## Mit `select()` Variablen auswählen
@@ -264,8 +265,8 @@ und nun noch kombiniert mit `head()` über den Pipe-Operator:
 
 
 ``` r
-gapminder %>%
-  select(year, lifeExp) %>%
+gapminder |> 
+  select(year, lifeExp) |> 
   head(4)
 ## # A tibble: 4 × 2
 ##    year lifeExp
@@ -288,8 +289,8 @@ Wir wählen aus dem `gapminder` Datensatz die Variablen  `year` und `lifeExp` de
 
 
 ``` r
-gapminder %>%
-  filter(country == "Cambodia") %>%
+gapminder |> 
+  filter(country == "Cambodia") |> 
   select(year, lifeExp)
 ## # A tibble: 12 × 2
 ##     year lifeExp
@@ -401,10 +402,15 @@ Die Daten sind für all diese Funktionen auch __stets__ das erste Inputargument.
 
 ## Aufgabe
 
-Die `dplyr` Einführung geht weiter im Kapitel [Mehr zu `dplyr`](#dplyr-single). Bearbeitet aber vorher den letzten Abschnitte des [Work with Data](https://rstudio.cloud/learn/primers/2) Primers:
+Die `dplyr` Einführung geht weiter im Kapitel [Mehr zu `dplyr`](#dplyr-single). Bearbeitet aber vorher den letzten Abschnitt des _Work with Data_ Primers:
 
 
-[Deriving Information with dplyr](https://rstudio.cloud/learn/primers/2.3) zeigt euch wie ihr über bestehenden Variablen neue Variablen definiert und leicht zusammenfassende Statistiken innerhalb vorab definierter Gruppen berechnet.
+_Deriving Information with dplyr_ zeigt euch wie ihr über bestehenden Variablen neue Variablen definiert und leicht zusammenfassende Statistiken innerhalb vorab definierter Gruppen berechnet.
+
+
+``` r
+learnr::run_tutorial("deriving", package = "idsst.rtutorials")
+```
 
 
 

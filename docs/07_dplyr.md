@@ -8,7 +8,7 @@ In Kapitel \@ref(dplyr-intro)  haben wir bereits zwei sehr wichtige Verben und d
 
 * `filter()` zur Auswahl spezieller Zeilen eines Datensatzes
 * `select()` zur Auswahl spezieller Variablen eines Datensatzes
-* der Pipe-Operator `%>%` überführt das Objekt auf der linken Seite des Operators in das  erste Funktionsargument der Funktion auf der rechten Seite des Aufrufs
+* der Pipe-Operator `|>` bzw. `%>%` überführt das Objekt auf der linken Seite des Operators in das  erste Funktionsargument der Funktion auf der rechten Seite des Aufrufs
   
 Wir haben zudem auch noch die Rolle von `dplyr` innerhalb des tidyverse besprochen:
 
@@ -60,7 +60,7 @@ Unser __Ziel__ ist es, dass GDP pro Land anzugeben. Das sollte machbar sein, da 
 
 
 ``` r
-my_gap %>%
+my_gap |> 
   mutate(gdp = pop * gdpPercap)
 ## # A tibble: 1,704 × 7
 ##    country     continent  year lifeExp      pop gdpPercap          gdp
@@ -97,10 +97,10 @@ __Wie können wir das schaffen?__
 
 
 ``` r
-ger_gap <- my_gap %>%
+ger_gap <- my_gap |> 
   filter(country == "Germany")
 
-my_gap <- my_gap %>%
+my_gap <- my_gap |> 
   mutate(tmp = rep(ger_gap$gdpPercap, nlevels(country)),
          gdpPercapRel = gdpPercap / tmp,
          tmp = NULL)
@@ -112,8 +112,8 @@ Bleibt die Frage ob das alles so richtig war. Um diese Frage zu beantworten, kö
 
 
 ``` r
-my_gap %>% 
-  filter(country == "Germany") %>% 
+my_gap |> 
+  filter(country == "Germany") |> 
   select(country, year, gdpPercapRel)
 ## # A tibble: 12 × 3
 ##    country  year gdpPercapRel
@@ -153,7 +153,7 @@ __Tipp:__ Vertraut niemandem - einschließlich (besonders?) euch selbst. Versuch
 
 
 ``` r
-my_gap %>%
+my_gap |> 
   arrange(year, country)
 ## # A tibble: 1,704 × 7
 ##    country     continent  year lifeExp      pop gdpPercap gdpPercapRel
@@ -175,8 +175,8 @@ Oder vielleicht interessieren euch nur die Daten aus 2007, angeordnet entspreche
 
 
 ``` r
-my_gap %>%
-  filter(year == 2007) %>%
+my_gap |> 
+  filter(year == 2007) |> 
   arrange(lifeExp)
 ## # A tibble: 142 × 7
 ##    country                 continent  year lifeExp    pop gdpPercap gdpPercapRel
@@ -198,8 +198,8 @@ Das war nun aber nicht das Ergebnis, welches ihr sehen wolltet. Ihr wolltet eige
 
 
 ``` r
-my_gap %>%
-  filter(year == 2007) %>%
+my_gap |> 
+  filter(year == 2007) |> 
   arrange(desc(lifeExp))
 ## # A tibble: 142 × 7
 ##    country          continent  year lifeExp       pop gdpPercap gdpPercapRel
@@ -228,7 +228,7 @@ Ein paar der Namen in `gapminder` sind nicht besonders hübsch, wie z.B. `lifeEx
 
 
 ``` r
-my_gap %>%
+my_gap |> 
   rename(life_exp = lifeExp,
          gdp_percap = gdpPercap,
          gdp_percap_rel = gdpPercapRel)
@@ -257,9 +257,9 @@ Die Änderungen haben wir jetzt aber nicht abgespeichert (auch wenn sie schön w
 __Bemerkung:__ Mit `select()` könnten wir bei der Auswahl von Variablen auch deren Namen ändern 
 
 ``` r
-my_gap %>%
-  filter(country == "Burundi", year > 1996) %>% 
-  select(yr = year, lifeExp, gdpPercap) %>% 
+my_gap |> 
+  filter(country == "Burundi", year > 1996) |> 
+  select(yr = year, lifeExp, gdpPercap) |> 
   select(gdpPercap, everything())
 ## # A tibble: 3 × 3
 ##   gdpPercap    yr lifeExp
@@ -304,8 +304,8 @@ Beginnen wir mit dem einfachen Zählen.  Wie viele Beobachtungen haben wir pro K
 
 
 ``` r
-my_gap %>%
-  group_by(continent) %>%
+my_gap |> 
+  group_by(continent) |> 
   summarise(n = n())
 ## # A tibble: 5 × 2
 ##   continent     n
@@ -338,8 +338,8 @@ Die `tally()` Funktion ist eine Komfortfunktion, die weiß, wie man Zeilen zähl
 
 
 ``` r
-my_gap %>%
-  group_by(continent) %>%
+my_gap |> 
+  group_by(continent) |> 
   tally()
 ## # A tibble: 5 × 2
 ##   continent     n
@@ -355,7 +355,7 @@ Die Funktion `count()` bietet noch mehr Komfort. Sie kann sowohl gruppieren als 
 
 
 ``` r
-my_gap %>% 
+my_gap |> 
   count(continent)
 ## # A tibble: 5 × 2
 ##   continent     n
@@ -371,8 +371,8 @@ Was wäre, wenn uns nicht nur die Anzahl an Beobachtungen pro Kontinent interess
 
 
 ``` r
-my_gap %>%
-  group_by(continent) %>%
+my_gap |> 
+  group_by(continent) |> 
   summarise(n = n(),
             n_countries = n_distinct(country))
 ## # A tibble: 5 × 3
@@ -422,8 +422,8 @@ Auch wenn dies statistisch gesehen unklug sein mag, lasst uns die durchschnittli
 
 
 ``` r
-my_gap %>%
-  group_by(continent) %>%
+my_gap |> 
+  group_by(continent) |> 
   summarise(avg_lifeExp = mean(lifeExp))
 ## # A tibble: 5 × 2
 ##   continent avg_lifeExp
@@ -440,9 +440,9 @@ my_gap %>%
 
 
 ``` r
-my_gap %>%
-  filter(year %in% c(1952, 2007)) %>%
-  group_by(continent, year) %>%
+my_gap |> 
+  filter(year %in% c(1952, 2007)) |> 
+  group_by(continent, year) |> 
   summarise_at(vars(lifeExp, gdpPercap), list(mean, median))
 ## # A tibble: 10 × 6
 ## # Groups:   continent [5]
@@ -464,9 +464,9 @@ Im nächsten Schritt konzentrieren wir uns nur auf Asien. Wie hoch ist die minim
 
 
 ``` r
-my_gap %>%
-  filter(continent == "Asia") %>%
-  group_by(year) %>%
+my_gap |>
+  filter(continent == "Asia")  |> 
+  group_by(year) |>
   summarise(min_lifeExp = min(lifeExp), max_lifeExp = max(lifeExp))
 ## # A tibble: 12 × 3
 ##     year min_lifeExp max_lifeExp
@@ -497,10 +497,10 @@ Lasst uns eine neue Variable definieren, die die gewonnenen (verlorenen) Lebense
 
 
 ``` r
-my_gap %>% 
-  group_by(country) %>% 
-  select(country, year, lifeExp) %>% 
-  mutate(lifeExp_gain = lifeExp - first(lifeExp)) %>% 
+my_gap |> 
+  group_by(country) |> 
+  select(country, year, lifeExp) |> 
+  mutate(lifeExp_gain = lifeExp - first(lifeExp)) |> 
   filter(year < 1963)
 ## # A tibble: 426 × 4
 ## # Groups:   country [142]
@@ -530,12 +530,12 @@ Betrachten wir noch einmal die schlechtesten und besten Lebenserwartungen in Asi
 
 
 ``` r
-my_gap %>%
-  filter(continent == "Asia") %>%
-  select(year, country, lifeExp) %>%
-  group_by(year) %>%
-  filter(min_rank(desc(lifeExp)) < 2 | min_rank(lifeExp) < 2) %>% 
-  arrange(year) %>%
+my_gap |>
+  filter(continent == "Asia") |>
+  select(year, country, lifeExp) |>
+  group_by(year) |>
+  filter(min_rank(desc(lifeExp)) < 2 | min_rank(lifeExp) < 2) |> 
+  arrange(year) |>
   print(n = Inf)  # erzwingt eine Ausgabe aller Zeilen
 ## # A tibble: 24 × 3
 ## # Groups:   year [12]
@@ -576,9 +576,9 @@ Zuerst sollten wir uns aber vielleicht nochmal fragen wie das eigentlich funktio
 
 
 ``` r
-(asia <- my_gap %>%
-  filter(continent == "Asia") %>%
-  select(year, country, lifeExp) %>%
+(asia <- my_gap |>
+  filter(continent == "Asia") |>
+  select(year, country, lifeExp) |>
   group_by(year))
 ## # A tibble: 396 × 3
 ## # Groups:   year [12]
@@ -628,9 +628,9 @@ Im nächsten Schritt schauen wir uns die Ränge der Lebenserwartung innerhalb ei
 
 
 ``` r
-asia %>%
+asia |>
   mutate(le_rank = min_rank(lifeExp),
-         le_desc_rank = min_rank(desc(lifeExp))) %>% 
+         le_desc_rank = min_rank(desc(lifeExp))) |> 
   filter(country %in% c("Afghanistan", "Japan", "Thailand"), year > 1995)
 ## # A tibble: 9 × 5
 ## # Groups:   year [3]
@@ -664,11 +664,11 @@ Wenn wir nur das Minimum ODER das Maximum gewollt hätten, hätte auch ein alter
 
 
 ``` r
-my_gap %>%
-  filter(continent == "Asia") %>%
-  select(year, country, lifeExp) %>%
-  arrange(year) %>%
-  group_by(year) %>%
+my_gap |>
+  filter(continent == "Asia") |>
+  select(year, country, lifeExp) |>
+  arrange(year) |>
+  group_by(year) |>
 # slice_min(lifeExp, n = 1)        ## für das Minimum
   slice_max(lifeExp, n = 1) ## bzw. das Maximum
 ## # A tibble: 12 × 3
@@ -705,14 +705,14 @@ Wir können aber noch mehr erreichen. Lasst uns die Frage pro  Kontinenten beant
 
 
 ``` r
-my_gap %>%
-  group_by(continent, country) %>%
+my_gap |>
+  group_by(continent, country) |>
   # für jedes Land werden die Unterschiede berechnet
-  mutate(delta = lifeExp - lag(lifeExp, n = 1)) %>% 
+  mutate(delta = lifeExp - lag(lifeExp, n = 1)) |> 
   ## für jedes Land wird nur der kleinste Wert behalten
-  summarise(worst_delta = min(delta, na.rm = TRUE)) %>% 
+  summarise(worst_delta = min(delta, na.rm = TRUE)) |> 
   ## nun wird noch pro Kontinent, die Zeile mit dem kleinsten Wert ausgegeben
-  slice_min(worst_delta, n = 1) %>% 
+  slice_min(worst_delta, n = 1) |> 
   arrange(worst_delta)
 ## `summarise()` has grouped output by 'continent'. You can override using the
 ## `.groups` argument.

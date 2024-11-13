@@ -233,7 +233,7 @@
 <h2>
 <span class="header-section-number">6.3</span> Der Pipe-Operator<a class="anchor" aria-label="anchor" href="#der-pipe-operator"><i class="fas fa-link"></i></a>
 </h2>
-<p>Bevor es weitergeht, wollen wir aber den Pipe-Operator, den das Tidyverse aus dem <a href="https://magrittr.tidyverse.org">magrittr</a>-Paket von Stefan Bache importiert, vorstellen.</p>
+<p>Bevor es weitergeht, wollen wir aber den Pipe-Operator vorstellen. Dafür gibt es zwei Optionen. Zuerst wurde der Pipe-Operator <code>%&gt;%</code> eingeführt, den das Tidyverse aus dem <a href="https://magrittr.tidyverse.org">magrittr</a>-Paket von Stefan Bache importiert. In der Version 4.1 von R wurde auch der native Pipe-Operator <code>|&gt;</code> eingeführt.</p>
 <div class="figure" style="text-align: center">
 <span style="display:block;" id="fig:unnamed-chunk-10"></span>
 <img src="https://upload.wikimedia.org/wikipedia/en/b/b9/MagrittePipe.jpg" alt="Quelle https://en.wikipedia.org/wiki/The_Treachery_of_Images" width="80%"><p class="caption">
@@ -241,16 +241,14 @@ Figure 6.1: Quelle <a href="https://en.wikipedia.org/wiki/The_Treachery_of_Image
 </p>
 </div>
 <p>Mithilfe des <strong>Pipe-Operators</strong> ist man in der Lage aufeinanderfolgende Befehle von Daten-Operationen strukturiert anzugeben, ohne sie ineinander zu verschachteln. Diese neue Syntax führt zu Code, der viel einfacher zu schreiben und zu lesen ist.</p>
-<blockquote>
-<p>Und so sieht er aus: <code>%&gt;%</code>.</p>
-</blockquote>
 <div class="content-box-blue">
 <p>Das entsprechende RStudio Tastenkürzel lautet:<br>
 Ctrl+Shift+M (Windows), Cmd+Shift+M (Mac).</p>
 </div>
+<p>Die Standardeinstellung in RStudio ist, dass man mit der obigen Tastenkürzel den Operator <code>%&gt;%</code> bekommt. Um den neuen Operator <code>|&gt;</code> zu bekommen, kann man die Tastenkürzel unter <code>Global Options -&gt; Code</code> umstellen.</p>
 <p>Erstmal ein Beispiel</p>
 <div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">gapminder</span> <span class="op">|&gt;</span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">## # A tibble: 6 × 6</span></span>
 <span><span class="co">##   country     continent  year lifeExp      pop gdpPercap</span></span>
 <span><span class="co">##   &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;</span></span>
@@ -263,14 +261,14 @@ Ctrl+Shift+M (Windows), Cmd+Shift+M (Mac).</p>
 <p>Man erkennt sofort, der Befehl ist äquivalent zu <code>head(gapminder)</code>. Der Pipe-Operator nimmt das Objekt auf der linken Seite und leitet es in den Funktionsaufruf auf der rechten Seite weiter - er gibt es buchstäblich als erstes Argument ein.</p>
 <p>Und natürlich kann man der Funktion auf der rechten Seite auch noch weitere Argumente übergeben. Um die ersten 3 Zeilen von <code>gapminder</code> auszugeben, könnte man <code>head(gapminder, 3)</code> nutzen oder:</p>
 <div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="va">gapminder</span> <span class="op">|&gt;</span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">3</span><span class="op">)</span></span>
 <span><span class="co">## # A tibble: 3 × 6</span></span>
 <span><span class="co">##   country     continent  year lifeExp      pop gdpPercap</span></span>
 <span><span class="co">##   &lt;fct&gt;       &lt;fct&gt;     &lt;int&gt;   &lt;dbl&gt;    &lt;int&gt;     &lt;dbl&gt;</span></span>
 <span><span class="co">## 1 Afghanistan Asia       1952    28.8  8425333      779.</span></span>
 <span><span class="co">## 2 Afghanistan Asia       1957    30.3  9240934      821.</span></span>
 <span><span class="co">## 3 Afghanistan Asia       1962    32.0 10267083      853.</span></span></code></pre></div>
-<p>Der bisherige Einsatz des Pipe-Operators <code>%&gt;%</code> war sicherlich noch nicht sehr beeindruckend, aber das sollte sich noch ändern.</p>
+<p>Der bisherige Einsatz des Pipe-Operators <code>|&gt;</code> war sicherlich noch nicht sehr beeindruckend, aber das sollte sich noch ändern.</p>
 </div>
 <div id="mit-select-variablen-auswählen" class="section level2" number="6.4">
 <h2>
@@ -295,8 +293,8 @@ Ctrl+Shift+M (Windows), Cmd+Shift+M (Mac).</p>
 <span><span class="co">## # ℹ 1,694 more rows</span></span></code></pre></div>
 <p>und nun noch kombiniert mit <code><a href="https://rdrr.io/r/utils/head.html">head()</a></code> über den Pipe-Operator:</p>
 <div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">lifeExp</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">gapminder</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">lifeExp</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">4</span><span class="op">)</span></span>
 <span><span class="co">## # A tibble: 4 × 2</span></span>
 <span><span class="co">##    year lifeExp</span></span>
@@ -310,8 +308,8 @@ Ctrl+Shift+M (Windows), Cmd+Shift+M (Mac).</p>
 <p>Natürlich kann man all diese Operationen auch mit R Standardbefehlen ausführen. Die <code>dplyr</code> Befehle haben aber klare Vorteile bei der Lesbarkeit des Codes, wie man im nächsten Beispiel sieht.</p>
 <p>Wir wählen aus dem <code>gapminder</code> Datensatz die Variablen <code>year</code> und <code>lifeExp</code> der Kambodscha Beobachtungen</p>
 <div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op">==</span> <span class="st">"Cambodia"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<code class="sourceCode R"><span><span class="va">gapminder</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op">==</span> <span class="st">"Cambodia"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">lifeExp</span><span class="op">)</span></span>
 <span><span class="co">## # A tibble: 12 × 2</span></span>
 <span><span class="co">##     year lifeExp</span></span>
@@ -400,8 +398,10 @@ Ctrl+Shift+M (Windows), Cmd+Shift+M (Mac).</p>
 <h2>
 <span class="header-section-number">6.7</span> Aufgabe<a class="anchor" aria-label="anchor" href="#aufgabe-2"><i class="fas fa-link"></i></a>
 </h2>
-<p>Die <code>dplyr</code> Einführung geht weiter im Kapitel <a href="dplyr-single.html#dplyr-single">Mehr zu <code>dplyr</code></a>. Bearbeitet aber vorher den letzten Abschnitte des <a href="https://rstudio.cloud/learn/primers/2">Work with Data</a> Primers:</p>
-<p><a href="https://rstudio.cloud/learn/primers/2.3">Deriving Information with dplyr</a> zeigt euch wie ihr über bestehenden Variablen neue Variablen definiert und leicht zusammenfassende Statistiken innerhalb vorab definierter Gruppen berechnet.</p>
+<p>Die <code>dplyr</code> Einführung geht weiter im Kapitel <a href="dplyr-single.html#dplyr-single">Mehr zu <code>dplyr</code></a>. Bearbeitet aber vorher den letzten Abschnitt des <em>Work with Data</em> Primers:</p>
+<p><em>Deriving Information with dplyr</em> zeigt euch wie ihr über bestehenden Variablen neue Variablen definiert und leicht zusammenfassende Statistiken innerhalb vorab definierter Gruppen berechnet.</p>
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">learnr</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/learnr/reference/run_tutorial.html">run_tutorial</a></span><span class="op">(</span><span class="st">"deriving"</span>, package <span class="op">=</span> <span class="st">"idsst.rtutorials"</span><span class="op">)</span></span></code></pre></div>
 <!--Packages: main link-->
 <!--Packages: vignettes & CRAN/GitHub links-->
 <!--Bookdowns: main link-->
