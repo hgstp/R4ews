@@ -180,7 +180,7 @@ Er erklärt sich von selbst und ist ziemlich robust.
 
 ## Der Pipe-Operator
 
-Bevor es weitergeht, wollen wir aber den Pipe-Operator vorstellen. Dafür gibt es zwei Optionen. Zuerst wurde der Pipe-Operator `%>%` eingeführt, den das Tidyverse aus dem [magrittr]-Paket von Stefan Bache importiert. In der Version 4.1 von R wurde auch der native Pipe-Operator `|>` eingeführt.
+Bevor es weitergeht, wollen wir aber den Pipe-Operator vorstellen. Dafür gibt es zwei Optionen. Zuerst wurde der Pipe-Operator `%>%` eingeführt, den das Tidyverse aus dem [magrittr]-Paket von Stefan Bache importiert. In Version 4.1 von R wurde auch der native Pipe-Operator `|>` eingeführt. Zwischen den beiden Operatoren gibt es einige Unterschiede. Da der neue Pipe-Operator `|>` schneller und nicht von einem Pakett abhängig ist, werden wir ihn bevorzugen.
 
 
 <div class="figure" style="text-align: center">
