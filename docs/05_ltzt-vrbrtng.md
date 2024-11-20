@@ -501,7 +501,7 @@ _Working with Tibbbles_ zeigt die Verwendung von Tibbles sowie die Verwaltung vo
 learnr::run_tutorial("tibbles", package = "idsst.rtutorials")
 ```
 
-_Isolating Data with dplyr_ zeigt wie ihr Variablen auswählt, Beobachtungen filtert und Werte neu anordnet. Zudem wird der Pipe-Operator von R, `%>%`, eingeführt.
+_Isolating Data with dplyr_ zeigt wie ihr Variablen auswählt, Beobachtungen filtert und Werte neu anordnet. Zudem wird der Pipe-Operator von R, ` |> `, eingeführt.
 
 
 ``` r

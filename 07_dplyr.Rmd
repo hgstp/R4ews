@@ -415,8 +415,24 @@ my_gap |>
   group_by(continent, country) |>
   # für jedes Land werden die Unterschiede berechnet
   mutate(delta = lifeExp - lag(lifeExp, n = 1)) |> 
-  ## für jedes Land wird nur der kleinste Wert behalten
+  ## für jedes Land wird nur der kleinste Wert behalten und alle Werten mit fehlendem Wert für delta werden nicht berücksichtigt
   summarise(worst_delta = min(delta, na.rm = TRUE)) |> 
+  ## nun wird noch pro Kontinent, die Zeile mit dem kleinsten Wert ausgegeben
+  slice_min(worst_delta, n = 1) |> 
+  arrange(worst_delta)
+```
+
+Auch folgendes Code würde dasselbe Ergebnis liefern
+
+```{r end_dplyr_single_2}
+my_gap |>
+  group_by(continent, country) |>
+  # für jedes Land werden die Unterschiede berechnet
+  mutate(delta = lifeExp - lag(lifeExp, n = 1)) |> 
+  ## wir entfernen alle Beobachtungen, wo der Wert von delta fehlt
+  filter(!is.na(delta)) |> 
+  ## für jedes Land wird nur der kleinste Wert behalten
+  summarise(worst_delta = min(delta)) |> 
   ## nun wird noch pro Kontinent, die Zeile mit dem kleinsten Wert ausgegeben
   slice_min(worst_delta, n = 1) |> 
   arrange(worst_delta)

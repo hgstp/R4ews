@@ -20,20 +20,20 @@ library(tidyverse)
 #  mutate(lotr_dat,
 #         Gender = ifelse(Character %in% females, "Female", "Male"))
 
-#(lotr_tidy <- lotr_dat %>%
-#    dplyr::filter(Race %in% c("Elf", "Hobbit", "Man")) %>%
-#    group_by(Film, Gender, Race) %>%
+#(lotr_tidy <- lotr_dat |>
+#    dplyr::filter(Race %in% c("Elf", "Hobbit", "Man")) |>
+#    group_by(Film, Gender, Race) |>
 #    summarize(Words = sum(Words)))
-#(all_combns <- lotr_tidy %>% 
-#    select(-Words) %>% 
-#    map(unique) %>% 
+#(all_combns <- lotr_tidy |> 
+#    select(-Words)  |>  
+#    map(unique) |> 
 #    lift_dl(crossing)())
-#lotr_tidy <- left_join(all_combns, lotr_tidy) %>% 
-#  replace_na(list(Words = 0)) %>% 
+#lotr_tidy <- left_join(all_combns, lotr_tidy) |> 
+#  replace_na(list(Words = 0)) |> 
 #  mutate(Film = factor(Film, levels = c("The Fellowship Of The Ring",
  #                                       "The Two Towers",
 #                                        "The Return Of The King")),
-#         Words = as.integer(Words)) %>% 
+#         Words = as.integer(Words)) |> 
 #  arrange(Film, Race, Gender)
 
 lotr_tidy <- readr::read_csv("data/lotr_tidy.csv")
@@ -64,22 +64,22 @@ Liegen untidy Daten vor, so verlängert sich (fast) immer die Zeit bis man mit d
 Von [Jenny Byran](https://github.com/jennybc) (Autorin von STAT 545) haben wir folgenden Beispieldatensatz übernommen: [Data from the Lord of the Rings Trilogy](https://github.com/jennybc/lotr)
 
 ```{r results = 'asis', echo = FALSE}
-untidy_films[["The Fellowship Of The Ring"]] %>%
-  kableExtra::kbl() %>%
+untidy_films[["The Fellowship Of The Ring"]] |>
+  kableExtra::kbl() |>
   kableExtra::kable_material_dark()
 ```
 
 
 ```{r results = 'asis', echo = FALSE}
-untidy_films[["The Two Towers"]] %>%
-  kableExtra::kbl() %>%
+untidy_films[["The Two Towers"]] |>
+  kableExtra::kbl() |>
   kableExtra::kable_material_dark()
 ```
 
 
 ```{r results = 'asis', echo = FALSE}
-untidy_films[["The Return Of The King"]] %>%
-  kableExtra::kbl() %>%
+untidy_films[["The Return Of The King"]] |>
+  kableExtra::kbl() |>
   kableExtra::kable_material_dark()
 ```
 
@@ -99,8 +99,8 @@ Aufgeräumt sehen die Daten folgendermaßen aus:
 
 
 ```{r echo = FALSE, results = 'asis'}
-lotr_tidy %>%
-  kableExtra::kbl() %>%
+lotr_tidy |>
+  kableExtra::kbl() |>
   kableExtra::kable_material_dark()
 ```
 
@@ -127,11 +127,11 @@ Nun braucht es nur noch ein kleines bisschen Code, um die Gesamtwortzahl für be
 
 ```{r, message=FALSE, warning=FALSE}
 library(tidyverse)
-lotr_tidy %>% 
+lotr_tidy |> 
   count(Gender, Race, wt = Words)
 ```
 
- Die Gesamtzahl der von männlichen Hobbits gesprochenen Wörter ist `r lotr_tidy %>% filter(Race == 'Hobbit', Gender == 'Male') %>% summarize(sum(Words))`. Hier war es wichtig, dass alle Wortzählungen in einer Variable des  Data Frames zusammengefasst sind und zugehörige Variablen für Geschlecht und Kategorie existieren.
+ Die Gesamtzahl der von männlichen Hobbits gesprochenen Wörter ist `r lotr_tidy |> filter(Race == 'Hobbit', Gender == 'Male') |> summarize(sum(Words))`. Hier war es wichtig, dass alle Wortzählungen in einer Variable des  Data Frames zusammengefasst sind und zugehörige Variablen für Geschlecht und Kategorie existieren.
  
  
  
@@ -140,8 +140,8 @@ lotr_tidy %>%
 Zunächst summieren wir über die Geschlechter hinweg, um die Wortzahlen für die verschiedenen Kategorien pro Film zu erhalten.
 
 ```{r}
-(by_race_film <- lotr_tidy %>% 
-   group_by(Film, Race) %>% 
+(by_race_film <- lotr_tidy |> 
+   group_by(Film, Race) |> 
    summarize(Words = sum(Words)))
 ```
 
@@ -253,11 +253,11 @@ Dazu arbeiten wir mit den Funktion `tidyr::pivot_wider()`. Wir nehmen nun die Au
 
 ```{r}
 ## Race
-lotr_tidy %>% 
+lotr_tidy |> 
   pivot_wider(names_from = Race, values_from = Words)
 
 ## Gender
-lotr_tidy %>% 
+lotr_tidy |> 
   pivot_wider(names_from = Gender, values_from = Words)
 
 ```
@@ -268,15 +268,15 @@ Das erste Beispiel hat immer noch 6 Beobachtungen, zwei pro Film. Nehmen wir mal
 
 
 ```{r}
-lotr_tidy %>% 
+lotr_tidy |> 
   unite(Race_Gender, Race, Gender)
 ```
 
 In Kombination mit `pivot_wider()` ergibt sich so
 
 ```{r}
-lotr_tidy %>% 
-  unite(Race_Gender, Race, Gender) %>% 
+lotr_tidy |> 
+  unite(Race_Gender, Race, Gender) |> 
   pivot_wider(names_from = Race_Gender, values_from = Words)
 
 ```
@@ -285,8 +285,8 @@ Zum Schluss könnten wir auch noch alles zurück auf Anfang stellen und die
 drei Datensätze vom Anfang wiederherstellen
 
 ```{r}
-(sep_list <- lotr_tidy %>% 
-  pivot_wider(names_from = Gender, values_from = Words) %>%
+(sep_list <- lotr_tidy |> 
+  pivot_wider(names_from = Gender, values_from = Words) |>
    group_split(Film))
 ```
 

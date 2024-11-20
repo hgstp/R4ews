@@ -30,7 +30,7 @@ __Ein wichtiger Import-Ratschlag:__ _Verwende die Argumente der Importfunktion, 
 
 Es wird viele Gelegenheiten geben, bei denen ihr Daten aus R exportieren wollt. Zwei wichtige Beispiele:
 
-* einen gesäuberten Datensatz, der bereit ist analysiert zu werden
+* einen gesäuberten Datensatz, der bereit ist, analysiert zu werden
 
 * ein numerisches Ergebnis aus einer Datenaggregation oder Modellierung oder einer statistischen Schlussfolgerung 
 
@@ -127,9 +127,9 @@ Die Gapminder-Daten sind zu sauber und einfach, um die großartigen Funktionen v
 Bevor wir etwas exportieren können, müssen wir natürlich (was so sicher nicht richtig ist - niemand zwingt uns dazu `r emo::ji("wink")`) etwas berechnen, das es wert ist,  exportiert zu werden. Lasst uns daher eine Zusammenfassung der maximalen Lebenserwartung auf Länderebene erstellen.
 
 ```{r}
-gap_life_exp <- gapminder %>%
-  group_by(country, continent) %>% 
-  summarise(life_exp = max(lifeExp)) %>% 
+gap_life_exp <- gapminder |>  
+  group_by(country, continent) |> 
+  summarise(life_exp = max(lifeExp)) |> 
   ungroup()
 gap_life_exp
 ```
@@ -281,7 +281,7 @@ Also, da haben wir unsere Antwort: Zum Zeitpunkt des letzten Updates `r format(S
 
 In diesem Beispiel haben wir einen sehr unkomplizierten API-Workflow durchlaufen. Die meisten APIs fordern, dass man demselben allgemeinen Muster folgt, aber dabei können die jeweilgen Aufrufe/Befehle durchaus deutlich komplexer sein.
 
-In unserem Beispiel war es ausreichen nur die URL anzugeben. Aber einige APIs verlangen mehr Informationen vom Benutzer. Darauf gehen wir aber erstmal nicht weiter ein. Stattdessen fragen wir noch nach dem Ort der ISS im Moment der Abfrage
+In unserem Beispiel war es ausreichend nur die URL anzugeben. Aber einige APIs verlangen mehr Informationen vom Benutzer. Darauf gehen wir aber erstmal nicht weiter ein. Stattdessen fragen wir noch nach dem Ort der ISS im Moment der Abfrage
 
 ```{r}
 jdata <-  GET("http://api.open-notify.org/iss-now.json",)

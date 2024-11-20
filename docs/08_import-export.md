@@ -28,7 +28,7 @@ __Ein wichtiger Import-Ratschlag:__ _Verwende die Argumente der Importfunktion, 
 
 Es wird viele Gelegenheiten geben, bei denen ihr Daten aus R exportieren wollt. Zwei wichtige Beispiele:
 
-* einen gesäuberten Datensatz, der bereit ist analysiert zu werden
+* einen gesäuberten Datensatz, der bereit ist, analysiert zu werden
 
 * ein numerisches Ergebnis aus einer Datenaggregation oder Modellierung oder einer statistischen Schlussfolgerung 
 
@@ -71,6 +71,7 @@ Die Gapminder Daten könnten wir natürlich wie zuvor über das Laden des `gapmi
 
 ``` r
 library(fs)
+## Warning: package 'fs' was built under R version 4.4.1
 (gap_tsv <- path_package("gapminder", "extdata", "gapminder.tsv"))
 ## /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library/gapminder/extdata/gapminder.tsv
 ```
@@ -179,9 +180,9 @@ Bevor wir etwas exportieren können, müssen wir natürlich (was so sicher nicht
 
 
 ``` r
-gap_life_exp <- gapminder %>%
-  group_by(country, continent) %>% 
-  summarise(life_exp = max(lifeExp)) %>% 
+gap_life_exp <- gapminder |>  
+  group_by(country, continent) |> 
+  summarise(life_exp = max(lifeExp)) |> 
   ungroup()
 ## `summarise()` has grouped output by 'country'. You can override using the
 ## `.groups` argument.
@@ -301,7 +302,7 @@ Schauen wir uns an, wie die Variable `jdata` in der R-Konsole aussieht:
 ``` r
 jdata
 ## Response [http://api.open-notify.org/astros.json]
-##   Date: 2024-11-13 21:47
+##   Date: 2024-11-20 23:53
 ##   Status: 200
 ##   Content-Type: application/json
 ##   Size: 587 B
@@ -380,12 +381,12 @@ data$people
 ```
 
 
-Also, da haben wir unsere Antwort: Zum Zeitpunkt des letzten Updates Nov 13, 2024 von R4ews befanden sich 12 Personen im Weltraum. Aber wenn ihr den Code zu einem späteren Zeitpunkt ausprobiert, könnten es auch schon wieder andere Namen und eine andere Anzahl sein. Das ist einer der Vorteile von APIs - im Gegensatz zu Datensätzen, die man im Spreadsheet Format herunterladen kann, werden sie in der Regel in Echtzeit oder nahezu in Echtzeit aktualisiert. APIs bieten somit die Möglichkeit leicht auf sehr aktuelle Daten zuzugreifen.
+Also, da haben wir unsere Antwort: Zum Zeitpunkt des letzten Updates Nov 21, 2024 von R4ews befanden sich 12 Personen im Weltraum. Aber wenn ihr den Code zu einem späteren Zeitpunkt ausprobiert, könnten es auch schon wieder andere Namen und eine andere Anzahl sein. Das ist einer der Vorteile von APIs - im Gegensatz zu Datensätzen, die man im Spreadsheet Format herunterladen kann, werden sie in der Regel in Echtzeit oder nahezu in Echtzeit aktualisiert. APIs bieten somit die Möglichkeit leicht auf sehr aktuelle Daten zuzugreifen.
 
 
 In diesem Beispiel haben wir einen sehr unkomplizierten API-Workflow durchlaufen. Die meisten APIs fordern, dass man demselben allgemeinen Muster folgt, aber dabei können die jeweilgen Aufrufe/Befehle durchaus deutlich komplexer sein.
 
-In unserem Beispiel war es ausreichen nur die URL anzugeben. Aber einige APIs verlangen mehr Informationen vom Benutzer. Darauf gehen wir aber erstmal nicht weiter ein. Stattdessen fragen wir noch nach dem Ort der ISS im Moment der Abfrage
+In unserem Beispiel war es ausreichend nur die URL anzugeben. Aber einige APIs verlangen mehr Informationen vom Benutzer. Darauf gehen wir aber erstmal nicht weiter ein. Stattdessen fragen wir noch nach dem Ort der ISS im Moment der Abfrage
 
 
 ``` r
@@ -399,13 +400,13 @@ jdata <-  GET("http://api.open-notify.org/iss-now.json",)
 ``` r
 data <- fromJSON(rawToChar(jdata$content))
 data$iss_position
-## $latitude
-## [1] "-33.6297"
-## 
 ## $longitude
-## [1] "-118.5426"
+## [1] "132.6458"
+## 
+## $latitude
+## [1] "-49.2877"
 data$timestamp
-## [1] 1731534449
+## [1] 1732146814
 ```
 
 
@@ -415,7 +416,7 @@ Diese API gibt uns die Zeit in Form von [Unixzeit](https://de.wikipedia.org/wiki
 
 ``` r
 lubridate::as_datetime(data$timestamp)
-## [1] "2024-11-13 21:47:29 UTC"
+## [1] "2024-11-20 23:53:34 UTC"
 ```
 
 

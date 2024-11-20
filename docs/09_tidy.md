@@ -278,7 +278,7 @@ Nun braucht es nur noch ein kleines bisschen Code, um die Gesamtwortzahl für be
 
 ``` r
 library(tidyverse)
-lotr_tidy %>% 
+lotr_tidy |> 
   count(Gender, Race, wt = Words)
 ```
 
@@ -304,8 +304,8 @@ Zunächst summieren wir über die Geschlechter hinweg, um die Wortzahlen für di
 
 
 ``` r
-(by_race_film <- lotr_tidy %>% 
-   group_by(Film, Race) %>% 
+(by_race_film <- lotr_tidy |> 
+   group_by(Film, Race) |> 
    summarize(Words = sum(Words)))
 ```
 
@@ -499,7 +499,7 @@ Dazu arbeiten wir mit den Funktion `tidyr::pivot_wider()`. Wir nehmen nun die Au
 
 ``` r
 ## Race
-lotr_tidy %>% 
+lotr_tidy |> 
   pivot_wider(names_from = Race, values_from = Words)
 ```
 
@@ -517,7 +517,7 @@ lotr_tidy %>%
 
 ``` r
 ## Gender
-lotr_tidy %>% 
+lotr_tidy |> 
   pivot_wider(names_from = Gender, values_from = Words)
 ```
 
@@ -543,7 +543,7 @@ Das erste Beispiel hat immer noch 6 Beobachtungen, zwei pro Film. Nehmen wir mal
 
 
 ``` r
-lotr_tidy %>% 
+lotr_tidy |> 
   unite(Race_Gender, Race, Gender)
 ```
 
@@ -575,8 +575,8 @@ In Kombination mit `pivot_wider()` ergibt sich so
 
 
 ``` r
-lotr_tidy %>% 
-  unite(Race_Gender, Race, Gender) %>% 
+lotr_tidy |> 
+  unite(Race_Gender, Race, Gender) |> 
   pivot_wider(names_from = Race_Gender, values_from = Words)
 ```
 
@@ -594,8 +594,8 @@ drei Datensätze vom Anfang wiederherstellen
 
 
 ``` r
-(sep_list <- lotr_tidy %>% 
-  pivot_wider(names_from = Gender, values_from = Words) %>%
+(sep_list <- lotr_tidy |> 
+  pivot_wider(names_from = Gender, values_from = Words) |>
    group_split(Film))
 ```
 

@@ -677,8 +677,32 @@ wobei <span class="math inline">\(x_{0.25}\)</span> und <span class="math inline
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">continent</span>, <span class="va">country</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="co"># für jedes Land werden die Unterschiede berechnet</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>delta <span class="op">=</span> <span class="va">lifeExp</span> <span class="op">-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/lead-lag.html">lag</a></span><span class="op">(</span><span class="va">lifeExp</span>, n <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
-<span>  <span class="co">## für jedes Land wird nur der kleinste Wert behalten</span></span>
+<span>  <span class="co">## für jedes Land wird nur der kleinste Wert behalten und alle Werten mit fehlendem Wert für delta werden nicht berücksichtigt</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>worst_delta <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">delta</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="co">## nun wird noch pro Kontinent, die Zeile mit dem kleinsten Wert ausgegeben</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_min</a></span><span class="op">(</span><span class="va">worst_delta</span>, n <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">worst_delta</span><span class="op">)</span></span>
+<span><span class="co">## `summarise()` has grouped output by 'continent'. You can override using the</span></span>
+<span><span class="co">## `.groups` argument.</span></span>
+<span><span class="co">## # A tibble: 5 × 3</span></span>
+<span><span class="co">## # Groups:   continent [5]</span></span>
+<span><span class="co">##   continent country     worst_delta</span></span>
+<span><span class="co">##   &lt;fct&gt;     &lt;fct&gt;             &lt;dbl&gt;</span></span>
+<span><span class="co">## 1 Africa    Rwanda          -20.4  </span></span>
+<span><span class="co">## 2 Asia      Cambodia         -9.10 </span></span>
+<span><span class="co">## 3 Americas  El Salvador      -1.51 </span></span>
+<span><span class="co">## 4 Europe    Montenegro       -1.46 </span></span>
+<span><span class="co">## 5 Oceania   Australia         0.170</span></span></code></pre></div>
+<p>Auch folgendes Code würde dasselbe Ergebnis liefern</p>
+<div class="sourceCode" id="cb101"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">my_gap</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">continent</span>, <span class="va">country</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="co"># für jedes Land werden die Unterschiede berechnet</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>delta <span class="op">=</span> <span class="va">lifeExp</span> <span class="op">-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/lead-lag.html">lag</a></span><span class="op">(</span><span class="va">lifeExp</span>, n <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="co">## wir entfernen alle Beobachtungen, wo der Wert von delta fehlt</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">delta</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="co">## für jedes Land wird nur der kleinste Wert behalten</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>worst_delta <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">delta</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="co">## nun wird noch pro Kontinent, die Zeile mit dem kleinsten Wert ausgegeben</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_min</a></span><span class="op">(</span><span class="va">worst_delta</span>, n <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">worst_delta</span><span class="op">)</span></span>

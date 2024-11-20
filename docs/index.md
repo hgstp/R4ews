@@ -41,7 +41,7 @@ Das Material wird kontinuierlich über das Semester hinweg ergänzt/erweitert/ve
 
 ``` r
 date()
-## [1] "Wed Nov 13 22:47:17 2024"
+## [1] "Thu Nov 21 00:53:21 2024"
 ```
 
 
@@ -64,14 +64,14 @@ Die aktuelle Version dieses Buchs wurde mit
 ## Finding R package dependencies ... Done!
 ##  setting  value
 ##  version  R version 4.4.0 (2024-04-24)
-##  os       macOS 15.0.1
+##  os       macOS 15.1.1
 ##  system   aarch64, darwin20
 ##  ui       X11
 ##  language (EN)
 ##  collate  en_US.UTF-8
 ##  ctype    en_US.UTF-8
 ##  tz       Europe/Berlin
-##  date     2024-11-13
+##  date     2024-11-21
 ##  pandoc   3.2 @ /Applications/RStudio.app/Contents/Resources/app/quarto/bin/tools/aarch64/ (via rmarkdown)
 ```
 
