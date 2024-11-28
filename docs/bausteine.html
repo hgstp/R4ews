@@ -18,8 +18,8 @@
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/Lato-0.4.9/font.css" rel="stylesheet">
 <script src="libs/bs3compat-0.8.0/transition.js"></script><script src="libs/bs3compat-0.8.0/tabs.js"></script><script src="libs/bs3compat-0.8.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link href="libs/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
-<link href="libs/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><link href="libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="libs/kePrint-0.0.1/kePrint.js"></script><link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 <script src="anchor-links.js"></script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-68219208-1"></script><script>
       window.dataLayer = window.dataLayer || [];
@@ -175,7 +175,7 @@ Learn more about setting these aesthetics in vignette("ggplot2-specs").
 </code></pre>
 <p>Will man über die Daten Werte für die verschiedenen aesthetics definieren, so muss dies innerhalb der <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> Funktion geschehen. Werden Argumente auf fixe Werte gesetzt, so sind sie außerhalb der <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> Funktion zu setzen.</p>
 <p>In einem Plot der <code>gdpPercap</code> Daten für Deutschland und Frankreich wollen wir anhand von unterschiedlichen Farben die Daten der beiden Länder unterscheiden. Dazu müssen wir nur <code>colour</code> innerhalb von <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> den Wert <code>country</code> zuweisen. Zusätzlich wollen wir die Größe der zu zeichnenden Punkte etwas erhöhen. Aber die Größe soll für beide Länder gleich sein. Daher definieren wir <code>size</code> außerhalb der <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> Funktion.</p>
-<div class="sourceCode" id="cb152"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb153"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">country</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Germany"</span>,<span class="st">"France"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>  </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">gdpPercap</span>, colour <span class="op">=</span> <span class="va">country</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>  </span>
@@ -194,7 +194,7 @@ Learn more about setting these aesthetics in vignette("ggplot2-specs").
 </ul>
 <p>Da wir nicht alle verfügbaren <code>geoms</code> auflisten können/wollen, sei an dieser Stelle auf die <a href="https://ggplot2.tidyverse.org">ggplot2</a> Seite verwiesen.</p>
 <p>Im nächsten Beispiel stellen wir die gleichen Daten/Variablen über zwei verschiedene <code>geoms</code> dar.</p>
-<div class="sourceCode" id="cb153"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb154"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">gdpPercap</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>  </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> </span>
@@ -207,7 +207,7 @@ Learn more about setting these aesthetics in vignette("ggplot2-specs").
 <p><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-3-1.png" width="50%"><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-3-2.png" width="50%"></p>
 <p>Obwohl die gleichen Daten visualisiert wurden, ist das Ergebnis doch recht unterschiedlich. Der Scatterplot zeigt alle (abgesehen von Overplotting) Daten, wohingegen mit <code><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth()</a></code> eine geglätteter Zusammenhang dargestellt wird.</p>
 <p>Interessant sind hier natürlich die wenigen großen <code>gdpPercap</code> Werte in der linken Grafik</p>
-<div class="sourceCode" id="cb154"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb155"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">gdpPercap</span> <span class="op">&gt;</span> <span class="fl">50000</span><span class="op">)</span></span>
 <span><span class="co">## # A tibble: 6 × 6</span></span>
@@ -221,7 +221,7 @@ Learn more about setting these aesthetics in vignette("ggplot2-specs").
 <span><span class="co">## 6 Kuwait  Asia       1977    69.3 1140357    59265.</span></span></code></pre></div>
 <p>Kuwait hat über den gesamten Zeitraum sehr hohe GDP Werte. Aber zu Beginn der Aufzeichnungen waren die Werte in Bezug auf die damals noch recht kleine Populationsgröße sogar außergewöhnlich hoch.</p>
 <p>Einem <code>ggplot</code> Objekt können wir nicht nur <strong>ein</strong> <code>geom</code> zuordnen. Prinzipiell können wir beliebig viele weitere <code>geoms</code> hinzufügen. Wir können also die gerade durchgeführte Glättung der Daten auch direkt zum Scatterplot hinzufügen</p>
-<div class="sourceCode" id="cb155"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb156"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">gdpPercap</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>  </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
@@ -229,7 +229,7 @@ Learn more about setting these aesthetics in vignette("ggplot2-specs").
 <span><span class="co">## `geom_smooth()` using method = 'gam' and formula = 'y ~ s(x, bs = "cs")'</span></span></code></pre></div>
 <div class="inline-figure"><img src="11_ggplot2_bausteine_files/figure-html/fig12-1.png" width="80%" style="display: block; margin: auto;"></div>
 <p>Wählen wir die Farbe eines geometrischen Objekts (oder mehrerer) anhand einer Faktorvariable, so erhalten wir automatisch eine entsprechende Legende</p>
-<div class="sourceCode" id="cb156"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb157"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">gdpPercap</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>  </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -238,7 +238,7 @@ Learn more about setting these aesthetics in vignette("ggplot2-specs").
 <div class="inline-figure"><img src="11_ggplot2_bausteine_files/figure-html/fig13-1.png" width="80%" style="display: block; margin: auto;"></div>
 <p>Beachtet dabei, dass wir <code>colour</code> nur für <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code> gewählt haben. Die Glättung erfolgt weiterhin über alle Daten und nicht separat für jeden Kontinent. In diesem Fall haben wir in <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code> ein lokales <code>mapping</code> definiert.</p>
 <p>Aber natürlich hätten wir die Glättung auch pro Kontinent durchführen können. Dazu schreiben wir einfach <code>colour</code> in das <strong>globale</strong> <code>mapping</code> und löschen das lokale mapping in <code><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point()</a></code> wieder.</p>
-<div class="sourceCode" id="cb157"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb158"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>mapping <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">gdpPercap</span>, colour <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>  </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
@@ -246,7 +246,7 @@ Learn more about setting these aesthetics in vignette("ggplot2-specs").
 <span><span class="co">## `geom_smooth()` using method = 'loess' and formula = 'y ~ x'</span></span></code></pre></div>
 <div class="inline-figure"><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-5-1.png" width="80%" style="display: block; margin: auto;"></div>
 <p>Nehmen wir mal an, dass uns nun aber die Punkte etwas zu groß sind und die Linien sollten nicht durchgezogen sein. D.h. wir würden gerne andere (aber fixe, nicht von Variablen abhängende) aesthetic Werte setzen. Das lässt sich schnell ändern.</p>
-<div class="sourceCode" id="cb158"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb159"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">gdpPercap</span>, colour <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>  </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span> <span class="op">+</span></span>
@@ -259,14 +259,14 @@ Learn more about setting these aesthetics in vignette("ggplot2-specs").
 <span class="header-section-number">11.3</span> Statistische Transformationen<a class="anchor" aria-label="anchor" href="#stat-trans"><i class="fas fa-link"></i></a>
 </h2>
 <p>Jede <code>geom_xxx()</code> Funktion besitzt eine <em>“Standard-Statistik”</em>, die beim Aufruf der Funktion berechnet wird.</p>
-<div class="sourceCode" id="cb159"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb160"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/args.html">args</a></span><span class="op">(</span><span class="va">geom_point</span><span class="op">)</span></span>
 <span><span class="co">## function (mapping = NULL, data = NULL, stat = "identity", position = "identity", </span></span>
 <span><span class="co">##     ..., na.rm = FALSE, show.legend = NA, inherit.aes = TRUE) </span></span>
 <span><span class="co">## NULL</span></span></code></pre></div>
 <p>Bei einem Scatterplot ist die Statistik einfach nur die Identität.</p>
 <p>Ein Balkendiagramm verwendet aber z.B.</p>
-<div class="sourceCode" id="cb160"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb161"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/args.html">args</a></span><span class="op">(</span><span class="va">geom_bar</span><span class="op">)</span></span>
 <span><span class="co">## function (mapping = NULL, data = NULL, stat = "count", position = "stack", </span></span>
 <span><span class="co">##     ..., just = 0.5, width = NULL, na.rm = FALSE, orientation = NA, </span></span>
@@ -275,7 +275,7 @@ Learn more about setting these aesthetics in vignette("ggplot2-specs").
 <p>die Transformation <code>count</code>. Das macht durchaus Sinn, da ja gezählt werden muss/soll wie viele Beobachtungen in die jeweilige Kategorie fallen.</p>
 <p>Die jeweiligen Statistiken könnten über die entsprechenden <code>stat_xxx()</code> Funktionen geplottet werden. Da aber jede <code>geom_xxx()</code> Funktion mit mindestens einer dieser <code>stat_xxx()</code> Funktionen verbunden ist, ist es oftmals einfacher direkt die entsprechende <code>geom_xxx()</code> Funktion zu verwenden. Aber generell könnte die jeweilige <code>stat_xxx()</code> Funktion auch direkt aufgerufen werden.</p>
 <p>Daher liefern die beiden nachfolgenden Befehle auch die exakt gleiche Grafik</p>
-<div class="sourceCode" id="cb161"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb162"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gapminder</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
@@ -294,10 +294,10 @@ groupwise proportion
 
 </code></pre>
 <p>Die relativen Häufigkeiten berechnet man also über <code>prop</code>. Dazu muss die y-Variable auf <code>prop</code> gesetzt werden. Da der Aufruf</p>
-<div class="sourceCode" id="cb163"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb164"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gapminder</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">continent</span>, y <span class="op">=</span> <span class="va">prop</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>aber nach einer Variable <code>prop</code> suchen würde, muss eine alternative Notation in diesem Fall verwendet werden</p>
-<div class="sourceCode" id="cb164"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb165"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gapminder</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">continent</span>, y <span class="op">=</span> <span class="va">..prop..</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">## Warning: The dot-dot notation (`..prop..`) was deprecated</span></span>
@@ -309,7 +309,7 @@ groupwise proportion
 <div class="inline-figure"><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-11-1.png" width="80%" style="display: block; margin: auto;"></div>
 <p>Der Befehl hat jetzt zwar eine Grafik erzeugt, aber die sieht noch nicht so aus, wie wir das erwartet haben. Die
 relativen Häufigkeiten wurden innerhalb der fünf Gruppen berechnet und nicht über alle Beobachtungen. D.h. wir müssen der Funktion noch sagen, dass die relativen Häufigkeiten der fünf verschiedenen Ausprägungen (Kontinente) in eine Gruppe berechnet werden sollen. Dies geschieht über das <code>group</code> aesthetic.</p>
-<div class="sourceCode" id="cb165"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb166"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gapminder</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">continent</span>, y <span class="op">=</span> <span class="va">..prop..</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>group <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-12-1.png" width="80%" style="display: block; margin: auto;"></div>
@@ -334,7 +334,7 @@ relativen Häufigkeiten wurden innerhalb der fünf Gruppen berechnet und nicht �
 </ul>
 <p>modifizieren. Argumente dieser Funktionen sind z.B. <code>name</code>, <code>limits</code>, <code>breaks</code> oder <code>labels</code>.</p>
 <p>Zuerst spielen wir etwas mit Farben. Dazu plotten wir erneut <code>year</code> gegen <code>gdpPercap</code> und wählen für jeden Kontinent eine eigene Farbe. Da wir die Farben über <code>colour</code> definieren, verwenden wir Funktionen aus der Klasse <code>scale_colour_xxx()</code>. Hätten wir beispielsweise Flächen über das aesthetic <code>fill</code> mit Farbe gefüllt, so würden wir Funktionen aus der Klasse <code>scale_fill_xxx()</code> verwenden um die Farben anzupassen.</p>
-<div class="sourceCode" id="cb166"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb167"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">p</span> <span class="op">&lt;-</span> <span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">gdpPercap</span>, colour <span class="op">=</span> <span class="va">continent</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>  </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span> <span class="op">+</span></span>
@@ -359,7 +359,7 @@ relativen Häufigkeiten wurden innerhalb der fünf Gruppen berechnet und nicht �
 <p><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-13-1.png" width="50%"><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-13-2.png" width="50%"><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-13-3.png" width="50%"><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-13-4.png" width="50%"></p>
 <p>In diesem Beispiel haben wir also die Farbe nachträglich über eine vorgegebene Palette, in Grau-Stufen bzw. manuell gewählt. Im letzten Beispiel haben wir zusätzlich noch den Titel der Legende geändert über das <code>name</code> Argument.</p>
 <p>Die Achsenbeschriftung der y-Achse ist nicht wirklich schön, weil nicht unbedingt selbsterklärend. Daher ändern wir im nächsten Schritt die Achsenbeschriftung.</p>
-<div class="sourceCode" id="cb167"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb168"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="va">p</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_manual.html">scale_colour_manual</a></span><span class="op">(</span></span>
 <span>  values <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"palevioletred3"</span>, <span class="st">"seagreen"</span>, <span class="st">"sienna1"</span>, <span class="st">"sienna4"</span>, <span class="st">"yellow"</span><span class="op">)</span><span class="op">)</span></span>
@@ -369,7 +369,7 @@ relativen Häufigkeiten wurden innerhalb der fünf Gruppen berechnet und nicht �
 <span><span class="co">## formula = 'y ~ x'</span></span></code></pre></div>
 <div class="inline-figure"><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-14-1.png" width="80%" style="display: block; margin: auto;"></div>
 <p>Da es sich bei <code>gdpPercap</code> um eine stetige Variable handelt, haben wir <code><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous()</a></code> verwendet (im Gegensatz zu <code><a href="https://ggplot2.tidyverse.org/reference/scale_discrete.html">scale_y_discrete()</a></code>) um die Achsenbeschriftung zu ändern. Über die Hilfsfunktion <code><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs()</a></code> können wir die Beschriftung der Grafik aber auch einfacher/intuitiver ändern.</p>
-<div class="sourceCode" id="cb168"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb169"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="op">(</span><span class="va">p</span> <span class="op">&lt;-</span> <span class="va">p</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Jahr"</span>, y <span class="op">=</span> <span class="st">"GDP pro Kopf"</span>,</span>
 <span>         title <span class="op">=</span> <span class="st">"Monoton steigendes GDP pro Kopf"</span>,</span>
 <span>         subtitle <span class="op">=</span> <span class="st">"Gestrichelte Linie zeigt Durchschnittswerte über alle</span></span>
@@ -379,7 +379,7 @@ relativen Häufigkeiten wurden innerhalb der fünf Gruppen berechnet und nicht �
 <div class="inline-figure"><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-15-1.png" width="80%" style="display: block; margin: auto;"></div>
 <p>Die frühen Kuwait-Beobachtungen ziehen die y-Achse stark auseinander. Daher könnte man vielleicht etwas in den Plot hinein zoomen wollen. Dazu kann man das Koordinatensystem anpassen über <code>coord_cartasian()</code>. Alternativ könnte man auch mit der Funktion <code><a href="https://ggplot2.tidyverse.org/reference/lims.html">ylim()</a></code> arbeiten (analog existiert natürlich auch <code><a href="https://ggplot2.tidyverse.org/reference/lims.html">xlim()</a></code>).</p>
 <p>Verwendet man aber <code><a href="https://ggplot2.tidyverse.org/reference/lims.html">xlim()</a></code> bzw. <code><a href="https://ggplot2.tidyverse.org/reference/lims.html">ylim()</a></code>, so werden alle Datenpunkte, die nicht im zu plottenden Bereich liegen, aber nicht nur nicht gezeichnet, sondern auch aus dem Datensatz (für diesen einen Plot) entfernt. Dies hat dann Auswirkungen auf Teile des Plots, die auf statistische Transformationen basieren, welche mithilfe der vorhanden Daten berechnet werden.</p>
-<div class="sourceCode" id="cb169"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb170"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html">ylim</a></span><span class="op">(</span><span class="fl">0</span>,<span class="fl">55000</span><span class="op">)</span></span>
 <span><span class="co">## `geom_smooth()` using method = 'loess' and</span></span>
 <span><span class="co">## formula = 'y ~ x'</span></span>
@@ -393,13 +393,13 @@ relativen Häufigkeiten wurden innerhalb der fünf Gruppen berechnet und nicht �
 <p><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-16-1.png" width="50%"><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-16-2.png" width="50%"></p>
 <p>In der rechten Grafik ist der Verlauf der Kurven unverändert. In der linken Grafik hingegen liegt die Kurve für Asien nun bis Mitte der 80er Jahre deutlich unter der Kurve für Amerika.</p>
 <p>Weitere (mögliche) Positionsänderungen ergeben sich durch Skalierungen der Achsen wie <code><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_log10()</a></code>, <code><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_sqrt()</a></code> oder</p>
-<div class="sourceCode" id="cb170"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb171"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_reverse</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">## `geom_smooth()` using method = 'loess' and</span></span>
 <span><span class="co">## formula = 'y ~ x'</span></span></code></pre></div>
 <div class="inline-figure"><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-17-1.png" width="80%" style="display: block; margin: auto;"></div>
 <p>Am Ende von diesem Abschnitt wollen wir nochmal ein Blick auf die Häufigkeitsverteilung bzgl. der verschiedenen Kontinente werfen. Diesmal wollen wir aber zusätzlich noch die GDP pro Kopf Werte berücksichtigen. Dazu teilen wir die GDP Werte in <strong>niedrig</strong> (kleiner als das 0.25 Quantil aller Beobachtungen), <strong>mittel</strong> (zwischen dem 0.25 und 0.75 Quantil aller Beobachtungen) und <strong>hoch</strong> (über dem 0.75 Quantil aller Beobachtungen) ein. Diese Information nutzen wir dann zum Einfärben der Balken</p>
-<div class="sourceCode" id="cb171"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb172"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gapminder</span>, </span>
 <span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">continent</span>,</span>
 <span>           fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span><span class="op">(</span><span class="va">gdpPercap</span>, </span>
@@ -411,7 +411,7 @@ relativen Häufigkeiten wurden innerhalb der fünf Gruppen berechnet und nicht �
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-18-1.png" width="80%" style="display: block; margin: auto;"></div>
 <p>Wir erkennen, dass die notwendige Klassifizierung der GDP Werte im Plot Befehl erfolgen kann. Das produzierte Ergebnis ist aber natürlich nicht so überzeugend. Die Überschrift, wie die Beschriftungen der Legende müssen angepasst werden. Dazu verwenden wir die Funktion <code><a href="https://ggplot2.tidyverse.org/reference/scale_colour_discrete.html">scale_fill_discrete()</a></code>.</p>
-<div class="sourceCode" id="cb172"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb173"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">q</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">gapminder</span>, </span>
 <span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">continent</span>,</span>
 <span>           fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span><span class="op">(</span><span class="va">gdpPercap</span>, </span>
@@ -426,14 +426,14 @@ relativen Häufigkeiten wurden innerhalb der fünf Gruppen berechnet und nicht �
 <span>                      labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"niedrig"</span>, <span class="st">"mittel"</span>, <span class="st">"hoch"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-19-1.png" width="80%" style="display: block; margin: auto;"></div>
 <p>In dieser Darstellung bleibt es bei einem Balken pro Kontinent. Würden wir aber gerne (bis zu) drei Balken pro Kontinent sehen, müssen die Positionierung ändern.</p>
-<div class="sourceCode" id="cb173"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb174"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">q</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"dodge"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_colour_discrete.html">scale_fill_discrete</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"GDP\nKlassifizierung"</span>,</span>
 <span>                      labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"niedrig"</span>, <span class="st">"mittel"</span>, <span class="st">"hoch"</span><span class="op">)</span><span class="op">)</span> </span></code></pre></div>
 <div class="inline-figure"><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-20-1.png" width="80%" style="display: block; margin: auto;"></div>
 <p>Gefällt einem das kartesische Koordinatensystem nicht, könnte man beispielsweise mit Polarkoordinaten arbeiten.</p>
-<div class="sourceCode" id="cb174"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb175"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">q</span> <span class="op">+</span> </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"dodge"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_colour_discrete.html">scale_fill_discrete</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"GDP\nKlassifizierung"</span>,</span>
@@ -447,7 +447,7 @@ relativen Häufigkeiten wurden innerhalb der fünf Gruppen berechnet und nicht �
 <span class="header-section-number">11.5</span> Facets<a class="anchor" aria-label="anchor" href="#facets"><i class="fas fa-link"></i></a>
 </h2>
 <p>Datensätze lassen sich oftmals bzgl. vorhandener Variablen gruppieren. Die zu untersuchenden Zusammenhänge zwischen weiteren Variablen sollten dann innerhalb dieser Gruppen dargestellt werden. Entsteht die Gruppierung basierend auf den Ausprägungen einer Variable, so kann man z.B. mit <code><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap()</a></code> arbeiten</p>
-<div class="sourceCode" id="cb175"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb176"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">gdpPercap</span> <span class="op">)</span><span class="op">)</span> <span class="op">+</span>  </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span> <span class="op">+</span></span>
@@ -457,7 +457,7 @@ relativen Häufigkeiten wurden innerhalb der fünf Gruppen berechnet und nicht �
 <span><span class="co">## formula = 'y ~ x'</span></span></code></pre></div>
 <div class="inline-figure"><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-22-1.png" width="80%" style="display: block; margin: auto;"></div>
 <p>In der letzten Grafik verwenden alle fünf Plots die gleiche Skala auf der y-Achse um die Vergleichbarkeit der Werte zu erhöhen. In manchen Fällen mag dies aber störend sein. Mit dem Argument <code>scales</code> könnt ihr die Skala “befreien”.</p>
-<div class="sourceCode" id="cb176"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb177"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">gdpPercap</span> <span class="op">)</span><span class="op">)</span> <span class="op">+</span>  </span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">0.9</span><span class="op">)</span> <span class="op">+</span></span>
@@ -467,7 +467,7 @@ relativen Häufigkeiten wurden innerhalb der fünf Gruppen berechnet und nicht �
 <span><span class="co">## formula = 'y ~ x'</span></span></code></pre></div>
 <div class="inline-figure"><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-23-1.png" width="80%" style="display: block; margin: auto;"></div>
 <p>Erfolgt die Gruppierung anhand von zwei Variablen, so bietet <code><a href="https://ggplot2.tidyverse.org/reference/facet_grid.html">facet_grid()</a></code> eine passende Aufteilung des Grafikfensters in Zeilen und Spalten. Neben dem Kontinent berücksichtigen wir jetzt auch noch die Populationsgröße des Landes. Konkret fragen wir ob die Population im entsprechenden Jahr größer als 5000000 ist, oder eben nicht.</p>
-<div class="sourceCode" id="cb177"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb178"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">continent</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">year</span>, y <span class="op">=</span> <span class="va">gdpPercap</span> <span class="op">)</span><span class="op">)</span> <span class="op">+</span>  </span>
@@ -481,7 +481,7 @@ relativen Häufigkeiten wurden innerhalb der fünf Gruppen berechnet und nicht �
 <p>Die Beschriftung der Spalten sieht so natürlich nicht besonders schön aus. Ohne den Code ist die Beschriftung auch nicht zu verstehen, “Was ist wahr??”.</p>
 <p>Daher versuchen wir die Beschriftung über das Argument <code>labeller</code> der <code><a href="https://ggplot2.tidyverse.org/reference/facet_grid.html">facet_grid()</a></code> Funktion zu ändern. Zulässige Werte für das Argument <code>labeller</code> können über die <code><a href="https://ggplot2.tidyverse.org/reference/labeller.html">labeller()</a></code> Funktion definiert werden. Hier hat man neben weiteren Optionen die Möglichkeit für jede Ausprägung der Variable, die eine Spalten- (oder Zeilen-) Aufteilung definiert, ein Label zu setzen. Dazu muss
 die Variable über ihren Namen aufgerufen werden. Nun scheint es so, dass ein Aufruf über “Sondernamen” wie <code>pop &gt; 5000000</code> nicht funktioniert. Um trotzdem die Verwendung von <code>labeller</code> zu illustrieren, definieren wir zuerst mit <code>mutate</code> eine neue Variable <code>pop5</code> und setzen anschließend die Labels über das Argument <code>labeller</code>.</p>
-<div class="sourceCode" id="cb178"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb179"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">gapminder</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>pop5 <span class="op">=</span> <span class="va">pop</span> <span class="op">&gt;</span> <span class="fl">5000000</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">continent</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -508,7 +508,7 @@ die Variable über ihren Namen aufgerufen werden. Nun scheint es so, dass ein Au
 <li>….</li>
 </ul>
 <p>verändern. Eine Reihe von <code>themes</code> sind bereits vorhanden, wobei <code><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_gray()</a></code> das Default <code>theme</code> ist. Siehe auch <code>?theme_gray()</code>.</p>
-<div class="sourceCode" id="cb179"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb180"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p</span></span>
 <span><span class="co">## `geom_smooth()` using method = 'loess' and</span></span>
 <span><span class="co">## formula = 'y ~ x'</span></span>
@@ -530,7 +530,7 @@ die Variable über ihren Namen aufgerufen werden. Nun scheint es so, dass ein Au
 <li>die Hintergrundfarbe der Grafik und der Legende ändern</li>
 </ul>
 <p>Die meisten dieser Änderungen können wir mit <code><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme()</a></code> durchführen.</p>
-<div class="sourceCode" id="cb180"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb181"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="va">p</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_brewer.html">scale_colour_brewer</a></span><span class="op">(</span>palette <span class="op">=</span> <span class="st">"Set1"</span><span class="op">)</span> </span>
 <span><span class="co">## Scale for colour is already present.</span></span>
 <span><span class="co">## Adding another scale for colour, which will</span></span>
@@ -551,7 +551,7 @@ die Variable über ihren Namen aufgerufen werden. Nun scheint es so, dass ein Au
 <div class="inline-figure"><img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-27-1.png" width="80%" style="display: block; margin: auto;"></div>
 <p>Ob das nun alles schön aussieht, sei dahingestellt, aber es zeigt durchaus die vorhandenen Möglichkeiten.</p>
 <p>Will man gewisse Einstellung öfter verwenden, so kann man diese auch in einem <code>theme</code> Objekt speichern und wiederverwenden.</p>
-<div class="sourceCode" id="cb181"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb182"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">mein_theme</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
 <span>    axis.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">14</span><span class="op">)</span>,</span>
 <span>    legend.key <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_rect</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"hotpink3"</span><span class="op">)</span>,</span>
@@ -561,7 +561,7 @@ die Variable über ihren Namen aufgerufen werden. Nun scheint es so, dass ein Au
 <span>  <span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">mein_theme</span><span class="op">)</span></span>
 <span><span class="co">## [1] "theme" "gg"</span></span></code></pre></div>
-<div class="sourceCode" id="cb182"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb183"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p</span> <span class="op">+</span> <span class="va">mein_theme</span></span>
 <span><span class="co">## `geom_smooth()` using method = 'loess' and</span></span>
 <span><span class="co">## formula = 'y ~ x'</span></span></code></pre></div>

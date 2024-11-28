@@ -374,7 +374,7 @@ nrow
 ```
 ## function (x) 
 ## dim(x)[1L]
-## <bytecode: 0x10ee2bb88>
+## <bytecode: 0x1185ba388>
 ## <environment: namespace:base>
 ```
 Diese Funktion ist definiert in Abhängigkeit von `dim()` aus dem `base` Paket.

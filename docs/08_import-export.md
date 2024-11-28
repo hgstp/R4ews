@@ -71,7 +71,6 @@ Die Gapminder Daten könnten wir natürlich wie zuvor über das Laden des `gapmi
 
 ``` r
 library(fs)
-## Warning: package 'fs' was built under R version 4.4.1
 (gap_tsv <- path_package("gapminder", "extdata", "gapminder.tsv"))
 ## /Library/Frameworks/R.framework/Versions/4.4-arm64/Resources/library/gapminder/extdata/gapminder.tsv
 ```
@@ -261,7 +260,6 @@ und laden sie anschließend
 ``` r
 library(httr)
 library(jsonlite)
-## Warning: package 'jsonlite' was built under R version 4.4.1
 ## 
 ## Attaching package: 'jsonlite'
 ## The following object is masked from 'package:purrr':
@@ -302,7 +300,7 @@ Schauen wir uns an, wie die Variable `jdata` in der R-Konsole aussieht:
 ``` r
 jdata
 ## Response [http://api.open-notify.org/astros.json]
-##   Date: 2024-11-20 23:53
+##   Date: 2024-11-27 21:38
 ##   Status: 200
 ##   Content-Type: application/json
 ##   Size: 587 B
@@ -381,7 +379,7 @@ data$people
 ```
 
 
-Also, da haben wir unsere Antwort: Zum Zeitpunkt des letzten Updates Nov 21, 2024 von R4ews befanden sich 12 Personen im Weltraum. Aber wenn ihr den Code zu einem späteren Zeitpunkt ausprobiert, könnten es auch schon wieder andere Namen und eine andere Anzahl sein. Das ist einer der Vorteile von APIs - im Gegensatz zu Datensätzen, die man im Spreadsheet Format herunterladen kann, werden sie in der Regel in Echtzeit oder nahezu in Echtzeit aktualisiert. APIs bieten somit die Möglichkeit leicht auf sehr aktuelle Daten zuzugreifen.
+Also, da haben wir unsere Antwort: Zum Zeitpunkt des letzten Updates Nov 27, 2024 von R4ews befanden sich 12 Personen im Weltraum. Aber wenn ihr den Code zu einem späteren Zeitpunkt ausprobiert, könnten es auch schon wieder andere Namen und eine andere Anzahl sein. Das ist einer der Vorteile von APIs - im Gegensatz zu Datensätzen, die man im Spreadsheet Format herunterladen kann, werden sie in der Regel in Echtzeit oder nahezu in Echtzeit aktualisiert. APIs bieten somit die Möglichkeit leicht auf sehr aktuelle Daten zuzugreifen.
 
 
 In diesem Beispiel haben wir einen sehr unkomplizierten API-Workflow durchlaufen. Die meisten APIs fordern, dass man demselben allgemeinen Muster folgt, aber dabei können die jeweilgen Aufrufe/Befehle durchaus deutlich komplexer sein.
@@ -400,13 +398,13 @@ jdata <-  GET("http://api.open-notify.org/iss-now.json",)
 ``` r
 data <- fromJSON(rawToChar(jdata$content))
 data$iss_position
-## $longitude
-## [1] "132.6458"
-## 
 ## $latitude
-## [1] "-49.2877"
+## [1] "-28.6648"
+## 
+## $longitude
+## [1] "166.8485"
 data$timestamp
-## [1] 1732146814
+## [1] 1732743482
 ```
 
 
@@ -416,7 +414,7 @@ Diese API gibt uns die Zeit in Form von [Unixzeit](https://de.wikipedia.org/wiki
 
 ``` r
 lubridate::as_datetime(data$timestamp)
-## [1] "2024-11-20 23:53:34 UTC"
+## [1] "2024-11-27 21:38:02 UTC"
 ```
 
 

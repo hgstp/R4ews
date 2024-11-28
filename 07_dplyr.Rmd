@@ -438,6 +438,23 @@ my_gap |>
   arrange(worst_delta)
 ```
 
+Wenn wir auch die Information bezüglich des Jahres behalten möchten, können wir eine weitere Variable zum `summarize()` hinzufügen
+
+```{r end_dplyr_single_3}
+my_gap |>
+  group_by(continent, country) |>
+  # für jedes Land werden die Unterschiede berechnet
+  mutate(delta = lifeExp - lag(lifeExp, n = 1)) |> 
+  ## wir entfernen alle Beobachtungen, wo der Wert von delta fehlt
+  filter(!is.na(delta)) |> 
+  ## für jedes Land wird nur der kleinste Wert behalten
+  summarise(worst_delta = min(delta), year = year[which.min(delta)]) |> 
+  ## nun wird noch pro Kontinent, die Zeile mit dem kleinsten Wert ausgegeben
+  slice_min(worst_delta, n = 1) |> 
+  arrange(worst_delta)
+```
+
+
 Denkt ruhig eine Weile über das Ergebnis nach. Hier sieht man in trockenen Statistiken über die durchschnittliche Lebenserwartung, wie Völkermord aussieht.
 
 Um den Code besser zu verstehen, unterteilt ihn, beginnend von oben, in Stücke und überprüft die einzelnen Zwischenergebnisse. So wurde der Code auch geschrieben/entwickelt, mit Fehlern und Verfeinerungen auf dem Weg. 
