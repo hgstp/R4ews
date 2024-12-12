@@ -86,8 +86,8 @@ Wir schauen uns zum Start einfach mal für Deutschland den Verlauf des `gdpPerca
 
 
 ``` r
-gapminder %>%
-  filter(country == "Germany") %>% # auswählen der Daten 
+gapminder |> 
+  filter(country == "Germany") |>  # auswählen der Daten 
   ggplot(aes(x = year, y = gdpPercap)) +  # Plot initialisieren
   geom_point() # Punkte zum Darstellen der Daten verwenden
 ```
@@ -100,8 +100,8 @@ In dieser Grafik haben wir über `geom_point()` die Art des geometrischen Objekt
 
 
 ``` r
-gapminder %>%
-  filter(country == "Germany") %>% 
+gapminder |> 
+  filter(country == "Germany") |>  
   ggplot(aes(x = year, y = gdpPercap)) +  
   geom_point(shape = 2) # shape auf festen Wert 2 gesetzt
 ```

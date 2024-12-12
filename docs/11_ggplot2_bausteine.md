@@ -78,8 +78,8 @@ In einem Plot der `gdpPercap` Daten für Deutschland und Frankreich wollen wir a
 
 
 ``` r
-gapminder %>%
-  filter(country %in% c("Germany","France")) %>%  
+gapminder |> 
+  filter(country %in% c("Germany","France")) |>   
   ggplot(mapping = aes(x = year, y = gdpPercap, colour = country)) +  
   geom_point(size = 3) 
 ```
@@ -103,12 +103,12 @@ Im nächsten Beispiel stellen wir die gleichen Daten/Variablen über zwei versch
 
 
 ``` r
-gapminder %>%
+gapminder |> 
   ggplot(mapping = aes(x = year, y = gdpPercap)) +  
   geom_point() 
 
 
-gapminder %>%
+gapminder |> 
   ggplot(mapping = aes(x = year, y = gdpPercap)) +  
   geom_smooth() 
 ## `geom_smooth()` using method = 'gam' and formula = 'y ~ s(x, bs = "cs")'
@@ -124,7 +124,7 @@ Interessant sind hier natürlich die wenigen großen `gdpPercap` Werte in der li
 
 
 ``` r
-gapminder %>%
+gapminder |> 
   filter(gdpPercap > 50000)
 ## # A tibble: 6 × 6
 ##   country continent  year lifeExp     pop gdpPercap
@@ -146,7 +146,7 @@ Einem `ggplot` Objekt können wir nicht nur __ein__ `geom` zuordnen. Prinzipiell
 
 
 ``` r
-gapminder %>%
+gapminder |> 
   ggplot(mapping = aes(x = year, y = gdpPercap)) +  
   geom_point() +
   geom_smooth() 
@@ -161,7 +161,7 @@ Wählen wir die Farbe eines geometrischen Objekts (oder mehrerer)  anhand einer 
 
 
 ``` r
-gapminder %>%
+gapminder |> 
   ggplot(mapping = aes(x = year, y = gdpPercap)) +  
   geom_point(mapping = aes(colour = continent)) +
   geom_smooth() 
@@ -176,7 +176,7 @@ Aber natürlich hätten wir die Glättung auch pro Kontinent durchführen könne
 
 
 ``` r
-gapminder %>%
+gapminder |> 
   ggplot(mapping = aes(x = year, y = gdpPercap, colour = continent)) +  
   geom_point() +
   geom_smooth() 
@@ -191,7 +191,7 @@ Nehmen wir mal an, dass uns nun aber die Punkte etwas zu groß sind und die Lini
 
 
 ``` r
-gapminder %>%
+gapminder |> 
   ggplot(aes(x = year, y = gdpPercap, colour = continent)) +  
   geom_point(size = 0.9) +
   geom_smooth(linetype = 2) 
@@ -327,7 +327,7 @@ Zuerst spielen wir etwas mit Farben. Dazu plotten wir erneut `year` gegen `gdpPe
 
 
 ``` r
-(p <- gapminder %>%
+(p <- gapminder |> 
   ggplot(aes(x = year, y = gdpPercap, colour = continent)) +  
   geom_point(size = 0.9) +
   geom_smooth(linetype = 2) )
@@ -500,7 +500,7 @@ Datensätze lassen sich oftmals bzgl. vorhandener Variablen gruppieren. Die zu u
 
 
 ``` r
-gapminder %>%
+gapminder |> 
   ggplot(aes(x = year, y = gdpPercap )) +  
   geom_point(size = 0.9) +
   geom_smooth(linetype = 2) +
@@ -518,7 +518,7 @@ In der letzten Grafik verwenden alle fünf Plots die gleiche Skala auf der y-Ach
 
 
 ``` r
-gapminder %>%
+gapminder |> 
   ggplot(aes(x = year, y = gdpPercap )) +  
   geom_point(size = 0.9) +
   geom_smooth(linetype = 2) +
@@ -533,8 +533,8 @@ Erfolgt die Gruppierung anhand von zwei Variablen, so bietet `facet_grid()` eine
 
 
 ``` r
-gapminder %>%
-  group_by(continent) %>%
+gapminder |> 
+  group_by(continent) |> 
   ggplot(aes(x = year, y = gdpPercap )) +  
   geom_point(size = 0.9) +
   geom_smooth(linetype = 2) +
@@ -557,9 +557,9 @@ die Variable über ihren Namen aufgerufen werden. Nun scheint es so, dass ein Au
 
 
 ``` r
-gapminder %>%
-  mutate(pop5 = pop > 5000000) %>%
-  group_by(continent) %>%
+gapminder |> 
+  mutate(pop5 = pop > 5000000) |> 
+  group_by(continent) |> 
   ggplot(aes(x = year, y = gdpPercap )) +  
   geom_point(size = 0.9) +
   geom_smooth(linetype = 2) +

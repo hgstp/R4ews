@@ -274,8 +274,8 @@ l_x
 ##         mu)^2)/(2 * sigma_2))
 ##     l_x
 ## }
-## <bytecode: 0x137fbeed0>
-## <environment: 0x147ebc1f8>
+## <bytecode: 0x105524698>
+## <environment: 0x11edf25c0>
 ```
 
 ``` r

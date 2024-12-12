@@ -300,7 +300,7 @@ Schauen wir uns an, wie die Variable `jdata` in der R-Konsole aussieht:
 ``` r
 jdata
 ## Response [http://api.open-notify.org/astros.json]
-##   Date: 2024-11-27 21:38
+##   Date: 2024-12-12 07:47
 ##   Status: 200
 ##   Content-Type: application/json
 ##   Size: 587 B
@@ -379,7 +379,7 @@ data$people
 ```
 
 
-Also, da haben wir unsere Antwort: Zum Zeitpunkt des letzten Updates Nov 27, 2024 von R4ews befanden sich 12 Personen im Weltraum. Aber wenn ihr den Code zu einem späteren Zeitpunkt ausprobiert, könnten es auch schon wieder andere Namen und eine andere Anzahl sein. Das ist einer der Vorteile von APIs - im Gegensatz zu Datensätzen, die man im Spreadsheet Format herunterladen kann, werden sie in der Regel in Echtzeit oder nahezu in Echtzeit aktualisiert. APIs bieten somit die Möglichkeit leicht auf sehr aktuelle Daten zuzugreifen.
+Also, da haben wir unsere Antwort: Zum Zeitpunkt des letzten Updates Dec 12, 2024 von R4ews befanden sich 12 Personen im Weltraum. Aber wenn ihr den Code zu einem späteren Zeitpunkt ausprobiert, könnten es auch schon wieder andere Namen und eine andere Anzahl sein. Das ist einer der Vorteile von APIs - im Gegensatz zu Datensätzen, die man im Spreadsheet Format herunterladen kann, werden sie in der Regel in Echtzeit oder nahezu in Echtzeit aktualisiert. APIs bieten somit die Möglichkeit leicht auf sehr aktuelle Daten zuzugreifen.
 
 
 In diesem Beispiel haben wir einen sehr unkomplizierten API-Workflow durchlaufen. Die meisten APIs fordern, dass man demselben allgemeinen Muster folgt, aber dabei können die jeweilgen Aufrufe/Befehle durchaus deutlich komplexer sein.
@@ -398,13 +398,13 @@ jdata <-  GET("http://api.open-notify.org/iss-now.json",)
 ``` r
 data <- fromJSON(rawToChar(jdata$content))
 data$iss_position
-## $latitude
-## [1] "-28.6648"
-## 
 ## $longitude
-## [1] "166.8485"
+## [1] "170.7726"
+## 
+## $latitude
+## [1] "-36.8178"
 data$timestamp
-## [1] 1732743482
+## [1] 1733989656
 ```
 
 
@@ -414,7 +414,7 @@ Diese API gibt uns die Zeit in Form von [Unixzeit](https://de.wikipedia.org/wiki
 
 ``` r
 lubridate::as_datetime(data$timestamp)
-## [1] "2024-11-27 21:38:02 UTC"
+## [1] "2024-12-12 07:47:36 UTC"
 ```
 
 
