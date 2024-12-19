@@ -279,8 +279,9 @@ Wir starten mit __einer__ Stichprobe der Länge 100
 
 ```{r}
 set.seed(123) # zur reproduzierbarkeit
-x <- bowl |> 
-  rep_sample_n(size = 100) 
+x <- bowl |>
+  slice_sample(n = 100)
+x
 ```
 
 
@@ -297,10 +298,8 @@ wobei $x_i^b\in\{x_1,\dots, x_n\}$.
 ```{r}
 B <- 1000
 x_B <- x |> 
-  rep_sample_n(size = 100, replace = TRUE, reps = B) 
-
+  rep_sample_n(size = 100, replace = TRUE, reps = B)
 x_B
-
 ```
 
 
@@ -498,7 +497,8 @@ for(i in 1:100){
   calculate(stat = "prop")
   
   df$p_values[i] <- null_vert |>  
-  get_p_value(obs_stat = 0.36, direction = "greater")
+  get_p_value(obs_stat = 0.36, direction = "greater") |> 
+    pull()
 }
 ```
 
