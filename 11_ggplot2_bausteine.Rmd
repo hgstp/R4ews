@@ -232,7 +232,7 @@ ggplot(gapminder, aes(x = continent, y = prop))
 aber nach einer Variable `prop` suchen würde, muss eine alternative Notation in diesem Fall verwendet werden
 
 ```{r}
-ggplot(gapminder, aes(x = continent, y = ..prop..)) + 
+ggplot(gapminder, aes(x = continent, y = after_stat(prop))) + 
   geom_bar()
 ```
 
@@ -242,7 +242,7 @@ relativen Häufigkeiten wurden innerhalb der fünf Gruppen berechnet und nicht �
 
 
 ```{r}
-ggplot(gapminder, aes(x = continent, y = ..prop..)) + 
+ggplot(gapminder, aes(x = continent, y = after_stat(prop))) + 
   geom_bar(aes(group = 1))
 ```
 

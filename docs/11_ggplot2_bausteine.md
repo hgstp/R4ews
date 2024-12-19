@@ -274,14 +274,8 @@ aber nach einer Variable `prop` suchen würde, muss eine alternative Notation in
 
 
 ``` r
-ggplot(gapminder, aes(x = continent, y = ..prop..)) + 
+ggplot(gapminder, aes(x = continent, y = after_stat(prop))) + 
   geom_bar()
-## Warning: The dot-dot notation (`..prop..`) was deprecated
-## in ggplot2 3.4.0.
-## ℹ Please use `after_stat(prop)` instead.
-## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_lifecycle_warnings()` to
-## see where this warning was generated.
 ```
 
 <img src="11_ggplot2_bausteine_files/figure-html/unnamed-chunk-11-1.png" width="80%" style="display: block; margin: auto;" />
@@ -293,7 +287,7 @@ relativen Häufigkeiten wurden innerhalb der fünf Gruppen berechnet und nicht �
 
 
 ``` r
-ggplot(gapminder, aes(x = continent, y = ..prop..)) + 
+ggplot(gapminder, aes(x = continent, y = after_stat(prop))) + 
   geom_bar(aes(group = 1))
 ```
 

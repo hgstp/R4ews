@@ -208,8 +208,8 @@ in der DESCRIPTION Datei R Code verwendet werden um die nötigen Informationen
 
 Mit der Funktion `person()` können diese Informationen nun angegeben werden
 ```{}
-Authors@R: person(given = "Stephan", family = "Haug", 
-                  email = "haug@tum.de", 
+Authors@R: person(given = "Diana", family = "Conache", 
+                  email = "diana.conache@tum.de", 
                   role = c("cre", "aut"))
 ```
 
@@ -217,13 +217,13 @@ Der Output von `person()` sieht dann folgendermaßen aus
 
 
 ``` r
-person(given = "Stephan", family = "Haug", 
-                  email = "haug@tum.de", 
+person(given = "Diana", family = "Conache", 
+                  email = "diana.conache@tum.de", 
                   role = c("cre", "aut"))
 ```
 
 ```
-## [1] "Stephan Haug <haug@tum.de> [cre, aut]"
+## [1] "Diana Conache <diana.conache@tum.de> [cre, aut]"
 ```
 
 
@@ -374,7 +374,7 @@ nrow
 ```
 ## function (x) 
 ## dim(x)[1L]
-## <bytecode: 0x12cc84388>
+## <bytecode: 0x1395ba388>
 ## <environment: namespace:base>
 ```
 Diese Funktion ist definiert in Abhängigkeit von `dim()` aus dem `base` Paket.

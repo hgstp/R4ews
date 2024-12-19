@@ -48,7 +48,7 @@ und berechnen anschließend den Anteil
 
 ```{r}
 (n <- nrow(bowl))
-bowl %>%
+bowl |> 
   summarise(prop = sum(color == "red") / n)
 
 ```
@@ -79,16 +79,16 @@ Nun ziehen wir eine Stichprobe. Allerdings machen wir das gleich für verschiede
 
 ```{r}
 library(infer)
-bowl %>%
-  rep_sample_n(size = 25) %>%
+bowl |> 
+  rep_sample_n(size = 25) |> 
   summarise(prop = sum(color == "red") / 25)
 
-bowl %>%
-  rep_sample_n(size = 50) %>%
+bowl |> 
+  rep_sample_n(size = 50) |> 
   summarise(prop = sum(color == "red") / 50)
 
-bowl %>%
-  rep_sample_n(size = 100) %>%
+bowl |> 
+  rep_sample_n(size = 100) |> 
   summarise(prop = sum(color == "red") / 100)
 
 
@@ -110,13 +110,13 @@ Aber da wir ja nur am Computer unsere Stichproben erheben, ist es für uns kein 
 
 
 ```{r}
-stp_25 <- bowl %>%
+stp_25 <- bowl |> 
   rep_sample_n(size = 25, reps = 1000) 
 
-stp_50 <- bowl %>%
+stp_50 <- bowl |> 
   rep_sample_n(size = 50, reps = 1000) 
 
-stp_100<- bowl %>%
+stp_100<- bowl |> 
   rep_sample_n(size = 100, reps = 1000) 
 
 ```
@@ -130,16 +130,16 @@ mit $x_i =\begin{cases} 1, \text{Kugel ist rot}\\0, \text{sonst}\end{cases}$, zu
 berechnen
 
 ```{r}
-stp_25 %>%
-  summarise(prop = sum(color == "red") / 25) %>%
+stp_25 |> 
+  summarise(prop = sum(color == "red") / 25) |> 
   summarise(sd_prop = sd(prop))
 
-stp_50 %>%
-  summarise(prop = sum(color == "red") / 50) %>%
+stp_50 |> 
+  summarise(prop = sum(color == "red") / 50) |> 
   summarise(sd_prop = sd(prop))
 
-stp_100 %>%
-  summarise(prop = sum(color == "red") / 100) %>%
+stp_100 |> 
+  summarise(prop = sum(color == "red") / 100) |> 
   summarise(sd_prop = sd(prop))
 ```
 
@@ -150,8 +150,8 @@ sowie ein Histogramm von $\overline x_n^1, \dots, \overline x_n^{1000}$
 
 
 ```{r, fig.align='default', fig.show='hold', out.width="33%", message=FALSE, warning=FALSE}
-stp_25 %>%
-  summarise(prop = sum(color == "red") / 25) %>%
+stp_25 |> 
+  summarise(prop = sum(color == "red") / 25) |> 
   ggplot(aes(x = prop)) + 
   geom_histogram(binwidth = 0.05, color = "white") +
   xlim(0.01, 0.8) +
@@ -159,8 +159,8 @@ stp_25 %>%
              size = 2)
 
   
-stp_50 %>%
-  summarise(prop = sum(color == "red") / 50) %>%
+stp_50 |> 
+  summarise(prop = sum(color == "red") / 50) |> 
   ggplot(aes(x = prop)) + 
   geom_histogram(binwidth = 0.05, color = "white")+
   xlim(0.01, 0.8) +
@@ -169,8 +169,8 @@ stp_50 %>%
 
 
 
-stp_100 %>%
-  summarise(prop = sum(color == "red") / 100) %>%
+stp_100 |> 
+  summarise(prop = sum(color == "red") / 100) |> 
   ggplot(aes(x = prop)) + 
   geom_histogram(binwidth = 0.05, color = "white")+
   xlim(0.01, 0.8) +
@@ -247,13 +247,13 @@ $$P\left(\overline X_n  \leq x\right) \approx \Phi_{\widehat \theta,\frac{\wideh
 
 Für die Stichprobenlänge 100 visualisieren wir diesen Zusammenhang 
 ```{r, warning=FALSE}
-sample <- stp_100 %>%
+sample <- stp_100 |> 
   summarise(prop = sum(color == "red") / 100) 
 theta_hat <- mean(sample$prop)
 
 
-stp_100 %>%
-  summarise(prop = sum(color == "red") / 100) %>%
+stp_100 |> 
+  summarise(prop = sum(color == "red") / 100) |> 
   ggplot() + 
   geom_histogram(aes(x = prop, y = ..density..), binwidth = 0.02,
                  color = "white") +
@@ -279,7 +279,7 @@ Wir starten mit __einer__ Stichprobe der Länge 100
 
 ```{r}
 set.seed(123) # zur reproduzierbarkeit
-x <- bowl %>%
+x <- bowl |> 
   rep_sample_n(size = 100) 
 ```
 
@@ -296,7 +296,7 @@ wobei $x_i^b\in\{x_1,\dots, x_n\}$.
 
 ```{r}
 B <- 1000
-x_B <- x %>%
+x_B <- x |> 
   rep_sample_n(size = 100, replace = TRUE, reps = B) 
 
 x_B
@@ -310,7 +310,7 @@ Für jede dieser $B$ Stichprobenwiederholungen berechnen wir nun das empirische 
 $$\overline x_n^b = \frac{1}{n}\sum_{i=1}^n x_i^b\,,\qquad b=1, \dots, B$$
 
 ```{r}
-mean_x_B <- x_B %>%
+mean_x_B <- x_B |> 
   summarise(prop = mean(color == "red"))
 mean_x_B
 ```
@@ -324,7 +324,7 @@ Das beschriebene Verfahren kennt man in der Literatur unter dem Namen [__Bootstr
 
 
 ```{r}
-mean_x_B %>%
+mean_x_B |> 
   ggplot(aes(x = prop)) + 
   geom_histogram(binwidth = 0.01, color = "white")
 
@@ -335,7 +335,7 @@ mean_x_B %>%
 Wir erkennen erneut eine symmetrische Verteilung, die um den empirischen Mittelwert der Stichprobe $x$
 
 ```{r}
-x %>%
+x |> 
   summarise(prop = mean(color == "red"))
 ```
 
@@ -355,12 +355,12 @@ Dazu erzeugen wir zunächst erneut die Bootstrap Verteilung und nutzen dazu die 
 
 ```{r, echo=-1}
 set.seed(999)
-boot_vert <- x %>% 
-  specify(response = color, success = "red") %>%
-  generate(reps = 1000, type = "bootstrap") %>%
+boot_vert <- x |>  
+  specify(response = color, success = "red") |> 
+  generate(reps = 1000, type = "bootstrap") |> 
   calculate(stat = "prop") 
 
-boot_vert %>%
+boot_vert |> 
   visualise(bins = 30)
 ```
 
@@ -368,7 +368,7 @@ boot_vert %>%
 Um nun beispielsweise ein Intervall zu konstruieren, welches die unbekannte Wahrscheinlichkeit $\theta$ näherungsweise mit einer Wahrscheinlichkeit von $0.95$ überdeckt, betrachten wir einfach die __mittleren 95%__, der berechneten empirischen Mittelwerte. Das entsprechende Intervall bezeichnen wir dann als approximatives 95% Konfidenzintervall für $\theta$ - mehr zu Konfidenzintervallen in Kapitel 6.8 der Vorlesung.
 
 ```{r}
-boot_ki <- boot_vert %>%
+boot_ki <- boot_vert |> 
   get_confidence_interval(level = 0.95, type = "percentile")
 
 boot_ki
@@ -416,7 +416,7 @@ __Bemerkung:__ Warum wir die Grenze $\theta_0$ als wahren Wert wählen, wenn wir
 Für unsere Stichprobe haben wir einen Anteil von
 
 ```{r}
-x  %>%
+x  |> 
   summarise(prop = sum(color == "red") / 100)  
 ```
 
@@ -452,10 +452,10 @@ Diesen Ansatz wollen wir nun noch anhand des vorliegende Testproblem illustriere
 
 
 ```{r}
-null_vert <- x %>% 
-  specify(response = color, success = "red") %>% 
-  hypothesise(null = "point", p = 1/3) %>% 
-  generate(reps = 1000, type = "draw") %>% 
+null_vert <- x |>  
+  specify(response = color, success = "red") |>  
+  hypothesise(null = "point", p = 1/3) |>  
+  generate(reps = 1000, type = "draw") |>  
   calculate(stat = "prop")
 
 ```
@@ -471,7 +471,7 @@ Die Wahrscheinlichkeit $P_{\theta_0}\left(\overline X_n  \geq 0.36\right)$ könn
 
 
 ```{r}
-null_vert %>%
+null_vert |> 
   visualise(bins = 30) +
   shade_p_value(obs_stat = 0.36, direction = "greater")
 ```
@@ -480,7 +480,7 @@ null_vert %>%
 und numerisch ausgeben
 
 ```{r}
-null_vert %>% 
+null_vert |>  
   get_p_value(obs_stat = 0.36, direction = "greater")
 ```
 
@@ -491,13 +491,13 @@ Wiederholt man den ganzen Durchlauf 100 Mal, so erhält man stets unterschiedlic
 ```{r, cache = TRUE}
 df <- data.frame(p_values = numeric(length = 100L))
 for(i in 1:100){
-  null_vert <- x %>% 
-  specify(response = color, success = "red") %>% 
-  hypothesise(null = "point", p = 1/3) %>% 
-  generate(reps = 1000, type = "draw") %>% 
+  null_vert <- x |>  
+  specify(response = color, success = "red") |>  
+  hypothesise(null = "point", p = 1/3) |>  
+  generate(reps = 1000, type = "draw") |>  
   calculate(stat = "prop")
   
-  df$p_values[i] <- null_vert %>% 
+  df$p_values[i] <- null_vert |>  
   get_p_value(obs_stat = 0.36, direction = "greater")
 }
 ```
@@ -505,7 +505,7 @@ for(i in 1:100){
 Die simulierten p-Wert sind in der nachfolgenden Grafik visualisiert.
 
 ```{r}
-df %>% 
+df |>  
   ggplot(aes(x = seq_along(p_values), y = p_values)) +
   geom_bar(stat = "identity") + 
   labs(x = "Durchlauf", y = "p-Wert", title = "Simulationsbasierte p-Werte")
