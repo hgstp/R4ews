@@ -17,7 +17,7 @@ Eine solche findet man im Paket `moderndive`. Die Autoren des Pakets haben auch 
 Nun aber zurück zur digitalen Urne
 
 
-```r
+``` r
 library(moderndive)
 bowl
 ```
@@ -36,7 +36,7 @@ bowl
 ##  8       8 white
 ##  9       9 red  
 ## 10      10 white
-## # … with 2,390 more rows
+## # ℹ 2,390 more rows
 ```
 
 Nach einem ersten Blick auf die Urne, entstehen eine Reihe von Fragen
@@ -48,7 +48,7 @@ Nach einem ersten Blick auf die Urne, entstehen eine Reihe von Fragen
 Wie viele Farben gibt es in der Urne?
 
 
-```r
+``` r
 unique(bowl$color)
 ```
 
@@ -64,14 +64,14 @@ Wie hoch ist der Anteil roter Kugeln?
 Da es sich um eine digitale Urne handelt, ist das Zählen schnell geschehen und daher kein Problem für uns. Wir können also leicht eine __Vollerhebung__ der Population durchführen. Den Anteil roter Kugeln berechnen wir mithilfe der Funktion `summarise()` (wir fassen den Inhalt der Urne zusammen, indem wir dir relative Häufigkeit roter Kugeln berechnen). Daher laden wir zunächst `tidyverse`
 
 
-```r
+``` r
 library(tidyverse)
 ```
 
 und berechnen anschließend den Anteil
 
 
-```r
+``` r
 (n <- nrow(bowl))
 ```
 
@@ -79,8 +79,8 @@ und berechnen anschließend den Anteil
 ## [1] 2400
 ```
 
-```r
-bowl %>%
+``` r
+bowl |> 
   summarise(prop = sum(color == "red") / n)
 ```
 
@@ -116,10 +116,10 @@ $$ (\{0,1\}^n, \mathcal{P}(\{0,1\})^n, Binomial(1,\theta)^{\otimes n}_{\theta\in
 Nun ziehen wir eine Stichprobe. Allerdings machen wir das gleich für verschiedene Stichprobenlängen  $n\in\{25, 50, 100\}$, um etwas den Einfluss der Stichprobenlänge analysieren zu können. Für jede der drei Stichproben berechnen wir anschließend die relative Häufigkeit roter Kugeln. Zum Ziehen der Stichprobe verwenden wir die Funktion `infer::rep_sample_n()`. Es ist nicht unbedingt nötig hier ein weiteres Paket zu laden, aber das `infer` Paket ist an dieser Stelle (auch noch später) sehr hilfreich und die enthaltenen Funktionen sind intutiv in der Handhabung.
 
 
-```r
+``` r
 library(infer)
-bowl %>%
-  rep_sample_n(size = 25) %>%
+bowl |> 
+  rep_sample_n(size = 25) |> 
   summarise(prop = sum(color == "red") / 25)
 ```
 
@@ -127,12 +127,12 @@ bowl %>%
 ## # A tibble: 1 × 2
 ##   replicate  prop
 ##       <int> <dbl>
-## 1         1  0.24
+## 1         1  0.28
 ```
 
-```r
-bowl %>%
-  rep_sample_n(size = 50) %>%
+``` r
+bowl |> 
+  rep_sample_n(size = 50) |> 
   summarise(prop = sum(color == "red") / 50)
 ```
 
@@ -140,12 +140,12 @@ bowl %>%
 ## # A tibble: 1 × 2
 ##   replicate  prop
 ##       <int> <dbl>
-## 1         1  0.36
+## 1         1   0.4
 ```
 
-```r
-bowl %>%
-  rep_sample_n(size = 100) %>%
+``` r
+bowl |> 
+  rep_sample_n(size = 100) |> 
   summarise(prop = sum(color == "red") / 100)
 ```
 
@@ -153,7 +153,7 @@ bowl %>%
 ## # A tibble: 1 × 2
 ##   replicate  prop
 ##       <int> <dbl>
-## 1         1  0.38
+## 1         1  0.36
 ```
 
 
@@ -172,14 +172,14 @@ Aber da wir ja nur am Computer unsere Stichproben erheben, ist es für uns kein 
 
 
 
-```r
-stp_25 <- bowl %>%
+``` r
+stp_25 <- bowl |> 
   rep_sample_n(size = 25, reps = 1000) 
 
-stp_50 <- bowl %>%
+stp_50 <- bowl |> 
   rep_sample_n(size = 50, reps = 1000) 
 
-stp_100<- bowl %>%
+stp_100<- bowl |> 
   rep_sample_n(size = 100, reps = 1000) 
 ```
 
@@ -192,9 +192,9 @@ mit $x_i =\begin{cases} 1, \text{Kugel ist rot}\\0, \text{sonst}\end{cases}$, zu
 berechnen
 
 
-```r
-stp_25 %>%
-  summarise(prop = sum(color == "red") / 25) %>%
+``` r
+stp_25 |> 
+  summarise(prop = sum(color == "red") / 25) |> 
   summarise(sd_prop = sd(prop))
 ```
 
@@ -202,12 +202,12 @@ stp_25 %>%
 ## # A tibble: 1 × 1
 ##   sd_prop
 ##     <dbl>
-## 1  0.0983
+## 1   0.101
 ```
 
-```r
-stp_50 %>%
-  summarise(prop = sum(color == "red") / 50) %>%
+``` r
+stp_50 |> 
+  summarise(prop = sum(color == "red") / 50) |> 
   summarise(sd_prop = sd(prop))
 ```
 
@@ -215,12 +215,12 @@ stp_50 %>%
 ## # A tibble: 1 × 1
 ##   sd_prop
 ##     <dbl>
-## 1  0.0674
+## 1  0.0649
 ```
 
-```r
-stp_100 %>%
-  summarise(prop = sum(color == "red") / 100) %>%
+``` r
+stp_100 |> 
+  summarise(prop = sum(color == "red") / 100) |> 
   summarise(sd_prop = sd(prop))
 ```
 
@@ -228,7 +228,7 @@ stp_100 %>%
 ## # A tibble: 1 × 1
 ##   sd_prop
 ##     <dbl>
-## 1  0.0467
+## 1  0.0479
 ```
 
 
@@ -238,9 +238,9 @@ sowie ein Histogramm von $\overline x_n^1, \dots, \overline x_n^{1000}$
 
 
 
-```r
-stp_25 %>%
-  summarise(prop = sum(color == "red") / 25) %>%
+``` r
+stp_25 |> 
+  summarise(prop = sum(color == "red") / 25) |> 
   ggplot(aes(x = prop)) + 
   geom_histogram(binwidth = 0.05, color = "white") +
   xlim(0.01, 0.8) +
@@ -248,8 +248,8 @@ stp_25 %>%
              size = 2)
 
   
-stp_50 %>%
-  summarise(prop = sum(color == "red") / 50) %>%
+stp_50 |> 
+  summarise(prop = sum(color == "red") / 50) |> 
   ggplot(aes(x = prop)) + 
   geom_histogram(binwidth = 0.05, color = "white")+
   xlim(0.01, 0.8) +
@@ -258,8 +258,8 @@ stp_50 %>%
 
 
 
-stp_100 %>%
-  summarise(prop = sum(color == "red") / 100) %>%
+stp_100 |> 
+  summarise(prop = sum(color == "red") / 100) |> 
   ggplot(aes(x = prop)) + 
   geom_histogram(binwidth = 0.05, color = "white")+
   xlim(0.01, 0.8) +
@@ -335,14 +335,14 @@ $$P\left(\overline X_n  \leq x\right) \approx \Phi_{\widehat \theta,\frac{\wideh
 
 Für die Stichprobenlänge 100 visualisieren wir diesen Zusammenhang 
 
-```r
-sample <- stp_100 %>%
+``` r
+sample <- stp_100 |> 
   summarise(prop = sum(color == "red") / 100) 
 theta_hat <- mean(sample$prop)
 
 
-stp_100 %>%
-  summarise(prop = sum(color == "red") / 100) %>%
+stp_100 |> 
+  summarise(prop = sum(color == "red") / 100) |> 
   ggplot() + 
   geom_histogram(aes(x = prop, y = ..density..), binwidth = 0.02,
                  color = "white") +
@@ -369,10 +369,28 @@ Nun wollen wir die Verteilung der Statistik (immer noch das empirische Mittel $\
 Wir starten mit __einer__ Stichprobe der Länge 100
 
 
-```r
+``` r
 set.seed(123) # zur reproduzierbarkeit
-x <- bowl %>%
-  rep_sample_n(size = 100) 
+x <- bowl |>
+  slice_sample(n = 100)
+x
+```
+
+```
+## # A tibble: 100 × 2
+##    ball_ID color
+##      <int> <chr>
+##  1    2227 red  
+##  2     526 white
+##  3     195 white
+##  4    1842 white
+##  5    1142 red  
+##  6    1253 white
+##  7    1268 white
+##  8    1038 red  
+##  9     665 white
+## 10    1627 white
+## # ℹ 90 more rows
 ```
 
 
@@ -387,11 +405,10 @@ wobei $x_i^b\in\{x_1,\dots, x_n\}$.
 
 
 
-```r
+``` r
 B <- 1000
-x_B <- x %>%
-  rep_sample_n(size = 100, replace = TRUE, reps = B) 
-
+x_B <- x |> 
+  rep_sample_n(size = 100, replace = TRUE, reps = B)
 x_B
 ```
 
@@ -410,7 +427,7 @@ x_B
 ##  8         1    1029 white
 ##  9         1     316 white
 ## 10         1     165 white
-## # … with 99,990 more rows
+## # ℹ 99,990 more rows
 ```
 
 
@@ -420,8 +437,8 @@ Für jede dieser $B$ Stichprobenwiederholungen berechnen wir nun das empirische 
 $$\overline x_n^b = \frac{1}{n}\sum_{i=1}^n x_i^b\,,\qquad b=1, \dots, B$$
 
 
-```r
-mean_x_B <- x_B %>%
+``` r
+mean_x_B <- x_B |> 
   summarise(prop = mean(color == "red"))
 mean_x_B
 ```
@@ -440,7 +457,7 @@ mean_x_B
 ##  8         8  0.32
 ##  9         9  0.31
 ## 10        10  0.31
-## # … with 990 more rows
+## # ℹ 990 more rows
 ```
 
 
@@ -452,8 +469,8 @@ Das beschriebene Verfahren kennt man in der Literatur unter dem Namen [__Bootstr
 
 
 
-```r
-mean_x_B %>%
+``` r
+mean_x_B |> 
   ggplot(aes(x = prop)) + 
   geom_histogram(binwidth = 0.01, color = "white")
 ```
@@ -464,16 +481,16 @@ mean_x_B %>%
 Wir erkennen erneut eine symmetrische Verteilung, die um den empirischen Mittelwert der Stichprobe $x$
 
 
-```r
-x %>%
+``` r
+x |> 
   summarise(prop = mean(color == "red"))
 ```
 
 ```
-## # A tibble: 1 × 2
-##   replicate  prop
-##       <int> <dbl>
-## 1         1  0.36
+## # A tibble: 1 × 1
+##    prop
+##   <dbl>
+## 1  0.36
 ```
 
 
@@ -491,13 +508,13 @@ Dazu erzeugen wir zunächst erneut die Bootstrap Verteilung und nutzen dazu die 
 - `visualise()`: visualisiert die Bootstrap Verteilung der in `calculate()` berechneten Statistik
 
 
-```r
-boot_vert <- x %>% 
-  specify(response = color, success = "red") %>%
-  generate(reps = 1000, type = "bootstrap") %>%
+``` r
+boot_vert <- x |>  
+  specify(response = color, success = "red") |> 
+  generate(reps = 1000, type = "bootstrap") |> 
   calculate(stat = "prop") 
 
-boot_vert %>%
+boot_vert |> 
   visualise(bins = 30)
 ```
 
@@ -507,8 +524,8 @@ boot_vert %>%
 Um nun beispielsweise ein Intervall zu konstruieren, welches die unbekannte Wahrscheinlichkeit $\theta$ näherungsweise mit einer Wahrscheinlichkeit von $0.95$ überdeckt, betrachten wir einfach die __mittleren 95%__, der berechneten empirischen Mittelwerte. Das entsprechende Intervall bezeichnen wir dann als approximatives 95% Konfidenzintervall für $\theta$ - mehr zu Konfidenzintervallen in Kapitel 6.8 der Vorlesung.
 
 
-```r
-boot_ki <- boot_vert %>%
+``` r
+boot_ki <- boot_vert |> 
   get_confidence_interval(level = 0.95, type = "percentile")
 
 boot_ki
@@ -525,7 +542,7 @@ boot_ki
 Das Intervall können wir dann noch zusammen mit der Bootstrap Verteilung visualisieren
 
 
-```r
+``` r
 visualise(boot_vert, bins =30) +
   shade_confidence_interval(endpoints = boot_ki, color = "gold",
                             fill = "gold") + 
@@ -566,16 +583,16 @@ __Bemerkung:__ Warum wir die Grenze $\theta_0$ als wahren Wert wählen, wenn wir
 Für unsere Stichprobe haben wir einen Anteil von
 
 
-```r
-x  %>%
+``` r
+x  |> 
   summarise(prop = sum(color == "red") / 100)  
 ```
 
 ```
-## # A tibble: 1 × 2
-##   replicate  prop
-##       <int> <dbl>
-## 1         1  0.36
+## # A tibble: 1 × 1
+##    prop
+##   <dbl>
+## 1  0.36
 ```
 
 erhalten. Dementsprechend wäre die Frage wie groß die Wahrscheinlichkeit 
@@ -583,7 +600,7 @@ $$P_{\theta_0}\left(\overline X_n  \geq 0.36\right)$$
 ist, also die Wahrscheinlichkeit einen Wert so groß wie den beobachteten Stichprobenwert oder noch größer zu sehen. Diese Wahrscheinllichkeit können wir annähern durch
 
 
-```r
+``` r
 pnorm(0.36, mean = 1/3, sd = sqrt(2/9 / 100), lower.tail = FALSE)
 ```
 
@@ -598,7 +615,7 @@ Mit einer berechneten Wahrscheinlichkeit von 0.2858038 scheint ein beobachteter 
 Diesen Test hätten wir auch mit der Funktion `prop.test()` durchführen können.
 
 
-```r
+``` r
 prop.test(x = sum(x$color == "red"), n = 100, p = 1/3, 
           alternative = "greater", correct = FALSE)
 ```
@@ -630,11 +647,11 @@ Diesen Ansatz wollen wir nun noch anhand des vorliegende Testproblem illustriere
 
 
 
-```r
-null_vert <- x %>% 
-  specify(response = color, success = "red") %>% 
-  hypothesise(null = "point", p = 1/3) %>% 
-  generate(reps = 1000, type = "draw") %>% 
+``` r
+null_vert <- x |>  
+  specify(response = color, success = "red") |>  
+  hypothesise(null = "point", p = 1/3) |>  
+  generate(reps = 1000, type = "draw") |>  
   calculate(stat = "prop")
 ```
 
@@ -649,8 +666,8 @@ Die Wahrscheinlichkeit $P_{\theta_0}\left(\overline X_n  \geq 0.36\right)$ könn
 
 
 
-```r
-null_vert %>%
+``` r
+null_vert |> 
   visualise(bins = 30) +
   shade_p_value(obs_stat = 0.36, direction = "greater")
 ```
@@ -661,8 +678,8 @@ null_vert %>%
 und numerisch ausgeben
 
 
-```r
-null_vert %>% 
+``` r
+null_vert |>  
   get_p_value(obs_stat = 0.36, direction = "greater")
 ```
 
@@ -678,25 +695,26 @@ Der berechnete p-Wert variiert mit jedem Durchlauf.
 Wiederholt man den ganzen Durchlauf 100 Mal, so erhält man stets unterschiedliche p-Werte, aber stets vergleichbare Werte.
 
 
-```r
+``` r
 df <- data.frame(p_values = numeric(length = 100L))
 for(i in 1:100){
-  null_vert <- x %>% 
-  specify(response = color, success = "red") %>% 
-  hypothesise(null = "point", p = 1/3) %>% 
-  generate(reps = 1000, type = "draw") %>% 
+  null_vert <- x |>  
+  specify(response = color, success = "red") |>  
+  hypothesise(null = "point", p = 1/3) |>  
+  generate(reps = 1000, type = "draw") |>  
   calculate(stat = "prop")
   
-  df$p_values[i] <- null_vert %>% 
-  get_p_value(obs_stat = 0.36, direction = "greater")
+  df$p_values[i] <- null_vert |>  
+  get_p_value(obs_stat = 0.36, direction = "greater") |> 
+    pull()
 }
 ```
 
 Die simulierten p-Wert sind in der nachfolgenden Grafik visualisiert.
 
 
-```r
-df %>% 
+``` r
+df |>  
   ggplot(aes(x = seq_along(p_values), y = p_values)) +
   geom_bar(stat = "identity") + 
   labs(x = "Durchlauf", y = "p-Wert", title = "Simulationsbasierte p-Werte")

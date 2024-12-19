@@ -41,12 +41,16 @@ Das Material wird kontinuierlich über das Semester hinweg ergänzt/erweitert/ve
 
 ``` r
 date()
-## [1] "Thu Dec 19 08:36:04 2024"
+## [1] "Thu Dec 19 16:13:25 2024"
 ```
 
 
 
 ## Beteiligte Personen {-}
+
++ Diana Conache
+
++ Stephan Haug 
 
 
 ## Kolophon {-}
