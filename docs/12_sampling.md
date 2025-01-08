@@ -127,7 +127,7 @@ bowl |>
 ## # A tibble: 1 × 2
 ##   replicate  prop
 ##       <int> <dbl>
-## 1         1  0.28
+## 1         1  0.24
 ```
 
 ``` r
@@ -153,7 +153,7 @@ bowl |>
 ## # A tibble: 1 × 2
 ##   replicate  prop
 ##       <int> <dbl>
-## 1         1  0.36
+## 1         1  0.38
 ```
 
 
@@ -202,7 +202,7 @@ stp_25 |>
 ## # A tibble: 1 × 1
 ##   sd_prop
 ##     <dbl>
-## 1   0.101
+## 1  0.0968
 ```
 
 ``` r
@@ -215,7 +215,7 @@ stp_50 |>
 ## # A tibble: 1 × 1
 ##   sd_prop
 ##     <dbl>
-## 1  0.0649
+## 1  0.0678
 ```
 
 ``` r
@@ -228,7 +228,7 @@ stp_100 |>
 ## # A tibble: 1 × 1
 ##   sd_prop
 ##     <dbl>
-## 1  0.0479
+## 1  0.0459
 ```
 
 
@@ -347,7 +347,7 @@ stp_100 |>
   geom_histogram(aes(x = prop, y = ..density..), binwidth = 0.02,
                  color = "white") +
   xlim(0.01, 0.8) +
-  stat_function(fun = "dnorm", 
+  stat_function(fun = dnorm, 
                 args = list(mean = theta_hat, 
                             sd = sqrt(theta_hat * (1-theta_hat) / 100)),
                 colour = "blue", size = 1.3) +
@@ -394,7 +394,7 @@ x
 ```
 
 
-Unser Ziel ist es nun, basierend auf diesen 100 Beobachtungen, die Verteilung von $\overline X_n$ zu approximieren. Dazu benötigen wir sicherlich mehrere berechnete Werte des empirischen Mittels. Natürlich könnten wir die ursprüngliche Stichprobe in 50 Paare zerlege und so 50 empirische Mittelwerte $\overline x_2^1,\dots,\overline x_2^{50}$ berechnen. Damit könnten wir dann aber nur die Verteilung von $\overline X_2$ approximieren und nicht von $\overline X_{100}$. D.h. wir wollen mehrere empirische Mittelwerte basierend auf 100 Inputwerten berechnen. 
+Unser Ziel ist es nun, basierend auf diesen 100 Beobachtungen, die Verteilung von $\overline X_n$ zu approximieren. Dazu benötigen wir sicherlich mehrere berechnete Werte des empirischen Mittels. Natürlich könnten wir die ursprüngliche Stichprobe in 50 Paare zerlegen und so 50 empirische Mittelwerte $\overline x_2^1,\dots,\overline x_2^{50}$ berechnen. Damit könnten wir dann aber nur die Verteilung von $\overline X_2$ approximieren und nicht von $\overline X_{100}$. D.h. wir wollen mehrere empirische Mittelwerte basierend auf 100 Inputwerten berechnen. 
 
 Dieses Ziel werden wir nur erreichen, wenn wir die ursprünglichen 100 Werte $x_1,\dots, x_n$ in "schlauer" Form mehrfach nutzen. Wir stellen uns auf den Standpunkt, dass die 100 Werte Realisierungen von unabhängigen und identisch verteilten Zufallsvariablen sind. _Das ist auch die Annahme in unserem statistischen Modell_. 
 Unsere Stichprobe ist somit eine gute Approximation der Gesamtpopulation - auf jeden Fall die beste, die wir haben - und daher würde es Sinn machen wiederholt aus dieser Näherung zu ziehen und dabei die Aufteilung in rote und weiße Kugeln nicht zu verändern. Wir ziehen somit __mit Zurücklegen__ und erzeugen so $B$ Stichprobenwiederholungen
@@ -656,10 +656,11 @@ null_vert <- x |>
 ```
 
 ::: {.content-box-gray}
-__Bemerkung:__ In diesem Fall wurden die Resamples nicht durch Ziehen mit Zurücklegen erzeugt. Vielmehr wurde 1000 Stichproben aus dem Modell 
+__Bemerkung:__ In diesem Fall wurden die Resamples nicht durch Ziehen mit Zurücklegen erzeugt. Vielmehr wurden 1000 Stichproben aus dem Modell 
 
 $$ \left(\{0,1\}^{100}, \mathcal{P}(\{0,1\})^{100}, Binomial\Big(1,\frac{1}{3}\Big)^{\otimes 100}\right)$$
 
+erzeugt.
 :::
 
 Die Wahrscheinlichkeit $P_{\theta_0}\left(\overline X_n  \geq 0.36\right)$ können wir visuell darstellen
