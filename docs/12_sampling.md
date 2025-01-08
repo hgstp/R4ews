@@ -127,7 +127,7 @@ bowl |>
 ## # A tibble: 1 × 2
 ##   replicate  prop
 ##       <int> <dbl>
-## 1         1  0.24
+## 1         1  0.28
 ```
 
 ``` r
@@ -153,7 +153,7 @@ bowl |>
 ## # A tibble: 1 × 2
 ##   replicate  prop
 ##       <int> <dbl>
-## 1         1  0.36
+## 1         1  0.39
 ```
 
 
@@ -202,7 +202,7 @@ stp_25 |>
 ## # A tibble: 1 × 1
 ##   sd_prop
 ##     <dbl>
-## 1  0.0986
+## 1  0.0969
 ```
 
 ``` r
@@ -215,7 +215,7 @@ stp_50 |>
 ## # A tibble: 1 × 1
 ##   sd_prop
 ##     <dbl>
-## 1  0.0681
+## 1  0.0684
 ```
 
 ``` r
@@ -228,7 +228,7 @@ stp_100 |>
 ## # A tibble: 1 × 1
 ##   sd_prop
 ##     <dbl>
-## 1  0.0453
+## 1  0.0480
 ```
 
 
@@ -284,7 +284,7 @@ ist.
 
 
 
-> Wie gesagt, in Realität werden wir i.d.R. nicht in der Lage sein  mehr als eine Stichprobe zu erheben. Trotzdem würden wir gerne etwas über die Verteilung unseres Schätzers (hier $\overline X_n$) aussagen. Wir müssen uns also andere Strategien überlegen.
+> Wie gesagt, in Realität werden wir i.d.R. nicht in der Lage sein, mehr als eine Stichprobe zu erheben. Trotzdem würden wir gerne etwas über die Verteilung unseres Schätzers (hier $\overline X_n$) aussagen. Wir müssen uns also andere Strategien überlegen.
 
 
 Um weiterführende statistische Methoden anwenden zu können, braucht man (fast immer) eine exakte oder zumindest approximative Verteilung der Statistik (hier $\overline X_n$), für die man sich interessiert.
@@ -347,7 +347,7 @@ stp_100 |>
   geom_histogram(aes(x = prop, y = ..density..), binwidth = 0.02,
                  color = "white") +
   xlim(0.01, 0.8) +
-  stat_function(fun = "dnorm", 
+  stat_function(fun = dnorm, 
                 args = list(mean = theta_hat, 
                             sd = sqrt(theta_hat * (1-theta_hat) / 100)),
                 colour = "blue", size = 1.3) +
@@ -357,7 +357,7 @@ stp_100 |>
 <img src="12_sampling_files/figure-html/unnamed-chunk-9-1.png" width="672" />
 
 
-Wir erkennen eine rechte gute Übereinstimmung zwischen der __Sampling Verteilung__ und der approximativen Normalverteilung.
+Wir erkennen eine recht gute Übereinstimmung zwischen der __Sampling Verteilung__ und der approximativen Normalverteilung.
 
 
 
@@ -366,7 +366,7 @@ Wir erkennen eine rechte gute Übereinstimmung zwischen der __Sampling Verteilun
 Nun wollen wir die Verteilung der Statistik (immer noch das empirische Mittel $\overline X_n$) über ein resampling Verfahren approximieren. Dabei ist es allerdings nicht entscheidend, dass es sich bei der betrachteten Statistik um das empirische Mittel handelt. Das Verfahren funktioniert auch für weitere Statistiken.
 
 
-Wir starten mit __einer__ Stichprobe der Länge 100
+Wir starten mit __einer__ Stichprobe der Länge 100:
 
 
 ``` r
@@ -643,7 +643,7 @@ Diesen Test konnten wir nur durchführen, da wir eine approximative Verteilung d
 
 der Teststatistik. In den letzten beiden Fällen bieten Resampling Methoden eine Möglichkeit die Verteilung der Teststatistik zu approximieren.
 
-Diesen Ansatz wollen wir nun noch anhand des vorliegende Testproblem illustrieren. Dazu verwenden wir wieder das `infer` Paket. Neben den bereits bekannten Funktionen benötigen wir noch zusätzlich die `hypothesise()` Funktion, zur Definition der zu testenden Hypothese.
+Diesen Ansatz wollen wir nun noch anhand des vorliegenden Testproblem illustrieren. Dazu verwenden wir wieder das `infer` Paket. Neben den bereits bekannten Funktionen benötigen wir noch zusätzlich die `hypothesise()` Funktion, zur Definition der zu testenden Hypothese.
 
 
 

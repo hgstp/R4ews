@@ -173,7 +173,7 @@ Frage</p>
 <pre><code>## # A tibble: 1 × 2
 ##   replicate  prop
 ##       &lt;int&gt; &lt;dbl&gt;
-## 1         1  0.24</code></pre>
+## 1         1  0.28</code></pre>
 <div class="sourceCode" id="cb231"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bowl</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://infer.tidymodels.org/reference/rep_sample_n.html">rep_sample_n</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">50</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
@@ -189,7 +189,7 @@ Frage</p>
 <pre><code>## # A tibble: 1 × 2
 ##   replicate  prop
 ##       &lt;int&gt; &lt;dbl&gt;
-## 1         1  0.36</code></pre>
+## 1         1  0.39</code></pre>
 <p>Wir erkennen, dass alle drei Werte unterschiedlich zum wahren Wert sind. In der Praxis würden wir den wahren Wert nicht kennen. Daher überlegen wir weiter, wie wir die Qualität der berechneten Anteilswerte (unsere Schätzwerte) bewerten/einschätzen können.</p>
 <p>Eine Frage die wir uns diesbzgl. stellen sollten ist:</p>
 <div class="content-box-gray">
@@ -217,7 +217,7 @@ berechnen</p>
 <pre><code>## # A tibble: 1 × 1
 ##   sd_prop
 ##     &lt;dbl&gt;
-## 1  0.0986</code></pre>
+## 1  0.0969</code></pre>
 <div class="sourceCode" id="cb238"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">stp_50</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>prop <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">color</span> <span class="op">==</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">/</span> <span class="fl">50</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
@@ -225,7 +225,7 @@ berechnen</p>
 <pre><code>## # A tibble: 1 × 1
 ##   sd_prop
 ##     &lt;dbl&gt;
-## 1  0.0681</code></pre>
+## 1  0.0684</code></pre>
 <div class="sourceCode" id="cb240"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">stp_100</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>prop <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">color</span> <span class="op">==</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">/</span> <span class="fl">100</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
@@ -233,7 +233,7 @@ berechnen</p>
 <pre><code>## # A tibble: 1 × 1
 ##   sd_prop
 ##     &lt;dbl&gt;
-## 1  0.0453</code></pre>
+## 1  0.0480</code></pre>
 <p>sowie ein Histogramm von <span class="math inline">\(\overline x_n^1, \dots, \overline x_n^{1000}\)</span></p>
 <div class="sourceCode" id="cb242"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">stp_25</span> <span class="op">|&gt;</span> </span>
@@ -270,7 +270,7 @@ berechnen</p>
 <p><span class="math display">\[ (\{0,1\}^n, \mathcal{P}(\{0,1\})^n, Binomial(1,\theta)^{\otimes n}_{\theta\in(0,1)})\]</span></p>
 <p>ist.</p>
 <blockquote>
-<p>Wie gesagt, in Realität werden wir i.d.R. nicht in der Lage sein mehr als eine Stichprobe zu erheben. Trotzdem würden wir gerne etwas über die Verteilung unseres Schätzers (hier <span class="math inline">\(\overline X_n\)</span>) aussagen. Wir müssen uns also andere Strategien überlegen.</p>
+<p>Wie gesagt, in Realität werden wir i.d.R. nicht in der Lage sein, mehr als eine Stichprobe zu erheben. Trotzdem würden wir gerne etwas über die Verteilung unseres Schätzers (hier <span class="math inline">\(\overline X_n\)</span>) aussagen. Wir müssen uns also andere Strategien überlegen.</p>
 </blockquote>
 <p>Um weiterführende statistische Methoden anwenden zu können, braucht man (fast immer) eine exakte oder zumindest approximative Verteilung der Statistik (hier <span class="math inline">\(\overline X_n\)</span>), für die man sich interessiert.</p>
 <div class="content-box-black">
@@ -310,20 +310,20 @@ wobei <span class="math inline">\(\Phi\)</span> die Verteilungsfunktion der N(0,
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">prop</span>, y <span class="op">=</span> <span class="va">..density..</span><span class="op">)</span>, binwidth <span class="op">=</span> <span class="fl">0.02</span>,</span>
 <span>                 color <span class="op">=</span> <span class="st">"white"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html">xlim</a></span><span class="op">(</span><span class="fl">0.01</span>, <span class="fl">0.8</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_function.html">stat_function</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="st">"dnorm"</span>, </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_function.html">stat_function</a></span><span class="op">(</span>fun <span class="op">=</span> <span class="va">dnorm</span>, </span>
 <span>                args <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>mean <span class="op">=</span> <span class="va">theta_hat</span>, </span>
 <span>                            sd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="va">theta_hat</span> <span class="op">*</span> <span class="op">(</span><span class="fl">1</span><span class="op">-</span><span class="va">theta_hat</span><span class="op">)</span> <span class="op">/</span> <span class="fl">100</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>                colour <span class="op">=</span> <span class="st">"blue"</span>, size <span class="op">=</span> <span class="fl">1.3</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <div class="inline-figure"><img src="12_sampling_files/figure-html/unnamed-chunk-9-1.png" width="672"></div>
-<p>Wir erkennen eine rechte gute Übereinstimmung zwischen der <strong>Sampling Verteilung</strong> und der approximativen Normalverteilung.</p>
+<p>Wir erkennen eine recht gute Übereinstimmung zwischen der <strong>Sampling Verteilung</strong> und der approximativen Normalverteilung.</p>
 </div>
 <div id="resampling" class="section level2" number="13.2">
 <h2>
 <span class="header-section-number">13.2</span> Resampling<a class="anchor" aria-label="anchor" href="#resampling"><i class="fas fa-link"></i></a>
 </h2>
 <p>Nun wollen wir die Verteilung der Statistik (immer noch das empirische Mittel <span class="math inline">\(\overline X_n\)</span>) über ein resampling Verfahren approximieren. Dabei ist es allerdings nicht entscheidend, dass es sich bei der betrachteten Statistik um das empirische Mittel handelt. Das Verfahren funktioniert auch für weitere Statistiken.</p>
-<p>Wir starten mit <strong>einer</strong> Stichprobe der Länge 100</p>
+<p>Wir starten mit <strong>einer</strong> Stichprobe der Länge 100:</p>
 <div class="sourceCode" id="cb244"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span> <span class="co"># zur reproduzierbarkeit</span></span>
 <span><span class="va">x</span> <span class="op">&lt;-</span> <span class="va">bowl</span> <span class="op">|&gt;</span></span>
@@ -498,7 +498,7 @@ ist, also die Wahrscheinlichkeit einen Wert so groß wie den beobachteten Stichp
 <li>keine “theoretische” Verteilung (weder exakt noch approximativ)</li>
 </ul>
 <p>der Teststatistik. In den letzten beiden Fällen bieten Resampling Methoden eine Möglichkeit die Verteilung der Teststatistik zu approximieren.</p>
-<p>Diesen Ansatz wollen wir nun noch anhand des vorliegende Testproblem illustrieren. Dazu verwenden wir wieder das <code>infer</code> Paket. Neben den bereits bekannten Funktionen benötigen wir noch zusätzlich die <code><a href="https://infer.tidymodels.org/reference/hypothesize.html">hypothesise()</a></code> Funktion, zur Definition der zu testenden Hypothese.</p>
+<p>Diesen Ansatz wollen wir nun noch anhand des vorliegenden Testproblem illustrieren. Dazu verwenden wir wieder das <code>infer</code> Paket. Neben den bereits bekannten Funktionen benötigen wir noch zusätzlich die <code><a href="https://infer.tidymodels.org/reference/hypothesize.html">hypothesise()</a></code> Funktion, zur Definition der zu testenden Hypothese.</p>
 <div class="sourceCode" id="cb263"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">null_vert</span> <span class="op">&lt;-</span> <span class="va">x</span> <span class="op">|&gt;</span>  </span>
 <span>  <span class="fu"><a href="https://infer.tidymodels.org/reference/specify.html">specify</a></span><span class="op">(</span>response <span class="op">=</span> <span class="va">color</span>, success <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span> <span class="op">|&gt;</span>  </span>
