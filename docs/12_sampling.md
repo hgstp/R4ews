@@ -127,7 +127,7 @@ bowl |>
 ## # A tibble: 1 × 2
 ##   replicate  prop
 ##       <int> <dbl>
-## 1         1  0.36
+## 1         1  0.24
 ```
 
 ``` r
@@ -140,7 +140,7 @@ bowl |>
 ## # A tibble: 1 × 2
 ##   replicate  prop
 ##       <int> <dbl>
-## 1         1  0.28
+## 1         1  0.38
 ```
 
 ``` r
@@ -153,7 +153,7 @@ bowl |>
 ## # A tibble: 1 × 2
 ##   replicate  prop
 ##       <int> <dbl>
-## 1         1  0.38
+## 1         1  0.36
 ```
 
 
@@ -202,7 +202,7 @@ stp_25 |>
 ## # A tibble: 1 × 1
 ##   sd_prop
 ##     <dbl>
-## 1  0.0990
+## 1  0.0986
 ```
 
 ``` r
@@ -228,7 +228,7 @@ stp_100 |>
 ## # A tibble: 1 × 1
 ##   sd_prop
 ##     <dbl>
-## 1  0.0474
+## 1  0.0453
 ```
 
 
@@ -347,7 +347,7 @@ stp_100 |>
   geom_histogram(aes(x = prop, y = ..density..), binwidth = 0.02,
                  color = "white") +
   xlim(0.01, 0.8) +
-  stat_function(fun = dnorm, 
+  stat_function(fun = "dnorm", 
                 args = list(mean = theta_hat, 
                             sd = sqrt(theta_hat * (1-theta_hat) / 100)),
                 colour = "blue", size = 1.3) +

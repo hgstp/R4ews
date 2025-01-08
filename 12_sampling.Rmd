@@ -258,7 +258,7 @@ stp_100 |>
   geom_histogram(aes(x = prop, y = ..density..), binwidth = 0.02,
                  color = "white") +
   xlim(0.01, 0.8) +
-  stat_function(fun = dnorm, 
+  stat_function(fun = "dnorm", 
                 args = list(mean = theta_hat, 
                             sd = sqrt(theta_hat * (1-theta_hat) / 100)),
                 colour = "blue", size = 1.3) +
